@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
@@ -182,16 +184,6 @@ class ShowroomController extends Controller
 
         return redirect()->route('showroom.index')->with('message', 'Showroom update succesfully');
     }
-
-    // public function showroom_destroy(Request $request,$id){
-
-    //     $showroom = Showroom::findOrFail($id);
-    //     $showroom->delete();
-    //     return response()->json([
-    //         'success' => 'Record deleted successfully!'
-    //     ]);
-  
-    // }
 
     public function showroom_destroy(Request $request,$id){
 

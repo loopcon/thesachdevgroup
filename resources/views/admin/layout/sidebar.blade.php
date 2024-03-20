@@ -20,7 +20,7 @@
               @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
               <li class="nav-item">
                   <a href="{{url('homeslider_index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-edit"></i>
+                    <i class="nav-icon fas fa-sliders-h"></i>
                     <p>
                       Home Slider
                     </p>
@@ -48,7 +48,7 @@
                 @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
               <li class="nav-item">
                 <a href="{{url('home_detail')}}" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
+                  <i class="nav-icon fas fa-home"></i>
                   <p>
                    Home Detail
                   </p>
@@ -62,7 +62,7 @@
               @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
               <li class="nav-item">
                 <a href="{{url('testimonials_index')}}" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
+                  <i class="nav-icon fas fa-address-card"></i>
                   <p>
                     Testimonials
                   </p>
@@ -76,7 +76,7 @@
                 @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             <li class="nav-item">
               <a href="{{url('setting')}}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-cog"></i>
                 <p>
                   Setting
                 </p>
@@ -84,6 +84,10 @@
             </li>
             @endif
             @endif
+
+            @php($has_permission = hasPermission('Brand'))
+            @if(isset($has_permission) && $has_permission)
+                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             <li class="nav-item">
               <a href="{{url('brand_index')}}" class="nav-link">
                 <i class="nav-icon fab fa-behance"></i>
@@ -92,6 +96,12 @@
                 </p>
               </a>
             </li>
+            @endif
+            @endif
+
+            @php($has_permission = hasPermission('Car'))
+            @if(isset($has_permission) && $has_permission)
+                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             <li class="nav-item">
               <a href="{{url('car_index')}}" class="nav-link">
                 <i class="nav-icon fas fa-car-alt"></i>
@@ -100,6 +110,12 @@
                 </p>
               </a>
             </li>
+            @endif
+            @endif
+
+            @php($has_permission = hasPermission('Showroom'))
+            @if(isset($has_permission) && $has_permission)
+                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             <li class="nav-item">
               <a href="{{url('showroom_index')}}" class="nav-link">
                 <i class="nav-icon fas fa-building"></i>
@@ -108,10 +124,12 @@
                 </p>
               </a>
             </li>
+            @endif
+            @endif
             @if(Auth::user()->role_id == Constant::SUPERADMIN)
               <li class="nav-item">
                 <a href="{{route('role-permission')}}" class="nav-link">
-                  <i class="fa fa-users-cog" ></i>
+                  <i class="nav-icon fas fa-users-cog"></i>
                   <p>
                     Role Permission
                   </p>
