@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\ShowroomController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,6 +69,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('setting', [SettingController::class, 'setting'])->name('setting');
     Route::post('setting_insert', [SettingController::class, 'setting_insert'])->name('setting_insert');
 
+    //galaxy_toyota
+    Route::get('galaxy_toyota', [GalaxyToyotaController::class, 'galaxy_toyota'])->name('galaxy_toyota');
+    Route::post('galaxy_toyota_insert', [GalaxyToyotaController::class, 'galaxy_toyota_insert'])->name('galaxy_toyota_insert');
+
     //brand
     Route::get('brand', [BrandController::class, 'brand'])->name('brand');
     Route::post('brand_insert', [BrandController::class, 'brand_insert'])->name('brand_insert');
@@ -96,7 +99,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('facilitie_imagedelete', [ShowroomController::class, 'DeleteFacilitieImage'])->name('facilitie_imagedelete');
     Route::post('customer_gallery_imagedelete', [ShowroomController::class, 'DeleteCustomerGallery'])->name('customer_gallery_imagedelete');
-    
-    Route::get('getcars', [ShowroomController::class, 'getcarname'])->name('getcars');
+
 
 });
