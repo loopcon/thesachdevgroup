@@ -47,7 +47,6 @@
                                 </select>
                                 <div id="errorcardiv"></div>
                             </div>
-
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Address</label>
                                     <textarea class="form-control" name="address">{{$showroom->address}}</textarea>
@@ -147,6 +146,28 @@
 
 <script>
     $(document).ready(function () {
+
+        $('#brand_id').change(function () {
+            var brand_id = $(this).val();
+            if (brand_id) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('getcars') }}",
+                    data: { brand_id: brand_id },
+                    success: function (cars) {
+                        $('#car_id').empty();
+                        $('#car_id').append('<option disabled>Select Car</option>');
+                        $.each(cars, function (key, car) {
+                            $('#car_id').append('<option value="' + car.id + '">' + car.name + '</option>'); 
+                        });
+                    }
+                });
+            } else {
+                $('#car_id').empty();
+            }
+        });
+
+
         $(".edit_form").validate({
             rules: {
                 'car_id[]': { 

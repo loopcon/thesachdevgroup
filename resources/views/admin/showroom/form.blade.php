@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <form action="{{ route('showroom_insert') }}" method="POST" class="showroom_form" enctype="multipart/form-data">
                         @csrf
-
+                        
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Select Brand</label>
                             <div class="col-md-6">
@@ -37,18 +37,17 @@
                                 <div id="errordiv"></div>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label for="car_id" class="col-md-4 col-form-label text-md-right">Select Car</label>
                             <div class="col-md-6">
                                 <select name="car_id[]" id="car_id" class="form-control select2" multiple>
                                     <option disabled>Select Car</option>
-                                    @foreach($cars as $car)
-                                        <option value="{{$car->id}}">{{$car->name}}</option>
-                                    @endforeach
                                 </select>
                                 <div id="errorcardiv"></div>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
                             <div class="col-md-6">
@@ -128,6 +127,27 @@
 
 <script>
     $(document).ready(function () {
+
+        $('#brand_id').change(function () {
+            var brand_id = $(this).val();
+            if (brand_id) {
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('getcars') }}",
+                    data: { brand_id: brand_id },
+                    success: function (cars) {
+                        $('#car_id').empty();
+                        $('#car_id').append('<option disabled>Select Car</option>');
+                        $.each(cars, function (key, car) {
+                            $('#car_id').append('<option value="' + car.id + '">' + car.name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#car_id').empty();
+            }
+        });
+
         $(".showroom_form").validate({
             rules: {
                 'brand_id': {

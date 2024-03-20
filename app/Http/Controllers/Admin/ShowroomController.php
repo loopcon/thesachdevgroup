@@ -19,8 +19,7 @@ class ShowroomController extends Controller
 
     public function showroom(Request $request){
         $brands = Brand::get();
-        $cars = Car::get();
-        return view("admin.showroom.form",compact('brands','cars')); 
+        return view("admin.showroom.form",compact('brands')); 
     }
     
     public function showroom_insert(Request $request){
@@ -71,8 +70,8 @@ class ShowroomController extends Controller
             return Datatables::of($showroom)
                     ->addIndexColumn()
                     ->addColumn('action', function($showroom){
-            
-                    $updateButton = '<a href="'.route("showroom.edit",encrypt($showroom->id)).'" class="btn btn-info btn-sm">Edit</a>';        
+        
+                    $updateButton = '<a href="'.route("showroom.edit", ['showroom_edit' => encrypt($showroom->id), 'brand_id' => $showroom->brand_id]).'" class="btn btn-info btn-sm">Edit</a>';
                     $deleteBtn = '<a class="btn btn-danger btn-sm" id="smallButton" data-id="'.$showroom->id.'">Delete</a>';
                     return $updateButton . $deleteBtn;
                     })
@@ -134,14 +133,16 @@ class ShowroomController extends Controller
         return view('admin.showroom.show');
     }
     
-    public function showroom_edit($id){
+    public function showroom_edit($id,$brand_id){
         $showrooms  = Showroom::where('id',decrypt($id))->get();
         $brands = Brand::get();
-        $cars = Car::get();
+        $cars = Car::where('brand_id',$brand_id)->get();
         $facilitie_image = Facilitie::where('showroom_id',decrypt($id))->pluck('facilitie_image','id')->toArray();
         $customer_gallery_images = Customer_gallery::where('showroom_id',decrypt($id))->pluck('customer_gallery_image','id')->toArray();
         return view('admin.showroom._form',compact('showrooms','brands','cars','facilitie_image','customer_gallery_images'));
     }
+
+
     
     public function showroom_update(Request $request, $id)
     {
@@ -252,6 +253,12 @@ class ShowroomController extends Controller
         return response()->json([
             'success' => 'Record deleted successfully!'
         ]);
+    }
+
+    
+    public function getcarname(Request $request){
+        $cars = Car::where('brand_id',$request->brand_id)->get();
+        return $cars;
     }
 }
 

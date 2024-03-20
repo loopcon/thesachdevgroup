@@ -90,13 +90,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('showroom', [ShowroomController::class, 'showroom'])->name('showroom');
     Route::post('showroom_insert', [ShowroomController::class, 'showroom_insert'])->name('showroom_insert');
     Route::get('showroom_index', [ShowroomController::class, 'showroom_index'])->name('showroom.index');
-    Route::get('showroom_edit/{showroom_edit}', [ShowroomController::class, 'showroom_edit'])->name('showroom.edit');
+    Route::get('showroom_edit/{showroom_edit}/{brand_id}', [ShowroomController::class, 'showroom_edit'])->name('showroom.edit');
     Route::post('showroom_update,{showroom_update}', [ShowroomController::class, 'showroom_update'])->name('showroom_update');
     Route::delete('showroom_destroy/{id}', [ShowroomController::class, 'showroom_destroy']);
 
     Route::post('facilitie_imagedelete', [ShowroomController::class, 'DeleteFacilitieImage'])->name('facilitie_imagedelete');
-    
     Route::post('customer_gallery_imagedelete', [ShowroomController::class, 'DeleteCustomerGallery'])->name('customer_gallery_imagedelete');
-
+    
+    Route::get('getcars', [ShowroomController::class, 'getcarname'])->name('getcars');
 
 });
