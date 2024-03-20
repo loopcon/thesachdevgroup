@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Galaxy Toyota Image</h1>
+            <h1>Brand</h1>
           </div>
           <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Galaxy Toyota Image</li>
+              <li class="breadcrumb-item active">Brand</li>
             </ol>
           </div>
         </div>
@@ -20,14 +20,13 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('galaxy_toyota_image_insert') }}" method="POST" class="galaxy_toyota_image_form" enctype="multipart/form-data">
+                    <form action="{{ route('brand_insert') }}" method="POST" class="brand_form" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Image</label>
                             <div class="col-md-6">
                                 <input type="file" id="image" class="form-control" name="image">
-                                <div class="error"></div>
                             </div>
                         </div>
 
@@ -35,15 +34,14 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                             <div class="col-md-6">
                                 <input type="text" id="name" class="form-control" name="name">
-                                <div class="error"></div>
                             </div>
                         </div>
 
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary submit">
                                 Submit
                             </button>
-                            <a href="{{ route('galaxy_toyota_image.index') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('brand.index') }}" class="btn btn-default">Cancel</a>
                         </div>
                     </form>
                 </div>
@@ -53,7 +51,7 @@
   </div>
 <script>
     $(document).ready(function () {
-        $(".galaxy_toyota_image_form").validate({
+        $(".brand_form").validate({
             rules: {
                 'image': {
                     required: true,
@@ -72,9 +70,11 @@
                     required: "Name is required",
                 },
             },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
-            },
+            submitHandler: function(form) {
+                $(form).find('.submit').prop("disabled", true);
+                form.submit();
+            }
         });
+
     });
 </script>

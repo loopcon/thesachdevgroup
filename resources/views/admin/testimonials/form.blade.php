@@ -48,7 +48,7 @@
                         </div>
                         
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary submit">
                                 Submit
                             </button>
                             <a href="{{ route('testimonials.index') }}" class="btn btn-default">Cancel</a>
@@ -90,6 +90,10 @@
             errorPlacement: function(error, element) {
                 error.appendTo(element.parent().find('.error'));
             },
+            submitHandler: function(form) {
+                $(form).find('.submit').prop("disabled", true);
+                form.submit();
+            }
         });
     });
 </script>

@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary submit">
                                 Submit
                             </button>
                             <a href="{{ route('homeslider.index') }}" class="btn btn-default">Cancel</a>
@@ -46,20 +46,25 @@
     </section>
   </div>
 <script>
-    $(document).ready(function () {
-        $(".slider_form").validate({
-            rules: {
-                'image': {
-                    required: true,
-                    extension: "jpg,jpeg,png",
-                },
+ $(document).ready(function () {
+    $(".slider_form").validate({
+        rules: {
+            'image': {
+                required: true,
+                extension: "jpg,jpeg,png",
             },
-            messages: {
-                'image': {
-                    required: "Image is required",
-                    extension: "Please enter a value with a valid extension.",
-                },
+        },
+        messages: {
+            'image': {
+                required: "Image is required",
+                extension: "Please enter a value with a valid extension.",
             },
-        });
+        },
+        submitHandler: function(form) {
+            $(form).find('.submit').prop("disabled", true);
+            form.submit();
+        }
     });
+});
+
 </script>

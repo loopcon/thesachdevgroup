@@ -33,6 +33,7 @@
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label>
                                     <input  type="file" class="form-control" name="image">
+                                    <div class="error"></div>
                                 </div>
 
                                 @if($testimonial->image == null)

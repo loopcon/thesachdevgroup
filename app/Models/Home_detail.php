@@ -14,5 +14,12 @@ class Home_detail extends Model
         'image',
         'title',
         'description',
+        'our_story_image',
+        'our_story_title',
+        'our_story_description',
+        'our_mission_title',
+        'our_mission_description',
+        'our_vision_title',
+        'our_vision_description',
     ];
 }

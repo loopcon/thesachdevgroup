@@ -5,10 +5,10 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Galaxy Toyota Image</h1>
+                        <h1 class="m-0">Showroom</h1>
                     </div>
                     <div class="col-sm-6">
-                        <a href="{{ route('galaxy_toyota_image') }}" class="btn btn-primary btn-sm float-right">Add</a>
+                        <a href="{{ route('showroom') }}" class="btn btn-primary btn-sm float-right">Add</a>
                     </div>
                     </div>
                 </div>
@@ -19,8 +19,14 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Image</th>
-                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Car</th>
+                                <th>Address</th>
+                                <th>Working Hours</th>
+                                <th>Contact Number</th>
+                                <th>Email</th>
+                                <th>Facilitie Image</th>
+                                <th>Customer Gallery Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -38,11 +44,17 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('galaxy_toyota_image.index') }}",
+            ajax: "{{ route('showroom.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
-                {data: 'image', name: 'image'},
-                {data: 'name', name: 'name'},
+                {data: 'brand', name: 'brand'},
+                {data: 'car', name: 'car'},
+                {data: 'address', name: 'address'},
+                {data: 'working_hours', name: 'working_hours'},
+                {data: 'contact_number', name: 'contact_number'},
+                {data: 'email', name: 'email'},
+                {data: 'facilitie_image', name: 'facilitie_image'},
+                {data: 'customer_gallery_image', name: 'customer_gallery_image'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -65,7 +77,7 @@
             if (willDelete) {
                 var id = $(this).data('id');
                 $.ajax({
-                    url: "galaxy_toyota_image_destroy/"+id,
+                    url: "showroom_destroy/"+id,
                     type: 'DELETE',
                     data: {
                         "id": id,
@@ -88,7 +100,7 @@
       
     @if(session()->has('message'))
       swal({
-          title: "Galaxy toyota image",
+          title: "Showroom",
           text: '{{ $message }}',
           icon: "success",
           buttons: true,

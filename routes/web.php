@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\GalaxyToyotaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\ShowroomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,20 +68,32 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('setting', [SettingController::class, 'setting'])->name('setting');
     Route::post('setting_insert', [SettingController::class, 'setting_insert'])->name('setting_insert');
 
-    //galaxy_toyota
-    Route::get('galaxy_toyota', [GalaxyToyotaController::class, 'galaxy_toyota'])->name('galaxy_toyota');
-    Route::post('galaxy_toyota_insert', [GalaxyToyotaController::class, 'galaxy_toyota_insert'])->name('galaxy_toyota_insert');
+    //brand
+    Route::get('brand', [BrandController::class, 'brand'])->name('brand');
+    Route::post('brand_insert', [BrandController::class, 'brand_insert'])->name('brand_insert');
+    Route::get('brand_index', [BrandController::class, 'brand_index'])->name('brand.index');
+    Route::get('brand_edit/{brand_edit}', [BrandController::class, 'brand_edit'])->name('brand.edit');
+    Route::post('brand_update,{brand_update}', [BrandController::class, 'brand_update'])->name('brand_update');
+    Route::delete('brand_destroy/{id}', [BrandController::class, 'brand_destroy']);
 
-    //galaxy_toyota_image
-    Route::get('galaxy_toyota_image', [GalaxyToyotaController::class, 'galaxy_toyota_image'])->name('galaxy_toyota_image');
-    Route::post('galaxy_toyota_image_insert', [GalaxyToyotaController::class, 'galaxy_toyota_image_insert'])->name('galaxy_toyota_image_insert');
-    Route::get('galaxy_toyota_image_index', [GalaxyToyotaController::class, 'galaxy_toyota_image_index'])->name('galaxy_toyota_image.index');
-    Route::get('galaxy_toyota_image_edit/{galaxy_toyota_image_edit}', [GalaxyToyotaController::class, 'galaxy_toyota_image_edit'])->name('galaxy_toyota_image.edit');
-    Route::post('galaxy_toyota_image_update,{galaxy_toyota_image_update}', [GalaxyToyotaController::class, 'galaxy_toyota_image_update'])->name('galaxy_toyota_image_update');
-    Route::delete('galaxy_toyota_image_destroy/{id}', [GalaxyToyotaController::class, 'galaxy_toyota_image_destroy']);
+    //car
+    Route::get('car', [CarController::class, 'car'])->name('car');
+    Route::post('car_insert', [CarController::class, 'car_insert'])->name('car_insert');
+    Route::get('car_index', [CarController::class, 'car_index'])->name('car.index');
+    Route::get('car_edit/{car_edit}', [CarController::class, 'car_edit'])->name('car.edit');
+    Route::post('car_update,{car_update}', [CarController::class, 'car_update'])->name('car_update');
+    Route::delete('car_destroy/{id}', [CarController::class, 'car_destroy']);
 
-    //galaxy_toyota_showrooms_slider
-    Route::get('galaxy_toyota_showrooms_slider', [GalaxyToyotaController::class, 'galaxy_toyota_showrooms_slider'])->name('galaxy_toyota_showrooms_slider');
-    Route::post('galaxy_toyota_showrooms_slider_insert', [GalaxyToyotaController::class, 'galaxy_toyota_showrooms_slider_insert'])->name('galaxy_toyota_showrooms_slider_insert');
+    //showroom
+    Route::get('showroom', [ShowroomController::class, 'showroom'])->name('showroom');
+    Route::post('showroom_insert', [ShowroomController::class, 'showroom_insert'])->name('showroom_insert');
+    Route::get('showroom_index', [ShowroomController::class, 'showroom_index'])->name('showroom.index');
+    Route::get('showroom_edit/{showroom_edit}', [ShowroomController::class, 'showroom_edit'])->name('showroom.edit');
+    Route::post('showroom_update,{showroom_update}', [ShowroomController::class, 'showroom_update'])->name('showroom_update');
+    Route::delete('showroom_destroy/{id}', [ShowroomController::class, 'showroom_destroy']);
+
+    Route::post('facilitie_imagedelete', [ShowroomController::class, 'DeleteFacilitieImage'])->name('facilitie_imagedelete');
+    
+    Route::post('customer_gallery_imagedelete', [ShowroomController::class, 'DeleteCustomerGallery'])->name('customer_gallery_imagedelete');
 
 });

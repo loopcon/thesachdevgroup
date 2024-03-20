@@ -4,12 +4,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Galaxy Toyota Image</h1>
+            <h1>Brand</h1>
           </div>
           <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Galaxy Toyota Image</li>
+              <li class="breadcrumb-item active">Brand</li>
             </ol>
           </div>
         </div>
@@ -19,10 +19,10 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    @foreach($galaxy_toyota_images as $galaxy_toyota_image)
-                        <form method="post" action="{{ route('galaxy_toyota_image_update', $galaxy_toyota_image->id) }}" class="edit_form" enctype="multipart/form-data">
+                    @foreach($brands as $brand)
+                        <form method="post" action="{{ route('brand_update', $brand->id) }}" class="edit_form" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" value="{{ $galaxy_toyota_image->id }}" class="id" name="id">
+                            <input type="hidden" value="{{ $brand->id }}" class="id" name="id">
                            
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label>
@@ -30,23 +30,21 @@
                                     <div class="error"></div>
                                 </div>
 
-                                @if($galaxy_toyota_image->image == null)
+                                @if($brand->image == null)
                                     <img src="{{asset('public/no_image/notImg.png')}}" width="100">
                                     @else
-                                    <img src="{{asset('public/galaxy_toyota_image/'.$galaxy_toyota_image->image)}}" width="100">
+                                    <img src="{{asset('public/brand/'.$brand->image)}}" width="100">
                                 @endif
-
-                             
 
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name</label>
-                                    <input  type="text" class="form-control" name="name" value="{{$galaxy_toyota_image->name}}">
+                                    <input  type="text" class="form-control" name="name" value="{{$brand->name}}">
                                     <div class="error"></div>
                                 </div>
 
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">Update</button>
-                                <a href="{{ route('galaxy_toyota_image.index') }}" class="btn btn-default">Cancel</a>
+                                <a href="{{ route('brand.index') }}" class="btn btn-default">Cancel</a>
                             </div>
                         </form>
                     @endforeach 
@@ -59,21 +57,20 @@
 <script>
     $(document).ready(function () {
         $(".edit_form").validate({
-            ignore: [],
             rules: {
-                image: {
-                    extension: "jpg,jpeg,png",
-                },
                 'name': {
                     required: true,
                 },
+                image: {
+                    extension: "jpg,jpeg,png",
+                },
             },
             messages: {
-                image: {
-                    extension: "Please enter a value with a valid extension.",
-                },
                 'name': {
                     required: "Name is required",
+                },
+                image: {
+                    extension: "Please enter a value with a valid extension.",
                 },
             },
             errorPlacement: function(error, element) {

@@ -17,7 +17,7 @@
             </li>
               <li class="nav-item">
                   <a href="{{url('homeslider_index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-edit"></i>
+                    <i class="nav-icon fas fa-sliders-h"></i>
                     <p>
                       Home Slider
                     </p>
@@ -33,7 +33,7 @@
               </li>
               <li class="nav-item">
                 <a href="{{url('home_detail')}}" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
+                  <i class="nav-icon fas fa-home"></i>
                   <p>
                    Home Detail
                   </p>
@@ -41,7 +41,7 @@
             </li>
               <li class="nav-item">
                 <a href="{{url('testimonials_index')}}" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
+                  <i class="nav-icon fa fa-address-card"></i>
                   <p>
                     Testimonials
                   </p>
@@ -49,33 +49,33 @@
             </li>
             <li class="nav-item">
               <a href="{{url('setting')}}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-cog"></i>
                 <p>
                   Setting
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{url('galaxy_toyota')}}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+              <a href="{{url('brand_index')}}" class="nav-link">
+                <i class="nav-icon fab fa-behance"></i>
                 <p>
-                  Galaxy Toyota
+                  Brand
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{url('galaxy_toyota_image_index')}}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+              <a href="{{url('car_index')}}" class="nav-link">
+                <i class="nav-icon fas fa-car-alt"></i>
                 <p>
-                  Galaxy Toyota Image
+                  Car
                 </p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{url('galaxy_toyota_showrooms_slider')}}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+              <a href="{{url('showroom_index')}}" class="nav-link">
+                <i class="nav-icon fas fa-building"></i>
                 <p>
-                  Galaxy Toyota Showrooms Slider
+                  Showroom
                 </p>
               </a>
             </li>

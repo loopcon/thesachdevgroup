@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary submit">
                                 Submit
                             </button>
                             <a href="{{ route('home_our_businesses.index') }}" class="btn btn-default">Cancel</a>
@@ -60,6 +60,10 @@
                     extension: "Please enter a value with a valid extension.",
                 },
             },
+            submitHandler: function(form) {
+                $(form).find('.submit').prop("disabled", true);
+                form.submit();
+            }
         });
     });
 </script>

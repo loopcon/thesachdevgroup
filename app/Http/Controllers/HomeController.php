@@ -381,6 +381,17 @@ class HomeController extends Controller
                 }
             }
 
+            if($request->hasFile('our_story_image'))
+            {
+                $oldstoryImage = $home_detail->our_story_image;
+                if($oldstoryImage) {
+                    $oldstoryImagePath = public_path('our_story_image/') . $oldstoryImage;
+                    if(File::exists($oldstoryImagePath)) {
+                        File::delete($oldstoryImagePath);
+                    }
+                }
+            }
+
         } else {
             $home_detail = new Home_detail();
         }
@@ -394,9 +405,29 @@ class HomeController extends Controller
             $file->move($destinationPath,$fileName);
             $home_detail->image = $fileName;
         }
+
+        if($file = $request->hasFile('our_story_image')) {
+            $file = $request->file('our_story_image');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time(). '.' . $extension;
+    
+            $destinationPath = public_path().'/our_story_image' ;
+            $file->move($destinationPath,$fileName);
+            $home_detail->our_story_image = $fileName;
+        }
     
         $home_detail->title = $request->title;
         $home_detail->description = $request->description;
+
+        $home_detail->our_story_title = $request->our_story_title;
+        $home_detail->our_story_description = $request->our_story_description;
+
+        $home_detail->our_mission_title = $request->our_mission_title;
+        $home_detail->our_mission_description = $request->our_mission_description;
+
+        $home_detail->our_vision_title = $request->our_vision_title;
+        $home_detail->our_vision_description = $request->our_vision_description;
+
         $home_detail->save();
     
         return redirect()->route('home_detail')->with('message', 'Home detail inserted successfully');

@@ -6,12 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Galaxy_toyota_image extends Model
+class Car extends Model
 {
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
+        'brand_id',
         'image',
         'name',
+        'price',
+        'link',
     ];
+
+    public function brand(){
+        return $this->belongsTo(Brand::class,'brand_id');
+    }
 }

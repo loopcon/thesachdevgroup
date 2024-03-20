@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('galaxy_toyotas', function (Blueprint $table) {
+        Schema::create('customer_galleries', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->longText('description')->nullable();
+            $table->bigInteger('showroom_id')->unsigned(); 
+            $table->foreign('showroom_id')->references('id')->on('showrooms');
+            $table->string('customer_gallery_image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('galaxy_toyotas');
+        Schema::dropIfExists('customer_galleries');
     }
 };
