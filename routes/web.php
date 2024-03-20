@@ -5,9 +5,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\GalaxyToyotaController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CarController;
-use App\Http\Controllers\ShowroomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +68,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('setting', [SettingController::class, 'setting'])->name('setting');
     Route::post('setting_insert', [SettingController::class, 'setting_insert'])->name('setting_insert');
 
-   
+    //galaxy_toyota
+    Route::get('galaxy_toyota', [GalaxyToyotaController::class, 'galaxy_toyota'])->name('galaxy_toyota');
+    Route::post('galaxy_toyota_insert', [GalaxyToyotaController::class, 'galaxy_toyota_insert'])->name('galaxy_toyota_insert');
 
+    //galaxy_toyota_image
+    Route::get('galaxy_toyota_image', [GalaxyToyotaController::class, 'galaxy_toyota_image'])->name('galaxy_toyota_image');
+    Route::post('galaxy_toyota_image_insert', [GalaxyToyotaController::class, 'galaxy_toyota_image_insert'])->name('galaxy_toyota_image_insert');
+    Route::get('galaxy_toyota_image_index', [GalaxyToyotaController::class, 'galaxy_toyota_image_index'])->name('galaxy_toyota_image.index');
+    Route::get('galaxy_toyota_image_edit/{galaxy_toyota_image_edit}', [GalaxyToyotaController::class, 'galaxy_toyota_image_edit'])->name('galaxy_toyota_image.edit');
+    Route::post('galaxy_toyota_image_update,{galaxy_toyota_image_update}', [GalaxyToyotaController::class, 'galaxy_toyota_image_update'])->name('galaxy_toyota_image_update');
+    Route::delete('galaxy_toyota_image_destroy/{id}', [GalaxyToyotaController::class, 'galaxy_toyota_image_destroy']);
+
+    //galaxy_toyota_showrooms_slider
+    Route::get('galaxy_toyota_showrooms_slider', [GalaxyToyotaController::class, 'galaxy_toyota_showrooms_slider'])->name('galaxy_toyota_showrooms_slider');
+    Route::post('galaxy_toyota_showrooms_slider_insert', [GalaxyToyotaController::class, 'galaxy_toyota_showrooms_slider_insert'])->name('galaxy_toyota_showrooms_slider_insert');
 });
