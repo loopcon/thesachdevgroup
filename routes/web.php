@@ -100,5 +100,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('facilitie_imagedelete', [ShowroomController::class, 'DeleteFacilitieImage'])->name('facilitie_imagedelete');
     Route::post('customer_gallery_imagedelete', [ShowroomController::class, 'DeleteCustomerGallery'])->name('customer_gallery_imagedelete');
 
+    Route::get('getcars', [ShowroomController::class, 'getcarname'])->name('getcars');
 
 });
