@@ -31,7 +31,11 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
-   
+    
+    //user role permission   
+    Route::get('role-permission/{role_id?}', [\App\Http\Controllers\Admin\RolePermissionController::class, 'index'])->name('role-permission');
+    Route::post('role-permission', [\App\Http\Controllers\Admin\RolePermissionController::class, 'store'])->name('role-permission');
+    
     //home slider
     Route::get('homeslider', [HomeController::class, 'homeslider'])->name('homeslider');
     Route::post('homeslider_insert', [HomeController::class, 'homeslider_insert'])->name('homeslider_insert');
@@ -47,7 +51,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('home_our_businesses_edit/{home_our_businesses_edit}', [HomeController::class, 'home_our_businesses_edit'])->name('home_our_businesses.edit');
     Route::post('home_our_businesses_update,{home_our_businesses_update}', [HomeController::class, 'home_our_businesses_update'])->name('home_our_businesses_update');
     Route::delete('home_our_businesses_destroy/{id}', [HomeController::class, 'home_our_businesses_destroy']);
-
 
     //Testimonials
     Route::get('testimonials', [HomeController::class, 'testimonials'])->name('testimonials');
@@ -80,5 +83,4 @@ Route::group(['middleware' => 'auth'], function () {
     //galaxy_toyota_showrooms_slider
     Route::get('galaxy_toyota_showrooms_slider', [GalaxyToyotaController::class, 'galaxy_toyota_showrooms_slider'])->name('galaxy_toyota_showrooms_slider');
     Route::post('galaxy_toyota_showrooms_slider_insert', [GalaxyToyotaController::class, 'galaxy_toyota_showrooms_slider_insert'])->name('galaxy_toyota_showrooms_slider_insert');
-
 });

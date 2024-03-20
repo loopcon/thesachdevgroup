@@ -15,14 +15,23 @@
                 </p>
               </a>
             </li>
-              <li class="nav-item">
-                  <a href="{{url('homeslider_index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-edit"></i>
-                    <p>
-                      Home Slider
-                    </p>
-                  </a>
-              </li>
+            @php($has_permission = hasPermission('Home Slider'))
+            @if(isset($has_permission) && $has_permission)
+              @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item">
+                    <a href="{{url('homeslider_index')}}" class="nav-link">
+                      <i class="nav-icon fas fa-edit"></i>
+                      <p>
+                        Home Slider
+                      </p>
+                    </a>
+                </li>
+              @endif
+            @endif
+
+            @php($has_permission = hasPermission('Home Our Businesses'))
+            @if(isset($has_permission) && $has_permission)
+              @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
               <li class="nav-item">
                   <a href="{{url('home_our_businesses_index')}}" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
@@ -31,30 +40,50 @@
                     </p>
                   </a>
               </li>
-              <li class="nav-item">
-                <a href="{{url('home_detail')}}" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>
-                   Home Detail
-                  </p>
-                </a>
-            </li>
-              <li class="nav-item">
-                <a href="{{url('testimonials_index')}}" class="nav-link">
-                  <i class="nav-icon fas fa-th"></i>
-                  <p>
-                    Testimonials
-                  </p>
-                </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{url('setting')}}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Setting
-                </p>
-              </a>
-            </li>
+                @endif
+            @endif
+
+            @php($has_permission = hasPermission('Home Detail'))
+            @if(isset($has_permission) && $has_permission)
+              @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item">
+                    <a href="{{url('home_detail')}}" class="nav-link">
+                      <i class="nav-icon fas fa-th"></i>
+                      <p>
+                      Home Detail
+                      </p>
+                    </a>
+                </li>
+              @endif
+            @endif
+
+            @php($has_permission = hasPermission('Testimonials'))
+            @if(isset($has_permission) && $has_permission)
+              @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item">
+                  <a href="{{url('testimonials_index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                      Testimonials
+                    </p>
+                  </a>
+                </li>
+              @endif
+            @endif
+
+            @php($has_permission = hasPermission('Setting'))
+            @if(isset($has_permission) && $has_permission)
+                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                    <li class="nav-item">
+                        <a href="{{url('setting')}}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                            Setting
+                            </p>
+                        </a>
+                    </li>
+                @endif
+            @endif
             <li class="nav-item">
               <a href="{{url('galaxy_toyota')}}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
@@ -79,6 +108,16 @@
                 </p>
               </a>
             </li>
+            @if(Auth::user()->role_id == Constant::SUPERADMIN)
+              <li class="nav-item">
+                <a href="{{route('role-permission')}}" class="nav-link">
+                  <i class="fa fa-users-cog" ></i>
+                  <p>
+                    Role Permission
+                  </p>
+                </a>
+              </li>
+            @endif  
           </ul>
         </nav>
       </div>
