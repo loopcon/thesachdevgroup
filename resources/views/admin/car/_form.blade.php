@@ -66,6 +66,55 @@
                                     <div class="error"></div>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="name_color">Name Color</label>
+                                    <input type="text" class="form-control colorpicker" name="name_color" value="{{$car->name_color}}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="price_color">Price Color</label>
+                                    <input type="text" class="form-control colorpicker" name="price_color" value="{{$car->price_color}}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="name_font_size">Name Select Font Size</label>
+                                    <select class="form-control select2" name="name_font_size">
+                                        <option selected="selected" disabled="disabled">Name Select Font Size</option>
+                                        @for($i=24; $i<=50; $i+=2)
+                                            <option value="{{$i}}px" {{$car->name_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="price_font_size">Price Select Font Size</label>
+                                    <select class="form-control select2" name="price_font_size">
+                                        <option selected="selected" disabled="disabled">Price Select Font Size</option>
+                                        @for($i=24; $i<=50; $i+=2)
+                                            <option value="{{$i}}px" {{$car->price_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="name_font_family">Name Select Font Family</label>
+                                       <select class="form-control select2" name="name_font_family">
+                                            <option selected="selected" disabled="disabled">Name Select Font Family</option>
+                                            <option value="poppins"  {{$car->name_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                            <option value="sans-serif" {{$car->name_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                       </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="price_font_family">Price Select Font Family</label>
+                                       <select class="form-control select2" name="price_font_family">
+                                            <option selected="selected" disabled="disabled">Price Select Font Family</option>
+                                            <option value="poppins"  {{$car->price_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                            <option value="sans-serif" {{$car->price_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                       </select>
+                                </div>
+
+
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">Update</button>
                                 <a href="{{ route('car.index') }}" class="btn btn-default">Cancel</a>
@@ -115,6 +164,8 @@
                 error.appendTo(element.parent().find('.error'));
             },
         });
+        $('.colorpicker').colorpicker();
+
     });
 </script>
 

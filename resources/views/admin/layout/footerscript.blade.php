@@ -16,3 +16,8 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
+
+{{-- colorpicker --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/js/bootstrap-colorpicker.min.js"></script>
+ 

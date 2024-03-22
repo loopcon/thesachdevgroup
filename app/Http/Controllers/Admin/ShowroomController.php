@@ -30,6 +30,23 @@ class ShowroomController extends Controller
         $showroom->working_hours = $request->working_hours;
         $showroom->contact_number = $request->contact_number;
         $showroom->email = $request->email;
+
+        $showroom->address_color = $request->address_color;
+        $showroom->address_font_size = $request->address_font_size;
+        $showroom->address_font_family = $request->address_font_family;
+
+        $showroom->working_hours_color = $request->working_hours_color;
+        $showroom->working_hours_font_size = $request->working_hours_font_size;
+        $showroom->working_hours_font_family = $request->working_hours_font_family;
+
+        $showroom->contact_number_color = $request->contact_number_color;
+        $showroom->contact_number_font_size = $request->contact_number_font_size;
+        $showroom->contact_number_font_family = $request->contact_number_font_family;
+
+        $showroom->email_color = $request->email_color;
+        $showroom->email_font_size = $request->email_font_size;
+        $showroom->email_font_family = $request->email_font_family;
+
         $showroom->save();
 
         if ($files = $request->file('facilitie_image')) {
@@ -153,6 +170,23 @@ class ShowroomController extends Controller
         $showroom->working_hours = $request->working_hours;
         $showroom->contact_number = $request->contact_number;
         $showroom->email = $request->email;
+
+        $showroom->address_color = $request->address_color;
+        $showroom->address_font_size = $request->address_font_size;
+        $showroom->address_font_family = $request->address_font_family;
+
+        $showroom->working_hours_color = $request->working_hours_color;
+        $showroom->working_hours_font_size = $request->working_hours_font_size;
+        $showroom->working_hours_font_family = $request->working_hours_font_family;
+
+        $showroom->contact_number_color = $request->contact_number_color;
+        $showroom->contact_number_font_size = $request->contact_number_font_size;
+        $showroom->contact_number_font_family = $request->contact_number_font_family;
+
+        $showroom->email_color = $request->email_color;
+        $showroom->email_font_size = $request->email_font_size;
+        $showroom->email_font_family = $request->email_font_family;
+        
         $showroom->save();
 
         if ($files = $request->file('facilitie_image')) {

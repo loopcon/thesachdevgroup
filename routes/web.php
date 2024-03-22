@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\ShowroomController;
+use App\Http\Controllers\Admin\HeaderMenuController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -101,5 +103,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('customer_gallery_imagedelete', [ShowroomController::class, 'DeleteCustomerGallery'])->name('customer_gallery_imagedelete');
 
     Route::get('getcars', [ShowroomController::class, 'getcarname'])->name('getcars');
+
+    //header_menu
+    Route::get('header_menu', [HeaderMenuController::class, 'header_menu'])->name('header_menu');
+    Route::post('header_menu_insert', [HeaderMenuController::class, 'header_menu_insert'])->name('header_menu_insert');
+    Route::get('header_menu_index', [HeaderMenuController::class, 'header_menu_index'])->name('header_menu.index');
+    Route::get('header_menu_edit/{header_menu_edit}', [HeaderMenuController::class, 'header_menu_edit'])->name('header_menu.edit');
+    Route::post('header_menu_update,{header_menu_update}', [HeaderMenuController::class, 'header_menu_update'])->name('header_menu_update');
+    Route::delete('header_menu_destroy/{id}', [HeaderMenuController::class, 'header_menu_destroy']);
 
 });

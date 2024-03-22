@@ -71,35 +71,134 @@
                                     <div class="error"></div>
                                 </div>
 
-                        <div class="mb-3">
-                            <label>Facilitie Image</label>
-                            @if($facilitie_image == NULL)
-                                <img src="{{asset('public/no_image/notImg.png')}}" width="100">
-                            @else
-                                @foreach ($facilitie_image as $key => $image ) 
-                                    <div class="col-4 offset-1" style="top: 11px;">
-                                        <button type="button" data-id="{{$key}}" class="badge btn-danger facilitie_image_btn">X</button>
-                                    </div>
-                                    <img src="{{asset('public/facilitie_image/'.$image)}}" width="100">
-                                @endforeach
-                            @endif
-                        </div>
+                                <div class="mb-3">
+                                    <label for="address_color" class="form-label">Address Color</label>
+                                    <input type="text" class="form-control colorpicker" name="address_color" id="address_color" value="{{$showroom->address_color}}">
+                                    <div class="error"></div>
+                                </div>
 
-                        <table class="table table-bordered" cellspacing="0">
-                            <tr>
-                                <th>Facilitie Image</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr class="sub_table">
-                                <td>
-                                    <input type="file" class="form-control rate" name="facilitie_image[]">
-                                </td>
-                                <td>
-                                    <button tabindex="1" type="button" class="btn btn-success add btn-sm" onclick="">+</button>
-                                    <button tabindex="1" type="button" class="btn btn-danger minus btn-sm">-</button>
-                                </td>
-                            </tr>
-                        </table>
+                                <div class="mb-3">
+                                    <label for="address_font_size">Address Select Font Size</label>
+                                    <select class="form-control select2" name="address_font_size">
+                                        <option selected="selected" disabled="disabled">Address Select Font Size</option>
+                                        @for($i=24; $i<=50; $i+=2)
+                                            <option value="{{$i}}px" {{$showroom->address_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="address_font_family">Address Select Font Family</label>
+                                    <select class="form-control select2" name="address_font_family">
+                                        <option selected="selected" disabled="disabled">Address Select Font Family</option>
+                                        <option value="poppins"  {{$showroom->address_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                        <option value="sans-serif" {{$showroom->address_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="working_hours_color">Working Hours Color</label>
+                                    <input type="text" class="form-control colorpicker" name="working_hours_color" id="working_hours_color" value="{{$showroom->working_hours_color}}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="working_hours_font_size">Working Hours Select Font Size</label>
+                                    <select class="form-control select2" name="working_hours_font_size">
+                                        <option selected="selected" disabled="disabled">Working Hours Select Font Size</option>
+                                        @for($i=24; $i<=50; $i+=2)
+                                            <option value="{{$i}}px" {{$showroom->working_hours_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                              
+                                <div class="mb-3">
+                                    <label for="working_hours_font_family">Working Hours Select Font Family</label>
+                                    <select class="form-control select2" name="working_hours_font_family">
+                                        <option selected="selected" disabled="disabled">Working Hours Select Font Family</option>
+                                        <option value="poppins"  {{$showroom->working_hours_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                        <option value="sans-serif" {{$showroom->working_hours_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                    </select>
+                                </div>
+                             
+                                <div class="mb-3">
+                                    <label for="contact_number_color">Contact Number Color</label>
+                                    <input type="text" class="form-control colorpicker" name="contact_number_color" id="contact_number_color" value="{{$showroom->contact_number_color}}">
+                                </div>
+                             
+                               
+                                <div class="mb-3">
+                                    <label for="contact_number_font_size">Contact Number Select Font Size</label>
+                                    <select class="form-control select2" name="contact_number_font_size">
+                                        <option selected="selected" disabled="disabled">Contact Number Select Font Size</option>
+                                        @for($i=24; $i<=50; $i+=2)
+                                            <option value="{{$i}}px" {{$showroom->contact_number_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                               
+                                <div class="mb-3">
+                                    <label for="contact_number_font_family">Contact Number Select Font Family</label>
+                                    <select class="form-control select2" name="contact_number_font_family">
+                                        <option selected="selected" disabled="disabled">Contact Number Select Font Family</option>
+                                        <option value="poppins"  {{$showroom->contact_number_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                        <option value="sans-serif" {{$showroom->contact_number_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                    </select>
+                                </div>
+                             
+                                <div class="mb-3">
+                                    <label for="email_color">Email Color</label>
+                                    <input type="text" class="form-control colorpicker" name="email_color" id="email_color" value="{{$showroom->email_color}}">
+                                </div>
+                              
+                                <div class="mb-3">
+                                    <label for="email_font_size">Email Select Font Size</label>
+                                    <select class="form-control select2" name="email_font_size">
+                                        <option selected="selected" disabled="disabled">Email Select Font Size</option>
+                                        @for($i=24; $i<=50; $i+=2)
+                                            <option value="{{$i}}px" {{$showroom->email_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="email_font_family">Email Select Font Family</label>
+                                    <select class="form-control select2" name="email_font_family">
+                                        <option selected="selected" disabled="disabled">Email Select Font Family</option>
+                                        <option value="poppins"  {{$showroom->email_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                        <option value="sans-serif" {{$showroom->email_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label>Facilitie Image</label>
+                                    @if($facilitie_image == NULL)
+                                        <img src="{{asset('public/no_image/notImg.png')}}" width="100">
+                                    @else
+                                        @foreach ($facilitie_image as $key => $image ) 
+                                            <div class="col-4 offset-1" style="top: 11px;">
+                                                <button type="button" data-id="{{$key}}" class="badge btn-danger facilitie_image_btn">X</button>
+                                            </div>
+                                            <img src="{{asset('public/facilitie_image/'.$image)}}" width="100">
+                                        @endforeach
+                                    @endif
+                                </div>
+
+                                <table class="table table-bordered" cellspacing="0">
+                                    <tr>
+                                        <th>Facilitie Image</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    <tr class="sub_table">
+                                        <td>
+                                            <input type="file" class="form-control rate" name="facilitie_image[]">
+                                        </td>
+                                        <td>
+                                            <button tabindex="1" type="button" class="btn btn-success add btn-sm" onclick="">+</button>
+                                            <button tabindex="1" type="button" class="btn btn-danger minus btn-sm">-</button>
+                                        </td>
+                                    </tr>
+                                </table>
                        
                         <div class="mb-3">
                             <label>Customer Gallery Image</label>
@@ -286,6 +385,9 @@
                 sr_change();
             }
         });
+
+        $('.colorpicker').colorpicker();
+
     });
 </script>
 

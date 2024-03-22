@@ -18,6 +18,8 @@ class Setting extends Model
         'linkedin_link',
         'facebook_link',
         'address',
+        'email_icon',
+        'call_icon',
         'footer_description',
     ];
 }

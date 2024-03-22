@@ -30,12 +30,13 @@
                                 <div class="form-group col-md-6">
                                   <label for="image">Logo</label>
                                   <input type="file" id="logo" class="form-control" name="logo">
-                                    @if($setting->logo == null)
+                                  <div class="error"></div>
+                                  @if($setting->logo == null)
                                         <img src="{{asset('public/no_image/notImg.png')}}" width="100">
                                     @else
                                         <img src="{{asset('public/logo/'.$setting->logo)}}" width="100">
                                     @endif
-                                  <div class="error"></div>
+                                 
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="email">E-mail</label>
@@ -80,6 +81,29 @@
                                     <label for="address">Address</label>
                                     <textarea class="form-control" name="address">{{$setting->address}}</textarea>
                                     <div class="error"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="email_icon">Email Icon</label>
+                                <input type="file" id="email_icon" class="form-control" name="email_icon">
+                                <div class="error"></div>
+                                @if($setting->email_icon == null)
+                                  <img src="{{asset('public/no_image/notImg.png')}}" width="100">
+                                @else
+                                    <img src="{{asset('public/email_icon/'.$setting->email_icon)}}" width="100">
+                                @endif
+                              </div>
+                              <div class="form-group col-md-6">
+                                  <label for="call_icon">Call Icon</label>
+                                  <input type="file" id="call_icon" class="form-control" name="call_icon">
+                                  <div class="error"></div>
+                                  @if($setting->call_icon == null)
+                                    <img src="{{asset('public/no_image/notImg.png')}}" width="100">
+                                  @else
+                                      <img src="{{asset('public/call_icon/'.$setting->call_icon)}}" width="100">
+                                  @endif
                                 </div>
                             </div>
 
@@ -145,6 +169,20 @@
                               </div>
                         </div>
 
+
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="email_icon">Email Icon</label>
+                            <input type="file" id="email_icon" class="form-control" name="email_icon">
+                            <div class="error"></div>
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label for="call_icon">Call Icon</label>
+                              <input type="file" id="call_icon" class="form-control" name="call_icon">
+                              <div class="error"></div>
+                            </div>
+                      </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="footer_description">Footer Description</label>
@@ -194,6 +232,12 @@
                 'address': {
                     required: true,
                 },
+                'email_icon': {
+                  extension: "jpg,jpeg,png",
+                },
+                'call_icon': {
+                  extension: "jpg,jpeg,png",
+                },
             },
             messages: {
                 'logo': {
@@ -222,6 +266,12 @@
                 },
                 'address': {
                     required: "Address is required",
+                },
+                'email_icon': {
+                    extension: "Please enter a value with a valid extension.",
+                },
+                'call_icon': {
+                    extension: "Please enter a value with a valid extension.",
                 },
             },
             errorPlacement: function(error, element) {

@@ -16,6 +16,12 @@ class Car extends Model
         'name',
         'price',
         'link',
+        'name_color',
+        'price_color',
+        'name_font_size',
+        'price_font_size',
+        'name_font_family',
+        'price_font_family',
     ];
 
     public function brand(){

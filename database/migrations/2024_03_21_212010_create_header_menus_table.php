@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('testimonial', function (Blueprint $table) {
+        Schema::create('header_menus', function (Blueprint $table) {
             $table->id();
+            $table->string('menu_name')->nullable();
             $table->string('name')->nullable();
-            $table->string('image')->nullable();
-            $table->longText('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('testimonial');
+        Schema::dropIfExists('header_menus');
     }
 };

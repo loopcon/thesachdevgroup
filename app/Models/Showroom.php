@@ -17,6 +17,18 @@ class Showroom extends Model
         'working_hours',
         'contact_number',
         'email',
+        'address_color',
+        'address_font_size',
+        'address_font_family',
+        'working_hours_color',
+        'working_hours_font_size',
+        'working_hours_font_family',
+        'contact_number_color',
+        'contact_number_font_size',
+        'contact_number_font_family',
+        'email_color',
+        'email_font_size',
+        'email_font_family',
     ];
 
     public function brand(){

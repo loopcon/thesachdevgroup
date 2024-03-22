@@ -24,6 +24,12 @@
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Link</th>
+                                <th>Name Color</th>
+                                <th>Price Color</th>
+                                <th>Name Font Size</th>
+                                <th>Price Font Size</th>
+                                <th>Name Font Family</th>
+                                <th>Price Font Family</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -41,6 +47,7 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
+            scrollX: true,
             ajax: "{{ route('car.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
@@ -49,6 +56,12 @@
                 {data: 'name', name: 'name'},
                 {data: 'price', name: 'price'},
                 {data: 'link', name: 'link'},
+                {data: 'name_color', name: 'name_color'},
+                {data: 'price_color', name: 'price_color'},
+                {data: 'name_font_size', name: 'name_font_size'},
+                {data: 'price_font_size', name: 'price_font_size'},
+                {data: 'name_font_family', name: 'name_font_family'},
+                {data: 'price_font_family', name: 'price_font_family'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

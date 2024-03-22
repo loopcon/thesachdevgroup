@@ -16,7 +16,6 @@ class SettingController extends Controller
         return view("admin.setting.form",compact('settings')); 
     }
 
-    
     public function setting_insert(Request $request){
         
         $setting = Setting::find(1);
@@ -35,6 +34,28 @@ class SettingController extends Controller
                 }
             }
 
+            if($request->hasFile('email_icon'))
+            {
+                $emailicon = $setting->email_icon;
+                if($emailicon) {
+                    $oldemailiconPath = public_path('email_icon/') . $emailicon;
+                    if(File::exists($oldemailiconPath)) {
+                        File::delete($oldemailiconPath);
+                    }
+                }
+            }
+
+            if($request->hasFile('call_icon'))
+            {
+                $call_icon = $setting->call_icon;
+                if($call_icon) {
+                    $oldcall_iconPath = public_path('call_icon/') . $call_icon;
+                    if(File::exists($oldcall_iconPath)) {
+                        File::delete($oldcall_iconPath);
+                    }
+                }
+            }
+
         } else {
             $setting = new Setting();
         }
@@ -48,7 +69,27 @@ class SettingController extends Controller
             $file->move($destinationPath,$fileName);
             $setting->logo = $fileName;
         }
+
+        if($file = $request->hasFile('email_icon')) {
+            $file = $request->file('email_icon');
+            $extension = $file->getClientOriginalExtension();
+            $IconfileName = time(). '.' . $extension;
     
+            $destinationPath = public_path().'/email_icon' ;
+            $file->move($destinationPath,$IconfileName);
+            $setting->email_icon = $IconfileName;
+        }
+    
+        if($file = $request->hasFile('call_icon')) {
+            $file = $request->file('call_icon');
+            $extension = $file->getClientOriginalExtension();
+            $callfileName = time(). '.' . $extension;
+    
+            $destinationPath = public_path().'/call_icon' ;
+            $file->move($destinationPath,$callfileName);
+            $setting->call_icon = $callfileName;
+        }
+
         $setting->email = $request->email;
         $setting->mobile_number = $request->mobile_number;
         $setting->time = $request->time;

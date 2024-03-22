@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('linkedin_link')->nullable();
             $table->string('facebook_link')->nullable();
             $table->longText('address')->nullable();
+            $table->string('email_icon')->nullable();
+            $table->string('call_icon')->nullable();
             $table->longText('footer_description')->nullable();
             $table->softDeletes();
             $table->timestamps();

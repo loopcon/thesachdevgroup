@@ -21,6 +21,12 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('price')->nullable();
             $table->string('link')->nullable();
+            $table->string('name_color')->nullable();
+            $table->string('price_color')->nullable();
+            $table->string('name_font_size')->nullable();
+            $table->string('price_font_size')->nullable();
+            $table->string('name_font_family')->nullable();
+            $table->string('price_font_family')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

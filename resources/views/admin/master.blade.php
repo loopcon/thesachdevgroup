@@ -5,14 +5,14 @@
 </head>
 <body> 
     @include('admin.layout.sidebar')
-
 </body>
+    
     @include('admin.layout.footerscript')
-
+ 
     <script>
         $(document).ready(function () {
           $('.select2').select2();
         });
     </script> 
-        
+     
 </html>

@@ -34,6 +34,51 @@
                                     @else
                                     <img src="{{asset('public/home_slider/'.$homeslider->image)}}" width="100">
                                 @endif
+
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input  type="text" class="form-control" name="title"  id="title" value="{{$homeslider->title}}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="subtitle" class="form-label">Sub Title</label>
+                                    <input  type="text" class="form-control" name="subtitle" value="{{$homeslider->subtitle}}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="color">Color</label>
+                                    <input type="text" class="form-control colorpicker" name="color" value="{{$homeslider->color}}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="font_size">Font Size</label>
+                                    <select class="form-control select2" name="font_size">
+                                        <option selected="selected" disabled="disabled">Select Font Size</option>
+                                        @for($i=24; $i<=50; $i+=2)
+                                            <option value="{{$i}}px" {{$homeslider->font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                           
+                                <div class="mb-3">
+                                    <label for="font_family">Font Family</label>
+                                       <select class="form-control select2" name="font_family">
+                                            <option selected="selected" disabled="disabled">Select Font Family</option>
+                                            <option value="poppins"  {{$homeslider->font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                            <option value="sans-serif" {{$homeslider->font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                       </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="text_position">Text Position</label>
+                                    <select class="form-control select2" name="text_position">
+                                        <option selected="selected" disabled="disabled">Text Position</option>
+                                            <option value="left" {{$homeslider->text_position == 'left' ? 'selected' : ''}}>Left</option>
+                                            <option value="right" {{$homeslider->text_position == 'right' ? 'selected' : ''}}>Right</option>
+                                    </select>
+                                </div>
+                           
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">Update</button>
                                 <a href="{{ route('homeslider.index') }}" class="btn btn-default">Cancel</a>
@@ -45,6 +90,7 @@
         </div>
     </section>
   </div>
+  
 
 <script>
     $(document).ready(function () {
@@ -60,6 +106,10 @@
                 },
             },
         });
+
+        $('.colorpicker').colorpicker();
     });
 </script>
-  
+
+
+

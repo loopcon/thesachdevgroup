@@ -13,5 +13,8 @@ class Brand extends Model
     protected $fillable = [
         'image',
         'name',
+        'color',
+        'font_size',
+        'font_family',
     ];
 }

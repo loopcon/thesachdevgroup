@@ -21,6 +21,9 @@
                                 <th>No</th>
                                 <th>Name</th>
                                 <th>Image</th>
+                                <th>Color</th>
+                                <th>Font Size</th>
+                                <th>Font Family</th>
                                 <th>Description</th>
                                 <th>Action</th>
                             </tr>
@@ -44,6 +47,9 @@
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
                 {data: 'name', name: 'name'},
                 {data: 'image', name: 'image'},
+                {data: 'color', name: 'color'},
+                {data: 'font_size', name: 'font_size'},
+                {data: 'font_family', name: 'font_family'},
                 {data: 'description', name: 'description'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]

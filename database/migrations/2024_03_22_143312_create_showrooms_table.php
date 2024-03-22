@@ -22,6 +22,18 @@ return new class extends Migration
             $table->string('working_hours')->nullable();
             $table->string('contact_number')->nullable();
             $table->string('email')->nullable();
+            $table->string('address_color')->nullable();
+            $table->string('address_font_size')->nullable();
+            $table->string('address_font_family')->nullable();
+            $table->string('working_hours_color')->nullable();
+            $table->string('working_hours_font_size')->nullable();
+            $table->string('working_hours_font_family')->nullable();
+            $table->string('contact_number_color')->nullable();
+            $table->string('contact_number_font_size')->nullable();
+            $table->string('contact_number_font_family')->nullable();
+            $table->string('email_color')->nullable();
+            $table->string('email_font_size')->nullable();
+            $table->string('email_font_family')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

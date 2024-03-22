@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('name')->nullable();
+            $table->string('color')->nullable();
+            $table->string('font_size')->nullable();
+            $table->string('font_family')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

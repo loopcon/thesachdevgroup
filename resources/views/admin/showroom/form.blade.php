@@ -80,6 +80,126 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="address_color" class="col-md-4 col-form-label text-md-right">Address Color</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control colorpicker" name="address_color" id="address_color">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="address_font_size" class="col-md-4 col-form-label text-md-right">Address Select Font Size</label>
+                            <div class="col-md-6">
+                               <select class="form-control select2" name="address_font_size">
+                                    <option selected="selected" disabled="disabled">Address Select Font Size</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="address_font_family" class="col-md-4 col-form-label text-md-right">Address Select Font Family</label>
+                            <div class="col-md-6">
+                                <select class="form-control select2" name="address_font_family">
+                                     <option selected="selected" disabled="disabled">Address Select Font Family</option>
+                                         <option value="poppins">Poppins</option>
+                                         <option value="sans-serif">Sans Serif</option>
+                                </select>
+                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="working_hours_color" class="col-md-4 col-form-label text-md-right">Working Hours Color</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control colorpicker" name="working_hours_color" id="working_hours_color">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="working_hours_font_size" class="col-md-4 col-form-label text-md-right">Working Hours Select Font Size</label>
+                            <div class="col-md-6">
+                               <select class="form-control select2" name="working_hours_font_size">
+                                    <option selected="selected" disabled="disabled">Working Hours Select Font Size</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="working_hours_font_family" class="col-md-4 col-form-label text-md-right">Working Hours Select Font Family</label>
+                            <div class="col-md-6">
+                                <select class="form-control select2" name="working_hours_font_family">
+                                     <option selected="selected" disabled="disabled">Working Hours Select Font Family</option>
+                                         <option value="poppins">Poppins</option>
+                                         <option value="sans-serif">Sans Serif</option>
+                                </select>
+                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="contact_number_color" class="col-md-4 col-form-label text-md-right">Contact Number Color</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control colorpicker" name="contact_number_color" id="contact_number_color">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="contact_number_font_size" class="col-md-4 col-form-label text-md-right">Contact Number Select Font Size</label>
+                            <div class="col-md-6">
+                               <select class="form-control select2" name="contact_number_font_size">
+                                    <option selected="selected" disabled="disabled">Contact Number Select Font Size</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="contact_number_font_family" class="col-md-4 col-form-label text-md-right">Contact Number Select Font Family</label>
+                            <div class="col-md-6">
+                                <select class="form-control select2" name="contact_number_font_family">
+                                     <option selected="selected" disabled="disabled">Contact Number Select Font Family</option>
+                                         <option value="poppins">Poppins</option>
+                                         <option value="sans-serif">Sans Serif</option>
+                                </select>
+                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email_color" class="col-md-4 col-form-label text-md-right">Email Color</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control colorpicker" name="email_color" id="email_color">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email_font_size" class="col-md-4 col-form-label text-md-right">Email Select Font Size</label>
+                            <div class="col-md-6">
+                               <select class="form-control select2" name="email_font_size">
+                                    <option selected="selected" disabled="disabled">Email Select Font Size</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email_font_family" class="col-md-4 col-form-label text-md-right">Email Select Font Family</label>
+                            <div class="col-md-6">
+                                <select class="form-control select2" name="email_font_family">
+                                     <option selected="selected" disabled="disabled">Email Select Font Family</option>
+                                         <option value="poppins">Poppins</option>
+                                         <option value="sans-serif">Sans Serif</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <table class="table table-bordered" cellspacing="0">
                             <tr>
                                 <th>Facilitie Image</th>
@@ -250,5 +370,8 @@
                 sr_change();
             }
         });
+
+        $('.colorpicker').colorpicker();
+
     });
 </script>

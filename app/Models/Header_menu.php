@@ -6,17 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Home_slider extends Model
+class Header_menu extends Model
 {
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
-        'image',
-        'title',
-        'subtitle',
-        'color',
-        'font_size',
-        'font_family',
-        'text_position',
+        'menu_name',
+        'name',
     ];
 }

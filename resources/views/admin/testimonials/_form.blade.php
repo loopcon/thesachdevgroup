@@ -43,6 +43,31 @@
                                 @endif
 
                                 <div class="mb-3">
+                                    <label for="color" class="form-label">Color</label>
+                                    <input type="text" class="form-control colorpicker" name="color" id="color" value="{{$testimonial->color}}">
+                                    <div class="error"></div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="font_size">Font Size</label>
+                                    <select class="form-control select2" name="font_size">
+                                        <option selected="selected" disabled="disabled">Select Font Size</option>
+                                        @for($i=24; $i<=50; $i+=2)
+                                            <option value="{{$i}}px" {{$testimonial->font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="font_family">Font Family</label>
+                                       <select class="form-control select2" name="font_family">
+                                            <option selected="selected" disabled="disabled">Select Font Family</option>
+                                            <option value="poppins"  {{$testimonial->font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                            <option value="sans-serif" {{$testimonial->font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                       </select>
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="description" class="form-label">Description</label>
                                     <textarea class="ckeditor form-control" name="description">{{$testimonial->description}}</textarea>
                                     <div class="error"></div>
@@ -89,6 +114,9 @@
                 error.appendTo(element.parent().find('.error'));
             },
         });
+
+        $('.colorpicker').colorpicker();
+
     });
 </script>
 

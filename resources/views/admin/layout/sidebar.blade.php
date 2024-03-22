@@ -15,47 +15,60 @@
                 </p>
               </a>
             </li>
-            @php($has_permission = hasPermission('Home Slider'))
-            @if(isset($has_permission) && $has_permission)
-              @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-              <li class="nav-item">
-                  <a href="{{url('homeslider_index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-sliders-h"></i>
-                    <p>
-                      Home Slider
-                    </p>
-                  </a>
-              </li>
-              @endif
-              @endif
 
-              @php($has_permission = hasPermission('Home Our Businesses'))
-              @if(isset($has_permission) && $has_permission)
-                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-              <li class="nav-item">
-                  <a href="{{url('home_our_businesses_index')}}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                      Home Our Businesses
-                    </p>
-                  </a>
-              </li>
-              @endif
-              @endif
-  
-              @php($has_permission = hasPermission('Home Detail'))
-              @if(isset($has_permission) && $has_permission)
-                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-              <li class="nav-item">
-                <a href="{{url('home_detail')}}" class="nav-link">
-                  <i class="nav-icon fas fa-home"></i>
-                  <p>
-                   Home Detail
-                  </p>
-                </a>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-house-user"></i>
+                <p>
+                  Home Setting
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                @php($has_permission = hasPermission('Home Slider'))
+                @if(isset($has_permission) && $has_permission)
+                  @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                    <li class="nav-item">
+                        <a href="{{url('homeslider_index')}}" class="nav-link">
+                          <i class="nav-icon fas fa-sliders-h"></i>
+                          <p>
+                            Home Slider
+                          </p>
+                        </a>
+                    </li>
+                  @endif
+                @endif
+    
+                  @php($has_permission = hasPermission('Home Our Businesses'))
+                  @if(isset($has_permission) && $has_permission)
+                    @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                        <li class="nav-item">
+                          <a href="{{url('home_our_businesses_index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                              Home Our Businesses
+                            </p>
+                          </a>
+                        </li>
+                    @endif
+                  @endif
+
+                @php($has_permission = hasPermission('Home Detail'))
+                @if(isset($has_permission) && $has_permission)
+                  @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                    <li class="nav-item">
+                      <a href="{{url('home_detail')}}" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                        Home Detail
+                        </p>
+                      </a>
+                  </li>
+                  @endif
+                @endif
+
+              </ul>
             </li>
-            @endif
-            @endif
 
             @php($has_permission = hasPermission('Testimonials'))
             @if(isset($has_permission) && $has_permission)
@@ -76,7 +89,7 @@
                 @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             <li class="nav-item">
               <a href="{{url('setting')}}" class="nav-link">
-                <i class="nav-icon fas fa-cog"></i>
+                <i class="nav-icon fas fa-cogs"></i>
                 <p>
                   Setting
                 </p>
@@ -126,6 +139,21 @@
             </li>
             @endif
             @endif
+
+            @php($has_permission = hasPermission('Header Menu'))
+            @if(isset($has_permission) && $has_permission)
+                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            <li class="nav-item">
+              <a href="{{url('header_menu_index')}}" class="nav-link">
+                <i class="nav-icon fas fa-heading"></i>
+                <p>
+                  Header Menu
+                </p>
+              </a>
+            </li>
+            @endif
+            @endif
+
             @if(Auth::user()->role_id == Constant::SUPERADMIN)
               <li class="nav-item">
                 <a href="{{route('role-permission')}}" class="nav-link">

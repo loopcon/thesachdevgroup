@@ -22,7 +22,7 @@ class HomeController extends Controller
    }
      
    public function homeslider_insert(Request $request){
-      
+
       $home_slider = new Home_slider();
 
       if($file = $request->hasFile('image')) {
@@ -35,6 +35,13 @@ class HomeController extends Controller
           $file->move($destinationPath,$fileName);
           $home_slider->image = $fileName;
       }
+      
+      $home_slider->title = $request->title;
+      $home_slider->subtitle = $request->subtitle;
+      $home_slider->color = $request->color;
+      $home_slider->font_size = $request->font_size;
+      $home_slider->font_family = $request->font_family;
+      $home_slider->text_position = $request->text_position;
       $home_slider->save();
 
       return redirect()->route('homeslider.index')->with('message', 'Home slider insert succesfully');
@@ -96,6 +103,13 @@ class HomeController extends Controller
             $file->move('public/home_slider/', $filename);
             $homesliders->image = $filename;
         }
+
+        $homesliders->title = $request->title;
+        $homesliders->subtitle = $request->subtitle;
+        $homesliders->color = $request->color;
+        $homesliders->font_size = $request->font_size;
+        $homesliders->font_family = $request->font_family;
+        $homesliders->text_position = $request->text_position;
         $homesliders->save();
 
       return redirect()->route('homeslider.index')->with('message', 'Home slider update succesfully');
@@ -256,6 +270,9 @@ class HomeController extends Controller
             $file->move($destinationPath,$fileName);
             $testimonials->image = $fileName;
         }
+        $testimonials->color = $request->color;
+        $testimonials->font_size = $request->font_size;
+        $testimonials->font_family = $request->font_family;
         $testimonials->description = $request->description;
         $testimonials->save();
 
@@ -326,6 +343,9 @@ class HomeController extends Controller
             $file->move('public/testimonials/', $filename);
             $testimonials->image = $filename;
         }
+        $testimonials->color = $request->color;
+        $testimonials->font_size = $request->font_size;
+        $testimonials->font_family = $request->font_family;
         $testimonials->description = $request->description;
         $testimonials->save();
 
@@ -393,6 +413,17 @@ class HomeController extends Controller
                 }
             }
 
+            if($request->hasFile('icon'))
+            {
+                $oldiconImage = $home_detail->icon;
+                if($oldiconImage) {
+                    $oldiconImagePath = public_path('icon/') . $oldiconImage;
+                    if(File::exists($oldiconImagePath)) {
+                        File::delete($oldiconImagePath);
+                    }
+                }
+            }
+
         } else {
             $home_detail = new Home_detail();
         }
@@ -416,8 +447,19 @@ class HomeController extends Controller
             $file->move($destinationPath,$fileName);
             $home_detail->our_story_image = $fileName;
         }
+
+        if($file = $request->hasFile('icon')) {
+            $file = $request->file('icon');
+            $icon_extension = $file->getClientOriginalExtension();
+            $iconfileName = time(). '.' . $icon_extension;
+    
+            $icon_destinationPath = public_path().'/icon' ;
+            $file->move($icon_destinationPath,$iconfileName);
+            $home_detail->icon = $iconfileName;
+        }
     
         $home_detail->title = $request->title;
+        $home_detail->sub_title = $request->sub_title;
         $home_detail->description = $request->description;
 
         $home_detail->our_story_title = $request->our_story_title;
@@ -428,6 +470,21 @@ class HomeController extends Controller
 
         $home_detail->our_vision_title = $request->our_vision_title;
         $home_detail->our_vision_description = $request->our_vision_description;
+
+        $home_detail->color = $request->color;
+        $home_detail->font_size = $request->font_size;
+        $home_detail->font_family = $request->font_family;
+
+        $home_detail->amount = $request->amount;
+        $home_detail->name = $request->name;
+
+        $home_detail->count_amount_color = $request->count_amount_color;
+        $home_detail->count_name_color = $request->count_name_color;
+        $home_detail->count_background_color = $request->count_background_color;
+        $home_detail->count_amount_font_size = $request->count_amount_font_size;
+        $home_detail->count_name_font_size = $request->count_name_font_size;
+        $home_detail->count_amount_font_family = $request->count_amount_font_family;
+        $home_detail->count_name_font_family = $request->count_name_font_family;
 
         $home_detail->save();
     

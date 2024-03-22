@@ -71,6 +71,66 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="name_color" class="col-md-4 col-form-label text-md-right">Name Color</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control colorpicker" name="name_color" id="name_color">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="price_color" class="col-md-4 col-form-label text-md-right">Price Color</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control colorpicker" name="price_color" id="price_color">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name_font_size" class="col-md-4 col-form-label text-md-right">Name Select Font Size</label>
+                            <div class="col-md-6">
+                               <select class="form-control select2" name="name_font_size">
+                                    <option selected="selected" disabled="disabled">Name Select Font Size</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="price_font_size" class="col-md-4 col-form-label text-md-right">Price Select Font Size</label>
+                            <div class="col-md-6">
+                               <select class="form-control select2" name="price_font_size">
+                                    <option selected="selected" disabled="disabled">Price Select Font Size</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name_font_family" class="col-md-4 col-form-label text-md-right">Name Select Font Family</label>
+                            <div class="col-md-6">
+                               <select class="form-control select2" name="name_font_family">
+                                    <option selected="selected" disabled="disabled">Name Select Font Family</option>
+                                        <option value="poppins">Poppins</option>
+                                        <option value="sans-serif">Sans Serif</option>
+                               </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="price_font_family" class="col-md-4 col-form-label text-md-right">Price Select Font Family</label>
+                            <div class="col-md-6">
+                               <select class="form-control select2" name="price_font_family">
+                                    <option selected="selected" disabled="disabled">Price Select Font Family</option>
+                                        <option value="poppins">Poppins</option>
+                                        <option value="sans-serif">Sans Serif</option>
+                               </select>
+                            </div>
+                        </div>
+
                         <div class="col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary submit">
                                 Submit
@@ -141,5 +201,6 @@
                 form.submit();
             }
         });
+        $('.colorpicker').colorpicker();
     });
 </script>

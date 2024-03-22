@@ -5,10 +5,10 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Home Slider</h1>
+                        <h1 class="m-0">Header Menu</h1>
                     </div>
                     <div class="col-sm-6">
-                        <a href="{{ route('homeslider') }}" class="btn btn-primary btn-sm float-right">Add</a>
+                        <a href="{{ route('header_menu') }}" class="btn btn-primary btn-sm float-right">Add</a>
                     </div>
                     </div>
                 </div>
@@ -19,13 +19,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Image</th>
-                                <th>Title</th>
-                                <th>Sub Title</th>
-                                <th>Color</th>
-                                <th>Font Size</th>
-                                <th>Font Family</th>
-                                <th>Text Position</th>
+                                <th>Menu</th>
+                                <th>Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -43,16 +38,11 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('homeslider.index') }}",
+            ajax: "{{ route('header_menu.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
-                {data: 'image', name: 'image'},
-                {data: 'title', name: 'title'},
-                {data: 'subtitle', name: 'subtitle'},
-                {data: 'color', name: 'color'},
-                {data: 'font_size', name: 'font_size'},
-                {data: 'font_family', name: 'font_family'},
-                {data: 'text_position', name: 'text_position'},
+                {data: 'menu_name', name: 'menu_name'},
+                {data: 'name', name: 'name'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -75,7 +65,7 @@
             if (willDelete) {
                 var id = $(this).data('id');
                 $.ajax({
-                    url: "homeslider_destroy/"+id,
+                    url: "header_menu_destroy/"+id,
                     type: 'DELETE',
                     data: {
                         "id": id,
@@ -98,7 +88,7 @@
       
     @if(session()->has('message'))
       swal({
-          title: "Homeslider",
+          title: "Header menu",
           text: '{{ $message }}',
           icon: "success",
           buttons: true,

@@ -39,7 +39,12 @@ class CarController extends Controller
         $car->name = $request->name;
         $car->price = $request->price;
         $car->link = $request->link;
-
+        $car->name_color = $request->name_color;
+        $car->price_color = $request->price_color;
+        $car->name_font_size = $request->name_font_size;
+        $car->price_font_size = $request->price_font_size;
+        $car->name_font_family = $request->name_font_family;
+        $car->price_font_family = $request->price_font_family;
         $car->save();
   
         return redirect()->route('car.index')->with('message', 'Car insert succesfully');
@@ -110,6 +115,12 @@ class CarController extends Controller
             $car->name = $request->name;
             $car->price = $request->price;
             $car->link = $request->link;
+            $car->name_color = $request->name_color;
+            $car->price_color = $request->price_color;
+            $car->name_font_size = $request->name_font_size;
+            $car->price_font_size = $request->price_font_size;
+            $car->name_font_family = $request->name_font_family;
+            $car->price_font_family = $request->price_font_family;
             $car->save();
 
         return redirect()->route('car.index')->with('message', 'Car update succesfully');
