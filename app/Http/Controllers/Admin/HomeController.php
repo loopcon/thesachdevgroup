@@ -264,13 +264,14 @@ class HomeController extends Controller
     }
 
     public function testimonials_index(Request $request){
+        $testimonials = Testimonial::get();
         if ($request->ajax()) {
             $testimonials = Testimonial::get();
             return Datatables::of($testimonials)
                 ->addIndexColumn()
                 ->addColumn('action', function($testimonials){
-        
-                $updateButton = '<a href="'.route("testimonials.edit",encrypt($testimonials->id)).'" class="btn btn-info btn-sm">Edit</a>';        
+                $id = encrypt($testimonials->id);
+                $updateButton = '<a href="'.route('testimonials.edit',array($id)).'" class="btn btn-info btn-sm">Edit</a>';        
                 $deleteBtn = '<a class="btn btn-danger btn-sm" id="smallButton" data-id="'.$testimonials->id.'">Delete</a>';
                 return $updateButton . $deleteBtn;
                 })
@@ -300,11 +301,12 @@ class HomeController extends Controller
             ->make(true);
         }
         
-        return view('admin.testimonials.show');
+        return view('admin.testimonials.show',compact('testimonials'));
     }
 
     public function testimonials_edit($id){
-        $testimonials  = Testimonial::where('id',decrypt($id))->get();
+        $id = decrypt($id);
+        $testimonials  = Testimonial::where('id',$id)->get();
         return view('admin.testimonials._form',compact('testimonials'));
     }
 

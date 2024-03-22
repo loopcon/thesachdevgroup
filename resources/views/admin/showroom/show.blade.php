@@ -1,43 +1,49 @@
-@include('admin.master') 
-    <div class="content-wrapper">
-        <div class="content">
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Showroom</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="{{ route('showroom') }}" class="btn btn-primary btn-sm float-right">Add</a>
-                    </div>
-                    </div>
+@extends('admin.layout.header')
+@section('content')
+<div class="content-wrapper">
+    <div class="content">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Showroom</h1>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{ route('showroom') }}" class="btn btn-primary btn-sm float-right">Add</a>
+                </div>
                 </div>
             </div>
-            <section class="content">
-                <div class="container-fluid">
-                    <table class="table table-bordered data-table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Brand</th>
-                                <th>Car</th>
-                                <th>Address</th>
-                                <th>Working Hours</th>
-                                <th>Contact Number</th>
-                                <th>Email</th>
-                                <th>Facilitie Image</th>
-                                <th>Customer Gallery Image</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <section class="content">
+                    <div class="container-fluid">
+                        <table class="table table-bordered data-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Brand</th>
+                                    <th>Car</th>
+                                    <th>Address</th>
+                                    <th>Working Hours</th>
+                                    <th>Contact Number</th>
+                                    <th>Email</th>
+                                    <th>Facilitie Image</th>
+                                    <th>Customer Gallery Image</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
-
+</div>
+@endsection
+@section('javascript')
 <script type="text/javascript">
     $(function () {
         
@@ -107,3 +113,4 @@
       })
   @endif
 </script>
+@endsection

@@ -1,5 +1,5 @@
-@include('admin.master')
-
+@extends('admin.layout.header')
+@section('content')
 <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -22,7 +22,6 @@
                 <div class="card-body">
                     <form action="{{ route('testimonials_insert') }}" method="POST" class="testimonials_form" enctype="multipart/form-data">
                         @csrf
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                             <div class="col-md-6">
@@ -58,7 +57,9 @@
             </div>
         </div>
     </section>
-  </div>
+</div>
+@endsection
+@section('javascript')
 <script>
     $(document).ready(function () {
         $(".testimonials_form").validate({
@@ -103,3 +104,4 @@
        $('.ckeditor').ckeditor();
     });
 </script>
+@endsection

@@ -24,6 +24,7 @@ class ShowroomController extends Controller
     
     public function showroom_insert(Request $request){
         $showroom = new Showroom();
+        $showroom->name = $request->name;
         $showroom->brand_id = $request->brand_id;
         $showroom->car_id = json_encode($request->car_id);
         $showroom->address = $request->address;
@@ -147,6 +148,7 @@ class ShowroomController extends Controller
     public function showroom_update(Request $request, $id)
     {
         $showroom = Showroom::find($id);
+        $showroom->name = $request->name;
         $showroom->brand_id = $request->brand_id;
         $showroom->car_id = json_encode($request->car_id);
         $showroom->address = $request->address;

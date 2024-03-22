@@ -1,5 +1,5 @@
-@include('admin.master')
-
+@extends('admin.layout.header')
+@section('content')
  <div class="content-wrapper">
     <div class="content-header">  
       <div class="container-fluid">
@@ -77,5 +77,5 @@
     </div>
     </section>
 </div> 
-
+@endsection
 

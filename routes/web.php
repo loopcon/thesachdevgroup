@@ -58,7 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('testimonials_insert', [HomeController::class, 'testimonials_insert'])->name('testimonials_insert');
     Route::get('testimonials_index', [HomeController::class, 'testimonials_index'])->name('testimonials.index');
     Route::get('testimonials_edit/{testimonials_edit}', [HomeController::class, 'testimonials_edit'])->name('testimonials.edit');
-    Route::post('testimonials_update,{testimonials_update}', [HomeController::class, 'testimonials_update'])->name('testimonials_update');
+    Route::post('testimonials_update/{id}', [HomeController::class, 'testimonials_update'])->name('testimonials_update');
     Route::delete('testimonials_destroy/{id}', [HomeController::class, 'testimonials_destroy']);
 
     //Home Detail
@@ -102,4 +102,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('getcars', [ShowroomController::class, 'getcarname'])->name('getcars');
 
+    //Showroom testimonial
+    Route::get('showroom-testimonial', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialList'])->name('showroom-testimonial');
+    Route::get('showroom-testimonial-create', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialCreate'])->name('showroom-testimonial-create');
+    Route::post('showroom-testimonial-store', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialStore'])->name('showroom-testimonial-store');
+    Route::get('showroom-testimonial-edit/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialEdit'])->name('showroom-testimonial-edit');
+    Route::post('showroom-testimonial-update/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialUpdate'])->name('showroom-testimonial-update');
+    Route::get('showroom-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDestroy'])->name('showroom-testimonial-delete');
+    Route::get('showroom-testimonial-datatable', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDatatable'])->name('showroom-testimonial-datatable');
 });

@@ -1,42 +1,45 @@
-@include('admin.master') 
-    <div class="content-wrapper">
-        <div class="content">
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Home Slider</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <a href="{{ route('homeslider') }}" class="btn btn-primary btn-sm float-right">Add</a>
-                    </div>
-                    </div>
+@extends('admin.layout.header')
+@section('content') 
+<div class="content-wrapper">
+    <div class="content">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Home Slider</h1>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{ route('homeslider') }}" class="btn btn-primary btn-sm float-right">Add</a>
+                </div>
                 </div>
             </div>
-            <section class="content">
-                <div class="container-fluid">
-                    <table class="table table-bordered data-table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Image</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <section class="content">
+                    <div class="container-fluid">
+                        <table class="table table-bordered data-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Image</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
-
+</div>
+@endsection
+@section('javascript')
 <script type="text/javascript">
     $(function () {
-        
         var table = $('.data-table').DataTable({
-            processing: true,
-            serverSide: true,
             ajax: "{{ route('homeslider.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
@@ -44,10 +47,8 @@
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
-        
     });
-      
-          
+
     $(document).on('click', '#smallButton', function(event) {
         var form =  $(this).closest("form");
         var name = $(this).data("name");
@@ -79,7 +80,7 @@
             }
         });
     });
-      
+
     @if($message = session('message'))
       swal("{{ $message }}");
     @endif
@@ -93,3 +94,4 @@
       })
   @endif
 </script>
+@endsection
