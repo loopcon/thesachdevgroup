@@ -1,4 +1,5 @@
-@include('admin.master') 
+@extends('admin.layout.header')
+@section('content')
     <div class="content-wrapper">
         <div class="content">
             <div class="content-header">
@@ -13,6 +14,8 @@
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-body">
             <section class="content">
                 <div class="container-fluid">
                     <table class="table table-bordered data-table">
@@ -34,7 +37,10 @@
             </section>
         </div>
     </div>
-
+        </div>
+    </div>
+    @endsection
+    @section('javascript')
 <script type="text/javascript">
     $(function () {
         
@@ -101,3 +107,4 @@
       })
   @endif
 </script>
+@endsection

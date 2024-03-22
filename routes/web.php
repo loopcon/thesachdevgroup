@@ -111,5 +111,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('header_menu_edit/{header_menu_edit}', [HeaderMenuController::class, 'header_menu_edit'])->name('header_menu.edit');
     Route::post('header_menu_update,{header_menu_update}', [HeaderMenuController::class, 'header_menu_update'])->name('header_menu_update');
     Route::delete('header_menu_destroy/{id}', [HeaderMenuController::class, 'header_menu_destroy']);
+    
+     //Showroom testimonial
+     Route::get('showroom-testimonial', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialList'])->name('showroom-testimonial');
+     Route::get('showroom-testimonial-create', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialCreate'])->name('showroom-testimonial-create');
+     Route::post('showroom-testimonial-store', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialStore'])->name('showroom-testimonial-store');
+     Route::get('showroom-testimonial-edit/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialEdit'])->name('showroom-testimonial-edit');
+     Route::post('showroom-testimonial-update/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialUpdate'])->name('showroom-testimonial-update');
+     Route::get('showroom-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDestroy'])->name('showroom-testimonial-delete');
+     Route::get('showroom-testimonial-datatable', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDatatable'])->name('showroom-testimonial-datatable');
 
 });

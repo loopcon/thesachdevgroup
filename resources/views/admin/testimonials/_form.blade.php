@@ -1,4 +1,5 @@
-@include('admin.master')
+@extends('admin.layout.header')
+@section('content')
 <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -29,7 +30,6 @@
                                 <input  type="text" class="form-control" name="name" value="{{$testimonial->name}}">
                                 <div class="error"></div>
                             </div>
-
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label>
                                     <input  type="file" class="form-control" name="image">
@@ -82,8 +82,9 @@
             </div>
         </div>
     </section>
-  </div>
-
+</div>
+@endsection
+@section('javascript')
 <script>
     $(document).ready(function () {
         $(".edit_form").validate({
@@ -119,10 +120,10 @@
 
     });
 </script>
-
 <script type="text/javascript">
     $(document).ready(function() {
        $('.ckeditor').ckeditor();
     });
 </script>
+@endsection
   

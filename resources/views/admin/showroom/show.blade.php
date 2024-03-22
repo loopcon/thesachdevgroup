@@ -1,4 +1,5 @@
-@include('admin.master') 
+@extends('admin.layout.header')
+@section('content')
     <div class="content-wrapper">
         <div class="content">
             <div class="content-header">
@@ -25,7 +26,6 @@
                                 <th>Working Hours</th>
                                 <th>Contact Number</th>
                                 <th>Email</th>
-                                
                                 <th>Address Color</th>
                                 <th>Address Font Size</th>
                                 <th>Address Font Family</th>
@@ -54,6 +54,10 @@
             </section>
         </div>
     </div>
+</div>
+</div>
+@endsection
+@section('javascript')
 
 <script type="text/javascript">
     $(function () {
@@ -142,3 +146,4 @@
       })
   @endif
 </script>
+@endsection

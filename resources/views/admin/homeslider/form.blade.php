@@ -1,5 +1,5 @@
-@include('admin.master')
-
+@extends('admin.layout.header')
+@section('content')
 <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -100,7 +100,9 @@
             </div>
         </div>
     </section>
-  </div>
+</div>
+@endsection
+@section('script')
 <script>
  $(document).ready(function () {
     $(".slider_form").validate({
@@ -125,5 +127,5 @@
     $('.colorpicker').colorpicker();
 
 });
-
 </script>
+@endsection

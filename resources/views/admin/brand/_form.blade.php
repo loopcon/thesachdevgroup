@@ -1,4 +1,5 @@
-@include('admin.master')
+@extends('admin.layout.header')
+@section('content')
 <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -77,7 +78,8 @@
         </div>
     </section>
   </div>
-
+@endsection
+@section('javascript')
 <script>
     $(document).ready(function () {
         $(".edit_form").validate({
@@ -105,5 +107,6 @@
 
     });
 </script>
+@endsection
 
   

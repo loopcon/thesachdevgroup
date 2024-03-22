@@ -1,4 +1,5 @@
-@include('admin.master')
+@extends('admin.layout.header')
+@section('content')
 <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -23,7 +24,12 @@
                         <form method="post" action="{{ route('showroom_update', $showroom->id) }}" class="edit_form" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $showroom->id }}" class="id" name="id">
-                           
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Showroom Name</label>
+                                <input  type="text" class="form-control" name="name" value="{{$showroom->name}}">
+                                <div class="error"></div>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="brand_id" class="form-label">Select Brand</label>
                                 <select name="brand_id" id="brand_id" class="form-control select2">
@@ -240,9 +246,9 @@
             </div>
         </div>
     </section>
-  </div>
-
-
+</div>
+@endsection
+@section('javascript')
 <script>
     $(document).ready(function () {
 
@@ -390,4 +396,5 @@
 
     });
 </script>
+@endsection
 
