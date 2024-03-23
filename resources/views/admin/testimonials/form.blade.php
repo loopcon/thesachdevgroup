@@ -22,64 +22,52 @@
                 <div class="card-body">
                     <form action="{{ route('testimonials_insert') }}" method="POST" class="testimonials_form" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-                            <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name">
                                 <div class="error"></div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Image</label>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <label for="name" class="form-label">Image<span class="text-danger">*</span></label>
                                 <input type="file" id="image" class="form-control" name="image">
                                 <div class="error"></div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="color" class="col-md-4 col-form-label text-md-right">Color</label>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <label for="color" class="form-label">Color</label>
                                 <input type="text" class="form-control colorpicker" name="color" id="color">
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="font_size" class="col-md-4 col-form-label text-md-right">Font Size</label>
-                            <div class="col-md-6">
-                               <select class="form-control select2" name="font_size">
+                            <div class="col-md-4 mt-2">
+                                <label for="font_size" class="form-label">Font Size</label>
+                                <select class="form-control select2" name="font_size">
                                     <option selected="selected" disabled="disabled">Select Font Size</option>
                                     @for($i=24; $i<=50; $i+=2)
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
-                               </select>
+                                </select>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="font_family" class="col-md-4 col-form-label text-md-right">Font Family</label>
-                            <div class="col-md-6">
-                               <select class="form-control select2" name="font_family">
+                            <div class="col-md-4 mt-2">
+                                <label for="font_family" class="form-label">Font Family</label>
+                                <select class="form-control select2" name="font_family">
                                     <option selected="selected" disabled="disabled">Select Font Family</option>
                                         <option value="poppins">Poppins</option>
                                         <option value="sans-serif">Sans Serif</option>
-                               </select>
+                                </select>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Description</label>
-                            <div class="col-md-6"> 
+                            <div class="col-md-12 mt-2 mb-3">
+                                <label for="name" class="form-label">Description<span class="text-danger">*</span></label>
                                 <textarea class="ckeditor form-control" name="description"></textarea>
                                 <div class="error"></div>
                             </div>
                         </div>
-                        
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary submit">
-                                Submit
-                            </button>
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
                             <a href="{{ route('testimonials.index') }}" class="btn btn-default">Cancel</a>
                         </div>
                     </form>

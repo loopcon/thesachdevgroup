@@ -28,7 +28,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="showroom_id" class="form-label">Select Showroom</label>
+                                <label for="showroom_id" class="form-label">Select Showroom<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="showroom_id" id="showroom_id">
                                     <option value="">Select</option>
                                     @foreach($showrooms as $value)
@@ -40,7 +40,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="name" class="form-label">Name</label>
+                                <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
@@ -52,15 +52,68 @@
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/showroom_testimonial/'.$record->image)}}" width="100">
                                 @endif  
-                                <input type="file" id="image" class="form-control" name="image">
+                                <input type="file" id="image" class="form-control" name="image" value="">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
-                            <div class="mb-3 col-md-6">
+                            <div class="col-md-4">
+                                <label for="name_text_color" class="form-label">Name Text Color</label>
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->name_text_color) ? $record->name_text_color : old('name_text_color')}}" name="name_text_color" id="name_text_color">
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="name_text_size" class="form-label">Name Text Size</label>
+                                <select class="form-control select2" name="name_text_size">
+                                    <option value="">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->name_text_size) && $record->name_text_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="name_font_family" class="form-label">Name Font Family</label>
+                                <select class="form-control select2" name="name_font_family">
+                                    <option value="">Select</option>
+                                        <option value="poppins" @if(isset($record->name_font_family) && $record->name_font_family == 'poppins'){{'selected'}}@endif>Poppins</option>
+                                        <option value="sans-serif" @if(isset($record->name_font_family) && $record->name_font_family == 'sans-serif'){{'selected'}}@endif>Sans Serif</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="name_background_color" class="form-label">Name Background Color</label>
+                                <input type="text" class="form-control colorpicker" name="name_background_color" value="{{isset($record->name_background_color) ? $record->name_background_color : old('name_background_color')}}" id="name_background_color">
+                            </div>
+
+                            <div class="mb-3 col-md-4 mt-2">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control" name="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
                                 <div class="error"></div>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="description_text_color" class="form-label">Description Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="description_text_color" value="{{isset($record->description_text_color) ? $record->description_text_color : old('description_text_color')}}" id="description_text_color">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="description_text_size" class="form-label">Description Text Size</label>
+                                <select class="form-control select2" name="description_text_size">
+                                    <option value="">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->description_text_size) && $record->description_text_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="description_font_family" class="form-label">Description Font Family</label>
+                                <select class="form-control select2" name="description_font_family">
+                                    <option value="">Select</option>
+                                        <option value="poppins" @if(isset($record->description_font_family) && $record->description_font_family == 'poppins'){{'selected'}}@endif>Poppins</option>
+                                        <option value="sans-serif" @if(isset($record->description_font_family) && $record->description_font_family == 'sans-serif'){{'selected'}}@endif>Sans Serif</option>
+                                </select>
                             </div>
                         </div>
 

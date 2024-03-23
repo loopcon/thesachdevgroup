@@ -55,7 +55,7 @@ class HomeController extends Controller
                   ->addIndexColumn()
                   ->addColumn('action', function($home_slider){
           
-                  $updateButton = '<a href="'.route("home_slider.edit",encrypt($home_slider->id)).'" class="btn btn-info btn-sm">Edit</a>';        
+                  $updateButton = "<a href='".url('home_slider.edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";       
                   $deleteBtn = '<a class="btn btn-danger btn-sm" id="smallButton" data-id="'.$home_slider->id.'">Delete</a>';
                   return $updateButton . $deleteBtn;
                   })
@@ -288,21 +288,21 @@ class HomeController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function($testimonials){
                 $id = encrypt($testimonials->id);
-                $updateButton = '<a href="'.route('testimonials.edit',array($id)).'" class="btn btn-info btn-sm">Edit</a>';        
-                $deleteBtn = '<a class="btn btn-danger btn-sm" id="smallButton" data-id="'.$testimonials->id.'">Delete</a>';
+                $updateButton = "<a href='".route('testimonials.edit',array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
+                $deleteBtn = "<a href='javascript:void(0);' data-href='".route('testimonials_destroy',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                 return $updateButton . $deleteBtn;
                 })
 
                 ->editColumn('image', function($testimonials){
 
                     if($testimonials->image == NULL){
-                        $url= asset('public/no_image/notImg.png');
+                        $url= asset('no_image/notImg.png');
                         $image = '<img src="'.$url.'" border="0" width="100">';
                         return $image;
 
                     }else{
 
-                        $url= asset('public/testimonials/'.$testimonials->image);
+                        $url= asset('testimonials/'.$testimonials->image);
                         $image = '<img src="'.$url.'" border="0" width="100">';
                         return $image;
                     }
@@ -354,28 +354,22 @@ class HomeController extends Controller
       return redirect()->route('testimonials.index')->with('message', 'Testimonials update succesfully');
    }
 
-   public function testimonials_destroy(Request $request,$id){
-
-        $testimonials = Testimonial::findOrFail($id);
-    
-        if($testimonials->image == null){
-
-            $testimonials->delete();
-
-        }else{
-            
-            $image_path = public_path("testimonials/{$testimonials->image}");
-
-            if (File::exists($image_path)) {
-                unlink($image_path);
+   public function testimonials_destroy(Request $request,$id)
+   {
+        $id = decrypt($id);
+        $testimonial = Testimonial::find($id);
+        if($testimonial->image !=NULL)
+        {
+            $image = public_path("testimonials/{$testimonial->image}");
+            if (File::exists($image)) {
+                unlink($image);
             }
-
-            $testimonials->delete();
         }
-
-        return response()->json([
-            'success' => 'Record deleted successfully!'
-        ]);
+        $testimonial = Testimonial::where('id',$id)->delete();
+        if($testimonial)
+        {
+            return redirect()->route('testimonials.index')->with('message', 'Testimonial deleted succesfully');
+        }
 
     }
 
