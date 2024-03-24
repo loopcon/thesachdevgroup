@@ -1,5 +1,5 @@
-@include('admin.master')
-
+@extends('admin.layout.header')
+@section('content')
 <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -23,9 +23,9 @@
                     <form action="{{ route('header_menu_insert') }}" method="POST" class="header_menu_form" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="menu_name" class="col-md-4 col-form-label text-md-right">Select Menu</label>
+                        <div class="row">
                             <div class="col-md-6">
+                                <label for="menu_name" class="form-label">Select Menu</label>
                                 <select class="form-control select2" name="menu_name">
                                     <option selected="selected" disabled="disabled">Select Menu</option>
                                     <option value="our_businesses">Our Businesses</option>
@@ -35,20 +35,16 @@
                                 </select>
                                 <div class="error"></div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-                            <div class="col-md-6">
+                            <div class="mb-3 col-md-6">
+                                <label for="name" class="form-label">Name</label>
                                 <input type="text" id="name" class="form-control" name="name">
                                 <div class="error"></div>
                             </div>
-                        </div>
 
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary submit">
-                                Submit
-                            </button>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
                             <a href="{{ route('header_menu.index') }}" class="btn btn-default">Cancel</a>
                         </div>
                     </form>
@@ -57,7 +53,9 @@
         </div>
     </section>
   </div>
-<script>
+  @endsection
+  @section('javascript')
+  <script>
     $(document).ready(function () {
         $(".header_menu_form").validate({
             rules: {
@@ -70,10 +68,10 @@
             },
             messages: {
                 'menu_name': {
-                    required: "Menu is required",
+                    required: "The menu field is required.",
                 },
                 'name': {
-                    required: "Name is required",
+                    required: "The name field is required.",
                 },
             },
             errorPlacement: function(error, element) {
@@ -86,3 +84,4 @@
         });
     });
 </script>
+@endsection

@@ -52,33 +52,33 @@ class CarController extends Controller
 
     public function car_index(Request $request){
         if ($request->ajax()) {
-            $car = Car::with('brand')->get();
+            $car = Car::with('brand')->orderBy('id', 'DESC')->get();
             return Datatables::of($car)
                     ->addIndexColumn()
                     ->addColumn('action', function($car){
             
-                    $updateButton = '<a href="'.route("car.edit",encrypt($car->id)).'" class="btn btn-info btn-sm">Edit</a>';        
-                    $deleteBtn = '<a class="btn btn-danger btn-sm" id="smallButton" data-id="'.$car->id.'">Delete</a>';
+                    $updateButton = "<a href='".route("car.edit",encrypt($car->id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
+                    $deleteBtn = "<a href='javascript:void(0);' data-href='".route('car_destroy',array($car->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                     return $updateButton . $deleteBtn;
                     })
   
                     ->editColumn('image', function($car){
   
                         if($car->image == NULL){
-                            $url= asset('public/no_image/notImg.png');
+                            $url= asset('no_image/notImg.png');
                             $image = '<img src="'.$url.'" border="0" width="100">';
                             return $image;
   
                         }else{
   
-                            $url= asset('public/car/'.$car->image);
+                            $url= asset('car/'.$car->image);
                             $image = '<img src="'.$url.'" border="0" width="100">';
                             return $image;
                         }
                     })
                     
                     ->editColumn('brand', function($car){
-                        $brand_name =  $car->brand->name;
+                        $brand_name = isset($car->brand->name) && $car->brand->name ? $car->brand->name: NULL;
                         return $brand_name;
                     })
             ->rawColumns(['action','image','brand'])
@@ -129,25 +129,19 @@ class CarController extends Controller
     public function car_destroy(Request $request,$id){
 
         $car = Car::findOrFail($id);
-       
-        if($car->image == null){
-  
-            $car->delete();
-  
-        }else{
-            
-            $image_path = public_path("car/{$car->image}");
-  
-            if (File::exists($image_path)) {
-                unlink($image_path);
-            }
-  
-            $car->delete();
+
+        $image_path = public_path("car/{$car->image}");
+
+        if (File::exists($image_path)) {
+            unlink($image_path);
         }
-  
-        return response()->json([
-            'success' => 'Record deleted successfully!'
-        ]);
+
+        $car->delete();
+
+        if($car)
+        {
+            return redirect()->route('car.index')->with('message', 'Car deleted succesfully');
+        }
   
     }
 

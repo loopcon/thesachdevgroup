@@ -26,13 +26,13 @@ class HeaderMenuController extends Controller
 
     public function header_menu_index(Request $request){
         if ($request->ajax()) {
-            $header_menu = Header_menu::get();
+            $header_menu = Header_menu::orderBy('id', 'DESC')->get();
             return Datatables::of($header_menu)
                     ->addIndexColumn()
                     ->addColumn('action', function($header_menu){
             
-                    $updateButton = '<a href="'.route("header_menu.edit",encrypt($header_menu->id)).'" class="btn btn-info btn-sm">Edit</a>';        
-                    $deleteBtn = '<a class="btn btn-danger btn-sm" id="smallButton" data-id="'.$header_menu->id.'">Delete</a>';
+                    $updateButton = "<a href='".route("header_menu.edit",encrypt($header_menu->id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
+                    $deleteBtn = "<a href='javascript:void(0);' data-href='".route('header_menu_destroy',array($header_menu->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                     return $updateButton . $deleteBtn;
                     })
 
@@ -64,9 +64,10 @@ class HeaderMenuController extends Controller
         $header_menu = Header_menu::findOrFail($id);
         $header_menu->delete();
   
-        return response()->json([
-            'success' => 'Record deleted successfully!'
-        ]);
+        if($header_menu)
+        {
+            return redirect()->route('header_menu.index')->with('message', 'Header Menu deleted succesfully');
+        }
   
     }
 }

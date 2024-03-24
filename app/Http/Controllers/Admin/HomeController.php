@@ -50,26 +50,26 @@ class HomeController extends Controller
 
    public function homeslider_index(Request $request){
       if ($request->ajax()) {
-          $home_slider = Home_slider::get();
+          $home_slider = Home_slider::orderBy('id', 'DESC')->get();
           return Datatables::of($home_slider)
                   ->addIndexColumn()
                   ->addColumn('action', function($home_slider){
-          
-                  $updateButton = '<a href="'.route("home_slider.edit",encrypt($home_slider->id)).'" class="btn btn-info btn-sm">Edit</a>';        
-                  $deleteBtn = '<a class="btn btn-danger btn-sm" id="smallButton" data-id="'.$home_slider->id.'">Delete</a>';
+        
+                $updateButton = "<a href='".route("home_slider.edit",encrypt($home_slider->id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
+                $deleteBtn = "<a href='javascript:void(0);' data-href='".route('homeslider_destroy',array($home_slider->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                   return $updateButton . $deleteBtn;
                   })
 
                   ->editColumn('image', function($home_slider){
 
                       if($home_slider->image == NULL){
-                          $url= asset('public/no_image/notImg.png');
+                          $url= asset('no_image/notImg.png');
                           $image = '<img src="'.$url.'" border="0" width="100">';
                           return $image;
 
                       }else{
 
-                          $url= asset('public/home_slider/'.$home_slider->image);
+                          $url= asset('home_slider/'.$home_slider->image);
                           $image = '<img src="'.$url.'" border="0" width="100">';
                           return $image;
                       }
@@ -79,7 +79,7 @@ class HomeController extends Controller
       }
       
       return view('admin.homeslider.show');
-  }
+    }
 
    public function homeslider_edit($id){
       $homesliders  = Home_slider::where('id',decrypt($id))->get();
@@ -116,27 +116,20 @@ class HomeController extends Controller
    }
 
    public function homeslider_destroy(Request $request,$id){
+        $home_slider = Home_slider::findOrFail($id);
 
-      $home_slider = Home_slider::findOrFail($id);
-     
-      if($home_slider->image == null){
+        $image_path = public_path("home_slider/{$home_slider->image}");
 
-          $home_slider->delete();
+        if (File::exists($image_path)) {
+            unlink($image_path);
+        }
 
-      }else{
-          
-          $image_path = public_path("home_slider/{$home_slider->image}");
+        $home_slider->delete();
 
-          if (File::exists($image_path)) {
-              unlink($image_path);
-          }
-
-          $home_slider->delete();
-      }
-
-      return response()->json([
-          'success' => 'Record deleted successfully!'
-      ]);
+        if($home_slider)
+        {
+            return redirect()->route('homeslider.index')->with('message', 'Home Slider deleted succesfully');
+        }
 
   }
 
@@ -168,26 +161,26 @@ class HomeController extends Controller
 
    public function home_our_businesses_index(Request $request){
       if ($request->ajax()) {
-          $home_our_businesses = Home_our_businesses::get();
+          $home_our_businesses = Home_our_businesses::orderBy('id', 'DESC')->get();
           return Datatables::of($home_our_businesses)
                   ->addIndexColumn()
                   ->addColumn('action', function($home_our_businesses){
           
-                  $updateButton = '<a href="'.route("home_our_businesses.edit",encrypt($home_our_businesses->id)).'" class="btn btn-info btn-sm">Edit</a>';        
-                  $deleteBtn = '<a class="btn btn-danger btn-sm" id="smallButton" data-id="'.$home_our_businesses->id.'">Delete</a>';
-                  return $updateButton . $deleteBtn;
+                $updateButton = "<a href='".route("home_our_businesses.edit",encrypt($home_our_businesses->id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
+                $deleteBtn = "<a href='javascript:void(0);' data-href='".route('home_our_businesses_destroy',array($home_our_businesses->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                return $updateButton . $deleteBtn;
                   })
 
                   ->editColumn('image', function($home_our_businesses){
 
                       if($home_our_businesses->image == NULL){
-                          $url= asset('public/no_image/notImg.png');
+                          $url= asset('no_image/notImg.png');
                           $image = '<img src="'.$url.'" border="0" width="100">';
                           return $image;
 
                       }else{
 
-                          $url= asset('public/home_our_businesses/'.$home_our_businesses->image);
+                          $url= asset('home_our_businesses/'.$home_our_businesses->image);
                           $image = '<img src="'.$url.'" border="0" width="100">';
                           return $image;
                       }
@@ -228,26 +221,21 @@ class HomeController extends Controller
 
    public function home_our_businesses_destroy(Request $request,$id){
 
-      $home_our_businesses = Home_our_businesses::findOrFail($id);
-     
-      if($home_our_businesses->image == null){
+    $home_our_businesses = Home_our_businesses::findOrFail($id);
 
-          $home_our_businesses->delete();
+    $image_path = public_path("home_our_businesses/{$home_our_businesses->image}");
 
-      }else{
-          
-          $image_path = public_path("home_our_businesses/{$home_our_businesses->image}");
+    if (File::exists($image_path)) {
+        unlink($image_path);
+    }
 
-          if (File::exists($image_path)) {
-              unlink($image_path);
-          }
+    $home_our_businesses->delete();
 
-          $home_our_businesses->delete();
-      }
+    if($home_our_businesses)
+    {
+        return redirect()->route('home_our_businesses.index')->with('message', 'Home Our Businesses deleted succesfully');
+    }
 
-      return response()->json([
-          'success' => 'Record deleted successfully!'
-      ]);
 
   }
     //testimonials

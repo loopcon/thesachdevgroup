@@ -1,4 +1,5 @@
-@include('admin.master')
+@extends('admin.layout.header')
+@section('content')
 <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -24,28 +25,29 @@
                             @csrf
                             <input type="hidden" value="{{ $header_menu->id }}" class="id" name="id">
                            
-                                <div class="mb-3">
-                                    <label for="menu_name" class="form-label">Select Menu</label>
-                                    <select class="form-control select2" name="menu_name">
-                                        <option selected="selected" disabled="disabled">Select Menu</option>
-                                        <option value="our_businesses"  {{$header_menu->menu_name == 'our_businesses' ? 'selected' : ''}}>Our Businesses</option>
-                                        <option value="our_services" {{$header_menu->menu_name == 'our_services' ? 'selected' : ''}}>Our Services</option>
-                                        <option value="awards_recognition" {{$header_menu->menu_name == 'awards_recognition' ? 'selected' : ''}}>Awards & Recognition</option>
-                                        <option value="contact_us" {{$header_menu->menu_name == 'contact_us' ? 'selected' : ''}}>Contact Us</option>
-                                   </select>
-                                    <div class="error"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="menu_name" class="form-label">Select Menu</label>
+                                        <select class="form-control select2" name="menu_name">
+                                            <option selected="selected" disabled="disabled">Select Menu</option>
+                                            <option value="our_businesses"  {{$header_menu->menu_name == 'our_businesses' ? 'selected' : ''}}>Our Businesses</option>
+                                            <option value="our_services" {{$header_menu->menu_name == 'our_services' ? 'selected' : ''}}>Our Services</option>
+                                            <option value="awards_recognition" {{$header_menu->menu_name == 'awards_recognition' ? 'selected' : ''}}>Awards & Recognition</option>
+                                            <option value="contact_us" {{$header_menu->menu_name == 'contact_us' ? 'selected' : ''}}>Contact Us</option>
+                                       </select>
+                                    </div>
+        
+                                    <div class="mb-3 col-md-6">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" id="name" class="form-control" name="name" value="{{$header_menu->name}}">
+                                        <div class="error"></div>
+                                    </div>
+        
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input  type="text" class="form-control" name="name" value="{{$header_menu->name}}">
-                                    <div class="error"></div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary submit">Submit</button>
+                                    <a href="{{ route('header_menu.index') }}" class="btn btn-default">Cancel</a>
                                 </div>
-
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                                <a href="{{ route('header_menu.index') }}" class="btn btn-default">Cancel</a>
-                            </div>
                         </form>
                     @endforeach 
                 </div>
@@ -53,7 +55,8 @@
         </div>
     </section>
   </div>
-
+  @endsection
+  @section('javascript')
 <script>
     $(document).ready(function () {
         $(".edit_form").validate({
@@ -64,7 +67,7 @@
             },
             messages: {
                 'name': {
-                    required: "Name is required",
+                    required: "The name field is required.",
                 },
             },
             errorPlacement: function(error, element) {
@@ -73,5 +76,5 @@
         });
     });
 </script>
-
+@endsection
   

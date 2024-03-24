@@ -41,26 +41,26 @@ class BrandController extends Controller
 
     public function brand_index(Request $request){
         if ($request->ajax()) {
-            $brand = Brand::get();
+            $brand = Brand::orderBy('id', 'DESC')->get();
             return Datatables::of($brand)
                     ->addIndexColumn()
                     ->addColumn('action', function($brand){
-            
-                    $updateButton = '<a href="'.route("brand.edit",encrypt($brand->id)).'" class="btn btn-info btn-sm">Edit</a>';        
-                    $deleteBtn = '<a class="btn btn-danger btn-sm" id="smallButton" data-id="'.$brand->id.'">Delete</a>';
+        
+                    $updateButton = "<a href='".route("brand.edit",encrypt($brand->id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
+                    $deleteBtn = "<a href='javascript:void(0);' data-href='".route('brand_destroy',array($brand->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                     return $updateButton . $deleteBtn;
                     })
   
                     ->editColumn('image', function($brand){
   
                         if($brand->image == NULL){
-                            $url= asset('public/no_image/notImg.png');
+                            $url= asset('no_image/notImg.png');
                             $image = '<img src="'.$url.'" border="0" width="100">';
                             return $image;
   
                         }else{
   
-                            $url= asset('public/brand/'.$brand->image);
+                            $url= asset('brand/'.$brand->image);
                             $image = '<img src="'.$url.'" border="0" width="100">';
                             return $image;
                         }
@@ -106,25 +106,19 @@ class BrandController extends Controller
     public function brand_destroy(Request $request,$id){
 
         $brand = Brand::findOrFail($id);
-       
-        if($brand->image == null){
-  
-            $brand->delete();
-  
-        }else{
-            
-            $image_path = public_path("brand/{$brand->image}");
-  
-            if (File::exists($image_path)) {
-                unlink($image_path);
-            }
-  
-            $brand->delete();
+
+        $image_path = public_path("brand/{$brand->image}");
+
+        if (File::exists($image_path)) {
+            unlink($image_path);
         }
-  
-        return response()->json([
-            'success' => 'Record deleted successfully!'
-        ]);
+
+        $brand->delete();
+
+        if($brand)
+        {
+            return redirect()->route('brand.index')->with('message', 'Brand deleted succesfully');
+        }
   
     }
 }

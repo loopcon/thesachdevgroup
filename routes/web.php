@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('homeslider_index', [HomeController::class, 'homeslider_index'])->name('homeslider.index');
     Route::get('homeslider_edit/{homeslider_edit}', [HomeController::class, 'homeslider_edit'])->name('home_slider.edit');
     Route::post('homeslider_update,{homeslider_update}', [HomeController::class, 'homeslider_update'])->name('homeslider_update');
-    Route::delete('homeslider_destroy/{id}', [HomeController::class, 'homeslider_destroy']);
+    Route::get('homeslider_destroy/{id}', [HomeController::class, 'homeslider_destroy'])->name('homeslider_destroy');
 
     //home our businesses
     Route::get('home_our_businesses', [HomeController::class, 'home_our_businesses'])->name('home_our_businesses');
@@ -53,7 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('home_our_businesses_index', [HomeController::class, 'home_our_businesses_index'])->name('home_our_businesses.index');
     Route::get('home_our_businesses_edit/{home_our_businesses_edit}', [HomeController::class, 'home_our_businesses_edit'])->name('home_our_businesses.edit');
     Route::post('home_our_businesses_update,{home_our_businesses_update}', [HomeController::class, 'home_our_businesses_update'])->name('home_our_businesses_update');
-    Route::delete('home_our_businesses_destroy/{id}', [HomeController::class, 'home_our_businesses_destroy']);
+    Route::get('home_our_businesses_destroy/{id}', [HomeController::class, 'home_our_businesses_destroy'])->name('home_our_businesses_destroy');
 
     //Testimonials
     Route::get('testimonials', [HomeController::class, 'testimonials'])->name('testimonials');
@@ -81,7 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('brand_index', [BrandController::class, 'brand_index'])->name('brand.index');
     Route::get('brand_edit/{brand_edit}', [BrandController::class, 'brand_edit'])->name('brand.edit');
     Route::post('brand_update,{brand_update}', [BrandController::class, 'brand_update'])->name('brand_update');
-    Route::delete('brand_destroy/{id}', [BrandController::class, 'brand_destroy']);
+    Route::get('brand_destroy/{id}', [BrandController::class, 'brand_destroy'])->name('brand_destroy');
 
     //car
     Route::get('car', [CarController::class, 'car'])->name('car');
@@ -89,7 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('car_index', [CarController::class, 'car_index'])->name('car.index');
     Route::get('car_edit/{car_edit}', [CarController::class, 'car_edit'])->name('car.edit');
     Route::post('car_update,{car_update}', [CarController::class, 'car_update'])->name('car_update');
-    Route::delete('car_destroy/{id}', [CarController::class, 'car_destroy']);
+    Route::get('car_destroy/{id}', [CarController::class, 'car_destroy'])->name('car_destroy');
 
     //showroom
     Route::get('showroom', [ShowroomController::class, 'showroom'])->name('showroom');
@@ -97,7 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('showroom_index', [ShowroomController::class, 'showroom_index'])->name('showroom.index');
     Route::get('showroom_edit/{showroom_edit}/{brand_id}', [ShowroomController::class, 'showroom_edit'])->name('showroom.edit');
     Route::post('showroom_update,{showroom_update}', [ShowroomController::class, 'showroom_update'])->name('showroom_update');
-    Route::delete('showroom_destroy/{id}', [ShowroomController::class, 'showroom_destroy']);
+    Route::get('showroom_destroy/{id}', [ShowroomController::class, 'showroom_destroy'])->name('showroom_destroy');
 
     Route::post('facilitie_imagedelete', [ShowroomController::class, 'DeleteFacilitieImage'])->name('facilitie_imagedelete');
     Route::post('customer_gallery_imagedelete', [ShowroomController::class, 'DeleteCustomerGallery'])->name('customer_gallery_imagedelete');
@@ -110,7 +110,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('header_menu_index', [HeaderMenuController::class, 'header_menu_index'])->name('header_menu.index');
     Route::get('header_menu_edit/{header_menu_edit}', [HeaderMenuController::class, 'header_menu_edit'])->name('header_menu.edit');
     Route::post('header_menu_update,{header_menu_update}', [HeaderMenuController::class, 'header_menu_update'])->name('header_menu_update');
-    Route::delete('header_menu_destroy/{id}', [HeaderMenuController::class, 'header_menu_destroy']);
+    Route::get('header_menu_destroy/{id}', [HeaderMenuController::class, 'header_menu_destroy'])->name('header_menu_destroy');
     
      //Showroom testimonial
      Route::get('showroom-testimonial', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialList'])->name('showroom-testimonial');
@@ -121,4 +121,5 @@ Route::group(['middleware' => 'auth'], function () {
      Route::get('showroom-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDestroy'])->name('showroom-testimonial-delete');
      Route::get('showroom-testimonial-datatable', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDatatable'])->name('showroom-testimonial-datatable');
 
+   
 });

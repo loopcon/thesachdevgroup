@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/sweetalert2/sweetalert2.css')}}">
+@endsection
 @section('content') 
 <div class="content-wrapper">
     <div class="content">
@@ -8,13 +11,13 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">Home Our Businesses</h1>
                 </div>
-                <div class="col-sm-6">
-                    <a href="{{ route('home_our_businesses') }}" class="btn btn-primary btn-sm float-right">Add</a>
-                </div>
                 </div>
             </div>
         </div>
         <div class="card">
+            <div class="col-sm-12  text-end">
+                <a href="{{ route('home_our_businesses') }}" class="btn btn-primary mt-2 float-right">Add</a>
+            </div>
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
@@ -37,6 +40,7 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
         
@@ -54,49 +58,19 @@
     });
       
           
-    $(document).on('click', '#smallButton', function(event) {
-        var form =  $(this).closest("form");
-        var name = $(this).data("name");
-        event.preventDefault();
-        swal({
-            title: `Are you sure you want to delete this record?`,
-            text: "If you delete this, it will be gone forever.",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                var id = $(this).data('id');
-                $.ajax({
-                    url: "home_our_businesses_destroy/"+id,
-                    type: 'DELETE',
-                    data: {
-                        "id": id,
-                        _token:"{{ csrf_token() }}",
-                    },
-                    success: function(data) {
-                        $('.data-table').DataTable().ajax.reload();
-                    },
-                    error: function(data) {
-                        console.log("No! You are wrong!");
-                    }
-                })
+    $(document).on('click', '.delete', function() {
+        var href = $(this).data('href');
+        return new swal({
+            title: "",
+            text: "{{__('Are you sure? Delete this Home Our Businesses!')}}",
+            showCancelButton: true,
+            confirmButtonText: "{{__('Yes, delete it!')}}",
+            icon: "question"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                location.href = href;
             }
         });
     });
-      
-    @if($message = session('message'))
-      swal("{{ $message }}");
-    @endif
-      
-    @if(session()->has('message'))
-      swal({
-          title: "Home our businesses",
-          text: '{{ $message }}',
-          icon: "success",
-          buttons: true,
-      })
-  @endif
 </script>
 @endsection

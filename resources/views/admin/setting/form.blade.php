@@ -29,14 +29,13 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                   <label for="image">Logo</label>
+                                  @if($setting->logo == null)
+                                    <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                  @else
+                                    <img src="{{url('public/logo/'.$setting->logo)}}" width="100">
+                                  @endif
                                   <input type="file" id="logo" class="form-control" name="logo">
                                   <div class="error"></div>
-                                  @if($setting->logo == null)
-                                        <img src="{{asset('public/no_image/notImg.png')}}" width="100">
-                                    @else
-                                        <img src="{{asset('public/logo/'.$setting->logo)}}" width="100">
-                                    @endif
-                                 
                                 </div>
                                 <div class="form-group col-md-6">
                                   <label for="email">E-mail</label>
@@ -87,31 +86,30 @@
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="email_icon">Email Icon</label>
+                                @if($setting->email_icon == null)
+                                  <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                @else
+                                    <img src="{{url('public/email_icon/'.$setting->email_icon)}}" width="100">
+                                @endif
                                 <input type="file" id="email_icon" class="form-control" name="email_icon">
                                 <div class="error"></div>
-                                @if($setting->email_icon == null)
-                                  <img src="{{asset('public/no_image/notImg.png')}}" width="100">
-                                @else
-                                    <img src="{{asset('public/email_icon/'.$setting->email_icon)}}" width="100">
-                                @endif
                               </div>
                               <div class="form-group col-md-6">
                                   <label for="call_icon">Call Icon</label>
+                                  @if($setting->call_icon == null)
+                                    <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                  @else
+                                      <img src="{{url('public/call_icon/'.$setting->call_icon)}}" width="100">
+                                  @endif
                                   <input type="file" id="call_icon" class="form-control" name="call_icon">
                                   <div class="error"></div>
-                                  @if($setting->call_icon == null)
-                                    <img src="{{asset('public/no_image/notImg.png')}}" width="100">
-                                  @else
-                                      <img src="{{asset('public/call_icon/'.$setting->call_icon)}}" width="100">
-                                  @endif
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="footer_description">Footer Description</label>
-                                    <textarea class="ckeditor form-control" name="footer_description">{{$setting->footer_description}}</textarea>
-                                </div>
+                            <div class="mb-3">
+                              <label for="footer_description">Footer Description</label>
+                              <textarea class="ckeditor form-control" name="footer_description">{{$setting->footer_description}}</textarea>
+                              <div class="error"></div>
                             </div>
 
                             @endforeach
@@ -183,11 +181,10 @@
                             </div>
                       </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="footer_description">Footer Description</label>
-                                <textarea class="ckeditor form-control" name="footer_description"></textarea>
-                            </div>
+                        <div class="mb-3">
+                          <label for="footer_description">Footer Description</label>
+                          <textarea class="ckeditor form-control" name="footer_description"></textarea>
+                          <div class="error"></div>
                         </div>
                     
                         @endif
@@ -246,28 +243,28 @@
                     extension: "Please enter a value with a valid extension.",
                 },
                 'email': {
-                    required: "Email is required",
+                    required: "The email field is required.",
                 },
                 'mobile_number': {
-                    required: "Mobile number is required",
+                    required: "The mobile number field is required.",
                 },
                 'time': {
-                    required: "Time is required",
+                    required: "The time field is required.",
                 },
                 'twitter_link': {
-                    required: "Twitter link is required",
+                    required: "The twitter link field is required.",
                     url: "Please enter a valid link",
                 },
                 'linkedin_link': {
-                    required: "Twitter link is required",
+                    required: "The linkedin link field is required.",
                     url: "Please enter a valid link",
                 },
                 'facebook_link': {
-                    required: "Facebook link is required",
+                    required: "The facebook link field is required.",
                     url: "Please enter a valid link",
                 },
                 'address': {
-                    required: "Address is required",
+                    required: "The address field is required.",
                 },
                 'email_icon': {
                     extension: "Please enter a value with a valid extension.",

@@ -84,18 +84,18 @@ class ShowroomController extends Controller
     
     public function showroom_index(Request $request){
         if ($request->ajax()) {
-            $showroom = Showroom::with('brand','car')->get();
+            $showroom = Showroom::with('brand','car')->orderBy('id', 'DESC')->get();
             return Datatables::of($showroom)
                     ->addIndexColumn()
                     ->addColumn('action', function($showroom){
-        
-                    $updateButton = '<a href="'.route("showroom.edit", ['showroom_edit' => encrypt($showroom->id), 'brand_id' => $showroom->brand_id]).'" class="btn btn-info btn-sm">Edit</a>';
-                    $deleteBtn = '<a class="btn btn-danger btn-sm" id="smallButton" data-id="'.$showroom->id.'">Delete</a>';
+    
+                    $updateButton = "<a href='".route("showroom.edit",['showroom_edit' => encrypt($showroom->id), 'brand_id' => $showroom->brand_id])."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
+                    $deleteBtn = "<a href='javascript:void(0);' data-href='".route('showroom_destroy',array($showroom->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                     return $updateButton . $deleteBtn;
                     })
   
                 ->editColumn('brand', function($showroom){
-                    $brand_name =  $showroom->brand->name;
+                    $brand_name =  isset($showroom->brand->name) && $showroom->brand->name ? $showroom->brand->name: NULL;
                     return $brand_name;
                 })
                 ->editColumn('car', function($showroom) {
@@ -109,7 +109,7 @@ class ShowroomController extends Controller
                     $facilitie_image = Facilitie::where('showroom_id',$showroom->id)->pluck('facilitie_image')->toArray();
 
                     if($facilitie_image == NULL){
-                        $url= asset('public/no_image/notImg.png');
+                        $url= asset('no_image/notImg.png');
                         $image = '<img src="'.$url.'" border="0" width="100">';
                         return $image;
 
@@ -117,7 +117,7 @@ class ShowroomController extends Controller
 
                         $imgs="";
                         foreach ($facilitie_image as $image ) {
-                            $url= asset('public/facilitie_image/'.$image);
+                            $url= asset('facilitie_image/'.$image);
                             $imgs.= '<div><img src="'.$url.'"  width="50"></div><br>';
                         } 
                         return $imgs;
@@ -130,7 +130,7 @@ class ShowroomController extends Controller
                     $customer_gallery_image = Customer_gallery::where('showroom_id',$showroom->id)->pluck('customer_gallery_image')->toArray();
 
                     if($customer_gallery_image == NULL){
-                        $url= asset('public/no_image/notImg.png');
+                        $url= asset('no_image/notImg.png');
                         $image = '<img src="'.$url.'" border="0" width="100">';
                         return $image;
 
@@ -138,7 +138,7 @@ class ShowroomController extends Controller
 
                         $imgs="";
                         foreach ($customer_gallery_image as $image ) {
-                            $url= asset('public/customer_gallery_image/'.$image);
+                            $url= asset('customer_gallery_image/'.$image);
                             $imgs.= '<div><img src="'.$url.'"  width="50"></div><br>';
                         } 
                         return $imgs;
@@ -240,7 +240,6 @@ class ShowroomController extends Controller
         $customergallery_image->customer_gallery()->delete();
 
         
-
         $facilitie_image = Showroom::with('facilitie')->findOrFail($id);
         $facilitieImages = Facilitie::where('showroom_id',$id)->get();
 
@@ -256,9 +255,7 @@ class ShowroomController extends Controller
 
         $showroom->delete();
 
-        return response()->json([
-            'success' => 'Record deleted successfully!'
-        ]);
+        return redirect()->route('showroom.index')->with('message', 'Showroom deleted succesfully');
   
     }
 

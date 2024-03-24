@@ -146,6 +146,30 @@
                 </li>
             @endif
         @endif
+
+        @php($has_permission = hasPermission('Header Menu'))
+          @if(isset($has_permission) && $has_permission)
+              @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+          <li class="nav-item">
+            <a href="{{url('header_menu_index')}}" class="nav-link">
+              <i class="nav-icon fas fa-heading"></i>
+              <p>
+                Header Menu
+              </p>
+            </a>
+          </li>
+          @endif
+        @endif
+
+        <li class="nav-item">
+          <a href="{{url('footer')}}" class="nav-link">
+            <i class="nav-icon fas fa-heading"></i>
+            <p>
+              Footer Menu
+            </p>
+          </a>
+        </li>
+
         @if(isset(Auth::user()->role_id) && Auth::user()->role_id)
             <li class="nav-item">
                 <a href="{{route('role-permission')}}" class="nav-link">
@@ -155,7 +179,6 @@
                 </p>
                 </a>
             </li>
-            @endif 
         @endif 
     </ul>
 </nav>

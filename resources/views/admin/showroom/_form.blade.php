@@ -24,117 +24,122 @@
                         <form method="post" action="{{ route('showroom_update', $showroom->id) }}" class="edit_form" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $showroom->id }}" class="id" name="id">
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Showroom Name</label>
-                                <input  type="text" class="form-control" name="name" value="{{$showroom->name}}">
-                                <div class="error"></div>
-                            </div>
 
-                            <div class="mb-3">
-                                <label for="brand_id" class="form-label">Select Brand</label>
-                                <select name="brand_id" id="brand_id" class="form-control select2">
-                                    <option selected="selected" disabled="disabled">Select Brand</option>
-                                    @foreach($brands as $brand)
-                                        <option value="{{$brand->id}}" {{$showroom->brand_id == $brand->id  ? 'selected' : ''}}>
-                                            {{$brand->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="car_id" class="form-label">Select Car</label>
-                                <select name="car_id[]" id="car_id" class="form-control select2" multiple>
-                                    <option disabled>Select Car</option>
-                                    @foreach($cars as $car)
-                                        <option value="{{$car->id}}" {{ in_array($car->id, json_decode($showroom->car_id)) ? 'selected' : '' }}>
-                                            {{$car->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <div id="errorcardiv"></div>
-                            </div>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Address</label>
+                        <div class="row">
+
+                                <div class="col-md-4">
+                                    <label for="name" class="form-label">Showroom Name</label>
+                                    <input type="text" id="name" class="form-control" name="name" value="{{$showroom->name}}">
+                                    <div id="error"></div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="brand_id" class="form-label">Select Brand</label>
+                                    <select name="brand_id" id="brand_id" class="form-control select2">
+                                        <option selected="selected" disabled="disabled">Select Brand</option>
+                                        @foreach($brands as $brand)
+                                            <option value="{{$brand->id}}" {{$showroom->brand_id == $brand->id  ? 'selected' : ''}}>
+                                                {{$brand->name}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="car_id" class="form-label">Select Car</label>
+                                    <select name="car_id[]" id="car_id" class="form-control select2" multiple>
+                                        <option disabled>Select Car</option>
+                                        @foreach($cars as $car)
+                                            <option value="{{$car->id}}" {{ in_array($car->id, json_decode($showroom->car_id)) ? 'selected' : '' }}>
+                                                {{$car->name}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div id="errorcardiv"></div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <label for="address" class="form-label">Address</label>
                                     <textarea class="form-control" name="address">{{$showroom->address}}</textarea>
                                     <div class="error"></div>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="col-md-4">
                                     <label for="working_hours" class="form-label">Working Hours</label>
                                     <input  type="text" class="form-control" name="working_hours" value="{{$showroom->working_hours}}">
-                                    <div class="error"></div>
+                                    <div id="error"></div>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-3 col-md-4">
                                     <label for="contact_number" class="form-label">Contact Number</label>
                                     <input type="number" id="contact_number" class="form-control" name="contact_number" value="{{$showroom->contact_number}}">
                                     <div class="error"></div>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="col-md-4">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" id="email" class="form-control" name="email" value="{{$showroom->email}}">
                                     <div class="error"></div>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="col-md-4">
                                     <label for="address_color" class="form-label">Address Color</label>
                                     <input type="text" class="form-control colorpicker" name="address_color" id="address_color" value="{{$showroom->address_color}}">
-                                    <div class="error"></div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="address_font_size">Address Select Font Size</label>
+                                <div class="mb-3 col-md-4">
+                                    <label for="address_font_size" class="form-label">Address Select Font Size</label>
                                     <select class="form-control select2" name="address_font_size">
                                         <option selected="selected" disabled="disabled">Address Select Font Size</option>
                                         @for($i=24; $i<=50; $i+=2)
                                             <option value="{{$i}}px" {{$showroom->address_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
-                                    </select>
+                                </select>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="address_font_family">Address Select Font Family</label>
+                            
+                                <div class="col-md-4">
+                                    <label for="address_font_family" class="form-label">Address Select Font Family</label>
                                     <select class="form-control select2" name="address_font_family">
                                         <option selected="selected" disabled="disabled">Address Select Font Family</option>
                                         <option value="poppins"  {{$showroom->address_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
                                         <option value="sans-serif" {{$showroom->address_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
-                                    </select>
+                                </select>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="working_hours_color">Working Hours Color</label>
+                                <div class="col-md-4">
+                                    <label for="working_hours_color" class="form-label">Working Hours Color</label>
                                     <input type="text" class="form-control colorpicker" name="working_hours_color" id="working_hours_color" value="{{$showroom->working_hours_color}}">
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="working_hours_font_size">Working Hours Select Font Size</label>
+                                <div class="mb-3 col-md-4">
+                                    <label for="working_hours_font_size" class="form-label">Working Hours Select Font Size</label>
                                     <select class="form-control select2" name="working_hours_font_size">
                                         <option selected="selected" disabled="disabled">Working Hours Select Font Size</option>
                                         @for($i=24; $i<=50; $i+=2)
                                             <option value="{{$i}}px" {{$showroom->working_hours_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
-                                    </select>
+                                </select>
                                 </div>
 
-                              
-                                <div class="mb-3">
-                                    <label for="working_hours_font_family">Working Hours Select Font Family</label>
+                                <div class="col-md-4">
+                                    <label for="working_hours_font_family" class="form-label">Working Hours Select Font Family</label>
                                     <select class="form-control select2" name="working_hours_font_family">
                                         <option selected="selected" disabled="disabled">Working Hours Select Font Family</option>
                                         <option value="poppins"  {{$showroom->working_hours_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
                                         <option value="sans-serif" {{$showroom->working_hours_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
-                                    </select>
+                                </select>
                                 </div>
-                             
-                                <div class="mb-3">
-                                    <label for="contact_number_color">Contact Number Color</label>
+
+                                <div class="col-md-4">
+                                    <label for="contact_number_color" class="form-label">Contact Number Color</label>
                                     <input type="text" class="form-control colorpicker" name="contact_number_color" id="contact_number_color" value="{{$showroom->contact_number_color}}">
                                 </div>
-                             
-                               
-                                <div class="mb-3">
-                                    <label for="contact_number_font_size">Contact Number Select Font Size</label>
+
+                            
+                            <div class="col-md-4">
+                                    <label for="contact_number_font_size" class="form-label">Contact Number Select Font Size</label>
                                     <select class="form-control select2" name="contact_number_font_size">
                                         <option selected="selected" disabled="disabled">Contact Number Select Font Size</option>
                                         @for($i=24; $i<=50; $i+=2)
@@ -142,53 +147,59 @@
                                         @endfor
                                     </select>
                                 </div>
-                               
-                                <div class="mb-3">
-                                    <label for="contact_number_font_family">Contact Number Select Font Family</label>
+
+                       
+                                <div class="col-md-4">
+                                    <label for="contact_number_font_family" class="form-label">Contact Number Select Font Family</label>
                                     <select class="form-control select2" name="contact_number_font_family">
                                         <option selected="selected" disabled="disabled">Contact Number Select Font Family</option>
                                         <option value="poppins"  {{$showroom->contact_number_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
                                         <option value="sans-serif" {{$showroom->contact_number_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
-                                    </select>
+                                </select>
                                 </div>
-                             
-                                <div class="mb-3">
-                                    <label for="email_color">Email Color</label>
+
+                                <div class="col-md-4">
+                                    <label for="email_color" class="form-label">Email Color</label>
                                     <input type="text" class="form-control colorpicker" name="email_color" id="email_color" value="{{$showroom->email_color}}">
                                 </div>
-                              
-                                <div class="mb-3">
-                                    <label for="email_font_size">Email Select Font Size</label>
+
+                                
+                                <div class="col-md-4">
+                                    <label for="email_color" class="form-label">Email Select Font Size</label>
                                     <select class="form-control select2" name="email_font_size">
                                         <option selected="selected" disabled="disabled">Email Select Font Size</option>
                                         @for($i=24; $i<=50; $i+=2)
                                             <option value="{{$i}}px" {{$showroom->email_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
-                                    </select>
+                                </select>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="email_font_family">Email Select Font Family</label>
+                        
+                                <div class="mb-3 col-md-4">
+                                    <label for="email_color" class="form-label">Email Select Font Family</label>
                                     <select class="form-control select2" name="email_font_family">
                                         <option selected="selected" disabled="disabled">Email Select Font Family</option>
                                         <option value="poppins"  {{$showroom->email_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
                                         <option value="sans-serif" {{$showroom->email_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
-                                    </select>
+                                </select>
                                 </div>
-                                
-                                <div class="mb-3">
-                                    <label>Facilitie Image</label>
-                                    @if($facilitie_image == NULL)
-                                        <img src="{{asset('public/no_image/notImg.png')}}" width="100">
-                                    @else
-                                        @foreach ($facilitie_image as $key => $image ) 
-                                            <div class="col-4 offset-1" style="top: 11px;">
-                                                <button type="button" data-id="{{$key}}" class="badge btn-danger facilitie_image_btn">X</button>
-                                            </div>
-                                            <img src="{{asset('public/facilitie_image/'.$image)}}" width="100">
-                                        @endforeach
-                                    @endif
-                                </div>
+                       
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Facilitie Image</label>
+                                @if($facilitie_image == NULL)
+                                    <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                @else
+                                    @foreach ($facilitie_image as $key => $image ) 
+                                        <div class="col-4 offset-1" style="top: 11px;">
+                                            <button type="button" data-id="{{$key}}" class="badge btn-danger facilitie_image_btn">X</button>
+                                        </div>
+                                        <img src="{{url('public/facilitie_image/'.$image)}}" width="100">
+                                    @endforeach
+                                @endif
+                            </div> 
+
 
                                 <table class="table table-bordered" cellspacing="0">
                                     <tr>
@@ -209,13 +220,13 @@
                         <div class="mb-3">
                             <label>Customer Gallery Image</label>
                             @if($customer_gallery_images == NULL)
-                                <img src="{{asset('public/no_image/notImg.png')}}" width="100">
+                                <img src="{{url('public/no_image/notImg.png')}}" width="100">
                             @else
                                 @foreach ($customer_gallery_images as $key => $customer_gallery_image ) 
                                     <div class="col-4 offset-1" style="top: 11px;">
                                         <button type="button" data-id="{{$key}}" class="badge btn-danger customer_gallery_image_btn">X</button>
                                     </div>
-                                    <img src="{{asset('public/customer_gallery_image/'.$customer_gallery_image)}}" width="100">
+                                    <img src="{{url('public/customer_gallery_image/'.$customer_gallery_image)}}" width="100">
                                 @endforeach
                             @endif
                         </div>
@@ -236,8 +247,8 @@
                             </tr>
                         </table>
 
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary submit">Submit</button>
                                 <a href="{{ route('showroom.index') }}" class="btn btn-default">Cancel</a>
                             </div>
                         </form>
@@ -275,6 +286,9 @@
 
         $(".edit_form").validate({
             rules: {
+                'name': {
+                    required: true,
+                },
                 'car_id[]': { 
                     required: true,
                 },
@@ -294,20 +308,23 @@
                 },
             },
             messages: {
+                'name': {
+                    required: "The name field is required.",
+                },
                 'car_id[]': { 
-                    required: "Car is required",
+                    required: "The car field is required.",
                 },
                 'address': {
-                    required: "Address is required",
+                    required: "The address field is required.",
                 },
                 'working_hours': {
-                    required: "Working hours is required",
+                    required: "The working hours field is required.",
                 },
                 'contact_number': {
-                    required: "Contact number is required",
+                    required: "The contact number field is required.",
                 },
                 'email': {
-                    required: "Email is required",
+                    required: "The email field is required.",
                 },
             },
             errorPlacement: function(error, element) {

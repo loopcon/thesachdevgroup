@@ -25,52 +25,54 @@
                             @csrf
                             <input type="hidden" value="{{ $brand->id }}" class="id" name="id">
                            
-                                <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md-4">
                                     <label for="image" class="form-label">Image</label>
-                                    <input  type="file" class="form-control" name="image">
+                                    @if($brand->image == null)
+                                        <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                    @else
+                                        <img src="{{url('public/brand/'.$brand->image)}}" width="100">
+                                    @endif
+                                    <input type="file" id="image" class="form-control" name="image">
                                     <div class="error"></div>
                                 </div>
-
-                                @if($brand->image == null)
-                                    <img src="{{asset('public/no_image/notImg.png')}}" width="100">
-                                    @else
-                                    <img src="{{asset('public/brand/'.$brand->image)}}" width="100">
-                                @endif
-
-                                <div class="mb-3">
+    
+                                <div class="col-md-4">
                                     <label for="name" class="form-label">Name</label>
                                     <input  type="text" class="form-control" name="name" value="{{$brand->name}}">
                                     <div class="error"></div>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="color">Color</label>
-                                    <input type="text" class="form-control colorpicker" name="color" value="{{$brand->color}}">
+    
+                                <div class="col-md-4">
+                                    <label for="color" class="form-label">Color</label>
+                                    <input type="text" class="form-control colorpicker" name="color" id="color" value="{{$brand->color}}">
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="font_size">Font Size</label>
+    
+                                <div class="mb-3 col-md-4">
+                                    <label for="font_size" class="form-label">Font Size</label>
                                     <select class="form-control select2" name="font_size">
                                         <option selected="selected" disabled="disabled">Select Font Size</option>
                                         @for($i=24; $i<=50; $i+=2)
                                             <option value="{{$i}}px" {{$brand->font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
-                                    </select>
+                                   </select>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="font_family">Font Family</label>
-                                       <select class="form-control select2" name="font_family">
-                                            <option selected="selected" disabled="disabled">Select Font Family</option>
-                                            <option value="poppins"  {{$brand->font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                            <option value="sans-serif" {{$brand->font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
-                                       </select>
+    
+                                <div class="col-md-4">
+                                    <label for="font_family" class="form-label">Font Family</label>
+                                    <select class="form-control select2" name="font_family">
+                                        <option selected="selected" disabled="disabled">Select Font Family</option>
+                                        <option value="poppins"  {{$brand->font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                        <option value="sans-serif" {{$brand->font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                   </select>
                                 </div>
-
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+    
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary submit">Submit</button>
                                 <a href="{{ route('brand.index') }}" class="btn btn-default">Cancel</a>
                             </div>
+
                         </form>
                     @endforeach 
                 </div>
@@ -84,19 +86,19 @@
     $(document).ready(function () {
         $(".edit_form").validate({
             rules: {
+                'image': {
+                    extension: "jpg,jpeg,png",
+                },
                 'name': {
                     required: true,
                 },
-                image: {
-                    extension: "jpg,jpeg,png",
-                },
             },
             messages: {
-                'name': {
-                    required: "Name is required",
+                'image': {
+                    extension: "The image must be an image.",
                 },
-                image: {
-                    extension: "Please enter a value with a valid extension.",
+                'name': {
+                    required: "The name field is required.",
                 },
             },
             errorPlacement: function(error, element) {

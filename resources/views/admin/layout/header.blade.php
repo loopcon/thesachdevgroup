@@ -15,7 +15,18 @@
   <link rel="stylesheet" href="{{url('public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{url('public/dist/css/adminlte.min.css')}}">
+
+  {{-- select2 --}}
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+ 
+  {{-- colorpicker --}}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
   @yield('css')
+  <style>
+    .error{
+      color: red;
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini">

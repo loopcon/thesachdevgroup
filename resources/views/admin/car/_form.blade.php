@@ -25,99 +25,99 @@
                             @csrf
                             <input type="hidden" value="{{ $car->id }}" class="id" name="id">
                            
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Select Brand</label>
-                                <select name="brand_id" id="brand_id" class="form-control select2">
-                                    <option selected="selected" disabled="disabled">Select Brand</option>
-                                    @foreach($brands as $brand)
-                                        <option value="{{$brand->id}}" {{$car->brand_id == $brand->id  ? 'selected' : ''}}>
-                                            {{$brand->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                                <div class="mb-3">
+                            <div class="row">
+                                <div class="mb-3 col-md-4">
+                                    <label for="brand_id" class="form-label">Select Brand</label>
+                                    <select name="brand_id" id="brand_id" class="form-control select2">
+                                        <option selected="selected" disabled="disabled">Select Brand</option>
+                                        @foreach($brands as $brand)
+                                            <option value="{{$brand->id}}" {{$car->brand_id == $brand->id  ? 'selected' : ''}}>
+                                                {{$brand->name}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+    
+                                <div class="col-md-4">
                                     <label for="image" class="form-label">Image</label>
-                                    <input  type="file" class="form-control" name="image">
+                                    @if($car->image == null)
+                                        <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                    @else
+                                        <img src="{{url('public/car/'.$car->image)}}" width="100">
+                                    @endif
+                                    <input type="file" id="image" class="form-control" name="image">
                                     <div class="error"></div>
                                 </div>
-
-                                @if($car->image == null)
-                                    <img src="{{asset('public/no_image/notImg.png')}}" width="100">
-                                    @else
-                                    <img src="{{asset('public/car/'.$car->image)}}" width="100">
-                                @endif
-
-                                <div class="mb-3">
+    
+                                <div class="col-md-4">
                                     <label for="name" class="form-label">Name</label>
                                     <input  type="text" class="form-control" name="name" value="{{$car->name}}">
                                     <div class="error"></div>
                                 </div>
-
-                                <div class="mb-3">
+    
+                                <div class="mb-3 col-md-4">
                                     <label for="price" class="form-label">Price</label>
                                     <input  type="text" class="form-control" name="price" value="{{$car->price}}">
                                     <div class="error"></div>
                                 </div>
-
-                                <div class="mb-3">
+    
+                                <div class="col-md-4">
                                     <label for="link" class="form-label">Link</label>
                                     <input  type="text" class="form-control" name="link" value="{{$car->link}}">
                                     <div class="error"></div>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="name_color">Name Color</label>
-                                    <input type="text" class="form-control colorpicker" name="name_color" value="{{$car->name_color}}">
+    
+                                <div class="col-md-4">
+                                    <label for="name_color" class="form-label">Name Color</label>
+                                    <input type="text" class="form-control colorpicker" name="name_color" id="name_color" value="{{$car->name_color}}">
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="price_color">Price Color</label>
-                                    <input type="text" class="form-control colorpicker" name="price_color" value="{{$car->price_color}}">
+    
+                                <div class="mb-3 col-md-4">
+                                    <label for="price_color" class="form-label">Price Color</label>
+                                    <input type="text" class="form-control colorpicker" name="price_color" id="price_color" value="{{$car->price_color}}">
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="name_font_size">Name Select Font Size</label>
+    
+                               
+                                <div class="col-md-4">
+                                    <label for="name_font_size" class="form-label">Name Select Font Size</label>
                                     <select class="form-control select2" name="name_font_size">
                                         <option selected="selected" disabled="disabled">Name Select Font Size</option>
                                         @for($i=24; $i<=50; $i+=2)
                                             <option value="{{$i}}px" {{$car->name_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
-                                    </select>
+                                   </select>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="price_font_size">Price Select Font Size</label>
+    
+                                <div class="col-md-4">
+                                    <label for="price_font_size" class="form-label">Price Select Font Size</label>
                                     <select class="form-control select2" name="price_font_size">
                                         <option selected="selected" disabled="disabled">Price Select Font Size</option>
                                         @for($i=24; $i<=50; $i+=2)
-                                            <option value="{{$i}}px" {{$car->price_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        <option value="{{$i}}px" {{$car->price_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
-                                    </select>
+                                   </select>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="name_font_family">Name Select Font Family</label>
-                                       <select class="form-control select2" name="name_font_family">
-                                            <option selected="selected" disabled="disabled">Name Select Font Family</option>
-                                            <option value="poppins"  {{$car->name_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+    
+                                <div class="mb-3 col-md-4">
+                                    <label for="name_font_family" class="form-label">Name Select Font Family</label>
+                                    <select class="form-control select2" name="name_font_family">
+                                        <option selected="selected" disabled="disabled">Name Select Font Family</option>
+                                        <option value="poppins"  {{$car->name_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
                                             <option value="sans-serif" {{$car->name_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
-                                       </select>
+                                   </select>
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="price_font_family">Price Select Font Family</label>
-                                       <select class="form-control select2" name="price_font_family">
-                                            <option selected="selected" disabled="disabled">Price Select Font Family</option>
-                                            <option value="poppins"  {{$car->price_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                            <option value="sans-serif" {{$car->price_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
-                                       </select>
+    
+                                <div class="col-md-4">
+                                    <label for="price_font_family" class="form-label">Price Select Font Family</label>
+                                    <select class="form-control select2" name="price_font_family">
+                                        <option selected="selected" disabled="disabled">Price Select Font Family</option>
+                                        <option value="poppins"  {{$car->price_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                        <option value="sans-serif" {{$car->price_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                   </select>
                                 </div>
-
-
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary submit">Submit</button>
                                 <a href="{{ route('car.index') }}" class="btn btn-default">Cancel</a>
                             </div>
                         </form>
@@ -133,7 +133,7 @@
     $(document).ready(function () {
         $(".edit_form").validate({
             rules: {
-                image: {
+                'image': {
                     extension: "jpg,jpeg,png",
                 },
                 'name': {
@@ -143,22 +143,22 @@
                     required: true,
                 },
                 'link': {
-                    required: true,
                     url: "url",
+                    required: true,
                 },
             },
             messages: {
-                image: {
-                    extension: "Please enter a value with a valid extension.",
+                'image': {
+                    extension: "The image must be an image.",
                 },
                 'name': {
-                    required: "Name is required",
+                    required: "The name field is required.",
                 },
                 'price': {
-                    required: "Price is required",
+                    required: "The price field is required.",
                 },
                 'link': {
-                    required: "Link is required",
+                    required: "The link field is required.",
                     url: "Please enter a valid link",
                 },
             },
