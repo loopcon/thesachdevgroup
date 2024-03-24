@@ -10,7 +10,7 @@ class ShowroomTestimonial extends Model
 {
     use HasFactory,SoftDeletes;
     protected $table = 'showroom_testimonial';
-    protected $fields = ['image', 'name', 'showroom_id', 'description'];
+    protected $fields = ['image', 'name', 'showroom_id', 'description','name_text_size','name_text_color','name_font_family','name_background_color','description_text_size','description_text_color','description_font_family'];
 
     public function showroomDetail()
     {

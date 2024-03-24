@@ -27,4 +27,9 @@ function hasPermission($module_name)
 
     return $module_permission;
 }
+
+function removeFile($path){
+    $filePath = public_path($path);
+    File::delete($filePath);
+}
     

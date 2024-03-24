@@ -9,10 +9,9 @@ ALTER TABLE `module_permission` CHANGE `title` `role_id` INT(11) NULL DEFAULT NU
 ALTER TABLE `module_permission` ADD `read_permission` TINYINT(1) NOT NULL DEFAULT '0' COMMENT '0=no;1=yes;' AFTER `module_id`, ADD `full_permission` TINYINT(1) NOT NULL DEFAULT '0' COMMENT '0=no;1=yes;' AFTER `read_permission`;
 ALTER TABLE `module_permission` CHANGE `module_id` `module_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `modules`';
 
-<<<<<<< HEAD
 --Drashti : 21-03-2024 06:1 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES ('9', 'Header Menu', NULL, NULL, NULL);
-=======
+
 -- Disha : 21-03-2024 04:31 PM
 ALTER TABLE `showrooms` ADD `name` VARCHAR(255) NULL DEFAULT NULL AFTER `id`;
 
@@ -36,4 +35,8 @@ ALTER TABLE `showroom_testimonial`
 
 ALTER TABLE `showroom_testimonial`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> 783c86d76f7244d667bffca29b6aaf7102603606
+
+-- Disha : 21-03-2024 04:25 PM
+ALTER TABLE `showroom_testimonial` ADD `name_text_size` INT NOT NULL AFTER `description`, ADD `name_text_color` INT NOT NULL AFTER `name_text_size`, ADD `name_font_family` INT NOT NULL AFTER `name_text_color`, ADD `name_background_color` INT NOT NULL AFTER `name_font_family`, ADD `address_text_size` INT NOT NULL AFTER `name_background_color`, ADD `address_text_color` INT NOT NULL AFTER `address_text_size`, ADD `address_font_family` INT NOT NULL AFTER `address_text_color`;
+ALTER TABLE `showroom_testimonial` CHANGE `name_text_size` `name_text_size` VARCHAR(255) NULL DEFAULT NULL, CHANGE `name_text_color` `name_text_color` VARCHAR(255) NULL DEFAULT NULL, CHANGE `name_font_family` `name_font_family` VARCHAR(255) NULL DEFAULT NULL, CHANGE `name_background_color` `name_background_color` VARCHAR(255) NULL DEFAULT NULL, CHANGE `address_text_size` `address_text_size` VARCHAR(255) NULL DEFAULT NULL, CHANGE `address_text_color` `address_text_color` VARCHAR(255) NULL DEFAULT NULL, CHANGE `address_font_family` `address_font_family` VARCHAR(255) NULL DEFAULT NULL;
+ALTER TABLE `showroom_testimonial` CHANGE `address_text_size` `description_text_size` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `address_text_color` `description_text_color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `address_font_family` `description_font_family` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;

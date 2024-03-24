@@ -15,9 +15,9 @@
             </div>
         </div>
         <div class="card">
-                <div class="col-sm-12  text-end">
-                    <a href="{{ route('showroom-testimonial-create') }}" class="btn btn-primary mt-2 float-right">Add</a>
-                </div>
+            <div class="col-sm-12  text-end">
+                <a href="{{ route('showroom-testimonial-create') }}" class="btn btn-primary mt-2 mr-4 float-right">Add</a>
+            </div>
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
@@ -68,7 +68,7 @@
             text: "{{__('Are you sure? Delete this Showroom Testimonial!')}}",
             showCancelButton: true,
             confirmButtonText: "{{__('Yes, delete it!')}}",
-            icon: "question"
+            icon: "warning"
         }).then((result) => {
             if (result.isConfirmed) {
                 location.href = href;

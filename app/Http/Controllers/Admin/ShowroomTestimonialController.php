@@ -31,12 +31,14 @@ class ShowroomTestimonialController extends Controller
         $request->validate([
             'showroom_id' => 'required',
             'name' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp',
         ]);
         $showroom_testimonial = new ShowroomTestimonial();
-        $showroom_testimonial->showroom_id = $request->showroom_id ? $request->showroom_id : NULL;
-        $showroom_testimonial->name = $request->name ? $request->name : NULL;
-        $showroom_testimonial->description = $request->description ? $request->description : NULL;
+        $fields = array('showroom_id','name','description','name_text_size','name_text_color','name_font_family','name_background_color','description_text_size','description_text_color','description_font_family');
+        foreach($fields as $field)
+        {
+            $showroom_testimonial->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
+        }
 
         if($request->hasFile('image')) {
             $newName = fileUpload($request, 'image', 'uploads/showroom_testimonial');
@@ -77,7 +79,7 @@ class ShowroomTestimonialController extends Controller
                 ->rawColumns(['image','showroom','action'])
                 ->make(true);
         } else {
-            return redirect('backend/dashboard')->with('error', trans('You have not permission to access this page!'));
+            return redirect()->back()->with('message','something went wrong');
         }
     }
 
@@ -98,14 +100,20 @@ class ShowroomTestimonialController extends Controller
         $request->validate([
             'showroom_id' => 'required',
             'name' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,webp',
         ]);
         $showroom_testimonial = ShowroomTestimonial::find($id);
-        $showroom_testimonial->showroom_id = $request->showroom_id ? $request->showroom_id : NULL;
-        $showroom_testimonial->name = $request->name ? $request->name : NULL;
-        $showroom_testimonial->description = $request->description ? $request->description : NULL;
+        $fields = array('showroom_id','name','description','name_text_size','name_text_color','name_font_family','name_background_color','description_text_size','description_text_color','description_font_family');
+        foreach($fields as $field)
+        {
+            $showroom_testimonial->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
+        }
 
         if($request->hasFile('image')) {
+            $old_image = public_path("uploads/showroom_testimonial/{$showroom_testimonial->image}");
+            if (File::exists($old_image)) {
+                unlink($old_image);
+            }
             $newName = fileUpload($request, 'image', 'uploads/showroom_testimonial');
             $showroom_testimonial->image = $newName;
         }
@@ -120,6 +128,14 @@ class ShowroomTestimonialController extends Controller
     public function showroomTestimonialDestroy(Request $request, $id)
     {
         $id = decrypt($id);
+        $showroom_testimonial = ShowroomTestimonial::find($id);
+        if($showroom_testimonial->image != NULL)
+        {
+            $image = public_path("uploads/showroom_testimonial/{$showroom_testimonial->image}");
+            if (File::exists($image)) {
+                unlink($image);
+            }
+        }
         $showroom_testimonial = ShowroomTestimonial::where('id',$id)->delete();
         if($showroom_testimonial)
         {

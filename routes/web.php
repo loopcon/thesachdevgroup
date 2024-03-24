@@ -61,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('testimonials_index', [HomeController::class, 'testimonials_index'])->name('testimonials.index');
     Route::get('testimonials_edit/{testimonials_edit}', [HomeController::class, 'testimonials_edit'])->name('testimonials.edit');
     Route::post('testimonials_update,{testimonials_update}', [HomeController::class, 'testimonials_update'])->name('testimonials_update');
-    Route::delete('testimonials_destroy/{id}', [HomeController::class, 'testimonials_destroy']);
+    Route::get('testimonials_destroy/{id}', [HomeController::class, 'testimonials_destroy'])->name('testimonials_destroy');
 
     //Home Detail
     Route::get('home_detail', [HomeController::class, 'home_detail'])->name('home_detail');
