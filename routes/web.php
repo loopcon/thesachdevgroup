@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\ShowroomController;
 use App\Http\Controllers\Admin\HeaderMenuController;
+use App\Http\Controllers\Admin\FooterMenuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,10 +72,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('setting', [SettingController::class, 'setting'])->name('setting');
     Route::post('setting_insert', [SettingController::class, 'setting_insert'])->name('setting_insert');
 
-    //galaxy_toyota
-    Route::get('galaxy_toyota', [GalaxyToyotaController::class, 'galaxy_toyota'])->name('galaxy_toyota');
-    Route::post('galaxy_toyota_insert', [GalaxyToyotaController::class, 'galaxy_toyota_insert'])->name('galaxy_toyota_insert');
-
     //brand
     Route::get('brand', [BrandController::class, 'brand'])->name('brand');
     Route::post('brand_insert', [BrandController::class, 'brand_insert'])->name('brand_insert');
@@ -120,6 +117,15 @@ Route::group(['middleware' => 'auth'], function () {
      Route::post('showroom-testimonial-update/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialUpdate'])->name('showroom-testimonial-update');
      Route::get('showroom-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDestroy'])->name('showroom-testimonial-delete');
      Route::get('showroom-testimonial-datatable', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDatatable'])->name('showroom-testimonial-datatable');
+
+     //footer menu
+    Route::get('footer_menu', [FooterMenuController::class, 'footer_menu'])->name('footer_menu');
+    Route::get('footerMenuCreate', [FooterMenuController::class, 'footerMenuCreate'])->name('footerMenuCreate');
+    Route::post('footer_menu_insert', [FooterMenuController::class, 'footer_menu_insert'])->name('footer_menu_insert');
+    Route::get('footer_menu_index', [FooterMenuController::class, 'footer_menu_index'])->name('footer_menu.index');
+    Route::get('footer_menu_edit/{footer_menu_edit}', [FooterMenuController::class, 'footer_menu_edit'])->name('footer_menu.edit');
+    Route::post('footer_menu_update,{id}', [FooterMenuController::class, 'footer_menu_update'])->name('footer_menu_update');
+    Route::get('footer_menu_destroy/{id}', [FooterMenuController::class, 'footer_menu_destroy'])->name('footer_menu_destroy');
 
    
 });

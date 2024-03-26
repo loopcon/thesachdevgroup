@@ -26,9 +26,9 @@
                         @if(isset($settings) && count($settings) > 0)
                             @foreach($settings as $setting)
 
-                            <div class="form-row">
+                            {{-- <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="image">Logo</label>
+                                  <label for="image">Logo<span class="text-danger">*</span></label>
                                   @if($setting->logo == null)
                                     <img src="{{url('public/no_image/notImg.png')}}" width="100">
                                   @else
@@ -38,7 +38,7 @@
                                   <div class="error"></div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label for="email">E-mail</label>
+                                  <label for="email">E-mail<span class="text-danger">*</span></label>
                                   <input type="email" id="email" class="form-control" name="email" value="{{ $setting->email ?? '' }}">
                                   <div class="error"></div>
                                 </div>
@@ -46,12 +46,12 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="mobile_number">Mobile Number</label>
+                                  <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
                                   <input type="number" id="mobile_number" class="form-control" name="mobile_number" value="{{ $setting->mobile_number ?? '' }}">
                                   <div class="error"></div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label for="time">Time</label>
+                                  <label for="time">Time<span class="text-danger">*</span></label>
                                   <input type="text" id="time" class="form-control" name="time" value="{{ $setting->time ?? '' }}">
                                   <div class="error"></div>
                                 </div>
@@ -59,12 +59,12 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="twitter_link">Twitter Link</label>
+                                  <label for="twitter_link">Twitter Link<span class="text-danger">*</span></label>
                                   <input type="text" id="twitter_link" class="form-control" name="twitter_link" value="{{ $setting->twitter_link ?? '' }}">
                                   <div class="error"></div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                  <label for="linkedin_link">Linkedin Link</label>
+                                  <label for="linkedin_link">Linkedin Link<span class="text-danger">*</span></label>
                                   <input type="text" id="linkedin_link" class="form-control" name="linkedin_link" value="{{ $setting->linkedin_link ?? '' }}">
                                   <div class="error"></div>
                                 </div>
@@ -72,12 +72,12 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                  <label for="facebook_link">Facebook Link</label>
+                                  <label for="facebook_link">Facebook Link<span class="text-danger">*</span></label>
                                   <input type="text" id="facebook_link" class="form-control" name="facebook_link" value="{{ $setting->facebook_link ?? '' }}">
                                   <div class="error"></div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="address">Address</label>
+                                    <label for="address">Address<span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="address">{{$setting->address}}</textarea>
                                     <div class="error"></div>
                                 </div>
@@ -85,7 +85,7 @@
 
                             <div class="form-row">
                               <div class="form-group col-md-6">
-                                <label for="email_icon">Email Icon</label>
+                                <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
                                 @if($setting->email_icon == null)
                                   <img src="{{url('public/no_image/notImg.png')}}" width="100">
                                 @else
@@ -95,7 +95,7 @@
                                 <div class="error"></div>
                               </div>
                               <div class="form-group col-md-6">
-                                  <label for="call_icon">Call Icon</label>
+                                  <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
                                   @if($setting->call_icon == null)
                                     <img src="{{url('public/no_image/notImg.png')}}" width="100">
                                   @else
@@ -110,81 +110,424 @@
                               <label for="footer_description">Footer Description</label>
                               <textarea class="ckeditor form-control" name="footer_description">{{$setting->footer_description}}</textarea>
                               <div class="error"></div>
+                            </div> --}}
+
+                            <div class="row">
+                              <div class="mb-3 col-md-4">
+                                <label for="logo">Logo<span class="text-danger">*</span></label>
+                                  @if($setting->logo == null)
+                                    <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                  @else
+                                    <img src="{{url('public/logo/'.$setting->logo)}}" width="100">
+                                  @endif
+                                <input type="file" id="logo" class="form-control" name="logo">
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="email">Email<span class="text-danger">*</span></label>
+                                <input type="email" id="email" class="form-control" name="email" value="{{$setting->email}}">
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="email_color" class="form-label">Email Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="email_color" id="email_color" value="{{$setting->email_color}}">
+                              </div>
+    
+                              <div class="mb-3 col-md-4">
+                                <label for="email_font_size" class="form-label">Email Text Font Size</label>
+                                <select class="form-control select2" name="email_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                      <option value="{{$i}}px" {{$setting->email_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="email_font_family" class="form-label">Email Text Font Family</label>
+                                <select class="form-control select2" name="email_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins"  {{$setting->email_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                    <option value="sans-serif" {{$setting->email_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                </select>
+                              </div>
+    
+                              <div class="mb-3 col-md-4">
+                                <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
+                                <input type="number" id="mobile_number" class="form-control" name="mobile_number" value="{{$setting->mobile_number}}">
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="mb-3 col-md-4">
+                                <label for="mobile_number_color" class="form-label">Mobile Number Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="mobile_number_color" id="mobile_number_color" value="{{$setting->mobile_number_color}}">
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="mobile_number_font_size" class="form-label">Mobile Number Text Font Size</label>
+                                <select class="form-control select2" name="mobile_number_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" {{$setting->mobile_number_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="mobile_number_font_family" class="form-label">Mobile Number Text Font Family</label>
+                                <select class="form-control select2" name="mobile_number_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins"  {{$setting->mobile_number_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                    <option value="sans-serif" {{$setting->mobile_number_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                </select>
+                              </div>
+    
+    
+                              <div class="mb-3 col-md-4">
+                                <label for="time">Time<span class="text-danger">*</span></label>
+                                <input type="text" id="time" class="form-control" name="time" value="{{$setting->time}}">
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="time_color" class="form-label">Time Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="time_color" id="time_color" value="{{$setting->time_color}}">
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="time_font_size" class="form-label">Time Text Font Size</label>
+                                <select class="form-control select2" name="time_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" {{$setting->time_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                              </div>
+    
+                              <div class="mb-3 col-md-4">
+                                <label for="time_font_family" class="form-label">Time Text Font Family</label>
+                                <select class="form-control select2" name="time_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins"  {{$setting->time_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                    <option value="sans-serif" {{$setting->time_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                </select>
+                              </div>
+    
+    
+                              <div class="col-md-4">
+                                <label for="twitter_link">Twitter Link<span class="text-danger">*</span></label>
+                                  <input type="text" id="twitter_link" class="form-control" name="twitter_link" value="{{$setting->twitter_link}}">
+                                  <div class="error"></div>
+                              </div>
+    
+                              <div class="mb-3 col-md-4">
+                                <label for="linkedin_link">Linkedin Link<span class="text-danger">*</span></label>
+                                <input type="text" id="linkedin_link" class="form-control" name="linkedin_link" value="{{$setting->linkedin_link}}">
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="facebook_link">Facebook Link<span class="text-danger">*</span></label>
+                                <input type="text" id="facebook_link" class="form-control" name="facebook_link" value="{{$setting->facebook_link}}">
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="mb-3 col-md-4">
+                                <label for="address">Address<span class="text-danger">*</span></label>
+                                <textarea class="form-control" name="address">{{$setting->address}}</textarea>
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="address_color" class="form-label">Address Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="address_color" id="address_color" value="{{$setting->address_color}}">
+                              </div>
+    
+                              <div class="mb-3 col-md-4">
+                                <label for="address_font_size" class="form-label">Address Text Font Size</label>
+                                <select class="form-control select2" name="address_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" {{$setting->address_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="address_font_family" class="form-label">Address Text Font Family</label>
+                                <select class="form-control select2" name="address_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins"  {{$setting->address_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                    <option value="sans-serif" {{$setting->address_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                </select>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
+                                @if($setting->email_icon == null)
+                                  <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                @else
+                                    <img src="{{url('public/email_icon/'.$setting->email_icon)}}" width="100">
+                                @endif
+                                <input type="file" id="email_icon" class="form-control" name="email_icon">
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="mb-3 col-md-4">
+                                <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
+                                @if($setting->call_icon == null)
+                                  <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                @else
+                                    <img src="{{url('public/call_icon/'.$setting->call_icon)}}" width="100">
+                                @endif
+                                <input type="file" id="call_icon" class="form-control" name="call_icon">
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="address_icon">Address Icon<span class="text-danger">*</span></label>
+                                @if($setting->address_icon == null)
+                                  <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                @else
+                                    <img src="{{url('public/address_icon/'.$setting->address_icon)}}" width="100">
+                                @endif
+                                <input type="file" id="address_icon" class="form-control" name="address_icon">
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="col-md-12 mt-2 mb-3">
+                                <label for="footer_description">Footer Description</label>
+                                <textarea class="ckeditor form-control" name="footer_description">{{$setting->footer_description}}</textarea>
+                                <div class="error"></div>
+                              </div>
+    
+                              <div class="mb-3 col-md-4">
+                                <label for="footer_description_color" class="form-label">Footer Description Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="footer_description_color" id="footer_description_color" value="{{$setting->footer_description_color}}">
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="footer_description_font_size" class="form-label">Footer Description Text Font Size</label>
+                                <select class="form-control select2" name="footer_description_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" {{$setting->footer_description_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="footer_description_font_family" class="form-label">Footer Description Text Font Family</label>
+                                <select class="form-control select2" name="footer_description_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins"  {{$setting->footer_description_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                    <option value="sans-serif" {{$setting->footer_description_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                </select>
+                              </div>
+    
                             </div>
 
                             @endforeach
                         @else
                  
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="image">Logo</label>
-                              <input type="file" id="logo" class="form-control" name="logo">
-                              <div class="error"></div>
-                            </div>
-                            <div class="form-group col-md-6">
-                              <label for="email">E-mail</label>
-                              <input type="email" id="email" class="form-control" name="email">
-                              <div class="error"></div>
-                            </div>
-                        </div>
+                
+                        <div class="row">
+                          <div class="mb-3 col-md-4">
+                            <label for="logo">Logo<span class="text-danger">*</span></label>
+                            <input type="file" id="logo" class="form-control" name="logo">
+                            <div class="error"></div>
+                          </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="mobile_number">Mobile Number</label>
-                              <input type="number" id="mobile_number" class="form-control" name="mobile_number">
-                              <div class="error"></div>
-                            </div>
-                            <div class="form-group col-md-6">
-                              <label for="time">Time</label>
-                              <input type="text" id="time" class="form-control" name="time">
-                              <div class="error"></div>
-                            </div>
-                        </div>
+                          <div class="col-md-4">
+                            <label for="email">Email<span class="text-danger">*</span></label>
+                            <input type="email" id="email" class="form-control" name="email">
+                            <div class="error"></div>
+                          </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="twitter_link">Twitter Link</label>
+                          <div class="col-md-4">
+                            <label for="email_color" class="form-label">Email Text Color</label>
+                            <input type="text" class="form-control colorpicker" name="email_color" id="email_color">
+                          </div>
+
+                          <div class="mb-3 col-md-4">
+                            <label for="email_font_size" class="form-label">Email Text Font Size</label>
+                            <select class="form-control select2" name="email_font_size">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                @for($i=24; $i<=50; $i+=2)
+                                    <option value="{{$i}}px">{{$i}}px</option>
+                                @endfor
+                            </select>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="email_font_family" class="form-label">Email Text Font Family</label>
+                            <select class="form-control select2" name="email_font_family">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins">Poppins</option>
+                                    <option value="sans-serif">Sans Serif</option>
+                            </select>
+                          </div>
+
+                          <div class="mb-3 col-md-4">
+                            <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
+                            <input type="number" id="mobile_number" class="form-control" name="mobile_number">
+                            <div class="error"></div>
+                          </div>
+
+                          <div class="mb-3 col-md-4">
+                            <label for="mobile_number_color" class="form-label">Mobile Number Text Color</label>
+                            <input type="text" class="form-control colorpicker" name="mobile_number_color" id="mobile_number_color">
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="mobile_number_font_size" class="form-label">Mobile Number Text Font Size</label>
+                            <select class="form-control select2" name="mobile_number_font_size">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                @for($i=24; $i<=50; $i+=2)
+                                    <option value="{{$i}}px">{{$i}}px</option>
+                                @endfor
+                            </select>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="mobile_number_font_family" class="form-label">Mobile Number Text Font Family</label>
+                            <select class="form-control select2" name="mobile_number_font_family">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins">Poppins</option>
+                                    <option value="sans-serif">Sans Serif</option>
+                            </select>
+                          </div>
+
+
+                          <div class="mb-3 col-md-4">
+                            <label for="time">Time<span class="text-danger">*</span></label>
+                            <input type="text" id="time" class="form-control" name="time">
+                            <div class="error"></div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="time_color" class="form-label">Time Text Color</label>
+                            <input type="text" class="form-control colorpicker" name="time_color" id="time_color">
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="time_font_size" class="form-label">Time Text Font Size</label>
+                            <select class="form-control select2" name="time_font_size">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                @for($i=24; $i<=50; $i+=2)
+                                    <option value="{{$i}}px">{{$i}}px</option>
+                                @endfor
+                            </select>
+                          </div>
+
+                          <div class="mb-3 col-md-4">
+                            <label for="time_font_family" class="form-label">Time Text Font Family</label>
+                            <select class="form-control select2" name="time_font_family">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins">Poppins</option>
+                                    <option value="sans-serif">Sans Serif</option>
+                            </select>
+                          </div>
+
+
+                          <div class="col-md-4">
+                            <label for="twitter_link">Twitter Link<span class="text-danger">*</span></label>
                               <input type="text" id="twitter_link" class="form-control" name="twitter_link">
                               <div class="error"></div>
-                            </div>
-                            <div class="form-group col-md-6">
-                              <label for="linkedin_link">Linkedin Link</label>
-                              <input type="text" id="linkedin_link" class="form-control" name="linkedin_link">
-                              <div class="error"></div>
-                            </div>
-                        </div>
+                          </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="facebook_link">Facebook Link</label>
-                              <input type="text" id="facebook_link" class="form-control" name="facebook_link">
-                              <div class="error"></div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="address">Address</label>
-                                <textarea class="form-control" name="address"></textarea>
-                                <div class="error"></div>
-                              </div>
-                        </div>
+                          <div class="mb-3 col-md-4">
+                            <label for="linkedin_link">Linkedin Link<span class="text-danger">*</span></label>
+                            <input type="text" id="linkedin_link" class="form-control" name="linkedin_link">
+                            <div class="error"></div>
+                          </div>
 
+                          <div class="col-md-4">
+                            <label for="facebook_link">Facebook Link<span class="text-danger">*</span></label>
+                            <input type="text" id="facebook_link" class="form-control" name="facebook_link">
+                            <div class="error"></div>
+                          </div>
 
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="email_icon">Email Icon</label>
+                          <div class="mb-3 col-md-4">
+                            <label for="address">Address<span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="address"></textarea>
+                            <div class="error"></div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="address_color" class="form-label">Address Text Color</label>
+                            <input type="text" class="form-control colorpicker" name="address_color" id="address_color">
+                          </div>
+
+                          <div class="mb-3 col-md-4">
+                            <label for="address_font_size" class="form-label">Address Text Font Size</label>
+                            <select class="form-control select2" name="address_font_size">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                @for($i=24; $i<=50; $i+=2)
+                                    <option value="{{$i}}px">{{$i}}px</option>
+                                @endfor
+                            </select>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="address_font_family" class="form-label">Address Text Font Family</label>
+                            <select class="form-control select2" name="address_font_family">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins">Poppins</option>
+                                    <option value="sans-serif">Sans Serif</option>
+                            </select>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
                             <input type="file" id="email_icon" class="form-control" name="email_icon">
                             <div class="error"></div>
                           </div>
-                          <div class="form-group col-md-6">
-                              <label for="call_icon">Call Icon</label>
-                              <input type="file" id="call_icon" class="form-control" name="call_icon">
-                              <div class="error"></div>
-                            </div>
-                      </div>
 
-                        <div class="mb-3">
-                          <label for="footer_description">Footer Description</label>
-                          <textarea class="ckeditor form-control" name="footer_description"></textarea>
-                          <div class="error"></div>
+                          <div class="mb-3 col-md-4">
+                            <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
+                            <input type="file" id="call_icon" class="form-control" name="call_icon">
+                            <div class="error"></div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="address_icon">Address Icon<span class="text-danger">*</span></label>
+                            <input type="file" id="address_icon" class="form-control" name="address_icon">
+                            <div class="error"></div>
+                          </div>
+
+                          <div class="col-md-12 mt-2 mb-3">
+                            <label for="footer_description">Footer Description</label>
+                            <textarea class="ckeditor form-control" name="footer_description"></textarea>
+                            <div class="error"></div>
+                          </div>
+
+                          <div class="mb-3 col-md-4">
+                            <label for="footer_description_color" class="form-label">Footer Description Text Color</label>
+                            <input type="text" class="form-control colorpicker" name="footer_description_color" id="footer_description_color">
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="footer_description_font_size" class="form-label">Footer Description Text Font Size</label>
+                            <select class="form-control select2" name="footer_description_font_size">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                @for($i=24; $i<=50; $i+=2)
+                                    <option value="{{$i}}px">{{$i}}px</option>
+                                @endfor
+                            </select>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="footer_description_font_family" class="form-label">Footer Description Text Font Family</label>
+                            <select class="form-control select2" name="footer_description_font_family">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins">Poppins</option>
+                                    <option value="sans-serif">Sans Serif</option>
+                            </select>
+                          </div>
+
                         </div>
                     
                         @endif
@@ -237,6 +580,9 @@
                 'call_icon': {
                   extension: "jpg,jpeg,png",
                 },
+                'address_icon': {
+                  extension: "jpg,jpeg,png",
+                },
             },
             messages: {
                 'logo': {
@@ -253,15 +599,15 @@
                 },
                 'twitter_link': {
                     required: "The twitter link field is required.",
-                    url: "Please enter a valid link",
+                    url: "Please enter a valid link.",
                 },
                 'linkedin_link': {
                     required: "The linkedin link field is required.",
-                    url: "Please enter a valid link",
+                    url: "Please enter a valid link.",
                 },
                 'facebook_link': {
                     required: "The facebook link field is required.",
-                    url: "Please enter a valid link",
+                    url: "Please enter a valid link.",
                 },
                 'address': {
                     required: "The address field is required.",
@@ -272,11 +618,16 @@
                 'call_icon': {
                     extension: "Please enter a value with a valid extension.",
                 },
+                'address_icon': {
+                    extension: "Please enter a value with a valid extension.",
+                },
             },
             errorPlacement: function(error, element) {
                 error.appendTo(element.parent().find('.error'));
             },
         });
+
+        $('.colorpicker').colorpicker();
     });
 </script>
 

@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Testimonials</h1>
+            <h1>Testimonials Edit</h1>
           </div>
           <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Testimonials</li>
+              <li class="breadcrumb-item active">Testimonials Edit</li>
             </ol>
           </div>
         </div>
@@ -26,45 +26,50 @@
                             <input type="hidden" value="{{ $testimonial->id }}" class="id" name="id">
                            
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="mb-3 col-md-4">
                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                     <input  type="text" class="form-control" name="name" value="{{$testimonial->name}}">
                                     <div class="error"></div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="mb-3 col-md-4">
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     @if($testimonial->image == null)
                                         <img src="{{asset('public/no_image/notImg.png')}}" width="100">
-                                        @else
+                                    @else
                                         <img src="{{url('public/testimonials/'.$testimonial->image)}}" width="100">
                                     @endif
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     <input  type="file" class="form-control" name="image">
                                     <div class="error"></div>
                                 </div>
 
+                                <div class="mb-3 col-md-4">
+                                    <label for="name_background_color" class="form-label">Name Background Color</label>
+                                    <input type="text" class="form-control colorpicker" name="name_background_color" id="name_background_color" value="{{$testimonial->name_background_color}}">
+                                </div>
+
                                 <div class="col-md-4">
-                                    <label for="color" class="form-label">Color</label>
-                                    <input type="text" class="form-control colorpicker" name="color" id="color" value="{{$testimonial->color}}">
+                                    <label for="name_color" class="form-label">Name Text Color</label>
+                                    <input type="text" class="form-control colorpicker" name="name_color" id="name_color" value="{{$testimonial->name_color}}">
                                     <div class="error"></div>
                                 </div>
 
-                                <div class="col-md-4 mt-2">
-                                    <label for="font_size">Font Size</label>
-                                    <select class="form-control select2" name="font_size">
-                                        <option selected="selected" disabled="disabled">Select Font Size</option>
+                                <div class="mb-3 col-md-4">
+                                    <label for="name_font_size">Name Text Font Size</label>
+                                    <select class="form-control select2" name="name_font_size">
+                                        <option selected="selected" disabled="disabled">Select</option>
                                         @for($i=24; $i<=50; $i+=2)
-                                            <option value="{{$i}}px" {{$testimonial->font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                            <option value="{{$i}}px" {{$testimonial->name_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                     </select>
                                 </div>
 
                                 <div class="col-md-4 mt-2" >
-                                    <label for="font_family">Font Family</label>
-                                    <select class="form-control select2" name="font_family">
-                                        <option selected="selected" disabled="disabled">Select Font Family</option>
-                                        <option value="poppins"  {{$testimonial->font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$testimonial->font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                    <label for="name_font_family">Name Text Font Family</label>
+                                    <select class="form-control select2" name="name_font_family">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="poppins"  {{$testimonial->name_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                        <option value="sans-serif" {{$testimonial->name_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
                                     </select>
                                 </div>
 
@@ -73,6 +78,32 @@
                                     <textarea class="ckeditor form-control" name="description">{{$testimonial->description}}</textarea>
                                     <div class="error"></div>
                                 </div>
+
+                                <div class="mb-3 col-md-4">
+                                    <label for="description_color" class="form-label">Description Text Color</label>
+                                    <input type="text" class="form-control colorpicker" name="description_color" id="description_color" value="{{$testimonial->description_color}}">
+                                    <div class="error"></div>
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <label for="description_font_size">Description Text Font Size</label>
+                                    <select class="form-control select2" name="description_font_size">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @for($i=24; $i<=50; $i+=2)
+                                            <option value="{{$i}}px" {{$testimonial->description_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4 mt-2" >
+                                    <label for="description_font_family">Description Text Font Family</label>
+                                    <select class="form-control select2" name="description_font_family">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="poppins"  {{$testimonial->description_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                        <option value="sans-serif" {{$testimonial->description_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                    </select>
+                                </div>
+
                             </div>
 
                             <div class="box-footer">
@@ -105,13 +136,13 @@
             },
             messages: {
                 'name': {
-                    required: "Name is required",
+                    required: "The name field is required.",
                 },
                 image: {
-                    extension: "Please enter a value with a valid extension.",
+                    extension: "The image must be an image.",
                 },
                 'description': {
-                    required: "Description is required",
+                    required: "The description field is required.",
                 },
             },
             errorPlacement: function(error, element) {

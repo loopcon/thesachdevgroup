@@ -14,9 +14,12 @@ class Home_slider extends Model
         'image',
         'title',
         'subtitle',
-        'color',
-        'font_size',
-        'font_family',
+        'title_color',
+        'title_font_size',
+        'title_font_family',
+        'sub_title_color',
+        'sub_title_font_size',
+        'sub_title_font_family',
         'text_position',
     ];
 }

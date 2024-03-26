@@ -9,14 +9,14 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Header Menu</h1>
+                        <h1 class="m-0">{{$site_title}}</h1>
                     </div>
                     </div>
                 </div>
             </div>
             <div class="card">
                 <div class="col-sm-12  text-end">
-                    <a href="{{ route('header_menu') }}" class="btn btn-primary mt-2 float-right">Add</a>
+                    <a href="{{ route('footerMenuCreate') }}" class="btn btn-primary mt-2 float-right">Add</a>
                 </div>
                 <div class="card-body">
             <section class="content">
@@ -52,7 +52,7 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('header_menu.index') }}",
+            ajax: "{{ route('footer_menu.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
                 {data: 'menu_name', name: 'menu_name'},
@@ -72,7 +72,7 @@ $(document).on('click', '.delete', function() {
     var href = $(this).data('href');
     return new swal({
         title: "",
-        text: "{{__('Are you sure? Delete this Header Menu!')}}",
+        text: "{{__('Are you sure? Delete this Footer Menu!')}}",
         showCancelButton: true,
         confirmButtonText: "{{__('Yes, delete it!')}}",
         icon: "question"

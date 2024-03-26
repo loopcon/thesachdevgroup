@@ -19,6 +19,10 @@ class HeaderMenuController extends Controller
         $header_menu = new Header_menu();
         $header_menu->menu_name = $request->menu_name;
         $header_menu->name = $request->name;
+        $header_menu->link = $request->link;
+        $header_menu->color = $request->color;
+        $header_menu->font_size = $request->font_size;
+        $header_menu->font_family = $request->font_family;
         $header_menu->save();
   
         return redirect()->route('header_menu.index')->with('message', 'Header menu insert succesfully');
@@ -53,6 +57,10 @@ class HeaderMenuController extends Controller
         $header_menu = Header_menu::find($id);
         $header_menu->menu_name = $request->menu_name;
         $header_menu->name = $request->name;
+        $header_menu->link = $request->link;
+        $header_menu->color = $request->color;
+        $header_menu->font_size = $request->font_size;
+        $header_menu->font_family = $request->font_family;
         $header_menu->save();
 
         return redirect()->route('header_menu.index')->with('message', 'Header menu update succesfully');

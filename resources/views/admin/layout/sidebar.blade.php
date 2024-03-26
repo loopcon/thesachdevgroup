@@ -161,14 +161,19 @@
           @endif
         @endif
 
+        @php($has_permission = hasPermission('Footer Menu'))
+          @if(isset($has_permission) && $has_permission)
+              @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
         <li class="nav-item">
-          <a href="{{url('footer')}}" class="nav-link">
-            <i class="nav-icon fas fa-heading"></i>
+          <a href="{{url('footer_menu')}}" class="nav-link">
+            <i class="nav-icon fas fa-bars"></i>
             <p>
               Footer Menu
             </p>
           </a>
         </li>
+        @endif
+        @endif
 
         @if(isset(Auth::user()->role_id) && Auth::user()->role_id)
             <li class="nav-item">

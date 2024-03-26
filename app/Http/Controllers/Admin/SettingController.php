@@ -56,6 +56,17 @@ class SettingController extends Controller
                 }
             }
 
+            if($request->hasFile('address_icon'))
+            {
+                $address_icon = $setting->address_icon;
+                if($address_icon) {
+                    $oldaddress_iconPath = public_path('address_icon/') . $address_icon;
+                    if(File::exists($oldaddress_iconPath)) {
+                        File::delete($oldaddress_iconPath);
+                    }
+                }
+            }
+
         } else {
             $setting = new Setting();
         }
@@ -90,14 +101,49 @@ class SettingController extends Controller
             $setting->call_icon = $callfileName;
         }
 
+        if($file = $request->hasFile('address_icon')) {
+            $file = $request->file('address_icon');
+            $extension = $file->getClientOriginalExtension();
+            $addressiconfileName = time(). '.' . $extension;
+    
+            $destinationPath = public_path().'/address_icon' ;
+            $file->move($destinationPath,$addressiconfileName);
+            $setting->address_icon = $addressiconfileName;
+        }
+
         $setting->email = $request->email;
+   
+        $setting->email_color = $request->email_color;
+        $setting->email_font_size = $request->email_font_size;
+        $setting->email_font_family = $request->email_font_family;
+
         $setting->mobile_number = $request->mobile_number;
+
+        $setting->mobile_number_color = $request->mobile_number_color;
+        $setting->mobile_number_font_size = $request->mobile_number_font_size;
+        $setting->mobile_number_font_family = $request->mobile_number_font_family;
+
         $setting->time = $request->time;
+
+        $setting->time_color = $request->time_color;
+        $setting->time_font_size = $request->time_font_size;
+        $setting->time_font_family = $request->time_font_family;
+
         $setting->twitter_link = $request->twitter_link;
         $setting->linkedin_link = $request->linkedin_link;
         $setting->facebook_link = $request->facebook_link;
         $setting->address = $request->address;
+
+        $setting->address_color = $request->address_color;
+        $setting->address_font_size = $request->address_font_size;
+        $setting->address_font_family = $request->address_font_family;
+
         $setting->footer_description = $request->footer_description;
+
+        $setting->footer_description_color = $request->footer_description_color;
+        $setting->footer_description_font_size = $request->footer_description_font_size;
+        $setting->footer_description_font_family = $request->footer_description_font_family;
+
         $setting->save();
     
         return redirect()->route('setting')->with('message', 'Setting inserted successfully');

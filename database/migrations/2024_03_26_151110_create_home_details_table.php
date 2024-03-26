@@ -18,7 +18,16 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('title')->nullable();
             $table->string('sub_title')->nullable();
+            $table->string('title_color')->nullable();
+            $table->string('title_font_size')->nullable();
+            $table->string('title_font_family')->nullable();
+            $table->string('sub_title_color')->nullable();
+            $table->string('sub_title_font_size')->nullable();
+            $table->string('sub_title_font_family')->nullable();
             $table->longText('description')->nullable();
+            $table->string('description_color')->nullable();
+            $table->string('description_font_size')->nullable();
+            $table->string('description_font_family')->nullable();
             $table->string('our_story_image')->nullable();
             $table->string('our_story_title')->nullable();
             $table->longText('our_story_description')->nullable();
@@ -26,9 +35,6 @@ return new class extends Migration
             $table->longText('our_mission_description')->nullable();
             $table->string('our_vision_title')->nullable();
             $table->longText('our_vision_description')->nullable();
-            $table->string('color')->nullable();
-            $table->string('font_size')->nullable();
-            $table->string('font_family')->nullable();
             $table->string('icon')->nullable();
             $table->string('amount')->nullable();
             $table->string('name')->nullable();
