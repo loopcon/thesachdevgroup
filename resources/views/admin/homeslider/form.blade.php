@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Home Slider</h1>
+            <h1>Home Slider Create</h1>
           </div>
           <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Home Slider</li>
+              <li class="breadcrumb-item active">Home Slider Create</li>
             </ol>
           </div>
         </div>
@@ -25,7 +25,7 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="image" class="form-label">Image</label>
+                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                 <input type="file" id="image" class="form-control" name="image">
                             </div>
 
@@ -41,14 +41,14 @@
 
 
                             <div class="col-md-4">
-                                <label for="color" class="form-label">Color</label>
-                                <input type="text" class="form-control colorpicker" name="color" id="color">
+                                <label for="title_color" class="form-label">Title Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="title_color" id="title_color">
                             </div>
 
                             <div class="mb-3 col-md-4">
-                                <label for="font_size" class="form-label">Font Size</label>
-                                <select class="form-control select2" name="font_size">
-                                    <option selected="selected" disabled="disabled">Select Font Size</option>
+                                <label for="title_font_size" class="form-label">Title Text Font Size</label>
+                                <select class="form-control select2" name="title_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
                                     @for($i=24; $i<=50; $i+=2)
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
@@ -56,9 +56,33 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="font_family" class="form-label">Font Family</label>
-                                <select class="form-control select2" name="font_family">
-                                    <option selected="selected" disabled="disabled">Select Font Family</option>
+                                <label for="title_font_family" class="form-label">Title Text Font Family</label>
+                                <select class="form-control select2" name="title_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="poppins">Poppins</option>
+                                        <option value="sans-serif">Sans Serif</option>
+                               </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="sub_title_color" class="form-label">Sub Title Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="sub_title_color" id="sub_title_color">
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="sub_title_font_size" class="form-label">Sub Title Text Font Size</label>
+                                <select class="form-control select2" name="sub_title_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="sub_title_font_family" class="form-label">Sub Title Text Font Family</label>
+                                <select class="form-control select2" name="sub_title_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
                                         <option value="poppins">Poppins</option>
                                         <option value="sans-serif">Sans Serif</option>
                                </select>
@@ -68,15 +92,13 @@
                             <div class="mb-3 col-md-4">
                                 <label for="text_position" class="form-label">Text Position</label>
                                 <select class="form-control select2" name="text_position">
-                                    <option selected="selected" disabled="disabled">Text Position</option>
+                                    <option selected="selected" disabled="disabled">Select</option>
                                     <option value="left">Left</option>
                                     <option value="right">Right</option>
                                </select>
                             </div>
 
                         </div>
-
-                      
 
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>

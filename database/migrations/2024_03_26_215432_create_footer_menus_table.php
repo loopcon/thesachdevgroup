@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('header_menus', function (Blueprint $table) {
+        Schema::create('footer_menus', function (Blueprint $table) {
             $table->id();
             $table->string('menu_name')->nullable();
             $table->string('name')->nullable();
+            $table->string('link')->nullable();
+            $table->string('color')->nullable();
+            $table->string('font_size')->nullable();
+            $table->string('font_family')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('header_menus');
+        Schema::dropIfExists('footer_menus');
     }
 };

@@ -24,13 +24,16 @@
                     <table class="table table-bordered slider_table">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th style="width:36px;">No</th>
                                 <th>Image</th>
                                 <th>Title</th>
                                 <th>Sub Title</th>
-                                <th>Color</th>
-                                <th>Font Size</th>
-                                <th>Font Family</th>
+                                <th>Title Color</th>
+                                <th>Title Font Size</th>
+                                <th>Title Font Family</th>
+                                <th>Sub Title Color</th>
+                                <th>Sub Title Font Size</th>
+                                <th>Sub Title Font Family</th>
                                 <th>Text Position</th>
                                 <th>Action</th>
                             </tr>
@@ -60,9 +63,12 @@
                 {data: 'image', name: 'image'},
                 {data: 'title', name: 'title'},
                 {data: 'subtitle', name: 'subtitle'},
-                {data: 'color', name: 'color'},
-                {data: 'font_size', name: 'font_size'},
-                {data: 'font_family', name: 'font_family'},
+                {data: 'title_color', name: 'title_color'},
+                {data: 'title_font_size', name: 'title_font_size'},
+                {data: 'title_font_family', name: 'title_font_family'},
+                {data: 'sub_title_color', name: 'sub_title_color'},
+                {data: 'sub_title_font_size', name: 'sub_title_font_size'},
+                {data: 'sub_title_font_family', name: 'sub_title_font_family'},
                 {data: 'text_position', name: 'text_position'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]

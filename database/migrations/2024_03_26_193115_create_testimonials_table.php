@@ -17,10 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('image')->nullable();
-            $table->string('color')->nullable();
-            $table->string('font_size')->nullable();
-            $table->string('font_family')->nullable();
+            $table->string('name_background_color')->nullable();
+            $table->string('name_color')->nullable();
+            $table->string('name_font_size')->nullable();
+            $table->string('name_font_family')->nullable();
             $table->longText('description')->nullable();
+            $table->string('description_color')->nullable();
+            $table->string('description_font_size')->nullable();
+            $table->string('description_font_family')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

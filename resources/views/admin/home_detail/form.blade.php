@@ -28,7 +28,7 @@
 
                             <div class="form-row">
                               <div class="col-md-4 mb-3">
-                                  <label for="image">Image</label>
+                                  <label for="image">Image<span class="text-danger">*</span></label>
                                   @if($home_detail->image == null)
                                       <img src="{{url('public/no_image/notImg.png')}}" width="100">
                                   @else
@@ -38,27 +38,108 @@
                                   <div class="error"></div>
                               </div>
                               <div class="col-md-4 mb-3">
-                                <label for="title">Title</label>
+                                <label for="title">Title<span class="text-danger">*</span></label>
                                 <input type="text" id="title" class="form-control" name="title" value="{{ $home_detail->title}}">
                                 <div class="error"></div>
                               </div>
                               <div class="col-md-4 mb-3">
-                                <label for="sub_title">Sub Title</label>
+                                <label for="sub_title">Sub Title<span class="text-danger">*</span></label>
                                 <input type="text" id="sub_title" class="form-control" name="sub_title" value="{{ $home_detail->sub_title}}">
+                                  <div class="error"></div>
+                              </div>
+                            </div>
+
+                            <div class="form-row">
+                              <div class="col-md-4 mb-3">
+                                  <label for="title_color">Title Text Color</label>
+                                  <input type="text" class="form-control colorpicker" name="title_color" id="title_color" value="{{ $home_detail->title_color}}">
+                                  <div class="error"></div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                <label for="title_font_size">Title Text Font Size</label>
+                                <select class="form-control select2" name="title_font_size">
+                                  <option selected="selected" disabled="disabled">Select</option>
+                                  @for($i=24; $i<=50; $i+=2)
+                                      <option value="{{$i}}px" {{$home_detail->title_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                  @endfor
+                                </select>
+                                <div class="error"></div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                <label for="title_font_family">Title Text Font Family</label>
+                                <select class="form-control select2" name="title_font_family">
+                                  <option selected="selected" disabled="disabled">Select</option>
+                                  <option value="poppins"  {{$home_detail->title_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                  <option value="sans-serif" {{$home_detail->title_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                </select>
+                                  <div class="error"></div>
+                              </div>
+                            </div>
+
+                            <div class="form-row">
+                              <div class="col-md-4 mb-3">
+                                  <label for="sub_title_color">Sub Title Text Color</label>
+                                  <input type="text" class="form-control colorpicker" name="sub_title_color" id="sub_title_color" value="{{ $home_detail->sub_title_color}}">
+                                  <div class="error"></div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                <label for="sub_title_font_size">Sub Title Text Font Size</label>
+                                <select class="form-control select2" name="sub_title_font_size">
+                                  <option selected="selected" disabled="disabled">Select</option>
+                                  @for($i=24; $i<=50; $i+=2)
+                                      <option value="{{$i}}px" {{$home_detail->sub_title_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                  @endfor
+                                </select>
+                                <div class="error"></div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                <label for="sub_title_font_family">Sub Title Text Font Family</label>
+                                <select class="form-control select2" name="sub_title_font_family">
+                                  <option selected="selected" disabled="disabled">Select</option>
+                                  <option value="poppins"  {{$home_detail->sub_title_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                  <option value="sans-serif" {{$home_detail->sub_title_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                </select>
                                   <div class="error"></div>
                               </div>
                             </div>
 
 
                             <div class="mb-3">
-                              <label for="description">Description</label>
+                              <label for="description">Description<span class="text-danger">*</span></label>
                               <textarea class="ckeditor form-control" name="description">{{$home_detail->description}}</textarea>
                                 <div class="error"></div>
                             </div>
                             
                             <div class="form-row">
+                              <div class="col-md-4 mb-3">
+                                  <label for="description_color">Description Text Color</label>
+                                  <input type="text" class="form-control colorpicker" name="description_color" id="description_color" value="{{ $home_detail->description_color}}">
+                                  <div class="error"></div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                <label for="description_font_size">Description Text Font Size</label>
+                                <select class="form-control select2" name="description_font_size">
+                                  <option selected="selected" disabled="disabled">Select</option>
+                                  @for($i=24; $i<=50; $i+=2)
+                                      <option value="{{$i}}px" {{$home_detail->description_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                  @endfor
+                                </select>
+                                <div class="error"></div>
+                              </div>
+                              <div class="col-md-4 mb-3">
+                                <label for="description_font_family">Description Text Font Family</label>
+                                <select class="form-control select2" name="description_font_family">
+                                  <option selected="selected" disabled="disabled">Select</option>
+                                  <option value="poppins"  {{$home_detail->description_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                  <option value="sans-serif" {{$home_detail->description_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                </select>
+                                  <div class="error"></div>
+                              </div>
+                            </div>
+
+                            <div class="form-row">
                               <div class="form-group col-md-6">
-                                  <label for="our_story_image">Our Story Image</label>
+                                  <label for="our_story_image">Our Story Image<span class="text-danger">*</span></label>
                                   @if($home_detail->our_story_image == null)
                                   <img src="{{url('public/no_image/notImg.png')}}" width="100">
                                   @else
@@ -68,76 +149,49 @@
                                   <div class="error"></div>
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="our_story_title">Our Story Title</label>
+                                <label for="our_story_title">Our Story Title<span class="text-danger">*</span></label>
                                 <input type="text" id="our_story_title" class="form-control" name="our_story_title" value="{{ $home_detail->our_story_title}}">
                                 <div class="error"></div>
                               </div>
                             </div>
 
                             <div class="mb-3">
-                              <label for="our_story_description">Our Story Description</label>
+                              <label for="our_story_description">Our Story Description<span class="text-danger">*</span></label>
                               <textarea class="ckeditor form-control" name="our_story_description">{{ $home_detail->our_story_description}}</textarea>
                               <div class="error"></div>
                             </div>
 
                             <div class="form-row">
                               <div class="form-group col-md-6">
-                                <label for="our_mission_title">Our Mission Title</label>
+                                <label for="our_mission_title">Our Mission Title<span class="text-danger">*</span></label>
                                 <input type="text" id="our_mission_title" class="form-control" name="our_mission_title" value="{{ $home_detail->our_mission_title}}">
                                 <div class="error"></div>
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="our_vision_title">Our Vision Title</label>
+                                <label for="our_vision_title">Our Vision Title<span class="text-danger">*</span></label>
                                   <input type="text" id="our_vision_title" class="form-control" name="our_vision_title" value="{{ $home_detail->our_vision_title}}">
                                   <div class="error"></div>
                               </div>
                             </div>
 
                             <div class="mb-3">
-                              <label for="our_mission_description">Our Mission Description</label>
+                              <label for="our_mission_description">Our Mission Description<span class="text-danger">*</span></label>
                               <textarea class="ckeditor form-control" name="our_mission_description">{{ $home_detail->our_mission_description}}</textarea>
                               <div class="error"></div>
                             </div>
     
                             <div class="mb-3">
-                              <label for="our_vision_description">Our Vision Description</label>
+                              <label for="our_vision_description">Our Vision Description<span class="text-danger">*</span></label>
                               <textarea class="ckeditor form-control" name="our_vision_description">{{ $home_detail->our_vision_description}}</textarea>
                               <div class="error"></div>
                             </div>
 
                             
-                        <div class="form-row">
-                          <div class="col-md-4 mb-3">
-                              <label for="color">Color</label>
-                              <input type="text" class="form-control colorpicker" name="color" id="color" value="{{ $home_detail->color}}">
-                              <div class="error"></div>
-                          </div>
-                          <div class="col-md-4 mb-3">
-                            <label for="font_size">Select Font Size</label>
-                            <select class="form-control select2" name="font_size">
-                              <option selected="selected" disabled="disabled">Select Font Size</option>
-                              @for($i=24; $i<=50; $i+=2)
-                                  <option value="{{$i}}px" {{$home_detail->font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
-                              @endfor
-                            </select>
-                            <div class="error"></div>
-                          </div>
-                          <div class="col-md-4 mb-3">
-                            <label for="font_family">Select Font Family</label>
-                            <select class="form-control select2" name="font_family">
-                              <option selected="selected" disabled="disabled">Select Font Family</option>
-                              <option value="poppins"  {{$home_detail->font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                              <option value="sans-serif" {{$home_detail->font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
-                            </select>
-                              <div class="error"></div>
-                          </div>
-                        </div>
-
                         <div class="col-12"><h5><b>Count</b></h5></div>
                         <hr>
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
-                              <label for="icon">Icon</label>
+                              <label for="icon">Icon<span class="text-danger">*</span></label>
                               @if($home_detail->icon == null)
                                   <img src="{{url('public/no_image/notImg.png')}}" width="100">
                               @else
@@ -160,12 +214,12 @@
 
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
-                            <label for="count_amount_color">Count Amount Color</label>
+                            <label for="count_amount_color">Count Amount Text Color</label>
                             <input type="text" class="form-control colorpicker" name="count_amount_color" id="count_amount_color" value="{{ $home_detail->count_amount_color}}">
                             <div class="error"></div>
                           </div>
                           <div class="col-md-4 mb-3">
-                            <label for="count_name_color">Count Name Color</label>
+                            <label for="count_name_color">Count Name Text Color</label>
                             <input type="text" class="form-control colorpicker" name="count_name_color" id="count_name_color" value="{{ $home_detail->count_name_color}}">
                               <div class="error"></div>
                           </div>
@@ -178,9 +232,9 @@
 
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label for="count_amount_font_size">Count Amount Select Font Size</label>
+                            <label for="count_amount_font_size">Count Amount Text Font Size</label>
                             <select class="form-control select2" name="count_amount_font_size">
-                              <option selected="selected" disabled="disabled">Count Amount Select Font Size</option>
+                              <option selected="selected" disabled="disabled">Select</option>
                               @for($i=24; $i<=50; $i+=2)
                                 <option value="{{$i}}px" {{$home_detail->count_amount_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                               @endfor
@@ -188,9 +242,9 @@
                             <div class="error"></div>
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="count_name_font_size">Count Name Select Font Size</label>
+                            <label for="count_name_font_size">Count Name Text Font Size</label>
                               <select class="form-control select2" name="count_name_font_size">
-                                <option selected="selected" disabled="disabled">Count Name Select Font Size</option>
+                                <option selected="selected" disabled="disabled">Select</option>
                                 @for($i=24; $i<=50; $i+=2)
                                     <option value="{{$i}}px" {{$home_detail->count_name_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                 @endfor
@@ -201,18 +255,18 @@
 
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label for="count_amount_font_family">Count Amount Select Font Family</label>
+                            <label for="count_amount_font_family">Count Amount Text Font Family</label>
                             <select class="form-control select2" name="count_amount_font_family">
-                              <option selected="selected" disabled="disabled">Count Amount Select Font Family</option>
+                              <option selected="selected" disabled="disabled">Select</option>
                               <option value="poppins"  {{$home_detail->count_amount_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
                               <option value="sans-serif" {{$home_detail->count_amount_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
                             </select>
                             <div class="error"></div>
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="count_name_font_family">Count Name Select Font Family</label>
+                            <label for="count_name_font_family">Count Name Text Font Family</label>
                             <select class="form-control select2" name="count_name_font_family">
-                              <option selected="selected" disabled="disabled">Count Name Select Font Family</option>
+                              <option selected="selected" disabled="disabled">Select</option>
                                 <option value="poppins"  {{$home_detail->count_name_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
                                 <option value="sans-serif" {{$home_detail->count_name_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
                             </select>
@@ -225,82 +279,33 @@
 
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
-                              <label for="image">Image</label>
+                              <label for="image">Image<span class="text-danger">*</span></label>
                               <input type="file" id="image" class="form-control" name="image">
                               <div class="error"></div>
                           </div>
                           <div class="col-md-4 mb-3">
-                            <label for="title">Title</label>
+                            <label for="title">Title<span class="text-danger">*</span></label>
                             <input type="text" id="title" class="form-control" name="title">
                             <div class="error"></div>
                           </div>
                           <div class="col-md-4 mb-3">
-                            <label for="sub_title">Sub Title</label>
+                            <label for="sub_title">Sub Title<span class="text-danger">*</span></label>
                             <input type="text" id="sub_title" class="form-control" name="sub_title">
                               <div class="error"></div>
                           </div>
                         </div>
-
-                        <div class="mb-3">
-                          <label for="description">Description</label>
-                          <textarea class="ckeditor form-control" name="description"></textarea>
-                            <div class="error"></div>
-                        </div>
                         
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                              <label for="our_story_image">Our Story Image</label>
-                              <input type="file" id="our_story_image" class="form-control" name="our_story_image">
-                              <div class="error"></div>
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="our_story_title">Our Story Title</label>
-                            <input type="text" id="our_story_title" class="form-control" name="our_story_title">
-                            <div class="error"></div>
-                          </div>
-                        </div>
-                        
-                        <div class="mb-3">
-                          <label for="our_story_description">Our Story Description</label>
-                          <textarea class="ckeditor form-control" name="our_story_description"></textarea>
-                          <div class="error"></div>
-                        </div>
-                        
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="our_mission_title">Our Mission Title</label>
-                            <input type="text" id="our_mission_title" class="form-control" name="our_mission_title">
-                            <div class="error"></div>
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="our_vision_title">Our Vision Title</label>
-                              <input type="text" id="our_vision_title" class="form-control" name="our_vision_title">
-                              <div class="error"></div>
-                          </div>
-                        </div>
-
-                        <div class="mb-3">
-                          <label for="our_mission_description">Our Mission Description</label>
-                          <textarea class="ckeditor form-control" name="our_mission_description"></textarea>
-                          <div class="error"></div>
-                        </div>
-
-                        <div class="mb-3">
-                          <label for="our_vision_description">Our Vision Description</label>
-                          <textarea class="ckeditor form-control" name="our_vision_description"></textarea>
-                          <div class="error"></div>
-                        </div>
 
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
-                              <label for="color">Color</label>
-                              <input type="text" class="form-control colorpicker" name="color" id="color">
+                              <label for="title_color">Title Text Color</label>
+                              <input type="text" class="form-control colorpicker" name="title_color" id="title_color">
                               <div class="error"></div>
                           </div>
                           <div class="col-md-4 mb-3">
-                            <label for="font_size">Select Font Size</label>
-                            <select class="form-control select2" name="font_size">
-                              <option selected="selected" disabled="disabled">Select Font Size</option>
+                            <label for="title_font_size">Title Text Font Size</label>
+                            <select class="form-control select2" name="title_font_size">
+                              <option selected="selected" disabled="disabled">Select</option>
                               @for($i=24; $i<=50; $i+=2)
                                   <option value="{{$i}}px">{{$i}}px</option>
                               @endfor
@@ -308,14 +313,117 @@
                             <div class="error"></div>
                           </div>
                           <div class="col-md-4 mb-3">
-                            <label for="font_family">Select Font Family</label>
-                            <select class="form-control select2" name="font_family">
-                              <option selected="selected" disabled="disabled">Select Font Family</option>
+                            <label for="title_font_family">Title Text Font Family</label>
+                            <select class="form-control select2" name="title_font_family">
+                              <option selected="selected" disabled="disabled">Select</option>
                                   <option value="poppins">Poppins</option>
                                   <option value="sans-serif">Sans Serif</option>
                             </select>
                               <div class="error"></div>
                           </div>
+                        </div>
+
+                      <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                          <label for="sub_title_color" class="form-label">Sub Title Text Color</label>
+                          <input type="text" class="form-control colorpicker" name="sub_title_color" id="sub_title_color">
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="sub_title_font_size" class="form-label">Sub Title Text Font Size</label>
+                            <select class="form-control select2" name="sub_title_font_size">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                @for($i=24; $i<=50; $i+=2)
+                                    <option value="{{$i}}px">{{$i}}px</option>
+                                @endfor
+                          </select>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="sub_title_font_family" class="form-label">Sub Title Text Font Family</label>
+                            <select class="form-control select2" name="sub_title_font_family">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins">Poppins</option>
+                                    <option value="sans-serif">Sans Serif</option>
+                          </select>
+                        </div>
+                      </div>
+
+                        <div class="mb-3">
+                          <label for="description">Description<span class="text-danger">*</span></label>
+                          <textarea class="ckeditor form-control" name="description"></textarea>
+                            <div class="error"></div>
+                        </div>
+                        
+
+                        <div class="form-row">
+                          <div class="col-md-4 mb-3">
+                            <label for="description_color" class="form-label">Description Text Color</label>
+                            <input type="text" class="form-control colorpicker" name="description_color" id="description_color">
+                          </div>
+  
+                          <div class="col-md-4 mb-3">
+                              <label for="description_font_size" class="form-label">Description Text Font Size</label>
+                              <select class="form-control select2" name="description_font_size">
+                                  <option selected="selected" disabled="disabled">Select</option>
+                                  @for($i=24; $i<=50; $i+=2)
+                                      <option value="{{$i}}px">{{$i}}px</option>
+                                  @endfor
+                            </select>
+                          </div>
+  
+                          <div class="col-md-4 mb-3">
+                              <label for="description_font_family" class="form-label">Description Text Font Family</label>
+                              <select class="form-control select2" name="description_font_family">
+                                  <option selected="selected" disabled="disabled">Select</option>
+                                      <option value="poppins">Poppins</option>
+                                      <option value="sans-serif">Sans Serif</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                              <label for="our_story_image">Our Story Image<span class="text-danger">*</span></label>
+                              <input type="file" id="our_story_image" class="form-control" name="our_story_image">
+                              <div class="error"></div>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="our_story_title">Our Story Title<span class="text-danger">*</span></label>
+                            <input type="text" id="our_story_title" class="form-control" name="our_story_title">
+                            <div class="error"></div>
+                          </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                          <label for="our_story_description">Our Story Description<span class="text-danger">*</span></label>
+                          <textarea class="ckeditor form-control" name="our_story_description"></textarea>
+                          <div class="error"></div>
+                        </div>
+                        
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="our_mission_title">Our Mission Title<span class="text-danger">*</span></label>
+                            <input type="text" id="our_mission_title" class="form-control" name="our_mission_title">
+                            <div class="error"></div>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="our_vision_title">Our Vision Title<span class="text-danger">*</span></label>
+                              <input type="text" id="our_vision_title" class="form-control" name="our_vision_title">
+                              <div class="error"></div>
+                          </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="our_mission_description">Our Mission Description<span class="text-danger">*</span></label>
+                          <textarea class="ckeditor form-control" name="our_mission_description"></textarea>
+                          <div class="error"></div>
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="our_vision_description">Our Vision Description<span class="text-danger">*</span></label>
+                          <textarea class="ckeditor form-control" name="our_vision_description"></textarea>
+                          <div class="error"></div>
                         </div>
 
                         <div class="col-12"><h5><b>Count</b></h5></div>
@@ -341,12 +449,12 @@
 
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
-                            <label for="count_amount_color">Count Amount Color</label>
+                            <label for="count_amount_color">Count Amount Text Color</label>
                             <input type="text" class="form-control colorpicker" name="count_amount_color" id="count_amount_color">
                             <div class="error"></div>
                           </div>
                           <div class="col-md-4 mb-3">
-                            <label for="count_name_color">Count Name Color</label>
+                            <label for="count_name_color">Count Name Text Color</label>
                             <input type="text" class="form-control colorpicker" name="count_name_color" id="count_name_color">
                               <div class="error"></div>
                           </div>
@@ -359,9 +467,9 @@
 
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label for="count_amount_font_size">Count Amount Select Font Size</label>
+                            <label for="count_amount_font_size">Count Amount Text Font Size</label>
                             <select class="form-control select2" name="count_amount_font_size">
-                              <option selected="selected" disabled="disabled">Count Amount Select Font Size</option>
+                              <option selected="selected" disabled="disabled">Select</option>
                               @for($i=24; $i<=50; $i+=2)
                                   <option value="{{$i}}px">{{$i}}px</option>
                               @endfor
@@ -369,9 +477,9 @@
                             <div class="error"></div>
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="count_name_font_size">Count Name Select Font Size</label>
+                            <label for="count_name_font_size">Count Name Text Font Size</label>
                               <select class="form-control select2" name="count_name_font_size">
-                                <option selected="selected" disabled="disabled">Count Name Select Font Size</option>
+                                <option selected="selected" disabled="disabled">Select</option>
                                 @for($i=24; $i<=50; $i+=2)
                                     <option value="{{$i}}px">{{$i}}px</option>
                                 @endfor
@@ -382,18 +490,18 @@
 
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label for="count_amount_font_family">Count Amount Select Font Family</label>
+                            <label for="count_amount_font_family">Count Amount Text Font Family</label>
                             <select class="form-control select2" name="count_amount_font_family">
-                              <option selected="selected" disabled="disabled">Count Amount Select Font Family</option>
+                              <option selected="selected" disabled="disabled">Select</option>
                                   <option value="poppins">Poppins</option>
                                   <option value="sans-serif">Sans Serif</option>
                             </select>
                             <div class="error"></div>
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="count_name_font_family">Count Name Select Font Family</label>
+                            <label for="count_name_font_family">Count Name Text Font Family</label>
                             <select class="form-control select2" name="count_name_font_family">
-                              <option selected="selected" disabled="disabled">Count Name Select Font Family</option>
+                              <option selected="selected" disabled="disabled">Select</option>
                                   <option value="poppins">Poppins</option>
                                   <option value="sans-serif">Sans Serif</option>
                             </select>
@@ -403,11 +511,13 @@
 
                         @endif
                   
+                        <div class="form-row">
                         <div class="col-md-6">
                             <button type="submit" class="btn btn-primary">
                                 Submit
                             </button>
                         </div>
+                      </div>
                     </form>
                 </div>
             </div>

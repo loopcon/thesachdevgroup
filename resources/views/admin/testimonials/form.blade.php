@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Testimonials</h1>
+            <h1>Testimonials Create</h1>
           </div>
           <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Testimonials</li>
+              <li class="breadcrumb-item active">Testimonials Create</li>
             </ol>
           </div>
         </div>
@@ -23,7 +23,7 @@
                     <form action="{{ route('testimonials_insert') }}" method="POST" class="testimonials_form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="mb-3 col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name">
                                 <div class="error"></div>
@@ -36,27 +36,32 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="color" class="form-label">Color</label>
-                                <input type="text" class="form-control colorpicker" name="color" id="color">
+                                <label for="name_background_color" class="form-label">Name Background Color</label>
+                                <input type="text" class="form-control colorpicker" name="name_background_color" id="name_background_color">
                             </div>
 
-                            <div class="col-md-4 mt-2">
-                                <label for="font_size" class="form-label">Font Size</label>
-                                <select class="form-control select2" name="font_size">
-                                    <option selected="selected" disabled="disabled">Select Font Size</option>
+                            <div class="col-md-4">
+                                <label for="name_color" class="form-label">Name Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="name_color" id="name_color">
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="name_font_size" class="form-label">Name Text Font Size</label>
+                                <select class="form-control select2" name="name_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
                                     @for($i=24; $i<=50; $i+=2)
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
-                                </select>
+                               </select>
                             </div>
 
-                            <div class="col-md-4 mt-2">
-                                <label for="font_family" class="form-label">Font Family</label>
-                                <select class="form-control select2" name="font_family">
-                                    <option selected="selected" disabled="disabled">Select Font Family</option>
+                            <div class="col-md-4">
+                                <label for="name_font_family" class="form-label">Name Text Font Family</label>
+                                <select class="form-control select2" name="name_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
                                         <option value="poppins">Poppins</option>
                                         <option value="sans-serif">Sans Serif</option>
-                                </select>
+                               </select>
                             </div>
 
                             <div class="col-md-12 mt-2 mb-3">
@@ -64,6 +69,32 @@
                                 <textarea class="ckeditor form-control" name="description"></textarea>
                                 <div class="error"></div>
                             </div>
+
+
+                            <div class="mb-3 col-md-4">
+                                <label for="description_color" class="form-label">Description Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="description_color" id="description_color">
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="description_font_size" class="form-label">Description Text Font Size</label>
+                                <select class="form-control select2" name="description_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="description_font_family" class="form-label">Description Text Font Family</label>
+                                <select class="form-control select2" name="description_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="poppins">Poppins</option>
+                                        <option value="sans-serif">Sans Serif</option>
+                               </select>
+                            </div>
+
                         </div>
 
                         <div class="box-footer">
@@ -96,14 +127,14 @@
             },
             messages: {
                 'name': {
-                    required: "Name is required",
+                    required: "The name field is required.",
                 },
                 'image': {
-                    required: "Image is required",
-                    extension: "Please enter a value with a valid extension.",
+                    required: "The image field is required.",
+                    extension: "The image must be an image.",
                 },
                 'description': {
-                    required: "Description is required",
+                    required: "The description field is required.",
                 },
             },
             errorPlacement: function(error, element) {

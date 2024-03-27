@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Brand</h1>
+            <h1>Brand Edit</h1>
           </div>
           <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Brand</li>
+              <li class="breadcrumb-item active">Brand Edit</li>
             </ol>
           </div>
         </div>
@@ -26,8 +26,8 @@
                             <input type="hidden" value="{{ $brand->id }}" class="id" name="id">
                            
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label for="image" class="form-label">Image</label>
+                                <div class="mb-3 col-md-4">
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     @if($brand->image == null)
                                         <img src="{{url('public/no_image/notImg.png')}}" width="100">
                                     @else
@@ -38,20 +38,20 @@
                                 </div>
     
                                 <div class="col-md-4">
-                                    <label for="name" class="form-label">Name</label>
+                                    <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                     <input  type="text" class="form-control" name="name" value="{{$brand->name}}">
                                     <div class="error"></div>
                                 </div>
     
                                 <div class="col-md-4">
-                                    <label for="color" class="form-label">Color</label>
+                                    <label for="color" class="form-label">Name Text Color</label>
                                     <input type="text" class="form-control colorpicker" name="color" id="color" value="{{$brand->color}}">
                                 </div>
     
                                 <div class="mb-3 col-md-4">
-                                    <label for="font_size" class="form-label">Font Size</label>
+                                    <label for="font_size" class="form-label">Name Text Font Size</label>
                                     <select class="form-control select2" name="font_size">
-                                        <option selected="selected" disabled="disabled">Select Font Size</option>
+                                        <option selected="selected" disabled="disabled">Select</option>
                                         @for($i=24; $i<=50; $i+=2)
                                             <option value="{{$i}}px" {{$brand->font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
@@ -59,9 +59,9 @@
                                 </div>
     
                                 <div class="col-md-4">
-                                    <label for="font_family" class="form-label">Font Family</label>
+                                    <label for="font_family" class="form-label">Name Text Font Family</label>
                                     <select class="form-control select2" name="font_family">
-                                        <option selected="selected" disabled="disabled">Select Font Family</option>
+                                        <option selected="selected" disabled="disabled">Select</option>
                                         <option value="poppins"  {{$brand->font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
                                         <option value="sans-serif" {{$brand->font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
                                    </select>

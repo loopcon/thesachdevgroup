@@ -44,3 +44,6 @@ ALTER TABLE `showroom_testimonial` CHANGE `address_text_size` `description_text_
 -- Disha : 23-03-2024 12:40 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Showroom Testimonial', NULL, NULL, NULL);
 ALTER TABLE `showroom_model` ADD `title_text_size` VARCHAR(255) NULL DEFAULT NULL AFTER `image`, ADD `title_text_color` VARCHAR(255) NULL DEFAULT NULL AFTER `title_text_size`, ADD `title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `title_text_color`, ADD `image_size` VARCHAR(255) NULL DEFAULT NULL AFTER `title_font_family`;
+
+-- Drashti : 23-03-2024 01:11 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES ('10', 'Footer Menu', NULL, NULL, NULL);

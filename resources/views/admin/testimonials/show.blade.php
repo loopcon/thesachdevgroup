@@ -24,13 +24,17 @@
                             <table class="table table-bordered table">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="width:36px;">No</th>
                                         <th>Name</th>
                                         <th>Image</th>
-                                        <th>Color</th>
-                                        <th>Font Size</th>
-                                        <th>Font Family</th>
+                                        <th>Name Background Color</th>
+                                        <th>Name Color</th>
+                                        <th>Name Font Size</th>
+                                        <th>Name Font Family</th>
                                         <th>Description</th>
+                                        <th>Description Color</th>
+                                        <th>Description Font Size</th>
+                                        <th>Description Font Family</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -53,15 +57,20 @@
         var testimonialTable = $('.table').DataTable({
             processing: true,
             serverSide: true,
+            scrollX: true,
             ajax: "{{ route('testimonials.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
                 {data: 'name', name: 'name'},
                 {data: 'image', name: 'image'},
-                {data: 'color', name: 'color'},
-                {data: 'font_size', name: 'font_size'},
-                {data: 'font_family', name: 'font_family'},
+                {data: 'name_background_color', name: 'name_background_color'},
+                {data: 'name_color', name: 'name_color'},
+                {data: 'name_font_size', name: 'name_font_size'},
+                {data: 'name_font_family', name: 'name_font_family'},
                 {data: 'description', name: 'description'},
+                {data: 'description_color', name: 'description_color'},
+                {data: 'description_font_size', name: 'description_font_size'},
+                {data: 'description_font_family', name: 'description_font_family'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

@@ -27,9 +27,9 @@
                                 <th>No</th>
                                 <th>Image</th>
                                 <th>Name</th>
-                                <th>Color</th>
-                                <th>Font Size</th>
-                                <th>Font Family</th>
+                                <th>Name Color</th>
+                                <th>Name Font Size</th>
+                                <th>Name Font Family</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

@@ -24,7 +24,7 @@
                     <table class="table table-bordered data-table">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th style="width:36px;">No</th>
                                 <th>Brand</th>
                                 <th>Image</th>
                                 <th>Name</th>

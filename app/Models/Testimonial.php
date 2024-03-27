@@ -13,9 +13,13 @@ class Testimonial extends Model
     protected $fillable = [
         'name',
         'image',
-        'color',
-        'font_size',
-        'font_family',
+        'name_background_color',
+        'name_color',
+        'name_font_size',
+        'name_font_family',
         'description',
+        'description_color',
+        'description_font_size',
+        'description_font_family',
     ];
 }

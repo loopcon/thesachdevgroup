@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Home Our Businesses</h1>
+            <h1>Home Our Businesses Create</h1>
           </div>
           <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Home Our Businesses</li>
+              <li class="breadcrumb-item active">Home Our Businesses Create</li>
             </ol>
           </div>
         </div>
@@ -25,7 +25,7 @@
                         
                         <div class="row">
                             <div class="mb-3 col-md-4">
-                                <label for="image" class="form-label">Image</label>
+                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                 <input type="file" id="image" class="form-control" name="image">
                             </div>
                         </div>

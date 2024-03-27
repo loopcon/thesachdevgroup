@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Home Slider</h1>
+            <h1>Home Slider Edit</h1>
           </div>
           <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Home Slider</li>
+              <li class="breadcrumb-item active">Home Slider Edit</li>
             </ol>
           </div>
         </div>
@@ -27,7 +27,7 @@
                            
                             <div class="row">
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image</label>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     @if($homeslider->image == null)
                                     <img src="{{asset('no_image/notImg.png')}}" width="100">
                                     @else
@@ -48,34 +48,57 @@
     
     
                                 <div class="mb-3 col-md-4">
-                                    <label for="color" class="form-label">Color</label>
-                                    <input type="text" class="form-control colorpicker" name="color" id="color" value="{{$homeslider->color}}">
+                                    <label for="title_color" class="form-label">Title Text Color</label>
+                                    <input type="text" class="form-control colorpicker" name="title_color" id="title_color" value="{{$homeslider->title_color}}">
                                 </div>
     
                                 <div class="mb-3 col-md-4">
-                                    <label for="font_size" class="form-label">Font Size</label>
-                                    <select class="form-control select2" name="font_size">
-                                        <option selected="selected" disabled="disabled">Select Font Size</option>
+                                    <label for="title_font_size" class="form-label">Title Text Font Size</label>
+                                    <select class="form-control select2" name="title_font_size">
+                                        <option selected="selected" disabled="disabled">Select</option>
                                         @for($i=24; $i<=50; $i+=2)
-                                            <option value="{{$i}}px" {{$homeslider->font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                            <option value="{{$i}}px" {{$homeslider->title_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                    </select>
                                 </div>
     
                                 <div class="col-md-4">
-                                    <label for="font_family" class="form-label">Font Family</label>
-                                    <select class="form-control select2" name="font_family">
-                                        <option selected="selected" disabled="disabled">Select Font Family</option>
-                                        <option value="poppins"  {{$homeslider->font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$homeslider->font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                    <label for="title_font_family" class="form-label">Title Text Font Family</label>
+                                    <select class="form-control select2" name="title_font_family">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="poppins"  {{$homeslider->title_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                        <option value="sans-serif" {{$homeslider->title_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
                                    </select>
                                 </div>
     
+                                <div class="mb-3 col-md-4">
+                                    <label for="sub_title_color" class="form-label">Sub Title Text Color</label>
+                                    <input type="text" class="form-control colorpicker" name="sub_title_color" id="sub_title_color" value="{{$homeslider->sub_title_color}}">
+                                </div>
+    
+                                <div class="mb-3 col-md-4">
+                                    <label for="sub_title_font_size" class="form-label">Sub Title Text Font Size</label>
+                                    <select class="form-control select2" name="sub_title_font_size">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @for($i=24; $i<=50; $i+=2)
+                                            <option value="{{$i}}px" {{$homeslider->sub_title_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                   </select>
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <label for="sub_title_font_family" class="form-label">Sub Title Text Font Family</label>
+                                    <select class="form-control select2" name="sub_title_font_family">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="poppins"  {{$homeslider->sub_title_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                        <option value="sans-serif" {{$homeslider->sub_title_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                   </select>
+                                </div>
                                 
                                 <div class="mb-3 col-md-4">
                                     <label for="image" class="form-label">Text Position</label>
                                     <select class="form-control select2" name="text_position">
-                                        <option selected="selected" disabled="disabled">Text Position</option>
+                                        <option selected="selected" disabled="disabled">Select</option>
                                         <option value="left" {{$homeslider->text_position == 'left' ? 'selected' : ''}}>Left</option>
                                         <option value="right" {{$homeslider->text_position == 'right' ? 'selected' : ''}}>Right</option>
                                    </select>
