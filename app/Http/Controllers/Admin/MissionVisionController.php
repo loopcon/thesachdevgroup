@@ -57,7 +57,8 @@ class MissionVisionController extends Controller
         $mission_vision->description_font_family = $request->description_font_family;
         $mission_vision->save();
   
-        return redirect()->route('mission_vision')->with('message', 'Mission Vision insert succesfully');
+        return redirect()->route('mission_vision')->with('success','Mission Vision insert successfully.');
+   
     }
 
     public function mission_vision_index(Request $request){
@@ -146,7 +147,8 @@ class MissionVisionController extends Controller
         $mission_vision->description_font_family = $request->description_font_family;
         $mission_vision->save();
 
-        return redirect()->route('mission_vision')->with('message', 'Mission Vision update succesfully');
+        return redirect()->route('mission_vision')->with('success','Mission Vision update successfully.');
+    
     }
 
     public function mission_vision_destroy(Request $request,$id)
@@ -162,7 +164,7 @@ class MissionVisionController extends Controller
         $mission_vision = Mission_vision::where('id',$id)->delete();
         if($mission_vision)
         {
-            return redirect()->route('mission_vision')->with('message', 'Mission Vision deleted succesfully');
+            return redirect()->route('mission_vision')->with('message', 'Mission Vision deleted successfully');
         }
 
     }

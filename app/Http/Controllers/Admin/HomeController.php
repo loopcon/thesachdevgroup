@@ -47,7 +47,7 @@ class HomeController extends Controller
       $home_slider->text_position = $request->text_position;
       $home_slider->save();
 
-      return redirect()->route('homeslider.index')->with('message', 'Home slider insert succesfully');
+    return redirect()->route('homeslider.index')->with('success','Home Slider insert successfully.');
 
    }
 
@@ -118,8 +118,9 @@ class HomeController extends Controller
         $homesliders->text_position = $request->text_position;
         $homesliders->save();
 
-      return redirect()->route('homeslider.index')->with('message', 'Home slider update succesfully');
-   }
+        return redirect()->route('homeslider.index')->with('success','Home Slider update successfully.');
+
+    }
 
    public function homeslider_destroy(Request $request,$id){
         $home_slider = Home_slider::findOrFail($id);
@@ -134,7 +135,7 @@ class HomeController extends Controller
 
         if($home_slider)
         {
-            return redirect()->route('homeslider.index')->with('message', 'Home Slider deleted succesfully');
+            return redirect()->route('homeslider.index')->with('message', 'Home Slider deleted successfully');
         }
 
   }
@@ -161,7 +162,7 @@ class HomeController extends Controller
       }
       $home_our_businesses->save();
 
-      return redirect()->route('home_our_businesses.index')->with('message', 'Home our businesses insert succesfully');
+    return redirect()->route('home_our_businesses.index')->with('success','Home Our Businesses insert successfully.');
 
    }
 
@@ -222,8 +223,9 @@ class HomeController extends Controller
         }
         $home_our_businesses->save();
 
-      return redirect()->route('home_our_businesses.index')->with('message', 'Home our businesses update succesfully');
-   }
+        return redirect()->route('home_our_businesses.index')->with('success','Home Our Businesses update successfully.');
+   
+    }
 
    public function home_our_businesses_destroy(Request $request,$id){
 
@@ -239,7 +241,7 @@ class HomeController extends Controller
 
     if($home_our_businesses)
     {
-        return redirect()->route('home_our_businesses.index')->with('message', 'Home Our Businesses deleted succesfully');
+        return redirect()->route('home_our_businesses.index')->with('message', 'Home Our Businesses deleted successfully');
     }
 
 
@@ -276,7 +278,7 @@ class HomeController extends Controller
         $testimonials->description_font_family = $request->description_font_family;
         $testimonials->save();
 
-        return redirect()->route('testimonials.index')->with('message', 'Testimonials insert succesfully');
+        return redirect()->route('testimonials.index')->with('success','Testimonials insert successfully.');
 
     }
 
@@ -355,8 +357,9 @@ class HomeController extends Controller
         $testimonials->description_font_family = $request->description_font_family;
         $testimonials->save();
 
-      return redirect()->route('testimonials.index')->with('message', 'Testimonials update succesfully');
-   }
+        return redirect()->route('testimonials.index')->with('success','Testimonials update successfully.');
+   
+    }
 
    public function testimonials_destroy(Request $request,$id)
    {
@@ -372,7 +375,7 @@ class HomeController extends Controller
         $testimonial = Testimonial::where('id',$id)->delete();
         if($testimonial)
         {
-            return redirect()->route('testimonials.index')->with('message', 'Testimonial deleted succesfully');
+            return redirect()->route('testimonials.index')->with('message', 'Testimonial deleted successfully');
         }
 
     }
@@ -491,7 +494,8 @@ class HomeController extends Controller
 
         $home_detail->save();
     
-        return redirect()->route('home_detail')->with('message', 'Home detail inserted successfully');
+        return redirect()->route('home_detail')->with('success','Home Detail update successfully.');
+   
     }
 
    

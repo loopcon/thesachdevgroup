@@ -146,6 +146,7 @@ class SettingController extends Controller
 
         $setting->save();
     
-        return redirect()->route('setting')->with('message', 'Setting inserted successfully');
+        return redirect()->route('setting')->with('success','Setting update successfully.');
+    
     }
 }

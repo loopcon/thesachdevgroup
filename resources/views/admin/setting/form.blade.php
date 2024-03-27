@@ -4,6 +4,9 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row">
+          <div class="col-12">
+            @include('admin.alerts')
+          </div>
           <div class="col-sm-6">
             <h1>Setting</h1>
           </div>
@@ -25,92 +28,6 @@
 
                         @if(isset($settings) && count($settings) > 0)
                             @foreach($settings as $setting)
-
-                            {{-- <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="image">Logo<span class="text-danger">*</span></label>
-                                  @if($setting->logo == null)
-                                    <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                  @else
-                                    <img src="{{url('public/logo/'.$setting->logo)}}" width="100">
-                                  @endif
-                                  <input type="file" id="logo" class="form-control" name="logo">
-                                  <div class="error"></div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="email">E-mail<span class="text-danger">*</span></label>
-                                  <input type="email" id="email" class="form-control" name="email" value="{{ $setting->email ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
-                                  <input type="number" id="mobile_number" class="form-control" name="mobile_number" value="{{ $setting->mobile_number ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="time">Time<span class="text-danger">*</span></label>
-                                  <input type="text" id="time" class="form-control" name="time" value="{{ $setting->time ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="twitter_link">Twitter Link<span class="text-danger">*</span></label>
-                                  <input type="text" id="twitter_link" class="form-control" name="twitter_link" value="{{ $setting->twitter_link ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="linkedin_link">Linkedin Link<span class="text-danger">*</span></label>
-                                  <input type="text" id="linkedin_link" class="form-control" name="linkedin_link" value="{{ $setting->linkedin_link ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="facebook_link">Facebook Link<span class="text-danger">*</span></label>
-                                  <input type="text" id="facebook_link" class="form-control" name="facebook_link" value="{{ $setting->facebook_link ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="address">Address<span class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="address">{{$setting->address}}</textarea>
-                                    <div class="error"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
-                                @if($setting->email_icon == null)
-                                  <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                @else
-                                    <img src="{{url('public/email_icon/'.$setting->email_icon)}}" width="100">
-                                @endif
-                                <input type="file" id="email_icon" class="form-control" name="email_icon">
-                                <div class="error"></div>
-                              </div>
-                              <div class="form-group col-md-6">
-                                  <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
-                                  @if($setting->call_icon == null)
-                                    <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                  @else
-                                      <img src="{{url('public/call_icon/'.$setting->call_icon)}}" width="100">
-                                  @endif
-                                  <input type="file" id="call_icon" class="form-control" name="call_icon">
-                                  <div class="error"></div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                              <label for="footer_description">Footer Description</label>
-                              <textarea class="ckeditor form-control" name="footer_description">{{$setting->footer_description}}</textarea>
-                              <div class="error"></div>
-                            </div> --}}
 
                             <div class="row">
                               <div class="mb-3 col-md-4">

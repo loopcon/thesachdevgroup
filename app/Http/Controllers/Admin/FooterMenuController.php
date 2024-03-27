@@ -36,7 +36,7 @@ class FooterMenuController extends Controller
         $footer_menu->font_family = $request->font_family;
         $footer_menu->save();
   
-        return redirect()->route('footer_menu')->with('message', 'Footer Menu insert succesfully');
+        return redirect()->route('footer_menu')->with('success','Footer Menu insert successfully.');
     }
 
     public function footer_menu_index(Request $request){
@@ -80,7 +80,8 @@ class FooterMenuController extends Controller
         $footer_menu->font_family = $request->font_family;
         $footer_menu->save();
 
-        return redirect()->route('footer_menu')->with('message', 'Footer menu update succesfully');
+        return redirect()->route('footer_menu')->with('success','Footer Menu update successfully.');
+    
     }
 
     public function footer_menu_destroy(Request $request,$id){
@@ -90,7 +91,7 @@ class FooterMenuController extends Controller
   
         if($footer_menu)
         {
-            return redirect()->route('footer_menu')->with('message', 'Footer Menu deleted succesfully');
+            return redirect()->route('footer_menu')->with('message', 'Footer Menu deleted successfully');
         }
   
     }

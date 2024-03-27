@@ -25,7 +25,7 @@ class HeaderMenuController extends Controller
         $header_menu->font_family = $request->font_family;
         $header_menu->save();
   
-        return redirect()->route('header_menu.index')->with('message', 'Header menu insert succesfully');
+        return redirect()->route('header_menu.index')->with('success','Header Menu insert successfully.');
     }
 
     public function header_menu_index(Request $request){
@@ -63,10 +63,10 @@ class HeaderMenuController extends Controller
         $header_menu->font_family = $request->font_family;
         $header_menu->save();
 
-        return redirect()->route('header_menu.index')->with('message', 'Header menu update succesfully');
+        return redirect()->route('header_menu.index')->with('success','Header Menu update successfully.');
+    
     }
 
-    
     public function header_menu_destroy(Request $request,$id){
 
         $header_menu = Header_menu::findOrFail($id);
@@ -74,7 +74,7 @@ class HeaderMenuController extends Controller
   
         if($header_menu)
         {
-            return redirect()->route('header_menu.index')->with('message', 'Header Menu deleted succesfully');
+            return redirect()->route('header_menu.index')->with('message', 'Header Menu deleted successfully');
         }
   
     }

@@ -78,8 +78,8 @@ class ShowroomController extends Controller
             }
         }
 
-  
-        return redirect()->route('showroom.index')->with('message', 'Showroom insert succesfully');
+        return redirect()->route('showroom.index')->with('success','Showroom insert successfully.');
+    
     }
     
     public function showroom_index(Request $request){
@@ -219,7 +219,8 @@ class ShowroomController extends Controller
             }
         }
 
-        return redirect()->route('showroom.index')->with('message', 'Showroom update succesfully');
+        return redirect()->route('showroom.index')->with('success','Showroom update successfully.');
+    
     }
 
     public function showroom_destroy(Request $request,$id){
@@ -255,7 +256,7 @@ class ShowroomController extends Controller
 
         $showroom->delete();
 
-        return redirect()->route('showroom.index')->with('message', 'Showroom deleted succesfully');
+        return redirect()->route('showroom.index')->with('message', 'Showroom deleted successfully');
   
     }
 

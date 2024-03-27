@@ -47,7 +47,8 @@ class CarController extends Controller
         $car->price_font_family = $request->price_font_family;
         $car->save();
   
-        return redirect()->route('car.index')->with('message', 'Car insert succesfully');
+        return redirect()->route('car.index')->with('success','Car insert successfully.');
+
     }
 
     public function car_index(Request $request){
@@ -123,7 +124,8 @@ class CarController extends Controller
             $car->price_font_family = $request->price_font_family;
             $car->save();
 
-        return redirect()->route('car.index')->with('message', 'Car update succesfully');
+            return redirect()->route('car.index')->with('success','Car update successfully.');
+
     }
 
     public function car_destroy(Request $request,$id){
@@ -140,7 +142,7 @@ class CarController extends Controller
 
         if($car)
         {
-            return redirect()->route('car.index')->with('message', 'Car deleted succesfully');
+            return redirect()->route('car.index')->with('message', 'Car deleted successfully');
         }
   
     }

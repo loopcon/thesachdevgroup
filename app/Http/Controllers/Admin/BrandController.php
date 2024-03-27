@@ -35,8 +35,9 @@ class BrandController extends Controller
         $brand->font_size = $request->font_size;
         $brand->font_family = $request->font_family;
         $brand->save();
-  
-        return redirect()->route('brand.index')->with('message', 'Brand insert succesfully');
+
+        return redirect()->route('brand.index')->with('success','Brand insert successfully.');
+
     }
 
     public function brand_index(Request $request){
@@ -100,7 +101,8 @@ class BrandController extends Controller
             $brand->font_family = $request->font_family;
             $brand->save();
 
-        return redirect()->route('brand.index')->with('message', 'Brand update succesfully');
+            return redirect()->route('brand.index')->with('success','Brand update successfully.');
+
     }
     
     public function brand_destroy(Request $request,$id){
@@ -117,7 +119,7 @@ class BrandController extends Controller
 
         if($brand)
         {
-            return redirect()->route('brand.index')->with('message', 'Brand deleted succesfully');
+            return redirect()->route('brand.index')->with('message', 'Brand deleted successfully');
         }
   
     }
