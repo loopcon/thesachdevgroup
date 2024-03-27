@@ -102,7 +102,7 @@ class ShowroomTestimonialController extends Controller
                     $has_permission = hasPermission('Showroom Testimonial');
                     if(isset($has_permission) && $has_permission)
                     {
-                        if($has_permission->read_permission == 1)
+                        if($has_permission->full_permission == 1)
                         {
                             $html .= "<span class='text-nowrap'>";
                             $html .= "<a href='".url('showroom-testimonial-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";
