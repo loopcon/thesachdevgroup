@@ -142,6 +142,12 @@
                             <p>Showroom Testimonial</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('showroom-model')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Showroom Model</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             @endif

@@ -6,16 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Showroom;
 use App\Models\ShowroomTestimonial;
+use App\Models\ModulePermission;
 use DataTables;
 use File;
+use Auth;
 
 class ShowroomTestimonialController extends Controller
 {
     public function showroomTestimonialList()
     {
-        $return_data = array();
-        $return_data['site_title'] = trans('Showroom Testimonial');
-        return view("admin.showroom_testimonial.list",array_merge($return_data));
+        $roles = Auth::user()->role_id;
+        $module_permission = ModulePermission::select('id' , 'read_permission', 'full_permission')->where('role_id',$roles)->first();
+        if($module_permission->read_permission == 1 || $module_permission->full_permission == 1)
+        {
+            $return_data = array();
+            $return_data['site_title'] = trans('Showroom Testimonial');
+            return view("admin.showroom_testimonial.list",array_merge($return_data));
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
     }
 
     public function showroomTestimonialCreate()

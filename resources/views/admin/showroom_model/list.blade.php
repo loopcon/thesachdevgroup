@@ -16,7 +16,7 @@
         </div>
         <div class="card">
             <div class="col-sm-12  text-end">
-                <a href="{{ route('showroom-testimonial-create') }}" class="btn btn-primary mt-2 mr-4 float-right">Add</a>
+                <a href="{{ route('showroom-model-create') }}" class="btn btn-primary mt-2 mr-4 float-right">Add</a>
             </div>
             <div class="card-body">
                 <section class="content">
@@ -25,10 +25,13 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Name</th>
+                                    <th>Title</th>
                                     <th>Image</th>
-                                    <th>Description</th>
                                     <th>Showroom</th>
+                                    <th>Title Text Size</th>
+                                    <th>Title Text Color</th>
+                                    <th>Title Font Family</th>
+                                    <th>Image Size</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -47,13 +50,16 @@
         var table = $('.table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('showroom-testimonial-datatable') }}",
+            ajax: "{{ route('showroom-model-datatable') }}",
             columns: [
                 {data: 'id', name: '', orderable: false, searchable: false},
-                {data: 'name', name: 'name'},
+                {data: 'title', name: 'title'},
                 {data: 'image', name: 'image'},
-                {data: 'description', name: 'description'},
                 {data: 'showroom', name: 'showroom'},
+                {data: 'title_text_size', name: 'title_text_size'},
+                {data: 'title_text_color', name: 'title_text_color'},
+                {data: 'title_font_family', name: 'title_font_family'},
+                {data: 'image_size', name: 'image_size'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -63,7 +69,7 @@
         var href = $(this).data('href');
         return new swal({
             title: "",
-            text: "{{__('Are you sure? Delete this Showroom Testimonial!')}}",
+            text: "{{__('Are you sure? Delete this Showroom Model!')}}",
             showCancelButton: true,
             confirmButtonText: "{{__('Yes, delete it!')}}",
             icon: "warning"

@@ -121,5 +121,12 @@ Route::group(['middleware' => 'auth'], function () {
      Route::get('showroom-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDestroy'])->name('showroom-testimonial-delete');
      Route::get('showroom-testimonial-datatable', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDatatable'])->name('showroom-testimonial-datatable');
 
-   
+     //Showroom testimonial
+     Route::get('showroom-model', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelList'])->name('showroom-model');
+     Route::get('showroom-model-create', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelCreate'])->name('showroom-model-create');
+     Route::post('showroom-model-store', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelStore'])->name('showroom-model-store');
+     Route::get('showroom-model-edit/{id}', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelEdit'])->name('showroom-model-edit');
+     Route::post('showroom-model-update/{id}', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelUpdate'])->name('showroom-model-update');
+     Route::get('showroom-model-delete/{id}', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelDestroy'])->name('showroom-model-delete');
+     Route::get('showroom-model-datatable', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelDatatable'])->name('showroom-model-datatable');
 });
