@@ -47,3 +47,29 @@ ALTER TABLE `showroom_model` ADD `title_text_size` VARCHAR(255) NULL DEFAULT NUL
 
 -- Drashti : 23-03-2024 01:11 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES ('10', 'Footer Menu', NULL, NULL, NULL);
+
+-- Disha : 27-03-2024 10:15 AM
+--
+-- Table structure for table `showroom_model`
+--
+
+CREATE TABLE `showroom_model` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `showroom_id` int(11) DEFAULT NULL COMMENT '`id` of `showroom`',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_text_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_text_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_font_family` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `showroom_model`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `showroom_model`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
