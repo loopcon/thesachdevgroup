@@ -13,7 +13,7 @@ class ShowroomModelController extends Controller
 {
     public function showroomModelList()
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Model');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -29,7 +29,7 @@ class ShowroomModelController extends Controller
 
     public function showroomModelCreate()
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Model');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -46,7 +46,7 @@ class ShowroomModelController extends Controller
 
     public function showroomModelStore(Request $request)
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Model');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
@@ -98,7 +98,7 @@ class ShowroomModelController extends Controller
                 ->addColumn('action', function ($list) {
                     $html = "";
                     $id = encrypt($list->id);
-                    $has_permission = hasPermission('Showroom');
+                    $has_permission = hasPermission('Showroom Model');
                     if(isset($has_permission) && $has_permission)
                     {
                         if($has_permission->read_permission == 1)
@@ -120,7 +120,7 @@ class ShowroomModelController extends Controller
 
     public function showroomModelEdit($id)
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Model');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
@@ -140,7 +140,7 @@ class ShowroomModelController extends Controller
 
     public function showroomModelUpdate(Request $request,$id)
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Model');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
@@ -181,7 +181,7 @@ class ShowroomModelController extends Controller
 
     public function showroomModelDestroy(Request $request, $id)
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Model');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)

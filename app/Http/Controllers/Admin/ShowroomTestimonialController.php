@@ -15,7 +15,7 @@ class ShowroomTestimonialController extends Controller
 {
     public function showroomTestimonialList()
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Testimonial');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -31,7 +31,7 @@ class ShowroomTestimonialController extends Controller
 
     public function showroomTestimonialCreate()
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Testimonial');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -48,7 +48,7 @@ class ShowroomTestimonialController extends Controller
 
     public function showroomTestimonialStore(Request $request)
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Testimonial');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
@@ -99,7 +99,7 @@ class ShowroomTestimonialController extends Controller
                 ->addColumn('action', function ($list) {
                     $html = "";
                     $id = encrypt($list->id);
-                    $has_permission = hasPermission('Showroom');
+                    $has_permission = hasPermission('Showroom Testimonial');
                     if(isset($has_permission) && $has_permission)
                     {
                         if($has_permission->read_permission == 1)
@@ -121,7 +121,7 @@ class ShowroomTestimonialController extends Controller
 
     public function showroomTestimonialEdit($id)
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Testimonial');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
@@ -141,7 +141,7 @@ class ShowroomTestimonialController extends Controller
 
     public function showroomTestimonialUpdate(Request $request,$id)
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Testimonial');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
@@ -181,7 +181,7 @@ class ShowroomTestimonialController extends Controller
 
     public function showroomTestimonialDestroy(Request $request, $id)
     {
-        $has_permission = hasPermission('Showroom');
+        $has_permission = hasPermission('Showroom Testimonial');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)

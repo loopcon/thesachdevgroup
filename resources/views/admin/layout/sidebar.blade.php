@@ -125,7 +125,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>
-                            Showroom
+                            Showrooms
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -146,6 +146,29 @@
                             <a href="{{route('showroom-model')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Showroom Model</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+        @endif
+
+        @php($has_permission = hasPermission('Services'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>
+                        Services
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Service Center</p>
                             </a>
                         </li>
                     </ul>
