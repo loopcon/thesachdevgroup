@@ -59,6 +59,20 @@
                   @endif
                 @endif
 
+                @php($has_permission = hasPermission('Mission Vision'))
+                  @if(isset($has_permission) && $has_permission)
+                    @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                    <li class="nav-item">
+                      <a href="{{url('mission_vision')}}" class="nav-link">
+                        <i class="nav-icon fas fa-tasks"></i> 
+                        <p>
+                          Mission Vision
+                        </p>
+                      </a>
+                  </li>
+                  @endif
+                @endif
+          
               </ul>
             </li>
 
@@ -81,7 +95,7 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                 <li class="nav-item">
                     <a href="{{url('setting')}}" class="nav-link">
-                        <i class="nav-icon fas fa-cog"></i>
+                        <i class="nav-icon fas fa-cogs"></i>
                         <p>
                         Setting
                         </p>
@@ -123,7 +137,7 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-cogs"></i>
+                        <i class="nav-icon fas fa-building"></i>
                         <p>
                             Showrooms
                             <i class="right fas fa-angle-left"></i>

@@ -74,6 +74,11 @@ ALTER TABLE `showroom_model`
 ALTER TABLE `showroom_model`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
+  
+-- Drashti : 27-03-2024 02:09 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES ('11', 'Mission Vision', NULL, NULL, NULL);
+
+
 -- Disha : 27-03-2024 11:39 AM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Showroom Testimonial', NULL, NULL, NULL);
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Showroom Model', NULL, NULL, NULL);
