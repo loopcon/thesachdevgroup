@@ -29,12 +29,8 @@ return new class extends Migration
             $table->string('description_font_size')->nullable();
             $table->string('description_font_family')->nullable();
             $table->string('our_story_image')->nullable();
-            $table->string('our_story_title')->nullable();
-            $table->longText('our_story_description')->nullable();
-            $table->string('our_mission_title')->nullable();
-            $table->longText('our_mission_description')->nullable();
-            $table->string('our_vision_title')->nullable();
-            $table->longText('our_vision_description')->nullable();
+            $table->string('businesses_title')->nullable();
+            $table->string('testimonials_title')->nullable();
             $table->string('icon')->nullable();
             $table->string('amount')->nullable();
             $table->string('name')->nullable();

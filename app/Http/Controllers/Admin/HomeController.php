@@ -475,14 +475,8 @@ class HomeController extends Controller
         $home_detail->description_font_size = $request->description_font_size;
         $home_detail->description_font_family = $request->description_font_family;
 
-        $home_detail->our_story_title = $request->our_story_title;
-        $home_detail->our_story_description = $request->our_story_description;
-
-        $home_detail->our_mission_title = $request->our_mission_title;
-        $home_detail->our_mission_description = $request->our_mission_description;
-
-        $home_detail->our_vision_title = $request->our_vision_title;
-        $home_detail->our_vision_description = $request->our_vision_description;
+        $home_detail->businesses_title = $request->businesses_title;
+        $home_detail->testimonials_title = $request->testimonials_title;
 
         $home_detail->amount = $request->amount;
         $home_detail->name = $request->name;

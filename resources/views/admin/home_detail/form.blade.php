@@ -138,8 +138,8 @@
                             </div>
 
                             <div class="form-row">
-                              <div class="form-group col-md-6">
-                                  <label for="our_story_image">Our Story Image<span class="text-danger">*</span></label>
+                                <div class="col-md-4 mb-3">
+                                  <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label>
                                   @if($home_detail->our_story_image == null)
                                   <img src="{{url('public/no_image/notImg.png')}}" width="100">
                                   @else
@@ -148,45 +148,27 @@
                                   <input type="file" id="our_story_image" class="form-control" name="our_story_image">
                                   <div class="error"></div>
                               </div>
-                              <div class="form-group col-md-6">
-                                <label for="our_story_title">Our Story Title<span class="text-danger">*</span></label>
-                                <input type="text" id="our_story_title" class="form-control" name="our_story_title" value="{{ $home_detail->our_story_title}}">
+
+                              <div class="col-md-4 mb-3">
+                                <label for="businesses_title">Businesses Title</label>
+                                <input type="text" id="businesses_title" class="form-control" name="businesses_title" value="{{ $home_detail->businesses_title}}">
                                 <div class="error"></div>
                               </div>
-                            </div>
 
-                            <div class="mb-3">
-                              <label for="our_story_description">Our Story Description<span class="text-danger">*</span></label>
-                              <textarea class="ckeditor form-control" name="our_story_description">{{ $home_detail->our_story_description}}</textarea>
-                              <div class="error"></div>
-                            </div>
-
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="our_mission_title">Our Mission Title<span class="text-danger">*</span></label>
-                                <input type="text" id="our_mission_title" class="form-control" name="our_mission_title" value="{{ $home_detail->our_mission_title}}">
+                              <div class="col-md-4 mb-3">
+                                <label for="testimonials_title">Testimonials Title</label>
+                                <input type="text" id="testimonials_title" class="form-control" name="testimonials_title" value="{{ $home_detail->testimonials_title}}">
                                 <div class="error"></div>
                               </div>
-                              <div class="form-group col-md-6">
-                                <label for="our_vision_title">Our Vision Title<span class="text-danger">*</span></label>
-                                  <input type="text" id="our_vision_title" class="form-control" name="our_vision_title" value="{{ $home_detail->our_vision_title}}">
-                                  <div class="error"></div>
-                              </div>
-                            </div>
-
-                            <div class="mb-3">
-                              <label for="our_mission_description">Our Mission Description<span class="text-danger">*</span></label>
-                              <textarea class="ckeditor form-control" name="our_mission_description">{{ $home_detail->our_mission_description}}</textarea>
-                              <div class="error"></div>
-                            </div>
     
-                            <div class="mb-3">
-                              <label for="our_vision_description">Our Vision Description<span class="text-danger">*</span></label>
-                              <textarea class="ckeditor form-control" name="our_vision_description">{{ $home_detail->our_vision_description}}</textarea>
-                              <div class="error"></div>
+
                             </div>
 
-                            
+                           
+  
+  
+                         
+
                         <div class="col-12"><h5><b>Count</b></h5></div>
                         <hr>
                         <div class="form-row">
@@ -383,49 +365,26 @@
                         </div>
 
                         <div class="form-row">
-                          <div class="form-group col-md-6">
-                              <label for="our_story_image">Our Story Image<span class="text-danger">*</span></label>
+                          <div class="form-group col-md-4">
+                              <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label>
                               <input type="file" id="our_story_image" class="form-control" name="our_story_image">
                               <div class="error"></div>
                           </div>
-                          <div class="form-group col-md-6">
-                            <label for="our_story_title">Our Story Title<span class="text-danger">*</span></label>
-                            <input type="text" id="our_story_title" class="form-control" name="our_story_title">
+
+                          <div class="form-group col-md-4">
+                            <label for="businesses_title">Businesses Title</label>
+                            <input type="text" id="businesses_title" class="form-control" name="businesses_title">
                             <div class="error"></div>
-                          </div>
+                        </div>
+
+
+                        <div class="form-group col-md-4">
+                          <label for="testimonials_title">Testimonials Title</label>
+                          <input type="text" id="testimonials_title" class="form-control" name="testimonials_title">
+                          <div class="error"></div>
+                      </div>
                         </div>
                         
-                        <div class="mb-3">
-                          <label for="our_story_description">Our Story Description<span class="text-danger">*</span></label>
-                          <textarea class="ckeditor form-control" name="our_story_description"></textarea>
-                          <div class="error"></div>
-                        </div>
-                        
-                        <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="our_mission_title">Our Mission Title<span class="text-danger">*</span></label>
-                            <input type="text" id="our_mission_title" class="form-control" name="our_mission_title">
-                            <div class="error"></div>
-                          </div>
-                          <div class="form-group col-md-6">
-                            <label for="our_vision_title">Our Vision Title<span class="text-danger">*</span></label>
-                              <input type="text" id="our_vision_title" class="form-control" name="our_vision_title">
-                              <div class="error"></div>
-                          </div>
-                        </div>
-
-                        <div class="mb-3">
-                          <label for="our_mission_description">Our Mission Description<span class="text-danger">*</span></label>
-                          <textarea class="ckeditor form-control" name="our_mission_description"></textarea>
-                          <div class="error"></div>
-                        </div>
-
-                        <div class="mb-3">
-                          <label for="our_vision_description">Our Vision Description<span class="text-danger">*</span></label>
-                          <textarea class="ckeditor form-control" name="our_vision_description"></textarea>
-                          <div class="error"></div>
-                        </div>
-
                         <div class="col-12"><h5><b>Count</b></h5></div>
 
                         <hr>
@@ -546,24 +505,6 @@
                 'our_story_image': {
                     extension: "jpg,jpeg,png",
                 },
-                'our_story_title': {
-                    required: true,
-                },
-                'our_story_description': {
-                    required: true,
-                },
-                'our_mission_title': {
-                    required: true,
-                },
-                'our_mission_description': {
-                    required: true,
-                },
-                'our_vision_title': {
-                    required: true,
-                },
-                'our_vision_description': {
-                    required: true,
-                },
                 'icon': {
                     extension: "jpg,jpeg,png",
                 },
@@ -584,26 +525,8 @@
                 'our_story_image': {
                     extension: "The image must be an image.",
                 },
-                'our_story_title': {
-                    required: "The our story title field is required.",
-                },
-                'our_story_description': {
-                    required: "The our story description field is required.",
-                },
-                'our_mission_title': {
-                    required: "The our mission title field is required.",
-                },
-                'our_mission_description': {
-                    required: "The our mission description field is required.",
-                },
-                'our_vision_title': {
-                    required: "The our vision title field is required.",
-                },
-                'our_vision_description': {
-                    required: "The our vision description field is required.",
-                },
                 'icon': {
-                    extension: "The image must be an image.",
+                    extension: "Please enter a value with a valid extension.",
                 },
             },
             errorPlacement: function(error, element) {

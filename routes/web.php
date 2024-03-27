@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\ShowroomController;
 use App\Http\Controllers\Admin\HeaderMenuController;
 use App\Http\Controllers\Admin\FooterMenuController;
+use App\Http\Controllers\Admin\MissionVisionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,4 +136,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('footer_menu_edit/{footer_menu_edit}', [FooterMenuController::class, 'footer_menu_edit'])->name('footer_menu.edit');
     Route::post('footer_menu_update,{id}', [FooterMenuController::class, 'footer_menu_update'])->name('footer_menu_update');
     Route::get('footer_menu_destroy/{id}', [FooterMenuController::class, 'footer_menu_destroy'])->name('footer_menu_destroy');
+
+    //mission_vision
+    Route::get('mission_vision', [MissionVisionController::class, 'mission_vision'])->name('mission_vision');
+    Route::get('missionVisionCreate', [MissionVisionController::class, 'missionVisionCreate'])->name('missionVisionCreate');
+    Route::post('mission_vision_insert', [MissionVisionController::class, 'mission_vision_insert'])->name('mission_vision_insert');
+    Route::get('mission_vision_index', [MissionVisionController::class, 'mission_vision_index'])->name('mission_vision.index');
+    Route::get('mission_vision_edit/{mission_vision_edit}', [MissionVisionController::class, 'mission_vision_edit'])->name('mission_vision.edit');
+    Route::post('mission_vision_update,{id}', [MissionVisionController::class, 'mission_vision_update'])->name('mission_vision_update');
+    Route::get('mission_vision_destroy/{id}', [MissionVisionController::class, 'mission_vision_destroy'])->name('mission_vision_destroy');
+
 });
