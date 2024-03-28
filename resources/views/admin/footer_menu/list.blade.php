@@ -8,9 +8,12 @@
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">{{$site_title}}</h1>
-                    </div>
+                        <div class="col-12">
+                            @include('admin.alerts')
+                        </div>
+                        <div class="col-sm-6">
+                            <h1 class="m-0">{{$site_title}}</h1>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,7 +78,7 @@ $(document).on('click', '.delete', function() {
         text: "{{__('Are you sure? Delete this Footer Menu!')}}",
         showCancelButton: true,
         confirmButtonText: "{{__('Yes, delete it!')}}",
-        icon: "question"
+        icon: "warning"
     }).then((result) => {
         if (result.isConfirmed) {
             location.href = href;

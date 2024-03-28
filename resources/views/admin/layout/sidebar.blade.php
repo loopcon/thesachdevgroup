@@ -216,6 +216,22 @@
           @endif
         @endif
 
+        
+        @php($has_permission = hasPermission('Header Menu Social Media Icon'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+        <li class="nav-item">
+          <a href="{{url('header_menu_social_media_icon')}}" class="nav-link">
+            <i class="nav-icon fas fa-heading"></i>
+            <p>
+              Header Menu Social Media Icon
+            </p>
+          </a>
+        </li>
+        @endif
+        @endif
+
+
         @php($has_permission = hasPermission('Footer Menu'))
           @if(isset($has_permission) && $has_permission)
               @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)

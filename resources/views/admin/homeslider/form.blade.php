@@ -46,21 +46,24 @@
                             </div>
 
                             <div class="mb-3 col-md-4">
+                                @php($fontsize = fontSize())
                                 <label for="title_font_size" class="form-label">Title Text Font Size</label>
                                 <select class="form-control select2" name="title_font_size">
                                     <option selected="selected" disabled="disabled">Select</option>
-                                    @for($i=24; $i<=50; $i+=2)
+                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
                                </select>
                             </div>
 
                             <div class="col-md-4">
+                                @php($fontfamily = fontFamily())
                                 <label for="title_font_family" class="form-label">Title Text Font Family</label>
                                 <select class="form-control select2" name="title_font_family">
                                     <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins">Poppins</option>
-                                        <option value="sans-serif">Sans Serif</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                    @endforeach
                                </select>
                             </div>
 
@@ -73,7 +76,7 @@
                                 <label for="sub_title_font_size" class="form-label">Sub Title Text Font Size</label>
                                 <select class="form-control select2" name="sub_title_font_size">
                                     <option selected="selected" disabled="disabled">Select</option>
-                                    @for($i=24; $i<=50; $i+=2)
+                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
                                </select>
@@ -83,18 +86,22 @@
                                 <label for="sub_title_font_family" class="form-label">Sub Title Text Font Family</label>
                                 <select class="form-control select2" name="sub_title_font_family">
                                     <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins">Poppins</option>
-                                        <option value="sans-serif">Sans Serif</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                    @endforeach
                                </select>
                             </div>
 
                             
                             <div class="mb-3 col-md-4">
+                                @php($position = position())
                                 <label for="text_position" class="form-label">Text Position</label>
                                 <select class="form-control select2" name="text_position">
                                     <option selected="selected" disabled="disabled">Select</option>
-                                    <option value="left">Left</option>
-                                    <option value="right">Right</option>
+                                    @foreach($position as $pos)
+                                        <option value="{{$pos['key']}}">{{$pos['value']}}</option>
+                                    @endforeach
+
                                </select>
                             </div>
 

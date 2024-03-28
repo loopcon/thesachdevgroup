@@ -28,9 +28,6 @@ return new class extends Migration
             $table->string('time_color')->nullable();
             $table->string('time_font_size')->nullable();
             $table->string('time_font_family')->nullable();
-            $table->string('twitter_link')->nullable();
-            $table->string('linkedin_link')->nullable();
-            $table->string('facebook_link')->nullable();
             $table->longText('address')->nullable();
             $table->string('address_color')->nullable();
             $table->string('address_font_size')->nullable();
@@ -38,6 +35,11 @@ return new class extends Migration
             $table->string('email_icon')->nullable();
             $table->string('call_icon')->nullable();
             $table->string('address_icon')->nullable();
+            $table->string('payment_button_text')->nullable();
+            $table->string('payment_button_text_color')->nullable();
+            $table->string('payment_button_font_size')->nullable();
+            $table->string('payment_button_font_family')->nullable();
+            $table->string('payment_button_color')->nullable();
             $table->longText('footer_description')->nullable();
             $table->string('footer_description_color')->nullable();
             $table->string('footer_description_font_size')->nullable();

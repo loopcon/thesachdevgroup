@@ -15,39 +15,56 @@ class CarController extends Controller
 {
     //car
     public function car(Request $request){
-        $brands = Brand::get();
-        return view("admin.car.form",compact('brands')); 
+        $has_permission = hasPermission('Car');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $brands = Brand::get();
+                return view("admin.car.form",compact('brands')); 
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
     }
 
     
     public function car_insert(Request $request){
-      
-        $car = new Car();
-        $car->brand_id = $request->brand_id;
+        $has_permission = hasPermission('Car');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $car = new Car();
+                $car->brand_id = $request->brand_id;
 
-        if($file = $request->hasFile('image')) {
-            $file = $request->file('image') ;
-  
-            $extension = $file->getClientOriginalExtension();
-            $fileName = time(). '.' . $extension;
-  
-            $destinationPath = public_path().'/car' ;
-            $file->move($destinationPath,$fileName);
-            $car->image = $fileName;
+                if($file = $request->hasFile('image')) {
+                    $file = $request->file('image') ;
+        
+                    $extension = $file->getClientOriginalExtension();
+                    $fileName = time(). '.' . $extension;
+        
+                    $destinationPath = public_path().'/car' ;
+                    $file->move($destinationPath,$fileName);
+                    $car->image = $fileName;
+                }
+
+                $car->name = $request->name;
+                $car->price = $request->price;
+                $car->link = $request->link;
+                $car->name_color = $request->name_color;
+                $car->price_color = $request->price_color;
+                $car->name_font_size = $request->name_font_size;
+                $car->price_font_size = $request->price_font_size;
+                $car->name_font_family = $request->name_font_family;
+                $car->price_font_family = $request->price_font_family;
+                $car->save();
+        
+                return redirect()->route('car.index')->with('success','Car insert successfully.');
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
         }
-
-        $car->name = $request->name;
-        $car->price = $request->price;
-        $car->link = $request->link;
-        $car->name_color = $request->name_color;
-        $car->price_color = $request->price_color;
-        $car->name_font_size = $request->name_font_size;
-        $car->price_font_size = $request->price_font_size;
-        $car->name_font_family = $request->name_font_family;
-        $car->price_font_family = $request->price_font_family;
-        $car->save();
-  
-        return redirect()->route('car.index')->with('message', 'Car insert succesfully');
     }
 
     public function car_index(Request $request){
@@ -56,10 +73,20 @@ class CarController extends Controller
             return Datatables::of($car)
                     ->addIndexColumn()
                     ->addColumn('action', function($car){
-            
-                    $updateButton = "<a href='".route("car.edit",encrypt($car->id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
-                    $deleteBtn = "<a href='javascript:void(0);' data-href='".route('car_destroy',array($car->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
-                    return $updateButton . $deleteBtn;
+
+                        $updateButton = "";
+                        $deleteBtn = "";
+                        $has_permission = hasPermission('Car');
+                        if(isset($has_permission) && $has_permission)
+                        {
+                            if($has_permission->full_permission == 1)
+                            {
+                                $updateButton = "<a href='".route("car.edit",encrypt($car->id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
+                                $deleteBtn = "<a href='javascript:void(0);' data-href='".route('car_destroy',array($car->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                    
+                            }
+                        }
+                        return $updateButton . $deleteBtn;
                     })
   
                     ->editColumn('image', function($car){
@@ -85,64 +112,101 @@ class CarController extends Controller
             ->make(true);
         }
         
-        return view('admin.car.show');
+        $has_permission = hasPermission('Car');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                return view('admin.car.show');
+            }else {
+                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+            }
+        }
     }
     
     public function car_edit($id){
-        $cars  = Car::where('id',decrypt($id))->get();
-        $brands = Brand::get();
-        return view('admin.car._form',compact('cars','brands'));
+        $has_permission = hasPermission('Car');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $cars  = Car::where('id',decrypt($id))->get();
+                $brands = Brand::get();
+                return view('admin.car._form',compact('cars','brands'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
     }
 
     public function car_update(Request $request, $id)
     {
-        $car = Car::find($id);
-        $car->brand_id = $request->brand_id;
-
-            if($request->hasFile('image'))
+        $has_permission = hasPermission('Car');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
             {
-                $destination = 'public/car/' . $car->image;
-                if(File::exists($destination))
-                {
-                    File::delete($destination);
-                }
-                $file = $request->file('image');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time(). '.' . $extension;
-                $file->move('public/car/', $filename);
-                $car->image = $filename;
-            }
-            $car->name = $request->name;
-            $car->price = $request->price;
-            $car->link = $request->link;
-            $car->name_color = $request->name_color;
-            $car->price_color = $request->price_color;
-            $car->name_font_size = $request->name_font_size;
-            $car->price_font_size = $request->price_font_size;
-            $car->name_font_family = $request->name_font_family;
-            $car->price_font_family = $request->price_font_family;
-            $car->save();
 
-        return redirect()->route('car.index')->with('message', 'Car update succesfully');
+                $car = Car::find($id);
+                $car->brand_id = $request->brand_id;
+
+                if($request->hasFile('image'))
+                {
+                    $destination = 'public/car/' . $car->image;
+                    if(File::exists($destination))
+                    {
+                        File::delete($destination);
+                    }
+                    $file = $request->file('image');
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = time(). '.' . $extension;
+                    $file->move('public/car/', $filename);
+                    $car->image = $filename;
+                }
+                $car->name = $request->name;
+                $car->price = $request->price;
+                $car->link = $request->link;
+                $car->name_color = $request->name_color;
+                $car->price_color = $request->price_color;
+                $car->name_font_size = $request->name_font_size;
+                $car->price_font_size = $request->price_font_size;
+                $car->name_font_family = $request->name_font_family;
+                $car->price_font_family = $request->price_font_family;
+                $car->save();
+
+                return redirect()->route('car.index')->with('success','Car update successfully.');
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
     }
 
-    public function car_destroy(Request $request,$id){
-
-        $car = Car::findOrFail($id);
-
-        $image_path = public_path("car/{$car->image}");
-
-        if (File::exists($image_path)) {
-            unlink($image_path);
-        }
-
-        $car->delete();
-
-        if($car)
+    public function car_destroy(Request $request,$id)
+    {
+        $has_permission = hasPermission('Car');
+        if(isset($has_permission) && $has_permission)
         {
-            return redirect()->route('car.index')->with('message', 'Car deleted succesfully');
-        }
+            if($has_permission->full_permission == 1)
+            {
+                $car = Car::findOrFail($id);
+
+                $image_path = public_path("car/{$car->image}");
+
+                if (File::exists($image_path)) {
+                    unlink($image_path);
+                }
+
+                $car->delete();
+
+                if($car)
+                {
+                    return redirect()->route('car.index')->with('message', 'Car deleted successfully');
+                }
   
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
     }
 
 }

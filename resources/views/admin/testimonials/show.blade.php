@@ -8,6 +8,9 @@
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
+                        <div class="col-12">
+                            @include('admin.alerts')
+                        </div>
                         <div class="col-sm-6">
                             <h1 class="m-0">Testimonials</h1>
                         </div>
@@ -90,18 +93,5 @@
             }
         });
     });
-      
-    @if($message = session('message'))
-      swal("{{ $message }}");
-    @endif
-      
-    @if(session()->has('message'))
-      swal({
-          title: "Testimonials",
-          text: '{{ $message }}',
-          icon: "success",
-          buttons: true,
-      })
-  @endif
 </script>
 @endsection

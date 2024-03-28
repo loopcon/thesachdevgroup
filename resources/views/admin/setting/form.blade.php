@@ -4,6 +4,9 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row">
+          <div class="col-12">
+            @include('admin.alerts')
+          </div>
           <div class="col-sm-6">
             <h1>Setting</h1>
           </div>
@@ -25,92 +28,6 @@
 
                         @if(isset($settings) && count($settings) > 0)
                             @foreach($settings as $setting)
-
-                            {{-- <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="image">Logo<span class="text-danger">*</span></label>
-                                  @if($setting->logo == null)
-                                    <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                  @else
-                                    <img src="{{url('public/logo/'.$setting->logo)}}" width="100">
-                                  @endif
-                                  <input type="file" id="logo" class="form-control" name="logo">
-                                  <div class="error"></div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="email">E-mail<span class="text-danger">*</span></label>
-                                  <input type="email" id="email" class="form-control" name="email" value="{{ $setting->email ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
-                                  <input type="number" id="mobile_number" class="form-control" name="mobile_number" value="{{ $setting->mobile_number ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="time">Time<span class="text-danger">*</span></label>
-                                  <input type="text" id="time" class="form-control" name="time" value="{{ $setting->time ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="twitter_link">Twitter Link<span class="text-danger">*</span></label>
-                                  <input type="text" id="twitter_link" class="form-control" name="twitter_link" value="{{ $setting->twitter_link ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                  <label for="linkedin_link">Linkedin Link<span class="text-danger">*</span></label>
-                                  <input type="text" id="linkedin_link" class="form-control" name="linkedin_link" value="{{ $setting->linkedin_link ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="facebook_link">Facebook Link<span class="text-danger">*</span></label>
-                                  <input type="text" id="facebook_link" class="form-control" name="facebook_link" value="{{ $setting->facebook_link ?? '' }}">
-                                  <div class="error"></div>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="address">Address<span class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="address">{{$setting->address}}</textarea>
-                                    <div class="error"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
-                                @if($setting->email_icon == null)
-                                  <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                @else
-                                    <img src="{{url('public/email_icon/'.$setting->email_icon)}}" width="100">
-                                @endif
-                                <input type="file" id="email_icon" class="form-control" name="email_icon">
-                                <div class="error"></div>
-                              </div>
-                              <div class="form-group col-md-6">
-                                  <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
-                                  @if($setting->call_icon == null)
-                                    <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                  @else
-                                      <img src="{{url('public/call_icon/'.$setting->call_icon)}}" width="100">
-                                  @endif
-                                  <input type="file" id="call_icon" class="form-control" name="call_icon">
-                                  <div class="error"></div>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                              <label for="footer_description">Footer Description</label>
-                              <textarea class="ckeditor form-control" name="footer_description">{{$setting->footer_description}}</textarea>
-                              <div class="error"></div>
-                            </div> --}}
 
                             <div class="row">
                               <div class="mb-3 col-md-4">
@@ -215,25 +132,6 @@
                                 </select>
                               </div>
     
-    
-                              <div class="col-md-4">
-                                <label for="twitter_link">Twitter Link<span class="text-danger">*</span></label>
-                                  <input type="text" id="twitter_link" class="form-control" name="twitter_link" value="{{$setting->twitter_link}}">
-                                  <div class="error"></div>
-                              </div>
-    
-                              <div class="mb-3 col-md-4">
-                                <label for="linkedin_link">Linkedin Link<span class="text-danger">*</span></label>
-                                <input type="text" id="linkedin_link" class="form-control" name="linkedin_link" value="{{$setting->linkedin_link}}">
-                                <div class="error"></div>
-                              </div>
-    
-                              <div class="col-md-4">
-                                <label for="facebook_link">Facebook Link<span class="text-danger">*</span></label>
-                                <input type="text" id="facebook_link" class="form-control" name="facebook_link" value="{{$setting->facebook_link}}">
-                                <div class="error"></div>
-                              </div>
-    
                               <div class="mb-3 col-md-4">
                                 <label for="address">Address<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="address">{{$setting->address}}</textarea>
@@ -245,7 +143,7 @@
                                 <input type="text" class="form-control colorpicker" name="address_color" id="address_color" value="{{$setting->address_color}}">
                               </div>
     
-                              <div class="mb-3 col-md-4">
+                              <div class="col-md-4">
                                 <label for="address_font_size" class="form-label">Address Text Font Size</label>
                                 <select class="form-control select2" name="address_font_size">
                                     <option selected="selected" disabled="disabled">Select</option>
@@ -264,7 +162,7 @@
                                 </select>
                               </div>
     
-                              <div class="col-md-4">
+                              <div class="mb-3 col-md-4">
                                 <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
                                 @if($setting->email_icon == null)
                                   <img src="{{url('public/no_image/notImg.png')}}" width="100">
@@ -296,6 +194,42 @@
                                 <input type="file" id="address_icon" class="form-control" name="address_icon">
                                 <div class="error"></div>
                               </div>
+
+
+                              <div class="col-md-4">
+                                <label for="payment_button_text" class="form-label">Payment Button Text</label>
+                                <input type="text" class="form-control" name="payment_button_text" id="payment_button_text" value="{{$setting->payment_button_text}}">
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="payment_button_text_color" class="form-label">Payment Button Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="payment_button_text_color" id="payment_button_text_color" value="{{$setting->payment_button_text_color}}">
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="payment_button_font_size" class="form-label">Payment Button Text Font Size</label>
+                                <select class="form-control select2" name="payment_button_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                      <option value="{{$i}}px" {{$setting->payment_button_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="payment_button_font_family" class="form-label">Payment Button Text Font Family</label>
+                                <select class="form-control select2" name="payment_button_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins"  {{$setting->payment_button_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
+                                    <option value="sans-serif" {{$setting->payment_button_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                </select>
+                              </div>
+    
+                              <div class="col-md-4">
+                                <label for="payment_button_color" class="form-label">Payment Button Color</label>
+                                <input type="text" class="form-control colorpicker" name="payment_button_color" id="payment_button_color" value="{{$setting->payment_button_color}}">
+                              </div>
+
     
                               <div class="col-md-12 mt-2 mb-3">
                                 <label for="footer_description">Footer Description</label>
@@ -431,25 +365,6 @@
                             </select>
                           </div>
 
-
-                          <div class="col-md-4">
-                            <label for="twitter_link">Twitter Link<span class="text-danger">*</span></label>
-                              <input type="text" id="twitter_link" class="form-control" name="twitter_link">
-                              <div class="error"></div>
-                          </div>
-
-                          <div class="mb-3 col-md-4">
-                            <label for="linkedin_link">Linkedin Link<span class="text-danger">*</span></label>
-                            <input type="text" id="linkedin_link" class="form-control" name="linkedin_link">
-                            <div class="error"></div>
-                          </div>
-
-                          <div class="col-md-4">
-                            <label for="facebook_link">Facebook Link<span class="text-danger">*</span></label>
-                            <input type="text" id="facebook_link" class="form-control" name="facebook_link">
-                            <div class="error"></div>
-                          </div>
-
                           <div class="mb-3 col-md-4">
                             <label for="address">Address<span class="text-danger">*</span></label>
                             <textarea class="form-control" name="address"></textarea>
@@ -497,6 +412,43 @@
                             <input type="file" id="address_icon" class="form-control" name="address_icon">
                             <div class="error"></div>
                           </div>
+
+                          
+                          <div class="col-md-4">
+                            <label for="payment_button_text" class="form-label">Payment Button Text</label>
+                            <input type="text" class="form-control" name="payment_button_text" id="payment_button_text">
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="payment_button_text_color" class="form-label">Payment Button Text Color</label>
+                            <input type="text" class="form-control colorpicker" name="payment_button_text_color" id="payment_button_text_color">
+                          </div>
+
+                          <div class="mb-3 col-md-4">
+                            <label for="payment_button_font_size" class="form-label">Payment Button Text Font Size</label>
+                            <select class="form-control select2" name="payment_button_font_size">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                @for($i=24; $i<=50; $i+=2)
+                                    <option value="{{$i}}px">{{$i}}px</option>
+                                @endfor
+                            </select>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="payment_button_font_family" class="form-label">Payment Button Text Font Family</label>
+                            <select class="form-control select2" name="payment_button_font_family">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="poppins">Poppins</option>
+                                    <option value="sans-serif">Sans Serif</option>
+                            </select>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="payment_button_color" class="form-label">Payment Button Color</label>
+                            <input type="text" class="form-control colorpicker" name="payment_button_color" id="payment_button_color">
+                          </div>
+
+
 
                           <div class="col-md-12 mt-2 mb-3">
                             <label for="footer_description">Footer Description</label>
@@ -559,18 +511,6 @@
                 'time': {
                     required: true,
                 },
-                'twitter_link': {
-                    required: true,
-                    url: "url",
-                },
-                'linkedin_link': {
-                    required: true,
-                    url: "url",
-                },
-                'facebook_link': {
-                    required: true,
-                    url: "url",
-                },
                 'address': {
                     required: true,
                 },
@@ -596,18 +536,6 @@
                 },
                 'time': {
                     required: "The time field is required.",
-                },
-                'twitter_link': {
-                    required: "The twitter link field is required.",
-                    url: "Please enter a valid link.",
-                },
-                'linkedin_link': {
-                    required: "The linkedin link field is required.",
-                    url: "Please enter a valid link.",
-                },
-                'facebook_link': {
-                    required: "The facebook link field is required.",
-                    url: "Please enter a valid link.",
                 },
                 'address': {
                     required: "The address field is required.",
