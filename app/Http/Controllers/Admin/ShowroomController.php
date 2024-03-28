@@ -18,68 +18,86 @@ class ShowroomController extends Controller
     //showroom
 
     public function showroom(Request $request){
-        $brands = Brand::get();
-        return view("admin.showroom.form",compact('brands')); 
+        $has_permission = hasPermission('Showroom');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $brands = Brand::get();
+                return view("admin.showroom.form",compact('brands')); 
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
     }
     
     public function showroom_insert(Request $request){
-        $showroom = new Showroom();
-        $showroom->name = $request->name;
-        $showroom->brand_id = $request->brand_id;
-        $showroom->car_id = json_encode($request->car_id);
-        $showroom->address = $request->address;
-        $showroom->working_hours = $request->working_hours;
-        $showroom->contact_number = $request->contact_number;
-        $showroom->email = $request->email;
+        $has_permission = hasPermission('Showroom');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $showroom = new Showroom();
+                $showroom->name = $request->name;
+                $showroom->brand_id = $request->brand_id;
+                $showroom->car_id = json_encode($request->car_id);
+                $showroom->address = $request->address;
+                $showroom->working_hours = $request->working_hours;
+                $showroom->contact_number = $request->contact_number;
+                $showroom->email = $request->email;
 
-        $showroom->address_color = $request->address_color;
-        $showroom->address_font_size = $request->address_font_size;
-        $showroom->address_font_family = $request->address_font_family;
+                $showroom->address_color = $request->address_color;
+                $showroom->address_font_size = $request->address_font_size;
+                $showroom->address_font_family = $request->address_font_family;
 
-        $showroom->working_hours_color = $request->working_hours_color;
-        $showroom->working_hours_font_size = $request->working_hours_font_size;
-        $showroom->working_hours_font_family = $request->working_hours_font_family;
+                $showroom->working_hours_color = $request->working_hours_color;
+                $showroom->working_hours_font_size = $request->working_hours_font_size;
+                $showroom->working_hours_font_family = $request->working_hours_font_family;
 
-        $showroom->contact_number_color = $request->contact_number_color;
-        $showroom->contact_number_font_size = $request->contact_number_font_size;
-        $showroom->contact_number_font_family = $request->contact_number_font_family;
+                $showroom->contact_number_color = $request->contact_number_color;
+                $showroom->contact_number_font_size = $request->contact_number_font_size;
+                $showroom->contact_number_font_family = $request->contact_number_font_family;
 
-        $showroom->email_color = $request->email_color;
-        $showroom->email_font_size = $request->email_font_size;
-        $showroom->email_font_family = $request->email_font_family;
+                $showroom->email_color = $request->email_color;
+                $showroom->email_font_size = $request->email_font_size;
+                $showroom->email_font_family = $request->email_font_family;
 
-        $showroom->save();
+                $showroom->save();
 
-        if ($files = $request->file('facilitie_image')) {
-            foreach($files as $file) {
+                if ($files = $request->file('facilitie_image')) {
+                    foreach($files as $file) {
 
-                $facilitie_image = new Facilitie;
-                $facilitie_image->showroom_id = $showroom->id;
+                        $facilitie_image = new Facilitie;
+                        $facilitie_image->showroom_id = $showroom->id;
 
-                $image_name = rand() . '.' . $file->getClientOriginalExtension();
-                $file->move('public/facilitie_image/', $image_name);
+                        $image_name = rand() . '.' . $file->getClientOriginalExtension();
+                        $file->move('public/facilitie_image/', $image_name);
 
-                $facilitie_image->facilitie_image = $image_name;
-                $facilitie_image->save();
-            }
-        }
+                        $facilitie_image->facilitie_image = $image_name;
+                        $facilitie_image->save();
+                    }
+                }
 
-        if ($files = $request->file('customer_gallery_image')) {
-            foreach($files as $file) {
+                if ($files = $request->file('customer_gallery_image')) {
+                    foreach($files as $file) {
 
-                $customer_gallery_image = new Customer_gallery;
-                $customer_gallery_image->showroom_id = $showroom->id;
+                        $customer_gallery_image = new Customer_gallery;
+                        $customer_gallery_image->showroom_id = $showroom->id;
 
-                $image_name = rand() . '.' . $file->getClientOriginalExtension();
-                $file->move('public/customer_gallery_image/', $image_name);
+                        $image_name = rand() . '.' . $file->getClientOriginalExtension();
+                        $file->move('public/customer_gallery_image/', $image_name);
 
-                $customer_gallery_image->customer_gallery_image = $image_name;
-                $customer_gallery_image->save();
-            }
-        }
+                        $customer_gallery_image->customer_gallery_image = $image_name;
+                        $customer_gallery_image->save();
+                    }
+                }
 
-        return redirect()->route('showroom.index')->with('success','Showroom insert successfully.');
+                return redirect()->route('showroom.index')->with('success','Showroom insert successfully.');
     
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
     }
     
     public function showroom_index(Request $request){
@@ -89,8 +107,17 @@ class ShowroomController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($showroom){
     
-                    $updateButton = "<a href='".route("showroom.edit",['showroom_edit' => encrypt($showroom->id), 'brand_id' => $showroom->brand_id])."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
-                    $deleteBtn = "<a href='javascript:void(0);' data-href='".route('showroom_destroy',array($showroom->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                        $updateButton = "";
+                        $deleteBtn = "";
+                        $has_permission = hasPermission('Showroom');
+                        if(isset($has_permission) && $has_permission)
+                        {
+                            if($has_permission->full_permission == 1)
+                            {
+                                $updateButton = "<a href='".route("showroom.edit",['showroom_edit' => encrypt($showroom->id), 'brand_id' => $showroom->brand_id])."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
+                                $deleteBtn = "<a href='javascript:void(0);' data-href='".route('showroom_destroy',array($showroom->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                            }
+                        }
                     return $updateButton . $deleteBtn;
                     })
   
@@ -148,116 +175,154 @@ class ShowroomController extends Controller
             ->make(true);
         }
         
-        return view('admin.showroom.show');
+        $has_permission = hasPermission('Showroom');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                return view('admin.showroom.show');
+            }else {
+                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+            }
+        }
+
     }
     
     public function showroom_edit($id,$brand_id){
-        $showrooms  = Showroom::where('id',decrypt($id))->get();
-        $brands = Brand::get();
-        $cars = Car::where('brand_id',$brand_id)->get();
-        $facilitie_image = Facilitie::where('showroom_id',decrypt($id))->pluck('facilitie_image','id')->toArray();
-        $customer_gallery_images = Customer_gallery::where('showroom_id',decrypt($id))->pluck('customer_gallery_image','id')->toArray();
-        return view('admin.showroom._form',compact('showrooms','brands','cars','facilitie_image','customer_gallery_images'));
+        $has_permission = hasPermission('Showroom');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $showrooms  = Showroom::where('id',decrypt($id))->get();
+                $brands = Brand::get();
+                $cars = Car::where('brand_id',$brand_id)->get();
+                $facilitie_image = Facilitie::where('showroom_id',decrypt($id))->pluck('facilitie_image','id')->toArray();
+                $customer_gallery_images = Customer_gallery::where('showroom_id',decrypt($id))->pluck('customer_gallery_image','id')->toArray();
+                return view('admin.showroom._form',compact('showrooms','brands','cars','facilitie_image','customer_gallery_images'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
     }
 
 
     
     public function showroom_update(Request $request, $id)
     {
-        $showroom = Showroom::find($id);
-        $showroom->name = $request->name;
-        $showroom->brand_id = $request->brand_id;
-        $showroom->car_id = json_encode($request->car_id);
-        $showroom->address = $request->address;
-        $showroom->working_hours = $request->working_hours;
-        $showroom->contact_number = $request->contact_number;
-        $showroom->email = $request->email;
+        $has_permission = hasPermission('Showroom');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $showroom = Showroom::find($id);
+                $showroom->name = $request->name;
+                $showroom->brand_id = $request->brand_id;
+                $showroom->car_id = json_encode($request->car_id);
+                $showroom->address = $request->address;
+                $showroom->working_hours = $request->working_hours;
+                $showroom->contact_number = $request->contact_number;
+                $showroom->email = $request->email;
 
-        $showroom->address_color = $request->address_color;
-        $showroom->address_font_size = $request->address_font_size;
-        $showroom->address_font_family = $request->address_font_family;
+                $showroom->address_color = $request->address_color;
+                $showroom->address_font_size = $request->address_font_size;
+                $showroom->address_font_family = $request->address_font_family;
 
-        $showroom->working_hours_color = $request->working_hours_color;
-        $showroom->working_hours_font_size = $request->working_hours_font_size;
-        $showroom->working_hours_font_family = $request->working_hours_font_family;
+                $showroom->working_hours_color = $request->working_hours_color;
+                $showroom->working_hours_font_size = $request->working_hours_font_size;
+                $showroom->working_hours_font_family = $request->working_hours_font_family;
 
-        $showroom->contact_number_color = $request->contact_number_color;
-        $showroom->contact_number_font_size = $request->contact_number_font_size;
-        $showroom->contact_number_font_family = $request->contact_number_font_family;
+                $showroom->contact_number_color = $request->contact_number_color;
+                $showroom->contact_number_font_size = $request->contact_number_font_size;
+                $showroom->contact_number_font_family = $request->contact_number_font_family;
 
-        $showroom->email_color = $request->email_color;
-        $showroom->email_font_size = $request->email_font_size;
-        $showroom->email_font_family = $request->email_font_family;
-        
-        $showroom->save();
+                $showroom->email_color = $request->email_color;
+                $showroom->email_font_size = $request->email_font_size;
+                $showroom->email_font_family = $request->email_font_family;
+                
+                $showroom->save();
 
-        if ($files = $request->file('facilitie_image')) {
-            foreach($files as $file) {
+                if ($files = $request->file('facilitie_image')) {
+                    foreach($files as $file) {
 
-                $facilitie_image = new Facilitie;
-                $facilitie_image->showroom_id = $showroom->id;
+                        $facilitie_image = new Facilitie;
+                        $facilitie_image->showroom_id = $showroom->id;
 
-                $image_name = rand() . '.' . $file->getClientOriginalExtension();
-                $file->move('public/facilitie_image/', $image_name);
+                        $image_name = rand() . '.' . $file->getClientOriginalExtension();
+                        $file->move('public/facilitie_image/', $image_name);
 
-                $facilitie_image->facilitie_image = $image_name;
-                $facilitie_image->save();
+                        $facilitie_image->facilitie_image = $image_name;
+                        $facilitie_image->save();
+                    }
+                }
+
+                if ($files = $request->file('customer_gallery_image')) {
+                    foreach($files as $file) {
+
+                        $customer_gallery_image = new Customer_gallery;
+                        $customer_gallery_image->showroom_id = $showroom->id;
+
+                        $image_name = rand() . '.' . $file->getClientOriginalExtension();
+                        $file->move('public/customer_gallery_image/', $image_name);
+
+                        $customer_gallery_image->customer_gallery_image = $image_name;
+                        $customer_gallery_image->save();
+                    }
+                }
+
+                return redirect()->route('showroom.index')->with('success','Showroom update successfully.');
             }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
 
-        if ($files = $request->file('customer_gallery_image')) {
-            foreach($files as $file) {
-
-                $customer_gallery_image = new Customer_gallery;
-                $customer_gallery_image->showroom_id = $showroom->id;
-
-                $image_name = rand() . '.' . $file->getClientOriginalExtension();
-                $file->move('public/customer_gallery_image/', $image_name);
-
-                $customer_gallery_image->customer_gallery_image = $image_name;
-                $customer_gallery_image->save();
-            }
-        }
-
-        return redirect()->route('showroom.index')->with('success','Showroom update successfully.');
-    
     }
 
     public function showroom_destroy(Request $request,$id){
 
-        $showroom = Showroom::findOrFail($id);
+        $has_permission = hasPermission('Showroom');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
 
-        $customergallery_image = Showroom::with('customer_gallery')->findOrFail($id);
-        $images = Customer_gallery::where('showroom_id',$id)->get();
+                $showroom = Showroom::findOrFail($id);
 
-        foreach ($images as $image) {
-            $image_path = public_path("customer_gallery_image/{$image->customer_gallery_image}");
+                $customergallery_image = Showroom::with('customer_gallery')->findOrFail($id);
+                $images = Customer_gallery::where('showroom_id',$id)->get();
 
-            if (File::exists($image_path)) {
-                unlink($image_path);
+                foreach ($images as $image) {
+                    $image_path = public_path("customer_gallery_image/{$image->customer_gallery_image}");
+
+                    if (File::exists($image_path)) {
+                        unlink($image_path);
+                    }
+                }
+
+                $customergallery_image->customer_gallery()->delete();
+
+                
+                $facilitie_image = Showroom::with('facilitie')->findOrFail($id);
+                $facilitieImages = Facilitie::where('showroom_id',$id)->get();
+
+                foreach ($facilitieImages as $facilitieImage) {
+                    $facilitieimage_path = public_path("facilitie_image/{$facilitieImage->facilitie_image}");
+
+                    if (File::exists($facilitieimage_path)) {
+                        unlink($facilitieimage_path);
+                    }
+                }
+
+                $facilitie_image->facilitie()->delete();
+
+                $showroom->delete();
+
+                return redirect()->route('showroom.index')->with('message', 'Showroom deleted successfully');
             }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
 
-        $customergallery_image->customer_gallery()->delete();
-
-        
-        $facilitie_image = Showroom::with('facilitie')->findOrFail($id);
-        $facilitieImages = Facilitie::where('showroom_id',$id)->get();
-
-        foreach ($facilitieImages as $facilitieImage) {
-            $facilitieimage_path = public_path("facilitie_image/{$facilitieImage->facilitie_image}");
-
-            if (File::exists($facilitieimage_path)) {
-                unlink($facilitieimage_path);
-            }
-        }
-
-        $facilitie_image->facilitie()->delete();
-
-        $showroom->delete();
-
-        return redirect()->route('showroom.index')->with('message', 'Showroom deleted successfully');
-  
     }
 
     

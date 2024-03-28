@@ -56,3 +56,25 @@ function slugify($text){
     return $text;
 }
     
+function fontSize(){
+    return array(
+        'start' => 24,
+        'end'=> 50,
+        'range' => 2
+    );
+}
+
+function fontFamily(){
+    return array(
+        array('key'=>'poppins', 'value'=>'Poppins'),
+        array('key'=>'sans-serif', 'value'=>'Sans Serif')
+    );
+}
+
+function position(){
+    return array(
+        array('key'=>'left', 'value'=>'Left'),
+        array('key'=>'right', 'value'=>'Right')
+    );
+}
+

@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ShowroomController;
 use App\Http\Controllers\Admin\HeaderMenuController;
 use App\Http\Controllers\Admin\FooterMenuController;
 use App\Http\Controllers\Admin\MissionVisionController;
+use App\Http\Controllers\Admin\HeaderMenuSocialMediaIconController;
 
 /*
 |--------------------------------------------------------------------------
@@ -145,5 +146,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('mission_vision_edit/{mission_vision_edit}', [MissionVisionController::class, 'mission_vision_edit'])->name('mission_vision.edit');
     Route::post('mission_vision_update,{id}', [MissionVisionController::class, 'mission_vision_update'])->name('mission_vision_update');
     Route::get('mission_vision_destroy/{id}', [MissionVisionController::class, 'mission_vision_destroy'])->name('mission_vision_destroy');
+
+    //header_menu_social_media_icon
+    Route::get('header_menu_social_media_icon', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon'])->name('header_menu_social_media_icon');
+    Route::get('header_menu_social_media_icon_create', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_create'])->name('header_menu_social_media_icon_create');
+    Route::post('header_menu_social_media_icon_insert', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_insert'])->name('header_menu_social_media_icon_insert');
+    Route::get('header_menu_social_media_icon_index', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_index'])->name('header_menu_social_media_icon.index');
+    Route::get('social_media_icon_edit/{social_media_icon_edit}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_edit'])->name('header_menu_social_media_icon.edit');
+    Route::post('header_menu_social_media_icon_update,{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_update'])->name('header_menu_social_media_icon_update');
+    Route::get('header_menu_social_media_icon_destroy/{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_destroy'])->name('header_menu_social_media_icon_destroy');
+
 
 });

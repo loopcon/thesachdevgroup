@@ -93,18 +93,5 @@
             }
         });
     });
-      
-    @if($message = session('message'))
-      swal("{{ $message }}");
-    @endif
-      
-    @if(session()->has('message'))
-      swal({
-          title: "Testimonials",
-          text: '{{ $message }}',
-          icon: "success",
-          buttons: true,
-      })
-  @endif
 </script>
 @endsection

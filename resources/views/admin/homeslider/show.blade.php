@@ -85,7 +85,7 @@
             text: "{{__('Are you sure? Delete this Home Slider!')}}",
             showCancelButton: true,
             confirmButtonText: "{{__('Yes, delete it!')}}",
-            icon: "question"
+            icon: "warning"
         }).then((result) => {
             if (result.isConfirmed) {
                 location.href = href;

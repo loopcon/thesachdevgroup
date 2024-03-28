@@ -53,21 +53,24 @@
                                 </div>
     
                                 <div class="mb-3 col-md-4">
+                                    @php($fontsize = fontSize())
                                     <label for="title_font_size" class="form-label">Title Text Font Size</label>
                                     <select class="form-control select2" name="title_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        @for($i=24; $i<=50; $i+=2)
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$homeslider->title_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                    </select>
                                 </div>
     
                                 <div class="col-md-4">
+                                    @php($fontfamily = fontFamily())
                                     <label for="title_font_family" class="form-label">Title Text Font Family</label>
                                     <select class="form-control select2" name="title_font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins"  {{$homeslider->title_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$homeslider->title_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$homeslider->title_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                    </select>
                                 </div>
     
@@ -80,9 +83,9 @@
                                     <label for="sub_title_font_size" class="form-label">Sub Title Text Font Size</label>
                                     <select class="form-control select2" name="sub_title_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        @for($i=24; $i<=50; $i+=2)
-                                            <option value="{{$i}}px" {{$homeslider->sub_title_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
-                                        @endfor
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                        <option value="{{$i}}px" {{$homeslider->sub_title_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                    @endfor
                                    </select>
                                 </div>
     
@@ -90,17 +93,20 @@
                                     <label for="sub_title_font_family" class="form-label">Sub Title Text Font Family</label>
                                     <select class="form-control select2" name="sub_title_font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins"  {{$homeslider->sub_title_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$homeslider->sub_title_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$homeslider->sub_title_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                    </select>
                                 </div>
                                 
                                 <div class="mb-3 col-md-4">
+                                    @php($position = position())
                                     <label for="image" class="form-label">Text Position</label>
                                     <select class="form-control select2" name="text_position">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="left" {{$homeslider->text_position == 'left' ? 'selected' : ''}}>Left</option>
-                                        <option value="right" {{$homeslider->text_position == 'right' ? 'selected' : ''}}>Right</option>
+                                        @foreach($position as $pos)
+                                            <option value="{{$pos['key']}}" {{$homeslider->text_position == $pos['key'] ? 'selected' : ''}}>{{$pos['value']}}</option>
+                                        @endforeach
                                    </select>
                                 </div>
     

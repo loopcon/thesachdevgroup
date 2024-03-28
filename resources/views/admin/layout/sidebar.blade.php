@@ -132,40 +132,42 @@
             @endif
         @endif
 
-        @php($has_permission = hasPermission('Showroom'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-building"></i>
-                        <p>
-                            Showrooms
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{url('showroom_index')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Showroom</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('showroom-testimonial')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Showroom Testimonial</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('showroom-model')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Showroom Model</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            @endif
-        @endif
+          <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-building"></i>
+                  <p>
+                      Showrooms
+                      <i class="right fas fa-angle-left"></i>
+                  </p>
+              </a>
+              <ul class="nav nav-treeview">
+                  @php($has_permission = hasPermission('Showroom'))
+                  @if(isset($has_permission) && $has_permission)
+                    @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                      <li class="nav-item">
+                        <a href="{{url('showroom_index')}}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Showroom</p>
+                        </a>
+                      </li>
+                    @endif
+                  @endif
+
+                  <li class="nav-item">
+                      <a href="{{route('showroom-testimonial')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Showroom Testimonial</p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{route('showroom-model')}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Showroom Model</p>
+                      </a>
+                  </li>
+              </ul>
+          </li>
+          
 
         @php($has_permission = hasPermission('Services'))
         @if(isset($has_permission) && $has_permission)
@@ -203,6 +205,22 @@
           </li>
           @endif
         @endif
+
+        
+        @php($has_permission = hasPermission('Header Menu Social Media Icon'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+        <li class="nav-item">
+          <a href="{{url('header_menu_social_media_icon')}}" class="nav-link">
+            <i class="nav-icon fas fa-heading"></i>
+            <p>
+              Header Menu Social Media Icon
+            </p>
+          </a>
+        </li>
+        @endif
+        @endif
+
 
         @php($has_permission = hasPermission('Footer Menu'))
           @if(isset($has_permission) && $has_permission)
