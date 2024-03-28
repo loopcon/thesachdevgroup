@@ -146,4 +146,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('mission_vision_update,{id}', [MissionVisionController::class, 'mission_vision_update'])->name('mission_vision_update');
     Route::get('mission_vision_destroy/{id}', [MissionVisionController::class, 'mission_vision_destroy'])->name('mission_vision_destroy');
 
+    //service center
+    Route::get('service-center', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterList'])->name('service-center');
+    Route::get('service-center-create', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterCreate'])->name('service-center-create');
+    Route::post('service-center-store', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterStore'])->name('service-center-store');
+    Route::get('service-center-edit/{id}', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterEdit'])->name('service-center-edit');
+    Route::post('service-center-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviCecenterUpdate'])->name('service-center-update');
+    Route::get('service-center-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterDestroy'])->name('service-center-delete');
+    Route::get('service-center-datatable', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterDatatable'])->name('service-center-datatable');
 });

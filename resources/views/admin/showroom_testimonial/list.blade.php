@@ -30,7 +30,13 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Image</th>
-                                    <th>Description</th>
+                                    <th>Name Text Size</th>
+                                    <th>Name Text Color</th>
+                                    <th>Name Font Family</th>
+                                    <th>Name Background Color</th>
+                                    <th>Description Text Size</th>
+                                    <th>Description Text Color</th>
+                                    <th>Description Font Family</th>
                                     <th>Showroom</th>
                                     <th>Action</th>
                                 </tr>
@@ -50,12 +56,19 @@
         var table = $('.table').DataTable({
             processing: true,
             serverSide: true,
+            scrollX: true,
             ajax: "{{ route('showroom-testimonial-datatable') }}",
             columns: [
                 {data: 'id', name: '', orderable: false, searchable: false},
                 {data: 'name', name: 'name'},
                 {data: 'image', name: 'image'},
-                {data: 'description', name: 'description'},
+                {data: 'name_text_size', name: 'name_text_size'},
+                {data: 'name_text_color', name: 'name_text_color'},
+                {data: 'name_font_family', name: 'name_font_family'},
+                {data: 'name_background_color', name: 'name_background_color'},
+                {data: 'description_text_size', name: 'description_text_size'},
+                {data: 'description_text_color', name: 'description_text_color'},
+                {data: 'description_font_family', name: 'description_font_family'},
                 {data: 'showroom', name: 'showroom'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]

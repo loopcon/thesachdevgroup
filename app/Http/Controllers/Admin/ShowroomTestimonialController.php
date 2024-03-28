@@ -84,7 +84,7 @@ class ShowroomTestimonialController extends Controller
     public function showroomTestimonialDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = ShowroomTestimonial::with('showroomDetail')->select('id', 'name', 'showroom_id', 'image', 'description')->orderBy('id', 'DESC');
+            $query = ShowroomTestimonial::with('showroomDetail')->select('id', 'name', 'showroom_id', 'image', 'name_text_size','name_text_color','name_font_family','name_background_color','description_text_size','description_text_color','description_font_family')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -160,12 +160,13 @@ class ShowroomTestimonialController extends Controller
                 }
 
                 if($request->hasFile('image')) {
-                    $old_image = public_path("uploads/showroom_testimonial/{$showroom_testimonial->image}");
-                    if (File::exists($old_image)) {
-                        unlink($old_image);
+                    $oldimage = $showroom_testimonial->image;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/showroom_testimonial/'.$oldimage);
                     }
-                    $newName = fileUpload($request, 'image', 'uploads/showroom_testimonial');
-                    $showroom_testimonial->image = $newName;
+                    $newImage = fileUpload($request, 'image', 'uploads/showroom_testimonial');
+                    $showroom_testimonial->image = $newImage;
                 }
                 $showroom_testimonial->save();
 

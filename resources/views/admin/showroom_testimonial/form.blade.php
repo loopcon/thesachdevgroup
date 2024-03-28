@@ -13,7 +13,7 @@
           </div>
           <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
               <li class="breadcrumb-item active">{{$site_title}}</li>
             </ol>
           </div>
@@ -46,13 +46,12 @@
                                 <div class="error"></div>
                             </div>
 
-                            
                             <div class="col-md-4">
                                 <label for="image" class="form-label">Image</label>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/showroom_testimonial/'.$record->image)}}" width="100">
                                 @endif  
-                                <input type="file" id="image" class="form-control" name="image" value="">
+                                <input type="file" id="image" class="form-control" name="image" value="{{isset($record->image) ? $record->image : ''}}">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -257,6 +256,7 @@
                 sr_change();
             }
         });
+        $('.colorpicker').colorpicker();
     });
 </script>
 @endsection
