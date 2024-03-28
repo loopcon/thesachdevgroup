@@ -21,7 +21,7 @@
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
-                        <table class="table table-bordered table">
+                        <table class="table table-bordered table-striped table">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -31,7 +31,6 @@
                                     <th>Title Text Size</th>
                                     <th>Title Text Color</th>
                                     <th>Title Font Family</th>
-                                    <th>Image Size</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -59,7 +58,6 @@
                 {data: 'title_text_size', name: 'title_text_size'},
                 {data: 'title_text_color', name: 'title_text_color'},
                 {data: 'title_font_family', name: 'title_font_family'},
-                {data: 'image_size', name: 'image_size'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

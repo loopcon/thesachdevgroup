@@ -92,6 +92,8 @@ class ServiceCenterController extends Controller
                 if($service_center)
                 {
                     return redirect()->route('service-center')->with('success', 'Service Center insert succesfully');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -243,6 +245,8 @@ class ServiceCenterController extends Controller
                 if($service_center)
                 {
                     return redirect()->route('service-center')->with('success', 'Service Center update succesfully');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -307,6 +311,8 @@ class ServiceCenterController extends Controller
                 if($service_center)
                 {
                     return redirect()->route('service-center')->with('success', 'Service Center deleted succesfully');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
             }
         }else {

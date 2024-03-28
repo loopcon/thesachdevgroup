@@ -60,23 +60,26 @@
                                 <label for="name_text_color" class="form-label">Name Text Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->name_text_color) ? $record->name_text_color : old('name_text_color')}}" name="name_text_color" id="name_text_color">
                             </div>
-
+                            
+                            @php($fontsize = fontSize())
                             <div class="col-md-4 mt-2">
                                 <label for="name_text_size" class="form-label">Name Text Size</label>
                                 <select class="form-control select2" name="name_text_size">
                                     <option value="">Select</option>
-                                    @for($i=24; $i<=50; $i+=2)
+                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->name_text_size) && $record->name_text_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
                                 </select>
                             </div>
 
+                            @php($fontfamily = fontFamily())
                             <div class="col-md-4 mt-2">
                                 <label for="name_font_family" class="form-label">Name Font Family</label>
                                 <select class="form-control select2" name="name_font_family">
                                     <option value="">Select</option>
-                                        <option value="poppins" @if(isset($record->name_font_family) && $record->name_font_family == 'poppins'){{'selected'}}@endif>Poppins</option>
-                                        <option value="sans-serif" @if(isset($record->name_font_family) && $record->name_font_family == 'sans-serif'){{'selected'}}@endif>Sans Serif</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->name_font_family) && $record->name_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 

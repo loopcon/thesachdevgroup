@@ -246,7 +246,7 @@
         @endif
         @endif
 
-        @if(isset(Auth::user()->role_id) && Auth::user()->role_id)
+        @if(isset(Auth::user()->role_id) && Auth::user()->role_id == 1)
             <li class="nav-item">
                 <a href="{{route('role-permission')}}" class="nav-link">
                 <i class="nav-icon fas fa-users-cog"></i>

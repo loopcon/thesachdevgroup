@@ -24,7 +24,7 @@
                 <div class="card-body">
             <section class="content">
                 <div class="container-fluid">
-                    <table class="table table-bordered slider_table">
+                    <table class="table table-bordered table-striped slider_table">
                         <thead>
                             <tr>
                                 <th style="width:36px;">No</th>

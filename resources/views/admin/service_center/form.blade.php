@@ -32,14 +32,14 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="Name" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+                                <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Name Color</label>
-                                <input type="text" id="name_color" class="form-control colorpicker" placeholder="Name Color" name="name_color" value="{{isset($record->name_color) ? $record->name_color : old('name_color')}}">
+                                <input type="text" id="name_color" class="form-control colorpicker" name="name_color" value="{{isset($record->name_color) ? $record->name_color : old('name_color')}}">
                                 @if ($errors->has('name_color')) <div class="text-danger">{{ $errors->first('name_color') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -75,7 +75,7 @@
 
                             <div class="col-md-4 mt-2">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" placeholder="Description" name="description" id="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
+                                <textarea class="form-control" name="description" id="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
                             </div>
 
                             <div class="col-md-4">
@@ -99,12 +99,12 @@
 
                             <div class="col-md-4 mt-2">
                                 <label for="description_font_color" class="form-label">Description Font Color</label>
-                                <input type="text" class="form-control colorpicker" placeholder="Description Font Color" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="address" placeholder="Address" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
+                                <textarea class="form-control" name="address" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
                             </div>
 
                             <div class="col-md-4">
@@ -138,12 +138,12 @@
 
                             <div class="col-md-4">
                                 <label for="address_font_color" class="form-label">Address Font Color</label>
-                                <input type="text" class="form-control colorpicker" placeholder="Address Font Color" value="{{isset($record->address_font_color) ? $record->address_font_color : old('address_font_color')}}" name="address_font_color" id="address_font_color">
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->address_font_color) ? $record->address_font_color : old('address_font_color')}}" name="address_font_color" id="address_font_color">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="working_hours" class="form-label">Working Hours</label>
-                                <input type="text" class="form-control" placeholder="Working Hours" value="{{isset($record->working_hours) ? $record->working_hours : old('working_hours')}}" name="working_hours" id="working_hours">
+                                <input type="text" class="form-control" value="{{isset($record->working_hours) ? $record->working_hours : old('working_hours')}}" name="working_hours" id="working_hours">
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -177,12 +177,12 @@
 
                             <div class="col-md-4 mt-2">
                                 <label for="working_hours_font_color" class="form-label">Working Hours Font Color</label>
-                                <input type="text" class="form-control colorpicker" placeholder="Working Hours Font Color" value="{{isset($record->working_hours_font_color) ? $record->working_hours_font_color : old('working_hours_font_color')}}" name="working_hours_font_color" id="working_hours_font_color">
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->working_hours_font_color) ? $record->working_hours_font_color : old('working_hours_font_color')}}" name="working_hours_font_color" id="working_hours_font_color">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="Contact Number" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
+                                <input type="text" class="form-control" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
                             </div>
 
                             <div class="col-md-4">
@@ -216,12 +216,12 @@
 
                             <div class="col-md-4">
                                 <label for="contact_font_color" class="form-label">Contact Number Font Color</label>
-                                <input type="text" class="form-control colorpicker" placeholder="Contact Number Font Color" value="{{isset($record->contact_font_color) ? $record->contact_font_color : old('contact_font_color')}}" name="contact_font_color" id="contact_font_color">
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->contact_font_color) ? $record->contact_font_color : old('contact_font_color')}}" name="contact_font_color" id="contact_font_color">
                             </div>
 
                             <div class="col-md-4">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" placeholder="Email" value="{{isset($record->email) ? $record->email : old('email')}}" name="email" id="email">
+                                <input type="email" class="form-control" value="{{isset($record->email) ? $record->email : old('email')}}" name="email" id="email">
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -245,7 +245,7 @@
 
                             <div class="col-md-4 mt-2">
                                 <label for="email_font_color" class="form-label">Email Font Color</label>
-                                <input type="text" class="form-control colorpicker" placeholder="Email Font Color" value="{{isset($record->email_font_color) ? $record->email_font_color : old('email_font_color')}}" name="email_font_color" id="email_font_color">
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->email_font_color) ? $record->email_font_color : old('email_font_color')}}" name="email_font_color" id="email_font_color">
                             </div>
 
                             <div class="col-md-4 mb-3">

@@ -22,7 +22,7 @@ class ShowroomModelController extends Controller
                 $return_data['site_title'] = trans('Showroom Model');
                 return view("admin.showroom_model.list",array_merge($return_data));
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         }
     }
@@ -57,7 +57,7 @@ class ShowroomModelController extends Controller
                     'image' => 'image|mimes:jpeg,png,jpg,gif,webp',
                 ]);
                 $showroom_model = new ShowroomModel();
-                $fields = array('showroom_id','title','image','title_text_size','title_text_color','title_font_family','image_size');
+                $fields = array('showroom_id','title','image','title_text_size','title_text_color','title_font_family');
                 foreach($fields as $field)
                 {
                     $showroom_model->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -72,7 +72,9 @@ class ShowroomModelController extends Controller
 
                 if($showroom_model)
                 {
-                    return redirect()->route('showroom-model')->with('message', 'Showroom Model insert succesfully');
+                    return redirect()->route('showroom-model')->with('success', 'Showroom Model insert succesfully');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -114,7 +116,7 @@ class ShowroomModelController extends Controller
                 ->rawColumns(['image','showroom','action'])
                 ->make(true);
         } else {
-            return redirect()->back()->with('message','something went wrong');
+            return redirect()->back()->with('error','something went wrong');
         }
     }
 
@@ -152,7 +154,7 @@ class ShowroomModelController extends Controller
                     'image' => 'image|mimes:jpeg,png,jpg,gif,webp',
                 ]);
                 $showroom_model = ShowroomModel::find($id);
-                $fields = array('showroom_id','title','image','title_text_size','title_text_color','title_font_family','image_size');
+                $fields = array('showroom_id','title','image','title_text_size','title_text_color','title_font_family');
                 foreach($fields as $field)
                 {
                     $showroom_model->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -171,7 +173,9 @@ class ShowroomModelController extends Controller
 
                 if($showroom_model)
                 {
-                    return redirect()->route('showroom-model')->with('message', 'Showroom Model Updated succesfully');
+                    return redirect()->route('showroom-model')->with('success', 'Showroom Model Updated succesfully');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
             }
         }else {
@@ -198,7 +202,9 @@ class ShowroomModelController extends Controller
                 $showroom_model = ShowroomModel::where('id',$id)->delete();
                 if($showroom_model)
                 {
-                    return redirect()->route('showroom-model')->with('message', 'Showroom Model deleted succesfully');
+                    return redirect()->route('showroom-model')->with('success', 'Showroom Model deleted succesfully');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
             }
         }else {

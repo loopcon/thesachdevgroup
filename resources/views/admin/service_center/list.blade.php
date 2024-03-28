@@ -22,9 +22,9 @@
                 <a href="{{ route('service-center-create') }}" class="btn btn-primary mt-2 mr-4 float-right">Add</a>
             </div>
             <div class="card-body">
-                <section class="content">
-                    <div class="container-fluid">
-                        <table class="table table-bordered table">
+                <!-- <section class="content">
+                    <div class="container-fluid"> -->
+                        <table class="table table-bordered table-striped table">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -60,8 +60,8 @@
                                 </tr>
                             </thead>
                         </table>
-                    </div>
-                </section>
+                    <!-- </div>
+                </section> -->
             </div>
         </div>
     </div>
@@ -77,7 +77,7 @@
             scrollX: true,
             ajax: "{{ route('service-center-datatable') }}",
             columns: [
-                {data: 'id', name: 'id', orderable: false, searchable: false},
+                {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
                 {data: 'name_color', name: 'name_color'},
                 {data: 'name_font_size', name: 'name_font_size'},

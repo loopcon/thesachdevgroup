@@ -73,7 +73,9 @@ class ShowroomTestimonialController extends Controller
 
                 if($showroom_testimonial)
                 {
-                    return redirect()->route('showroom-testimonial')->with('message', 'Showroom testimonial insert succesfully');
+                    return redirect()->route('showroom-testimonial')->with('success', 'Showroom Testimonial insert succesfully');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -115,7 +117,7 @@ class ShowroomTestimonialController extends Controller
                 ->rawColumns(['image','showroom','action'])
                 ->make(true);
         } else {
-            return redirect()->back()->with('message','something went wrong');
+            return redirect()->back()->with('error','something went wrong');
         }
     }
 
@@ -172,7 +174,9 @@ class ShowroomTestimonialController extends Controller
 
                 if($showroom_testimonial)
                 {
-                    return redirect()->route('showroom-testimonial')->with('message', 'Showroom testimonial updated succesfully');
+                    return redirect()->route('showroom-testimonial')->with('success', 'Showroom Testimonial updated succesfully');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
             }
         }else {
@@ -199,7 +203,9 @@ class ShowroomTestimonialController extends Controller
                 $showroom_testimonial = ShowroomTestimonial::where('id',$id)->delete();
                 if($showroom_testimonial)
                 {
-                    return redirect()->route('showroom-testimonial')->with('message', 'Showroom testimonial deleted succesfully');
+                    return redirect()->route('showroom-testimonial')->with('success', 'Showroom Testimonial deleted succesfully');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
             }
         }else {
