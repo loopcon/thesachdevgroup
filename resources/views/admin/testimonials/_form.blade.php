@@ -55,21 +55,24 @@
                                 </div>
 
                                 <div class="mb-3 col-md-4">
+                                    @php($fontsize = fontSize())
                                     <label for="name_font_size">Name Text Font Size</label>
                                     <select class="form-control select2" name="name_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        @for($i=24; $i<=50; $i+=2)
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$testimonial->name_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                     </select>
                                 </div>
 
                                 <div class="col-md-4 mt-2" >
+                                    @php($fontfamily = fontFamily())
                                     <label for="name_font_family">Name Text Font Family</label>
                                     <select class="form-control select2" name="name_font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins"  {{$testimonial->name_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$testimonial->name_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$testimonial->name_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -89,7 +92,7 @@
                                     <label for="description_font_size">Description Text Font Size</label>
                                     <select class="form-control select2" name="description_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        @for($i=24; $i<=50; $i+=2)
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$testimonial->description_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                     </select>
@@ -99,8 +102,9 @@
                                     <label for="description_font_family">Description Text Font Family</label>
                                     <select class="form-control select2" name="description_font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins"  {{$testimonial->description_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$testimonial->description_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$testimonial->description_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

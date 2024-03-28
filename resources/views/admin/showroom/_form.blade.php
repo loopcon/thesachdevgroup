@@ -89,10 +89,11 @@
                                 </div>
 
                                 <div class="mb-3 col-md-4">
+                                    @php($fontsize = fontSize())
                                     <label for="address_font_size" class="form-label">Address Text Font Size</label>
                                     <select class="form-control select2" name="address_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        @for($i=24; $i<=50; $i+=2)
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$showroom->address_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                 </select>
@@ -100,11 +101,13 @@
 
                             
                                 <div class="mb-3 col-md-4">
+                                    @php($fontfamily = fontFamily())
                                     <label for="address_font_family" class="form-label">Address Text Font Family</label>
                                     <select class="form-control select2" name="address_font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins"  {{$showroom->address_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$showroom->address_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$showroom->address_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                 </select>
                                 </div>
 
@@ -117,7 +120,7 @@
                                     <label for="working_hours_font_size" class="form-label">Working Hours Text Font Size</label>
                                     <select class="form-control select2" name="working_hours_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        @for($i=24; $i<=50; $i+=2)
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$showroom->working_hours_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                 </select>
@@ -127,8 +130,9 @@
                                     <label for="working_hours_font_family" class="form-label">Working Hours Text Font Family</label>
                                     <select class="form-control select2" name="working_hours_font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins"  {{$showroom->working_hours_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$showroom->working_hours_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$showroom->working_hours_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                 </select>
                                 </div>
 
@@ -142,7 +146,7 @@
                                     <label for="contact_number_font_size" class="form-label">Contact Number Text Font Size</label>
                                     <select class="form-control select2" name="contact_number_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        @for($i=24; $i<=50; $i+=2)
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$showroom->contact_number_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                     </select>
@@ -153,8 +157,9 @@
                                     <label for="contact_number_font_family" class="form-label">Contact Number Text Font Family</label>
                                     <select class="form-control select2" name="contact_number_font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins"  {{$showroom->contact_number_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$showroom->contact_number_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$showroom->contact_number_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                 </select>
                                 </div>
 
@@ -168,7 +173,7 @@
                                     <label for="email_color" class="form-label">Email Text Font Size</label>
                                     <select class="form-control select2" name="email_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        @for($i=24; $i<=50; $i+=2)
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$showroom->email_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                 </select>
@@ -179,8 +184,9 @@
                                     <label for="email_color" class="form-label">Email Text Font Family</label>
                                     <select class="form-control select2" name="email_font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins"  {{$showroom->email_font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$showroom->email_font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$showroom->email_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                 </select>
                                 </div>
                        

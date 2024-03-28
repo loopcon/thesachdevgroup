@@ -434,7 +434,7 @@ class HomeController extends Controller
     public function testimonials_index(Request $request){
         $testimonials = Testimonial::get();
         if ($request->ajax()) {
-            $testimonials = Testimonial::get();
+            $testimonials = Testimonial::orderBy('id', 'DESC')->get();
             return Datatables::of($testimonials)
                 ->addIndexColumn()
                 ->addColumn('action', function($testimonials){

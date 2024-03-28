@@ -49,21 +49,24 @@
                                 </div>
     
                                 <div class="mb-3 col-md-4">
+                                    @php($fontsize = fontSize())
                                     <label for="font_size" class="form-label">Name Text Font Size</label>
                                     <select class="form-control select2" name="font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        @for($i=24; $i<=50; $i+=2)
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$brand->font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                    </select>
                                 </div>
     
                                 <div class="col-md-4">
+                                    @php($fontfamily = fontFamily())
                                     <label for="font_family" class="form-label">Name Text Font Family</label>
                                     <select class="form-control select2" name="font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
-                                        <option value="poppins"  {{$brand->font_family == 'poppins' ? 'selected' : ''}}>Poppins</option>
-                                        <option value="sans-serif" {{$brand->font_family == 'sans-serif' ? 'selected' : ''}}>Sans Serif</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$brand->font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                    </select>
                                 </div>
                             </div>

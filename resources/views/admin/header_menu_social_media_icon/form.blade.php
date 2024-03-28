@@ -65,7 +65,6 @@
         $(".header_menu_social_media_icon_form").validate({
             rules: {
                 'icon': {
-                    required: true,
                     extension: "jpg,jpeg,png",
                 },
                 'link': {
@@ -75,7 +74,6 @@
             },
             messages: {
                 'icon': {
-                    required: "The icon field is required.",
                     extension: "Please enter a value with a valid extension.",
                 },
                 'link': {
