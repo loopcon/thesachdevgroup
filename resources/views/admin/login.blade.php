@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AdminLTE 3 | Log in</title>
+<title>TSGAUTOMOTIVE</title>
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
@@ -19,17 +19,23 @@
     </style>
 </head>
 <body class="hold-transition login-page">
+    <div class="text-center mt-4">
+        <p class="lead">
+          Sign in to your account to continue
+        </p>
+    </div>
     <div class="login-box">
-        <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
-        </div>
+        
         <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
-
+        <div class="login-logo">
+            <!-- <a href=""><b>Admin</b>LTE</a> -->
+            <img src="{{asset('logo.webp')}}" class="img-fluid" width="60" height="60" />
+        </div>
             <form method="POST" action="{{ route('login.custom') }}" class="login_form">
             @csrf
             <div class="form-group">
+                <label>Email</label>
                 <div class="input-group mb-3">
                     <input type="email" class="form-control"  name="email" placeholder="Email">
                     <div class="input-group-append">
@@ -45,8 +51,9 @@
 
 
             <div class="form-group">
+                <label>Password</label>
                 <div class="input-group mb-3">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                    <input type="password" class="form-control" name="password" placeholder="Password">
                 <div class="input-group-append">
                     <div class="input-group-text">
                     <span class="fas fa-lock"></span>
