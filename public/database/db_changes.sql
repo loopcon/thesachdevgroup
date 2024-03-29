@@ -86,3 +86,13 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 
 -- Drashti : 28-03-2024 11:16 AM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES ('14', 'Header Menu Social Media Icon', NULL, NULL, NULL);
+
+-- Disha : 29-03-2024 12:06 PM
+ALTER TABLE `service` CHANGE `service_center_id` `service_center_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `service_center`';
+ALTER TABLE `service` ADD `name_font_color` VARCHAR(255) NULL DEFAULT NULL AFTER `name`, ADD `name_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `name_font_color`, ADD `name_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `name_font_size`;
+
+-- Disha : 29-03-2024 12:26 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Service', NULL, NULL, NULL);
+
+-- Disha : 29-03-2024 3:11 PM
+ALTER TABLE `service` ADD `deleted_at` TIMESTAMP NULL DEFAULT NULL AFTER `updated_at`;

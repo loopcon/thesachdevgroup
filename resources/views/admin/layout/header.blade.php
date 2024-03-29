@@ -90,7 +90,7 @@
       <div class="row">
           <div class="col-12 text-center">
               <p class="mb-0">
-                  &copy; 2024 - <a href="" class="text-muted">TSG (THE SACHDEV GROUP)</a>
+                  &copy; 2024 - <a href="#" class="text-muted">TSG (THE SACHDEV GROUP)</a>
               </p>
           </div>
       </div>

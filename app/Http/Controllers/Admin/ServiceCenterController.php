@@ -170,7 +170,7 @@ class ServiceCenterController extends Controller
         }
     }
 
-    public function serviCecenterUpdate(Request $request,$id)
+    public function servicecenterUpdate(Request $request,$id)
     {
         $has_permission = hasPermission('Service Center');
         if(isset($has_permission) && $has_permission)

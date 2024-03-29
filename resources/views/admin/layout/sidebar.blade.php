@@ -183,7 +183,7 @@
             </li>
         @endif
 
-        @if(hasPermission('Service Center'))
+        @if(hasPermission('Service Center') || hasPermission('Service'))
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tools"></i>
@@ -200,6 +200,18 @@
                             <a href="{{route('service-center')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Service Center</p>
+                            </a>
+                        </li>
+                    @endif
+                @endif
+
+                @php($has_permission = hasPermission('Service'))
+                @if(isset($has_permission) && $has_permission)
+                    @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                        <li class="nav-item">
+                            <a href="{{route('service')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Service</p>
                             </a>
                         </li>
                     @endif

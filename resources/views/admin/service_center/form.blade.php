@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('service-center-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-store') }} @endif" method="POST" class="service_center_form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('service-center-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-store') }} @endif" method="POST" class="service-center-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -40,7 +40,6 @@
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Name Color</label>
                                 <input type="text" id="name_color" class="form-control colorpicker" name="name_color" value="{{isset($record->name_color) ? $record->name_color : old('name_color')}}">
-                                @if ($errors->has('name_color')) <div class="text-danger">{{ $errors->first('name_color') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
@@ -54,12 +53,14 @@
                                 </select>
                             </div>
 
+                            @php($fontfamily = fontFamily())
                             <div class="col-md-4">
                                 <label for="name_font_family" class="form-label">Name Font Family</label>
                                 <select class="form-control select2" name="name_font_family">
                                     <option value="">Select</option>
-                                        <option value="poppins" @if(isset($record->name_font_family) && $record->name_font_family == 'poppins'){{'selected'}}@endif>Poppins</option>
-                                        <option value="sans-serif" @if(isset($record->name_font_family) && $record->name_font_family == 'sans-serif'){{'selected'}}@endif>Sans Serif</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->name_font_family) && $record->name_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -92,8 +93,9 @@
                                 <label for="description_font_family" class="form-label">Description Font Family</label>
                                 <select class="form-control select2" name="description_font_family">
                                     <option value="">Select</option>
-                                        <option value="poppins" @if(isset($record->description_font_family) && $record->description_font_family == 'poppins'){{'selected'}}@endif>Poppins</option>
-                                        <option value="sans-serif" @if(isset($record->description_font_family) && $record->description_font_family == 'sans-serif'){{'selected'}}@endif>Sans Serif</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->description_font_family) && $record->description_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -105,6 +107,7 @@
                             <div class="col-md-4">
                                 <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="address" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
+                                @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                             </div>
 
                             <div class="col-md-4">
@@ -131,8 +134,9 @@
                                 <label for="address_font_family" class="form-label">Address Font Family</label>
                                 <select class="form-control select2" name="address_font_family">
                                     <option value="">Select</option>
-                                        <option value="poppins" @if(isset($record->address_font_family) && $record->address_font_family == 'poppins'){{'selected'}}@endif>Poppins</option>
-                                        <option value="sans-serif" @if(isset($record->address_font_family) && $record->address_font_family == 'sans-serif'){{'selected'}}@endif>Sans Serif</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->address_font_family) && $record->address_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -152,7 +156,6 @@
                                     <img src="{{url('public/uploads/working_hours_icon/'.$record->working_hours_icon)}}" width="100">
                                 @endif  
                                 <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon" value="">
-                                @if ($errors->has('working_hours_icon')) <div class="text-danger">{{ $errors->first('working_hours_icon') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
@@ -170,8 +173,9 @@
                                 <label for="working_hours_font_family" class="form-label">Working Hours Font Family</label>
                                 <select class="form-control select2" name="working_hours_font_family">
                                     <option value="">Select</option>
-                                        <option value="poppins" @if(isset($record->working_hours_font_family) && $record->working_hours_font_family == 'poppins'){{'selected'}}@endif>Poppins</option>
-                                        <option value="sans-serif" @if(isset($record->working_hours_font_family) && $record->working_hours_font_family == 'sans-serif'){{'selected'}}@endif>Sans Serif</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->working_hours_font_family) && $record->working_hours_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -183,6 +187,7 @@
                             <div class="col-md-4">
                                 <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
+                                @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
                             </div>
 
                             <div class="col-md-4">
@@ -209,8 +214,9 @@
                                 <label for="contact_font_family" class="form-label">Contact Number Font Family</label>
                                 <select class="form-control select2" name="contact_font_family">
                                     <option value="">Select</option>
-                                        <option value="poppins" @if(isset($record->contact_font_family) && $record->contact_font_family == 'poppins'){{'selected'}}@endif>Poppins</option>
-                                        <option value="sans-serif" @if(isset($record->contact_font_family) && $record->contact_font_family == 'sans-serif'){{'selected'}}@endif>Sans Serif</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->contact_font_family) && $record->contact_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -222,6 +228,7 @@
                             <div class="col-md-4">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" value="{{isset($record->email) ? $record->email : old('email')}}" name="email" id="email">
+                                @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -238,8 +245,9 @@
                                 <label for="email_font_family" class="form-label">Email Font Family</label>
                                 <select class="form-control select2" name="email_font_family">
                                     <option value="">Select</option>
-                                        <option value="poppins" @if(isset($record->email_font_family) && $record->email_font_family == 'poppins'){{'selected'}}@endif>Poppins</option>
-                                        <option value="sans-serif" @if(isset($record->email_font_family) && $record->email_font_family == 'sans-serif'){{'selected'}}@endif>Sans Serif</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->email_font_family) && $record->email_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -310,25 +318,6 @@
             submitHandler: function(form) {
                 $(form).find('.submit').prop("disabled", true);
                 form.submit();
-            }
-        });
-
-        $('body').on('click' ,".add",function(){
-            var $tr = $(this).closest('.sub_table');
-            var $clone = $tr.clone();
-
-            $clone.find('input').val('');
-            $clone.find('span:nth-child(3)').remove();
-
-            $tr.after($clone);
-            sr_change();
-        });
-
-        $('body').on('click' ,".minus",function(event){
-            if($(".sub_table").length > 1){
-
-                $(this).closest(".sub_table").remove();
-                sr_change();
             }
         });
 

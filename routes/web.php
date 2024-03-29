@@ -152,7 +152,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('service-center-create', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterCreate'])->name('service-center-create');
     Route::post('service-center-store', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterStore'])->name('service-center-store');
     Route::get('service-center-edit/{id}', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterEdit'])->name('service-center-edit');
-    Route::post('service-center-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviCecenterUpdate'])->name('service-center-update');
+    Route::post('service-center-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'servicecenterUpdate'])->name('service-center-update');
     Route::get('service-center-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterDestroy'])->name('service-center-delete');
     Route::get('service-center-datatable', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterDatatable'])->name('service-center-datatable');
 
@@ -164,4 +164,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('social_media_icon_edit/{social_media_icon_edit}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_edit'])->name('header_menu_social_media_icon.edit');
     Route::post('header_menu_social_media_icon_update,{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_update'])->name('header_menu_social_media_icon_update');
     Route::get('header_menu_social_media_icon_destroy/{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_destroy'])->name('header_menu_social_media_icon_destroy');
+
+     //service
+     Route::get('service', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceList'])->name('service');
+     Route::get('service-create', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceCreate'])->name('service-create');
+     Route::post('service-store', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceStore'])->name('service-store');
+     Route::get('service-edit/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceEdit'])->name('service-edit');
+     Route::post('service-update/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceUpdate'])->name('service-update');
+     Route::get('service-delete/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDestroy'])->name('service-delete');
+     Route::get('service-datatable', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDatatable'])->name('service-datatable');
 });
