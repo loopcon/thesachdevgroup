@@ -504,7 +504,7 @@
             ignore: [],
             rules: {
                 'image': {
-                    extension: "jpg,jpeg,png",
+                    extension: "jpg,jpeg,png,webp",
                 },
                 'title': {
                     required: true,
@@ -516,10 +516,10 @@
                     required: true,
                 },
                 'our_story_image': {
-                    extension: "jpg,jpeg,png",
+                    extension: "jpg,jpeg,png,webp",
                 },
                 'icon': {
-                    extension: "jpg,jpeg,png",
+                    extension: "jpg,jpeg,png,webp",
                 },
             },
             messages: {

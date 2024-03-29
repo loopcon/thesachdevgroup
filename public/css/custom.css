@@ -1,17 +1,9 @@
-.adm-select-car-drop .select2-search__field:focus{
-    border:0px !important;
-  }
-
-.logo-link{
-    display: block;
-    text-align: center;
-    padding: 10px 0;
-}
-
-.logo-image{
-    width: 80px;
-}
-
-.adm-navigation{
-    height: 75px;
-}
+.adm-select-car-drop .select2-search__field:focus{border:0px !important;}
+.logo-link{display: block;text-align: center;padding: 10px 0;}
+.logo-image{width: 80px;}
+.adm-navigation{height: 75px;}
+.sidebar_active{background-color: #007bff;color: #fff;}
+.sidebar_active_li{background-color: rgba(255,255,255,.9);color: #343a40;}
+.adm-table-no-wrap{ white-space: nowrap;}
+.footer_menu thead tr th:first-child{min-width: 50px ;text-align: left;}
+.footer_menu tbody tr td:first-child{min-width: 50px ;text-align: left;}

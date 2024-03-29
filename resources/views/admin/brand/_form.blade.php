@@ -90,7 +90,7 @@
         $(".edit_form").validate({
             rules: {
                 'image': {
-                    extension: "jpg,jpeg,png",
+                    extension: "jpg,jpeg,png,webp",
                 },
                 'name': {
                     required: true,

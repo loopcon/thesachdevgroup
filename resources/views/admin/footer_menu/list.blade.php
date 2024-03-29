@@ -24,7 +24,7 @@
                 <div class="card-body">
             <section class="content">
                 <div class="container-fluid">
-                    <table class="table table-bordered table-striped data-table">
+                    <table class="table table-bordered table-striped data-table footer_menu">
                         <thead>
                             <tr>
                                 <th style="width:65px;">No</th>

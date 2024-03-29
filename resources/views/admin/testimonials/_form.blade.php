@@ -132,7 +132,7 @@
                     required: true,
                 },
                 image: {
-                    extension: "jpg,jpeg,png",
+                    extension: "jpg,jpeg,png,webp",
                 },
                 'description': {
                     required: true,

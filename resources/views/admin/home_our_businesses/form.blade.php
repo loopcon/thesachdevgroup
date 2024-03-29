@@ -47,7 +47,7 @@
             rules: {
                 'image': {
                     required: true,
-                    extension: "jpg,jpeg,png",
+                    extension: "jpg,jpeg,png,webp",
                 },
             },
             messages: {

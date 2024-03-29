@@ -529,13 +529,13 @@
                     required: true,
                 },
                 'email_icon': {
-                  extension: "jpg,jpeg,png",
+                  extension: "jpg,jpeg,png,webp",
                 },
                 'call_icon': {
-                  extension: "jpg,jpeg,png",
+                  extension: "jpg,jpeg,png,webp",
                 },
                 'address_icon': {
-                  extension: "jpg,jpeg,png",
+                  extension: "jpg,jpeg,png,webp",
                 },
             },
             messages: {

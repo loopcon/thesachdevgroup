@@ -153,7 +153,7 @@
         $(".mission_vision_form").validate({
             rules: {
                 'icon': {
-                    extension: "jpg,jpeg,png",
+                    extension: "jpg,jpeg,png,webp",
                 },
                 'icon_name': {
                     required: true,
