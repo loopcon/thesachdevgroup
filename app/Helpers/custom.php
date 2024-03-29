@@ -78,3 +78,15 @@ function position(){
     );
 }
 
+function getSettingDetail(){
+    $settings = App\Models\Setting::select('id', 'logo')->first();
+    // $settings = array();
+    // if (count($AdminSetting_list) != 0) {
+    //     foreach ($AdminSetting_list as $item) {
+    //         $settings[$item->label] = $item->value;
+    //     }
+    // }
+
+    return $settings;
+}
+

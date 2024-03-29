@@ -1,11 +1,4 @@
 @extends('admin.layout.header')
-@section('css')
-<style>
-    .adm-select-car-drop .select2-search__field:focus{
-      border:0px !important;
-    }
-</style>
-@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">

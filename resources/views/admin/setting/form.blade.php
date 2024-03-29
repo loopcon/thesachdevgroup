@@ -512,7 +512,7 @@
             ignore: [],
             rules: {
                 'logo': {
-                    extension: "jpg,jpeg,png",
+                    extension: "jpg,jpeg,png,webp",
                 },
                 'email': {
                     required: true,

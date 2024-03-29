@@ -29,8 +29,10 @@
         <div class="card">
         <div class="card-body login-card-body">
         <div class="login-logo">
+        @php($setting_detail = getSettingDetail())
+            @php($logo = $setting_detail->logo)
             <!-- <a href=""><b>Admin</b>LTE</a> -->
-            <img src="{{asset('logo.webp')}}" class="img-fluid" width="60" height="60" />
+            <img src="{{asset('logo/'.$logo)}}" class="img-fluid" width="60" height="60" />
         </div>
             <form method="POST" action="{{ route('login.custom') }}" class="login_form">
             @csrf

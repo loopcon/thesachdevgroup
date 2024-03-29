@@ -1,0 +1,17 @@
+.adm-select-car-drop .select2-search__field:focus{
+    border:0px !important;
+  }
+
+.logo-link{
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.logo-image{
+    width: 80px;
+}
+
+.adm-navigation{
+    height: 75px;
+}
