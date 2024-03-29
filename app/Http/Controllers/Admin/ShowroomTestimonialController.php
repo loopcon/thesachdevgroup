@@ -73,7 +73,7 @@ class ShowroomTestimonialController extends Controller
 
                 if($showroom_testimonial)
                 {
-                    return redirect()->route('showroom-testimonial')->with('success', 'Showroom Testimonial insert succesfully');
+                    return redirect()->route('showroom-testimonial')->with('success', 'Showroom Testimonial insert successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
@@ -174,7 +174,7 @@ class ShowroomTestimonialController extends Controller
 
                 if($showroom_testimonial)
                 {
-                    return redirect()->route('showroom-testimonial')->with('success', 'Showroom Testimonial updated succesfully');
+                    return redirect()->route('showroom-testimonial')->with('success', 'Showroom Testimonial updated successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
@@ -203,7 +203,7 @@ class ShowroomTestimonialController extends Controller
                 $showroom_testimonial = ShowroomTestimonial::where('id',$id)->delete();
                 if($showroom_testimonial)
                 {
-                    return redirect()->route('showroom-testimonial')->with('success', 'Showroom Testimonial deleted succesfully');
+                    return redirect()->route('showroom-testimonial')->with('success', 'Showroom Testimonial deleted successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }

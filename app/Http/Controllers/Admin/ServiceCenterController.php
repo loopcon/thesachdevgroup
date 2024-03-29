@@ -91,7 +91,7 @@ class ServiceCenterController extends Controller
 
                 if($service_center)
                 {
-                    return redirect()->route('service-center')->with('success', 'Service Center insert succesfully');
+                    return redirect()->route('service-center')->with('success', 'Service Center insert successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
@@ -244,7 +244,7 @@ class ServiceCenterController extends Controller
 
                 if($service_center)
                 {
-                    return redirect()->route('service-center')->with('success', 'Service Center update succesfully');
+                    return redirect()->route('service-center')->with('success', 'Service Center update successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
@@ -310,7 +310,7 @@ class ServiceCenterController extends Controller
                 $service_center = ServiceCenter::where('id',$id)->delete();
                 if($service_center)
                 {
-                    return redirect()->route('service-center')->with('success', 'Service Center deleted succesfully');
+                    return redirect()->route('service-center')->with('success', 'Service Center deleted successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }

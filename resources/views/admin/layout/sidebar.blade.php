@@ -186,7 +186,7 @@
         @if(hasPermission('Service Center'))
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                <i class="fas fa-tools"></i>
+                <i class="nav-icon fas fa-tools"></i>
                     <p>
                     Services
                         <i class="right fas fa-angle-left"></i>

@@ -72,7 +72,7 @@ class ShowroomModelController extends Controller
 
                 if($showroom_model)
                 {
-                    return redirect()->route('showroom-model')->with('success', 'Showroom Model insert succesfully');
+                    return redirect()->route('showroom-model')->with('success', 'Showroom Model insert successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
@@ -173,7 +173,7 @@ class ShowroomModelController extends Controller
 
                 if($showroom_model)
                 {
-                    return redirect()->route('showroom-model')->with('success', 'Showroom Model Updated succesfully');
+                    return redirect()->route('showroom-model')->with('success', 'Showroom Model Updated successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
@@ -202,7 +202,7 @@ class ShowroomModelController extends Controller
                 $showroom_model = ShowroomModel::where('id',$id)->delete();
                 if($showroom_model)
                 {
-                    return redirect()->route('showroom-model')->with('success', 'Showroom Model deleted succesfully');
+                    return redirect()->route('showroom-model')->with('success', 'Showroom Model deleted successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }

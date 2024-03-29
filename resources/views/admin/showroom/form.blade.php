@@ -1,4 +1,11 @@
 @extends('admin.layout.header')
+@section('css')
+<style>
+    .adm-select-car-drop .select2-search__field:focus{
+      border:0px !important;
+    }
+</style>
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -44,7 +51,7 @@
                                     <div id="errordiv"></div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-4 adm-select-car-drop">
                                     <label for="car_id" class="form-label">Select Car<span class="text-danger">*</span></label>
                                     <select name="car_id[]" id="car_id" class="form-control select2" multiple>
                                         <option disabled>Select</option>
