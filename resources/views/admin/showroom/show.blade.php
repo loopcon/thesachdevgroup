@@ -27,7 +27,7 @@
                     <table class="table table-bordered table-striped data-table">
                         <thead>
                             <tr>
-                                <th style="width:65px;">No</th>
+                                <th style="width:50px;">No</th>
                                 <th>Showroom Name</th>
                                 <th>Brand</th>
                                 <th>Car</th>

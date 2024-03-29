@@ -65,7 +65,7 @@
         $(".header_menu_social_media_icon_form").validate({
             rules: {
                 'icon': {
-                    extension: "jpg,jpeg,png",
+                    extension: "jpg,jpeg,png,webp",
                 },
                 'link': {
                     required: true,
