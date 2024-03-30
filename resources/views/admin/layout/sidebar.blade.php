@@ -192,29 +192,41 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
-                @php($has_permission = hasPermission('Service Center'))
-                @if(isset($has_permission) && $has_permission)
-                    @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                        <li class="nav-item">
-                            <a href="{{route('service-center')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Service Center</p>
-                            </a>
-                        </li>
+                    @php($has_permission = hasPermission('Service Center'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item">
+                                <a href="{{route('service-center')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Service Center</p>
+                                </a>
+                            </li>
+                        @endif
                     @endif
-                @endif
 
-                @php($has_permission = hasPermission('Service'))
-                @if(isset($has_permission) && $has_permission)
-                    @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                        <li class="nav-item">
-                            <a href="{{route('service')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Service</p>
-                            </a>
-                        </li>
+                    @php($has_permission = hasPermission('Service'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item">
+                                <a href="{{route('service')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Service</p>
+                                </a>
+                            </li>
+                        @endif
                     @endif
-                @endif
+
+                    @php($has_permission = hasPermission('Service Center Facility Customer Gallery'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item">
+                                <a href="{{route('service-center-facility-customergallery')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Service Center Facility Customer Gallery</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
                 </ul>
             </li>
         @endif

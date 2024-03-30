@@ -165,12 +165,21 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('header_menu_social_media_icon_update,{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_update'])->name('header_menu_social_media_icon_update');
     Route::get('header_menu_social_media_icon_destroy/{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_destroy'])->name('header_menu_social_media_icon_destroy');
 
-     //service
-     Route::get('service', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceList'])->name('service');
-     Route::get('service-create', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceCreate'])->name('service-create');
-     Route::post('service-store', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceStore'])->name('service-store');
-     Route::get('service-edit/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceEdit'])->name('service-edit');
-     Route::post('service-update/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceUpdate'])->name('service-update');
-     Route::get('service-delete/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDestroy'])->name('service-delete');
-     Route::get('service-datatable', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDatatable'])->name('service-datatable');
+    //service
+    Route::get('service', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceList'])->name('service');
+    Route::get('service-create', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceCreate'])->name('service-create');
+    Route::post('service-store', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceStore'])->name('service-store');
+    Route::get('service-edit/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceEdit'])->name('service-edit');
+    Route::post('service-update/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceUpdate'])->name('service-update');
+    Route::get('service-delete/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDestroy'])->name('service-delete');
+    Route::get('service-datatable', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDatatable'])->name('service-datatable');
+
+    //service center facility and customer gallery
+    Route::get('service-center-facility-customergallery', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryList'])->name('service-center-facility-customergallery');
+    Route::get('service-center-facility-customergallery-create', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryCreate'])->name('service-center-facility-customergallery-create');
+    Route::post('service-center-facility-customergallery-store', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryStore'])->name('service-center-facility-customergallery-store');
+    Route::get('service-center-facility-customergallery-edit/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryEdit'])->name('service-center-facility-customergallery-edit');
+    Route::post('service-center-facility-customergallery-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryUpdate'])->name('service-center-facility-customergallery-update');
+    Route::get('service-center-facility-customergallery-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDestroy'])->name('service-center-facility-customergallery-delete');
+    Route::get('service-center-facility-customergallery-datatable', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDatatable'])->name('service-center-facility-customergallery-datatable');
 });

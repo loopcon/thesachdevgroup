@@ -96,3 +96,6 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 
 -- Disha : 29-03-2024 3:11 PM
 ALTER TABLE `service` ADD `deleted_at` TIMESTAMP NULL DEFAULT NULL AFTER `updated_at`;
+
+-- Disha : 30-03-2024 10:58 AM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Service Center Facility Customer Gallery', NULL, NULL, NULL);

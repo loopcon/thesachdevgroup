@@ -54,7 +54,7 @@ class ServiceController extends Controller
             {
                 $request->validate([
                     'service_center_id' => 'required',
-                    'icon' => 'required|image|mimes:jpeg,png,jpg,gif,webp',
+                    'icon' => 'required|image|mimes:jpeg,png,jpg,webp',
                     'url' => 'required|url',
                 ]);
                 $service = new Service();
@@ -151,7 +151,7 @@ class ServiceController extends Controller
                 $id = decrypt($id);
                 $request->validate([
                     'service_center_id' => 'required',
-                    'icon' => 'image|mimes:jpeg,png,jpg,gif,webp',
+                    'icon' => 'image|mimes:jpeg,png,jpg,webp',
                     'url' => 'required|url',
                 ]);
                 $service = Service::find($id);
