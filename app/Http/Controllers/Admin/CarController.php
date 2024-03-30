@@ -22,7 +22,7 @@ class CarController extends Controller
             {
                 $brands = Brand::get();
                 return view("admin.car.form",compact('brands')); 
-            }else {
+            } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }
