@@ -1,6 +1,6 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item{{ request()->is('dashboard') ? ' sidebar_active' : '' }}"> 
+            <li class="nav-item"> 
 
             <a href="{{url('dashboard')}}" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -12,23 +12,14 @@
 
             @if(hasPermission('Home Slider') || hasPermission('Home Our Businesses') || hasPermission('Home Detail') || hasPermission('Mission Vision'))
                 <li class="nav-item">
-        
-                    {{-- <a href="#" class="nav-link"> --}}
-                        <a href="#" class="nav-link{{ request()->is('homeslider_index') ? ' sidebar_active' : '' }}"> 
-
-                        <i class="nav-icon fa fa-house-user"></i>
-                        <p>
-                        Home Setting
-                        <i class="right fas fa-angle-left"></i>
-                        </p>
+                    <a href="#" class="nav-link"> 
+                        <i class="nav-icon fa fa-house-user"></i><p>Home Setting<i class="right fas fa-angle-left"></i></p>
                     </a>
-                    {{-- <ul class="nav nav-treeview"> --}}
-                    <ul class="nav nav-treeview{{ request()->is('homeslider_index') ? ' sidebar_active' : '' }}">
-
+                    <ul id="sidebar_communication" class="nav nav-treeview">
                         @php($has_permission = hasPermission('Home Slider'))
                         @if(isset($has_permission) && $has_permission)
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                            <li class="nav-item{{ request()->is('homeslider_index') ? ' sidebar_active_li' : '' }}"> 
+                            <li class="nav-item"> 
                                 <a href="{{url('homeslider_index')}}" class="nav-link">
                                 <i class="nav-icon fas fa-sliders-h"></i>
                                 <p>
@@ -42,7 +33,7 @@
                         @php($has_permission = hasPermission('Home Our Businesses'))
                         @if(isset($has_permission) && $has_permission)
                             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                                <li class="nav-item{{ request()->is('home_our_businesses_index') ? ' sidebar_active_li' : '' }}"> 
+                                <li class="nav-item"> 
                                 <a href="{{url('home_our_businesses_index')}}" class="nav-link">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>
@@ -56,7 +47,7 @@
                         @php($has_permission = hasPermission('Home Detail'))
                         @if(isset($has_permission) && $has_permission)
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                            <li class="nav-item{{ request()->is('home_detail') ? ' sidebar_active_li' : '' }}"> 
+                            <li class="nav-item"> 
                             <a href="{{url('home_detail')}}" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>
                                 <p>
@@ -70,7 +61,7 @@
                         @php($has_permission = hasPermission('Mission Vision'))
                         @if(isset($has_permission) && $has_permission)
                             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                            <li class="nav-item{{ request()->is('mission_vision') ? ' sidebar_active_li' : '' }}"> 
+                            <li class="nav-item"> 
 
                             <a href="{{url('mission_vision')}}" class="nav-link">
                                 <i class="nav-icon fas fa-tasks"></i> 
@@ -89,7 +80,7 @@
         @php($has_permission = hasPermission('Testimonials'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                <li class="nav-item{{ request()->is('testimonials_index') ? ' sidebar_active' : '' }}"> 
+                <li class="nav-item"> 
                     <a href="{{url('testimonials_index')}}" class="nav-link">
                         <i class="nav-icon fas fa-address-card"></i>
                         <p>Testimonials</p>
@@ -103,7 +94,7 @@
         @php($has_permission = hasPermission('Setting'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                <li class="nav-item{{ request()->is('setting') ? ' sidebar_active' : '' }}">
+                <li class="nav-item">
                     <a href="{{url('setting')}}" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>
@@ -117,7 +108,7 @@
         @php($has_permission = hasPermission('Brand'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                <li class="nav-item{{ request()->is('brand_index') ? ' sidebar_active' : '' }}">
+                <li class="nav-item">
                 <a href="{{url('brand_index')}}" class="nav-link">
                     <i class="nav-icon fab fa-behance"></i>
                     <p>
@@ -131,7 +122,7 @@
         @php($has_permission = hasPermission('Car'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                <li class="nav-item{{ request()->is('car_index') ? ' sidebar_active' : '' }}">
+                <li class="nav-item">
                     <a href="{{url('car_index')}}" class="nav-link">
                         <i class="nav-icon fas fa-car-alt"></i>
                         <p>
@@ -231,7 +222,7 @@
         @php($has_permission = hasPermission('Header Menu'))
           @if(isset($has_permission) && $has_permission)
               @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-            <li class="nav-item{{ request()->is('header_menu_index') ? ' sidebar_active' : '' }}">
+            <li class="nav-item">
             <a href="{{url('header_menu_index')}}" class="nav-link">
               <i class="nav-icon fas fa-heading"></i>
               <p>
@@ -246,7 +237,7 @@
         @php($has_permission = hasPermission('Header Menu Social Media Icon'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-        <li class="nav-item{{ request()->is('header_menu_social_media_icon') ? ' sidebar_active' : '' }}">
+        <li class="nav-item">
           <a href="{{url('header_menu_social_media_icon')}}" class="nav-link">
             <i class="nav-icon fas fa-heading"></i>
             <p>
@@ -261,7 +252,7 @@
         @php($has_permission = hasPermission('Footer Menu'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                <li class="nav-item{{ request()->is('footer_menu') ? ' sidebar_active' : '' }}">
+                <li class="nav-item">
                     <a href="{{url('footer_menu')}}" class="nav-link">
                         <i class="nav-icon fas fa-bars"></i>
                         <p>
@@ -273,7 +264,7 @@
         @endif
 
         @if(isset(Auth::user()->role_id) && Auth::user()->role_id == 1)
-                <li class="nav-item{{ request()->is('role-permission') ? ' sidebar_active' : '' }}">
+                <li class="nav-item">
                 <a href="{{route('role-permission')}}" class="nav-link">
                 <i class="nav-icon fas fa-users-cog"></i>
                 <p>
@@ -286,18 +277,18 @@
 </nav>
 @section('javascript')
 <script>
-    $(document).ready(function(){
-        $('.nav-item').click(function(){
-            $('.nav-item').removeClass('sidebar_active'); 
-            $(this).addClass('sidebar_active'); 
-        });
-    });
+    // $(document).ready(function(){
+    //     $('.nav-item').click(function(){
+    //         $('.nav-item').removeClass('active'); 
+    //         $(this).addClass('active'); 
+    //     });
+    // });
 
-    $(document).ready(function(){
-        $('.nav-item').click(function(){
-            $('.nav-item').removeClass('sidebar_active_li'); 
-            $(this).addClass('sidebar_active_li'); 
-        });
-    });
+    // $(document).ready(function(){
+    //     $('.nav-item').click(function(){
+    //         $('.nav-item').removeClass('show'); 
+    //         $(this).addClass('show'); 
+    //     });
+    // });
 </script>
 @endsection

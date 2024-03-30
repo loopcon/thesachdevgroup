@@ -24,7 +24,7 @@
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
-                        <table class="table table-bordered table-striped table">
+                        <table class="table table-bordered table-striped table adm-table-no-wrap">
                             <thead>
                                 <tr>
                                     <th>Id</th>

@@ -24,7 +24,7 @@
                 <div class="card-body">
             <section class="content">
                 <div class="container-fluid">
-                    <table class="table table-bordered table-striped slider_table">
+                    <table class="table table-bordered table-striped slider_table adm-table-no-wrap">
                         <thead>
                             <tr>
                                 <th style="width:36px;">No</th>
@@ -60,6 +60,7 @@
         var table = $('.slider_table').DataTable({
             processing: true,
             serverSide: true,
+            scrollX: true,
             ajax: "{{ route('homeslider.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
