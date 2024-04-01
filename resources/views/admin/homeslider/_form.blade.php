@@ -31,7 +31,7 @@
                                     @if($homeslider->image == null)
                                     <img src="{{asset('no_image/notImg.png')}}" width="100">
                                     @else
-                                    <img src="{{url('public/home_slider/'.$homeslider->image)}}" width="100">
+                                    <img src="{{url('public/home_slider/'.$homeslider->image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
                                 @endif
                                     <input type="file" id="image" class="form-control" name="image">
                                 </div>
