@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2 mb-3">
-                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
+                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/service_center_testimonial/'.$record->image)}}" width="100">
                                 @endif  

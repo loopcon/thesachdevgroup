@@ -37,7 +37,7 @@ class ServiceController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('Service Create');
-                $return_data['service_center'] = ServiceCenter::select('id', 'name')->get();
+                // $return_data['service_center'] = ServiceCenter::select('id', 'name')->get();
                 return view("admin.service.form",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -53,12 +53,12 @@ class ServiceController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $request->validate([
-                    'service_center_id' => 'required',
+                    // 'service_center_id' => 'required',
                     'icon' => 'required|image|mimes:jpeg,png,jpg,webp',
                     'url' => 'required|url',
                 ]);
                 $service = new Service();
-                $fields = array('service_center_id', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'url');
+                $fields = array('name', 'name_font_color', 'name_font_size', 'name_font_family', 'url');
                 foreach($fields as $field)
                 {
                     $service->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -86,7 +86,7 @@ class ServiceController extends Controller
     public function serviceDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = Service::with('serviceCenterDetail')->select('id', 'service_center_id', 'name', 'icon', 'name_font_color', 'name_font_size', 'name_font_family', 'url')->orderBy('id', 'DESC');
+            $query = Service::with('serviceCenterDetail')->select('id', 'name', 'icon', 'name_font_color', 'name_font_size', 'name_font_family', 'url')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -94,10 +94,10 @@ class ServiceController extends Controller
                     $icon = $list->icon ? asset('uploads/service/'.$list->icon) : '';
                     return '<img src="' . $icon . '" alt="" width="100">';
                 })
-                ->addColumn('service_center_id', function($list){
-                    $service_center_id = isset($list->serviceCenterDetail->name) && $list->serviceCenterDetail->name ? $list->serviceCenterDetail->name : NULL;
-                    return $service_center_id;
-                })
+                // ->addColumn('service_center_id', function($list){
+                //     $service_center_id = isset($list->serviceCenterDetail->name) && $list->serviceCenterDetail->name ? $list->serviceCenterDetail->name : NULL;
+                //     return $service_center_id;
+                // })
                 ->addColumn('action', function ($list) {
                     $html = "";
                     $id = encrypt($list->id);
@@ -150,12 +150,12 @@ class ServiceController extends Controller
             {
                 $id = decrypt($id);
                 $request->validate([
-                    'service_center_id' => 'required',
+                    // 'service_center_id' => 'required',
                     'icon' => 'image|mimes:jpeg,png,jpg,webp',
                     'url' => 'required|url',
                 ]);
                 $service = Service::find($id);
-                $fields = array('service_center_id', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'url');
+                $fields = array('name', 'name_font_color', 'name_font_size', 'name_font_family', 'url');
                 foreach($fields as $field)
                 {
                     $service->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 

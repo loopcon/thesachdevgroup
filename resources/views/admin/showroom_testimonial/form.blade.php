@@ -41,7 +41,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="image" class="form-label">Image</label>
+                                <label for="image" class="form-label">Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/showroom_testimonial/'.$record->image)}}" width="100" style="margin-bottom:10px;margin-left:5px;">
                                 @endif  

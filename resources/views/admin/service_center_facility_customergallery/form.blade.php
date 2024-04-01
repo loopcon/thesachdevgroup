@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label>
+                                <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->facility_image) && $record->facility_image)
                                     <img src="{{url('public/uploads/service_center_facility_image/'.$record->facility_image)}}" width="100" style="margin-bottom: 10px; margin-left:5px;">
                                 @endif  
@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2 mb-2">
-                                <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label>
+                                <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->customer_gallery_image) && $record->customer_gallery_image)
                                     <img src="{{url('public/uploads/service_center_customer_gallery_image/'.$record->customer_gallery_image)}}" width="100" style="margin-bottom: 10px; margin-left:5px;">
                                 @endif  

@@ -25,17 +25,6 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="service_center_id" class="form-label">Service Center<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="service_center_id" id="service_center_id">
-                                    <option value="">-- Select Service Center --</option>
-                                    @foreach($service_center as $value)
-                                        <option value="{{$value->id}}"@if(isset($record->service_center_id) && $record->service_center_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
-                                    @endforeach
-                                </select>
-                                <div id="error"></div>
-                                @if ($errors->has('service_center_id')) <div class="text-danger">{{ $errors->first('service_center_id') }}</div>@endif
-                            </div>
-                            <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
@@ -78,7 +67,7 @@
                             </div>
 
                             <div class="col-md-4 mb-3 mt-2">
-                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
+                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->icon) && $record->icon)
                                     <img src="{{url('public/uploads/service/'.$record->icon)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
                                 @endif  
