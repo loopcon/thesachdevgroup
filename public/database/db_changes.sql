@@ -99,3 +99,10 @@ ALTER TABLE `service` ADD `deleted_at` TIMESTAMP NULL DEFAULT NULL AFTER `update
 
 -- Disha : 30-03-2024 10:58 AM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Service Center Facility Customer Gallery', NULL, NULL, NULL);
+
+-- Disha : 30-03-2024 1:26
+RENAME TABLE `tsgautomotive`.`service_testimonial` TO `tsgautomotive`.`service_center_testimonial`;
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Service Center Testimonial', NULL, NULL, NULL);
+
+-- Disha : 01-04-2024 10:08 AM
+ALTER TABLE `service_center_testimonial` ADD `description_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `description_text_color`;
