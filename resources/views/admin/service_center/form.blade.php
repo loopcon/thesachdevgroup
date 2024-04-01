@@ -25,6 +25,17 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
+                                <label for="service_id" class="form-label">Service<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="service_id" id="service_id">
+                                    <option value="">-- Select Service --</option>
+                                    @foreach($services as $value)
+                                        <option value="{{$value->id}}"@if(isset($record->service_id) && $record->service_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
+                                    @endforeach
+                                </select>
+                                <div id="error"></div>
+                                @if ($errors->has('service_center_id')) <div class="text-danger">{{ $errors->first('service_center_id') }}</div>@endif
+                            </div>
+                            <div class="col-md-4">
                                 <label for="title" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif

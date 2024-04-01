@@ -28,6 +28,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Service</th>
                                     <th>Name</th>
                                     <th>Name Color</th>
                                     <th>Name Font Size</th>
@@ -78,6 +79,7 @@
             ajax: "{{ route('service-center-datatable') }}",
             columns: [
                 {data: 'id', name: 'id'},
+                {data: 'service_id', name: 'service_id'},
                 {data: 'name', name: 'name'},
                 {data: 'name_color', name: 'name_color'},
                 {data: 'name_font_size', name: 'name_font_size'},

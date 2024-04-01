@@ -106,3 +106,6 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 
 -- Disha : 01-04-2024 10:08 AM
 ALTER TABLE `service_center_testimonial` ADD `description_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `description_text_color`;
+
+-- Disha : 01-04-2024 2:34 PM
+ALTER TABLE `service_center` ADD `service_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `service`' AFTER `id`;
