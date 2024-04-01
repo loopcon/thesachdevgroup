@@ -182,4 +182,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('service-center-facility-customergallery-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryUpdate'])->name('service-center-facility-customergallery-update');
     Route::get('service-center-facility-customergallery-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDestroy'])->name('service-center-facility-customergallery-delete');
     Route::get('service-center-facility-customergallery-datatable', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDatatable'])->name('service-center-facility-customergallery-datatable');
+
+    Route::get('service-center-testimonial', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCeterTestimonialList'])->name('service-center-testimonial');
+    Route::get('service-center-testimonial-create', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialCreate'])->name('service-center-testimonial-create');
+    Route::post('service-center-testimonial-store', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialStore'])->name('service-center-testimonial-store');
+    Route::get('service-center-testimonial-edit/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialEdit'])->name('service-center-testimonial-edit');
+    Route::post('service-center-testimonial-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialUpdate'])->name('service-center-testimonial-update');
+    Route::get('service-center-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDestroy'])->name('service-center-testimonial-delete');
+    Route::get('service-center-testimonial-datatable', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDatatable'])->name('service-center-testimonial-datatable');
 });
