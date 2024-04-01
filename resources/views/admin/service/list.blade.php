@@ -34,7 +34,7 @@
                                     <th>Name Font Family</th>
                                     <th>Icon</th>
                                     <th>Url</th>
-                                    <th>Service Center</th>
+                                    <!-- <th>Service Center</th> -->
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -63,7 +63,7 @@
                 {data: 'name_font_family', name: 'name_font_family'},
                 {data: 'icon', name: 'icon'},
                 {data: 'url', name: 'url'},
-                {data: 'service_center_id', name: 'service_center_id'},
+                // {data: 'service_center_id', name: 'service_center_id'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
