@@ -47,14 +47,14 @@
                             <div class="col-md-4">
                                 <label for="image" class="form-label">Image</label>
                                 @if(isset($record->image) && $record->image)
-                                    <img src="{{url('public/uploads/showroom_model/'.$record->image)}}" width="100">
+                                    <img src="{{url('public/uploads/showroom_model/'.$record->image)}}" width="100" style="margin-bottom:10px;margin-left:5px;">
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image" value="">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="title_text_color" class="form-label">Title Text Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->title_text_color) ? $record->title_text_color : old('title_text_color')}}" name="title_text_color" id="title_text_color">
                             </div>

@@ -22,35 +22,35 @@
                     <a href="{{ route('missionVisionCreate') }}" class="btn btn-primary mt-2 float-right">Add</a>
                 </div>
                 <div class="card-body">
-            <section class="content">
-                <div class="container-fluid">
-                    <table class="table table-bordered table-striped data-table adm-table-no-wrap">
-                        <thead>
-                            <tr>
-                                <th style="width:36px;">No</th>
-                                <th>Icon</th>
-                                <th>Icon Name</th>
-                                <th>Title</th>
-                                <th>Icon Name Color</th>
-                                <th>Icon Name Font Size</th>
-                                <th>Icon Name Font Family</th>
-                                <th>Title Color</th>
-                                <th>Title Font Size</th>
-                                <th>Title Font Family</th>
-                                <th>Description</th>
-                                <th>Description Color</th>
-                                <th>Description Font Size</th>
-                                <th>Description Font Family</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <section class="content">
+                        <div class="container-fluid">
+                            <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
+                                <thead>
+                                    <tr>
+                                        <th style="width:36px;">No</th>
+                                        <th>Icon</th>
+                                        <th>Icon Name</th>
+                                        <th>Title</th>
+                                        <th>Icon Name Color</th>
+                                        <th>Icon Name Font Size</th>
+                                        <th>Icon Name Font Family</th>
+                                        <th>Title Color</th>
+                                        <th>Title Font Size</th>
+                                        <th>Title Font Family</th>
+                                        <th>Description</th>
+                                        <th>Description Color</th>
+                                        <th>Description Font Size</th>
+                                        <th>Description Font Family</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
-            </section>
-        </div>
-    </div>
+            </div>
         </div>
     </div>
     @endsection
@@ -100,5 +100,10 @@ $(document).on('click', '.delete', function() {
         }
     });
 });
+
+$(document).ready(function(){
+    $('.dataTables_scrollBody').addClass('adm-table-responsive');
+});
+
 </script>
 @endsection

@@ -24,7 +24,7 @@
                 <div class="card-body">
             <section class="content">
                 <div class="container-fluid">
-                    <table class="table table-bordered table-striped data-table adm-table-no-wrap">
+                    <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
                         <thead>
                             <tr>
                                 <th style="width:36px;">No</th>
@@ -94,6 +94,9 @@
                 location.href = href;
             }
         });
+    });
+    $(document).ready(function(){
+        $('.dataTables_scrollBody').addClass('adm-table-responsive');
     });
 </script>
 @endsection

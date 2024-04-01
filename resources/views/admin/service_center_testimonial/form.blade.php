@@ -70,21 +70,21 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="title" class="form-label">Name Background Color</label>
                                 <input type="text" id="name_background_color" class="form-control colorpicker" name="name_background_color" value="{{isset($record->name_background_color) ? $record->name_background_color : old('name_background_color')}}">
                                 @if ($errors->has('name_background_color')) <div class="text-danger">{{ $errors->first('name_background_color') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea id="description" class="form-control" name="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
                                 @if ($errors->has('description')) <div class="text-danger">{{ $errors->first('description') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="description_text_color" class="form-label">Description Text Color</label>
                                 <input type="text" id="description_text_color" class="form-control colorpicker" name="description_text_color" value="{{isset($record->description_text_color) ? $record->description_text_color : old('description_text_color')}}">
                                 @if ($errors->has('description_text_color')) <div class="text-danger">{{ $errors->first('description_text_color') }}</div>@endif
@@ -112,7 +112,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mt-2 mb-3">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/service_center_testimonial/'.$record->image)}}" width="100">

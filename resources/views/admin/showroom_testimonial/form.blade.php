@@ -43,7 +43,7 @@
                             <div class="col-md-4">
                                 <label for="image" class="form-label">Image</label>
                                 @if(isset($record->image) && $record->image)
-                                    <img src="{{url('public/uploads/showroom_testimonial/'.$record->image)}}" width="100">
+                                    <img src="{{url('public/uploads/showroom_testimonial/'.$record->image)}}" width="100" style="margin-bottom:10px;margin-left:5px;">
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image" value="{{isset($record->image) ? $record->image : ''}}">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif

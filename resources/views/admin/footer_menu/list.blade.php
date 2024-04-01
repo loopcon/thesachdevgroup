@@ -24,7 +24,7 @@
                 <div class="card-body">
             <section class="content">
                 <div class="container-fluid">
-                    <table class="table table-bordered table-striped data-table footer_menu">
+                    <table class="table table-bordered table-striped data-table footer_menu adm-table-no-wrap adm-action-sticky">
                         <thead>
                             <tr>
                                 <th style="width:65px;">No</th>
@@ -55,6 +55,7 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
+            scrollX: true,
             ajax: "{{ route('footer_menu.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
@@ -85,5 +86,10 @@ $(document).on('click', '.delete', function() {
         }
     });
 });
+
+$(document).ready(function(){
+    $('.dataTables_scrollBody').addClass('adm-table-responsive');
+}); 
+
 </script>
 @endsection

@@ -48,7 +48,7 @@
                             </div>
 
                             @php($fontfamily = fontFamily())
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="name_font_family" class="form-label">Name Font Family</label>
                                 <select class="form-control select2" name="name_font_family">
                                     <option value="">Select</option>
@@ -73,7 +73,7 @@
                                 <textarea class="form-control" name="description" id="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="description_font_size" class="form-label">Description Font Size</label>
                                 <select class="form-control select2" name="description_font_size">
                                     <option value="">Select</option>
@@ -83,7 +83,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="description_font_family" class="form-label">Description Font Family</label>
                                 <select class="form-control select2" name="description_font_family">
                                     <option value="">Select</option>
@@ -98,13 +98,13 @@
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="address" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
                                 @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="image" class="form-label">Address Icon</label>
                                 @if(isset($record->address_icon) && $record->address_icon)
                                     <img src="{{url('public/uploads/address_icon/'.$record->address_icon)}}" width="100">
@@ -134,12 +134,12 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="address_font_color" class="form-label">Address Font Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->address_font_color) ? $record->address_font_color : old('address_font_color')}}" name="address_font_color" id="address_font_color">
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="working_hours" class="form-label">Working Hours</label>
                                 <input type="text" class="form-control" value="{{isset($record->working_hours) ? $record->working_hours : old('working_hours')}}" name="working_hours" id="working_hours">
                             </div>
@@ -178,13 +178,13 @@
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->working_hours_font_color) ? $record->working_hours_font_color : old('working_hours_font_color')}}" name="working_hours_font_color" id="working_hours_font_color">
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
                                 @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="contact_icon" class="form-label">Contact Number Icon</label>
                                 @if(isset($record->contact_icon) && $record->contact_icon)
                                     <img src="{{url('public/uploads/contact_icon/'.$record->contact_icon)}}" width="100">
@@ -214,12 +214,12 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="contact_font_color" class="form-label">Contact Number Font Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->contact_font_color) ? $record->contact_font_color : old('contact_font_color')}}" name="contact_font_color" id="contact_font_color">
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" value="{{isset($record->email) ? $record->email : old('email')}}" name="email" id="email">
                                 @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
@@ -250,7 +250,7 @@
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->email_font_color) ? $record->email_font_color : old('email_font_color')}}" name="email_font_color" id="email_font_color">
                             </div>
 
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-3 mt-2">
                                 <label for="email_icon" class="form-label">Email Icon</label>
                                 @if(isset($record->email_icon) && $record->email_icon)
                                     <img src="{{url('public/uploads/email_icon/'.$record->email_icon)}}" width="100">

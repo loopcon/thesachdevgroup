@@ -24,7 +24,7 @@
                 <div class="card-body">
             <section class="content">
                 <div class="container-fluid">
-                    <table class="table table-bordered table-striped data-table">
+                    <table class="table table-bordered table-striped data-table adm-action-sticky">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -51,6 +51,7 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
+            scrollX: true,
             ajax: "{{ route('header_menu_social_media_icon.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
@@ -77,5 +78,10 @@ $(document).on('click', '.delete', function() {
         }
     });
 });
+
+$(document).ready(function(){
+    $('.dataTables_scrollBody').addClass('adm-table-responsive');
+});
+
 </script>
 @endsection
