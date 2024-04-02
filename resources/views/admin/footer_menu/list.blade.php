@@ -27,7 +27,7 @@
                     <table class="table table-bordered table-striped data-table footer_menu adm-table-no-wrap adm-action-sticky">
                         <thead>
                             <tr>
-                                <th style="width:65px;">No</th>
+                                <th style="width:45px;">No</th>
                                 <th>Menu</th>
                                 <th>Name</th>
                                 <th>Link</th>

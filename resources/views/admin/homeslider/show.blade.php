@@ -27,7 +27,7 @@
                     <table class="table table-bordered table-striped slider_table adm-table-no-wrap adm-action-sticky">
                         <thead>
                             <tr>
-                                <th style="width:36px;">No</th>
+                                <th style="width:45px;">No</th>
                                 <th>Image</th>
                                 <th>Title</th>
                                 <th>Sub Title</th>

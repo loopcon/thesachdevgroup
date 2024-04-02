@@ -27,7 +27,7 @@
                         <table class="table table-bordered table-striped table adm-table-no-wrap adm-action-sticky">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th style="width:45px;">Id</th>
                                     <th>Service</th>
                                     <th>Name</th>
                                     <th>Name Color</th>
