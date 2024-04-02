@@ -63,7 +63,7 @@
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
-                            <a href="{{ route('user') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('user') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
                 </div>

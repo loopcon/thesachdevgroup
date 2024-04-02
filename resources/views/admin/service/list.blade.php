@@ -53,7 +53,7 @@
         var table = $('.table').DataTable({
             processing: true,
             serverSide: true,
-            scrollX: true,
+            responsive: true,
             ajax: "{{ route('service-datatable') }}",
             columns: [
                 {data: 'id', name: 'id'},
