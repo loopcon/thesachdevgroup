@@ -10,7 +10,7 @@
               </a>
             </li>
 
-            @if(hasPermission('Home Slider') || hasPermission('Home Our Businesses') || hasPermission('Home Detail') || hasPermission('Mission Vision'))
+            @if(hasPermission('Home Slider') || hasPermission('Home Our Businesses') || hasPermission('Home Detail') || hasPermission('Mission Vision') || hasPermission('Faqs'))
                 <li class="nav-item">
                     <a href="#" class="nav-link"> 
                         <i class="nav-icon fa fa-house-user"></i><p>Home Setting<i class="right fas fa-angle-left"></i></p>
@@ -71,6 +71,21 @@
                             </a>
                         </li>
                         @endif
+                        @endif
+
+                        @php($has_permission = hasPermission('Faqs'))
+                            @if(isset($has_permission) && $has_permission)
+                                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                                <li class="nav-item"> 
+
+                                <a href="{{url('faq')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-tasks"></i> 
+                                    <p>
+                                    Faqs
+                                    </p>
+                                </a>
+                            </li>
+                            @endif
                         @endif
                     </ul>
                 </li>

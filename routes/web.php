@@ -200,4 +200,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('user-update/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userUpdate'])->name('user-update');
     Route::get('user-delete/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userDestroy'])->name('user-delete');
     Route::get('user-datatable', [\App\Http\Controllers\Admin\UserController::class, 'userDatatable'])->name('user-datatable');
+
+    //faq
+    Route::get('faq', [\App\Http\Controllers\Admin\FaqController::class, 'faqList'])->name('faq');
+    Route::get('faq-create', [\App\Http\Controllers\Admin\FaqController::class, 'faqCreate'])->name('faq-create');
+    Route::post('faq-store', [\App\Http\Controllers\Admin\FaqController::class, 'faqStore'])->name('faq-store');
+    Route::get('faq-edit/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqEdit'])->name('faq-edit');
+    Route::post('faq-update/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqUpdate'])->name('faq-update');
+    Route::get('faq-delete/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqDestroy'])->name('faq-delete');
+    Route::get('faq-datatable', [\App\Http\Controllers\Admin\FaqController::class, 'faqDatatable'])->name('faq-datatable');
 });
