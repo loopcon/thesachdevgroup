@@ -23,6 +23,7 @@
 
   {{-- colorpicker --}}
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+
   @yield('css')
   <style>
     .error{

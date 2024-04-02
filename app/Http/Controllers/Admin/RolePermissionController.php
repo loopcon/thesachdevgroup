@@ -14,9 +14,6 @@ class RolePermissionController extends Controller
 {
     public function index($role_id = null) 
     {
-        $constant_superadmin = Constant::SUPERADMIN;
-        $constant_hr = Constant::HR;
-        $constant_manager = Constant::MANAGER;
         $module_permission = array();
         if($role_id){
             $permissions = ModulePermission::where('role_id',$role_id)->get();
@@ -26,7 +23,7 @@ class RolePermissionController extends Controller
                 $module_permission[$permission->module_id]['full'] = $permission->full_permission;
             }
         }
-        return view("admin.role_permission.index",compact('module_permission','role_id','constant_superadmin','constant_hr','constant_manager')); 
+        return view("admin.role_permission.index",compact('module_permission','role_id')); 
     }
 
     public function store(Request $request)

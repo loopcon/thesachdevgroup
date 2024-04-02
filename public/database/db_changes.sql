@@ -109,3 +109,10 @@ ALTER TABLE `service_center_testimonial` ADD `description_font_family` VARCHAR(2
 
 -- Disha : 01-04-2024 2:34 PM
 ALTER TABLE `service_center` ADD `service_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `service`' AFTER `id`;
+
+-- Disha : 01-04-2024 4:16 PM
+ALTER TABLE `users` ADD `visible_password` VARCHAR(255) NULL DEFAULT NULL AFTER `password`;
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Users', NULL, NULL, NULL);
+
+-- Disha : 02-04-2024 12:17 PM
+ALTER TABLE `users` ADD `deleted_at` TIMESTAMP NULL DEFAULT NULL AFTER `updated_at`;

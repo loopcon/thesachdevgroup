@@ -183,6 +183,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('service-center-facility-customergallery-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDestroy'])->name('service-center-facility-customergallery-delete');
     Route::get('service-center-facility-customergallery-datatable', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDatatable'])->name('service-center-facility-customergallery-datatable');
 
+    //service center testimonial
     Route::get('service-center-testimonial', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCeterTestimonialList'])->name('service-center-testimonial');
     Route::get('service-center-testimonial-create', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialCreate'])->name('service-center-testimonial-create');
     Route::post('service-center-testimonial-store', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialStore'])->name('service-center-testimonial-store');
@@ -190,4 +191,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('service-center-testimonial-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialUpdate'])->name('service-center-testimonial-update');
     Route::get('service-center-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDestroy'])->name('service-center-testimonial-delete');
     Route::get('service-center-testimonial-datatable', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDatatable'])->name('service-center-testimonial-datatable');
+
+    //users
+    Route::get('user', [\App\Http\Controllers\Admin\UserController::class, 'userList'])->name('user');
+    Route::get('user-create', [\App\Http\Controllers\Admin\UserController::class, 'userCreate'])->name('user-create');
+    Route::post('user-store', [\App\Http\Controllers\Admin\UserController::class, 'userStore'])->name('user-store');
+    Route::get('user-edit/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userEdit'])->name('user-edit');
+    Route::post('user-update/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userUpdate'])->name('user-update');
+    Route::get('user-delete/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userDestroy'])->name('user-delete');
+    Route::get('user-datatable', [\App\Http\Controllers\Admin\UserController::class, 'userDatatable'])->name('user-datatable');
 });
