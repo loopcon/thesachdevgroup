@@ -81,6 +81,21 @@
                         </li>
                         @endif
                         @endif
+
+                        @php($has_permission = hasPermission('Count'))
+                        @if(isset($has_permission) && $has_permission)
+                            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item{{ request()->is('count') ? ' sidebar_active_li' : '' }}"> 
+                                <a href="{{url('count')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-sort-numeric-down"></i>
+                                    <p>
+                                        Count
+                                    </p>
+                                </a>
+                            </li>
+                        @endif
+                        @endif
+
                     </ul>
                 </li>
             @endif
@@ -228,33 +243,17 @@
             </li>
         @endif
 
-        @php($has_permission = hasPermission('Header Menu'))
-          @if(isset($has_permission) && $has_permission)
-              @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+        @php($has_header_menu_permission = hasPermission('Header Menu'))
+        @php($has_social_media_permission = hasPermission('Header Menu Social Media Icon'))
+        @if($has_header_menu_permission && ($has_header_menu_permission->read_permission == 1 || $has_header_menu_permission->full_permission == 1) || 
+            $has_social_media_permission && ($has_social_media_permission->read_permission == 1 || $has_social_media_permission->full_permission == 1))
             <li class="nav-item{{ request()->is('header_menu_index') ? ' sidebar_active' : '' }}">
-            <a href="{{url('header_menu_index')}}" class="nav-link">
-              <i class="nav-icon fas fa-heading"></i>
-              <p>
-                Header Menu
-              </p>
-            </a>
-          </li>
-          @endif
-        @endif
+                <a href="{{url('header_menu_index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-heading"></i>
+                    <p>Header Menu</p>
+                </a>
+            </li>
 
-        
-        @php($has_permission = hasPermission('Header Menu Social Media Icon'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-        <li class="nav-item{{ request()->is('header_menu_social_media_icon') ? ' sidebar_active' : '' }}">
-          <a href="{{url('header_menu_social_media_icon')}}" class="nav-link">
-            <i class="nav-icon fas fa-heading"></i>
-            <p>
-              Header Menu Social Media Icon
-            </p>
-          </a>
-        </li>
-        @endif
         @endif
 
 

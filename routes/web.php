@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\HeaderMenuController;
 use App\Http\Controllers\Admin\FooterMenuController;
 use App\Http\Controllers\Admin\MissionVisionController;
 use App\Http\Controllers\Admin\HeaderMenuSocialMediaIconController;
+use App\Http\Controllers\Admin\CountController;
+use App\Http\Controllers\Admin\TestimonialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,12 +61,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('home_our_businesses_destroy/{id}', [HomeController::class, 'home_our_businesses_destroy'])->name('home_our_businesses_destroy');
 
     //Testimonials
-    Route::get('testimonials', [HomeController::class, 'testimonials'])->name('testimonials');
-    Route::post('testimonials_insert', [HomeController::class, 'testimonials_insert'])->name('testimonials_insert');
-    Route::get('testimonials_index', [HomeController::class, 'testimonials_index'])->name('testimonials.index');
-    Route::get('testimonials_edit/{testimonials_edit}', [HomeController::class, 'testimonials_edit'])->name('testimonials.edit');
-    Route::post('testimonials_update,{testimonials_update}', [HomeController::class, 'testimonials_update'])->name('testimonials_update');
-    Route::get('testimonials_destroy/{id}', [HomeController::class, 'testimonials_destroy'])->name('testimonials_destroy');
+    Route::get('testimonials', [TestimonialController::class, 'testimonials'])->name('testimonials');
+    Route::post('testimonials_insert', [TestimonialController::class, 'testimonials_insert'])->name('testimonials_insert');
+    Route::get('testimonials_index', [TestimonialController::class, 'testimonials_index'])->name('testimonials.index');
+    Route::get('testimonials_edit/{testimonials_edit}', [TestimonialController::class, 'testimonials_edit'])->name('testimonials.edit');
+    Route::post('testimonials_update,{testimonials_update}', [TestimonialController::class, 'testimonials_update'])->name('testimonials_update');
+    Route::get('testimonials_destroy/{id}', [TestimonialController::class, 'testimonials_destroy'])->name('testimonials_destroy');
 
     //Home Detail
     Route::get('home_detail', [HomeController::class, 'home_detail'])->name('home_detail');
@@ -157,12 +159,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('service-center-datatable', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterDatatable'])->name('service-center-datatable');
 
     //header_menu_social_media_icon
-    Route::get('header_menu_social_media_icon', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon'])->name('header_menu_social_media_icon');
-    Route::get('header_menu_social_media_icon_create', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_create'])->name('header_menu_social_media_icon_create');
     Route::post('header_menu_social_media_icon_insert', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_insert'])->name('header_menu_social_media_icon_insert');
     Route::get('header_menu_social_media_icon_index', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_index'])->name('header_menu_social_media_icon.index');
-    Route::get('social_media_icon_edit/{social_media_icon_edit}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_edit'])->name('header_menu_social_media_icon.edit');
-    Route::post('header_menu_social_media_icon_update,{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_update'])->name('header_menu_social_media_icon_update');
+    Route::post('header_menu_social_media_icon_edit', [HeaderMenuSocialMediaIconController::class, 'EditSocialMedia'])->name('header_menu_social_media_icon_edit');
+    Route::post('social_media_icon_update', [HeaderMenuSocialMediaIconController::class, 'social_media_icon_update'])->name('social_media_icon_update');
     Route::get('header_menu_social_media_icon_destroy/{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_destroy'])->name('header_menu_social_media_icon_destroy');
 
      //service
@@ -173,4 +173,14 @@ Route::group(['middleware' => 'auth'], function () {
      Route::post('service-update/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceUpdate'])->name('service-update');
      Route::get('service-delete/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDestroy'])->name('service-delete');
      Route::get('service-datatable', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDatatable'])->name('service-datatable');
+
+    //count
+    Route::get('count', [CountController::class, 'count'])->name('count');
+    Route::get('countCreate', [CountController::class, 'countCreate'])->name('countCreate');
+    Route::post('count_insert', [CountController::class, 'count_insert'])->name('count_insert');
+    Route::get('count_index', [CountController::class, 'count_index'])->name('count.index');
+    Route::get('count_edit/{count_edit}', [CountController::class, 'count_edit'])->name('count.edit');
+    Route::post('count_update,{id}', [CountController::class, 'count_update'])->name('count_update');
+    Route::get('count_destroy/{id}', [CountController::class, 'count_destroy'])->name('count_destroy');
+
 });

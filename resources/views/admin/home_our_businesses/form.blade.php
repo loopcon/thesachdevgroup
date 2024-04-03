@@ -28,7 +28,51 @@
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                 <input type="file" id="image" class="form-control" name="image">
                             </div>
+
+                            <div class="col-md-4">
+                                <label for="businesses_title">Businesses Title</label>
+                                <input type="text" id="businesses_title" class="form-control" name="businesses_title">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="businesses_title_color">Businesses Title Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="businesses_title_color" id="businesses_title_color">
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                @php($fontsize = fontSize())
+                                <label for="businesses_title_font_size">Businesses Title Text Font Size</label>
+                                <select class="form-control select2" name="businesses_title_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                @php($fontfamily = fontFamily())
+                                <label for="businesses_title_font_family">Businesses Title Text Font Family</label>
+                                <select class="form-control select2" name="businesses_title_font_family">
+                                  <option selected="selected" disabled="disabled">Select</option>
+                                  @foreach($fontfamily as $family)
+                                    <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="link">Link</label>
+                                <input type="text" id="link" class="form-control" name="link">
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="background_color">Background Color</label>
+                                <input type="text" id="background_color" class="form-control colorpicker" name="background_color">
+                            </div>
+
                         </div>
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
                             <a href="{{ route('home_our_businesses.index') }}" class="btn btn-default">Cancel</a>
@@ -49,11 +93,17 @@
                     required: true,
                     extension: "jpg,jpeg,png,webp",
                 },
+                'link': {
+                    url: "url",
+                },
             },
             messages: {
                 'image': {
                     required: "The image field is required.",
                     extension: "The image must be an image.",
+                },
+                'link': {
+                    url: "Please enter a valid link.",
                 },
             },
             submitHandler: function(form) {
@@ -61,6 +111,7 @@
                 form.submit();
             }
         });
+        $('.colorpicker').colorpicker();
     });
 </script>
 @endsection

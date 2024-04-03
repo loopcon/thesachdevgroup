@@ -27,7 +27,7 @@
                     <table class="table table-bordered table-striped data-table">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th style="width:50px;">No</th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Name Color</th>

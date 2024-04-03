@@ -19,7 +19,7 @@
             </div>
             <div class="card">
                 <div class="col-sm-12  text-end">
-                    <a href="{{ route('missionVisionCreate') }}" class="btn btn-primary mt-2 float-right">Add</a>
+                    <a href="{{ route('countCreate') }}" class="btn btn-primary mt-2 float-right">Add</a>
                 </div>
                 <div class="card-body">
                     <section class="content">
@@ -29,22 +29,21 @@
                                     <tr>
                                         <th style="width:50px;">No</th>
                                         <th>Icon</th>
-                                        <th>Icon Name</th>
+
+                                        <th>Amount</th>
                 
-                                        <th>Icon Name Color</th>
-                                        <th>Icon Name Font Size</th>
-                                        <th>Icon Name Font Family</th>
+                                        <th>Amount Color</th>
+                                        <th>Amount Font Size</th>
+                                        <th>Amount Font Family</th>
 
-                                        <th>Title</th>
+                                        <th>Name</th>
 
-                                        <th>Title Color</th>
-                                        <th>Title Font Size</th>
-                                        <th>Title Font Family</th>
+                                        <th>Name Color</th>
+                                        <th>Name Font Size</th>
+                                        <th>Name Font Family</th>
 
-                                        <th>Description</th>
-                                        <th>Description Color</th>
-                                        <th>Description Font Size</th>
-                                        <th>Description Font Family</th>
+                                        <th>Background Color</th>
+
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -67,26 +66,23 @@
             processing: true,
             serverSide: true,
             scrollX: true,
-            ajax: "{{ route('mission_vision.index') }}",
+            ajax: "{{ route('count.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
                 {data: 'icon', name: 'icon'},
-                {data: 'icon_name', name: 'icon_name'},
+                {data: 'amount', name: 'amount'},
                
-                {data: 'icon_name_color', name: 'icon_name_color'},
-                {data: 'icon_name_font_size', name: 'icon_name_font_size'},
-                {data: 'icon_name_font_family', name: 'icon_name_font_family'},
+                {data: 'amount_color', name: 'amount_color'},
+                {data: 'amount_font_size', name: 'amount_font_size'},
+                {data: 'amount_font_family', name: 'amount_font_family'},
 
-                {data: 'title', name: 'title'},
+                {data: 'name', name: 'name'},
 
-                {data: 'title_color', name: 'title_color'},
-                {data: 'title_font_size', name: 'title_font_size'},
-                {data: 'title_font_family', name: 'title_font_family'},
+                {data: 'name_color', name: 'name_color'},
+                {data: 'name_font_size', name: 'name_font_size'},
+                {data: 'name_font_family', name: 'name_font_family'},
                 
-                {data: 'description', name: 'description'},
-                {data: 'description_color', name: 'description_color'},
-                {data: 'description_font_size', name: 'description_font_size'},
-                {data: 'description_font_family', name: 'description_font_family'},
+                {data: 'background_color', name: 'background_color'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -98,7 +94,7 @@ $(document).on('click', '.delete', function() {
     var href = $(this).data('href');
     return new swal({
         title: "",
-        text: "{{__('Are you sure? Delete this Mission Vision!')}}",
+        text: "{{__('Are you sure? Delete this Count!')}}",
         showCancelButton: true,
         confirmButtonText: "{{__('Yes, delete it!')}}",
         icon: "warning"

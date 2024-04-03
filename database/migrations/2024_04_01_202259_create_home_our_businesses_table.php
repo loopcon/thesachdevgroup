@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('home_our_businesses', function (Blueprint $table) {
             $table->id();
             $table->string('image')->nullable();
+            $table->string('businesses_title')->nullable();
+            $table->string('businesses_title_color')->nullable();
+            $table->string('businesses_title_font_size')->nullable();
+            $table->string('businesses_title_font_family')->nullable();
+            $table->string('link')->nullable();
+            $table->string('background_color')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -24,6 +24,8 @@ class FooterMenuController extends Controller
             }else {
                 return redirect('dashboard')->with('message', 'You have not permission to access this page!');
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -40,6 +42,8 @@ class FooterMenuController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -56,12 +60,21 @@ class FooterMenuController extends Controller
                 $footer_menu->color = $request->color;
                 $footer_menu->font_size = $request->font_size;
                 $footer_menu->font_family = $request->font_family;
+
+                $footer_menu->footer_description = $request->footer_description;
+
+                $footer_menu->footer_description_color = $request->footer_description_color;
+                $footer_menu->footer_description_font_size = $request->footer_description_font_size;
+                $footer_menu->footer_description_font_family = $request->footer_description_font_family;
+
                 $footer_menu->save();
         
                 return redirect()->route('footer_menu')->with('success','Footer Menu insert successfully.');
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -86,7 +99,13 @@ class FooterMenuController extends Controller
                         return $updateButton . $deleteBtn;
                     })
 
-            ->rawColumns(['action'])
+                    ->editColumn('footer_description', function($footer_menu){
+
+                        $footer_description = $footer_menu->footer_description;
+                        return $footer_description;
+                    })
+                    
+            ->rawColumns(['action','footer_description'])
             ->make(true);
         }
        
@@ -107,6 +126,8 @@ class FooterMenuController extends Controller
                 $footer_menu = Footer_menu::find($id);
                 $return_data['record'] = $footer_menu;
                 return view("admin.footer_menu.form",array_merge($return_data));
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -128,10 +149,19 @@ class FooterMenuController extends Controller
                 $footer_menu->color = $request->color;
                 $footer_menu->font_size = $request->font_size;
                 $footer_menu->font_family = $request->font_family;
+
+                $footer_menu->footer_description = $request->footer_description;
+
+                $footer_menu->footer_description_color = $request->footer_description_color;
+                $footer_menu->footer_description_font_size = $request->footer_description_font_size;
+                $footer_menu->footer_description_font_family = $request->footer_description_font_family;
+                
                 $footer_menu->save();
 
                 return redirect()->route('footer_menu')->with('success','Footer Menu update successfully.');
     
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -151,7 +181,8 @@ class FooterMenuController extends Controller
                 {
                     return redirect()->route('footer_menu')->with('message', 'Footer Menu deleted successfully');
                 }
-
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

@@ -11,6 +11,10 @@ class Showroom extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
+        'name',
+        'name_color',
+        'name_font_size',
+        'name_font_family',
         'brand_id',
         'car_id',
         'address',
@@ -29,6 +33,11 @@ class Showroom extends Model
         'email_color',
         'email_font_size',
         'email_font_family',
+        'description',
+        'description_color',
+        'description_font_size',
+        'description_font_family',
+
     ];
 
     public function brand(){

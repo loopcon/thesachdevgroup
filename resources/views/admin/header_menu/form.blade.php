@@ -42,12 +42,6 @@
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
-                                <input type="text" id="link" class="form-control" name="link">
-                                <div class="error"></div>
-                            </div>
-                            
                             <div class="mb-3 col-md-4">
                                 <label for="color" class="form-label">Name Text Color</label>
                                 <input type="text" class="form-control colorpicker" name="color" id="color">
@@ -75,6 +69,12 @@
                                </select>
                             </div>
 
+                            <div class="col-md-4">
+                                <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
+                                <input type="text" id="link" class="form-control" name="link">
+                                <div class="error"></div>
+                            </div>
+                            
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>

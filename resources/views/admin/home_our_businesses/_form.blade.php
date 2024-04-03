@@ -30,6 +30,49 @@
                                     <img src="{{url('public/home_our_businesses/'.$home_our_businesse->image)}}" width="100">
                                     <input type="file" id="image" class="form-control" name="image">
                                 </div>
+
+                                <div class="col-md-4">
+                                    <label for="businesses_title">Businesses Title</label>
+                                    <input type="text" id="businesses_title" class="form-control" name="businesses_title" value="{{$home_our_businesse->businesses_title}}">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="businesses_title_color">Businesses Title Text Color</label>
+                                    <input type="text" class="form-control colorpicker" name="businesses_title_color" id="businesses_title_color" value="{{$home_our_businesse->businesses_title_color}}">
+                                </div>
+
+                                <div class="mb-3 col-md-4">
+                                    @php($fontsize = fontSize())
+                                    <label for="businesses_title_font_size">Businesses Title Text Font Size</label>
+                                    <select class="form-control select2" name="businesses_title_font_size">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                            <option value="{{$i}}px" {{$home_our_businesse->businesses_title_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    @php($fontfamily = fontFamily())
+                                    <label for="businesses_title_font_family">Businesses Title Text Font Family</label>
+                                    <select class="form-control select2" name="businesses_title_font_family">
+                                      <option selected="selected" disabled="disabled">Select</option>
+                                      @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" {{$home_our_businesse->businesses_title_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                      @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="link">Link</label>
+                                    <input type="text" id="link" class="form-control" name="link" value="{{$home_our_businesse->link}}">
+                                </div>
+
+                                <div class="mb-3 col-md-4">
+                                    <label for="background_color">Background Color</label>
+                                    <input type="text" id="background_color" class="form-control colorpicker" name="background_color" value="{{$home_our_businesse->background_color}}">
+                                </div>
+
                             </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary submit">Submit</button>
@@ -59,6 +102,7 @@
                 },
             },
         });
+        $('.colorpicker').colorpicker();
     });
 </script>
 @endsection

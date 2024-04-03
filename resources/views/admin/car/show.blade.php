@@ -27,18 +27,22 @@
                     <table class="table table-bordered table-striped data-table adm-table-no-wrap">
                         <thead>
                             <tr>
-                                <th style="width:36px;">No</th>
+                                <th style="width:50px;">No</th>
                                 <th>Brand</th>
                                 <th>Image</th>
                                 <th>Name</th>
-                                <th>Price</th>
-                                <th>Link</th>
+
                                 <th>Name Color</th>
-                                <th>Price Color</th>
                                 <th>Name Font Size</th>
-                                <th>Price Font Size</th>
                                 <th>Name Font Family</th>
+
+                                <th>Price</th>
+
+                                <th>Price Color</th>
+                                <th>Price Font Size</th>
                                 <th>Price Font Family</th>
+
+                                <th>Link</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -67,14 +71,18 @@
                 {data: 'brand', name: 'brand'},
                 {data: 'image', name: 'image'},
                 {data: 'name', name: 'name'},
-                {data: 'price', name: 'price'},
-                {data: 'link', name: 'link'},
+
                 {data: 'name_color', name: 'name_color'},
-                {data: 'price_color', name: 'price_color'},
                 {data: 'name_font_size', name: 'name_font_size'},
-                {data: 'price_font_size', name: 'price_font_size'},
                 {data: 'name_font_family', name: 'name_font_family'},
+
+                {data: 'price', name: 'price'},
+
+                {data: 'price_color', name: 'price_color'},
+                {data: 'price_font_size', name: 'price_font_size'},
                 {data: 'price_font_family', name: 'price_font_family'},
+
+                {data: 'link', name: 'link'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

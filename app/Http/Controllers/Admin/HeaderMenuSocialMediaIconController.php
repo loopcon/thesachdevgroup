@@ -12,40 +12,8 @@ use File;
 class HeaderMenuSocialMediaIconController extends Controller
 {
     //header_menu_social_media_icon
-    public function header_menu_social_media_icon()
-    {
-        $has_permission = hasPermission('Header Menu Social Media Icon');
-        if(isset($has_permission) && $has_permission)
-        {
-            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-            {
-                $return_data = array();
-                $return_data['site_title'] = trans('Header Menu Social Media Icon');
-                return view("admin.header_menu_social_media_icon.list",array_merge($return_data));
-            }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
-            }
-        }
-    }
-
-    public function header_menu_social_media_icon_create()
-    {
-        $has_permission = hasPermission('Header Menu Social Media Icon');
-        if(isset($has_permission) && $has_permission)
-        {
-            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-            {
-                $return_data = array();
-                $return_data['site_title'] = trans('Header Menu Social Media Icon Create');
-                return view("admin.header_menu_social_media_icon.form",array_merge($return_data));
-            }else {
-                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
-            }
-        }
-    }
-
     public function header_menu_social_media_icon_insert(Request $request){
-
+        
         $has_permission = hasPermission('Header Menu Social Media Icon');
         if(isset($has_permission) && $has_permission)
         {
@@ -67,10 +35,13 @@ class HeaderMenuSocialMediaIconController extends Controller
                 $header_menu_social_media_icon->link = $request->link;
                 $header_menu_social_media_icon->save();
         
-                return redirect()->route('header_menu_social_media_icon')->with('success','Header Menu Social Media Icon insert successfully.');
+                return redirect()->route('header_menu.index')->with('success','Header Menu Social Media Icon insert successfully.');
+
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -87,8 +58,8 @@ class HeaderMenuSocialMediaIconController extends Controller
                     {
                         if($has_permission->full_permission == 1)
                         {
-                            $updateButton = "<a href='".route("header_menu_social_media_icon.edit",encrypt($header_menu_social_media_icon->id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";        
-                            $deleteBtn = "<a href='javascript:void(0);' data-href='".route('header_menu_social_media_icon_destroy',array($header_menu_social_media_icon->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                            $updateButton = "<a rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm edit' data-id='".$header_menu_social_media_icon->id."' data-toggle='modal' data-target='#SocialMediaIconEditModal'><i class='fas fa-pencil-alt'></i></a>&nbsp";       
+                            $deleteBtn = "<a href='javascript:void(0);' data-href='".route('header_menu_social_media_icon_destroy',array($header_menu_social_media_icon->id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm header_menu_social_media_icon_delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                         }
                     }
                 return $updateButton . $deleteBtn;
@@ -113,40 +84,52 @@ class HeaderMenuSocialMediaIconController extends Controller
             ->make(true);
         }
        
-        return redirect()->back()->with('message','something went wrong');
+        $has_permission = hasPermission('Header Menu Social Media Icon');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                return view('admin.header_menu.show');
+            }else {
+                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+            }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
     }
 
     
-    public function header_menu_social_media_icon_edit($id)
-    {
+    
+    public function EditSocialMedia(Request $request){
+
         $has_permission = hasPermission('Header Menu Social Media Icon');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
             {
                 $return_data = array();
-                $id = decrypt($id);
                 $return_data['site_title'] = trans('Header Menu Social Media Icon Edit');
-                $header_menu_social_media_icon = Header_menu_social_media_icon::find($id);
+                $header_menu_social_media_icon = Header_menu_social_media_icon::find($request->id);
                 $return_data['record'] = $header_menu_social_media_icon;
-                return view("admin.header_menu_social_media_icon.form",array_merge($return_data));
+                return response()->json($return_data);
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
-    
-    public function header_menu_social_media_icon_update(Request $request, $id)
-    {
+
+    public function social_media_icon_update(Request $request){
 
         $has_permission = hasPermission('Header Menu Social Media Icon');
+
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
             {
-
-                $header_menu_social_media_icon = Header_menu_social_media_icon::find(decrypt($id));
+                $header_menu_social_media_icon = Header_menu_social_media_icon::find($request->id);
 
                 if($request->hasFile('icon'))
                 {
@@ -165,15 +148,17 @@ class HeaderMenuSocialMediaIconController extends Controller
                 $header_menu_social_media_icon->link = $request->link;
                 $header_menu_social_media_icon->save();
 
-                return redirect()->route('header_menu_social_media_icon')->with('success','Header Menu Social Media Icon update successfully.');
+                return redirect()->route('header_menu.index')->with('success','Header Menu Social Media Icon update successfully.');
     
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
 
     }
-    
+
     public function header_menu_social_media_icon_destroy(Request $request,$id)
     {
         $has_permission = hasPermission('Header Menu Social Media Icon');
@@ -193,8 +178,10 @@ class HeaderMenuSocialMediaIconController extends Controller
                 $header_menu_social_media_icon = Header_menu_social_media_icon::where('id',$id)->delete();
                 if($header_menu_social_media_icon)
                 {
-                    return redirect()->route('header_menu_social_media_icon')->with('message', 'Header Menu Social Media Icon deleted successfully');
+                    return redirect()->route('header_menu.index')->with('message', 'Header Menu Social Media Icon deleted successfully');
                 }
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

@@ -6,17 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Home_our_businesses extends Model
+class Count extends Model
 {
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
-        'image',
-        'businesses_title',
-        'businesses_title_color',
-        'businesses_title_font_size',
-        'businesses_title_font_family',
-        'link',
+        'icon',
+        'amount',
+        'amount_color',
+        'amount_font_size',
+        'amount_font_family',
+        'name',
+        'name_color',
+        'name_font_size',
+        'name_font_family',
         'background_color',
     ];
 }
