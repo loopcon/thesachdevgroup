@@ -24,10 +24,10 @@
                 <div class="card-body">
             <section class="content">
                 <div class="container-fluid">
-                    <table class="table table-bordered table-striped data-table footer_menu adm-table-no-wrap">
+                    <table class="table table-bordered table-striped data-table footer_menu adm-table-no-wrap adm-action-sticky">
                         <thead>
                             <tr>
-                                <th style="width:65px;">No</th>
+                                <th style="width:45px;">No</th>
                                 <th>Menu</th>
                                 <th>Name</th>
 
@@ -104,5 +104,10 @@ $(document).on('click', '.delete', function() {
         }
     });
 });
+
+$(document).ready(function(){
+    $('.dataTables_scrollBody').addClass('adm-table-responsive');
+}); 
+
 </script>
 @endsection

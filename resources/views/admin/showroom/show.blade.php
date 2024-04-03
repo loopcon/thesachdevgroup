@@ -22,68 +22,71 @@
                     <a href="{{ route('showroom') }}" class="btn btn-primary mt-2 float-right">Add</a>
                 </div>
                 <div class="card-body">
-            <section class="content">
-                <div class="container-fluid">
-                    <table class="table table-bordered table-striped data-table adm-table-no-wrap">
-                        <thead>
-                            <tr>
-                                <th style="width:50px;">No</th>
-                                <th>Showroom Name</th>
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="">
+                                <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:50px;">No</th>
+                                            <th>Showroom Name</th>
 
-                                <th>Showroom Name Color</th> 
-                                <th>Showroom Name Font Size</th>
-                                <th>Showroom Name Font Family</th>
+                                            <th>Showroom Name Color</th> 
+                                            <th>Showroom Name Font Size</th>
+                                            <th>Showroom Name Font Family</th>
 
-                                <th>Brand</th>
-                                <th>Car</th>
-                                <th>Address</th>
+                                            <th>Brand</th>
+                                            <th>Car</th>
+                                            <th>Address</th>
 
-                                <th>Address Color</th>
-                                <th>Address Font Size</th>
-                                <th>Address Font Family</th>
+                                            <th>Address Color</th>
+                                            <th>Address Font Size</th>
+                                            <th>Address Font Family</th>
 
-                                <th>Working Hours</th>
+                                            <th>Working Hours</th>
 
-                                <th>Working Hours Color</th>
-                                <th>Working Hours Font Size</th>
-                                <th>Working Hours Font Family</th>
+                                            <th>Working Hours Color</th>
+                                            <th>Working Hours Font Size</th>
+                                            <th>Working Hours Font Family</th>
 
-                                <th>Contact Number</th>
+                                            <th>Contact Number</th>
 
-                                <th>Contact Number Color</th>
-                                <th>Contact Number Font Size</th>
-                                <th>Contact Number Font Family</th>
+                                            <th>Contact Number Color</th>
+                                            <th>Contact Number Font Size</th>
+                                            <th>Contact Number Font Family</th>
 
-                                <th>Email</th>
-                                
-                                <th>Email Color</th>
-                                <th>Email Font Size</th>
-                                <th>Email Font Family</th>
+                                            <th>Email</th>
+                                            
+                                            <th>Email Color</th>
+                                            <th>Email Font Size</th>
+                                            <th>Email Font Family</th>
 
-                                <th>Description</th>
-                                
-                                <th>Description Color</th>
-                                <th>Description Font Size</th>
-                                <th>Description Font Family</th>
+                                            <th>Description</th>
+                                            
+                                            <th>Description Color</th>
+                                            <th>Description Font Size</th>
+                                            <th>Description Font Family</th>
 
-                                <th>Facilitie Image</th>
-                                <th>Customer Gallery Image</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                                            <th>Facilitie Image</th>
+                                            <th>Customer Gallery Image</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>  
+                        </div>
+                    </section>
                 </div>
-            </section>
-        </div>
-    </div>
+            </div>
         </div>
     </div>
 @endsection
 @section('javascript')
 <script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
+
     $(function () {
         
         var table = $('.data-table').DataTable({
@@ -155,6 +158,10 @@
                 location.href = href;
             }
         });
+    });
+
+    $(document).ready(function(){
+        $('.dataTables_scrollBody').addClass('adm-table-responsive');
     });
 </script>
 @endsection

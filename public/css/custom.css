@@ -1,9 +1,98 @@
 .adm-select-car-drop .select2-search__field:focus{border:0px !important;}
-.logo-link{display: block;text-align: center;padding: 10px 0;}
+.brand-link{display: block;text-align: center;padding: 10px 0;}
 .logo-image{width: 80px;}
 .adm-navigation{height: 75px;}
-.sidebar_active{background-color: #007bff;color: #fff;}
-.sidebar_active_li{background-color: rgba(255,255,255,.9);color: #343a40;}
+/* .show{color: #007bff;background-color: rgb(22, 5, 5);}
+.active{color: #007bff;}  */
 .adm-table-no-wrap{ white-space: nowrap;}
-.footer_menu thead tr th:first-child{min-width: 50px ;text-align: left;}
-.footer_menu tbody tr td:first-child{min-width: 50px ;text-align: left;}
+.footer_menu thead tr th:first-child{min-width: 45px ;text-align: left;}
+.footer_menu tbody tr td:first-child{min-width: 45px ;text-align: left;}
+
+.adm-table-responsive{max-width: 100%; overflow-x: auto;}
+.adm-table-responsive::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);background-color: #F5F5F5;}
+.adm-table-responsive::-webkit-scrollbar{height: 5px; width: 6px;background-color: #F5F5F5;}
+.adm-table-responsive::-webkit-scrollbar-thumb{background-color: #000000;}
+
+.adm-action-sticky tr th:last-child { position: sticky; z-index: 1; background-color: #ffffff; right: 0;}
+.adm-action-sticky tr td:last-child { position: sticky; z-index: 1; background-color: #ffffff; right: 0;}
+.edit_form .form-control{ height: 40px; padding: 4px 8px;}
+.edit_form .select2-selection{ height: 40px !important; padding-left: 8px;}
+.edit_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.edit_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+.box-footer button{ margin-right: 15px;}
+
+.slider_form .form-control { height: 40px; padding: 4px 8px; }
+.slider_form .select2-selection{height: 40px !important; padding-left: 8px; }
+.slider_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.slider_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.testimonials_form .form-control{height: 40px; padding: 4px 8px;}
+.testimonials_form .select2-selection{height: 40px !important; padding-left: 8px; }
+.testimonials_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.testimonials_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.our_businesses_form .form-control{ height: 40px; padding: 4px 8px; }
+.home_detail_form .form-control{  height: 40px; padding: 4px 8px; }
+.home_detail_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.home_detail_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.home_detail_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.mission_vision_form .form-control{  height: 40px; padding: 4px 8px; }
+.mission_vision_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.mission_vision_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.mission_vision_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.setting_form .form-control{  height: 40px; padding: 4px 8px; }
+.setting_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.setting_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.setting_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.brand_form .form-control{  height: 40px; padding: 4px 8px; }
+.brand_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.brand_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.brand_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.car_form .form-control{  height: 40px; padding: 4px 8px; }
+.car_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.car_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.car_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.showroom_form .form-control{  height: 40px; padding: 4px 8px; }
+.showroom_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.showroom_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.showroom_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.service-center-form .form-control{  height: 40px; padding: 4px 8px; }
+.service-center-form .select2-selection {height: 40px !important; padding-left: 8px; }
+.service-center-form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.service-center-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.service-form .form-control{  height: 40px; padding: 4px 8px; }
+.service-form .select2-selection {height: 40px !important; padding-left: 8px; }
+.service-form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.service-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.service-center-facility-gallery-form .form-control{  height: 40px; padding: 4px 8px; }
+.service-center-facility-gallery-form .select2-selection {height: 40px !important; padding-left: 8px; }
+.service-center-facility-gallery-form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.service-center-facility-gallery-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.service-center-testimonial-form .form-control{  height: 40px; padding: 4px 8px; }
+.service-center-testimonial-form .select2-selection {height: 40px !important; padding-left: 8px; }
+.service-center-testimonial-form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.service-center-testimonial-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.header_menu_form .form-control{  height: 40px; padding: 4px 8px; }
+.header_menu_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.header_menu_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.header_menu_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.header_menu_social_media_icon_form .form-control{  height: 40px; padding: 4px 8px; }
+.header_menu_social_media_icon_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.header_menu_social_media_icon_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.header_menu_social_media_icon_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.footer_menu_form .form-control{  height: 40px; padding: 4px 8px; }
+.footer_menu_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.footer_menu_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.footer_menu_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}

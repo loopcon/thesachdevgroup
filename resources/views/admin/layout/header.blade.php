@@ -23,6 +23,10 @@
 
   {{-- colorpicker --}}
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+  @php($setting_detail = getSettingDetail())
+    @php($logo = $setting_detail->logo)
+    <link rel="icon" type="image/png" href="{{url('public/logo/'.$logo)}}">
+
   @yield('css')
   <style>
     .error{
@@ -64,7 +68,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="logo-link">
+    <a href="#" class="brand-link">
     @php($setting_detail = getSettingDetail())
       @if(isset($setting_detail) && isset($setting_detail->logo))
         <img src="{{ url('public/logo/'.$setting_detail->logo) }}" alt="tsgautomotive" class="logo-image">

@@ -24,23 +24,19 @@
                 <div class="card-body">
                     <section class="content">
                         <div class="container-fluid">
-                            <table class="table table-bordered table-striped data-table adm-table-no-wrap">
+                            <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
                                 <thead>
                                     <tr>
-                                        <th style="width:50px;">No</th>
+                                        <th style="width:45px;">No</th>
                                         <th>Icon</th>
                                         <th>Icon Name</th>
-                
+                                        <th>Title</th>
                                         <th>Icon Name Color</th>
                                         <th>Icon Name Font Size</th>
                                         <th>Icon Name Font Family</th>
-
-                                        <th>Title</th>
-
                                         <th>Title Color</th>
                                         <th>Title Font Size</th>
                                         <th>Title Font Family</th>
-
                                         <th>Description</th>
                                         <th>Description Color</th>
                                         <th>Description Font Size</th>
@@ -108,5 +104,10 @@ $(document).on('click', '.delete', function() {
         }
     });
 });
+
+$(document).ready(function(){
+    $('.dataTables_scrollBody').addClass('adm-table-responsive');
+});
+
 </script>
 @endsection

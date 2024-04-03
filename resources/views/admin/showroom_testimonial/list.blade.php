@@ -24,10 +24,10 @@
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
-                        <table class="table table-bordered table-striped table">
+                        <table class="table table-bordered table-striped table adm-table-no-wrap adm-action-sticky">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th style="width:45px;">Id</th>
                                     <th>Name</th>
                                     <th>Image</th>
                                     <th>Name Text Size</th>
@@ -88,6 +88,10 @@
                 location.href = href;
             }
         });
+    });
+
+    $(document).ready(function(){
+        $('.dataTables_scrollBody').addClass('adm-table-responsive');
     });
 </script>
 @endsection

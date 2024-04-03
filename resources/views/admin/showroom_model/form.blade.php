@@ -14,12 +14,6 @@
           <div class="col-sm-6">
             <h1>{{$site_title}}</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">{{$site_title}}</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -51,16 +45,16 @@
 
                             
                             <div class="col-md-4">
-                                <label for="image" class="form-label">Image</label>
+                                <label for="image" class="form-label">Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->image) && $record->image)
-                                    <img src="{{url('public/uploads/showroom_model/'.$record->image)}}" width="100">
+                                    <img src="{{url('public/uploads/showroom_model/'.$record->image)}}" width="100" style="margin-bottom:10px;margin-left:5px;">
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image" value="">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="title_text_color" class="form-label">Title Text Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->title_text_color) ? $record->title_text_color : old('title_text_color')}}" name="title_text_color" id="title_text_color">
                             </div>
@@ -100,7 +94,7 @@
 
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
-                            <a href="{{ route('showroom-model') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('showroom-model') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
                 </div>

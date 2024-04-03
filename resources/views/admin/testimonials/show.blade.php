@@ -24,29 +24,17 @@
                 <div class="card-body">
                     <section class="content">
                         <div class="container-fluid">
-                            <table class="table table-bordered table-striped table adm-table-no-wrap">
+                            <table class="table table-bordered table-striped table adm-table-no-wrap adm-action-sticky">
                                 <thead>
                                     <tr>
-                                        <th style="width:50px;">No</th>
-                                        
-                                        <th>Testimonials Title</th>
-
-                                        <th>Testimonials Title Color</th>
-                                        <th>Testimonials Title Font Size</th>
-                                        <th>Testimonials Title Font Family</th>
-
+                                        <th style="width:45px;">No</th>
                                         <th>Image</th>
-
                                         <th>Name</th>
-
                                         <th>Name Color</th>
                                         <th>Name Font Size</th>
                                         <th>Name Font Family</th>
-
                                         <th>Name Background Color</th>
-
                                         <th>Description</th>
-
                                         <th>Description Color</th>
                                         <th>Description Font Size</th>
                                         <th>Description Font Family</th>
@@ -117,6 +105,10 @@
                 location.href = href;
             }
         });
+    });
+
+    $(document).ready(function(){
+        $('.dataTables_scrollBody').addClass('adm-table-responsive');
     });
 </script>
 @endsection

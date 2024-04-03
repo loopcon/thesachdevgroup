@@ -21,10 +21,10 @@
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
-                        <table class="table table-bordered table-striped table">
+                        <table class="table table-bordered table-striped table adm-action-sticky">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th style="width:45px;">Id</th>
                                     <th>Title</th>
                                     <th>Image</th>
                                     <th>Showroom</th>
@@ -77,5 +77,10 @@
             }
         });
     });
+    
+    $(document).ready(function(){
+        $('.dataTables_scrollBody').addClass('adm-table-responsive');
+    });
+
 </script>
 @endsection

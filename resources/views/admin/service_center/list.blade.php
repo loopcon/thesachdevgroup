@@ -24,10 +24,11 @@
             <div class="card-body">
                 <!-- <section class="content">
                     <div class="container-fluid"> -->
-                        <table class="table table-bordered table-striped table">
+                        <table class="table table-bordered table-striped table adm-table-no-wrap adm-action-sticky">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th style="width:45px;">Id</th>
+                                    <th>Service</th>
                                     <th>Name</th>
                                     <th>Name Color</th>
                                     <th>Name Font Size</th>
@@ -78,6 +79,7 @@
             ajax: "{{ route('service-center-datatable') }}",
             columns: [
                 {data: 'id', name: 'id'},
+                {data: 'service_id', name: 'service_id'},
                 {data: 'name', name: 'name'},
                 {data: 'name_color', name: 'name_color'},
                 {data: 'name_font_size', name: 'name_font_size'},
@@ -124,6 +126,10 @@
                 location.href = href;
             }
         });
+    });
+
+    $(document).ready(function(){
+        $('.dataTables_scrollBody').addClass('adm-table-responsive');
     });
 </script>
 @endsection

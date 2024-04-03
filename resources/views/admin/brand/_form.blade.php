@@ -29,9 +29,9 @@
                                 <div class="mb-3 col-md-4">
                                     <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     @if($brand->image == null)
-                                        <img src="{{url('public/no_image/notImg.png')}}" width="100">
+                                        <img src="{{url('public/no_image/notImg.png')}}" width="100" style="margin-bottom: 10px;">
                                     @else
-                                        <img src="{{url('public/brand/'.$brand->image)}}" width="100">
+                                        <img src="{{url('public/brand/'.$brand->image)}}" width="100" style="margin-bottom: 10px;">
                                     @endif
                                     <input type="file" id="image" class="form-control" name="image">
                                     <div class="error"></div>

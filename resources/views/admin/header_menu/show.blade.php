@@ -170,6 +170,29 @@
                 </div>
             @endif
         @endif
+
+                <div class="card-body">
+            <section class="content">
+                <div class="container-fluid">
+                    <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
+                        <thead>
+                            <tr>
+                                <th style="width:65px;">No</th>
+                                <th>Menu</th>
+                                <th>Name</th>
+                                <th>Link</th>
+                                <th>Name Color</th>
+                                <th>Name Font Size</th>
+                                <th>Name Font Family</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
     </div>
 @endsection
 @section('javascript')
@@ -338,5 +361,10 @@ $(document).on('click', '.header_menu_social_media_icon_delete', function() {
         }
     });
 });
+
+$(document).ready(function(){
+    $('.dataTables_scrollBody').addClass('adm-table-responsive');
+});
+
 </script>
 @endsection

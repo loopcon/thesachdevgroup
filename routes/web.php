@@ -165,6 +165,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('social_media_icon_update', [HeaderMenuSocialMediaIconController::class, 'social_media_icon_update'])->name('social_media_icon_update');
     Route::get('header_menu_social_media_icon_destroy/{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_destroy'])->name('header_menu_social_media_icon_destroy');
 
+
      //service
      Route::get('service', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceList'])->name('service');
      Route::get('service-create', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceCreate'])->name('service-create');
@@ -183,4 +184,43 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('count_update,{id}', [CountController::class, 'count_update'])->name('count_update');
     Route::get('count_destroy/{id}', [CountController::class, 'count_destroy'])->name('count_destroy');
 
+
+
+    
+    //service center facility and customer gallery
+    Route::get('service-center-facility-customergallery', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryList'])->name('service-center-facility-customergallery');
+    Route::get('service-center-facility-customergallery-create', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryCreate'])->name('service-center-facility-customergallery-create');
+    Route::post('service-center-facility-customergallery-store', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryStore'])->name('service-center-facility-customergallery-store');
+    Route::get('service-center-facility-customergallery-edit/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryEdit'])->name('service-center-facility-customergallery-edit');
+    Route::post('service-center-facility-customergallery-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryUpdate'])->name('service-center-facility-customergallery-update');
+    Route::get('service-center-facility-customergallery-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDestroy'])->name('service-center-facility-customergallery-delete');
+    Route::get('service-center-facility-customergallery-datatable', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDatatable'])->name('service-center-facility-customergallery-datatable');
+
+    //service center testimonial
+    Route::get('service-center-testimonial', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCeterTestimonialList'])->name('service-center-testimonial');
+    Route::get('service-center-testimonial-create', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialCreate'])->name('service-center-testimonial-create');
+    Route::post('service-center-testimonial-store', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialStore'])->name('service-center-testimonial-store');
+    Route::get('service-center-testimonial-edit/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialEdit'])->name('service-center-testimonial-edit');
+    Route::post('service-center-testimonial-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialUpdate'])->name('service-center-testimonial-update');
+    Route::get('service-center-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDestroy'])->name('service-center-testimonial-delete');
+    Route::get('service-center-testimonial-datatable', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDatatable'])->name('service-center-testimonial-datatable');
+
+    //users
+    Route::get('user', [\App\Http\Controllers\Admin\UserController::class, 'userList'])->name('user');
+    Route::get('user-create', [\App\Http\Controllers\Admin\UserController::class, 'userCreate'])->name('user-create');
+    Route::post('user-store', [\App\Http\Controllers\Admin\UserController::class, 'userStore'])->name('user-store');
+    Route::get('user-edit/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userEdit'])->name('user-edit');
+    Route::post('user-update/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userUpdate'])->name('user-update');
+    Route::get('user-delete/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userDestroy'])->name('user-delete');
+    Route::get('user-datatable', [\App\Http\Controllers\Admin\UserController::class, 'userDatatable'])->name('user-datatable');
+
+    //faq
+    Route::get('faq', [\App\Http\Controllers\Admin\FaqController::class, 'faqList'])->name('faq');
+    Route::get('faq-create', [\App\Http\Controllers\Admin\FaqController::class, 'faqCreate'])->name('faq-create');
+    Route::post('faq-store', [\App\Http\Controllers\Admin\FaqController::class, 'faqStore'])->name('faq-store');
+    Route::get('faq-edit/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqEdit'])->name('faq-edit');
+    Route::post('faq-update/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqUpdate'])->name('faq-update');
+    Route::get('faq-delete/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqDestroy'])->name('faq-delete');
+    Route::get('faq-datatable', [\App\Http\Controllers\Admin\FaqController::class, 'faqDatatable'])->name('faq-datatable');
 });
+

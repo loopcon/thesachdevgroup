@@ -14,12 +14,6 @@
           <div class="col-sm-6">
             <h1>{{$site_title}}</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">{{$site_title}}</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -30,17 +24,6 @@
                     <form action="@if(isset($record->id)) {{ route('service-update', array('id' => encrypt($record->id))) }} @else{{ route('service-store') }} @endif" method="POST" class="service-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
-                                <label for="service_center_id" class="form-label">Service Center<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="service_center_id" id="service_center_id">
-                                    <option value="">-- Select Service Center --</option>
-                                    @foreach($service_center as $value)
-                                        <option value="{{$value->id}}"@if(isset($record->service_center_id) && $record->service_center_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
-                                    @endforeach
-                                </select>
-                                <div id="error"></div>
-                                @if ($errors->has('service_center_id')) <div class="text-danger">{{ $errors->first('service_center_id') }}</div>@endif
-                            </div>
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
@@ -83,10 +66,10 @@
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4 mb-3">
-                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
+                            <div class="col-md-4 mb-3 mt-2">
+                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->icon) && $record->icon)
-                                    <img src="{{url('public/uploads/service/'.$record->icon)}}" width="100">
+                                    <img src="{{url('public/uploads/service/'.$record->icon)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon" value="">
                                 @if ($errors->has('icon')) <div class="text-danger">{{ $errors->first('icon') }}</div>@endif
@@ -94,7 +77,7 @@
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
-                            <a href="{{ route('service') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('service') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
                 </div>

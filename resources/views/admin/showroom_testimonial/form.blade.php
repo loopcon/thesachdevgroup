@@ -11,12 +11,6 @@
           <div class="col-sm-6">
             <h1>{{$site_title}}</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item active">{{$site_title}}</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -47,9 +41,9 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="image" class="form-label">Image</label>
+                                <label for="image" class="form-label">Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->image) && $record->image)
-                                    <img src="{{url('public/uploads/showroom_testimonial/'.$record->image)}}" width="100">
+                                    <img src="{{url('public/uploads/showroom_testimonial/'.$record->image)}}" width="100" style="margin-bottom:10px;margin-left:5px;">
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image" value="{{isset($record->image) ? $record->image : ''}}">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ServiceCenter;
+use App\Models\Service;
 use DataTables;
 use File;
 use Auth;
@@ -39,6 +40,7 @@ class ServiceCenterController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('Service Center Create');
+                $return_data['services'] = Service::select('id','name')->get();
                 return view("admin.service_center.form",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -54,13 +56,14 @@ class ServiceCenterController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $request->validate([
+                    'service_id' => 'required',
                     'address' => 'required',
                     'name' => 'required',
                     'email' => 'required',
                     'contact_number' => 'required|numeric',
                 ]);
                 $service_center = new ServiceCenter();
-                $fields = array('name', 'name_color', 'name_font_size','name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color');
+                $fields = array('service_id', 'name', 'name_color', 'name_font_size','name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color');
                 foreach($fields as $field)
                 {
                     $service_center->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -107,7 +110,7 @@ class ServiceCenterController extends Controller
     public function serviceCenterDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = ServiceCenter::select('id', 'name','name_color', 'name_font_size', 'name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_icon', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_icon', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_icon', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_icon', 'email_font_size', 'email_font_family', 'email_font_color')->orderBy('id', 'DESC');
+            $query = ServiceCenter::with('serviceDetail')->select('id', 'service_id', 'name','name_color', 'name_font_size', 'name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_icon', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_icon', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_icon', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_icon', 'email_font_size', 'email_font_family', 'email_font_color')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -130,6 +133,10 @@ class ServiceCenterController extends Controller
                 ->addColumn('email_icon', function($list){
                     $email_icon = $list->email_icon ? asset('uploads/email_icon/'.$list->email_icon) : '';
                     return '<img src="' . $email_icon . '" alt="" width="100">';
+                })
+                ->addColumn('service_id', function($list){
+                    $service_id = isset($list->serviceDetail->name) && $list->serviceDetail->name ? $list->serviceDetail->name : NULL;
+                    return $service_id;
                 })
                 ->addColumn('action', function ($list) {
                     $html = "";
@@ -166,6 +173,7 @@ class ServiceCenterController extends Controller
                 $return_data['site_title'] = trans('Service Center Edit');
                 $service_center = ServiceCenter::find($id);
                 $return_data['record'] = $service_center;
+                $return_data['services'] = Service::select('id','name')->get();
                 return view("admin.service_center.form",array_merge($return_data));
             }
         }else {
@@ -182,13 +190,14 @@ class ServiceCenterController extends Controller
             {
                 $id = decrypt($id);
                 $request->validate([
+                    'service_id' => 'required',
                     'address' => 'required',
                     'name' => 'required',
                     'email' => 'required',
                     'contact_number' => 'required|numeric',
                 ]);
                 $service_center = ServiceCenter::find($id);
-                $fields = array('name', 'name_color', 'name_font_size','name_font_family', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color');
+                $fields = array('service_id', 'name', 'name_color', 'name_font_size','name_font_family', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color');
                 foreach($fields as $field)
                 {
                     $service_center->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 

@@ -24,17 +24,17 @@
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
-                        <table class="table table-bordered table-striped table">
+                        <table class="table table-bordered table-striped table adm-table-no-wrap adm-action-sticky">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th style="width:40px;">Id</th>
                                     <th>Name</th>
                                     <th>Name Color</th>
                                     <th>Name Font Size</th>
                                     <th>Name Font Family</th>
                                     <th>Icon</th>
                                     <th>Url</th>
-                                    <th>Service Center</th>
+                                    <!-- <th>Service Center</th> -->
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -53,7 +53,7 @@
         var table = $('.table').DataTable({
             processing: true,
             serverSide: true,
-            // scrollX: true,
+            responsive: true,
             ajax: "{{ route('service-datatable') }}",
             columns: [
                 {data: 'id', name: 'id'},
@@ -63,7 +63,7 @@
                 {data: 'name_font_family', name: 'name_font_family'},
                 {data: 'icon', name: 'icon'},
                 {data: 'url', name: 'url'},
-                {data: 'service_center_id', name: 'service_center_id'},
+                // {data: 'service_center_id', name: 'service_center_id'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -83,5 +83,10 @@
             }
         });
     });
+
+    $(document).ready(function(){
+        $('.dataTables_scrollBody').addClass('adm-table-responsive');
+    });
+    
 </script>
 @endsection

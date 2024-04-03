@@ -63,9 +63,9 @@
                                 <div class="mb-3 col-md-4">
                                     <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     @if($testimonial->image == null)
-                                        <img src="{{asset('public/no_image/notImg.png')}}" width="100">
+                                        <img src="{{asset('public/no_image/notImg.png')}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @else
-                                        <img src="{{url('public/testimonials/'.$testimonial->image)}}" width="100">
+                                        <img src="{{url('public/testimonials/'.$testimonial->image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input  type="file" class="form-control" name="image">
                                     <div class="error"></div>
@@ -93,7 +93,9 @@
                                     </select>
                                 </div>
 
+
                                 <div class="mb-3 col-md-4">
+                                    @php($fontfamily = fontFamily())
                                     <label for="name_font_family">Name Text Font Family</label>
                                     <select class="form-control select2" name="name_font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
