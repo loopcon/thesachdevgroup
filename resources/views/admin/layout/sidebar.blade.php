@@ -87,6 +87,21 @@
                             </li>
                             @endif
                         @endif
+
+                        @php($has_permission = hasPermission('Pages'))
+                            @if(isset($has_permission) && $has_permission)
+                                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                                <li class="nav-item"> 
+
+                                <a href="{{url('pages')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-tasks"></i> 
+                                    <p>
+                                    Pages
+                                    </p>
+                                </a>
+                            </li>
+                            @endif
+                        @endif
                     </ul>
                 </li>
             @endif

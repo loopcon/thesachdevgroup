@@ -120,3 +120,5 @@ ALTER TABLE `users` ADD `deleted_at` TIMESTAMP NULL DEFAULT NULL AFTER `updated_
 -- Disha : 02-04-2024 04:04 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Faqs', NULL, NULL, NULL);
 
+-- Disha : 03-04-2024 10:00 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Pages', NULL, NULL, NULL);
