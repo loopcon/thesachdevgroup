@@ -40,18 +40,12 @@
                                     <label for="title" class="form-label">Title</label>
                                     <input type="text" id="title" class="form-control" name="title" value="{{$homeslider->title}}">
                                 </div>
-    
-                                <div class="mb-3 col-md-4">
-                                    <label for="subtitle" class="form-label">Sub Title</label>
-                                    <input type="text" id="subtitle" class="form-control" name="subtitle" value="{{$homeslider->subtitle}}">
-                                </div>
-    
-    
+
                                 <div class="mb-3 col-md-4">
                                     <label for="title_color" class="form-label">Title Text Color</label>
                                     <input type="text" class="form-control colorpicker" name="title_color" id="title_color" value="{{$homeslider->title_color}}">
                                 </div>
-    
+
                                 <div class="mb-3 col-md-4">
                                     @php($fontsize = fontSize())
                                     <label for="title_font_size" class="form-label">Title Text Font Size</label>
@@ -72,6 +66,11 @@
                                             <option value="{{$family['key']}}" {{$homeslider->title_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                         @endforeach
                                    </select>
+                                </div>
+
+                                <div class="mb-3 col-md-4">
+                                    <label for="subtitle" class="form-label">Sub Title</label>
+                                    <input type="text" id="subtitle" class="form-control" name="subtitle" value="{{$homeslider->subtitle}}">
                                 </div>
     
                                 <div class="mb-3 col-md-4">

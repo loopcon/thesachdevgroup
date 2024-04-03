@@ -21,6 +21,8 @@ class BrandController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -50,9 +52,11 @@ class BrandController extends Controller
                 $brand->save();
 
                 return redirect()->route('brand.index')->with('success','Brand insert successfully.');
-            }else {
+            } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -103,6 +107,8 @@ class BrandController extends Controller
             }else {
                 return redirect('dashboard')->with('message', 'You have not permission to access this page!');
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
     
@@ -114,8 +120,10 @@ class BrandController extends Controller
             {
                 $brands  = Brand::where('id',decrypt($id))->get();
                 return view('admin.brand._form',compact('brands'));
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
-        }else {
+        } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
@@ -150,8 +158,10 @@ class BrandController extends Controller
                 $brand->save();
 
                 return redirect()->route('brand.index')->with('success','Brand update successfully.');
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
-        }else {
+        } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
@@ -175,6 +185,8 @@ class BrandController extends Controller
                 {
                     return redirect()->route('brand.index')->with('message', 'Brand deleted successfully');
                 }
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

@@ -25,6 +25,8 @@ class CarController extends Controller
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -64,6 +66,8 @@ class CarController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -121,6 +125,8 @@ class CarController extends Controller
             }else {
                 return redirect('dashboard')->with('message', 'You have not permission to access this page!');
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
     
@@ -133,6 +139,8 @@ class CarController extends Controller
                 $cars  = Car::where('id',decrypt($id))->get();
                 $brands = Brand::get();
                 return view('admin.car._form',compact('cars','brands'));
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -175,6 +183,8 @@ class CarController extends Controller
                 $car->save();
 
                 return redirect()->route('car.index')->with('success','Car update successfully.');
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -203,6 +213,8 @@ class CarController extends Controller
                     return redirect()->route('car.index')->with('message', 'Car deleted successfully');
                 }
   
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

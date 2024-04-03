@@ -18,5 +18,9 @@ class Footer_menu extends Model
         'color',
         'font_size',
         'font_family',
+        'footer_description',
+        'footer_description_color',
+        'footer_description_font_size',
+        'footer_description_font_family',
     ];
 }

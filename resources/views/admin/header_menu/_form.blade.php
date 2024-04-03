@@ -42,12 +42,6 @@
                                         <input type="text" id="name" class="form-control" name="name" value="{{$header_menu->name}}">
                                         <div class="error"></div>
                                     </div>
-        
-                                    <div class="col-md-4">
-                                        <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
-                                        <input type="text" id="link" class="form-control" name="link" value="{{$header_menu->link}}">
-                                        <div class="error"></div>
-                                    </div>
 
                                     <div class="mb-3 col-md-4">
                                         <label for="color" class="form-label">Name Text Color</label>
@@ -74,6 +68,12 @@
                                                 <option value="{{$family['key']}}" {{$header_menu->font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                             @endforeach
                                        </select>
+                                    </div>
+        
+                                    <div class="col-md-4">
+                                        <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
+                                        <input type="text" id="link" class="form-control" name="link" value="{{$header_menu->link}}">
+                                        <div class="error"></div>
                                     </div>
 
                                 </div>

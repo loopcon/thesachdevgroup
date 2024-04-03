@@ -28,7 +28,6 @@
                         @csrf
                         <div class="row">
 
-
                             <div class="mb-3 col-md-4">
                                 <label for="menu_name" class="form-label">Select Menu<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="menu_name">
@@ -46,18 +45,12 @@
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
-                                <input type="text" id="link" class="form-control" name="link" value="{{isset($record->link) ? $record->link : old('link')}}">
-                                <div class="error"></div>
-                            </div>
-
                             <div class="mb-3 col-md-4">
                                 <label for="color" class="form-label">Name Text Color</label>
                                 <input type="text" class="form-control colorpicker" name="color" id="color" value="{{isset($record->color) ? $record->color : old('color')}}">
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="mb-3 col-md-4">
                                 @php($fontsize = fontSize())
                                 <label for="font_size" class="form-label">Name Text Font Size</label>
                                 <select class="form-control select2" name="font_size">
@@ -79,7 +72,43 @@
                                </select>
                             </div>
 
-                             </div> 
+                            <div class="col-md-4">
+                                <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
+                                <input type="text" id="link" class="form-control" name="link" value="{{isset($record->link) ? $record->link : old('link')}}">
+                                <div class="error"></div>
+                            </div>
+
+                            <div class="col-md-12 mt-2 mb-3">
+                                <label for="footer_description">Footer Description</label>
+                                <textarea class="ckeditor form-control" name="footer_description">{{isset($record->footer_description) ? $record->footer_description : old('footer_description')}}</textarea>
+                                <div class="error"></div>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="footer_description_color" class="form-label">Footer Description Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="footer_description_color" id="footer_description_color" value="{{isset($record->footer_description_color) ? $record->footer_description_color : old('footer_description_color')}}">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="footer_description_font_size" class="form-label">Footer Description Text Font Size</label>
+                                <select class="form-control select2" name="footer_description_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                        <option value="{{$i}}px" @if(isset($record->footer_description_font_size) && $record->footer_description_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="footer_description_font_family" class="form-label">Footer Description Text Font Family</label>
+                                <select class="form-control select2" name="footer_description_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->footer_description_font_family) && $record->footer_description_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                              </div>
+                        </div> 
                             
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>

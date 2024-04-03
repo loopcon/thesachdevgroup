@@ -43,12 +43,6 @@
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="title" class="form-label">Title</label>
-                                <input type="text" id="title" class="form-control" name="title" value="{{isset($record->title) ? $record->title : old('title')}}">
-                                <div class="error"></div>
-                            </div>
-
                             <div class="mb-3 col-md-4">
                                 <label for="icon_name_color" class="form-label">Icon Name Text Color</label>
                                 <input type="text" class="form-control colorpicker" name="icon_name_color" id="icon_name_color" value="{{isset($record->icon_name_color) ? $record->icon_name_color : old('icon_name_color')}}">
@@ -74,6 +68,12 @@
                                         <option value="{{$family['key']}}" @if(isset($record->icon_name_font_family) && $record->icon_name_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" id="title" class="form-control" name="title" value="{{isset($record->title) ? $record->title : old('title')}}">
+                                <div class="error"></div>
                             </div>
 
                             <div class="mb-3 col-md-4">

@@ -28,6 +28,8 @@ class ShowroomController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
     
@@ -39,6 +41,12 @@ class ShowroomController extends Controller
             {
                 $showroom = new Showroom();
                 $showroom->name = $request->name;
+
+                $showroom->name_color = $request->name_color;
+                $showroom->name_font_size = $request->name_font_size;
+                $showroom->name_font_family = $request->name_font_family;
+
+
                 $showroom->brand_id = $request->brand_id;
                 $showroom->car_id = json_encode($request->car_id);
                 $showroom->address = $request->address;
@@ -61,6 +69,12 @@ class ShowroomController extends Controller
                 $showroom->email_color = $request->email_color;
                 $showroom->email_font_size = $request->email_font_size;
                 $showroom->email_font_family = $request->email_font_family;
+
+                $showroom->description = $request->description;
+                $showroom->description_color = $request->description_color;
+                $showroom->description_font_size = $request->description_font_size;
+                $showroom->description_font_family = $request->description_font_family;
+
 
                 $showroom->save();
 
@@ -97,6 +111,8 @@ class ShowroomController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
     
@@ -126,6 +142,11 @@ class ShowroomController extends Controller
                     return $brand_name;
                 })
                 ->editColumn('car', function($showroom) {
+                    $description = $showroom->description;  
+                    return $description;
+                })
+
+                ->editColumn('description', function($showroom) {
                     $car_ids = json_decode($showroom->car_id); 
                     $car_names = Car::whereIn('id', $car_ids)->pluck('name')->implode(', '); 
                     return $car_names;
@@ -171,7 +192,7 @@ class ShowroomController extends Controller
                         return $imgs;
                     }
                 })
-            ->rawColumns(['action','brand','car','facilitie_image','customer_gallery_image'])
+            ->rawColumns(['action','brand','car','description','facilitie_image','customer_gallery_image'])
             ->make(true);
         }
         
@@ -184,6 +205,8 @@ class ShowroomController extends Controller
             }else {
                 return redirect('dashboard')->with('message', 'You have not permission to access this page!');
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
 
     }
@@ -200,14 +223,14 @@ class ShowroomController extends Controller
                 $facilitie_image = Facilitie::where('showroom_id',decrypt($id))->pluck('facilitie_image','id')->toArray();
                 $customer_gallery_images = Customer_gallery::where('showroom_id',decrypt($id))->pluck('customer_gallery_image','id')->toArray();
                 return view('admin.showroom._form',compact('showrooms','brands','cars','facilitie_image','customer_gallery_images'));
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
-
-    
     public function showroom_update(Request $request, $id)
     {
         $has_permission = hasPermission('Showroom');
@@ -217,6 +240,11 @@ class ShowroomController extends Controller
             {
                 $showroom = Showroom::find($id);
                 $showroom->name = $request->name;
+                
+                $showroom->name_color = $request->name_color;
+                $showroom->name_font_size = $request->name_font_size;
+                $showroom->name_font_family = $request->name_font_family;
+
                 $showroom->brand_id = $request->brand_id;
                 $showroom->car_id = json_encode($request->car_id);
                 $showroom->address = $request->address;
@@ -239,6 +267,11 @@ class ShowroomController extends Controller
                 $showroom->email_color = $request->email_color;
                 $showroom->email_font_size = $request->email_font_size;
                 $showroom->email_font_family = $request->email_font_family;
+
+                $showroom->description = $request->description;
+                $showroom->description_color = $request->description_color;
+                $showroom->description_font_size = $request->description_font_size;
+                $showroom->description_font_family = $request->description_font_family;
                 
                 $showroom->save();
 
@@ -271,6 +304,8 @@ class ShowroomController extends Controller
                 }
 
                 return redirect()->route('showroom.index')->with('success','Showroom update successfully.');
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -318,6 +353,8 @@ class ShowroomController extends Controller
                 $showroom->delete();
 
                 return redirect()->route('showroom.index')->with('message', 'Showroom deleted successfully');
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

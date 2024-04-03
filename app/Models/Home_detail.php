@@ -25,17 +25,5 @@ class Home_detail extends Model
         'description_font_size',
         'description_font_family',
         'our_story_image',
-        'businesses_title',
-        'testimonials_title',
-        'icon',
-        'amount',
-        'name',
-        'count_amount_color',
-        'count_name_color',
-        'count_background_color',
-        'count_amount_font_size',
-        'count_name_font_size',
-        'count_amount_font_family',
-        'count_name_font_family',
     ];
 }

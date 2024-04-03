@@ -207,7 +207,7 @@
                                 <input type="text" class="form-control" name="payment_button_text" id="payment_button_text" value="{{$setting->payment_button_text}}">
                               </div>
     
-                              <div class="col-md-4">
+                              <div class="mb-3 col-md-4">
                                 <label for="payment_button_text_color" class="form-label">Payment Button Text Color</label>
                                 <input type="text" class="form-control colorpicker" name="payment_button_text_color" id="payment_button_text_color" value="{{$setting->payment_button_text_color}}">
                               </div>
@@ -232,43 +232,10 @@
                                 </select>
                               </div>
     
-                              <div class="col-md-4">
+                              <div class="mb-3 col-md-4">
                                 <label for="payment_button_color" class="form-label">Payment Button Color</label>
                                 <input type="text" class="form-control colorpicker" name="payment_button_color" id="payment_button_color" value="{{$setting->payment_button_color}}">
                               </div>
-
-    
-                              <div class="col-md-12 mt-2 mb-3">
-                                <label for="footer_description">Footer Description</label>
-                                <textarea class="ckeditor form-control" name="footer_description">{{$setting->footer_description}}</textarea>
-                                <div class="error"></div>
-                              </div>
-    
-                              <div class="mb-3 col-md-4">
-                                <label for="footer_description_color" class="form-label">Footer Description Text Color</label>
-                                <input type="text" class="form-control colorpicker" name="footer_description_color" id="footer_description_color" value="{{$setting->footer_description_color}}">
-                              </div>
-    
-                              <div class="col-md-4">
-                                <label for="footer_description_font_size" class="form-label">Footer Description Text Font Size</label>
-                                <select class="form-control select2" name="footer_description_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
-                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
-                                      <option value="{{$i}}px" {{$setting->footer_description_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
-                                    @endfor
-                                </select>
-                              </div>
-    
-                              <div class="col-md-4">
-                                <label for="footer_description_font_family" class="form-label">Footer Description Text Font Family</label>
-                                  <select class="form-control select2" name="footer_description_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
-                                    @foreach($fontfamily as $family)
-                                      <option value="{{$family['key']}}" {{$setting->footer_description_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
-                                    @endforeach
-                                  </select>
-                              </div>
-    
                             </div>
 
                             @endforeach
@@ -458,40 +425,9 @@
                             </select>
                           </div>
 
-                          <div class="col-md-4">
+                          <div class="mb-3 col-md-4">
                             <label for="payment_button_color" class="form-label">Payment Button Color</label>
                             <input type="text" class="form-control colorpicker" name="payment_button_color" id="payment_button_color">
-                          </div>
-
-                          <div class="col-md-12 mt-2 mb-3">
-                            <label for="footer_description">Footer Description</label>
-                            <textarea class="ckeditor form-control" name="footer_description"></textarea>
-                            <div class="error"></div>
-                          </div>
-
-                          <div class="mb-3 col-md-4">
-                            <label for="footer_description_color" class="form-label">Footer Description Text Color</label>
-                            <input type="text" class="form-control colorpicker" name="footer_description_color" id="footer_description_color">
-                          </div>
-
-                          <div class="col-md-4">
-                            <label for="footer_description_font_size" class="form-label">Footer Description Text Font Size</label>
-                            <select class="form-control select2" name="footer_description_font_size">
-                                <option selected="selected" disabled="disabled">Select</option>
-                                @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
-                                  <option value="{{$i}}px">{{$i}}px</option>
-                                @endfor
-                            </select>
-                          </div>
-
-                          <div class="col-md-4">
-                            <label for="footer_description_font_family" class="form-label">Footer Description Text Font Family</label>
-                            <select class="form-control select2" name="footer_description_font_family">
-                                <option selected="selected" disabled="disabled">Select</option>
-                                @foreach($fontfamily as $family)
-                                  <option value="{{$family['key']}}">{{$family['value']}}</option>
-                                @endforeach
-                            </select>
                           </div>
 
                         </div>

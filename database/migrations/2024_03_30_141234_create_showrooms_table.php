@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('showrooms', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('name_color')->nullable();
+            $table->string('name_font_size')->nullable();
+            $table->string('name_font_family')->nullable();
             $table->bigInteger('brand_id')->unsigned(); 
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->string('car_id')->nullable();
@@ -34,6 +38,10 @@ return new class extends Migration
             $table->string('email_color')->nullable();
             $table->string('email_font_size')->nullable();
             $table->string('email_font_family')->nullable();
+            $table->longText('description')->nullable();
+            $table->string('description_color')->nullable();
+            $table->string('description_font_size')->nullable();
+            $table->string('description_font_family')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

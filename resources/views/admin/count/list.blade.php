@@ -19,17 +19,31 @@
             </div>
             <div class="card">
                 <div class="col-sm-12  text-end">
-                    <a href="{{ route('header_menu_social_media_icon_create') }}" class="btn btn-primary mt-2 float-right">Add</a>
+                    <a href="{{ route('countCreate') }}" class="btn btn-primary mt-2 float-right">Add</a>
                 </div>
                 <div class="card-body">
                     <section class="content">
                         <div class="container-fluid">
-                            <table class="table table-bordered table-striped data-table adm-action-sticky">
+                            <table class="table table-bordered table-striped data-table adm-table-no-wrap">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="width:50px;">No</th>
                                         <th>Icon</th>
-                                        <th>Link</th>
+
+                                        <th>Amount</th>
+                
+                                        <th>Amount Color</th>
+                                        <th>Amount Font Size</th>
+                                        <th>Amount Font Family</th>
+
+                                        <th>Name</th>
+
+                                        <th>Name Color</th>
+                                        <th>Name Font Size</th>
+                                        <th>Name Font Family</th>
+
+                                        <th>Background Color</th>
+
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -52,11 +66,23 @@
             processing: true,
             serverSide: true,
             scrollX: true,
-            ajax: "{{ route('header_menu_social_media_icon.index') }}",
+            ajax: "{{ route('count.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
                 {data: 'icon', name: 'icon'},
-                {data: 'link', name: 'link'},
+                {data: 'amount', name: 'amount'},
+               
+                {data: 'amount_color', name: 'amount_color'},
+                {data: 'amount_font_size', name: 'amount_font_size'},
+                {data: 'amount_font_family', name: 'amount_font_family'},
+
+                {data: 'name', name: 'name'},
+
+                {data: 'name_color', name: 'name_color'},
+                {data: 'name_font_size', name: 'name_font_size'},
+                {data: 'name_font_family', name: 'name_font_family'},
+                
+                {data: 'background_color', name: 'background_color'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -68,7 +94,7 @@ $(document).on('click', '.delete', function() {
     var href = $(this).data('href');
     return new swal({
         title: "",
-        text: "{{__('Are you sure? Delete this Header Menu Social Media Icon!')}}",
+        text: "{{__('Are you sure? Delete this Count!')}}",
         showCancelButton: true,
         confirmButtonText: "{{__('Yes, delete it!')}}",
         icon: "warning"
@@ -78,10 +104,5 @@ $(document).on('click', '.delete', function() {
         }
     });
 });
-
-$(document).ready(function(){
-    $('.dataTables_scrollBody').addClass('adm-table-responsive');
-});
-
 </script>
 @endsection

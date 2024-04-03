@@ -28,12 +28,12 @@
                                 <thead>
                                     <tr>
                                         <th style="width:45px;">No</th>
-                                        <th>Name</th>
                                         <th>Image</th>
-                                        <th>Name Background Color</th>
+                                        <th>Name</th>
                                         <th>Name Color</th>
                                         <th>Name Font Size</th>
                                         <th>Name Font Family</th>
+                                        <th>Name Background Color</th>
                                         <th>Description</th>
                                         <th>Description Color</th>
                                         <th>Description Font Size</th>
@@ -64,16 +64,29 @@
             ajax: "{{ route('testimonials.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
-                {data: 'name', name: 'name'},
+
+                {data: 'testimonials_title', name: 'testimonials_title'},
+
+                {data: 'testimonials_title_color', name: 'testimonials_title_color'},
+                {data: 'testimonials_title_font_size', name: 'testimonials_title_font_size'},
+                {data: 'testimonials_title_font_family', name: 'testimonials_title_font_family'},
+
                 {data: 'image', name: 'image'},
-                {data: 'name_background_color', name: 'name_background_color'},
+
+                {data: 'name', name: 'name'},
+
                 {data: 'name_color', name: 'name_color'},
                 {data: 'name_font_size', name: 'name_font_size'},
                 {data: 'name_font_family', name: 'name_font_family'},
+
+                {data: 'name_background_color', name: 'name_background_color'},
+
                 {data: 'description', name: 'description'},
+
                 {data: 'description_color', name: 'description_color'},
                 {data: 'description_font_size', name: 'description_font_size'},
                 {data: 'description_font_family', name: 'description_font_family'},
+                
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

@@ -13,18 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('testimonials', function (Blueprint $table) {
+        Schema::create('home_details', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
             $table->string('image')->nullable();
-            $table->string('name_background_color')->nullable();
-            $table->string('name_color')->nullable();
-            $table->string('name_font_size')->nullable();
-            $table->string('name_font_family')->nullable();
+            $table->string('title')->nullable();
+            $table->string('sub_title')->nullable();
+            $table->string('title_color')->nullable();
+            $table->string('title_font_size')->nullable();
+            $table->string('title_font_family')->nullable();
+            $table->string('sub_title_color')->nullable();
+            $table->string('sub_title_font_size')->nullable();
+            $table->string('sub_title_font_family')->nullable();
             $table->longText('description')->nullable();
             $table->string('description_color')->nullable();
             $table->string('description_font_size')->nullable();
             $table->string('description_font_family')->nullable();
+            $table->string('our_story_image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -37,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('testimonials');
+        Schema::dropIfExists('home_details');
     }
 };

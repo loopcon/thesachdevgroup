@@ -22,6 +22,8 @@ class SettingController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -156,13 +158,6 @@ class SettingController extends Controller
                 $setting->payment_button_font_family = $request->payment_button_font_family;
                 $setting->payment_button_color = $request->payment_button_color;
  
-
-                $setting->footer_description = $request->footer_description;
-
-                $setting->footer_description_color = $request->footer_description_color;
-                $setting->footer_description_font_size = $request->footer_description_font_size;
-                $setting->footer_description_font_family = $request->footer_description_font_family;
-
                 $setting->save();
             
                 return redirect()->route('setting')->with('success','Setting update successfully.');
@@ -170,6 +165,8 @@ class SettingController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
 
     }
