@@ -91,7 +91,6 @@
                 </li>
             @endif
 
-        
         @php($has_permission = hasPermission('Testimonials'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
