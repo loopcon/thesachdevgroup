@@ -24,7 +24,7 @@
                     <form action="@if(isset($record->id)) {{ route('award-update', array('id' => encrypt($record->id))) }} @else{{ route('award-store') }} @endif" method="POST" class="award-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 adm-brand-errorbox">
                                 <label for="brand_id" class="form-label">Brand<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="brand_id" id="brand_id">
                                     <option value="">-- Select Brand --</option>
@@ -35,7 +35,7 @@
                                 <div id="error"></div>
                                 @if ($errors->has('brand_id')) <div class="text-danger">{{ $errors->first('brand_id') }}</div>@endif
                             </div>
-                            <div class="col-md-4 mb-3 mt-2">
+                            <div class="col-md-4 mb-3">
                                 <label for="image" class="form-label">Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/award/'.$record->image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
