@@ -20,6 +20,8 @@ class HeaderMenuController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -42,6 +44,8 @@ class HeaderMenuController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -68,17 +72,17 @@ class HeaderMenuController extends Controller
             ->rawColumns(['action'])
             ->make(true);
         }
-        
-        $has_permission = hasPermission('Header Menu');
-        if(isset($has_permission) && $has_permission)
-        {
-            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-            {
-                return view('admin.header_menu.show');
-            }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
-            }
+
+        $has_header_menu_permission = hasPermission('Header Menu');
+        $has_social_media_permission = hasPermission('Header Menu Social Media Icon');
+
+        if(($has_header_menu_permission && ($has_header_menu_permission->read_permission == 1 || $has_header_menu_permission->full_permission == 1)) ||
+        ($has_social_media_permission && ($has_social_media_permission->read_permission == 1 || $has_social_media_permission->full_permission == 1))) {
+            return view('admin.header_menu.show');
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
+
     }
 
     public function header_menu_edit($id){
@@ -89,6 +93,8 @@ class HeaderMenuController extends Controller
             {
                 $header_menus  = Header_menu::where('id',decrypt($id))->get();
                 return view('admin.header_menu._form',compact('header_menus'));
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -112,6 +118,8 @@ class HeaderMenuController extends Controller
                 $header_menu->save();
 
                 return redirect()->route('header_menu.index')->with('success','Header Menu update successfully.');
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -131,6 +139,8 @@ class HeaderMenuController extends Controller
                 {
                     return redirect()->route('header_menu.index')->with('message', 'Header Menu deleted successfully');
                 }
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

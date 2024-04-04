@@ -19,9 +19,9 @@
                             <label class="form-label" for="name">{{__('Role')}}<span class="text-danger">*</span></label>
                             <select class="form-control" onchange="if (this.value) window.location.href=this.value">
                                 <option value="">-- select --</option>
-                                <option value="{{url('role-permission/'.$constant_superadmin)}}" {{$role_id == $constant_superadmin ? 'selected' : ''}}>{{__('Super Admin')}}</option>
-                                <option value="{{url('role-permission/'.$constant_hr)}}" {{$role_id == $constant_hr ? 'selected' : ''}}>{{__('HR')}}</option>
-                                <option value="{{url('role-permission/'.$constant_manager)}}" {{$role_id == $constant_manager ? 'selected' : ''}}>{{__('MANAGER')}}</option>
+                                <option value="{{url('role-permission/'.Constant::SUPERADMIN)}}" {{$role_id == Constant::SUPERADMIN ? 'selected' : ''}}>{{__('Super Admin')}}</option>
+                                <option value="{{url('role-permission/'.Constant::HR)}}" {{$role_id == Constant::HR ? 'selected' : ''}}>{{__('HR')}}</option>
+                                <option value="{{url('role-permission/'.Constant::MANAGER)}}" {{$role_id == Constant::MANAGER ? 'selected' : ''}}>{{__('MANAGER')}}</option>
                             </select>
                         </div>
                     </div>

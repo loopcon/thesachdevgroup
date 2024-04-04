@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('footer_menus', function (Blueprint $table) {
+        Schema::create('home_our_businesses', function (Blueprint $table) {
             $table->id();
-            $table->string('menu_name')->nullable();
-            $table->string('name')->nullable();
+            $table->string('image')->nullable();
+            $table->string('businesses_title')->nullable();
+            $table->string('businesses_title_color')->nullable();
+            $table->string('businesses_title_font_size')->nullable();
+            $table->string('businesses_title_font_family')->nullable();
             $table->string('link')->nullable();
-            $table->string('color')->nullable();
-            $table->string('font_size')->nullable();
-            $table->string('font_family')->nullable();
+            $table->string('background_color')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('footer_menus');
+        Schema::dropIfExists('home_our_businesses');
     }
 };

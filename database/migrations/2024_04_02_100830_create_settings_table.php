@@ -40,10 +40,6 @@ return new class extends Migration
             $table->string('payment_button_font_size')->nullable();
             $table->string('payment_button_font_family')->nullable();
             $table->string('payment_button_color')->nullable();
-            $table->longText('footer_description')->nullable();
-            $table->string('footer_description_color')->nullable();
-            $table->string('footer_description_font_size')->nullable();
-            $table->string('footer_description_font_family')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

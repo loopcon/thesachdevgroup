@@ -35,9 +35,5 @@ class Setting extends Model
         'payment_button_font_size',
         'payment_button_font_family',
         'payment_button_color',
-        'footer_description',
-        'footer_description_color',
-        'footer_description_font_size',
-        'footer_description_font_family',
     ];
 }

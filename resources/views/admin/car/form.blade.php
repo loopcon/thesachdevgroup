@@ -50,43 +50,15 @@
                                 <div id="error"></div>
                             </div>
 
-                            <div class="mb-3 col-md-4">
-                                <label for="price" class="form-label">Price<span class="text-danger">*</span></label>
-                                <input type="text" id="price" class="form-control" name="price">
-                                <div class="error"></div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
-                                <input type="text" id="link" class="form-control" name="link">
-                                <div class="error"></div>
-                            </div>
-
                             <div class="col-md-4">
                                 <label for="name_color" class="form-label">Name Text Color</label>
                                 <input type="text" class="form-control colorpicker" name="name_color" id="name_color">
                             </div>
 
-                            <div class="mb-3 col-md-4">
-                                <label for="price_color" class="form-label">Price Text Color</label>
-                                <input type="text" class="form-control colorpicker" name="price_color" id="price_color">
-                            </div>
-
-                           
                             <div class="col-md-4">
                                 @php($fontsize = fontSize())
                                 <label for="name_font_size" class="form-label">Name Text Font Size</label>
                                 <select class="form-control select2" name="name_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
-                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
-                                        <option value="{{$i}}px">{{$i}}px</option>
-                                    @endfor
-                               </select>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="price_font_size" class="form-label">Price Text Font Size</label>
-                                <select class="form-control select2" name="price_font_size">
                                     <option selected="selected" disabled="disabled">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
@@ -105,7 +77,29 @@
                                </select>
                             </div>
 
+                            <div class="mb-3 col-md-4">
+                                <label for="price" class="form-label">Price<span class="text-danger">*</span></label>
+                                <input type="text" id="price" class="form-control" name="price">
+                                <div class="error"></div>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="price_color" class="form-label">Price Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="price_color" id="price_color">
+                            </div>
+
+                           
                             <div class="col-md-4">
+                                <label for="price_font_size" class="form-label">Price Text Font Size</label>
+                                <select class="form-control select2" name="price_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
                                 <label for="price_font_family" class="form-label">Price Text Font Family</label>
                                 <select class="form-control select2" name="price_font_family">
                                     <option selected="selected" disabled="disabled">Select</option>
@@ -114,6 +108,13 @@
                                         @endforeach
                                </select>
                             </div>
+
+                            <div class="col-md-4">
+                                <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
+                                <input type="text" id="link" class="form-control" name="link">
+                                <div class="error"></div>
+                            </div>
+
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>

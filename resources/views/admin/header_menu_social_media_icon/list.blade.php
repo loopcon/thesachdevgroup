@@ -22,24 +22,24 @@
                     <a href="{{ route('header_menu_social_media_icon_create') }}" class="btn btn-primary mt-2 float-right">Add</a>
                 </div>
                 <div class="card-body">
-            <section class="content">
-                <div class="container-fluid">
-                    <table class="table table-bordered table-striped data-table adm-action-sticky">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Icon</th>
-                                <th>Link</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <section class="content">
+                        <div class="container-fluid">
+                            <table class="table table-bordered table-striped data-table adm-action-sticky">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Icon</th>
+                                        <th>Link</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
-            </section>
-        </div>
-    </div>
+            </div>
         </div>
     </div>
     @endsection

@@ -22,49 +22,64 @@
                     <a href="{{ route('showroom') }}" class="btn btn-primary mt-2 float-right">Add</a>
                 </div>
                 <div class="card-body">
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="">
-                        <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
-                            <thead>
-                                <tr>
-                                    <th style="width:50px;">No</th>
-                                    <th>Showroom Name</th>
-                                    <th>Brand</th>
-                                    <th>Car</th>
-                                    <th>Address</th>
-                                    <th>Working Hours</th>
-                                    <th>Contact Number</th>
-                                    <th>Email</th>
-                                    <th>Address Color</th>
-                                    <th>Address Font Size</th>
-                                    <th>Address Font Family</th>
+                    <section class="content">
+                        <div class="container-fluid">
+                            <div class="">
+                                <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:50px;">No</th>
+                                            <th>Showroom Name</th>
 
-                                    <th>Working Hours Color</th>
-                                    <th>Working Hours Font Size</th>
-                                    <th>Working Hours Font Family</th>
+                                            <th>Showroom Name Color</th> 
+                                            <th>Showroom Name Font Size</th>
+                                            <th>Showroom Name Font Family</th>
 
-                                    <th>Contact Number Color</th>
-                                    <th>Contact Number Font Size</th>
-                                    <th>Contact Number Font Family</th>
+                                            <th>Brand</th>
+                                            <th>Car</th>
+                                            <th>Address</th>
 
-                                    <th>Email Color</th>
-                                    <th>Email Font Size</th>
-                                    <th>Email Font Family</th>
+                                            <th>Address Color</th>
+                                            <th>Address Font Size</th>
+                                            <th>Address Font Family</th>
 
-                                    <th>Facilitie Image</th>
-                                    <th>Customer Gallery Image</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>    
+                                            <th>Working Hours</th>
+
+                                            <th>Working Hours Color</th>
+                                            <th>Working Hours Font Size</th>
+                                            <th>Working Hours Font Family</th>
+
+                                            <th>Contact Number</th>
+
+                                            <th>Contact Number Color</th>
+                                            <th>Contact Number Font Size</th>
+                                            <th>Contact Number Font Family</th>
+
+                                            <th>Email</th>
+                                            
+                                            <th>Email Color</th>
+                                            <th>Email Font Size</th>
+                                            <th>Email Font Family</th>
+
+                                            <th>Description</th>
+                                            
+                                            <th>Description Color</th>
+                                            <th>Description Font Size</th>
+                                            <th>Description Font Family</th>
+
+                                            <th>Facilitie Image</th>
+                                            <th>Customer Gallery Image</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>  
+                        </div>
+                    </section>
                 </div>
-            </section>
-        </div>
-    </div>
+            </div>
         </div>
     </div>
 @endsection
@@ -82,28 +97,44 @@
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
                 {data: 'name', name: 'name'},
+
+                {data: 'name_color', name: 'name_color'},
+                {data: 'name_font_size', name: 'name_font_size'},
+                {data: 'name_font_family', name: 'name_font_family'},
+
                 {data: 'brand', name: 'brand'},
                 {data: 'car', name: 'car'},
                 {data: 'address', name: 'address'},
-                {data: 'working_hours', name: 'working_hours'},
-                {data: 'contact_number', name: 'contact_number'},
-                {data: 'email', name: 'email'},
 
                 {data: 'address_color', name: 'address_color'},
                 {data: 'address_font_size', name: 'address_font_size'},
                 {data: 'address_font_family', name: 'address_font_family'},
 
+                {data: 'working_hours', name: 'working_hours'},
+
                 {data: 'working_hours_color', name: 'working_hours_color'},
                 {data: 'working_hours_font_size', name: 'working_hours_font_size'},
                 {data: 'working_hours_font_family', name: 'working_hours_font_family'},
+
+                {data: 'contact_number', name: 'contact_number'},
 
                 {data: 'contact_number_color', name: 'contact_number_color'},
                 {data: 'contact_number_font_size', name: 'contact_number_font_size'},
                 {data: 'contact_number_font_family', name: 'contact_number_font_family'},
 
+                {data: 'email', name: 'email'},
+
                 {data: 'email_color', name: 'email_color'},
                 {data: 'email_font_size', name: 'email_font_size'},
                 {data: 'email_font_family', name: 'email_font_family'},
+
+
+                {data: 'description', name: 'description'},
+
+                {data: 'description_color', name: 'description_color'},
+                {data: 'description_font_size', name: 'description_font_size'},
+                {data: 'description_font_family', name: 'description_font_family'},
+
 
                 {data: 'facilitie_image', name: 'facilitie_image'},
                 {data: 'customer_gallery_image', name: 'customer_gallery_image'},

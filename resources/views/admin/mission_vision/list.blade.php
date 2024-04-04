@@ -68,13 +68,17 @@
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
                 {data: 'icon', name: 'icon'},
                 {data: 'icon_name', name: 'icon_name'},
-                {data: 'title', name: 'title'},
+               
                 {data: 'icon_name_color', name: 'icon_name_color'},
                 {data: 'icon_name_font_size', name: 'icon_name_font_size'},
                 {data: 'icon_name_font_family', name: 'icon_name_font_family'},
+
+                {data: 'title', name: 'title'},
+
                 {data: 'title_color', name: 'title_color'},
                 {data: 'title_font_size', name: 'title_font_size'},
                 {data: 'title_font_family', name: 'title_font_family'},
+                
                 {data: 'description', name: 'description'},
                 {data: 'description_color', name: 'description_color'},
                 {data: 'description_font_size', name: 'description_font_size'},

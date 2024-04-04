@@ -12,5 +12,11 @@ class Home_our_businesses extends Model
 
     protected $fillable = [
         'image',
+        'businesses_title',
+        'businesses_title_color',
+        'businesses_title_font_size',
+        'businesses_title_font_family',
+        'link',
+        'background_color',
     ];
 }

@@ -11,6 +11,10 @@ class Testimonial extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
+        'testimonials_title',
+        'testimonials_title_color',
+        'testimonials_title_font_size',
+        'testimonials_title_font_family',
         'name',
         'image',
         'name_background_color',

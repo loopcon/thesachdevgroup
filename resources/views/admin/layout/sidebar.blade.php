@@ -10,7 +10,7 @@
               </a>
             </li>
 
-            @if(hasPermission('Home Slider') || hasPermission('Home Our Businesses') || hasPermission('Home Detail') || hasPermission('Mission Vision'))
+            @if(hasPermission('Home Slider') || hasPermission('Home Our Businesses') || hasPermission('Home Detail') || hasPermission('Mission Vision') || hasPermission('Faqs'))
                 <li class="nav-item">
                     <a href="#" class="nav-link"> 
                         <i class="nav-icon fa fa-house-user"></i><p>Home Setting<i class="right fas fa-angle-left"></i></p>
@@ -72,11 +72,54 @@
                         </li>
                         @endif
                         @endif
+
+                        @php($has_permission = hasPermission('Count'))
+                        @if(isset($has_permission) && $has_permission)
+                            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item{{ request()->is('count') ? ' sidebar_active_li' : '' }}"> 
+                                <a href="{{url('count')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-sort-numeric-down"></i>
+                                    <p>
+                                        Count
+                                    </p>
+                                </a>
+                            </li>
+                        @endif
+                        @endif
+
+                        @php($has_permission = hasPermission('Faqs'))
+                            @if(isset($has_permission) && $has_permission)
+                                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                                <li class="nav-item"> 
+
+                                <a href="{{url('faq')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-tasks"></i> 
+                                    <p>
+                                    Faqs
+                                    </p>
+                                </a>
+                            </li>
+                            @endif
+                        @endif
+
+                        @php($has_permission = hasPermission('Pages'))
+                            @if(isset($has_permission) && $has_permission)
+                                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                                <li class="nav-item"> 
+
+                                <a href="{{url('pages')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-tasks"></i> 
+                                    <p>
+                                    Pages
+                                    </p>
+                                </a>
+                            </li>
+                            @endif
+                        @endif
                     </ul>
                 </li>
             @endif
 
-        
         @php($has_permission = hasPermission('Testimonials'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -243,34 +286,18 @@
             </li>
         @endif
 
-        @php($has_permission = hasPermission('Header Menu'))
-          @if(isset($has_permission) && $has_permission)
-              @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-            <li class="nav-item">
-            <a href="{{url('header_menu_index')}}" class="nav-link">
-              <i class="nav-icon fas fa-heading"></i>
-              <p>
-                Header Menu
-              </p>
-            </a>
-          </li>
-          @endif
+        @php($has_header_menu_permission = hasPermission('Header Menu'))
+        @php($has_social_media_permission = hasPermission('Header Menu Social Media Icon'))
+        @if($has_header_menu_permission && ($has_header_menu_permission->read_permission == 1 || $has_header_menu_permission->full_permission == 1) || 
+            $has_social_media_permission && ($has_social_media_permission->read_permission == 1 || $has_social_media_permission->full_permission == 1))
+            <li class="nav-item{{ request()->is('header_menu_index') ? ' sidebar_active' : '' }}">
+                <a href="{{url('header_menu_index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-heading"></i>
+                    <p>Header Menu</p>
+                </a>
+            </li>
         @endif
 
-        
-        @php($has_permission = hasPermission('Header Menu Social Media Icon'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-        <li class="nav-item">
-          <a href="{{url('header_menu_social_media_icon')}}" class="nav-link">
-            <i class="nav-icon fas fa-heading"></i>
-            <p>
-              Header Menu Social Media Icon
-            </p>
-          </a>
-        </li>
-        @endif
-        @endif
 
 
         @php($has_permission = hasPermission('Footer Menu'))
@@ -296,7 +323,18 @@
                 </p>
                 </a>
             </li>
-        @endif 
+        @endif
+
+        @if(isset(Auth::user()->role_id) && Auth::user()->role_id == 1)
+                <li class="nav-item">
+                <a href="{{route('user')}}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                    Users
+                </p>
+                </a>
+            </li>
+        @endif
     </ul>
 </nav>
 @section('javascript')

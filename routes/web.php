@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\HeaderMenuController;
 use App\Http\Controllers\Admin\FooterMenuController;
 use App\Http\Controllers\Admin\MissionVisionController;
 use App\Http\Controllers\Admin\HeaderMenuSocialMediaIconController;
+use App\Http\Controllers\Admin\CountController;
+use App\Http\Controllers\Admin\TestimonialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,12 +61,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('home_our_businesses_destroy/{id}', [HomeController::class, 'home_our_businesses_destroy'])->name('home_our_businesses_destroy');
 
     //Testimonials
-    Route::get('testimonials', [HomeController::class, 'testimonials'])->name('testimonials');
-    Route::post('testimonials_insert', [HomeController::class, 'testimonials_insert'])->name('testimonials_insert');
-    Route::get('testimonials_index', [HomeController::class, 'testimonials_index'])->name('testimonials.index');
-    Route::get('testimonials_edit/{testimonials_edit}', [HomeController::class, 'testimonials_edit'])->name('testimonials.edit');
-    Route::post('testimonials_update,{testimonials_update}', [HomeController::class, 'testimonials_update'])->name('testimonials_update');
-    Route::get('testimonials_destroy/{id}', [HomeController::class, 'testimonials_destroy'])->name('testimonials_destroy');
+    Route::get('testimonials', [TestimonialController::class, 'testimonials'])->name('testimonials');
+    Route::post('testimonials_insert', [TestimonialController::class, 'testimonials_insert'])->name('testimonials_insert');
+    Route::get('testimonials_index', [TestimonialController::class, 'testimonials_index'])->name('testimonials.index');
+    Route::get('testimonials_edit/{testimonials_edit}', [TestimonialController::class, 'testimonials_edit'])->name('testimonials.edit');
+    Route::post('testimonials_update,{testimonials_update}', [TestimonialController::class, 'testimonials_update'])->name('testimonials_update');
+    Route::get('testimonials_destroy/{id}', [TestimonialController::class, 'testimonials_destroy'])->name('testimonials_destroy');
 
     //Home Detail
     Route::get('home_detail', [HomeController::class, 'home_detail'])->name('home_detail');
@@ -157,12 +159,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('service-center-datatable', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterDatatable'])->name('service-center-datatable');
 
     //header_menu_social_media_icon
-    Route::get('header_menu_social_media_icon', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon'])->name('header_menu_social_media_icon');
-    Route::get('header_menu_social_media_icon_create', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_create'])->name('header_menu_social_media_icon_create');
     Route::post('header_menu_social_media_icon_insert', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_insert'])->name('header_menu_social_media_icon_insert');
     Route::get('header_menu_social_media_icon_index', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_index'])->name('header_menu_social_media_icon.index');
-    Route::get('social_media_icon_edit/{social_media_icon_edit}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_edit'])->name('header_menu_social_media_icon.edit');
-    Route::post('header_menu_social_media_icon_update,{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_update'])->name('header_menu_social_media_icon_update');
+    Route::post('header_menu_social_media_icon_edit', [HeaderMenuSocialMediaIconController::class, 'EditSocialMedia'])->name('header_menu_social_media_icon_edit');
+    Route::post('social_media_icon_update', [HeaderMenuSocialMediaIconController::class, 'social_media_icon_update'])->name('social_media_icon_update');
     Route::get('header_menu_social_media_icon_destroy/{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_destroy'])->name('header_menu_social_media_icon_destroy');
 
     //service
@@ -174,6 +174,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('service-delete/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDestroy'])->name('service-delete');
     Route::get('service-datatable', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDatatable'])->name('service-datatable');
 
+    //count
+    Route::get('count', [CountController::class, 'count'])->name('count');
+    Route::get('countCreate', [CountController::class, 'countCreate'])->name('countCreate');
+    Route::post('count_insert', [CountController::class, 'count_insert'])->name('count_insert');
+    Route::get('count_index', [CountController::class, 'count_index'])->name('count.index');
+    Route::get('count_edit/{count_edit}', [CountController::class, 'count_edit'])->name('count.edit');
+    Route::post('count_update,{id}', [CountController::class, 'count_update'])->name('count_update');
+    Route::get('count_destroy/{id}', [CountController::class, 'count_destroy'])->name('count_destroy');
+
     //service center facility and customer gallery
     Route::get('service-center-facility-customergallery', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryList'])->name('service-center-facility-customergallery');
     Route::get('service-center-facility-customergallery-create', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryCreate'])->name('service-center-facility-customergallery-create');
@@ -183,6 +192,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('service-center-facility-customergallery-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDestroy'])->name('service-center-facility-customergallery-delete');
     Route::get('service-center-facility-customergallery-datatable', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDatatable'])->name('service-center-facility-customergallery-datatable');
 
+    //service center testimonial
     Route::get('service-center-testimonial', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCeterTestimonialList'])->name('service-center-testimonial');
     Route::get('service-center-testimonial-create', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialCreate'])->name('service-center-testimonial-create');
     Route::post('service-center-testimonial-store', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialStore'])->name('service-center-testimonial-store');
@@ -190,4 +200,31 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('service-center-testimonial-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialUpdate'])->name('service-center-testimonial-update');
     Route::get('service-center-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDestroy'])->name('service-center-testimonial-delete');
     Route::get('service-center-testimonial-datatable', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDatatable'])->name('service-center-testimonial-datatable');
+
+    //users
+    Route::get('user', [\App\Http\Controllers\Admin\UserController::class, 'userList'])->name('user');
+    Route::get('user-create', [\App\Http\Controllers\Admin\UserController::class, 'userCreate'])->name('user-create');
+    Route::post('user-store', [\App\Http\Controllers\Admin\UserController::class, 'userStore'])->name('user-store');
+    Route::get('user-edit/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userEdit'])->name('user-edit');
+    Route::post('user-update/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userUpdate'])->name('user-update');
+    Route::get('user-delete/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userDestroy'])->name('user-delete');
+    Route::get('user-datatable', [\App\Http\Controllers\Admin\UserController::class, 'userDatatable'])->name('user-datatable');
+
+    //faq
+    Route::get('faq', [\App\Http\Controllers\Admin\FaqController::class, 'faqList'])->name('faq');
+    Route::get('faq-create', [\App\Http\Controllers\Admin\FaqController::class, 'faqCreate'])->name('faq-create');
+    Route::post('faq-store', [\App\Http\Controllers\Admin\FaqController::class, 'faqStore'])->name('faq-store');
+    Route::get('faq-edit/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqEdit'])->name('faq-edit');
+    Route::post('faq-update/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqUpdate'])->name('faq-update');
+    Route::get('faq-delete/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqDestroy'])->name('faq-delete');
+    Route::get('faq-datatable', [\App\Http\Controllers\Admin\FaqController::class, 'faqDatatable'])->name('faq-datatable');
+
+    //pages
+    Route::get('pages', [\App\Http\Controllers\Admin\PageController::class, 'pageList'])->name('pages');
+    Route::get('page-create', [\App\Http\Controllers\Admin\PageController::class, 'pageCreate'])->name('page-create');
+    Route::post('page-store', [\App\Http\Controllers\Admin\PageController::class, 'pageStore'])->name('page-store');
+    Route::get('page-edit/{id}', [\App\Http\Controllers\Admin\PageController::class, 'pageEdit'])->name('page-edit');
+    Route::post('page-update/{id}', [\App\Http\Controllers\Admin\PageController::class, 'pageUpdate'])->name('page-update');
+    Route::get('page-delete/{id}', [\App\Http\Controllers\Admin\PageController::class, 'pageDestroy'])->name('page-delete');
+    Route::get('page-datatable', [\App\Http\Controllers\Admin\PageController::class, 'pageDatatable'])->name('page-datatable');
 });

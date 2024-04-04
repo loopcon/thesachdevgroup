@@ -32,6 +32,34 @@
                                 </div>
 
                                 <div class="col-md-4">
+                                    <label for="name_color" class="form-label">Showroom Name Text Color</label>
+                                    <input type="text" class="form-control colorpicker" name="name_color" id="name_color">
+                                </div>
+
+                                <div class="col-md-4">
+                                    @php($fontsize = fontSize())
+                                    <label for="name_font_size" class="form-label">Showroom Name Text Font Size</label>
+                                    <select class="form-control select2" name="name_font_size">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                            <option value="{{$i}}px">{{$i}}px</option>
+                                        @endfor
+                                </select>
+                                </div>
+
+                            
+                                <div class="mb-3 col-md-4">
+                                    @php($fontfamily = fontFamily())
+                                    <label for="name_font_family" class="form-label">Showroom Name Text Font Family</label>
+                                    <select class="form-control select2" name="name_font_family">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
                                     <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
                                     <select name="brand_id" id="brand_id" class="form-control select2">
                                         <option selected="selected" disabled="disabled">Select</option>
@@ -56,24 +84,6 @@
                                 <div class="mb-3 col-md-4">
                                     <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="address"></textarea>
-                                    <div class="error"></div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label for="working_hours" class="form-label">Working Hours<span class="text-danger">*</span></label>
-                                    <input type="text" id="working_hours" class="form-control" name="working_hours">
-                                    <div id="error"></div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
-                                    <input type="number" id="contact_number" class="form-control" name="contact_number">
-                                    <div class="error"></div>
-                                </div>
-
-                                <div class="mb-3 col-md-4">
-                                    <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
-                                    <input type="email" id="email" class="form-control" name="email">
                                     <div class="error"></div>
                                 </div>
 
@@ -105,6 +115,12 @@
                                     </select>
                                 </div>
 
+                                <div class="col-md-4">
+                                    <label for="working_hours" class="form-label">Working Hours<span class="text-danger">*</span></label>
+                                    <input type="text" id="working_hours" class="form-control" name="working_hours">
+                                    <div id="error"></div>
+                                </div>
+
                                 <div class="mb-3 col-md-4">
                                     <label for="working_hours_color" class="form-label">Working Hours Text Color</label>
                                     <input type="text" class="form-control colorpicker" name="working_hours_color" id="working_hours_color">
@@ -128,6 +144,12 @@
                                             <option value="{{$family['key']}}">{{$family['value']}}</option>
                                         @endforeach
                                     </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
+                                    <input type="number" id="contact_number" class="form-control" name="contact_number">
+                                    <div class="error"></div>
                                 </div>
 
                                 <div class="mb-3 col-md-4">
@@ -157,6 +179,13 @@
                                     </select>
                                 </div>
 
+                                <div class="mb-3 col-md-4">
+                                    <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
+                                    <input type="email" id="email" class="form-control" name="email">
+                                    <div class="error"></div>
+                                </div>
+
+                                
                                 <div class="col-md-4">
                                     <label for="email_color" class="form-label">Email Text Color</label>
                                     <input type="text" class="form-control colorpicker" name="email_color" id="email_color">
@@ -183,6 +212,39 @@
                                         @endforeach
                                 </select>
                                 </div>
+
+                                <div class="col-md-12 mt-2 mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea class="ckeditor form-control" name="description"></textarea>
+                                    <div class="error"></div>
+                                </div>
+    
+    
+                                <div class="mb-3 col-md-4">
+                                    <label for="description_color" class="form-label">Description Text Color</label>
+                                    <input type="text" class="form-control colorpicker" name="description_color" id="description_color">
+                                </div>
+    
+                                <div class="mb-3 col-md-4">
+                                    <label for="description_font_size" class="form-label">Description Text Font Size</label>
+                                    <select class="form-control select2" name="description_font_size">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                            <option value="{{$i}}px">{{$i}}px</option>
+                                        @endfor
+                                   </select>
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <label for="description_font_family" class="form-label">Description Text Font Family</label>
+                                    <select class="form-control select2" name="description_font_family">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                        @endforeach
+                                   </select>
+                                </div>
+
                        
                             </div>
 

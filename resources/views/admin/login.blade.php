@@ -30,9 +30,10 @@
         <div class="card-body login-card-body">
         <div class="login-logo">
         @php($setting_detail = getSettingDetail())
-            @php($logo = $setting_detail->logo)
             <!-- <a href=""><b>Admin</b>LTE</a> -->
-            <img src="{{asset('logo/'.$logo)}}" class="img-fluid" width="60" height="60" />
+            @if(isset($setting_detail) && isset($setting_detail->logo))
+                <img src="{{asset('logo/'.$setting_detail->logo)}}" class="img-fluid" width="60" height="60" />
+            @endif
         </div>
             <form method="POST" action="{{ route('login.custom') }}" class="login_form">
             @csrf

@@ -24,7 +24,7 @@
                         @csrf
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="mb-3 col-md-4">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                 <input type="file" id="image" class="form-control" name="image">
                             </div>
@@ -33,12 +33,6 @@
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" id="title" class="form-control" name="title">
                             </div>
-
-                            <div class="mb-3 col-md-4">
-                                <label for="subtitle" class="form-label">Sub Title</label>
-                                <input type="text" id="subtitle" class="form-control" name="subtitle">
-                            </div>
-
 
                             <div class="col-md-4">
                                 <label for="title_color" class="form-label">Title Text Color</label>
@@ -65,6 +59,11 @@
                                         <option value="{{$family['key']}}">{{$family['value']}}</option>
                                     @endforeach
                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="subtitle" class="form-label">Sub Title</label>
+                                <input type="text" id="subtitle" class="form-control" name="subtitle">
                             </div>
 
                             <div class="col-md-4">

@@ -97,6 +97,10 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 -- Disha : 29-03-2024 3:11 PM
 ALTER TABLE `service` ADD `deleted_at` TIMESTAMP NULL DEFAULT NULL AFTER `updated_at`;
 
+<<<<<<< HEAD
+-- Drashti : 30-03-2024 1:54 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES ('17', 'Count', NULL, NULL, NULL);
+=======
 -- Disha : 30-03-2024 10:58 AM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Service Center Facility Customer Gallery', NULL, NULL, NULL);
 
@@ -109,3 +113,16 @@ ALTER TABLE `service_center_testimonial` ADD `description_font_family` VARCHAR(2
 
 -- Disha : 01-04-2024 2:34 PM
 ALTER TABLE `service_center` ADD `service_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `service`' AFTER `id`;
+
+-- Disha : 01-04-2024 4:16 PM
+ALTER TABLE `users` ADD `visible_password` VARCHAR(255) NULL DEFAULT NULL AFTER `password`;
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Users', NULL, NULL, NULL);
+
+-- Disha : 02-04-2024 12:17 PM
+ALTER TABLE `users` ADD `deleted_at` TIMESTAMP NULL DEFAULT NULL AFTER `updated_at`;
+
+-- Disha : 02-04-2024 04:04 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Faqs', NULL, NULL, NULL);
+
+-- Disha : 03-04-2024 10:00 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Pages', NULL, NULL, NULL);

@@ -30,10 +30,19 @@
                                 <th style="width:45px;">No</th>
                                 <th>Menu</th>
                                 <th>Name</th>
-                                <th>Link</th>
+
                                 <th>Name Color</th>
                                 <th>Name Font Size</th>
                                 <th>Name Font Family</th>
+
+                                <th>Link</th>
+
+                                <th>Footer Description</th>
+
+                                <th>Footer Description Color</th>
+                                <th>Footer Description Font Size</th>
+                                <th>Footer Description Font Family</th>
+
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -61,10 +70,19 @@
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
                 {data: 'menu_name', name: 'menu_name'},
                 {data: 'name', name: 'name'},
-                {data: 'link', name: 'link'},
+
                 {data: 'color', name: 'color'},
                 {data: 'font_size', name: 'font_size'},
                 {data: 'font_family', name: 'font_family'},
+                
+                {data: 'link', name: 'link'},
+
+                {data: 'footer_description', name: 'footer_description'},
+
+                {data: 'footer_description_color', name: 'footer_description_color'},
+                {data: 'footer_description_font_size', name: 'footer_description_font_size'},
+                {data: 'footer_description_font_family', name: 'footer_description_font_family'},
+
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

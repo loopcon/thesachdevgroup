@@ -54,30 +54,12 @@
                                     <input  type="text" class="form-control" name="name" value="{{$car->name}}">
                                     <div class="error"></div>
                                 </div>
-    
-                                <div class="mb-3 col-md-4">
-                                    <label for="price" class="form-label">Price<span class="text-danger">*</span></label>
-                                    <input  type="text" class="form-control" name="price" value="{{$car->price}}">
-                                    <div class="error"></div>
-                                </div>
-    
-                                <div class="col-md-4">
-                                    <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
-                                    <input  type="text" class="form-control" name="link" value="{{$car->link}}">
-                                    <div class="error"></div>
-                                </div>
-    
+
                                 <div class="col-md-4">
                                     <label for="name_color" class="form-label">Name Text Color</label>
                                     <input type="text" class="form-control colorpicker" name="name_color" id="name_color" value="{{$car->name_color}}">
                                 </div>
-    
-                                <div class="mb-3 col-md-4">
-                                    <label for="price_color" class="form-label">Price Text Color</label>
-                                    <input type="text" class="form-control colorpicker" name="price_color" id="price_color" value="{{$car->price_color}}">
-                                </div>
-    
-                               
+
                                 <div class="col-md-4">
                                     @php($fontsize = fontSize())
                                     <label for="name_font_size" class="form-label">Name Text Font Size</label>
@@ -87,6 +69,28 @@
                                             <option value="{{$i}}px" {{$car->name_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                    </select>
+                                </div>
+
+                                <div class="mb-3 col-md-4">
+                                    @php($fontfamily = fontFamily())
+                                    <label for="name_font_family" class="form-label">Name Text Font Family</label>
+                                    <select class="form-control select2" name="name_font_family">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$car->name_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
+                                   </select>
+                                </div>
+    
+                                <div class="mb-3 col-md-4">
+                                    <label for="price" class="form-label">Price<span class="text-danger">*</span></label>
+                                    <input  type="text" class="form-control" name="price" value="{{$car->price}}">
+                                    <div class="error"></div>
+                                </div>
+
+                                <div class="mb-3 col-md-4">
+                                    <label for="price_color" class="form-label">Price Text Color</label>
+                                    <input type="text" class="form-control colorpicker" name="price_color" id="price_color" value="{{$car->price_color}}">
                                 </div>
     
                                 <div class="col-md-4">
@@ -100,17 +104,6 @@
                                 </div>
     
                                 <div class="mb-3 col-md-4">
-                                    @php($fontfamily = fontFamily())
-                                    <label for="name_font_family" class="form-label">Name Text Font Family</label>
-                                    <select class="form-control select2" name="name_font_family">
-                                        <option selected="selected" disabled="disabled">Select</option>
-                                        @foreach($fontfamily as $family)
-                                            <option value="{{$family['key']}}" {{$car->name_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
-                                        @endforeach
-                                   </select>
-                                </div>
-    
-                                <div class="col-md-4">
                                     <label for="price_font_family" class="form-label">Price Text Font Family</label>
                                     <select class="form-control select2" name="price_font_family">
                                         <option selected="selected" disabled="disabled">Select</option>
@@ -119,6 +112,13 @@
                                         @endforeach
                                    </select>
                                 </div>
+    
+                                <div class="col-md-4">
+                                    <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
+                                    <input  type="text" class="form-control" name="link" value="{{$car->link}}">
+                                    <div class="error"></div>
+                                </div>
+
                             </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary submit">Submit</button>

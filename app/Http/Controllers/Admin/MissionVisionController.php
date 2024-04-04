@@ -24,6 +24,8 @@ class MissionVisionController extends Controller
             }else {
                 return redirect('dashboard')->with('message', 'You have not permission to access this page!');
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -40,6 +42,8 @@ class MissionVisionController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -85,6 +89,8 @@ class MissionVisionController extends Controller
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
+        } else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
@@ -150,6 +156,8 @@ class MissionVisionController extends Controller
                 $mission_vision = Mission_vision::find($id);
                 $return_data['record'] = $mission_vision;
                 return view("admin.mission_vision.form",array_merge($return_data));
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -201,6 +209,8 @@ class MissionVisionController extends Controller
 
                 return redirect()->route('mission_vision')->with('success','Mission Vision update successfully.');
     
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -229,6 +239,8 @@ class MissionVisionController extends Controller
                 {
                     return redirect()->route('mission_vision')->with('message', 'Mission Vision deleted successfully');
                 }
+            } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
