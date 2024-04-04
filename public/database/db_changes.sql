@@ -129,3 +129,5 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 
 -- Disha : 03-04-2024 2:26 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Awards', NULL, NULL, NULL);
+
+-- Disha :

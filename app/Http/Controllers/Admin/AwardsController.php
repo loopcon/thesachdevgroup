@@ -29,17 +29,25 @@ class AwardsController extends Controller
         }
     }
 
-    public function awardCreate(Request $request)
+    public function ajaxAwardHtml(request $request)
     {
         $has_permission = hasPermission('Awards');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
-                $return_data = array();
-                $return_data['site_title'] = trans('Award Create');
-                $return_data['brand'] = Brand::select('id', 'name')->get();
-                return view("admin.award.form",array_merge($return_data));
+                if($request->ajax()){
+                    $id = $request->id;
+                    $id = $id ? decrypt($id) : NULL;
+                    $record = $id ? Awards::find($id) : NULL;
+                    $brand = Brand::select('id', 'name')->get();
+                    $html = view('admin.award.ajax_form', array('record' => $record, 'brand' => $brand))->render();
+                    $return = array();
+                    $return['html'] = $html;
+                    echo json_encode($return);
+                } else {
+                    return redirect('dashboard');
+                }
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
@@ -101,7 +109,7 @@ class AwardsController extends Controller
                         if($has_permission->full_permission == 1)
                         {
                         $html .= "<span class='text-nowrap'>";
-                        $html .= "<a href='".url('award-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                        $html .= "<a href='javascript:void(0);' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
                         $html .= "<a href='javascript:void(0);' data-href='".route('award-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                         $html .= "</span>";
                         }
@@ -112,26 +120,6 @@ class AwardsController extends Controller
                 ->make(true);
         } else {
             return redirect()->back()->with('message','something went wrong');
-        }
-    }
-
-    public function awardEdit(Request $request,$id)
-    {
-        $has_permission = hasPermission('Awards');
-        if(isset($has_permission) && $has_permission)
-        {
-            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-            {
-                $id = decrypt($id);
-                $return_data = array();
-                $return_data['site_title'] = trans('Award Edit');
-                $award = Awards::find($id);
-                $return_data['record'] = $award;
-                $return_data['brand'] = Brand::select('id', 'name')->get();
-                return view("admin.award.form",array_merge($return_data));
-            }else {
-                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
-            }
         }
     }
 
@@ -201,34 +189,4 @@ class AwardsController extends Controller
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
-
-    // public function ajaxEditHtml(request $request)
-    // {
-    //     // $roles = Session::get('roles');
-    //     // if(in_array(Constant::PRICELIST_FULL_ACCESS, $roles)){
-    //         if($request->ajax()){
-    //             $id = $request->id;
-    //             $id = $id ? decrypt($id) : NULL;
-    //             $record = $id ? Award::find($id) : NULL;
-    //             // if(empty($record)){
-    //                 // $favorite = Favorites::select('id', 'company_id')->where('id', $request->favorite_id)->first();
-    //                 // $company_id = isset($favorite->company_id) ? $favorite->company_id : NULL;
-    //             // } else {
-    //             //     $company_id = $record->company_id;
-    //             // }
-    //             $brand = Brand::select('id', 'name')->get();
-    //             // $price_list = PriceList::select('id', 'price_list_title')->where('company_id', $company_id)->get();
-    //             // $article_no = PriceListArticle::select('id', 'article_number','description')->where('company_id', $company_id)->get();
-    //             $html = view('admin.award.form', array('record' => $record, 'brand' =>$brand))->render();
-    //             $return = array();
-                
-    //             $return['html'] = $html;
-    //             echo json_encode($return);
-    //         } else {
-    //             return redirect('dashboard');
-    //         }
-    //     // } else {
-    //     //     return redirect('backend/dashboard')->with('error', trans('You have not permission to access this page!'));
-    //     // }
-    // }
 }

@@ -33,7 +33,7 @@
                                     @endforeach
                                 </select>
                                 <div id="error"></div>
-                                @if ($errors->has('service_center_id')) <div class="text-danger">{{ $errors->first('service_center_id') }}</div>@endif
+                                @if ($errors->has('service_id')) <div class="text-danger">{{ $errors->first('service_id') }}</div>@endif
                             </div>
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Name<span class="text-danger">*</span></label>
@@ -294,6 +294,9 @@
                 'name': {
                     required: true,
                 },
+                'service_id': {
+                    required: true,
+                },
                 'address': {
                     required: true,
                 },
@@ -309,6 +312,9 @@
             messages: {
                 'name': {
                     required: "Name is required",
+                },
+                'service_id': {
+                    required: "Service is required",
                 },
                 'address': {
                     required: "Address is required",

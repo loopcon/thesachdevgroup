@@ -230,12 +230,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     //awards
     Route::get('awards', [\App\Http\Controllers\Admin\AwardsController::class, 'awardList'])->name('awards');
-    Route::get('award-create', [\App\Http\Controllers\Admin\AwardsController::class, 'awardCreate'])->name('award-create');
+    // Route::get('award-create', [\App\Http\Controllers\Admin\AwardsController::class, 'awardCreate'])->name('award-create');
     Route::post('award-store', [\App\Http\Controllers\Admin\AwardsController::class, 'awardStore'])->name('award-store');
-    Route::get('award-edit/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardEdit'])->name('award-edit');
+    // Route::get('award-edit/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardEdit'])->name('award-edit');
     Route::post('award-update/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardUpdate'])->name('award-update');
     Route::get('award-delete/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDestroy'])->name('award-delete');
-    Route::get('award-datatable', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDatatable'])->name('award-datatable');
+    Route::post('award-datatable', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDatatable'])->name('award-datatable');
+
+    Route::post('ajax-award-html',[App\Http\Controllers\Admin\AwardsController::class, 'ajaxAwardHtml'])->name('ajax-award-html');
 
     // Route::post('awardhtml-create', [\App\Http\Controllers\Admin\AwardsController::class, 'ajaxEditHtml'])->name('awardhtml-create');
 });
