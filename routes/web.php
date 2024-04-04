@@ -227,4 +227,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('page-update/{id}', [\App\Http\Controllers\Admin\PageController::class, 'pageUpdate'])->name('page-update');
     Route::get('page-delete/{id}', [\App\Http\Controllers\Admin\PageController::class, 'pageDestroy'])->name('page-delete');
     Route::get('page-datatable', [\App\Http\Controllers\Admin\PageController::class, 'pageDatatable'])->name('page-datatable');
+
+    //awards
+    Route::get('awards', [\App\Http\Controllers\Admin\AwardsController::class, 'awardList'])->name('awards');
+    Route::get('award-create', [\App\Http\Controllers\Admin\AwardsController::class, 'awardCreate'])->name('award-create');
+    Route::post('award-store', [\App\Http\Controllers\Admin\AwardsController::class, 'awardStore'])->name('award-store');
+    Route::get('award-edit/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardEdit'])->name('award-edit');
+    Route::post('award-update/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardUpdate'])->name('award-update');
+    Route::get('award-delete/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDestroy'])->name('award-delete');
+    Route::get('award-datatable', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDatatable'])->name('award-datatable');
+
+    // Route::post('awardhtml-create', [\App\Http\Controllers\Admin\AwardsController::class, 'ajaxEditHtml'])->name('awardhtml-create');
 });

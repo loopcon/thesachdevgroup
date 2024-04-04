@@ -210,7 +210,7 @@
                         @endif
                     @endif
 
-                    @php($has_permission = hasPermission('Showroom Model'))
+                   <?php /* @php($has_permission = hasPermission('Showroom Model'))
                     @if(isset($has_permission) && $has_permission)
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                         <li class="nav-item">
@@ -220,7 +220,7 @@
                             </a>
                         </li>
                         @endif
-                    @endif
+                    @endif */ ?>
                 </ul>
             </li>
         @endif
@@ -284,6 +284,18 @@
                     @endif
                 </ul>
             </li>
+        @endif
+
+        @php($has_permission = hasPermission('Awards'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item"> 
+                    <a href="{{url('awards')}}" class="nav-link">
+                    <i class="fa fa-award nav-icon"></i>
+                        <p>Awards</p>
+                    </a>
+                </li>
+            @endif
         @endif
 
         @php($has_header_menu_permission = hasPermission('Header Menu'))

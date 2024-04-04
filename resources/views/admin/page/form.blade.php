@@ -21,7 +21,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
+                                <label for="name" class="form-label">Page Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
