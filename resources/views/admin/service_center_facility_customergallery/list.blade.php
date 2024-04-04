@@ -52,7 +52,6 @@
 @endsection
 @section('javascript')
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
@@ -107,7 +106,7 @@
                 $('#form_modal').modal('show');
                 $('#service_center_id').select2({width:'100%'});
 
-                $('.service-center-facility-gallery-form').validate({
+                $('#form-detail form').validate({
                     rules: {
                         service_center_id: {
                             required: true
@@ -129,6 +128,10 @@
                         customer_gallery_image: {
                             extension: "Please upload a valid image file (jpg, jpeg, png, webp)"
                         }
+                    },
+                    submitHandler: function(form) {
+                        $(form).find('.submit').prop("disabled", true);
+                        form.submit();
                     }
                 });
             }

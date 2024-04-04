@@ -6,7 +6,7 @@
     @csrf
     <div class="modal-body m-3" id="form-detail">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 adm-brand-errorbox">
                 <label for="service_center_id" class="form-label">Service Center<span class="text-danger">*</span></label>
                 <select class="form-control select2" name="service_center_id" id="service_center_id">
                     <option value="">-- Select Service Center --</option>
@@ -17,8 +17,8 @@
                 @if ($errors->has('service_center_id')) <div class="text-danger">{{ $errors->first('service_center_id') }}</div>@endif
             </div>
 
-            <div class="col-12 mt-3">
-                <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+            <div class="col-12">
+                <label for="facility_image" class="form-label">Facility Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
                 @if(isset($record->facility_image) && $record->facility_image)
                     <img src="{{url('public/uploads/service_center_facility_image/'.$record->facility_image)}}" width="100" style="margin-bottom: 10px; margin-left:5px;">
                 @endif  
@@ -28,7 +28,7 @@
             </div>
 
             <div class="col-12 mt-3">
-                <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                <label for="customer_gallery_image" class="form-label">Customer Gallery Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
                 @if(isset($record->customer_gallery_image) && $record->customer_gallery_image)
                     <img src="{{url('public/uploads/service_center_customer_gallery_image/'.$record->customer_gallery_image)}}" width="100" style="margin-bottom: 10px; margin-left:5px;">
                 @endif  
