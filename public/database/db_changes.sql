@@ -130,4 +130,23 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 -- Disha : 03-04-2024 2:26 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Awards', NULL, NULL, NULL);
 
--- Disha :
+-- Disha : 04-04-2024 1:50 PM
+--
+-- Table structure for table `award_and_recognition`
+--
+
+CREATE TABLE `award_and_recognition` (
+  `id` int(11) NOT NULL,
+  `brand_id` int(11) DEFAULT NULL COMMENT '`id` of `brands`',
+  `image` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `award_and_recognition`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `award_and_recognition`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

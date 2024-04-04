@@ -185,9 +185,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     //service center facility and customer gallery
     Route::get('service-center-facility-customergallery', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryList'])->name('service-center-facility-customergallery');
-    Route::get('service-center-facility-customergallery-create', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryCreate'])->name('service-center-facility-customergallery-create');
+    Route::post('service-center-facility-customergallery-html', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'ajaxaServiceCenterFacilityCustomerGalleryHtml'])->name('service-center-facility-customergallery-html');
     Route::post('service-center-facility-customergallery-store', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryStore'])->name('service-center-facility-customergallery-store');
-    Route::get('service-center-facility-customergallery-edit/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryEdit'])->name('service-center-facility-customergallery-edit');
     Route::post('service-center-facility-customergallery-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryUpdate'])->name('service-center-facility-customergallery-update');
     Route::get('service-center-facility-customergallery-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDestroy'])->name('service-center-facility-customergallery-delete');
     Route::get('service-center-facility-customergallery-datatable', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDatatable'])->name('service-center-facility-customergallery-datatable');
@@ -230,14 +229,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //awards
     Route::get('awards', [\App\Http\Controllers\Admin\AwardsController::class, 'awardList'])->name('awards');
-    // Route::get('award-create', [\App\Http\Controllers\Admin\AwardsController::class, 'awardCreate'])->name('award-create');
     Route::post('award-store', [\App\Http\Controllers\Admin\AwardsController::class, 'awardStore'])->name('award-store');
-    // Route::get('award-edit/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardEdit'])->name('award-edit');
     Route::post('award-update/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardUpdate'])->name('award-update');
     Route::get('award-delete/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDestroy'])->name('award-delete');
     Route::post('award-datatable', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDatatable'])->name('award-datatable');
-
     Route::post('ajax-award-html',[App\Http\Controllers\Admin\AwardsController::class, 'ajaxAwardHtml'])->name('ajax-award-html');
-
-    // Route::post('awardhtml-create', [\App\Http\Controllers\Admin\AwardsController::class, 'ajaxEditHtml'])->name('awardhtml-create');
 });

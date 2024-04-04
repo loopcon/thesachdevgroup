@@ -28,18 +28,25 @@ class ServiceCenterFacilityCustomerGalleryController extends Controller
         }
     }
 
-    public function serviceCenterFacilityCustomerGalleryCreate(Request $request)
+    public function ajaxaServiceCenterFacilityCustomerGalleryHtml(request $request)
     {
         $has_permission = hasPermission('Service Center Facility Customer Gallery');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
-                $return_data = array();
-                $return_data['site_title'] = trans('Service Center Facility Customer Gallery Create');
-                $return_data['service_center'] = ServiceCenter::select('id', 'name')->get();
-
-                return view("admin.service_center_facility_customergallery.form",array_merge($return_data));
+                if($request->ajax()){
+                    $id = $request->id;
+                    $id = $id ? decrypt($id) : NULL;
+                    $record = $id ? ServiceCenterFacilityCustomerGallery::find($id) : NULL;
+                    $service_center = ServiceCenter::select('id', 'name')->get();
+                    $html = view('admin.service_center_facility_customergallery.ajax_form', array('record' => $record, 'service_center' => $service_center))->render();
+                    $return = array();
+                    $return['html'] = $html;
+                    echo json_encode($return);
+                } else {
+                    return redirect('dashboard');
+                }
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
@@ -113,7 +120,7 @@ class ServiceCenterFacilityCustomerGalleryController extends Controller
                         if($has_permission->full_permission == 1)
                         {
                         $html .= "<span class='text-nowrap'>";
-                        $html .= "<a href='".url('service-center-facility-customergallery-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                        $html .= "<a href='javascript:void(0);' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
                         $html .= "<a href='javascript:void(0);' data-href='".route('service-center-facility-customergallery-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                         $html .= "</span>";
                         }
@@ -124,26 +131,6 @@ class ServiceCenterFacilityCustomerGalleryController extends Controller
                 ->make(true);
         } else {
             return redirect()->back()->with('message','something went wrong');
-        }
-    }
-
-    public function serviceCenterFacilityCustomerGalleryEdit($id)
-    {
-        $has_permission = hasPermission('Service Center Facility Customer Gallery');
-        if(isset($has_permission) && $has_permission)
-        {
-            if($has_permission->full_permission == 1)
-            {
-                $return_data = array();
-                $id = decrypt($id);
-                $return_data['site_title'] = trans('Service Center Facility Customer Gallery Edit');
-                $service_center_facility_gallery = ServiceCenterFacilityCustomerGallery::find($id);
-                $return_data['record'] = $service_center_facility_gallery;
-                $return_data['service_center'] = ServiceCenter::select('id', 'name')->get();
-                return view("admin.service_center_facility_customergallery.form",array_merge($return_data));
-            }
-        }else {
-            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 

@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h5 class="modal-title"></h5>
+    <h5 class="modal-title">{{isset($record->id) && $record->id ? 'Award Edit' : 'Award Create'}}</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
 </div>
 <form action="@if(isset($record->id)) {{ route('award-update', array('id' => encrypt($record->id))) }} @else{{ route('award-store') }} @endif" method="POST" class="award-form" enctype="multipart/form-data">

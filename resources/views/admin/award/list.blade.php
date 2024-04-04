@@ -110,6 +110,29 @@
                 $('#form-detail').html(result.html);
                 $('#form_modal').modal('show');
                 $('#brand_id').select2({width:'100%'});
+
+            $(".award-form").validate({
+                rules: {
+                    'brand_id': {
+                        required: true,
+                    },
+                    'image': {
+                        extension: "jpg,jpeg,png,webp",
+                    },
+                },
+                messages: {
+                    'brand_id': {
+                        required: "Brand is required",
+                    },
+                    'image': {
+                        extension: "Image must be jpg,jpeg,png or webp",
+                    },
+                },
+                submitHandler: function(form) {
+                    $(form).find('.submit').prop("disabled", true);
+                    form.submit();
+                }
+            });
             }
         });
     }
