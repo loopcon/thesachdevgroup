@@ -25,6 +25,17 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
+                                <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="business_id" id="business_id">
+                                    <option value="">-- Select Business--</option>
+                                    @foreach($business as $value)
+                                        <option value="{{$value->id}}" @if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}} @endif>{{$value->title}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 adm-brand-errorbox">
                                 <label for="service_id" class="form-label">Service<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="service_id" id="service_id">
                                     <option value="">-- Select Service --</option>

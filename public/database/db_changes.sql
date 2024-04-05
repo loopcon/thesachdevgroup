@@ -187,3 +187,6 @@ ALTER TABLE `our_business`
 
 ALTER TABLE `our_business`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `service` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`' AFTER `service_center_id`;
+ALTER TABLE `service_center` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`' AFTER `service_id`;

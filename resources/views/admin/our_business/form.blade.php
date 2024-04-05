@@ -55,7 +55,7 @@
                                 <label for="title_font_color" class="form-label">Title Font Color</label>
                                 <input type="text" id="title_font_color" class="form-control colorpicker" name="title_font_color" value="{{isset($record->title_font_color) ? $record->title_font_color : old('title_font_color')}}">
                             </div>
-
+ 
                             <div class="col-md-4">
                                 <label for="title_font_size" class="form-label">Title Font Size</label>
                                 <select class="form-control select2" name="title_font_size">
