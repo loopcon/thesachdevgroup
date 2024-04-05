@@ -34,8 +34,6 @@
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Name Font Color</label>
                                 <input type="text" id="name_font_color" class="form-control colorpicker" name="name_font_color" value="{{isset($record->name_font_color) ? $record->name_font_color : old('name_font_color')}}">
-                                @if ($errors->has('name_font_color')) <div class="text-danger">{{ $errors->first('name_font_color') }}</div>@endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4 mt-2">

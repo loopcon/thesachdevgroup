@@ -24,7 +24,7 @@
                     <form action="@if(isset($record->id)) {{ route('service-center-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-store') }} @endif" method="POST" class="service-center-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 adm-brand-errorbox">
                                 <label for="service_id" class="form-label">Service<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="service_id" id="service_id">
                                     <option value="">-- Select Service --</option>
@@ -35,6 +35,7 @@
                                 <div id="error"></div>
                                 @if ($errors->has('service_id')) <div class="text-danger">{{ $errors->first('service_id') }}</div>@endif
                             </div>
+
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
@@ -45,7 +46,6 @@
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Name Color</label>
                                 <input type="text" id="name_color" class="form-control colorpicker" name="name_color" value="{{isset($record->name_color) ? $record->name_color : old('name_color')}}">
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -290,7 +290,7 @@
                                 @if ($errors->has('why_choose_image')) <div class="text-danger">{{ $errors->first('why_choose_image') }}</div>@endif
                                 <div class="error"></div>
                             </div>
-                            
+
                             <div class="col-md-12 mb-2">
                                 <label for="why_choose_description" class="form-label">Why Choose Description</label>
                                 <textarea class="ckeditor form-control" value="{{isset($record->why_choose_description) ? $record->why_choose_description : old('why_choose_description')}}" name="why_choose_description" id="why_choose_description"></textarea>
@@ -314,7 +314,7 @@
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
-        $(".service_center_form").validate({
+        $(".service-center-form").validate({
             rules: {
                 'name': {
                     required: true,
