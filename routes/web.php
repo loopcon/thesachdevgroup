@@ -234,4 +234,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('award-delete/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDestroy'])->name('award-delete');
     Route::post('award-datatable', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDatatable'])->name('award-datatable');
     Route::post('ajax-award-html',[App\Http\Controllers\Admin\AwardsController::class, 'ajaxAwardHtml'])->name('ajax-award-html');
+
+    //our business
+    Route::get('our-business', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessList'])->name('our-business');
+    Route::get('our-business-create', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessCreate'])->name('our-business-create');
+    Route::post('our-business-store', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessStore'])->name('our-business-store');
+    Route::get('our-business-edit/{id}', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessEdit'])->name('our-business-edit');
+    Route::post('our-business-update/{id}', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessUpdate'])->name('our-business-update');
+    Route::get('our-business-delete/{id}', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessDestroy'])->name('our-business-delete');
+    Route::get('our-business-datatable', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessDatatable'])->name('our-business-datatable');
 });

@@ -154,3 +154,6 @@ ALTER TABLE `award_and_recognition`
 -- Disha : 04-04-2024 04:17 PM
 ALTER TABLE `service` ADD `slug` VARCHAR(255) NULL DEFAULT NULL AFTER `service_center_id`;
 ALTER TABLE `service_center` ADD `why_choose_title` VARCHAR(255) NULL DEFAULT NULL AFTER `email_font_color`, ADD `why_choose_image` VARCHAR(255) NULL DEFAULT NULL AFTER `why_choose_title`, ADD `why_choose_description` TEXT NULL DEFAULT NULL AFTER `why_choose_image`;
+
+-- Disha : 05-04-2024 12:47 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Our Business', NULL, NULL, NULL);

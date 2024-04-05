@@ -105,19 +105,29 @@
                 </li>
             @endif
 
-        @php($has_permission = hasPermission('Testimonials'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                <li class="nav-item"> 
-                    <a href="{{url('testimonials_index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-address-card"></i>
-                        <p>Testimonials</p>
-                    </a>
-                </li>
+            @php($has_permission = hasPermission('Our Business'))
+            @if(isset($has_permission) && $has_permission)
+                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                    <li class="nav-item"> 
+                        <a href="{{url('our-business')}}" class="nav-link">
+                        <i class="nav-icon fa fa-briefcase"></i>
+                            <p>Our Business</p>
+                        </a>
+                    </li>
+                @endif
             @endif
-        @endif
 
-
+            @php($has_permission = hasPermission('Testimonials'))
+            @if(isset($has_permission) && $has_permission)
+                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                    <li class="nav-item"> 
+                        <a href="{{url('testimonials_index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-address-card"></i>
+                            <p>Testimonials</p>
+                        </a>
+                    </li>
+                @endif
+            @endif
 
         @php($has_permission = hasPermission('Setting'))
         @if(isset($has_permission) && $has_permission)
