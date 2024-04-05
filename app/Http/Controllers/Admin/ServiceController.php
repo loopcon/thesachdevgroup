@@ -63,7 +63,7 @@ class ServiceController extends Controller
                 {
                     $service->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
                 }
-
+                $service->slug = $request->name ? slugify($request->name) : NULL;
                 if($request->hasFile('icon')) {
                     $icon = fileUpload($request, 'icon', 'uploads/service');
                     $service->icon = $icon;
@@ -161,6 +161,7 @@ class ServiceController extends Controller
                     $service->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
                 }
 
+                $service->slug = $request->name ? slugify($request->name) : NULL;
                 if($request->hasFile('icon')) {
                     $oldimage = $service->icon;
                     if($oldimage)

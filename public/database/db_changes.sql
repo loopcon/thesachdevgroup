@@ -150,3 +150,7 @@ ALTER TABLE `award_and_recognition`
 
 ALTER TABLE `award_and_recognition`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 04-04-2024 04:17 PM
+ALTER TABLE `service` ADD `slug` VARCHAR(255) NULL DEFAULT NULL AFTER `service_center_id`;
+ALTER TABLE `service_center` ADD `why_choose_title` VARCHAR(255) NULL DEFAULT NULL AFTER `email_font_color`, ADD `why_choose_image` VARCHAR(255) NULL DEFAULT NULL AFTER `why_choose_title`, ADD `why_choose_description` TEXT NULL DEFAULT NULL AFTER `why_choose_image`;

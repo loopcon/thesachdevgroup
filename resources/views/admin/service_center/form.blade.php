@@ -270,6 +270,31 @@
                                 @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
                                 <div class="error"></div>
                             </div>
+
+                            <div class="col-12">
+                                <h5>Why Choose Section</h5>
+                                <hr>
+                            </div>
+
+                            <div class="col-md-6 mb-2">
+                                <label for="why_choose_title" class="form-label">Why Choose Title</label>
+                                <input type="text" class="form-control" value="{{isset($record->why_choose_title) ? $record->why_choose_title : old('why_choose_title')}}" name="why_choose_title" id="why_choose_title">
+                            </div>
+
+                            <div class="col-md-6 mb-2">
+                                <label for="why_choose_image" class="form-label">Why Choose Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                @if(isset($record->why_choose_image) && $record->why_choose_image)
+                                    <img src="{{url('public/uploads/why_choose_image/'.$record->why_choose_image)}}" width="100">
+                                @endif  
+                                <input type="file" id="why_choose_image" class="form-control" name="why_choose_image" value="">
+                                @if ($errors->has('why_choose_image')) <div class="text-danger">{{ $errors->first('why_choose_image') }}</div>@endif
+                                <div class="error"></div>
+                            </div>
+                            
+                            <div class="col-md-12 mb-2">
+                                <label for="why_choose_description" class="form-label">Why Choose Description</label>
+                                <textarea class="ckeditor form-control" value="{{isset($record->why_choose_description) ? $record->why_choose_description : old('why_choose_description')}}" name="why_choose_description" id="why_choose_description"></textarea>
+                            </div>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>

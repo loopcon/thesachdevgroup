@@ -87,21 +87,6 @@
                         @endif
                         @endif
 
-                        @php($has_permission = hasPermission('Faqs'))
-                            @if(isset($has_permission) && $has_permission)
-                                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                                <li class="nav-item"> 
-
-                                <a href="{{url('faq')}}" class="nav-link">
-                                    <i class="nav-icon fas fa-tasks"></i> 
-                                    <p>
-                                    Faqs
-                                    </p>
-                                </a>
-                            </li>
-                            @endif
-                        @endif
-
                         @php($has_permission = hasPermission('Pages'))
                             @if(isset($has_permission) && $has_permission)
                                 @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -321,6 +306,30 @@
                         <p>
                         Footer Menu
                         </p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
+        @php($has_permission = hasPermission('Pages'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item"> 
+                    <a href="{{url('pages')}}" class="nav-link">
+                    <i class="fa fa-circle nav-icon"></i>
+                        <p>CMS Pages</p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
+        @php($has_permission = hasPermission('Faqs'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item"> 
+                    <a href="{{url('faq')}}" class="nav-link">
+                    <i class="fa fa-award nav-icon"></i>
+                        <p>Faqs</p>
                     </a>
                 </li>
             @endif

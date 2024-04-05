@@ -10,7 +10,7 @@ class Service extends Model
 {
     use HasFactory,SoftDeletes;
     protected $table = 'service';
-    protected $fields = ['service_center_id', 'icon', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'url'];
+    protected $fields = ['service_center_id', 'icon', 'slug', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'url'];
 
     public function serviceCenterDetail()
     {
