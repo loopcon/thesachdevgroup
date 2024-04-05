@@ -155,12 +155,18 @@ class OurBusinessController extends Controller
                     'banner_image' => 'image|mimes:jpeg,png,jpg,webp',
                 ]);
                 $our_business = OurBusiness::find($id);
-                $fields = array('title', 'slug', 'description', 'page_link', 'url', 'title_font_size', 'title_font_color', 'title_font_family', 'description_font_size', 'description_font_color', 'description_font_family');
+                $fields = array('title', 'slug', 'description', 'page_link', 'title_font_size', 'title_font_color', 'title_font_family', 'description_font_size', 'description_font_color', 'description_font_family');
                 foreach($fields as $field)
                 {
                     $our_business->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
                 }
 
+                if($request->page_link == 0)
+                {
+                    $our_business->url = $request->url;
+                }else{
+                    $our_business->url = NULL;
+                }
                 $our_business->slug = $request->title ? slugify($request->title) : NULL;
                 if($request->hasFile('banner_image')) {
                     $oldimage = $our_business->banner_image;

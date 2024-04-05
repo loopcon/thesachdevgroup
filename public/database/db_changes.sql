@@ -157,3 +157,33 @@ ALTER TABLE `service_center` ADD `why_choose_title` VARCHAR(255) NULL DEFAULT NU
 
 -- Disha : 05-04-2024 12:47 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Our Business', NULL, NULL, NULL);
+
+-- Disha : 05-04-2024 3:50 PM
+--
+-- Table structure for table `our_business`
+--
+
+CREATE TABLE `our_business` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `banner_image` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `page_link` tinyint(1) DEFAULT NULL COMMENT '0=no;1=yes;',
+  `title_font_size` varchar(255) DEFAULT NULL,
+  `title_font_color` varchar(255) DEFAULT NULL,
+  `title_font_family` varchar(255) DEFAULT NULL,
+  `description_font_size` varchar(255) DEFAULT NULL,
+  `description_font_color` varchar(255) DEFAULT NULL,
+  `description_font_family` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `our_business`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `our_business`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
