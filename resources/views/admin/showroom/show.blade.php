@@ -225,7 +225,7 @@
 <script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
 
-    $(document).ready(function () {
+    // $(document).ready(function () {
 
         $(function () {
             var table = $('.data-table').DataTable({
@@ -292,7 +292,7 @@
                 ]
             });
             
-        });
+        // });
       
 
         $(".facility_customer_gallery_form").validate({
@@ -395,7 +395,7 @@
         })
     });
 
-    $(document).ready(function () {
+    // $(document).ready(function () {
         $(".showroom_facility_customer_gallery_edit_form").validate({
             rules: {
                 'facility_image': {
@@ -414,7 +414,7 @@
                 },
             },
         });
-    });
+    // });
 
     $(document).on('click', '.showroom_facility_customer_gallery_delete', function() {
         var href = $(this).data('href');
