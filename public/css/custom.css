@@ -113,3 +113,11 @@
 .adm-header-profile-img{height: 40px;width: 40px;border-radius: 50%;}
 .adm-header-dropdown a{ padding: 0px 10px; }
 .adm-navbar-ulheight{ height: 40px;}
+.our-business-form .form-control{  height: 40px; padding: 4px 8px; }
+.our-business-form .select2-selection {height: 40px !important; padding-left: 8px; }
+.our-business-form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.our-business-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+.our-business-insurance-form .form-control{  height: 40px; padding: 4px 8px; }
+.our-business-insurance-form .select2-selection {height: 40px !important; padding-left: 8px; }
+.our-business-insurance-form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.our-business-insurance-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
