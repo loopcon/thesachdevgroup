@@ -201,3 +201,28 @@ ALTER TABLE `our_business` ADD `why_choose_title` VARCHAR(255) NULL DEFAULT NULL
 ALTER TABLE `our_business` ADD `why_choose_title_color` INT NOT NULL AFTER `why_choose_title`, ADD `why_choose_title_font_size` INT NOT NULL AFTER `why_choose_title_color`, ADD `why_choose_title_font_family` INT NOT NULL AFTER `why_choose_title_font_size`;
 ALTER TABLE `our_business` CHANGE `why_choose_title_color` `why_choose_title_color` VARCHAR(255) NULL DEFAULT NULL, CHANGE `why_choose_title_font_size` `why_choose_title_font_size` VARCHAR(255) NULL DEFAULT NULL, CHANGE `why_choose_title_font_family` `why_choose_title_font_family` VARCHAR(255) NULL DEFAULT NULL;
 ALTER TABLE `our_business` ADD `why_choose_description_color` VARCHAR(255) NULL DEFAULT NULL AFTER `why_choose_description`, ADD `why_choose_description_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `why_choose_description_color`, ADD `why_choose_description_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `why_choose_description_font_size`;
+
+-- Disha : 06-04-2024 1:20 AM
+--
+-- Table structure for table `our_business_insurance`
+--
+
+CREATE TABLE `our_business_insurance` (
+  `id` int(11) NOT NULL,
+  `business_id` int(11) DEFAULT NULL COMMENT '`id` of `our_business`',
+  `name` varchar(255) DEFAULT NULL,
+  `name_font_size` varchar(255) DEFAULT NULL,
+  `name_font_family` varchar(255) DEFAULT NULL,
+  `name_font_color` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `our_business_insurance`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `our_business_insurance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
