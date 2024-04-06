@@ -19,7 +19,7 @@
             </div>
             <div class="card">
                 <div class="col-sm-12  text-end">
-                    <a href="{{ route('countCreate') }}" class="btn btn-primary mt-2 float-right">Add</a>
+                    <a href="{{ route('showroomFacilityCustomerGalleryCreate') }}" class="btn btn-primary mt-2 float-right">Add</a>
                 </div>
                 <div class="card-body">
                     <section class="content">
@@ -27,23 +27,10 @@
                             <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
                                 <thead>
                                     <tr>
-                                        <th style="width:50px;">No</th>
-                                        <th>Icon</th>
-
-                                        <th>Amount</th>
-                
-                                        <th>Amount Color</th>
-                                        <th>Amount Font Size</th>
-                                        <th>Amount Font Family</th>
-
-                                        <th>Name</th>
-
-                                        <th>Name Color</th>
-                                        <th>Name Font Size</th>
-                                        <th>Name Font Family</th>
-
-                                        <th>Background Color</th>
-
+                                        <th style="width:45px;">No</th>
+                                        <th>Showroom</th>
+                                        <th>Facility Image</th>
+                                        <th>Customer Gallery Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -65,24 +52,12 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            scrollX: true,
-            ajax: "{{ route('count.index') }}",
+            ajax: "{{ route('showroom_facility_customer_gallery.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
-                {data: 'icon', name: 'icon'},
-                {data: 'amount', name: 'amount'},
-               
-                {data: 'amount_color', name: 'amount_color'},
-                {data: 'amount_font_size', name: 'amount_font_size'},
-                {data: 'amount_font_family', name: 'amount_font_family'},
-
-                {data: 'name', name: 'name'},
-
-                {data: 'name_color', name: 'name_color'},
-                {data: 'name_font_size', name: 'name_font_size'},
-                {data: 'name_font_family', name: 'name_font_family'},
-                
-                {data: 'background_color', name: 'background_color'},
+                {data: 'showroom', name: 'showroom'},
+                {data: 'facility_image', name: 'facility_image'},
+                {data: 'customer_gallery_image', name: 'customer_gallery_image'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -94,7 +69,7 @@ $(document).on('click', '.delete', function() {
     var href = $(this).data('href');
     return new swal({
         title: "",
-        text: "{{__('Are you sure? Delete this Count!')}}",
+        text: "{{__('Are you sure? Delete this Mission Vision!')}}",
         showCancelButton: true,
         confirmButtonText: "{{__('Yes, delete it!')}}",
         icon: "warning"
@@ -105,8 +80,7 @@ $(document).on('click', '.delete', function() {
     });
 });
 
-    $(document).ready(function(){
-        $('.dataTables_scrollBody').addClass('adm-table-responsive');
-    });
+
+
 </script>
 @endsection

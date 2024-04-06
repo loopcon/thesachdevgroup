@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "cb02e1d0-3424-429b-9436-02e065264785",
+		"name": "localpreviewlondon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost/privewlondon/api/parentscategories",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "langid",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/privewlondon/api/parentscategories"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/featurecategories",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "langid",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/privewlondon/api/featurecategories"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/featureproducts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "langid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "limit",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/privewlondon/api/featureproducts"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/newproducts/2/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "langid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "limit",
+							"value": "1o",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/privewlondon/api/newproducts"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/productdetails/1/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "langid",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "productid",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost/privewlondon/api/productdetails"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/categoryproducts/2/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/privewlondon/api/categoryproducts?langid=1&catid=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"privewlondon",
+						"api",
+						"categoryproducts"
+					],
+					"query": [
+						{
+							"key": "langid",
+							"value": "1"
+						},
+						{
+							"key": "catid",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/searchproduct?langid=1&catid=all&search=fashion",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"langid\": \"1\",\r\n    \"catid\":\"127\",\r\n    \"search\":\"Infinite\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/privewlondon/api/searchproduct"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/register",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"dp\",\r\n    \"lastname\": \"patel\",\r\n    \"email\":\"patel@gmail.com\",\r\n    \"password\":\"9876543210\",\r\n    \"confirmpassword\":\"9876543210\",\r\n    \"termscondition\": \"1\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/privewlondon/api/register"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"diya@gmail.com\",\r\n    \"password\":\"12345\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/privewlondon/api/login"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/forgot_password",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"diya@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/privewlondon/api/forgot_password"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/change_password",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjEzNTY5OTk1MjQsIm5iZiI6MTM1NzAwMDAwMCwidWlkIjoiIiwiZW1haWwiOiJkcmFzaHRpQGdtYWlsLmNvbSJ9.GYrrGdv2DH3_Hb-wMRQvd9GaVNDP8I221gCMKuGn20c"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"old_password\": \"123456789\",\r\n    \"password\": \"12345678\",\r\n    \"confirm_password\":\"12345678\"\r\n\r\n }  ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/privewlondon/api/change_password"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/view_profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost/privewlondon/api/view_profile"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/privewlondon/api/update_profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"diya@gmail.com\",\r\n    \"slug\":\"diya-guru\",\r\n    \"first_name\":\"diya\",\r\n    \"last_name\":\"guru\",\r\n    \"phone_number\":\"9874561230\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/privewlondon/api/update_profile"
+			},
+			"response": []
+		}
+	]
+}

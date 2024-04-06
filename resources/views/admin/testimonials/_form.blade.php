@@ -61,10 +61,8 @@
                                 </div>
 
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
-                                    @if($testimonial->image == null)
-                                        <img src="{{asset('public/no_image/notImg.png')}}" width="100" style="margin-bottom:10px; margin-left:10px;">
-                                    @else
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    @if(isset($testimonial->image) && isset($testimonial->image))
                                         <img src="{{url('public/testimonials/'.$testimonial->image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input  type="file" class="form-control" name="image">
@@ -146,7 +144,7 @@
 
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Update</button>
-                                <a href="{{ route('testimonials.index') }}" class="btn btn-default">Cancel</a>
+                                <a href="{{ route('testimonials.index') }}" class="btn btn-danger">Cancel</a>
                             </div>
                         </form>
                     @endforeach 
@@ -174,7 +172,7 @@
                     required: "The name field is required.",
                 },
                 image: {
-                    extension: "The image must be an image.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
             },
             errorPlacement: function(error, element) {

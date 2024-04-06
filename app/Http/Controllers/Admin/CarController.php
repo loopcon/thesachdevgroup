@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Car;
+use App\Models\Showroom;
 use DataTables;
 use File;
 
@@ -95,13 +96,7 @@ class CarController extends Controller
   
                     ->editColumn('image', function($car){
   
-                        if($car->image == NULL){
-                            $url= asset('no_image/notImg.png');
-                            $image = '<img src="'.$url.'" border="0" width="100">';
-                            return $image;
-  
-                        }else{
-  
+                        if(isset($car->image) && isset($car->image)){
                             $url= asset('car/'.$car->image);
                             $image = '<img src="'.$url.'" border="0" width="100">';
                             return $image;
@@ -199,19 +194,22 @@ class CarController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $car = Car::findOrFail($id);
+               
+                if (Showroom::whereJsonContains('car_id', $id)->exists()) {
+                    return redirect('car_index')->with('error', trans('Showroom associated with this car exist. Cannot delete car.'));
+                } else {
+                    $image_path = public_path("car/{$car->image}");
 
-                $image_path = public_path("car/{$car->image}");
-
-                if (File::exists($image_path)) {
-                    unlink($image_path);
+                    if (File::exists($image_path)) {
+                        unlink($image_path);
+                    }
+                    $car->delete();
+                    if($car)
+                    {
+                        return redirect()->route('car.index')->with('message', 'Car deleted successfully');
+                    }
                 }
 
-                $car->delete();
-
-                if($car)
-                {
-                    return redirect()->route('car.index')->with('message', 'Car deleted successfully');
-                }
   
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

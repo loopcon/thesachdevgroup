@@ -29,9 +29,12 @@
                         <div class="row">
 
                             <div class="mb-3 col-md-4">
-                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
+                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                
+                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->icon) ? $record->icon : old('old_image')}}">
+                                
                                 @if(isset($record->icon) && $record->icon)
-                                    <img src="{{url('public/mission_vision/'.$record->icon)}}" width="100">
+                                    <img src="{{url('public/mission_vision/'.$record->icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon">
                                 <div class="error"></div>
@@ -48,7 +51,7 @@
                                 <input type="text" class="form-control colorpicker" name="icon_name_color" id="icon_name_color" value="{{isset($record->icon_name_color) ? $record->icon_name_color : old('icon_name_color')}}">
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="mb-3 col-md-4">
                                 @php($fontsize = fontSize())
                                 <label for="icon_name_font_size" class="form-label">Icon Name Text Font Size</label>
                                 <select class="form-control select2" name="icon_name_font_size">
@@ -136,7 +139,7 @@
                             
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
-                            <a href="{{ route('mission_vision') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('mission_vision') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
                 </div>
@@ -153,6 +156,7 @@
         $(".mission_vision_form").validate({
             rules: {
                 'icon': {
+                    required: checkIconImage,
                     extension: "jpg,jpeg,png,webp",
                 },
                 'icon_name': {
@@ -161,7 +165,8 @@
             },
             messages: {
                 'icon': {
-                    extension: "Please enter a value with a valid extension.",
+                    required: "The icon field is required.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
                 'icon_name': {
                     required: "The icon name field is required.",
@@ -175,6 +180,17 @@
                 form.submit();
             }
         });
+
+        function checkIconImage() {
+            var old_image = $('#old_image').val();
+            var icon = $('#icon').val();
+
+            if(old_image != '' || icon != ''){
+                return false;
+            }
+            return true;
+        }
+
     $('.colorpicker').colorpicker();
 
     });

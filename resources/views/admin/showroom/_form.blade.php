@@ -122,6 +122,16 @@
                                 </select>
                                 </div>
 
+
+                                <div class="col-md-4">
+                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    @if(isset($showroom->address_icon) && isset($showroom->address_icon))
+                                        <img src="{{url('public/showrooms_address_icon/'.$showroom->address_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="address_icon" class="form-control" name="address_icon">
+                                    <div id="error"></div>
+                                </div>
+
                                 <div class="col-md-4">
                                     <label for="working_hours" class="form-label">Working Hours<span class="text-danger">*</span></label>
                                     <input  type="text" class="form-control" name="working_hours" value="{{$showroom->working_hours}}">
@@ -151,6 +161,15 @@
                                             <option value="{{$family['key']}}" {{$showroom->working_hours_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                         @endforeach
                                 </select>
+                                </div>
+
+                                <div class="mb-3 col-md-4">
+                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    @if(isset($showroom->working_hours_icon) && isset($showroom->working_hours_icon))
+                                        <img src="{{url('public/showrooms_working_hours_icon/'.$showroom->working_hours_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon">
+                                    <div id="error"></div>
                                 </div>
 
                                 <div class="mb-3 col-md-4">
@@ -186,6 +205,15 @@
                                 </select>
                                 </div>
 
+                                <div class="col-md-4">
+                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    @if(isset($showroom->contact_number_icon) && isset($showroom->contact_number_icon))
+                                        <img src="{{url('public/showrooms_contact_number_icon/'.$showroom->contact_number_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="contact_number_icon" class="form-control" name="contact_number_icon">
+                                    <div id="error"></div>
+                                </div>
+
                                 <div class="mb-3 col-md-4">
                                     <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                     <input type="email" id="email" class="form-control" name="email" value="{{$showroom->email}}">
@@ -219,6 +247,15 @@
                                 </select>
                                 </div>
 
+                                <div class="col-md-4">
+                                    <label for="email_icon" class="form-label">Email Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    @if(isset($showroom->email_icon) && isset($showroom->email_icon))
+                                        <img src="{{url('public/showrooms_email_icon/'.$showroom->email_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="email_icon" class="form-control" name="email_icon">
+                                    <div id="error"></div>
+                                </div>
+
                                 <div class="col-md-12 mt-2 mb-3">
                                     <label for="description" class="form-label">Description</label>
                                     <textarea class="ckeditor form-control" name="description">{{$showroom->description}}</textarea>
@@ -250,73 +287,10 @@
                                         @endforeach
                                     </select>
                                 </div>
-                       
                             </div>
-
-                            <div class="mb-3">
-                                <label>Facilitie Image</label>
-                                @if($facilitie_image == NULL)
-                                    <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                @else
-                                    @foreach ($facilitie_image as $key => $image ) 
-                                        <div class="col-4 offset-1" style="top: 11px;">
-                                            <button type="button" data-id="{{$key}}" class="badge btn-danger facilitie_image_btn">X</button>
-                                        </div>
-                                        <img src="{{url('public/facilitie_image/'.$image)}}" width="100">
-                                    @endforeach
-                                @endif
-                            </div> 
-
-
-                                <table class="table table-bordered" cellspacing="0">
-                                    <tr>
-                                        <th>Facilitie Image</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    <tr class="sub_table">
-                                        <td>
-                                            <input type="file" class="form-control rate" name="facilitie_image[]">
-                                        </td>
-                                        <td>
-                                            <button tabindex="1" type="button" class="btn btn-success add btn-sm" onclick="">+</button>
-                                            <button tabindex="1" type="button" class="btn btn-danger minus btn-sm">-</button>
-                                        </td>
-                                    </tr>
-                                </table>
-                       
-                        <div class="mb-3">
-                            <label>Customer Gallery Image</label>
-                            @if($customer_gallery_images == NULL)
-                                <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                            @else
-                                @foreach ($customer_gallery_images as $key => $customer_gallery_image ) 
-                                    <div class="col-4 offset-1" style="top: 11px;">
-                                        <button type="button" data-id="{{$key}}" class="badge btn-danger customer_gallery_image_btn">X</button>
-                                    </div>
-                                    <img src="{{url('public/customer_gallery_image/'.$customer_gallery_image)}}" width="100">
-                                @endforeach
-                            @endif
-                        </div>
-
-                        <table class="table table-bordered" cellspacing="0">
-                            <tr>
-                                <th>Customer Gallery Image</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr class="customer_gallery_table">
-                                <td>
-                                    <input type="file" class="form-control" name="customer_gallery_image[]">
-                                </td>
-                                <td>
-                                    <button tabindex="1" type="button" class="btn btn-success customer_gallery_add btn-sm" onclick="">+</button>
-                                    <button tabindex="1" type="button" class="btn btn-danger customer_gallery_minus btn-sm">-</button>
-                                </td>
-                            </tr>
-                        </table>
-
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary submit">Submit</button>
-                                <a href="{{ route('showroom.index') }}" class="btn btn-default">Cancel</a>
+                                <a href="{{ route('showroom_list') }}" class="btn btn-danger">Cancel</a>
                             </div>
                         </form>
                     @endforeach 
@@ -373,6 +347,18 @@
                 'email': {
                     required: true,
                 },
+                'address_icon': {
+                    extension: "jpg,jpeg,png,webp",
+                },
+                'working_hours_icon': {
+                    extension: "jpg,jpeg,png,webp",
+                },
+                'contact_number_icon': {
+                    extension: "jpg,jpeg,png,webp",
+                },
+                'email_icon': {
+                    extension: "jpg,jpeg,png,webp",
+                },
             },
             messages: {
                 'name': {
@@ -393,6 +379,18 @@
                 'email': {
                     required: "The email field is required.",
                 },
+                'address_icon': {
+                    extension: "Image must be jpg,jpeg,png or webp.",
+                },
+                'working_hours_icon': {
+                    extension: "Image must be jpg,jpeg,png or webp.",
+                },
+                'contact_number_icon': {
+                    extension: "Image must be jpg,jpeg,png or webp.",
+                },
+                'email_icon': {
+                    extension: "Image must be jpg,jpeg,png or webp.",
+                },
             },
             errorPlacement: function(error, element) {
             if (element.attr("name") == "car_id[]") {
@@ -406,74 +404,6 @@
                 error.insertAfter(element);
             }
         }
-        });
-
-        $('body').on('click' ,".add",function(){
-            var $tr = $(this).closest('.sub_table');
-            var $clone = $tr.clone();
-
-            $clone.find('input').val('');
-            $clone.find('span:nth-child(3)').remove();
-
-            $tr.after($clone);
-            sr_change();
-        });
-
-        $('body').on('click' ,".minus",function(event){
-            if($(".sub_table").length > 1){
-
-                $(this).closest(".sub_table").remove();
-                sr_change();
-            }
-        });
-
-        $('.facilitie_image_btn').on('click',function(){
-            var id = $(this).data('id');
-            $.ajax({
-                url:"{{ route('facilitie_imagedelete') }}",
-                type: "post",
-                data: {
-                    "id": id,
-                    _token:"{{ csrf_token() }}",
-                },
-                success: function(data) {
-                    location.reload();
-                },
-            })
-        });
-
-        $('.customer_gallery_image_btn').on('click',function(){
-            var id = $(this).data('id');
-            $.ajax({
-                url:"{{ route('customer_gallery_imagedelete') }}",
-                type: "post",
-                data: {
-                    "id": id,
-                    _token:"{{ csrf_token() }}",
-                },
-                success: function(data) {
-                    location.reload();
-                },
-            })
-        });
-
-        $('body').on('click' ,".customer_gallery_add",function(){
-            var $tr = $(this).closest('.customer_gallery_table');
-            var $clone = $tr.clone();
-
-            $clone.find('input').val('');
-            $clone.find('span:nth-child(3)').remove();
-
-            $tr.after($clone);
-            sr_change();
-        });
-
-        $('body').on('click' ,".customer_gallery_minus",function(event){
-            if($(".customer_gallery_table").length > 1){
-
-                $(this).closest(".customer_gallery_table").remove();
-                sr_change();
-            }
         });
 
         $('.colorpicker').colorpicker();

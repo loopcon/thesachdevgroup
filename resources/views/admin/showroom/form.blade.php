@@ -116,6 +116,12 @@
                                 </div>
 
                                 <div class="col-md-4">
+                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <input type="file" id="address_icon" class="form-control" name="address_icon">
+                                    <div id="error"></div>
+                                </div>
+
+                                <div class="col-md-4">
                                     <label for="working_hours" class="form-label">Working Hours<span class="text-danger">*</span></label>
                                     <input type="text" id="working_hours" class="form-control" name="working_hours">
                                     <div id="error"></div>
@@ -144,6 +150,12 @@
                                             <option value="{{$family['key']}}">{{$family['value']}}</option>
                                         @endforeach
                                     </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon">
+                                    <div id="error"></div>
                                 </div>
 
                                 <div class="col-md-4">
@@ -177,6 +189,12 @@
                                             <option value="{{$family['key']}}">{{$family['value']}}</option>
                                         @endforeach
                                     </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <input type="file" id="contact_number_icon" class="form-control" name="contact_number_icon">
+                                    <div id="error"></div>
                                 </div>
 
                                 <div class="mb-3 col-md-4">
@@ -213,6 +231,12 @@
                                 </select>
                                 </div>
 
+                                <div class="col-md-4">
+                                    <label for="email_icon" class="form-label">Email Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <input type="file" id="email_icon" class="form-control" name="email_icon">
+                                    <div id="error"></div>
+                                </div>
+
                                 <div class="col-md-12 mt-2 mb-3">
                                     <label for="description" class="form-label">Description</label>
                                     <textarea class="ckeditor form-control" name="description"></textarea>
@@ -244,45 +268,10 @@
                                         @endforeach
                                    </select>
                                 </div>
-
-                       
                             </div>
-
-                        <table class="table table-bordered" cellspacing="0">
-                            <tr>
-                                <th>Facilitie Image</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr class="sub_table">
-                                <td>
-                                    <input type="file" class="form-control" name="facilitie_image[]">
-                                </td>
-                                <td>
-                                    <button tabindex="1" type="button" class="btn btn-success add btn-sm" onclick="">+</button>
-                                    <button tabindex="1" type="button" class="btn btn-danger minus btn-sm">-</button>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <table class="table table-bordered" cellspacing="0">
-                            <tr>
-                                <th>Customer Gallery Image</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr class="customer_gallery_table">
-                                <td>
-                                    <input type="file" class="form-control" name="customer_gallery_image[]">
-                                </td>
-                                <td>
-                                    <button tabindex="1" type="button" class="btn btn-success customer_gallery_add btn-sm" onclick="">+</button>
-                                    <button tabindex="1" type="button" class="btn btn-danger customer_gallery_minus btn-sm">-</button>
-                                </td>
-                            </tr>
-                        </table>
-
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
-                            <a href="{{ route('showroom.index') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('showroom_list') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
                 </div>
@@ -340,10 +329,22 @@
                 'email': {
                     required: true,
                 },
+                'address_icon': {
+                    extension: "jpg,jpeg,png,webp",
+                },
+                'working_hours_icon': {
+                    extension: "jpg,jpeg,png,webp",
+                },
+                'contact_number_icon': {
+                    extension: "jpg,jpeg,png,webp",
+                },
+                'email_icon': {
+                    extension: "jpg,jpeg,png,webp",
+                },
             },
             messages: {
                 'name': {
-                    required: "The name field is required.",
+                    required: "The showroom name field is required.",
                 },
                 'brand_id': {
                     required: "The brand field is required.",
@@ -362,6 +363,18 @@
                 },
                 'email': {
                     required: "The email field is required.",
+                },
+                'address_icon': {
+                    extension: "Image must be jpg,jpeg,png or webp.",
+                },
+                'working_hours_icon': {
+                    extension: "Image must be jpg,jpeg,png or webp.",
+                },
+                'contact_number_icon': {
+                    extension: "Image must be jpg,jpeg,png or webp.",
+                },
+                'email_icon': {
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
             },
             errorPlacement: function(error, element) {
@@ -383,44 +396,6 @@
             submitHandler: function(form) {
                 $(form).find('.submit').prop("disabled", true);
                 form.submit();
-            }
-        });
-
-        $('body').on('click' ,".add",function(){
-            var $tr = $(this).closest('.sub_table');
-            var $clone = $tr.clone();
-
-            $clone.find('input').val('');
-            $clone.find('span:nth-child(3)').remove();
-
-            $tr.after($clone);
-            sr_change();
-        });
-
-        $('body').on('click' ,".minus",function(event){
-            if($(".sub_table").length > 1){
-
-                $(this).closest(".sub_table").remove();
-                sr_change();
-            }
-        });
-
-        $('body').on('click' ,".customer_gallery_add",function(){
-            var $tr = $(this).closest('.customer_gallery_table');
-            var $clone = $tr.clone();
-
-            $clone.find('input').val('');
-            $clone.find('span:nth-child(3)').remove();
-
-            $tr.after($clone);
-            sr_change();
-        });
-
-        $('body').on('click' ,".customer_gallery_minus",function(event){
-            if($(".customer_gallery_table").length > 1){
-
-                $(this).closest(".customer_gallery_table").remove();
-                sr_change();
             }
         });
 

@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <section class="content">
                                 <div class="container-fluid">
-                                    <table class="table table-bordered table-striped header_menu_data_table adm-table-no-wrap">
+                                    <table class="table table-bordered table-striped header_menu_data_table adm-table-no-wrap adm-action-sticky">
                                         <thead>
                                             <tr>
                                                 <th style="width:65px;">No</th>
@@ -79,15 +79,15 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="SocialMediaIconInsertModalLabel">Header Menu Social Media Icon Create</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close Close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            <form action="{{ route('header_menu_social_media_icon_insert') }}" method="POST" class="header_menu_social_media_icon_form" enctype="multipart/form-data">
+                                        <form action="{{ route('header_menu_social_media_icon_insert') }}" method="POST" class="header_menu_social_media_icon_form" enctype="multipart/form-data">
+                                            <div class="modal-body">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
+                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
                                                     <input type="file" id="icon" class="form-control icon" name="icon">
                                                     <div class="error"></div>
                                                 </div>
@@ -97,12 +97,12 @@
                                                     <input type="text" id="link" class="form-control link" name="link">
                                                     <div class="error"></div>
                                                 </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary Close" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary submit">Submit</button>
-                                        </div>
-                                            </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary submit">Submit</button>
+                                                <button type="button" class="btn btn-danger Close" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -114,19 +114,19 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="SocialMediaIconEditModalLabel">Header Menu Social Media Icon Edit</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close Close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            <form action="{{ route('social_media_icon_update') }}" method="POST" class="social_media_icon_edit_form" enctype="multipart/form-data">
+                                        <form action="{{ route('social_media_icon_update') }}" method="POST" class="social_media_icon_edit_form" enctype="multipart/form-data">
+                                            <div class="modal-body">
                                                 @csrf
 
                                                 <input type="hidden" class="id" name="id">
 
                                                 <div class="form-group">
-                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
-                                                    <img src="" width="100" class="image_icon">
+                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                                    <img src="" width="100" class="image_icon" style="margin-bottom: 10px; margin-left: 5px;">
                                                     <input type="file" id="icon" class="form-control icon" name="icon">
                                                     <div class="error"></div>
                                                 </div>
@@ -136,12 +136,12 @@
                                                     <input type="text" id="link" class="form-control link" name="link">
                                                     <div class="error"></div>
                                                 </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary Close" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary submit">Submit</button>
-                                        </div>
-                                            </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="button" class="btn btn-danger Close" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -171,28 +171,6 @@
             @endif
         @endif
 
-                <div class="card-body">
-            <section class="content">
-                <div class="container-fluid">
-                    <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
-                        <thead>
-                            <tr>
-                                <th style="width:65px;">No</th>
-                                <th>Menu</th>
-                                <th>Name</th>
-                                <th>Link</th>
-                                <th>Name Color</th>
-                                <th>Name Font Size</th>
-                                <th>Name Font Family</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </div>
     </div>
 @endsection
 @section('javascript')
@@ -269,7 +247,7 @@ $(document).on('click', '.delete', function() {
             messages: {
                 'icon': {
                     required: "The icon field is required.",
-                    extension: "Please enter a value with a valid extension.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
                 'link': {
                     required: "The link field is required.",
@@ -333,7 +311,7 @@ $(document).on('click', '.delete', function() {
             },
             messages: {
                 'icon': {
-                    extension: "Please enter a value with a valid extension.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
                 'link': {
                     required: "The link field is required.",

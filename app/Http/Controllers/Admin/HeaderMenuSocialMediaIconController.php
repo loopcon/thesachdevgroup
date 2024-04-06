@@ -67,13 +67,7 @@ class HeaderMenuSocialMediaIconController extends Controller
 
             ->editColumn('icon', function($header_menu_social_media_icon){
 
-                if($header_menu_social_media_icon->icon == NULL){
-                    $url= asset('no_image/notImg.png');
-                    $image = '<img src="'.$url.'" border="0" width="100">';
-                    return $image;
-
-                }else{
-
+                if(isset($header_menu_social_media_icon->icon) && isset($header_menu_social_media_icon->icon)){
                     $url= asset('header_menu_social_media_icon/'.$header_menu_social_media_icon->icon);
                     $image = '<img src="'.$url.'" border="0" width="100">';
                     return $image;

@@ -114,13 +114,7 @@ class CountController extends Controller
 
             ->editColumn('icon', function($count){
 
-                if($count->icon == NULL){
-                    $url= asset('no_image/notImg.png');
-                    $image = '<img src="'.$url.'" border="0" width="100">';
-                    return $image;
-
-                }else{
-
+                if(isset($count->icon) && isset($count->icon)){
                     $url= asset('count_icon/'.$count->icon);
                     $image = '<img src="'.$url.'" border="0" width="100">';
                     return $image;

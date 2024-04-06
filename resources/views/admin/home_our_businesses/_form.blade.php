@@ -26,8 +26,10 @@
                             <input type="hidden" value="{{ $home_our_businesse->id }}" class="id" name="id">
                             <div class="row">
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
-                                    <img src="{{url('public/home_our_businesses/'.$home_our_businesse->image)}}" width="100">
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    @if(isset($home_our_businesse->image) && isset($home_our_businesse->image))
+                                        <img src="{{url('public/home_our_businesses/'.$home_our_businesse->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
+                                    @endif
                                     <input type="file" id="image" class="form-control" name="image">
                                 </div>
 
@@ -76,7 +78,7 @@
                             </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary submit">Submit</button>
-                                <a href="{{ route('home_our_businesses.index') }}" class="btn btn-default">Cancel</a>
+                                <a href="{{ route('home_our_businesses.index') }}" class="btn btn-danger">Cancel</a>
                             </div>
 
                         </form>
@@ -98,7 +100,7 @@
             },
             messages: {
                 image: {
-                    extension: "The image must be an image.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
             },
         });

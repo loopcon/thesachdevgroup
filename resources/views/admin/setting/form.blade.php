@@ -31,11 +31,12 @@
 
                             <div class="row">
                               <div class="mb-3 col-md-4">
-                                <label for="logo">Logo<span class="text-danger">*</span></label>
-                                  @if($setting->logo == null)
-                                    <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                  @else
-                                    <img src="{{url('public/logo/'.$setting->logo)}}" width="100">
+                                <label for="logo">Logo<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                
+                                  <input type="hidden" name="old_logo" id="old_logo" value="{{$setting->logo}}">
+                                  
+                                  @if(isset($setting->logo) && isset($setting->logo))
+                                    <img src="{{url('public/logo/'.$setting->logo)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                   @endif
                                 <input type="file" id="logo" class="form-control" name="logo">
                                 <div class="error"></div>
@@ -169,38 +170,40 @@
                               </div>
     
                               <div class="mb-3 col-md-4">
-                                <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
-                                @if($setting->email_icon == null)
-                                  <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                @else
-                                    <img src="{{url('public/email_icon/'.$setting->email_icon)}}" width="100">
+                                <label for="email_icon">Email Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                               
+                                <input type="hidden" name="old_email_icon" id="old_email_icon" value="{{$setting->email_icon}}">
+
+                                @if(isset($setting->email_icon) && isset($setting->email_icon))
+                                  <img src="{{url('public/email_icon/'.$setting->email_icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">  
                                 @endif
                                 <input type="file" id="email_icon" class="form-control" name="email_icon">
                                 <div class="error"></div>
                               </div>
     
                               <div class="mb-3 col-md-4">
-                                <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
-                                @if($setting->call_icon == null)
-                                  <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                @else
-                                    <img src="{{url('public/call_icon/'.$setting->call_icon)}}" width="100">
+                                <label for="call_icon">Call Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                
+                                <input type="hidden" name="old_call_icon" id="old_call_icon" value="{{$setting->call_icon}}">
+                                
+                                @if(isset($setting->call_icon) && isset($setting->call_icon))
+                                  <img src="{{url('public/call_icon/'.$setting->call_icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">  
                                 @endif
                                 <input type="file" id="call_icon" class="form-control" name="call_icon">
                                 <div class="error"></div>
                               </div>
     
                               <div class="col-md-4">
-                                <label for="address_icon">Address Icon<span class="text-danger">*</span></label>
-                                @if($setting->address_icon == null)
-                                  <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                @else
-                                    <img src="{{url('public/address_icon/'.$setting->address_icon)}}" width="100">
+                                <label for="address_icon">Address Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                
+                                <input type="hidden" name="old_address_icon" id="old_address_icon" value="{{$setting->address_icon}}">
+
+                                @if(isset($setting->address_icon) && isset($setting->address_icon))
+                                  <img src="{{url('public/address_icon/'.$setting->address_icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif
                                 <input type="file" id="address_icon" class="form-control" name="address_icon">
                                 <div class="error"></div>
                               </div>
-
 
                               <div class="col-md-4">
                                 <label for="payment_button_text" class="form-label">Payment Button Text</label>
@@ -244,7 +247,7 @@
                 
                         <div class="row">
                           <div class="mb-3 col-md-4">
-                            <label for="logo">Logo<span class="text-danger">*</span></label>
+                            <label for="logo">Logo<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
                             <input type="file" id="logo" class="form-control" name="logo">
                             <div class="error"></div>
                           </div>
@@ -377,19 +380,19 @@
                           </div>
 
                           <div class="col-md-4">
-                            <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
+                            <label for="email_icon">Email Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
                             <input type="file" id="email_icon" class="form-control" name="email_icon">
                             <div class="error"></div>
                           </div>
 
                           <div class="mb-3 col-md-4">
-                            <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
+                            <label for="call_icon">Call Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
                             <input type="file" id="call_icon" class="form-control" name="call_icon">
                             <div class="error"></div>
                           </div>
 
                           <div class="col-md-4">
-                            <label for="address_icon">Address Icon<span class="text-danger">*</span></label>
+                            <label for="address_icon">Address Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
                             <input type="file" id="address_icon" class="form-control" name="address_icon">
                             <div class="error"></div>
                           </div>
@@ -448,6 +451,7 @@
             ignore: [],
             rules: {
                 'logo': {
+                    required: checkLogo,
                     extension: "jpg,jpeg,png,webp",
                 },
                 'email': {
@@ -465,18 +469,22 @@
                     required: true,
                 },
                 'email_icon': {
+                  required: checkEmailIcon, 
                   extension: "jpg,jpeg,png,webp",
                 },
                 'call_icon': {
+                  required: checkCallIcon, 
                   extension: "jpg,jpeg,png,webp",
                 },
                 'address_icon': {
+                  required: checkAddressIcon, 
                   extension: "jpg,jpeg,png,webp",
                 },
             },
             messages: {
                 'logo': {
-                    extension: "Please enter a value with a valid extension.",
+                    required: "The logo field is required.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
                 'email': {
                     required: "The email field is required.",
@@ -491,19 +499,50 @@
                     required: "The address field is required.",
                 },
                 'email_icon': {
-                    extension: "Please enter a value with a valid extension.",
+                    required: "The email icon field is required.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
                 'call_icon': {
-                    extension: "Please enter a value with a valid extension.",
+                    required: "The call icon field is required.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
                 'address_icon': {
-                    extension: "Please enter a value with a valid extension.",
+                    required: "The address icon field is required.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
             },
             errorPlacement: function(error, element) {
                 error.appendTo(element.parent().find('.error'));
             },
         });
+
+        function checkLogo() {
+          var old_logo = $('#old_logo').val();
+          if(old_logo){
+            return false;
+          }
+        }
+        
+        function checkEmailIcon() {
+          var old_email_icon = $('#old_email_icon').val();
+          if(old_email_icon){
+            return false;
+          }
+        }
+
+        function checkCallIcon() {
+          var old_call_icon = $('#old_call_icon').val();
+          if(old_call_icon){
+            return false;
+          }
+        }
+
+        function checkAddressIcon() {
+          var old_address_icon = $('#old_address_icon').val();
+          if(old_address_icon){
+            return false;
+          }
+        }
 
         $('.colorpicker').colorpicker();
     });

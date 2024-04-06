@@ -27,10 +27,8 @@
                            
                             <div class="row">
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
-                                    @if($brand->image == null)
-                                        <img src="{{url('public/no_image/notImg.png')}}" width="100" style="margin-bottom: 10px;">
-                                    @else
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    @if(isset($brand->image) && isset($brand->image))
                                         <img src="{{url('public/brand/'.$brand->image)}}" width="100" style="margin-bottom: 10px;">
                                     @endif
                                     <input type="file" id="image" class="form-control" name="image">
@@ -73,7 +71,7 @@
     
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary submit">Submit</button>
-                                <a href="{{ route('brand.index') }}" class="btn btn-default">Cancel</a>
+                                <a href="{{ route('brand.index') }}" class="btn btn-danger">Cancel</a>
                             </div>
 
                         </form>
@@ -98,7 +96,7 @@
             },
             messages: {
                 'image': {
-                    extension: "The image must be an image.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
                 'name': {
                     required: "The name field is required.",

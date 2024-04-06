@@ -97,10 +97,10 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 -- Disha : 29-03-2024 3:11 PM
 ALTER TABLE `service` ADD `deleted_at` TIMESTAMP NULL DEFAULT NULL AFTER `updated_at`;
 
-<<<<<<< HEAD
+
 -- Drashti : 30-03-2024 1:54 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES ('17', 'Count', NULL, NULL, NULL);
-=======
+
 -- Disha : 30-03-2024 10:58 AM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Service Center Facility Customer Gallery', NULL, NULL, NULL);
 
@@ -123,6 +123,9 @@ ALTER TABLE `users` ADD `deleted_at` TIMESTAMP NULL DEFAULT NULL AFTER `updated_
 
 -- Disha : 02-04-2024 04:04 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Faqs', NULL, NULL, NULL);
+
+-- Drashti : 04-04-2024 01:59 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES ('23', 'Showroom Facility Customer Gallery', NULL, NULL, NULL);
 
 -- Disha : 03-04-2024 10:00 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Pages', NULL, NULL, NULL);

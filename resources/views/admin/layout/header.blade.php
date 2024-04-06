@@ -25,9 +25,11 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
   @php($setting_detail = getSettingDetail())
-    @php($logo = $setting_detail->logo)
-    <link rel="icon" type="image/png" href="{{url('public/logo/'.$logo)}}">
-     
+
+    @if(isset($setting_detail) && isset($setting_detail->logo))
+      <link rel="icon" type="image/png" href="{{url('public/logo/'.$setting_detail->logo)}}">
+    @endif
+
   @yield('css')
   <style>
     .error{
@@ -49,14 +51,15 @@
     </ul>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto adm-navbar-ulheight">
       <!-- Navbar Search -->
 
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-user"></i>
+      <li class="nav-item dropdown adm-header-dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+          {{-- <i class="far fa-user"></i> --}}
+          <img src="" alt="" class="adm-header-profile-img">
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        <div class="dropdown-menu dropdown-menu-right header-dropdown-menu">
           
           <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer">Logout</a>
         </div>

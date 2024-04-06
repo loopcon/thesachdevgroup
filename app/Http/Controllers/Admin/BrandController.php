@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use App\Models\Car;
+use App\Models\Showroom;
 use DataTables;
 use File;
 
@@ -82,14 +84,8 @@ class BrandController extends Controller
                     })
   
                     ->editColumn('image', function($brand){
-  
-                        if($brand->image == NULL){
-                            $url= asset('no_image/notImg.png');
-                            $image = '<img src="'.$url.'" border="0" width="100">';
-                            return $image;
-  
-                        }else{
-  
+
+                        if(isset($brand->image) && isset($brand->image)){
                             $url= asset('brand/'.$brand->image);
                             $image = '<img src="'.$url.'" border="0" width="100">';
                             return $image;
@@ -165,31 +161,42 @@ class BrandController extends Controller
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
-    
-    public function brand_destroy(Request $request,$id)
+
+    public function brand_destroy(Request $request, $id)
     {
         $has_permission = hasPermission('Brand');
-        if(isset($has_permission) && $has_permission)
-        {
-            if($has_permission->full_permission == 1)
-            {
+        
+
+        if(isset($has_permission) && $has_permission) {
+
+            if($has_permission->full_permission == 1) {
+
                 $brand = Brand::findOrFail($id);
 
-                $image_path = public_path("brand/{$brand->image}");
+                if (Car::where('brand_id', $id)->exists() || Showroom::where('brand_id', $id)->exists()) {
+                    return redirect('brand_index')->with('error', trans('Car and showroom associated with this brand exist. Cannot delete brand.'));
+                } else {
+                    $image_path = public_path("brand/{$brand->image}");
 
-                if (File::exists($image_path)) {
-                    unlink($image_path);
-                }
-                $brand->delete();
-                if($brand)
-                {
-                    return redirect()->route('brand.index')->with('message', 'Brand deleted successfully');
+                    if (File::exists($image_path)) {
+                        unlink($image_path);
+                    }
+
+                    $brand->delete();
+
+                    if($brand)
+                    {
+                        return redirect()->route('brand.index')->with('message', 'Car deleted successfully');
+                    }
+
                 }
             } else {
-                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+                return redirect('dashboard')->with('error', trans('You do not have permission to access this page!'));
             }
-        }else {
-            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+
+        } else {
+            return redirect('dashboard')->with('error', trans('You do not have permission to access this page!'));
         }
     }
+
 }

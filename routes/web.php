@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\MissionVisionController;
 use App\Http\Controllers\Admin\HeaderMenuSocialMediaIconController;
 use App\Http\Controllers\Admin\CountController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\ShowroomFacilityCustomerGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,13 +96,11 @@ Route::group(['middleware' => 'auth'], function () {
     //showroom
     Route::get('showroom', [ShowroomController::class, 'showroom'])->name('showroom');
     Route::post('showroom_insert', [ShowroomController::class, 'showroom_insert'])->name('showroom_insert');
-    Route::get('showroom_index', [ShowroomController::class, 'showroom_index'])->name('showroom.index');
+    Route::get('showroom_list', [ShowroomController::class, 'showroom_list'])->name('showroom_list');
+    Route::post('showroom_index', [ShowroomController::class, 'showroom_index'])->name('showroom.index');
     Route::get('showroom_edit/{showroom_edit}/{brand_id}', [ShowroomController::class, 'showroom_edit'])->name('showroom.edit');
     Route::post('showroom_update,{showroom_update}', [ShowroomController::class, 'showroom_update'])->name('showroom_update');
     Route::get('showroom_destroy/{id}', [ShowroomController::class, 'showroom_destroy'])->name('showroom_destroy');
-
-    Route::post('facilitie_imagedelete', [ShowroomController::class, 'DeleteFacilitieImage'])->name('facilitie_imagedelete');
-    Route::post('customer_gallery_imagedelete', [ShowroomController::class, 'DeleteCustomerGallery'])->name('customer_gallery_imagedelete');
 
     Route::get('getcars', [ShowroomController::class, 'getcarname'])->name('getcars');
 
@@ -217,6 +216,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('faq-update/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqUpdate'])->name('faq-update');
     Route::get('faq-delete/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqDestroy'])->name('faq-delete');
     Route::get('faq-datatable', [\App\Http\Controllers\Admin\FaqController::class, 'faqDatatable'])->name('faq-datatable');
+
+
+    //showroom_facility_customer_gallery
+    Route::get('showroom_facility_customer_gallery', [ShowroomFacilityCustomerGalleryController::class, 'showroom_facility_customer_gallery'])->name('showroom_facility_customer_gallery');
+    Route::post('showroom_facility_customer_gallery_insert', [ShowroomFacilityCustomerGalleryController::class, 'showroom_facility_customer_gallery_insert'])->name('showroom_facility_customer_gallery_insert');
+    Route::get('showroom_facility_customer_gallery_index', [ShowroomFacilityCustomerGalleryController::class, 'showroom_facility_customer_gallery_index'])->name('showroom_facility_customer_gallery.index');
+    Route::post('facility_customer_gallery_edit', [ShowroomFacilityCustomerGalleryController::class, 'showroom_facility_customer_gallery_edit'])->name('facility_customer_gallery_edit');
+    Route::post('showroom_facility_customer_gallery_update', [ShowroomFacilityCustomerGalleryController::class, 'showroom_facility_customer_gallery_update'])->name('showroom_facility_customer_gallery_update');
+    Route::get('showroom_facility_customer_gallery_destroy/{id}', [ShowroomFacilityCustomerGalleryController::class, 'showroom_facility_customer_gallery_destroy'])->name('showroom_facility_customer_gallery_destroy');
 
     //pages
     Route::get('pages', [\App\Http\Controllers\Admin\PageController::class, 'pageList'])->name('pages');

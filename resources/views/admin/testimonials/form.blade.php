@@ -59,7 +59,7 @@
 
 
                             <div class="col-md-4">
-                                <label for="name" class="form-label">Image<span class="text-danger">*</span></label>
+                                <label for="name" class="form-label">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
                                 <input type="file" id="image" class="form-control" name="image">
                                 <div class="error"></div>
                             </div>
@@ -135,7 +135,7 @@
 
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
-                            <a href="{{ route('testimonials.index') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('testimonials.index') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
                 </div>
@@ -164,7 +164,7 @@
                 },
                 'image': {
                     required: "The image field is required.",
-                    extension: "The image must be an image.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
             },
             errorPlacement: function(error, element) {

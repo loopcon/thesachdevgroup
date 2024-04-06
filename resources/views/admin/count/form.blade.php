@@ -29,9 +29,12 @@
                         <div class="row">
 
                             <div class="mb-3 col-md-4">
-                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
+                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                
+                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->icon) ? $record->icon : old('old_image')}}">
+                                
                                 @if(isset($record->icon) && $record->icon)
-                                    <img src="{{url('public/count_icon/'.$record->icon)}}" width="100">
+                                    <img src="{{url('public/count_icon/'.$record->icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon">
                                 <div class="error"></div>
@@ -113,7 +116,7 @@
                             
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
-                            <a href="{{ route('count') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('count') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
                 </div>
@@ -130,6 +133,7 @@
         $(".count_form").validate({
             rules: {
                 'icon': {
+                    required: checkIconImage,
                     extension: "jpg,jpeg,png,webp",
                 },
                 'amount': {
@@ -138,7 +142,8 @@
             },
             messages: {
                 'icon': {
-                    extension: "Please enter a value with a valid extension.",
+                    required: "The icon field is required.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
                 'amount': {
                     required: "The amount field is required.",
@@ -152,6 +157,17 @@
                 form.submit();
             }
         });
+
+        function checkIconImage() {
+            var old_image = $('#old_image').val();
+            var icon = $('#icon').val();
+
+            if(old_image != '' || icon != ''){
+                return false;
+            }
+            return true;
+        }
+        
         $('.colorpicker').colorpicker();
 
     });
