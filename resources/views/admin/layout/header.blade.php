@@ -57,7 +57,11 @@
       <li class="nav-item dropdown adm-header-dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
           {{-- <i class="far fa-user"></i> --}}
-          <img src="" alt="" class="adm-header-profile-img">
+          <!-- <img src="" alt="" class="adm-header-profile-img"> -->
+          @php($setting_detail = getSettingDetail())
+          @if(isset($setting_detail) && isset($setting_detail->logo))
+            <img src="{{ url('public/logo/'.$setting_detail->logo) }}" alt="tsgautomotive" class="adm-header-profile-img">
+          @endif
         </a>
         <div class="dropdown-menu dropdown-menu-right header-dropdown-menu">
           
