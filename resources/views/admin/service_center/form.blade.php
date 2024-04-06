@@ -48,14 +48,14 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="title" class="form-label">Name<span class="text-danger">*</span></label>
+                                <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="title" class="form-label">Name Color</label>
+                                <label for="name_color" class="form-label">Name Color</label>
                                 <input type="text" id="name_color" class="form-control colorpicker" name="name_color" value="{{isset($record->name_color) ? $record->name_color : old('name_color')}}">
                             </div>
 
@@ -330,6 +330,9 @@
                 'name': {
                     required: true,
                 },
+                'business_id': {
+                    required: true,
+                },
                 'service_id': {
                     required: true,
                 },
@@ -351,6 +354,9 @@
                 },
                 'service_id': {
                     required: "Service is required",
+                },
+                'business_id': {
+                    required: "Our Business is required",
                 },
                 'address': {
                     required: "Address is required",

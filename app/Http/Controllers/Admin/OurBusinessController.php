@@ -61,7 +61,7 @@ class OurBusinessController extends Controller
                     'banner_image' => 'required|image|mimes:jpeg,png,jpg,webp',
                 ]);
                 $our_business = new OurBusiness();
-                $fields = array('title', 'slug', 'description', 'page_link', 'url', 'title_font_size', 'title_font_color', 'title_font_family', 'description_font_size', 'description_font_color', 'description_font_family');
+                $fields = array('title', 'slug', 'description', 'page_link', 'url', 'title_font_size', 'title_font_color', 'title_font_family', 'description_font_size', 'description_font_color', 'description_font_family', 'why_choose_title', 'why_choose_title_color', 'why_choose_title_font_size', 'why_choose_title_font_family', 'why_choose_description', 'why_choose_description_color', 'why_choose_description_font_size', 'why_choose_description_font_family');
                 foreach($fields as $field)
                 {
                     $our_business->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -71,6 +71,11 @@ class OurBusinessController extends Controller
                 if($request->hasFile('banner_image')) {
                     $banner_image = fileUpload($request, 'banner_image', 'uploads/our_business');
                     $our_business->banner_image = $banner_image;
+                }
+
+                if($request->hasFile('why_choose_image')) {
+                    $why_choose_image = fileUpload($request, 'why_choose_image', 'uploads/our_business_why_choose');
+                    $our_business->why_choose_image = $why_choose_image;
                 }
 
                 $our_business->save();
@@ -155,7 +160,7 @@ class OurBusinessController extends Controller
                     'banner_image' => 'image|mimes:jpeg,png,jpg,webp',
                 ]);
                 $our_business = OurBusiness::find($id);
-                $fields = array('title', 'slug', 'description', 'page_link', 'title_font_size', 'title_font_color', 'title_font_family', 'description_font_size', 'description_font_color', 'description_font_family');
+                $fields = array('title', 'slug', 'description', 'page_link', 'title_font_size', 'title_font_color', 'title_font_family', 'description_font_size', 'description_font_color', 'description_font_family', 'why_choose_title', 'why_choose_title_color', 'why_choose_title_font_size', 'why_choose_title_font_family', 'why_choose_description', 'why_choose_description_color', 'why_choose_description_font_size', 'why_choose_description_font_family');
                 foreach($fields as $field)
                 {
                     $our_business->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -176,6 +181,16 @@ class OurBusinessController extends Controller
                     }
                     $banner_image = fileUpload($request, 'banner_image', 'uploads/our_business');
                     $our_business->banner_image = $banner_image;
+                }
+
+                if($request->hasFile('why_choose_image')) {
+                    $oldimage = $our_business->why_choose_image;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/our_business_why_choose'.$oldimage);
+                    }
+                    $why_choose_image = fileUpload($request, 'why_choose_image', 'uploads/our_business');
+                    $our_business->why_choose_image = $why_choose_image;
                 }
 
                 $our_business->save();
@@ -207,6 +222,15 @@ class OurBusinessController extends Controller
                     if($our_business_image)
                     {
                         removeFile('uploads/our_business/'.$our_business_image);
+                    }
+                }
+
+                if($our_business->why_choose_image != NULL)
+                {
+                    $why_choose_image = $our_business->why_choose_image;
+                    if($why_choose_image)
+                    {
+                        removeFile('uploads/our_business_why_choose/'.$why_choose_image);
                     }
                 }
                 $our_business = OurBusiness::where('id',$id)->delete();
