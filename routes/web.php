@@ -243,4 +243,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('our-business-update/{id}', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessUpdate'])->name('our-business-update');
     Route::get('our-business-delete/{id}', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessDestroy'])->name('our-business-delete');
     Route::get('our-business-datatable', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessDatatable'])->name('our-business-datatable');
+
+    //our business insurance
+    Route::get('our-business-insurance', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceList'])->name('our-business-insurance');
+    Route::get('our-business-insurance-create', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuraceCreate'])->name('our-business-insurance-create');
+    Route::post('our-business-insurance-store', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceStore'])->name('our-business-insurance-store');
+    Route::get('our-business-insurance-edit/{id}', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceEdit'])->name('our-business-insurance-edit');
+    Route::post('our-business-insurance-update/{id}', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceUpdate'])->name('our-business-insurance-update');
+    Route::get('our-business-insurance-delete/{id}', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceDestroy'])->name('our-business-insurance-delete');
+    Route::get('our-business-insurance-datatable', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceDatatable'])->name('our-business-insurance-datatable');
 });

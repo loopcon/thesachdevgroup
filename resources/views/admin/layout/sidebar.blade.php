@@ -105,15 +105,32 @@
                 </li>
             @endif
 
-            @php($has_permission = hasPermission('Our Business'))
+            @php($has_permission = hasPermission('Business'))
             @if(isset($has_permission) && $has_permission)
                 @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                    <li class="nav-item"> 
-                        <a href="{{url('our-business')}}" class="nav-link">
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-briefcase"></i>
-                            <p>Our Business</p>
-                        </a>
-                    </li>
+                        <p>
+                            Our Business
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"> 
+                            <a href="{{url('our-business')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                                <p>Business</p>
+                            </a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a href="{{url('our-business')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                                <p>Business Insurance</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
             @endif
 

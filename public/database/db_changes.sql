@@ -190,3 +190,5 @@ ALTER TABLE `our_business`
 
 ALTER TABLE `service` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`' AFTER `service_center_id`;
 ALTER TABLE `service_center` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`' AFTER `service_id`;
+UPDATE `modules` SET `module` = 'Business', `deleted_at` = NULL, `created_at` = NULL, `updated_at` = NULL WHERE `modules`.`id` = 23;
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Business Insurance', NULL, NULL, NULL);

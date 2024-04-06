@@ -14,7 +14,7 @@ class OurBusinessController extends Controller
 {
     public function ourBusinessList()
     {
-        $has_permission = hasPermission('Our Business');
+        $has_permission = hasPermission('Business');
        
         if(isset($has_permission) && $has_permission)
         {
@@ -33,7 +33,7 @@ class OurBusinessController extends Controller
 
     public function ourBusinessCreate(Request $request)
     {
-        $has_permission = hasPermission('Our Business');
+        $has_permission = hasPermission('Business');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -50,7 +50,7 @@ class OurBusinessController extends Controller
 
     public function ourBusinessStore(Request $request)
     {
-        $has_permission = hasPermission('Our Business');
+        $has_permission = hasPermission('Business');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
@@ -101,7 +101,7 @@ class OurBusinessController extends Controller
                 ->addColumn('action', function ($list) {
                     $html = "";
                     $id = encrypt($list->id);
-                    $has_permission = hasPermission('Our Business');
+                    $has_permission = hasPermission('Business');
                     if(isset($has_permission) && $has_permission)
                     {
                         if($has_permission->full_permission == 1)
@@ -123,7 +123,7 @@ class OurBusinessController extends Controller
 
     public function ourBusinessEdit($id)
     {
-        $has_permission = hasPermission('Our Business');
+        $has_permission = hasPermission('Business');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
@@ -143,7 +143,7 @@ class OurBusinessController extends Controller
 
     public function ourBusinessUpdate(Request $request,$id)
     {
-        $has_permission = hasPermission('Our Business');
+        $has_permission = hasPermission('Business');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
@@ -194,7 +194,7 @@ class OurBusinessController extends Controller
 
     public function ourBusinessDestroy(Request $request, $id)
     {
-        $has_permission = hasPermission('Our Business');
+        $has_permission = hasPermission('Business');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
