@@ -126,3 +126,73 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 
 -- Drashti : 04-04-2024 01:59 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES ('23', 'Showroom Facility Customer Gallery', NULL, NULL, NULL);
+
+-- Disha : 03-04-2024 10:00 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Pages', NULL, NULL, NULL);
+
+-- Disha : 03-04-2024 2:26 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Awards', NULL, NULL, NULL);
+
+-- Disha : 04-04-2024 1:50 PM
+--
+-- Table structure for table `award_and_recognition`
+--
+
+CREATE TABLE `award_and_recognition` (
+  `id` int(11) NOT NULL,
+  `brand_id` int(11) DEFAULT NULL COMMENT '`id` of `brands`',
+  `image` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `award_and_recognition`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `award_and_recognition`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 04-04-2024 04:17 PM
+ALTER TABLE `service` ADD `slug` VARCHAR(255) NULL DEFAULT NULL AFTER `service_center_id`;
+ALTER TABLE `service_center` ADD `why_choose_title` VARCHAR(255) NULL DEFAULT NULL AFTER `email_font_color`, ADD `why_choose_image` VARCHAR(255) NULL DEFAULT NULL AFTER `why_choose_title`, ADD `why_choose_description` TEXT NULL DEFAULT NULL AFTER `why_choose_image`;
+
+-- Disha : 05-04-2024 12:47 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Our Business', NULL, NULL, NULL);
+
+-- Disha : 05-04-2024 3:50 PM
+--
+-- Table structure for table `our_business`
+--
+
+CREATE TABLE `our_business` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `banner_image` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `page_link` tinyint(1) DEFAULT NULL COMMENT '0=no;1=yes;',
+  `title_font_size` varchar(255) DEFAULT NULL,
+  `title_font_color` varchar(255) DEFAULT NULL,
+  `title_font_family` varchar(255) DEFAULT NULL,
+  `description_font_size` varchar(255) DEFAULT NULL,
+  `description_font_color` varchar(255) DEFAULT NULL,
+  `description_font_family` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `our_business`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `our_business`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `service` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`' AFTER `service_center_id`;
+ALTER TABLE `service_center` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`' AFTER `service_id`;
+UPDATE `modules` SET `module` = 'Business', `deleted_at` = NULL, `created_at` = NULL, `updated_at` = NULL WHERE `modules`.`id` = 23;
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Business Insurance', NULL, NULL, NULL);
+

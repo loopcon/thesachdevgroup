@@ -87,15 +87,15 @@
                         @endif
                         @endif
 
-                        @php($has_permission = hasPermission('Faqs'))
+                        @php($has_permission = hasPermission('Pages'))
                             @if(isset($has_permission) && $has_permission)
                                 @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                                 <li class="nav-item"> 
 
-                                <a href="{{url('faq')}}" class="nav-link">
+                                <a href="{{url('pages')}}" class="nav-link">
                                     <i class="nav-icon fas fa-tasks"></i> 
                                     <p>
-                                    Faqs
+                                    Pages
                                     </p>
                                 </a>
                             </li>
@@ -105,19 +105,46 @@
                 </li>
             @endif
 
-        @php($has_permission = hasPermission('Testimonials'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                <li class="nav-item"> 
-                    <a href="{{url('testimonials_index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-address-card"></i>
-                        <p>Testimonials</p>
+            @php($has_permission = hasPermission('Business'))
+            @if(isset($has_permission) && $has_permission)
+                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-briefcase"></i>
+                        <p>
+                            Our Business
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item"> 
+                            <a href="{{url('our-business')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                                <p>Business</p>
+                            </a>
+                        </li>
+                        <li class="nav-item"> 
+                            <a href="{{url('our-business')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                                <p>Business Insurance</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+                @endif
             @endif
-        @endif
 
-
+            @php($has_permission = hasPermission('Testimonials'))
+            @if(isset($has_permission) && $has_permission)
+                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                    <li class="nav-item"> 
+                        <a href="{{url('testimonials_index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-address-card"></i>
+                            <p>Testimonials</p>
+                        </a>
+                    </li>
+                @endif
+            @endif
 
         @php($has_permission = hasPermission('Setting'))
         @if(isset($has_permission) && $has_permission)
@@ -207,7 +234,7 @@
                         @endif
                     @endif
 
-                    @php($has_permission = hasPermission('Showroom Model'))
+                   <?php /* @php($has_permission = hasPermission('Showroom Model'))
                     @if(isset($has_permission) && $has_permission)
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                         <li class="nav-item">
@@ -217,7 +244,7 @@
                             </a>
                         </li>
                         @endif
-                    @endif
+                    @endif */ ?>
                 </ul>
             </li>
         @endif
@@ -283,6 +310,18 @@
             </li>
         @endif
 
+        @php($has_permission = hasPermission('Awards'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item"> 
+                    <a href="{{url('awards')}}" class="nav-link">
+                    <i class="fa fa-award nav-icon"></i>
+                        <p>Awards</p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
         @php($has_header_menu_permission = hasPermission('Header Menu'))
         @php($has_social_media_permission = hasPermission('Header Menu Social Media Icon'))
         @if($has_header_menu_permission && ($has_header_menu_permission->read_permission == 1 || $has_header_menu_permission->full_permission == 1) || 
@@ -306,6 +345,30 @@
                         <p>
                         Footer Menu
                         </p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
+        @php($has_permission = hasPermission('Pages'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item"> 
+                    <a href="{{url('pages')}}" class="nav-link">
+                    <i class="fa fa-circle nav-icon"></i>
+                        <p>CMS Pages</p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
+        @php($has_permission = hasPermission('Faqs'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item"> 
+                    <a href="{{url('faq')}}" class="nav-link">
+                    <i class="fa fa-award nav-icon"></i>
+                        <p>Faqs</p>
                     </a>
                 </li>
             @endif

@@ -24,7 +24,18 @@
                     <form action="@if(isset($record->id)) {{ route('service-center-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-store') }} @endif" method="POST" class="service-center-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 adm-brand-errorbox">
+                                <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="business_id" id="business_id">
+                                    <option value="">-- Select Business--</option>
+                                    @foreach($business as $value)
+                                        <option value="{{$value->id}}" @if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}} @endif>{{$value->title}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 adm-brand-errorbox">
                                 <label for="service_id" class="form-label">Service<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="service_id" id="service_id">
                                     <option value="">-- Select Service --</option>
@@ -33,8 +44,9 @@
                                     @endforeach
                                 </select>
                                 <div id="error"></div>
-                                @if ($errors->has('service_center_id')) <div class="text-danger">{{ $errors->first('service_center_id') }}</div>@endif
+                                @if ($errors->has('service_id')) <div class="text-danger">{{ $errors->first('service_id') }}</div>@endif
                             </div>
+
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
@@ -45,7 +57,6 @@
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Name Color</label>
                                 <input type="text" id="name_color" class="form-control colorpicker" name="name_color" value="{{isset($record->name_color) ? $record->name_color : old('name_color')}}">
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -270,6 +281,31 @@
                                 @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
                                 <div class="error"></div>
                             </div>
+
+                            <div class="col-12">
+                                <h5>Why Choose Section</h5>
+                                <hr>
+                            </div>
+
+                            <div class="col-md-6 mb-2">
+                                <label for="why_choose_title" class="form-label">Why Choose Title</label>
+                                <input type="text" class="form-control" value="{{isset($record->why_choose_title) ? $record->why_choose_title : old('why_choose_title')}}" name="why_choose_title" id="why_choose_title">
+                            </div>
+
+                            <div class="col-md-6 mb-2">
+                                <label for="why_choose_image" class="form-label">Why Choose Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                @if(isset($record->why_choose_image) && $record->why_choose_image)
+                                    <img src="{{url('public/uploads/why_choose_image/'.$record->why_choose_image)}}" width="100">
+                                @endif  
+                                <input type="file" id="why_choose_image" class="form-control" name="why_choose_image" value="">
+                                @if ($errors->has('why_choose_image')) <div class="text-danger">{{ $errors->first('why_choose_image') }}</div>@endif
+                                <div class="error"></div>
+                            </div>
+
+                            <div class="col-md-12 mb-2">
+                                <label for="why_choose_description" class="form-label">Why Choose Description</label>
+                                <textarea class="ckeditor form-control" value="{{isset($record->why_choose_description) ? $record->why_choose_description : old('why_choose_description')}}" name="why_choose_description" id="why_choose_description"></textarea>
+                            </div>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
@@ -289,9 +325,12 @@
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
-        $(".service_center_form").validate({
+        $(".service-center-form").validate({
             rules: {
                 'name': {
+                    required: true,
+                },
+                'service_id': {
                     required: true,
                 },
                 'address': {
@@ -309,6 +348,9 @@
             messages: {
                 'name': {
                     required: "Name is required",
+                },
+                'service_id': {
+                    required: "Service is required",
                 },
                 'address': {
                     required: "Address is required",

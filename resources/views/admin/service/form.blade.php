@@ -24,6 +24,17 @@
                     <form action="@if(isset($record->id)) {{ route('service-update', array('id' => encrypt($record->id))) }} @else{{ route('service-store') }} @endif" method="POST" class="service-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
+                            <div class="col-md-4 adm-brand-errorbox">
+                                <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="business_id" id="business_id">
+                                    <option value="">-- Select Business--</option>
+                                    @foreach($business as $value)
+                                        <option value="{{$value->id}}" @if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}} @endif>{{$value->title}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
+                            </div>
+
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
@@ -34,8 +45,6 @@
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Name Font Color</label>
                                 <input type="text" id="name_font_color" class="form-control colorpicker" name="name_font_color" value="{{isset($record->name_font_color) ? $record->name_font_color : old('name_font_color')}}">
-                                @if ($errors->has('name_font_color')) <div class="text-danger">{{ $errors->first('name_font_color') }}</div>@endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4 mt-2">

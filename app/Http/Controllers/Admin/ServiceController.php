@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\ServiceCenter;
+use App\Models\OurBusiness;
 use DataTables;
 use File;
 use Auth;
@@ -37,7 +38,7 @@ class ServiceController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('Service Create');
-                // $return_data['service_center'] = ServiceCenter::select('id', 'name')->get();
+                $return_data['business'] = OurBusiness::select('id', 'title')->get();
                 return view("admin.service.form",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -54,16 +55,17 @@ class ServiceController extends Controller
             {
                 $request->validate([
                     // 'service_center_id' => 'required',
+                    'business_id' => 'required',
                     'icon' => 'required|image|mimes:jpeg,png,jpg,webp',
                     'url' => 'required|url',
                 ]);
                 $service = new Service();
-                $fields = array('name', 'name_font_color', 'name_font_size', 'name_font_family', 'url');
+                $fields = array('business_id', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'url');
                 foreach($fields as $field)
                 {
                     $service->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
                 }
-
+                $service->slug = $request->name ? slugify($request->name) : NULL;
                 if($request->hasFile('icon')) {
                     $icon = fileUpload($request, 'icon', 'uploads/service');
                     $service->icon = $icon;
@@ -86,7 +88,7 @@ class ServiceController extends Controller
     public function serviceDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = Service::with('serviceCenterDetail')->select('id', 'name', 'icon', 'name_font_color', 'name_font_size', 'name_font_family', 'url')->orderBy('id', 'DESC');
+            $query = Service::with('serviceCenterDetail')->select('id', 'business_id', 'name', 'icon', 'name_font_color', 'name_font_size', 'name_font_family', 'url')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -133,7 +135,8 @@ class ServiceController extends Controller
                 $return_data['site_title'] = trans('Service Edit');
                 $service = Service::find($id);
                 $return_data['record'] = $service;
-                $return_data['service_center'] = ServiceCenter::select('id', 'name')->get();
+                $return_data['business'] = OurBusiness::select('id', 'title')->get();
+                // $return_data['service_center'] = ServiceCenter::select('id', 'name')->get();
                 return view("admin.service.form",array_merge($return_data));
             }
         }else {
@@ -151,16 +154,18 @@ class ServiceController extends Controller
                 $id = decrypt($id);
                 $request->validate([
                     // 'service_center_id' => 'required',
+                    'business_id' => 'required',
                     'icon' => 'image|mimes:jpeg,png,jpg,webp',
                     'url' => 'required|url',
                 ]);
                 $service = Service::find($id);
-                $fields = array('name', 'name_font_color', 'name_font_size', 'name_font_family', 'url');
+                $fields = array('business_id', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'url');
                 foreach($fields as $field)
                 {
                     $service->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
                 }
 
+                $service->slug = $request->name ? slugify($request->name) : NULL;
                 if($request->hasFile('icon')) {
                     $oldimage = $service->icon;
                     if($oldimage)

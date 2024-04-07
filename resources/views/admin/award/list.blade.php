@@ -19,18 +19,17 @@
         </div>
         <div class="card">
             <div class="col-sm-12  text-end">
-                <a href="javascript:void(0)" class="btn btn-primary mt-2 mr-4 float-right ajax-form">Add</a>
+            <a href="javascript:void(0)" class="btn btn-primary mt-2 mr-4 float-right  ajax-form" data-toggle="modal" data-target="#modal-default">Add</a>
             </div>
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
-                        <table class="table table-bordered table-striped table adm-table-no-wrap adm-action-sticky">
+                        <table class="table table-bordered table-striped table adm-table-no-wrap">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Facility Image</th>
-                                    <th>Customer Gallery Image</th>
-                                    <th>Service Center</th>
+                                    <th>Brand</th>
+                                    <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -59,14 +58,20 @@
             processing: true,
             serverSide: true,
             // scrollX: true,
-            ajax: "{{ route('service-center-facility-customergallery-datatable') }}",
+            ajax: "{{ route('award-datatable') }}",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'facility_image', name: 'facility_image'},
-                {data: 'customer_gallery_image', name: 'customer_gallery_image'},
-                {data: 'service_center_id', name: 'service_center_id'},
+                {data: 'brand_id', name: 'brand_id'},
+                {data: 'image', name: 'image'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
-            ]
+            ],
+            ajax : {
+                url : "{{ route('award-datatable') }}",
+                type : "POST",
+                data : function(d) {
+                    d._token = "{{ csrf_token() }}"
+                }
+            }
         });
     });
 
@@ -74,7 +79,7 @@
         var href = $(this).data('href');
         return new swal({
             title: "",
-            text: "{{__('Are you sure? Delete this Service Center Facility and Customer Gallery!')}}",
+            text: "{{__('Are you sure? Delete this Award!')}}",
             showCancelButton: true,
             confirmButtonText: "{{__('Yes, delete it!')}}",
             icon: "warning"
@@ -97,43 +102,37 @@
     function ajaxForm(id = ''){
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
-            url : '{{ route('service-center-facility-customergallery-html') }}',
+            url : '{{ route('ajax-award-html') }}',
             method : 'post',
             data : {_token: CSRF_TOKEN, id:id},
             success : function(result){
                 var result = $.parseJSON(result);
                 $('#form-detail').html(result.html);
                 $('#form_modal').modal('show');
-                $('#service_center_id').select2({width:'100%'});
+                $('#brand_id').select2({width:'100%'});
 
-                $('#form-detail form').validate({
-                    rules: {
-                        service_center_id: {
-                            required: true
-                        },
-                        facility_image: {
-                            extension: "jpg|jpeg|png|webp"
-                        },
-                        customer_gallery_image: {
-                            extension: "jpg|jpeg|png|webp"
-                        }
+            $(".award-form").validate({
+                rules: {
+                    'brand_id': {
+                        required: true,
                     },
-                    messages: {
-                        service_center_id: {
-                            required: "Please select a service center"
-                        },
-                        facility_image: {
-                            extension: "Please upload a valid image file (jpg, jpeg, png, webp)"
-                        },
-                        customer_gallery_image: {
-                            extension: "Please upload a valid image file (jpg, jpeg, png, webp)"
-                        }
+                    'image': {
+                        extension: "jpg,jpeg,png,webp",
                     },
-                    submitHandler: function(form) {
-                        $(form).find('.submit').prop("disabled", true);
-                        form.submit();
-                    }
-                });
+                },
+                messages: {
+                    'brand_id': {
+                        required: "Brand is required",
+                    },
+                    'image': {
+                        extension: "Image must be jpg,jpeg,png or webp",
+                    },
+                },
+                submitHandler: function(form) {
+                    $(form).find('.submit').prop("disabled", true);
+                    form.submit();
+                }
+            });
             }
         });
     }

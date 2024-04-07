@@ -23,7 +23,9 @@
 
   {{-- colorpicker --}}
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+
   @php($setting_detail = getSettingDetail())
+
     @if(isset($setting_detail) && isset($setting_detail->logo))
       <link rel="icon" type="image/png" href="{{url('public/logo/'.$setting_detail->logo)}}">
     @endif

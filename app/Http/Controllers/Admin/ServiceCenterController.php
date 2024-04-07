@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ServiceCenter;
 use App\Models\Service;
+use App\Models\OurBusiness;
 use DataTables;
 use File;
 use Auth;
@@ -40,6 +41,7 @@ class ServiceCenterController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('Service Center Create');
+                $return_data['business'] = OurBusiness::select('id', 'title')->get();
                 $return_data['services'] = Service::select('id','name')->get();
                 return view("admin.service_center.form",array_merge($return_data));
             }else {
@@ -56,6 +58,7 @@ class ServiceCenterController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $request->validate([
+                    'business_id' => 'required',
                     'service_id' => 'required',
                     'address' => 'required',
                     'name' => 'required',
@@ -63,7 +66,7 @@ class ServiceCenterController extends Controller
                     'contact_number' => 'required|numeric',
                 ]);
                 $service_center = new ServiceCenter();
-                $fields = array('service_id', 'name', 'name_color', 'name_font_size','name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color');
+                $fields = array('service_id', 'business_id', 'name', 'name_color', 'name_font_size','name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color','why_choose_title', 'why_choose_description');
                 foreach($fields as $field)
                 {
                     $service_center->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -92,6 +95,11 @@ class ServiceCenterController extends Controller
                 if($request->hasFile('email_icon')) {
                     $email_icon = fileUpload($request, 'email_icon', 'uploads/email_icon');
                     $service_center->email_icon = $email_icon;
+                }
+
+                if($request->hasFile('why_choose_image')) {
+                    $why_choose_image = fileUpload($request, 'why_choose_image', 'uploads/why_choose');
+                    $service_center->why_choose_image = $why_choose_image;
                 }
                 $service_center->save();
 
@@ -173,6 +181,7 @@ class ServiceCenterController extends Controller
                 $return_data['site_title'] = trans('Service Center Edit');
                 $service_center = ServiceCenter::find($id);
                 $return_data['record'] = $service_center;
+                $return_data['business'] = OurBusiness::select('id', 'title')->get();
                 $return_data['services'] = Service::select('id','name')->get();
                 return view("admin.service_center.form",array_merge($return_data));
             }
@@ -190,6 +199,7 @@ class ServiceCenterController extends Controller
             {
                 $id = decrypt($id);
                 $request->validate([
+                    'business_id' => 'required',
                     'service_id' => 'required',
                     'address' => 'required',
                     'name' => 'required',
@@ -197,7 +207,7 @@ class ServiceCenterController extends Controller
                     'contact_number' => 'required|numeric',
                 ]);
                 $service_center = ServiceCenter::find($id);
-                $fields = array('service_id', 'name', 'name_color', 'name_font_size','name_font_family', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color');
+                $fields = array('business_id', 'service_id', 'name', 'name_color', 'name_font_size','name_font_family', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color','why_choose_title', 'why_choose_description');
                 foreach($fields as $field)
                 {
                     $service_center->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -251,6 +261,16 @@ class ServiceCenterController extends Controller
                     }
                     $email_icon = fileUpload($request, 'email_icon', 'uploads/email_icon');
                     $service_center->email_icon = $email_icon;
+                }
+
+                if($request->hasFile('why_choose_image')) {
+                    $oldimage = $service_center->why_choose_image;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/why_choose/'.$oldimage);
+                    }
+                    $why_choose_image = fileUpload($request, 'why_choose_image', 'uploads/why_choose');
+                    $service_center->why_choose_image = $why_choose_image;
                 }
                 $service_center->save();
 
