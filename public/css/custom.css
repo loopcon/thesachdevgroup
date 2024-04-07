@@ -32,6 +32,10 @@
 .testimonials_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
 
 .our_businesses_form .form-control{ height: 40px; padding: 4px 8px; }
+.our_businesses_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.our_businesses_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.our_businesses_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
 .home_detail_form .form-control{  height: 40px; padding: 4px 8px; }
 .home_detail_form .select2-selection {height: 40px !important; padding-left: 8px; }
 .home_detail_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
@@ -96,3 +100,13 @@
 .footer_menu_form .select2-selection {height: 40px !important; padding-left: 8px; }
 .footer_menu_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
 .footer_menu_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.count_form .form-control{  height: 40px; padding: 4px 8px; }
+.count_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.count_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.count_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+
+.showroom_facility_customer_gallery .form-control{  height: 40px; padding: 4px 8px; }
+.showroom_facility_customer_gallery .select2-selection {height: 40px !important; padding-left: 8px; }
+.showroom_facility_customer_gallery .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.showroom_facility_customer_gallery .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}

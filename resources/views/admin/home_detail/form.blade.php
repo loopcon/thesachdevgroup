@@ -31,13 +31,14 @@
 
                             <div class="form-row">
                               <div class="col-md-4 mb-3">
-                                  <label for="image">Image<span class="text-danger">*</span></label>
-                                  @if($home_detail->image == null)
-                                      <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                  @else
-                                      <img src="{{url('public/home_detail/'.$home_detail->image)}}" width="100">
+                                  <label for="image">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                
+                                  <input type="hidden" name="old_image" id="old_image" value="{{$home_detail->image}}">
+
+                                  @if(isset($home_detail->image) && isset($home_detail->image))
+                                    <img src="{{url('public/home_detail/'.$home_detail->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                   @endif
-                                  <input type="file" id="image" class="form-control" name="image">
+                                  <input type="file" id="image" class="form-control image" name="image">
                                   <div class="error"></div>
                               </div>
                               <div class="col-md-4 mb-3">
@@ -151,13 +152,14 @@
                             <div class="form-row">
 
                               <div class="form-group col-md-4">
-                                <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label>
-                                @if($home_detail->our_story_image == null)
-                                <img src="{{url('public/no_image/notImg.png')}}" width="100">
-                                @else
-                                    <img src="{{url('public/our_story_image/'.$home_detail->our_story_image)}}" width="100">
-                                @endif
-                                <input type="file" id="our_story_image" class="form-control" name="our_story_image">
+                                <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                
+                                  <input type="hidden" name="mission_vision_image" id="mission_vision_image" value="{{$home_detail->our_story_image}}">
+
+                                  @if(isset($home_detail->our_story_image) && isset($home_detail->our_story_image))
+                                    <img src="{{url('public/our_story_image/'.$home_detail->our_story_image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
+                                  @endif
+                                <input type="file" id="our_story_image" class="form-control our_story_image" name="our_story_image">
                                 <div class="error"></div>
                               </div>
                             </div>
@@ -167,8 +169,8 @@
 
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
-                              <label for="image">Image<span class="text-danger">*</span></label>
-                              <input type="file" id="image" class="form-control" name="image">
+                              <label for="image">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                              <input type="file" id="image" class="form-control image" name="image">
                               <div class="error"></div>
                           </div>
                           <div class="col-md-4 mb-3">
@@ -280,8 +282,8 @@
                         <div class="form-row">
 
                           <div class="form-group col-md-4">
-                            <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label>
-                            <input type="file" id="our_story_image" class="form-control" name="our_story_image">
+                            <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                            <input type="file" id="our_story_image" class="form-control our_story_image" name="our_story_image">
                             <div class="error"></div>
                           </div>
 
@@ -308,6 +310,7 @@
             ignore: [],
             rules: {
                 'image': {
+                    required: checkImage,
                     extension: "jpg,jpeg,png,webp",
                 },
                 'title': {
@@ -317,15 +320,14 @@
                     required: true,
                 },
                 'our_story_image': {
-                    extension: "jpg,jpeg,png,webp",
-                },
-                'icon': {
-                    extension: "jpg,jpeg,png,webp",
+                  required: checkMissionVisionImage,  
+                  extension: "jpg,jpeg,png,webp",
                 },
             },
             messages: {
                 'image': {
-                    extension: "The image must be an image.",
+                    required: "The image field is required.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
                 'title': {
                     required: "The title field is required.",
@@ -334,16 +336,30 @@
                     required: "The sub title field is required.",
                 },
                 'our_story_image': {
-                    extension: "The image must be an image.",
-                },
-                'icon': {
-                    extension: "Please enter a value with a valid extension.",
+                    required: "The mission vision image field is required.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
             },
             errorPlacement: function(error, element) {
                 error.appendTo(element.parent().find('.error'));
             },
         });
+
+        function checkImage() {
+          var old_image = $('#old_image').val();
+          if(old_image){
+            return false;
+          }
+        }
+
+        function checkMissionVisionImage() {
+          var mission_vision_image = $('#mission_vision_image').val();
+          if(mission_vision_image){
+            return false;
+          }
+        }
+
+
         $('.colorpicker').colorpicker();
     });
 </script>

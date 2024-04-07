@@ -28,13 +28,24 @@
                                 <thead>
                                     <tr>
                                         <th style="width:45px;">No</th>
+                                        <th>Testimonials Title</th>
+
+                                        <th>Testimonials Title Color</th>
+                                        <th>Testimonials Title Font Size</th>
+                                        <th>Testimonials Title Font Family</th>
+
                                         <th>Image</th>
+
                                         <th>Name</th>
+
                                         <th>Name Color</th>
                                         <th>Name Font Size</th>
                                         <th>Name Font Family</th>
+
                                         <th>Name Background Color</th>
+
                                         <th>Description</th>
+
                                         <th>Description Color</th>
                                         <th>Description Font Size</th>
                                         <th>Description Font Family</th>

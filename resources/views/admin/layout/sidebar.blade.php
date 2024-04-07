@@ -175,9 +175,21 @@
                     @if(isset($has_permission) && $has_permission)
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item">
-                                <a href="{{url('showroom_index')}}" class="nav-link">
+                                <a href="{{url('showroom_list')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Showroom</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
+                    @php($has_permission = hasPermission('Showroom Facility Customer Gallery'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item">
+                                <a href="{{url('showroom_facility_customer_gallery')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Showroom Facility Customer Gallery</p>
                                 </a>
                             </li>
                         @endif

@@ -27,7 +27,7 @@
                         <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
                             <thead>
                                 <tr>
-                                    <th>No</th>
+                                    <th style="width:45px;">No</th>
                                     <th>Image</th>
                                     <th>Businesses Title</th>
 

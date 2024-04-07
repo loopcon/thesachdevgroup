@@ -67,7 +67,7 @@
         });
         
     });
-      
+
     $(document).on('click', '.delete', function() {
         var href = $(this).data('href');
         return new swal({
@@ -82,6 +82,7 @@
             }
         });
     });
+
     $(document).ready(function(){
         $('.dataTables_scrollBody').addClass('adm-table-responsive');
     });

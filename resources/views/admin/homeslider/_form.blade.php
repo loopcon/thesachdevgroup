@@ -27,12 +27,10 @@
                            
                             <div class="row">
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
-                                    @if($homeslider->image == null)
-                                    <img src="{{asset('no_image/notImg.png')}}" width="100">
-                                    @else
-                                    <img src="{{url('public/home_slider/'.$homeslider->image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
-                                @endif
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span><small>(Image Type : jpg,jpeg,png,webp)</small></label>
+                                    @if(isset($homeslider->image) && isset($homeslider->image))
+                                        <img src="{{url('public/home_slider/'.$homeslider->image)}}" width="100" style="margin-bottom:10px; margin-left:5px;"> 
+                                    @endif
                                     <input type="file" id="image" class="form-control" name="image">
                                 </div>
     
@@ -113,7 +111,7 @@
     
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary submit">Submit</button>
-                                <a href="{{ route('homeslider.index') }}" class="btn btn-default">Cancel</a>
+                                <a href="{{ route('homeslider.index') }}" class="btn btn-danger">Cancel</a>
                             </div>
                         </form>
                     @endforeach 
@@ -134,7 +132,7 @@
             },
             messages: {
                 image: {
-                    extension: "The image must be an image.",
+                    extension: "Image must be jpg,jpeg,png or webp.",
                 },
             },
         });

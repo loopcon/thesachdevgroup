@@ -43,12 +43,12 @@
                                         <div class="error"></div>
                                     </div>
 
-                                    <div class="mb-3 col-md-4">
+                                    <div class="col-md-4">
                                         <label for="color" class="form-label">Name Text Color</label>
                                         <input type="text" class="form-control colorpicker" name="color" id="color" value="{{$header_menu->color}}">
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="mb-3 col-md-4">
                                         @php($fontsize = fontSize())
                                         <label for="font_size" class="form-label">Name Text Font Size</label>
                                         <select class="form-control select2" name="font_size">
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="box-footer">
                                     <button type="submit" class="btn btn-primary submit">Submit</button>
-                                    <a href="{{ route('header_menu.index') }}" class="btn btn-default">Cancel</a>
+                                    <a href="{{ route('header_menu.index') }}" class="btn btn-danger">Cancel</a>
                                 </div>
                         </form>
                     @endforeach 

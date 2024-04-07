@@ -24,15 +24,19 @@ class Showroom extends Model
         'address_color',
         'address_font_size',
         'address_font_family',
+        'address_icon',
         'working_hours_color',
         'working_hours_font_size',
         'working_hours_font_family',
+        'working_hours_icon',
         'contact_number_color',
         'contact_number_font_size',
         'contact_number_font_family',
+        'contact_number_icon',
         'email_color',
         'email_font_size',
         'email_font_family',
+        'email_icon',
         'description',
         'description_color',
         'description_font_size',
@@ -46,13 +50,5 @@ class Showroom extends Model
 
     public function car(){
         return $this->hasMany(Car::class,'id');
-    }
-
-    public function customer_gallery(){
-        return $this->hasMany(Customer_gallery::class);
-    }
-
-    public function facilitie(){
-        return $this->hasMany(Facilitie::class);
     }
 }

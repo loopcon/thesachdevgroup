@@ -17,7 +17,8 @@ class HomeController extends Controller
        return view("admin.dashboard"); 
     }
 
-   public function homeslider(Request $request){
+    //home slider
+    public function homeslider(Request $request){
         $has_permission = hasPermission('Home Slider');
         if(isset($has_permission) && $has_permission)
         {
@@ -30,7 +31,7 @@ class HomeController extends Controller
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
-   }
+    }
      
     public function homeslider_insert(Request $request){
 
@@ -95,17 +96,11 @@ class HomeController extends Controller
 
                   ->editColumn('image', function($home_slider){
 
-                      if($home_slider->image == NULL){
-                          $url= asset('no_image/notImg.png');
-                          $image = '<img src="'.$url.'" border="0" width="100">';
-                          return $image;
-
-                      }else{
-
-                          $url= asset('home_slider/'.$home_slider->image);
-                          $image = '<img src="'.$url.'" border="0" width="100">';
-                          return $image;
-                      }
+                    if(isset($home_slider->image) && isset($home_slider->image)){
+                        $url= asset('home_slider/'.$home_slider->image);
+                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        return $image;
+                    }
                   })
           ->rawColumns(['action','image'])
           ->make(true);
@@ -300,17 +295,12 @@ class HomeController extends Controller
 
                   ->editColumn('image', function($home_our_businesses){
 
-                      if($home_our_businesses->image == NULL){
-                          $url= asset('no_image/notImg.png');
-                          $image = '<img src="'.$url.'" border="0" width="100">';
-                          return $image;
-
-                      }else{
-
-                          $url= asset('home_our_businesses/'.$home_our_businesses->image);
-                          $image = '<img src="'.$url.'" border="0" width="100">';
-                          return $image;
-                      }
+                    if(isset($home_our_businesses->image) && isset($home_our_businesses->image)){
+                        $url= asset('home_our_businesses/'.$home_our_businesses->image);
+                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        return $image;
+                    }
+                    
                   })
           ->rawColumns(['action','image'])
           ->make(true);
