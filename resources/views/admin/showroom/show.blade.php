@@ -19,12 +19,12 @@
             </div>
             <div class="card">
                 <div class="col-sm-12  text-end">
-                    <a href="{{ route('showroom') }}" class="btn btn-primary mt-2 float-right">Add</a>
+                    <a href="{{ route('showroom') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
                 </div>
                 <div class="card-body">
                     <section class="content">
                         <div class="container-fluid">
-                            <div class="">
+                            {{-- <div class=""> --}}
                                 <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
                                     <thead>
                                         <tr>
@@ -65,7 +65,7 @@
                                     <tbody>
                                     </tbody>
                                 </table>
-                            </div>  
+                            {{-- </div>   --}}
                         </div>
                     </section>
                 </div>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="card">
                         <div class="col-sm-12  text-end">
-                            <button type="button" class="btn btn-primary mt-2 float-right" data-toggle="modal" data-target="#FacilityCustomerGalleryInsertModal">
+                            <button type="button" class="btn btn-primary float-right adm-table-addbtn" data-toggle="modal" data-target="#FacilityCustomerGalleryInsertModal">
                                 Add
                             </button>
 
@@ -196,7 +196,7 @@
                         <div class="card-body">
                             <section class="content">
                                 <div class="container-fluid">
-                                    <table class="table table-bordered table-striped facility_customer_gallery_data_table">
+                                    <table class="table table-bordered table-striped facility_customer_gallery_data_table adm-table-no-wrap adm-action-sticky">
                                         <thead>
                                             <tr>
                                                 <th style="width:45px;">No</th>
@@ -231,7 +231,7 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                scrollX: true,
+                // scrollX: true,
                 ajax: {
                     url:"{{ route('showroom.index') }}",
                     type:'POST',
@@ -432,8 +432,14 @@
     });
 
     $(document).ready(function(){
-        $('.dataTables_scrollBody').addClass('adm-table-responsive');
         $('.select2').select2({ width: '100%' });
+        $('.adm-action-sticky').parent().css('max-width', '100%');
+        $('.adm-action-sticky').parent().css('padding', '0px');
+        $('table').parent().addClass('adm-table-responsive');
+        $('.dataTables_length').parent().css('padding', '0px');
+        $('.dataTables_filter').parent().css('padding', '0px');
+        $('.dataTables_info').parent().css('padding-left', '0px');
+        $('.paging_simple_numbers').parent().css('padding-right', '0px');
     });
 </script>
 @endsection

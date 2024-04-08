@@ -7,10 +7,13 @@
 .adm-table-no-wrap{ white-space: nowrap;}
 .footer_menu thead tr th:first-child{min-width: 45px ;text-align: left;}
 .footer_menu tbody tr td:first-child{min-width: 45px ;text-align: left;}
-.adm-table-responsive{max-width: 100%; overflow-x: auto;}
+.adm-table-responsive{ max-width: 100%; overflow-x: auto; margin-bottom: 10px;}
 .adm-table-responsive::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);background-color: #F5F5F5;}
 .adm-table-responsive::-webkit-scrollbar{height: 5px; width: 6px;background-color: #F5F5F5;}
 .adm-table-responsive::-webkit-scrollbar-thumb{background-color: #000000;}
+.adm-action-sticky{width: 100% !important;}
+.adm-action-sticky tr th:first-child{min-width: 45px;}
+.adm-action-sticky tr td:first-child{min-width: 45px;}
 .adm-action-sticky tr th:last-child { position: sticky; z-index: 1; background-color: #ffffff; right: 0;}
 .adm-action-sticky tr td:last-child { position: sticky; z-index: 1; background-color: #ffffff; right: 0;}
 .edit_form .form-control{ height: 40px; padding: 4px 8px;}
@@ -121,3 +124,15 @@
 .our-business-insurance-form .select2-selection {height: 40px !important; padding-left: 8px; }
 .our-business-insurance-form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
 .our-business-insurance-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+.user-form .form-control{  height: 40px; padding: 4px 8px; }
+.user-form .select2-selection {height: 40px !important; padding-left: 8px; }
+.user-form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.user-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+/* #page_link-error  */
+.adm-brand-errorbox .error{margin-bottom: 25px;position: absolute;top: 100%;left: 5px;}
+.adm-table-addbtn{margin-right: 20px;margin-top: 15px; }
+
+@media(max-width:575px){
+    .adm-action-sticky tr th:last-child { position: unset;}
+    .adm-action-sticky tr td:last-child { position: unset;}
+}
