@@ -363,7 +363,7 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                 <li class="nav-item"> 
                     <a href="{{url('pages')}}" class="nav-link">
-                    <i class="fa fa-circle nav-icon"></i>
+                    <i class="fas fa-file nav-icon"></i>
                         <p>CMS Pages</p>
                     </a>
                 </li>
@@ -375,7 +375,7 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                 <li class="nav-item"> 
                     <a href="{{url('faq')}}" class="nav-link">
-                    <i class="fa fa-award nav-icon"></i>
+                    <i class="fa fa-question-circle nav-icon"></i>
                         <p>Faqs</p>
                     </a>
                 </li>

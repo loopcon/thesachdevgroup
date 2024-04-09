@@ -226,3 +226,6 @@ ALTER TABLE `our_business_insurance`
 
 ALTER TABLE `our_business_insurance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 09-04-2024 9:48 AM
+ALTER TABLE `award_and_recognition` CHANGE `brand_id` `showroom_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `brands`';

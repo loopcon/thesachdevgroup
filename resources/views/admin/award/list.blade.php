@@ -28,7 +28,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Brand</th>
+                                    <th>Showroom</th>
                                     <th>Image</th>
                                     <th>Action</th>
                                 </tr>
@@ -61,7 +61,7 @@
             ajax: "{{ route('award-datatable') }}",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'brand_id', name: 'brand_id'},
+                {data: 'showroom_id', name: 'showroom_id'},
                 {data: 'image', name: 'image'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
@@ -109,7 +109,7 @@
                 var result = $.parseJSON(result);
                 $('#form-detail').html(result.html);
                 $('#form_modal').modal('show');
-                $('#brand_id').select2({width:'100%'});
+                $('#showroom_id').select2({width:'100%'});
 
             $(".award-form").validate({
                 rules: {

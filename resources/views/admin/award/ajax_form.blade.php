@@ -7,15 +7,15 @@
     <div class="modal-body m-3" id="form-detail">
         <div class="row">
             <div class="col-12">
-                <label for="brand_id" class="form-label">Brand<span class="text-danger">*</span></label>
-                <select class="form-control select2" name="brand_id" id="brand_id">
-                    <option value="">-- Select Brand --</option>
-                    @foreach($brand as $value)
-                        <option value="{{$value->id}}"@if(isset($record->brand_id) && $record->brand_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
+                <label for="showroom_id" class="form-label">Showroom<span class="text-danger">*</span></label>
+                <select class="form-control select2" name="showroom_id" id="showroom_id">
+                    <option value="">-- Select Showroom --</option>
+                    @foreach($showrooms as $value)
+                        <option value="{{$value->id}}"@if(isset($record->showroom_id) && $record->showroom_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
                     @endforeach
                 </select>
-                <div id="error"></div>
-                @if ($errors->has('brand_id')) <div class="text-danger">{{ $errors->first('brand_id') }}</div>@endif
+                @if ($errors->has('showroom_id')) <div class="text-danger">{{ $errors->first('showroom_id') }}</div>@endif
+                <div id="errordiv"></div>
             </div>
             <div class="col-12 mt-3">
                 <label for="image" class="form-label">Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
