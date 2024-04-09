@@ -27,7 +27,7 @@
                             <div class="col-md-4 adm-brand-errorbox">
                                 <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="business_id" id="business_id">
-                                    <option value="">-- Select Business--</option>
+                                    <option value="">-- Select Business --</option>
                                     @foreach($business as $value)
                                         <option value="{{$value->id}}" @if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}} @endif>{{$value->title}}</option>
                                     @endforeach
@@ -98,7 +98,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="description_font_size" class="form-label">Description Font Size</label>
                                 <select class="form-control select2" name="description_font_size">
-                                    <option value="">Select</option>
+                                    <option value="">-- Select --</option>
                                     @for($i=24; $i<=50; $i+=2)
                                         <option value="{{$i}}px" @if(isset($record->description_font_size) && $record->description_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -108,7 +108,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="description_font_family" class="form-label">Description Font Family</label>
                                 <select class="form-control select2" name="description_font_family">
-                                    <option value="">Select</option>
+                                    <option value="">-- Select --</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->description_font_family) && $record->description_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -149,7 +149,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="address_font_family" class="form-label">Address Font Family</label>
                                 <select class="form-control select2" name="address_font_family">
-                                    <option value="">Select</option>
+                                    <option value="">-- Select --</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->address_font_family) && $record->address_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -178,7 +178,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="working_hours_font_size" class="form-label">Working Hours Font Size</label>
                                 <select class="form-control select2" name="working_hours_font_size">
-                                    <option value="">Select</option>
+                                    <option value="">-- Select --</option>
                                     @for($i=24; $i<=50; $i+=2)
                                         <option value="{{$i}}px" @if(isset($record->working_hours_font_size) && $record->working_hours_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -188,7 +188,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="working_hours_font_family" class="form-label">Working Hours Font Family</label>
                                 <select class="form-control select2" name="working_hours_font_family">
-                                    <option value="">Select</option>
+                                    <option value="">-- Select --</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->working_hours_font_family) && $record->working_hours_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -219,7 +219,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="contact_font_size" class="form-label">Contact Number Font Size</label>
                                 <select class="form-control select2" name="contact_font_size">
-                                    <option value="">Select</option>
+                                    <option value="">-- Select --</option>
                                     @for($i=24; $i<=50; $i+=2)
                                         <option value="{{$i}}px" @if(isset($record->contact_font_size) && $record->contact_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -229,7 +229,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="contact_font_family" class="form-label">Contact Number Font Family</label>
                                 <select class="form-control select2" name="contact_font_family">
-                                    <option value="">Select</option>
+                                    <option value="">-- Select --</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->contact_font_family) && $record->contact_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -250,7 +250,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="email_font_size" class="form-label">Email Font Size</label>
                                 <select class="form-control select2" name="email_font_size">
-                                    <option value="">Select</option>
+                                    <option value="">-- Select --</option>
                                     @for($i=24; $i<=50; $i+=2)
                                         <option value="{{$i}}px" @if(isset($record->email_font_size) && $record->email_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -260,7 +260,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="email_font_family" class="form-label">Email Font Family</label>
                                 <select class="form-control select2" name="email_font_family">
-                                    <option value="">Select</option>
+                                    <option value="">-- Select --</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->email_font_family) && $record->email_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -282,7 +282,7 @@
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-12">
+                            <?php /* <div class="col-12">
                                 <h5>Why Choose Section</h5>
                                 <hr>
                             </div>
@@ -305,7 +305,7 @@
                             <div class="col-md-12 mb-2">
                                 <label for="why_choose_description" class="form-label">Why Choose Description</label>
                                 <textarea class="ckeditor form-control" value="{{isset($record->why_choose_description) ? $record->why_choose_description : old('why_choose_description')}}" name="why_choose_description" id="why_choose_description"></textarea>
-                            </div>
+                            </div> */ ?>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
