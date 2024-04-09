@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Footer_menu;
+use Illuminate\Validation\Rule;
 use DataTables;
-
 
 class FooterMenuController extends Controller
 {
@@ -53,6 +53,17 @@ class FooterMenuController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+
+                $request->validate([
+                    'name' => ['required',
+                        Rule::unique('footer_menus')->where(function ($query) use ($request) {
+                            return $query->where('name', $request->name)
+                            ->where('menu_name', $request->menu_name)->whereNull('deleted_at');
+                        })
+                    ],
+                    'menu_name' => 'required',
+                ]);
+
                 $footer_menu = new Footer_menu();
                 $footer_menu->menu_name = $request->menu_name;
                 $footer_menu->name = $request->name;
@@ -141,6 +152,15 @@ class FooterMenuController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+
+                $request->validate([
+                    'name' => ['required',
+                        Rule::unique('footer_menus')->where(function ($query) use ($request) {
+                            return $query->where('name', $request->name)
+                            ->where('menu_name', $request->menu_name)->where('id','!=',decrypt($request->id))->whereNull('deleted_at');
+                        })
+                    ],
+                ]);
 
                 $footer_menu = Footer_menu::find(decrypt($id));
                 $footer_menu->menu_name = $request->menu_name;

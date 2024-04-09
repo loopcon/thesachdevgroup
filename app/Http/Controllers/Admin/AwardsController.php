@@ -67,6 +67,7 @@ class AwardsController extends Controller
                 ]);
                 $award = new Awards();
                 $award->showroom_id = $request->showroom_id ? $request->showroom_id : NULL;
+                $award->name = $request->name ? $request->name : NULL;
                 if($request->hasFile('image')) {
                     $image = fileUpload($request, 'image', 'uploads/award');
                     $award->image = $image;
@@ -88,7 +89,7 @@ class AwardsController extends Controller
     public function awardDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = Awards::with('showroomdDetail')->select('id', 'showroom_id', 'image')->orderBy('id', 'DESC');
+            $query = Awards::with('showroomdDetail')->select('id', 'showroom_id', 'name', 'image')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -132,11 +133,13 @@ class AwardsController extends Controller
             {
                 $id = decrypt($id);
                 $request->validate([
-                    'brand_id' => 'required',
+                    'showroom_id' => 'required',
                     'image' => 'image|mimes:jpeg,png,jpg,webp',
                 ]);
                 $award = Awards::find($id);
-                $award->brand_id = $request->brand_id ? $request->brand_id : NULL;
+                $award->showroom_id = $request->showroom_id ? $request->showroom_id : NULL;
+                $award->name = $request->name ? $request->name : NULL;
+
                 if($request->hasFile('image')) {
                     $oldimg = $award->image;
                     if($oldimg)

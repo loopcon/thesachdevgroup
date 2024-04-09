@@ -125,7 +125,7 @@ ALTER TABLE `users` ADD `deleted_at` TIMESTAMP NULL DEFAULT NULL AFTER `updated_
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Faqs', NULL, NULL, NULL);
 
 -- Drashti : 04-04-2024 01:59 PM
-INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES ('23', 'Showroom Facility Customer Gallery', NULL, NULL, NULL);
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Showroom Facility Customer Gallery', NULL, NULL, NULL);
 
 -- Disha : 03-04-2024 10:00 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Pages', NULL, NULL, NULL);

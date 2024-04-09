@@ -4,6 +4,11 @@
 @endsection
 @section('content')
     <div class="content-wrapper">
+
+        @php($has_permission = hasPermission('Showroom'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+
         <div class="content">
             <div class="content-header">
                 <div class="container-fluid">
@@ -71,6 +76,8 @@
                 </div>
             </div>
         </div>
+      @endif
+    @endif
 
         @php($has_permission = hasPermission('Showroom Facility Customer Gallery'))
         @if(isset($has_permission) && $has_permission)
@@ -365,6 +372,14 @@
         $('.customer_gallery_image').val("");
     });
 
+
+    
+
+    $(document).on('click', '#FacilityCustomerGalleryEditModal .Close', function() {
+        $('label.error').empty();
+        $('.facility_image').val("");
+        $('.customer_gallery_image').val("");
+    });
 
     $(document).on('click', '.edit', function() {
         var id = $(this).data('id');
