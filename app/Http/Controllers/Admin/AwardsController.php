@@ -65,6 +65,7 @@ class AwardsController extends Controller
                     'showroom_id' => 'required',
                     'image' => 'image|mimes:jpeg,png,jpg,webp',
                 ]);
+
                 $award = new Awards();
                 $award->showroom_id = $request->showroom_id ? $request->showroom_id : NULL;
                 $award->name = $request->name ? $request->name : NULL;

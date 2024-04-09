@@ -15,7 +15,6 @@
                     @endforeach
                 </select>
                 @if ($errors->has('showroom_id')) <div class="text-danger">{{ $errors->first('showroom_id') }}</div>@endif
-                <div id="errordiv"></div>
             </div>
 
             <div class="col-12">

@@ -115,7 +115,7 @@
 
             $(".award-form").validate({
                 rules: {
-                    'brand_id': {
+                    'showroom_id': {
                         required: true,
                     },
                     'image': {
@@ -123,8 +123,8 @@
                     },
                 },
                 messages: {
-                    'brand_id': {
-                        required: "Brand is required",
+                    'showroom_id': {
+                        required: "Showroom is required",
                     },
                     'image': {
                         extension: "Image must be jpg,jpeg,png or webp",
