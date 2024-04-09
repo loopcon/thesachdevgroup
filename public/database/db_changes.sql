@@ -229,3 +229,6 @@ ALTER TABLE `our_business_insurance`
 
 -- Disha : 09-04-2024 9:48 AM
 ALTER TABLE `award_and_recognition` CHANGE `brand_id` `showroom_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `brands`';
+
+-- Disha : 09-04-2024 3:34 PM
+ALTER TABLE `service_center` ADD `rating` FLOAT(8,2) NULL DEFAULT NULL AFTER `email_font_color`, ADD `number_of_rating` INT(11) NULL DEFAULT NULL AFTER `rating`;

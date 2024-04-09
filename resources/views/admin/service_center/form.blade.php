@@ -1,7 +1,8 @@
 @extends('admin.layout.header')
 @section('css')
-    <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
-    <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link class="js-stylesheet" href="{{ url('public/plugins/select2/css/select2.css') }}" rel="stylesheet">
+    <link class="js-stylesheet" href="{{ url('public/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -26,7 +27,7 @@
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
                                 <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="business_id" id="business_id">
+                                <select class="form-control select2" name="business_id" id="business_id" required="">
                                     <option value="">-- Select Business --</option>
                                     @foreach($business as $value)
                                         <option value="{{$value->id}}" @if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}} @endif>{{$value->title}}</option>
@@ -37,7 +38,7 @@
 
                             <div class="col-md-4 adm-brand-errorbox">
                                 <label for="service_id" class="form-label">Service<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="service_id" id="service_id">
+                                <select class="form-control select2" name="service_id" id="service_id" required="">
                                     <option value="">-- Select Service --</option>
                                     @foreach($services as $value)
                                         <option value="{{$value->id}}"@if(isset($record->service_id) && $record->service_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
@@ -49,7 +50,7 @@
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+                                <input type="text" class="form-control" id="name" required="" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -122,7 +123,7 @@
 
                             <div class="col-md-4 mt-2">
                                 <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="address" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
+                                <textarea class="form-control" name="address" required="" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
                                 @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                             </div> 
 
@@ -202,7 +203,7 @@
 
                             <div class="col-md-4 mt-2">
                                 <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
+                                <input type="text" class="form-control" required="" maxlength="10" minlength="10" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
                                 @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
                             </div>
 
@@ -282,6 +283,17 @@
                                 <div class="error"></div>
                             </div>
 
+                            <div class="col-md-4 mt-2">
+                                <label for="rating" class="form-label">Rating</label>
+                                <input type="text" class="form-control" value="{{isset($record->rating) ? $record->rating : old('rating')}}" name="rating" id="rating">
+                                @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="number_of_rating" class="form-label">Number of Number of Rating</label>
+                                <input type="text" class="form-control" maxlength="5" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}" name="number_of_rating" id="number_of_rating">
+                            </div>
+
                             <?php /* <div class="col-12">
                                 <h5>Why Choose Section</h5>
                                 <hr>
@@ -319,54 +331,46 @@
 </div>
 @endsection
 @section('javascript')
-<script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
-<script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
+<script src="{{ url('public/plugins/select2/js/select2.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
         $(".service-center-form").validate({
             rules: {
-                'name': {
-                    required: true,
+                'rating': {
+                    number: true,
                 },
-                'business_id': {
-                    required: true,
+                'number_of_rating': {
+                    number: true,
                 },
-                'service_id': {
-                    required: true,
-                },
-                'address': {
-                    required: true,
-                },
-                'contact_number': {
-                    required: true,
-                    maxlength:"10",
-                    minlength:"10",
-                },
-                'email': {
-                    required: true,
-                },
-            },
-            messages: {
-                'name': {
-                    required: "Name is required",
-                },
-                'service_id': {
-                    required: "Service is required",
-                },
-                'business_id': {
-                    required: "Our Business is required",
-                },
-                'address': {
-                    required: "Address is required",
-                },
-                'contact_number': {
-                    required: "Contact number is required",
-                },
-                'email': {
-                    required: "Email is required",
-                },
+            //     'service_id': {
+            //         required: true,
+            //     },
+            //     'address': {
+            //         required: true,
+            //     },
+            //     'email': {
+            //         required: true,
+            //     },
+            // },
+            // messages: {
+            //     'name': {
+            //         required: "Name is required",
+            //     },
+            //     'service_id': {
+            //         required: "Service is required",
+            //     },
+            //     'business_id': {
+            //         required: "Our Business is required",
+            //     },
+            //     'address': {
+            //         required: "Address is required",
+            //     },
+            //     'email': {
+            //         required: "Email is required",
+            //     },
             },
             submitHandler: function(form) {
                 $(form).find('.submit').prop("disabled", true);
