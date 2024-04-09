@@ -41,12 +41,13 @@ class ShowroomController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $showroom = new Showroom();
-                $showroom->name = $request->name;
 
+                $showroom->our_business_id = $request->our_business_id;
+
+                $showroom->name = $request->name;
                 $showroom->name_color = $request->name_color;
                 $showroom->name_font_size = $request->name_font_size;
                 $showroom->name_font_family = $request->name_font_family;
-
 
                 $showroom->brand_id = $request->brand_id;
                 $showroom->car_id = json_encode($request->car_id);
@@ -165,7 +166,12 @@ class ShowroomController extends Controller
                         }
                     return $updateButton . $deleteBtn;
                     })
-  
+
+                ->editColumn('our_business_id', function($showroom){
+                    $our_business_name =  isset($showroom->our_business->title) && $showroom->our_business->title ? $showroom->our_business->title: NULL;
+                    return $our_business_name;
+                })
+
                 ->editColumn('brand', function($showroom){
                     $brand_name =  isset($showroom->brand->name) && $showroom->brand->name ? $showroom->brand->name: NULL;
                     return $brand_name;
@@ -217,7 +223,7 @@ class ShowroomController extends Controller
                     }
                 })
 
-            ->rawColumns(['action','brand','car','description','address_icon','working_hours_icon','contact_number_icon','email_icon'])
+            ->rawColumns(['action','our_business_id','brand','car','description','address_icon','working_hours_icon','contact_number_icon','email_icon'])
             ->make(true);
         }
         
@@ -230,9 +236,10 @@ class ShowroomController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $showrooms  = Showroom::where('id',decrypt($id))->get();
+                $our_business = OurBusiness::get();
                 $brands = Brand::get();
                 $cars = Car::where('brand_id',$brand_id)->get();
-                return view('admin.showroom._form',compact('showrooms','brands','cars'));
+                return view('admin.showroom._form',compact('our_business','showrooms','brands','cars'));
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
@@ -249,6 +256,9 @@ class ShowroomController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $showroom = Showroom::find($id);
+
+                $showroom->our_business_id = $request->our_business_id;
+
                 $showroom->name = $request->name;
                 
                 $showroom->name_color = $request->name_color;
@@ -352,57 +362,6 @@ class ShowroomController extends Controller
     }
 
     public function showroom_destroy(Request $request,$id){
-
-        // $has_permission = hasPermission('Showroom');
-        // if(isset($has_permission) && $has_permission)
-        // {
-        //     if($has_permission->full_permission == 1)
-        //     {
-
-        //         $showroom = Showroom::findOrFail($id);
-
-                // if($showroom->address_icon != NULL)
-                // {
-                //     $image = public_path("showrooms_address_icon/{$showroom->address_icon}");
-                //     if (File::exists($image)) {
-                //         unlink($image);
-                //     }
-                // }
-
-                // if($showroom->working_hours_icon != NULL)
-                // {
-                //     $image = public_path("showrooms_working_hours_icon/{$showroom->working_hours_icon}");
-                //     if (File::exists($image)) {
-                //         unlink($image);
-                //     }
-                // }
-
-                // if($showroom->contact_number_icon != NULL)
-                // {
-                //     $image = public_path("showrooms_contact_number_icon/{$showroom->contact_number_icon}");
-                //     if (File::exists($image)) {
-                //         unlink($image);
-                //     }
-                // }
-
-                // if($showroom->email_icon != NULL)
-                // {
-                //     $image = public_path("showrooms_email_icon/{$showroom->email_icon}");
-                //     if (File::exists($image)) {
-                //         unlink($image);
-                //     }
-                // }
-                
-        //         $showroom->delete();
-
-        //         return redirect()->route('showroom_list')->with('message', 'Showroom deleted successfully');
-        //     } else {
-        //         return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
-        //     }
-        // }else {
-        //     return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
-        // }
-
 
         $has_permission = hasPermission('Showroom');
         

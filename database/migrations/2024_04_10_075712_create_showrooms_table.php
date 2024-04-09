@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('showrooms', function (Blueprint $table) {
             $table->id();
+            $table->string('our_business_id')->nullable();
             $table->string('name')->nullable();
             $table->string('name_color')->nullable();
             $table->string('name_font_size')->nullable();

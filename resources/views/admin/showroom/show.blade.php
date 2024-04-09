@@ -29,11 +29,12 @@
                 <div class="card-body">
                     <section class="content">
                         <div class="container-fluid">
-                            {{-- <div class=""> --}}
                                 <table class="table table-bordered table-striped data-table adm-table-no-wrap adm-action-sticky">
                                     <thead>
                                         <tr>
                                             <th style="width:50px;">No</th>
+                                            <th>Our Business</th>
+
                                             <th>Showroom Name</th>
                                             <th>Showroom Name Color</th> 
                                             <th>Showroom Name Font Size</th>
@@ -70,7 +71,6 @@
                                     <tbody>
                                     </tbody>
                                 </table>
-                            {{-- </div>   --}}
                         </div>
                     </section>
                 </div>
@@ -248,6 +248,7 @@
                 },
                 columns: [
                     {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                    {data: 'our_business_id', name: 'our_business_id'},
                     {data: 'name', name: 'name'},
                     {data: 'name_color', name: 'name_color'},
                     {data: 'name_font_size', name: 'name_font_size'},

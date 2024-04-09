@@ -11,6 +11,7 @@ class Showroom extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
+        'our_business_id',
         'name',
         'name_color',
         'name_font_size',
@@ -41,7 +42,6 @@ class Showroom extends Model
         'description_color',
         'description_font_size',
         'description_font_family',
-
     ];
 
     public function brand(){
@@ -50,5 +50,9 @@ class Showroom extends Model
 
     public function car(){
         return $this->hasMany(Car::class,'id');
+    }
+
+    public function our_business(){
+        return $this->belongsTo(OurBusiness::class,'our_business_id');
     }
 }

@@ -25,7 +25,18 @@
 
                         <div class="row">
 
-                                <div class="mb-3 col-md-4">
+                            <div class="mb-3 col-md-4">
+                                <label for="our_business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
+                                <select class="form-control our_business_id select2" name="our_business_id" id="our_business_id">
+                                    <option selected="selected" disabled="disabled" value="">Select</option>
+                                    @foreach($our_business as $our_busines)
+                                        <option value="{{$our_busines->id}}">{{$our_busines->title}}</option>
+                                    @endforeach
+                                </select>
+                                <div id="errorbusinessdiv"></div>
+                            </div>
+
+                                <div class="col-md-4">
                                     <label for="name" class="form-label">Showroom Name<span class="text-danger">*</span></label>
                                     <input type="text" id="name" class="form-control" name="name">
                                     <div id="error"></div>
@@ -170,7 +181,7 @@
                                 </div>
 
                             
-                            <div class="col-md-4">
+                                <div class="col-md-4">
                                     <label for="contact_number_font_size" class="form-label">Contact Number Text Font Size</label>
                                     <select class="form-control select2" name="contact_number_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
@@ -306,6 +317,9 @@
 
         $(".showroom_form").validate({
             rules: {
+                'our_business_id': {
+                    required: true,
+                },
                 'name': {
                     required: true,
                 },
@@ -343,6 +357,9 @@
                 },
             },
             messages: {
+                'our_business_id': {
+                    required: "The our business field is required.",
+                },
                 'name': {
                     required: "The showroom name field is required.",
                 },
@@ -378,6 +395,10 @@
                 },
             },
             errorPlacement: function(error, element) {
+                if(element.attr("name") == "our_business_id"){
+                    error.appendTo('#errorbusinessdiv');
+                    return;
+                }
                 if(element.attr("name") == "brand_id"){
                     error.appendTo('#errordiv');
                     return;

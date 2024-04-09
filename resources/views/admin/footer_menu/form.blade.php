@@ -31,11 +31,7 @@
                             <div class="mb-3 col-md-4">
                                 <label for="menu_name" class="form-label">Select Menu<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="menu_name">
-                                    
                                     <option selected="selected" disabled="disabled">Select</option>
-                                    {{-- <option value="our_services" @if((isset($record->menu_name) && $record->menu_name == 'our_services') || old('menu_name') == 'our_services') {{'selected'}} @endif>Our Services</option>
-                                    <option value="our_businesses" @if((isset($record->menu_name) && $record->menu_name == 'our_businesses') || old('menu_name') == 'our_businesses') {{'selected'}} @endif>Our Businesses</option>
-                                    <option value="useful_links" @if((isset($record->menu_name) && $record->menu_name == 'useful_links') || old('menu_name') == 'useful_links') {{'selected'}} @endif>Useful Links</option> --}}
                                     <option value="our_services" {{(old('menu_name') == 'our_services' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'our_services' ? 'selected' : ''))}}>Our Services</option>
                                     <option value="our_businesses" {{(old('menu_name') == 'our_businesses' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'our_businesses' ? 'selected' : ''))}}>Our Businesses</option>
                                     <option value="useful_links" {{(old('menu_name') == 'useful_links' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'useful_links' ? 'selected' : ''))}}>Useful Links</option>
@@ -90,19 +86,19 @@
 
                             <div class="col-md-4">
                                 <label for="link" class="form-label">Link</label>
-                                <input type="text" id="link" class="form-control" name="link" value="{{isset($record->link) ? $record->link : old('link')}}">
+                                <input type="text" id="link" class="form-control" name="link" value="{{ old('link') ?  old('link') : (isset($record->link) ? $record->link :  '')}}">
                                 <div class="error"></div>
                             </div>
 
                             <div class="col-md-12 mt-2 mb-3">
                                 <label for="footer_description">Footer Description</label>
-                                <textarea class="ckeditor form-control" name="footer_description">{{isset($record->footer_description) ? $record->footer_description : old('footer_description')}}</textarea>
+                                <textarea class="ckeditor form-control" name="footer_description">{{ old('footer_description') ?  old('footer_description') : (isset($record->footer_description) ? $record->footer_description :  '')}}</textarea>
                                 <div class="error"></div>
                             </div>
 
                             <div class="mb-3 col-md-4">
                                 <label for="footer_description_color" class="form-label">Footer Description Text Color</label>
-                                <input type="text" class="form-control colorpicker" name="footer_description_color" id="footer_description_color" value="{{isset($record->footer_description_color) ? $record->footer_description_color : old('footer_description_color')}}">
+                                <input type="text" class="form-control colorpicker" name="footer_description_color" id="footer_description_color" value="{{ old('footer_description_color') ?  old('footer_description_color') : (isset($record->footer_description_color) ? $record->footer_description_color :  '')}}">
                             </div>
 
                             <div class="col-md-4">
@@ -110,7 +106,13 @@
                                 <select class="form-control select2" name="footer_description_font_size">
                                     <option selected="selected" disabled="disabled">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
-                                        <option value="{{$i}}px" @if((isset($record->footer_description_font_size) && $record->footer_description_font_size == $i.'px') || old('footer_description_font_size') == $i.'px') {{'selected'}} @endif>{{$i}}px</option>
+                                        @php ($selected_footer_description_font_size = '')
+                                        @if(old('footer_description_font_size') == $i.'px')
+                                            @php ($selected_footer_description_font_size = 'selected')
+                                        @elseif(old('footer_description_font_size') == '' && isset($record->footer_description_font_size) && $record->footer_description_font_size == $i.'px') 
+                                            @php ($selected_footer_description_font_size = 'selected')  
+                                        @endif
+                                        <option value="{{$i}}px" {{$selected_footer_description_font_size}}>{{$i}}px</option>
                                     @endfor
                                 </select>
                             </div>
@@ -119,8 +121,15 @@
                                 <label for="footer_description_font_family" class="form-label">Footer Description Text Font Family</label>
                                 <select class="form-control select2" name="footer_description_font_family">
                                     <option selected="selected" disabled="disabled">Select</option>
-                                    @foreach($fontfamily as $family)
-                                        <option value="{{$family['key']}}" @if((isset($record->footer_description_font_family) && $record->footer_description_font_family == $family['key']) || old('footer_description_font_family') == $family['key']) {{'selected'}} @endif>{{$family['value']}}</option>
+                                    @foreach($fontfamily as $footerfamily)
+
+                                        @php ($selected_footer_description_font_family = '')
+                                        @if(old('footer_description_font_family') == $footerfamily['key'])
+                                            @php ($selected_footer_description_font_family = 'selected')
+                                        @elseif(old('footer_description_font_family') == '' && isset($record->footer_description_font_family) && $record->footer_description_font_family == $footerfamily['key']) 
+                                            @php ($selected_footer_description_font_family = 'selected')  
+                                        @endif
+                                        <option value="{{$footerfamily['key']}}" {{$selected_footer_description_font_family}}>{{$footerfamily['key']}}</option>
                                     @endforeach
                                 </select>
                               </div>
