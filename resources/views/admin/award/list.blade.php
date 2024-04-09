@@ -29,6 +29,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Showroom</th>
+                                    <th>Name</th>
                                     <th>Image</th>
                                     <th>Action</th>
                                 </tr>
@@ -62,6 +63,7 @@
             columns: [
                 {data: 'id', name: 'id'},
                 {data: 'showroom_id', name: 'showroom_id'},
+                {data: 'name', name: 'name'},
                 {data: 'image', name: 'image'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
