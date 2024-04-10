@@ -64,8 +64,8 @@ class ServiceCenterController extends Controller
                     'name' => 'required',
                     'email' => 'required',
                     'contact_number' => 'required|numeric',
-                    'rating' => 'numeric|max:5',
-                    'number_of_rating' => 'numeric',
+                    'rating' => 'required|numeric|max:5',
+                    'number_of_rating' => 'required|numeric',
                 ]);
                 $service_center = new ServiceCenter();
                 $fields = array('service_id', 'business_id', 'name', 'name_color', 'name_font_size','name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color', 'rating', 'number_of_rating');
@@ -206,8 +206,8 @@ class ServiceCenterController extends Controller
                     'name' => 'required',
                     'email' => 'required',
                     'contact_number' => 'required|numeric',
-                    'rating' => 'numeric|max:5',
-                    'number_of_rating' => 'numeric',
+                    'rating' => 'required|numeric|max:5',
+                    'number_of_rating' => 'required|numeric',
                 ]);
                 $service_center = ServiceCenter::find($id);
                 $fields = array('business_id', 'service_id', 'name', 'name_color', 'name_font_size','name_font_family', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color', 'rating', 'number_of_rating');

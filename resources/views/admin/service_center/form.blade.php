@@ -280,7 +280,6 @@
                                 @endif  
                                 <input type="file" id="email_icon" class="form-control" name="email_icon" value="">
                                 @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -292,6 +291,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="number_of_rating" class="form-label">Number of Number of Rating</label>
                                 <input type="text" class="form-control" maxlength="5" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}" name="number_of_rating" id="number_of_rating">
+                                @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                             </div>
 
                             <?php /* <div class="col-12">
