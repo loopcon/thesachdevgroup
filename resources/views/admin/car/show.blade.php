@@ -12,7 +12,7 @@
                             @include('admin.alerts')
                         </div>
                         <div class="col-sm-6">
-                            <h1 class="m-0">Car Module</h1>
+                            <h1 class="m-0">Car Models</h1>
                         </div>
                     </div>
                 </div>
