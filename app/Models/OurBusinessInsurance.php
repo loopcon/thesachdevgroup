@@ -11,4 +11,9 @@ class OurBusinessInsurance extends Model
     use HasFactory,SoftDeletes;
     protected $table = 'our_business_insurance';
     protected $fields = ['business_id', 'name', 'name_font_size', 'name_font_family', 'name_font_color', 'icon', 'url'];
+
+    public function businessDetail()
+    {
+        return $this->belongsTo(OurBusiness::class, 'business_id');
+    }
 }

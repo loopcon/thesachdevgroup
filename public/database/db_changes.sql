@@ -196,3 +196,36 @@ ALTER TABLE `service_center` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT
 UPDATE `modules` SET `module` = 'Business', `deleted_at` = NULL, `created_at` = NULL, `updated_at` = NULL WHERE `modules`.`id` = 23;
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Business Insurance', NULL, NULL, NULL);
 
+-- Disha : 06-04-2024 11:16 AM
+ALTER TABLE `our_business` ADD `why_choose_title` VARCHAR(255) NULL DEFAULT NULL AFTER `description_font_family`, ADD `why_choose_image` VARCHAR(255) NULL DEFAULT NULL AFTER `why_choose_title`, ADD `why_choose_description` TEXT NULL DEFAULT NULL AFTER `why_choose_image`;
+ALTER TABLE `our_business` ADD `why_choose_title_color` INT NOT NULL AFTER `why_choose_title`, ADD `why_choose_title_font_size` INT NOT NULL AFTER `why_choose_title_color`, ADD `why_choose_title_font_family` INT NOT NULL AFTER `why_choose_title_font_size`;
+ALTER TABLE `our_business` CHANGE `why_choose_title_color` `why_choose_title_color` VARCHAR(255) NULL DEFAULT NULL, CHANGE `why_choose_title_font_size` `why_choose_title_font_size` VARCHAR(255) NULL DEFAULT NULL, CHANGE `why_choose_title_font_family` `why_choose_title_font_family` VARCHAR(255) NULL DEFAULT NULL;
+ALTER TABLE `our_business` ADD `why_choose_description_color` VARCHAR(255) NULL DEFAULT NULL AFTER `why_choose_description`, ADD `why_choose_description_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `why_choose_description_color`, ADD `why_choose_description_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `why_choose_description_font_size`;
+
+-- Disha : 06-04-2024 1:20 AM
+--
+-- Table structure for table `our_business_insurance`
+--
+
+CREATE TABLE `our_business_insurance` (
+  `id` int(11) NOT NULL,
+  `business_id` int(11) DEFAULT NULL COMMENT '`id` of `our_business`',
+  `name` varchar(255) DEFAULT NULL,
+  `name_font_size` varchar(255) DEFAULT NULL,
+  `name_font_family` varchar(255) DEFAULT NULL,
+  `name_font_color` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `our_business_insurance`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `our_business_insurance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 09-04-2024 9:48 AM
+ALTER TABLE `award_and_recognition` CHANGE `brand_id` `showroom_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `brands`';

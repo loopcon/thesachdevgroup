@@ -21,17 +21,18 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('our-business-update', array('id' => encrypt($record->id))) }} @else{{ route('our-business-store') }} @endif" method="POST" class="our-business-insurance-form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('our-business-insurance-update', array('id' => encrypt($record->id))) }} @else{{ route('our-business-insurance-store') }} @endif" method="POST" class="our-business-insurance-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
-                                <label for="page_link" class="form-label">page Link or Url<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="page_link" id="page_link">
-                                    <option value="">-- Select --</option>
-                                    <option value="1" @if(isset($record->page_link) && $record->page_link == 1){{'selected'}} @endif>Page Link</option>
-                                    <option value="0" @if(isset($record->page_link) && $record->page_link == 0){{'selected'}} @endif>Url</option>
+                                <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="business_id" id="business_id">
+                                    <option value="">-- Select Business--</option>
+                                    @foreach($business as $value)
+                                        <option value="{{$value->id}}" @if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}} @endif>{{$value->title}}</option>
+                                    @endforeach
                                 </select>
-                                @if ($errors->has('page_link')) <div class="text-danger">{{ $errors->first('page_link') }}</div>@endif
+                                @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
                             <div class="col-md-4 page_url">
@@ -39,87 +40,52 @@
                                 <input type="url" id="url" class="form-control" name="url" value="{{isset($record->url) ? $record->url : old('url')}}">
                             </div>
 
-                            <div class="col-md-4 adm-brand-errorbox">
-                                <label for="title" class="form-label">Business Title<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="title" id="title">
-                                    <option value="">-- Select --</option>
-                                    @foreach($our_business as $value)
-                                        <option value="{{$value->name}}"@if(isset($record->title) && $record->title == $value->name){{'selected'}}@endif>{{$value->name}}</option>
-                                    @endforeach
-                                </select>
-                                <div id="error"></div>
-                                @if ($errors->has('title')) <div class="text-danger">{{ $errors->first('title') }}</div>@endif
+                            <div class="col-md-4">
+                                <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+                                @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
+                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="title_font_color" class="form-label">Title Font Color</label>
-                                <input type="text" id="title_font_color" class="form-control colorpicker" name="title_font_color" value="{{isset($record->title_font_color) ? $record->title_font_color : old('title_font_color')}}">
+                                <label for="name_font_color" class="form-label">Name Font Color</label>
+                                <input type="text" id="name_font_color" class="form-control colorpicker" name="name_font_color" value="{{isset($record->name_font_color) ? $record->name_font_color : old('name_font_color')}}">
                             </div>
- 
+
                             <div class="col-md-4">
-                                <label for="title_font_size" class="form-label">Title Font Size</label>
-                                <select class="form-control select2" name="title_font_size">
+                                <label for="name_font_size" class="form-label">Name Font Size</label>
+                                <select class="form-control select2" name="name_font_size">
                                     <option value="">Select</option>
                                     @for($i=24; $i<=50; $i+=2)
-                                        <option value="{{$i}}px" @if(isset($record->title_font_size) && $record->title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                        <option value="{{$i}}px" @if(isset($record->name_font_size) && $record->name_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
                                 </select>
                             </div>
 
                             @php($fontfamily = fontFamily())
-                            <div class="col-md-4 mt-2">
-                                <label for="title_font_family" class="form-label">Title Font Family</label>
-                                <select class="form-control select2" name="title_font_family">
+                            <div class="col-md-4">
+                                <label for="name_font_family" class="form-label">Name Font Family</label>
+                                <select class="form-control select2" name="name_font_family">
                                     <option value="">Select</option>
                                     @foreach($fontfamily as $family)
-                                        <option value="{{$family['key']}}" @if(isset($record->title_font_family) && $record->title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-md-4 mt-2">
-                                <label for="banner_image" class="form-label">Banner Image</label><span class="text-danger">*</span><small>(Image Type : jpg,jpeg,png,webp)</small>
-                                @if(isset($record->banner_image) && $record->banner_image)
-                                    <img src="{{url('public/uploads/our_business/'.$record->banner_image)}}" width="100">
-                                @endif  
-                                <input type="file" id="banner_image" class="form-control" name="banner_image" value="">
-                                @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
-                                <div class="error"></div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" name="description" id="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="description_font_size" class="form-label">Description Font Size</label>
-                                <select class="form-control select2" name="description_font_size">
-                                    <option value="">Select</option>
-                                    @for($i=24; $i<=50; $i+=2)
-                                        <option value="{{$i}}px" @if(isset($record->description_font_size) && $record->description_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
-                                    @endfor
-                                </select>
-                            </div>
-
-                            <div class="col-md-4 mt-2">
-                                <label for="description_font_family" class="form-label">Description Font Family</label>
-                                <select class="form-control select2" name="description_font_family">
-                                    <option value="">Select</option>
-                                    @foreach($fontfamily as $family)
-                                        <option value="{{$family['key']}}" @if(isset($record->description_font_family) && $record->description_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                        <option value="{{$family['key']}}" @if(isset($record->name_font_family) && $record->name_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="col-md-4 mt-2 mb-3">
-                                <label for="description_font_color" class="form-label">Description Font Color</label>
-                                <input type="text" class="form-control colorpicker" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
+                                <label for="icon" class="form-label">Icon</label><span class="text-danger">*</span><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                @if(isset($record->icon) && $record->icon)
+                                    <img src="{{url('public/uploads/our_business_insurance/'.$record->icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                @endif  
+                                <input type="file" id="icon" class="form-control" name="icon" value="">
+                                @if ($errors->has('icon')) <div class="text-danger">{{ $errors->first('icon') }}</div>@endif
+                                <div class="error"></div>
                             </div>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
-                            <a href="{{ route('our-business') }}" class="btn btn-danger">Cancel</a>
+                            <a href="{{ route('our-business-insurance') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
                 </div>
@@ -140,10 +106,10 @@
                 'business_id': {
                     required: true,
                 },
-                'title': {
+                'name': {
                     required: true,
                 },
-                'banner_image': {
+                'icon': {
                     extension: "jpg,jpeg,png,webp",
                 },
                 url: {
@@ -151,17 +117,14 @@
                 },
             },
             messages: {
-                'page_link': {
-                    required: "Page Link or Url is required",
+                'business_id': {
+                    required: "Our Business is required",
                 },
-                'title': {
-                    required: "title is required",
+                'name': {
+                    required: "Name is required",
                 },
-                'banner_image': {
-                    extension: "Banner Image must be jpg,jpeg,png or webp",
-                },
-                'url': {
-                    url: "Enter valid url",
+                'icon': {
+                    extension: "Icon must be jpg,jpeg,png or webp",
                 },
             },
             submitHandler: function(form) {

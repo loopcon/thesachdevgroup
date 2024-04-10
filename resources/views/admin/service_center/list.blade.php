@@ -19,15 +19,16 @@
         </div>
         <div class="card">
             <div class="col-sm-12  text-end">
-                <a href="{{ route('service-center-create') }}" class="btn btn-primary mt-2 mr-4 float-right">Add</a>
+                <a href="{{ route('service-center-create') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
             </div>
             <div class="card-body">
                 <!-- <section class="content">
                     <div class="container-fluid"> -->
-                        <table class="table table-bordered table-striped table adm-table-no-wrap adm-action-sticky">
+                        <table class="table table-bordered table-striped adm-table-no-wrap adm-action-sticky">
                             <thead>
                                 <tr>
-                                    <th style="width:45px;">Id</th>
+                                    <th style="width:40px;">Id</th>
+                                    <th>Our Business</th>
                                     <th>Service</th>
                                     <th>Name</th>
                                     <th>Name Color</th>
@@ -75,10 +76,11 @@
         var table = $('.table').DataTable({
             processing: true,
             serverSide: true,
-            scrollX: true,
+            // scrollX: true,
             ajax: "{{ route('service-center-datatable') }}",
             columns: [
                 {data: 'id', name: 'id'},
+                {data: 'business_id', name: 'business_id'},
                 {data: 'service_id', name: 'service_id'},
                 {data: 'name', name: 'name'},
                 {data: 'name_color', name: 'name_color'},
@@ -129,7 +131,15 @@
     });
 
     $(document).ready(function(){
-        $('.dataTables_scrollBody').addClass('adm-table-responsive');
+        $('.adm-action-sticky').parent().css('max-width', '100%');
+        $('.adm-action-sticky').parent().css('padding', '0px');
+        $('table').parent().addClass('adm-table-responsive');
+        $('.dataTables_length').parent().css('padding', '0px');
+        $('.dataTables_filter').parent().css('padding', '0px');
+        $('.dataTables_info').parent().css('padding-left', '0px');
+        $('.paging_simple_numbers').parent().css('padding-right', '0px');
+        $('.adm-table-responsive').parent().css('margin', '0px');
+        $('.adm-table-responsive').parent().siblings().css('margin', '0px');
     });
 </script>
 @endsection

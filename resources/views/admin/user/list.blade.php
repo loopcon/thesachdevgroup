@@ -19,12 +19,12 @@
             </div>
             <div class="card">
                 <div class="col-md-12 text-end">
-                    <a href="{{ route('user-create') }}" class="btn btn-primary mt-2 mr-4 float-right">Add</a>
+                    <a href="{{ route('user-create') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
                 </div>
                 <div class="card-body">
                     <section class="content">
                         <div class="container-fluid">
-                            <table class="table table-bordered table-striped table adm-table-no-wrap">
+                            <table class="table table-bordered table-striped table adm-table-no-wrap adm-action-sticky">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -78,7 +78,13 @@
     });
 
     $(document).ready(function(){
-        $('.dataTables_scrollBody').addClass('adm-table-responsive');
+        $('.adm-action-sticky').parent().css('max-width', '100%');
+        $('.adm-action-sticky').parent().css('padding', '0px');
+        $('table').parent().addClass('adm-table-responsive');
+        $('.dataTables_length').parent().css('padding', '0px');
+        $('.dataTables_filter').parent().css('padding', '0px');
+        $('.dataTables_info').parent().css('padding-left', '0px');
+        $('.paging_simple_numbers').parent().css('padding-right', '0px');
     });
 </script>
 @endsection

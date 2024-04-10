@@ -19,7 +19,7 @@
             </div>
             <div class="card">
                 <div class="col-sm-12  text-end">
-                    <a href="{{ route('countCreate') }}" class="btn btn-primary mt-2 float-right">Add</a>
+                    <a href="{{ route('countCreate') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
                 </div>
                 <div class="card-body">
                     <section class="content">
@@ -65,7 +65,7 @@
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
-            scrollX: true,
+            // scrollX: true,
             ajax: "{{ route('count.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
@@ -106,7 +106,13 @@ $(document).on('click', '.delete', function() {
 });
 
     $(document).ready(function(){
-        $('.dataTables_scrollBody').addClass('adm-table-responsive');
+        $('.adm-action-sticky').parent().css('max-width', '100%');
+        $('.adm-action-sticky').parent().css('padding', '0px');
+        $('table').parent().addClass('adm-table-responsive');
+        $('.dataTables_length').parent().css('padding', '0px');
+        $('.dataTables_filter').parent().css('padding', '0px');
+        $('.dataTables_info').parent().css('padding-left', '0px');
+        $('.paging_simple_numbers').parent().css('padding-right', '0px');
     });
 </script>
 @endsection

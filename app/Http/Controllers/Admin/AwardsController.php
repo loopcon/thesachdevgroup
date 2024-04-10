@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Awards;
-use App\Models\Brand;
+use App\Models\Showroom;
 use DataTables;
 use File;
 
@@ -40,8 +40,8 @@ class AwardsController extends Controller
                     $id = $request->id;
                     $id = $id ? decrypt($id) : NULL;
                     $record = $id ? Awards::find($id) : NULL;
-                    $brand = Brand::select('id', 'name')->get();
-                    $html = view('admin.award.ajax_form', array('record' => $record, 'brand' => $brand))->render();
+                    $showrooms = Showroom::select('id', 'name')->get();
+                    $html = view('admin.award.ajax_form', array('record' => $record, 'showrooms' => $showrooms))->render();
                     $return = array();
                     $return['html'] = $html;
                     echo json_encode($return);
@@ -62,11 +62,11 @@ class AwardsController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $request->validate([
-                    'brand_id' => 'required',
+                    'showroom_id' => 'required',
                     'image' => 'image|mimes:jpeg,png,jpg,webp',
                 ]);
                 $award = new Awards();
-                $award->brand_id = $request->brand_id ? $request->brand_id : NULL;
+                $award->showroom_id = $request->showroom_id ? $request->showroom_id : NULL;
                 if($request->hasFile('image')) {
                     $image = fileUpload($request, 'image', 'uploads/award');
                     $award->image = $image;
@@ -88,7 +88,7 @@ class AwardsController extends Controller
     public function awardDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = Awards::with('brandDetail')->select('id', 'brand_id', 'image')->orderBy('id', 'DESC');
+            $query = Awards::with('showroomdDetail')->select('id', 'showroom_id', 'image')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -96,9 +96,9 @@ class AwardsController extends Controller
                     $image = $list->image ? asset('uploads/award/'.$list->image) : '';
                     return '<img src="' . $image . '" alt="" width="100">';
                 }) 
-                ->addColumn('brand_id', function($list){
-                    $brand_id = isset($list->brandDetail->name) && $list->brandDetail->name ? $list->brandDetail->name : NULL;
-                    return $brand_id;
+                ->addColumn('showroom_id', function($list){
+                    $showroom_id = isset($list->showroomdDetail->name) && $list->showroomdDetail->name ? $list->showroomdDetail->name : NULL;
+                    return $showroom_id;
                 })
                 ->addColumn('action', function ($list) {
                     $html = "";
@@ -116,7 +116,7 @@ class AwardsController extends Controller
                     }
                     return $html;
                 })
-                ->rawColumns(['image', 'brand_id', 'action'])
+                ->rawColumns(['image', 'showroom_id', 'action'])
                 ->make(true);
         } else {
             return redirect()->back()->with('message','something went wrong');

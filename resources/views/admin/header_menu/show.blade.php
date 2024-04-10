@@ -23,29 +23,31 @@
                     </div>
                     <div class="card">
                         <div class="col-sm-12  text-end">
-                            <a href="{{ route('header_menu') }}" class="btn btn-primary mt-2 float-right">Add</a>
+                            <a href="{{ route('header_menu') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
                         </div>
                         <div class="card-body">
                             <section class="content">
                                 <div class="container-fluid">
-                                    <table class="table table-bordered table-striped header_menu_data_table adm-table-no-wrap adm-action-sticky">
-                                        <thead>
-                                            <tr>
-                                                <th style="width:65px;">No</th>
-                                                <th>Menu</th>
-                                                <th>Name</th>
+                                    {{-- <div class="adm-table-responsive"> --}}
+                                        <table class="table table-bordered table-striped header_menu_data_table adm-header-menu adm-table-no-wrap adm-action-sticky">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width:45px;">No</th>
+                                                    <th>Menu</th>
+                                                    <th>Name</th>
 
-                                                <th>Name Color</th>
-                                                <th>Name Font Size</th>
-                                                <th>Name Font Family</th>
+                                                    <th>Name Color</th>
+                                                    <th>Name Font Size</th>
+                                                    <th>Name Font Family</th>
 
-                                                <th>Link</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
+                                                    <th>Link</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    {{-- </div>     --}}
                                 </div>
                             </section>
                         </div>
@@ -69,7 +71,7 @@
                     </div>
                     <div class="card">
                         <div class="col-sm-12  text-end">
-                            <button type="button" class="btn btn-primary mt-2 float-right" data-toggle="modal" data-target="#SocialMediaIconInsertModal">
+                            <button type="button" class="btn btn-primary float-right adm-table-addbtn" data-toggle="modal" data-target="#SocialMediaIconInsertModal">
                                 Add
                             </button>
 
@@ -151,7 +153,7 @@
                         <div class="card-body">
                             <section class="content">
                                 <div class="container-fluid">
-                                    <table class="table table-bordered table-striped data-table">
+                                    <table class="table table-bordered table-striped data-table adm-action-sticky adm-table-no-wrap">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -162,7 +164,7 @@
                                         </thead>
                                         <tbody>
                                         </tbody>
-                                    </table>
+                                    </table>  
                                 </div>
                             </section>
                         </div>
@@ -181,7 +183,7 @@
         var table = $('.header_menu_data_table').DataTable({
             processing: true,
             serverSide: true,
-            scrollX: true,
+            scrollX: false,
             ajax: "{{ route('header_menu.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
@@ -341,7 +343,13 @@ $(document).on('click', '.header_menu_social_media_icon_delete', function() {
 });
 
 $(document).ready(function(){
-    $('.dataTables_scrollBody').addClass('adm-table-responsive');
+    $('.adm-action-sticky').parent().css('max-width', '100%');
+    $('.adm-action-sticky').parent().css('padding', '0px');
+    $('table').parent().addClass('adm-table-responsive');
+    $('.dataTables_length').parent().css('padding', '0px');
+    $('.dataTables_filter').parent().css('padding', '0px');
+    $('.dataTables_info').parent().css('padding-left', '0px');
+    $('.paging_simple_numbers').parent().css('padding-right', '0px');
 });
 
 </script>
