@@ -98,7 +98,7 @@
 .award-form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
 .award-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
 .adm-brand-errorbox{margin-bottom: 30px; position: relative;}
-#brand_id-error{position: absolute;top:100%;left: 5px;}
+/* #brand_id-error{position: absolute;top:100%;left: 5px;} */
 #service_center_id-error{position: absolute;top:100%;left: 5px;}
 #service_id-error{position: absolute;top:100%;left: 5px;}
 #link_url-error{position: absolute;top:100%;left: 5px;}

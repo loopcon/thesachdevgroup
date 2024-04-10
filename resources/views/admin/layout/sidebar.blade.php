@@ -189,7 +189,7 @@
                     <a href="{{url('car_index')}}" class="nav-link">
                         <i class="nav-icon fas fa-car-alt"></i>
                         <p>
-                        Car
+                        Car Module
                         </p>
                     </a>
                 </li>
