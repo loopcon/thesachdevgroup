@@ -7,17 +7,6 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
 
-<style>
-    .item {
-  align-items: center;
-  background-color: tomato;
-  color: white;
-  display: flex;
-  height: 300px;
-  justify-content: center;
-}
-    </style>
-
     @endsection
 @section('content')
 
@@ -56,31 +45,15 @@
 
     <div class="contain">
         <div id="owl-carousel" class="owl-carousel owl-theme">
-          <div class="item">
-            1
-          </div>
-          <div class="item">
-            2
-          </div>
-          <div class="item">
-            3
-          </div>
-          <div class="item">
-            4
-          </div>
-          <div class="item">
-            5
-          </div>
-          <div class="item">
-            6
-          </div>
-          <div class="item">
-            7
-          </div>
+            @foreach($home_sliders as $key => $slider)
+            <div class="{{$key == 0 ? 'active' : '' }}">
+                <img src="{{url('public/home_slider/'.$slider->image)}}" class="d-block w-100"  alt="..."> 
+            </div>
+            @endforeach
         </div>
       </div>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    {{-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -100,7 +73,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div> --}}
    
 
     <!-- our brands -->
@@ -330,7 +303,12 @@
         dots: true,
         nav: true,
         items: 1,
-    })
+        navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ]
+    // navContainer: '.main-content .custom-nav',
+    });
 
 	$.fn.jQuerySimpleCounter = function( options ) {
 	    var settings = $.extend({
