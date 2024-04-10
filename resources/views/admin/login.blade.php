@@ -100,10 +100,10 @@
                 },
                 messages: {
                     email: {
-                        required: "Email is required",
+                        required: "Email is required.",
                     },
                     password: {
-                        required: "Password is required",
+                        required: "Password is required.",
                     }
                 },
                 errorElement: 'span',

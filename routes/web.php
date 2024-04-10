@@ -28,11 +28,11 @@ use App\Http\Controllers\Admin\ShowroomFacilityCustomerGalleryController;
 
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect()->route('admin');
 });
 
 //login
-Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::get('admin', [LoginController::class, 'login'])->name('admin');
 Route::post('customlogin', [LoginController::class, 'customLogin'])->name('login.custom'); 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 

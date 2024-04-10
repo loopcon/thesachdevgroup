@@ -29,19 +29,21 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard');
         }
-        return redirect("login")->withErrors(['meassage'=>'Login details are not valid']);
+        return redirect("admin")->withErrors(['meassage'=>'Login details are not valid.']);
 
     }
     public function logout(){
         Auth::logout();
         Session::flush();
-        return redirect('login');
+        return redirect('admin');
+
     }
 
     public function dashboard(){
         if(Auth::check()) {
             return view('admin.dashboard');
         }
-        return redirect('login');
+        return redirect('admin');
+
     }
 }
