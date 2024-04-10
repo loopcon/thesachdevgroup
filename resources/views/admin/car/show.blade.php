@@ -12,7 +12,7 @@
                             @include('admin.alerts')
                         </div>
                         <div class="col-sm-6">
-                            <h1 class="m-0">Car</h1>
+                            <h1 class="m-0">Car Module</h1>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
         var href = $(this).data('href');
         return new swal({
             title: "",
-            text: "{{__('Are you sure? Delete this Car!')}}",
+            text: "{{__('Are you sure? Delete this Car Module!')}}",
             showCancelButton: true,
             confirmButtonText: "{{__('Yes, delete it!')}}",
             icon: "warning"
