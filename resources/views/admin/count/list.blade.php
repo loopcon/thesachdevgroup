@@ -113,6 +113,8 @@ $(document).on('click', '.delete', function() {
         $('.dataTables_filter').parent().css('padding', '0px');
         $('.dataTables_info').parent().css('padding-left', '0px');
         $('.paging_simple_numbers').parent().css('padding-right', '0px');
+        $('.adm-table-responsive').parent().css('margin', '0px');
+        $('.adm-table-responsive').parent().siblings().css('margin', '0px');
     });
 </script>
 @endsection

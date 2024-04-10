@@ -15,8 +15,13 @@
                     @endforeach
                 </select>
                 @if ($errors->has('showroom_id')) <div class="text-danger">{{ $errors->first('showroom_id') }}</div>@endif
-                <div id="errordiv"></div>
             </div>
+
+            <div class="col-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+            </div>
+
             <div class="col-12 mt-3">
                 <label for="image" class="form-label">Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
                 @if(isset($record->image) && $record->image)

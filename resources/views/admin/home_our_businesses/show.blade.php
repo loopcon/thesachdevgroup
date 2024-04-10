@@ -19,7 +19,7 @@
         </div>
         <div class="card">
             <div class="col-sm-12  text-end">
-                <a href="{{ route('home_our_businesses') }}" class="btn btn-primary mt-2 float-right adm-table-addbtn">Add</a>
+                <a href="{{ route('home_our_businesses') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
             </div>
             <div class="card-body">
                 <section class="content">

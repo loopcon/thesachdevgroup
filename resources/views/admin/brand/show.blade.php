@@ -19,7 +19,7 @@
             </div>
             <div class="card">
                 <div class="col-sm-12  text-end">
-                    <a href="{{ route('brand') }}" class="btn btn-primary mt-2 float-right">Add</a>
+                    <a href="{{ route('brand') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
                 </div>
                 <div class="card-body">
             <section class="content">
@@ -91,6 +91,8 @@
         $('.dataTables_filter').parent().css('padding', '0px');
         $('.dataTables_info').parent().css('padding-left', '0px');
         $('.paging_simple_numbers').parent().css('padding-right', '0px');
+        $('.adm-table-responsive').parent().css('margin', '0px');
+        $('.adm-table-responsive').parent().siblings().css('margin', '0px');
     });
 </script>
 @endsection

@@ -131,6 +131,15 @@
 /* #page_link-error  */
 .adm-brand-errorbox .error{margin-bottom: 25px;position: absolute;top: 100%;left: 5px;}
 .adm-table-addbtn{margin-right: 20px;margin-top: 15px; }
+.sidebar-collapse .logo-image{
+    width: 30px;
+}
+.sidebar-collapse .brand-link{
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media(max-width:575px){
     .adm-action-sticky tr th:last-child { position: unset;}

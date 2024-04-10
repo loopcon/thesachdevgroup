@@ -29,6 +29,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Showroom</th>
+                                    <th>Name</th>
                                     <th>Image</th>
                                     <th>Action</th>
                                 </tr>
@@ -62,6 +63,7 @@
             columns: [
                 {data: 'id', name: 'id'},
                 {data: 'showroom_id', name: 'showroom_id'},
+                {data: 'name', name: 'name'},
                 {data: 'image', name: 'image'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ],
@@ -113,7 +115,7 @@
 
             $(".award-form").validate({
                 rules: {
-                    'brand_id': {
+                    'showroom_id': {
                         required: true,
                     },
                     'image': {
@@ -121,8 +123,8 @@
                     },
                 },
                 messages: {
-                    'brand_id': {
-                        required: "Brand is required",
+                    'showroom_id': {
+                        required: "Showroom is required",
                     },
                     'image': {
                         extension: "Image must be jpg,jpeg,png or webp",
