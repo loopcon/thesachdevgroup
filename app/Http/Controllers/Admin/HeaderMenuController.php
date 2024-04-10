@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Header_menu;
+use Illuminate\Validation\Rule;
 use DataTables;
 
 class HeaderMenuController extends Controller
@@ -26,11 +27,22 @@ class HeaderMenuController extends Controller
     }
 
     public function header_menu_insert(Request $request){
+      
         $has_permission = hasPermission('Header Menu');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
             {
+                $request->validate([
+                    'name' => ['required',
+                        Rule::unique('header_menus')->where(function ($query) use ($request) {
+                            return $query->where('name', $request->name)
+                            ->where('menu_name', $request->menu_name)->whereNull('deleted_at');
+                        })
+                    ],
+                    'menu_name' => 'required',
+                ]);
+
                 $header_menu = new Header_menu();
                 $header_menu->menu_name = $request->menu_name;
                 $header_menu->name = $request->name;
@@ -39,7 +51,7 @@ class HeaderMenuController extends Controller
                 $header_menu->font_size = $request->font_size;
                 $header_menu->font_family = $request->font_family;
                 $header_menu->save();
-        
+               
                 return redirect()->route('header_menu.index')->with('success','Header Menu insert successfully.');
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -50,6 +62,7 @@ class HeaderMenuController extends Controller
     }
 
     public function header_menu_index(Request $request){
+        
         if ($request->ajax()) {
             $header_menu = Header_menu::orderBy('id', 'DESC')->get();
             return Datatables::of($header_menu)
@@ -108,6 +121,15 @@ class HeaderMenuController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+                $request->validate([
+                    'name' => ['required',
+                        Rule::unique('header_menus')->where(function ($query) use ($request) {
+                            return $query->where('name', $request->name)
+                            ->where('menu_name', $request->menu_name)->where('id','!=',$request->id)->whereNull('deleted_at');
+                        })
+                    ],
+                ]);
+
                 $header_menu = Header_menu::find($id);
                 $header_menu->menu_name = $request->menu_name;
                 $header_menu->name = $request->name;
