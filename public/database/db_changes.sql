@@ -232,3 +232,29 @@ ALTER TABLE `award_and_recognition` CHANGE `brand_id` `showroom_id` INT(11) NULL
 
 -- Disha : 09-04-2024 3:34 PM
 ALTER TABLE `service_center` ADD `rating` FLOAT(8,2) NULL DEFAULT NULL AFTER `email_font_color`, ADD `number_of_rating` INT(11) NULL DEFAULT NULL AFTER `rating`;
+
+-- Disha : 09-04-2024 5:56 PM
+--
+-- Table structure for table `award_banner`
+--
+
+CREATE TABLE `award_banner` (
+  `id` int(11) NOT NULL,
+  `award_title` varchar(255) DEFAULT NULL,
+  `banner_image` varchar(255) DEFAULT NULL,
+  `award_title_font_size` varchar(255) DEFAULT NULL,
+  `award_title_font_color` varchar(255) DEFAULT NULL,
+  `award_title_font_family` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `award_banner` (`id`, `award_title`, `banner_image`, `award_title_font_size`, `award_title_font_color`, `award_title_font_family`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'AWARDS', '3-2-car-free-download-png1712665456.png', '24px', '#655353', 'poppins', '2024-04-09 12:21:01', '2024-04-09 06:54:27', NULL);
+
+ALTER TABLE `award_banner`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `award_banner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

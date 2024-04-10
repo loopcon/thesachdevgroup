@@ -244,6 +244,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('award-datatable', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDatatable'])->name('award-datatable');
     Route::post('ajax-award-html',[App\Http\Controllers\Admin\AwardsController::class, 'ajaxAwardHtml'])->name('ajax-award-html');
 
+    Route::get('award-banner-create', [\App\Http\Controllers\Admin\AwardsController::class, 'awardBannerCreate'])->name('award-banner-create');
+    Route::post('award-banner-update', [\App\Http\Controllers\Admin\AwardsController::class, 'awardBannerUpdate'])->name('award-banner-update');
+
     //our business
     Route::get('our-business', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessList'])->name('our-business');
     Route::get('our-business-create', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessCreate'])->name('our-business-create');

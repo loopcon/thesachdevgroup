@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Awards;
 use App\Models\Showroom;
+use App\Models\AwardBanner;
 use DataTables;
 use File;
 
@@ -191,6 +192,61 @@ class AwardsController extends Controller
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function awardBannerCreate(Request $request)
+    {
+        $has_permission = hasPermission('Awards');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $return_data = array();
+                $return_data['site_title'] = trans('Award Banner');
+                $banner = AwardBanner::first();
+                $return_data['record'] = $banner;
+                return view("admin.award.award_banner",array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+    }
+
+    public function awardBannerUpdate(Request $request)
+    {
+        $has_permission = hasPermission('Awards');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $return_data = array();
+                $return_data['site_title'] = trans('Award Banner');
+                $banner = AwardBanner::first();
+                $banner->award_title = $request->award_title;
+                $banner->award_title_font_size = $request->award_title_font_size;
+                $banner->award_title_font_color = $request->award_title_font_color;
+                $banner->award_title_font_family = $request->award_title_font_family;
+                
+                if($request->hasFile('banner_image')) {
+                    $oldimg = $banner->banner_image;
+                    if($oldimg)
+                    {
+                        removeFile('uploads/award_banner/'.$oldimg);
+                    }
+                    $banner_image = fileUpload($request, 'banner_image', 'uploads/award_banner');
+                    $banner->banner_image = $banner_image;
+                }
+                $banner->save();
+                if($banner)
+                {
+                    return redirect()->back()->with('success', 'Award Banner update successfully.');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
+                }
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
         }
     }
 }
