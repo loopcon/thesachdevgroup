@@ -24,7 +24,7 @@
                     <form action="@if(isset($record->id)) {{ route('service-center-testimonial-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-testimonial-store') }} @endif" method="POST" class="service-center-testimonial-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 adm-brand-errorbox">
                                 <label for="service_center_id" class="form-label">Service Center<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="service_center_id" id="service_center_id">
                                     <option value="">-- Select Service Center --</option>
