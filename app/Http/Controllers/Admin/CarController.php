@@ -63,7 +63,7 @@ class CarController extends Controller
                 $car->price_font_family = $request->price_font_family;
                 $car->save();
         
-                return redirect()->route('car.index')->with('success','Car Module insert successfully.');
+                return redirect()->route('car.index')->with('success','Car Model insert successfully.');
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
@@ -177,7 +177,7 @@ class CarController extends Controller
                 $car->price_font_family = $request->price_font_family;
                 $car->save();
 
-                return redirect()->route('car.index')->with('success','Car Module update successfully.');
+                return redirect()->route('car.index')->with('success','Car Model update successfully.');
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
@@ -206,7 +206,7 @@ class CarController extends Controller
                     $car->delete();
                     if($car)
                     {
-                        return redirect()->route('car.index')->with('message', 'Car Module deleted successfully');
+                        return redirect()->route('car.index')->with('message', 'Car Model deleted successfully');
                     }
                 }
 
