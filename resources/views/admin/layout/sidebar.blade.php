@@ -246,7 +246,7 @@
             </li>
         @endif
 
-        @if(hasPermission('Service Center') || hasPermission('Service'))
+        @if(hasPermission('Service Center') || hasPermission('Service') || hasPermission('Service Center Facility Customer Gallery') || hasPermission('Service Center Testimonial'))
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tools"></i>
@@ -299,6 +299,32 @@
                                 <a href="{{route('service-center-testimonial')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Service Center Testimonial</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+                </ul>
+            </li>
+        @endif
+
+        @if(hasPermission('Vacancies'))
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                <i class="fa fa-graduation-cap"></i>
+
+                    <p>
+                    Careers
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @php($has_permission = hasPermission('Vacancies'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item">
+                                <a href="{{route('vacancies')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Vacancies</p>
                                 </a>
                             </li>
                         @endif

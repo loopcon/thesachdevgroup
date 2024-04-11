@@ -14,7 +14,20 @@ use App\Http\Controllers\Admin\HeaderMenuSocialMediaIconController;
 use App\Http\Controllers\Admin\CountController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\ShowroomFacilityCustomerGalleryController;
-
+use App\Http\Controllers\Admin\RolePermissionController;
+use App\Http\Controllers\Admin\ShowroomTestimonialController;
+use App\Http\Controllers\Admin\ShowroomModelController;
+use App\Http\Controllers\Admin\ServiceCenterController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController;
+use App\Http\Controllers\Admin\ServiceCenterTestimonialController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\AwardsController;
+use App\Http\Controllers\Admin\OurBusinessController;
+use App\Http\Controllers\Admin\OurBusinessInsuranceController;
+use App\Http\Controllers\Admin\VacancyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,8 +55,8 @@ Route::get('dashboard', [LoginController::class, 'dashboard'])->name('dashboard'
 Route::group(['middleware' => 'auth'], function () {
     
     //user role permission   
-    Route::get('role-permission/{role_id?}', [\App\Http\Controllers\Admin\RolePermissionController::class, 'index'])->name('role-permission');
-    Route::post('role-permission', [\App\Http\Controllers\Admin\RolePermissionController::class, 'store'])->name('role-permission');
+    Route::get('role-permission/{role_id?}', [RolePermissionController::class, 'index'])->name('role-permission');
+    Route::post('role-permission', [RolePermissionController::class, 'store'])->name('role-permission');
     
     //home slider
     Route::get('homeslider', [HomeController::class, 'homeslider'])->name('homeslider');
@@ -114,22 +127,22 @@ Route::group(['middleware' => 'auth'], function () {
     
 
      //Showroom testimonial
-     Route::get('showroom-testimonial', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialList'])->name('showroom-testimonial');
-     Route::get('showroom-testimonial-create', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialCreate'])->name('showroom-testimonial-create');
-     Route::post('showroom-testimonial-store', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialStore'])->name('showroom-testimonial-store');
-     Route::get('showroom-testimonial-edit/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialEdit'])->name('showroom-testimonial-edit');
-     Route::post('showroom-testimonial-update/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialUpdate'])->name('showroom-testimonial-update');
-     Route::get('showroom-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDestroy'])->name('showroom-testimonial-delete');
-     Route::get('showroom-testimonial-datatable', [\App\Http\Controllers\Admin\ShowroomTestimonialController::class, 'showroomTestimonialDatatable'])->name('showroom-testimonial-datatable');
+     Route::get('showroom-testimonial', [ShowroomTestimonialController::class, 'showroomTestimonialList'])->name('showroom-testimonial');
+     Route::get('showroom-testimonial-create', [ShowroomTestimonialController::class, 'showroomTestimonialCreate'])->name('showroom-testimonial-create');
+     Route::post('showroom-testimonial-store', [ShowroomTestimonialController::class, 'showroomTestimonialStore'])->name('showroom-testimonial-store');
+     Route::get('showroom-testimonial-edit/{id}', [ShowroomTestimonialController::class, 'showroomTestimonialEdit'])->name('showroom-testimonial-edit');
+     Route::post('showroom-testimonial-update/{id}', [ShowroomTestimonialController::class, 'showroomTestimonialUpdate'])->name('showroom-testimonial-update');
+     Route::get('showroom-testimonial-delete/{id}', [ShowroomTestimonialController::class, 'showroomTestimonialDestroy'])->name('showroom-testimonial-delete');
+     Route::get('showroom-testimonial-datatable', [ShowroomTestimonialController::class, 'showroomTestimonialDatatable'])->name('showroom-testimonial-datatable');
 
      //Showroom testimonial
-     Route::get('showroom-model', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelList'])->name('showroom-model');
-     Route::get('showroom-model-create', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelCreate'])->name('showroom-model-create');
-     Route::post('showroom-model-store', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelStore'])->name('showroom-model-store');
-     Route::get('showroom-model-edit/{id}', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelEdit'])->name('showroom-model-edit');
-     Route::post('showroom-model-update/{id}', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelUpdate'])->name('showroom-model-update');
-     Route::get('showroom-model-delete/{id}', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelDestroy'])->name('showroom-model-delete');
-     Route::get('showroom-model-datatable', [\App\Http\Controllers\Admin\ShowroomModelController::class, 'showroomModelDatatable'])->name('showroom-model-datatable');
+     Route::get('showroom-model', [ShowroomModelController::class, 'showroomModelList'])->name('showroom-model');
+     Route::get('showroom-model-create', [ShowroomModelController::class, 'showroomModelCreate'])->name('showroom-model-create');
+     Route::post('showroom-model-store', [ShowroomModelController::class, 'showroomModelStore'])->name('showroom-model-store');
+     Route::get('showroom-model-edit/{id}', [ShowroomModelController::class, 'showroomModelEdit'])->name('showroom-model-edit');
+     Route::post('showroom-model-update/{id}', [ShowroomModelController::class, 'showroomModelUpdate'])->name('showroom-model-update');
+     Route::get('showroom-model-delete/{id}', [ShowroomModelController::class, 'showroomModelDestroy'])->name('showroom-model-delete');
+     Route::get('showroom-model-datatable', [ShowroomModelController::class, 'showroomModelDatatable'])->name('showroom-model-datatable');
 
      //footer menu
     Route::get('footer_menu', [FooterMenuController::class, 'footer_menu'])->name('footer_menu');
@@ -150,13 +163,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('mission_vision_destroy/{id}', [MissionVisionController::class, 'mission_vision_destroy'])->name('mission_vision_destroy');
 
     //service center
-    Route::get('service-center', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterList'])->name('service-center');
-    Route::get('service-center-create', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterCreate'])->name('service-center-create');
-    Route::post('service-center-store', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterStore'])->name('service-center-store');
-    Route::get('service-center-edit/{id}', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterEdit'])->name('service-center-edit');
-    Route::post('service-center-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'servicecenterUpdate'])->name('service-center-update');
-    Route::get('service-center-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterDestroy'])->name('service-center-delete');
-    Route::get('service-center-datatable', [\App\Http\Controllers\Admin\ServiceCenterController::class, 'serviceCenterDatatable'])->name('service-center-datatable');
+    Route::get('service-center', [ServiceCenterController::class, 'serviceCenterList'])->name('service-center');
+    Route::get('service-center-create', [ServiceCenterController::class, 'serviceCenterCreate'])->name('service-center-create');
+    Route::post('service-center-store', [ServiceCenterController::class, 'serviceCenterStore'])->name('service-center-store');
+    Route::get('service-center-edit/{id}', [ServiceCenterController::class, 'serviceCenterEdit'])->name('service-center-edit');
+    Route::post('service-center-update/{id}', [ServiceCenterController::class, 'servicecenterUpdate'])->name('service-center-update');
+    Route::get('service-center-delete/{id}', [ServiceCenterController::class, 'serviceCenterDestroy'])->name('service-center-delete');
+    Route::get('service-center-datatable', [ServiceCenterController::class, 'serviceCenterDatatable'])->name('service-center-datatable');
 
     //header_menu_social_media_icon
     Route::post('header_menu_social_media_icon_insert', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_insert'])->name('header_menu_social_media_icon_insert');
@@ -166,13 +179,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('header_menu_social_media_icon_destroy/{id}', [HeaderMenuSocialMediaIconController::class, 'header_menu_social_media_icon_destroy'])->name('header_menu_social_media_icon_destroy');
 
     //service
-    Route::get('service', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceList'])->name('service');
-    Route::get('service-create', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceCreate'])->name('service-create');
-    Route::post('service-store', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceStore'])->name('service-store');
-    Route::get('service-edit/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceEdit'])->name('service-edit');
-    Route::post('service-update/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceUpdate'])->name('service-update');
-    Route::get('service-delete/{id}', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDestroy'])->name('service-delete');
-    Route::get('service-datatable', [\App\Http\Controllers\Admin\ServiceController::class, 'serviceDatatable'])->name('service-datatable');
+    Route::get('service', [ServiceController::class, 'serviceList'])->name('service');
+    Route::get('service-create', [ServiceController::class, 'serviceCreate'])->name('service-create');
+    Route::post('service-store', [ServiceController::class, 'serviceStore'])->name('service-store');
+    Route::get('service-edit/{id}', [ServiceController::class, 'serviceEdit'])->name('service-edit');
+    Route::post('service-update/{id}', [ServiceController::class, 'serviceUpdate'])->name('service-update');
+    Route::get('service-delete/{id}', [ServiceController::class, 'serviceDestroy'])->name('service-delete');
+    Route::get('service-datatable', [ServiceController::class, 'serviceDatatable'])->name('service-datatable');
 
     //count
     Route::get('count', [CountController::class, 'count'])->name('count');
@@ -184,39 +197,39 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('count_destroy/{id}', [CountController::class, 'count_destroy'])->name('count_destroy');
 
     //service center facility and customer gallery
-    Route::get('service-center-facility-customergallery', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryList'])->name('service-center-facility-customergallery');
-    Route::post('service-center-facility-customergallery-html', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'ajaxaServiceCenterFacilityCustomerGalleryHtml'])->name('service-center-facility-customergallery-html');
-    Route::post('service-center-facility-customergallery-store', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryStore'])->name('service-center-facility-customergallery-store');
-    Route::post('service-center-facility-customergallery-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryUpdate'])->name('service-center-facility-customergallery-update');
-    Route::get('service-center-facility-customergallery-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDestroy'])->name('service-center-facility-customergallery-delete');
-    Route::get('service-center-facility-customergallery-datatable', [\App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDatatable'])->name('service-center-facility-customergallery-datatable');
+    Route::get('service-center-facility-customergallery', [ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryList'])->name('service-center-facility-customergallery');
+    Route::post('service-center-facility-customergallery-html', [ServiceCenterFacilityCustomerGalleryController::class, 'ajaxaServiceCenterFacilityCustomerGalleryHtml'])->name('service-center-facility-customergallery-html');
+    Route::post('service-center-facility-customergallery-store', [ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryStore'])->name('service-center-facility-customergallery-store');
+    Route::post('service-center-facility-customergallery-update/{id}', [ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryUpdate'])->name('service-center-facility-customergallery-update');
+    Route::get('service-center-facility-customergallery-delete/{id}', [ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDestroy'])->name('service-center-facility-customergallery-delete');
+    Route::get('service-center-facility-customergallery-datatable', [ServiceCenterFacilityCustomerGalleryController::class, 'serviceCenterFacilityCustomerGalleryDatatable'])->name('service-center-facility-customergallery-datatable');
 
     //service center testimonial
-    Route::get('service-center-testimonial', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCeterTestimonialList'])->name('service-center-testimonial');
-    Route::get('service-center-testimonial-create', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialCreate'])->name('service-center-testimonial-create');
-    Route::post('service-center-testimonial-store', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialStore'])->name('service-center-testimonial-store');
-    Route::get('service-center-testimonial-edit/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialEdit'])->name('service-center-testimonial-edit');
-    Route::post('service-center-testimonial-update/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialUpdate'])->name('service-center-testimonial-update');
-    Route::get('service-center-testimonial-delete/{id}', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDestroy'])->name('service-center-testimonial-delete');
-    Route::get('service-center-testimonial-datatable', [\App\Http\Controllers\Admin\ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDatatable'])->name('service-center-testimonial-datatable');
+    Route::get('service-center-testimonial', [ServiceCenterTestimonialController::class, 'serviceCeterTestimonialList'])->name('service-center-testimonial');
+    Route::get('service-center-testimonial-create', [ServiceCenterTestimonialController::class, 'serviceCenterTestimonialCreate'])->name('service-center-testimonial-create');
+    Route::post('service-center-testimonial-store', [ServiceCenterTestimonialController::class, 'serviceCenterTestimonialStore'])->name('service-center-testimonial-store');
+    Route::get('service-center-testimonial-edit/{id}', [ServiceCenterTestimonialController::class, 'serviceCenterTestimonialEdit'])->name('service-center-testimonial-edit');
+    Route::post('service-center-testimonial-update/{id}', [ServiceCenterTestimonialController::class, 'serviceCenterTestimonialUpdate'])->name('service-center-testimonial-update');
+    Route::get('service-center-testimonial-delete/{id}', [ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDestroy'])->name('service-center-testimonial-delete');
+    Route::get('service-center-testimonial-datatable', [ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDatatable'])->name('service-center-testimonial-datatable');
 
     //users
-    Route::get('user', [\App\Http\Controllers\Admin\UserController::class, 'userList'])->name('user');
-    Route::get('user-create', [\App\Http\Controllers\Admin\UserController::class, 'userCreate'])->name('user-create');
-    Route::post('user-store', [\App\Http\Controllers\Admin\UserController::class, 'userStore'])->name('user-store');
-    Route::get('user-edit/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userEdit'])->name('user-edit');
-    Route::post('user-update/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userUpdate'])->name('user-update');
-    Route::get('user-delete/{id}', [\App\Http\Controllers\Admin\UserController::class, 'userDestroy'])->name('user-delete');
-    Route::get('user-datatable', [\App\Http\Controllers\Admin\UserController::class, 'userDatatable'])->name('user-datatable');
+    Route::get('user', [UserController::class, 'userList'])->name('user');
+    Route::get('user-create', [UserController::class, 'userCreate'])->name('user-create');
+    Route::post('user-store', [UserController::class, 'userStore'])->name('user-store');
+    Route::get('user-edit/{id}', [UserController::class, 'userEdit'])->name('user-edit');
+    Route::post('user-update/{id}', [UserController::class, 'userUpdate'])->name('user-update');
+    Route::get('user-delete/{id}', [UserController::class, 'userDestroy'])->name('user-delete');
+    Route::get('user-datatable', [UserController::class, 'userDatatable'])->name('user-datatable');
 
     //faq
-    Route::get('faq', [\App\Http\Controllers\Admin\FaqController::class, 'faqList'])->name('faq');
-    Route::get('faq-create', [\App\Http\Controllers\Admin\FaqController::class, 'faqCreate'])->name('faq-create');
-    Route::post('faq-store', [\App\Http\Controllers\Admin\FaqController::class, 'faqStore'])->name('faq-store');
-    Route::get('faq-edit/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqEdit'])->name('faq-edit');
-    Route::post('faq-update/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqUpdate'])->name('faq-update');
-    Route::get('faq-delete/{id}', [\App\Http\Controllers\Admin\FaqController::class, 'faqDestroy'])->name('faq-delete');
-    Route::get('faq-datatable', [\App\Http\Controllers\Admin\FaqController::class, 'faqDatatable'])->name('faq-datatable');
+    Route::get('faq', [FaqController::class, 'faqList'])->name('faq');
+    Route::get('faq-create', [FaqController::class, 'faqCreate'])->name('faq-create');
+    Route::post('faq-store', [FaqController::class, 'faqStore'])->name('faq-store');
+    Route::get('faq-edit/{id}', [FaqController::class, 'faqEdit'])->name('faq-edit');
+    Route::post('faq-update/{id}', [FaqController::class, 'faqUpdate'])->name('faq-update');
+    Route::get('faq-delete/{id}', [FaqController::class, 'faqDestroy'])->name('faq-delete');
+    Route::get('faq-datatable', [FaqController::class, 'faqDatatable'])->name('faq-datatable');
 
 
     //showroom_facility_customer_gallery
@@ -228,40 +241,49 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('showroom_facility_customer_gallery_destroy/{id}', [ShowroomFacilityCustomerGalleryController::class, 'showroom_facility_customer_gallery_destroy'])->name('showroom_facility_customer_gallery_destroy');
 
     //pages
-    Route::get('pages', [\App\Http\Controllers\Admin\PageController::class, 'pageList'])->name('pages');
-    Route::get('page-create', [\App\Http\Controllers\Admin\PageController::class, 'pageCreate'])->name('page-create');
-    Route::post('page-store', [\App\Http\Controllers\Admin\PageController::class, 'pageStore'])->name('page-store');
-    Route::get('page-edit/{id}', [\App\Http\Controllers\Admin\PageController::class, 'pageEdit'])->name('page-edit');
-    Route::post('page-update/{id}', [\App\Http\Controllers\Admin\PageController::class, 'pageUpdate'])->name('page-update');
-    Route::get('page-delete/{id}', [\App\Http\Controllers\Admin\PageController::class, 'pageDestroy'])->name('page-delete');
-    Route::get('page-datatable', [\App\Http\Controllers\Admin\PageController::class, 'pageDatatable'])->name('page-datatable');
+    Route::get('pages', [PageController::class, 'pageList'])->name('pages');
+    Route::get('page-create', [PageController::class, 'pageCreate'])->name('page-create');
+    Route::post('page-store', [PageController::class, 'pageStore'])->name('page-store');
+    Route::get('page-edit/{id}', [PageController::class, 'pageEdit'])->name('page-edit');
+    Route::post('page-update/{id}', [PageController::class, 'pageUpdate'])->name('page-update');
+    Route::get('page-delete/{id}', [PageController::class, 'pageDestroy'])->name('page-delete');
+    Route::get('page-datatable', [PageController::class, 'pageDatatable'])->name('page-datatable');
 
     //awards
-    Route::get('awards', [\App\Http\Controllers\Admin\AwardsController::class, 'awardList'])->name('awards');
-    Route::post('award-store', [\App\Http\Controllers\Admin\AwardsController::class, 'awardStore'])->name('award-store');
-    Route::post('award-update/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardUpdate'])->name('award-update');
-    Route::get('award-delete/{id}', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDestroy'])->name('award-delete');
-    Route::post('award-datatable', [\App\Http\Controllers\Admin\AwardsController::class, 'awardDatatable'])->name('award-datatable');
-    Route::post('ajax-award-html',[App\Http\Controllers\Admin\AwardsController::class, 'ajaxAwardHtml'])->name('ajax-award-html');
+    Route::get('awards', [AwardsController::class, 'awardList'])->name('awards');
+    Route::post('award-store', [AwardsController::class, 'awardStore'])->name('award-store');
+    Route::post('award-update/{id}', [AwardsController::class, 'awardUpdate'])->name('award-update');
+    Route::get('award-delete/{id}', [AwardsController::class, 'awardDestroy'])->name('award-delete');
+    Route::post('award-datatable', [AwardsController::class, 'awardDatatable'])->name('award-datatable');
+    Route::post('ajax-award-html',[AwardsController::class, 'ajaxAwardHtml'])->name('ajax-award-html');
 
-    Route::get('award-banner-create', [\App\Http\Controllers\Admin\AwardsController::class, 'awardBannerCreate'])->name('award-banner-create');
-    Route::post('award-banner-update', [\App\Http\Controllers\Admin\AwardsController::class, 'awardBannerUpdate'])->name('award-banner-update');
+    Route::get('award-banner-create', [AwardsController::class, 'awardBannerCreate'])->name('award-banner-create');
+    Route::post('award-banner-update', [AwardsController::class, 'awardBannerUpdate'])->name('award-banner-update');
 
     //our business
-    Route::get('our-business', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessList'])->name('our-business');
-    Route::get('our-business-create', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessCreate'])->name('our-business-create');
-    Route::post('our-business-store', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessStore'])->name('our-business-store');
-    Route::get('our-business-edit/{id}', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessEdit'])->name('our-business-edit');
-    Route::post('our-business-update/{id}', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessUpdate'])->name('our-business-update');
-    Route::get('our-business-delete/{id}', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessDestroy'])->name('our-business-delete');
-    Route::get('our-business-datatable', [\App\Http\Controllers\Admin\OurBusinessController::class, 'ourBusinessDatatable'])->name('our-business-datatable');
+    Route::get('our-business', [OurBusinessController::class, 'ourBusinessList'])->name('our-business');
+    Route::get('our-business-create', [OurBusinessController::class, 'ourBusinessCreate'])->name('our-business-create');
+    Route::post('our-business-store', [OurBusinessController::class, 'ourBusinessStore'])->name('our-business-store');
+    Route::get('our-business-edit/{id}', [OurBusinessController::class, 'ourBusinessEdit'])->name('our-business-edit');
+    Route::post('our-business-update/{id}', [OurBusinessController::class, 'ourBusinessUpdate'])->name('our-business-update');
+    Route::get('our-business-delete/{id}', [OurBusinessController::class, 'ourBusinessDestroy'])->name('our-business-delete');
+    Route::get('our-business-datatable', [OurBusinessController::class, 'ourBusinessDatatable'])->name('our-business-datatable');
 
     //our business insurance
-    Route::get('our-business-insurance', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceList'])->name('our-business-insurance');
-    Route::get('our-business-insurance-create', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuraceCreate'])->name('our-business-insurance-create');
-    Route::post('our-business-insurance-store', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceStore'])->name('our-business-insurance-store');
-    Route::get('our-business-insurance-edit/{id}', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceEdit'])->name('our-business-insurance-edit');
-    Route::post('our-business-insurance-update/{id}', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceUpdate'])->name('our-business-insurance-update');
-    Route::get('our-business-insurance-delete/{id}', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceDestroy'])->name('our-business-insurance-delete');
-    Route::get('our-business-insurance-datatable', [\App\Http\Controllers\Admin\OurBusinessInsuranceController::class, 'ourBusinessInsuranceDatatable'])->name('our-business-insurance-datatable');
+    Route::get('our-business-insurance', [OurBusinessInsuranceController::class, 'ourBusinessInsuranceList'])->name('our-business-insurance');
+    Route::get('our-business-insurance-create', [OurBusinessInsuranceController::class, 'ourBusinessInsuraceCreate'])->name('our-business-insurance-create');
+    Route::post('our-business-insurance-store', [OurBusinessInsuranceController::class, 'ourBusinessInsuranceStore'])->name('our-business-insurance-store');
+    Route::get('our-business-insurance-edit/{id}', [OurBusinessInsuranceController::class, 'ourBusinessInsuranceEdit'])->name('our-business-insurance-edit');
+    Route::post('our-business-insurance-update/{id}', [OurBusinessInsuranceController::class, 'ourBusinessInsuranceUpdate'])->name('our-business-insurance-update');
+    Route::get('our-business-insurance-delete/{id}', [OurBusinessInsuranceController::class, 'ourBusinessInsuranceDestroy'])->name('our-business-insurance-delete');
+    Route::get('our-business-insurance-datatable', [OurBusinessInsuranceController::class, 'ourBusinessInsuranceDatatable'])->name('our-business-insurance-datatable');
+
+    // vacancies
+    Route::get('vacancies', [VacancyController::class, 'vacancyList'])->name('vacancies');
+    Route::get('vacancy-create', [VacancyController::class, 'vacancyCreate'])->name('vacancy-create');
+    Route::post('vacancy-store', [VacancyController::class, 'vacancyStore'])->name('vacancy-store');
+    Route::get('vacancy-edit/{id}', [VacancyController::class, 'vacancyEdit'])->name('vacancy-edit');
+    Route::post('vacancy-update/{id}', [VacancyController::class, 'vacancyUpdate'])->name('vacancy-update');
+    Route::get('vacancy-delete/{id}', [VacancyController::class, 'vacancyDestroy'])->name('vacancy-delete');
+    Route::get('vacancy-datatable', [VacancyController::class, 'vacancyDatatable'])->name('vacancy-datatable');
 });

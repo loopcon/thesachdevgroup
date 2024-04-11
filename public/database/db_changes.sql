@@ -258,3 +258,6 @@ ALTER TABLE `award_banner`
 
 ALTER TABLE `award_banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 10-04-2024 2:20 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Vacancies', NULL, NULL, NULL);
