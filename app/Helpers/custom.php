@@ -79,7 +79,8 @@ function position(){
 }
 
 function getSettingDetail(){
-    $settings = App\Models\Setting::select('id', 'logo')->first();
+    $settings = App\Models\Setting::select('id', 'logo','payment_button_text','mobile_number','email',
+    'email_icon','call_icon','address','address_icon')->first();
     // $settings = array();
     // if (count($AdminSetting_list) != 0) {
     //     foreach ($AdminSetting_list as $item) {

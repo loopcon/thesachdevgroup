@@ -6,7 +6,7 @@
 .active{color: #007bff;}  */
 .adm-table-no-wrap{ white-space: nowrap;}
 .footer_menu thead tr th:first-child{min-width: 45px ;text-align: left;}
-.footer_menu tbody tr td:first-child{min-width: 45px ;}
+.footer_menu tbody tr td:first-child{min-width: 45px ;text-align: left;}
 .adm-table-responsive{ max-width: 100%; overflow-x: auto; margin-bottom: 10px;}
 .adm-table-responsive::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);background-color: #F5F5F5;}
 .adm-table-responsive::-webkit-scrollbar{height: 5px; width: 6px;background-color: #F5F5F5;}
@@ -99,7 +99,8 @@
 .award-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
 .adm-brand-errorbox{margin-bottom: 30px; position: relative;}
 /* #brand_id-error{position: absolute;top:100%;left: 5px;} */
-#service_center_id-error{position: absolute;top:100%;left: 5px;}
+.service-center-testimonial-form .adm-brand-errorbox{margin-bottom: 30px; position: relative;}
+.service-center-testimonial-form #service_center_id-error{position: absolute;top:100%;left: 5px;}
 #service_id-error{position: absolute;top:100%;left: 5px;}
 #link_url-error{position: absolute;top:100%;left: 5px;}
 /* #title-error{position: absolute;top:100%;left: 5px;} */

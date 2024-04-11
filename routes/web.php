@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\BrandController;
@@ -28,6 +28,8 @@ use App\Http\Controllers\Admin\AwardsController;
 use App\Http\Controllers\Admin\OurBusinessController;
 use App\Http\Controllers\Admin\OurBusinessInsuranceController;
 use App\Http\Controllers\Admin\VacancyController;
+
+use App\Http\Controllers\Frontend\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,9 +42,9 @@ use App\Http\Controllers\Admin\VacancyController;
 */
 
 
-Route::get('/', function () {
-    return redirect()->route('admin');
-});
+// Route::get('/', function () {
+//     return redirect()->route('admin');
+// });
 
 //login
 Route::get('admin', [LoginController::class, 'login'])->name('admin');
@@ -59,20 +61,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('role-permission', [RolePermissionController::class, 'store'])->name('role-permission');
     
     //home slider
-    Route::get('homeslider', [HomeController::class, 'homeslider'])->name('homeslider');
-    Route::post('homeslider_insert', [HomeController::class, 'homeslider_insert'])->name('homeslider_insert');
-    Route::get('homeslider_index', [HomeController::class, 'homeslider_index'])->name('homeslider.index');
-    Route::get('homeslider_edit/{homeslider_edit}', [HomeController::class, 'homeslider_edit'])->name('home_slider.edit');
-    Route::post('homeslider_update,{homeslider_update}', [HomeController::class, 'homeslider_update'])->name('homeslider_update');
-    Route::get('homeslider_destroy/{id}', [HomeController::class, 'homeslider_destroy'])->name('homeslider_destroy');
+    Route::get('homeslider', [HomeSettingController::class, 'homeslider'])->name('homeslider');
+    Route::post('homeslider_insert', [HomeSettingController::class, 'homeslider_insert'])->name('homeslider_insert');
+    Route::get('homeslider_index', [HomeSettingController::class, 'homeslider_index'])->name('homeslider.index');
+    Route::get('homeslider_edit/{homeslider_edit}', [HomeSettingController::class, 'homeslider_edit'])->name('home_slider.edit');
+    Route::post('homeslider_update,{homeslider_update}', [HomeSettingController::class, 'homeslider_update'])->name('homeslider_update');
+    Route::get('homeslider_destroy/{id}', [HomeSettingController::class, 'homeslider_destroy'])->name('homeslider_destroy');
 
     //home our businesses
-    Route::get('home_our_businesses', [HomeController::class, 'home_our_businesses'])->name('home_our_businesses');
-    Route::post('home_our_businesses_insert', [HomeController::class, 'home_our_businesses_insert'])->name('home_our_businesses_insert');
-    Route::get('home_our_businesses_index', [HomeController::class, 'home_our_businesses_index'])->name('home_our_businesses.index');
-    Route::get('home_our_businesses_edit/{home_our_businesses_edit}', [HomeController::class, 'home_our_businesses_edit'])->name('home_our_businesses.edit');
-    Route::post('home_our_businesses_update,{home_our_businesses_update}', [HomeController::class, 'home_our_businesses_update'])->name('home_our_businesses_update');
-    Route::get('home_our_businesses_destroy/{id}', [HomeController::class, 'home_our_businesses_destroy'])->name('home_our_businesses_destroy');
+    Route::get('home_our_businesses', [HomeSettingController::class, 'home_our_businesses'])->name('home_our_businesses');
+    Route::post('home_our_businesses_insert', [HomeSettingController::class, 'home_our_businesses_insert'])->name('home_our_businesses_insert');
+    Route::get('home_our_businesses_index', [HomeSettingController::class, 'home_our_businesses_index'])->name('home_our_businesses.index');
+    Route::get('home_our_businesses_edit/{home_our_businesses_edit}', [HomeSettingController::class, 'home_our_businesses_edit'])->name('home_our_businesses.edit');
+    Route::post('home_our_businesses_update,{home_our_businesses_update}', [HomeSettingController::class, 'home_our_businesses_update'])->name('home_our_businesses_update');
+    Route::get('home_our_businesses_destroy/{id}', [HomeSettingController::class, 'home_our_businesses_destroy'])->name('home_our_businesses_destroy');
 
     //Testimonials
     Route::get('testimonials', [TestimonialController::class, 'testimonials'])->name('testimonials');
@@ -83,8 +85,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('testimonials_destroy/{id}', [TestimonialController::class, 'testimonials_destroy'])->name('testimonials_destroy');
 
     //Home Detail
-    Route::get('home_detail', [HomeController::class, 'home_detail'])->name('home_detail');
-    Route::post('home_detail_insert', [HomeController::class, 'home_detail_insert'])->name('home_detail_insert');
+    Route::get('home_detail', [HomeSettingController::class, 'home_detail'])->name('home_detail');
+    Route::post('home_detail_insert', [HomeSettingController::class, 'home_detail_insert'])->name('home_detail_insert');
 
     //setting
     Route::get('setting', [SettingController::class, 'setting'])->name('setting');
@@ -287,3 +289,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('vacancy-delete/{id}', [VacancyController::class, 'vacancyDestroy'])->name('vacancy-delete');
     Route::get('vacancy-datatable', [VacancyController::class, 'vacancyDatatable'])->name('vacancy-datatable');
 });
+
+//Frontend
+
+Route::get('/', function () {
+    return redirect()->route('home');
+});
+
+Route::get('/', [HomeController::class, 'home'])->name('home');
+

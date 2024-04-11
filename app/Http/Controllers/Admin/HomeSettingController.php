@@ -11,7 +11,7 @@ use App\Models\Home_detail;
 use DataTables;
 use File;
 
-class HomeController extends Controller
+class HomeSettingController extends Controller
 {
    public function dashboard(Request $request){
        return view("admin.dashboard"); 
