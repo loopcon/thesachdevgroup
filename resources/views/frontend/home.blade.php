@@ -1,8 +1,8 @@
 @extends('frontend.layout.header')
 @section('css')
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="http://themes.audemedia.com/html/goodgrowth/css/owl.theme.default.min.css"> --}}
-    
+    <link rel="stylesheet" href="http://themes.audemedia.com/html/goodgrowth/css/owl.theme.default.min.css">
+     --}}
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
@@ -78,13 +78,15 @@
             7
           </div>
         </div>
-      </div>
+    </div>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
+    <div id="myCarousel" id="dynamaic_owl_carousel" class="carousel slide" data-ride="carousel">
+
+        {{-- <ol class="carousel-indicators">
+
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
-        </ol>
+        </ol> --}}
         <div class="carousel-inner">
             @foreach($home_sliders as $key => $slider)
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
@@ -313,15 +315,17 @@
 @endsection
 
 @section('javascript')
-{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script> --}}
+ {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script> --}}
 
 
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+
+
 <script>
         
     $('#owl-carousel').owlCarousel({
@@ -330,7 +334,9 @@
         dots: true,
         nav: true,
         items: 1,
-    })
+    });
+
+    
 
 	$.fn.jQuerySimpleCounter = function( options ) {
 	    var settings = $.extend({
