@@ -9,12 +9,14 @@
         @foreach($home_sliders as $key => $slider)
             <div class="{{$key == 0 ? 'active' : '' }}">
                 <img src="{{url('public/home_slider/'.$slider->image)}}" class="d-block w-100"  alt="..."> 
-                <div class="container">
-                    <div class="sliderTitle">
-                        <h2 style="text-align: {{$slider->text_position}}; color: {{$slider->title_color}}; font-size:{{$slider->title_font_size}};">{{$slider->title}}</h2>
-                        <p>{{$slider->subtitle}}</p>
+                <div class="sliderTitle">
+                    <div class="container">
+                        <div class="">
+                            <h2 style="text-align: {{$slider->text_position}}; color: {{$slider->title_color}}; font-size:{{$slider->title_font_size}};">{{$slider->title}}</h2>
+                            <p>{{$slider->subtitle}}</p>
+                        </div>
                     </div>
-                </div>
+                </div>    
             </div>
         @endforeach
     </div>
