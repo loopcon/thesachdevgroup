@@ -261,3 +261,36 @@ ALTER TABLE `award_banner`
 
 -- Disha : 10-04-2024 2:20 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Vacancies', NULL, NULL, NULL);
+
+-- Disha : 11-04-2024 10:30 AM
+--
+-- Table structure for table `vacancies`
+--
+
+CREATE TABLE `vacancies` (
+  `id` int(11) NOT NULL,
+  `business_id` int(11) DEFAULT NULL COMMENT '`id` of `our_business`',
+  `name` varchar(255) DEFAULT NULL,
+  `name_font_color` varchar(255) DEFAULT NULL,
+  `name_font_size` varchar(255) DEFAULT NULL,
+  `name_font_family` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `description_font_color` varchar(255) DEFAULT NULL,
+  `description_font_family` varchar(255) DEFAULT NULL,
+  `description_font_size` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `experience` varchar(255) DEFAULT NULL,
+  `work_level` varchar(255) DEFAULT NULL,
+  `employee_type` varchar(255) DEFAULT NULL,
+  `offer_salary` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `vacancies`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `vacancies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
