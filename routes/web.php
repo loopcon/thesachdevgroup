@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\AwardsController;
 use App\Http\Controllers\Admin\OurBusinessController;
 use App\Http\Controllers\Admin\OurBusinessInsuranceController;
 use App\Http\Controllers\Admin\VacancyController;
+use App\Http\Controllers\Admin\CareerController;
 
 use App\Http\Controllers\Frontend\HomeController;
 /*
@@ -288,6 +289,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('vacancy-update/{id}', [VacancyController::class, 'vacancyUpdate'])->name('vacancy-update');
     Route::get('vacancy-delete/{id}', [VacancyController::class, 'vacancyDestroy'])->name('vacancy-delete');
     Route::get('vacancy-datatable', [VacancyController::class, 'vacancyDatatable'])->name('vacancy-datatable');
+
+    // career
+    
+    Route::get('career', [CareerController::class, 'career'])->name('career');
+    Route::post('career-update', [CareerController::class, 'careerUpdate'])->name('career-update');
 });
 
 //Frontend

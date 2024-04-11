@@ -294,3 +294,6 @@ ALTER TABLE `vacancies`
 
 ALTER TABLE `vacancies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 11-04-2024 06:16 AM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Career', NULL, NULL, NULL);
