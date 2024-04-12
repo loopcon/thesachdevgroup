@@ -108,7 +108,7 @@
     <section id="our-story">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-5 col-lg-4">
                     <div class="our-story-image">
                         @foreach ($home_details as $home_detail)
                             <img src="{{url('public/our_story_image/'.$home_detail->our_story_image)}}" alt="" width="100%"> 
@@ -116,7 +116,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-7 col-lg-8">
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="user-mission-scroll">
@@ -126,10 +126,10 @@
                                     @if($key == 0)
                                         @php($active = 'active')
                                     @endif
-                                        <a class="nav-link {{$active}}" id="{{$mission_vision->slug}}-tab" data-toggle="pill" href="#{{$mission_vision->slug}}" role="tab" aria-controls="{{$mission_vision->slug}}">
+                                        <div class="nav-link {{$active}}" id="{{$mission_vision->slug}}-tab" data-toggle="pill" href="#{{$mission_vision->slug}}" role="tab" aria-controls="{{$mission_vision->slug}}">
                                             <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="45px"> 
                                             <p style="color:{{$mission_vision->icon_name_color}}; font-size:{{$mission_vision->icon_name_font_size}}; font-family:{{$mission_vision->icon_name_font_family}};">{{$mission_vision->icon_name}}</p>
-                                        </a>
+                                        </div>
                                     @endforeach
                                 </div>
                             </div>    
