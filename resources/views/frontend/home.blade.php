@@ -1,84 +1,24 @@
 @extends('frontend.layout.header')
 @section('css')
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="http://themes.audemedia.com/html/goodgrowth/css/owl.theme.default.min.css">
-     --}}
-
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-
-    @endsection
+@endsection
 @section('content')
 
-    {{-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-        </ol>
-
-        <div class="carousel-inner">
-
-            <div class="carousel-item active">  
-                @foreach ($home_sliders as $home_slider)
-                    @if(isset($home_slider->image) && isset($home_slider->image))
-                        <img class="d-block w-100" src="{{url('public/home_slider/'.$home_slider->image)}}"> 
-                    @endif
-                @endforeach
-            </div> 
-
-        </div>
-
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div> --}}
-
-    
-        <div id="owl-carousel" class="owl-carousel owl-theme">
-            @foreach($home_sliders as $key => $slider)
+    <div id="owl-carousel" class="owl-carousel owl-theme">
+        @foreach($home_sliders as $key => $slider)
             <div class="{{$key == 0 ? 'active' : '' }}">
                 <img src="{{url('public/home_slider/'.$slider->image)}}" class="d-block w-100"  alt="..."> 
+                <div class="container">
+                    <div class="sliderTitle">
+                        <h2 style="text-align: {{$slider->text_position}}; color: {{$slider->title_color}}; font-size:{{$slider->title_font_size}};">{{$slider->title}}</h2>
+                        <p>{{$slider->subtitle}}</p>
+                    </div>
+                </div>
             </div>
-            @endforeach
-        </div>
+        @endforeach
+    </div>
     
-
-    
-
-
-    {{-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-        </ol> 
-        <div class="carousel-inner">
-            @foreach($home_sliders as $key => $slider)
-            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                <img src="{{url('public/home_slider/'.$slider->image)}}" class="d-block w-100"  alt="..."> 
-            </div>
-            @endforeach
-        </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button"  data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true">     </span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div> --}}
-   
-
     <!-- our brands -->
     <section id="brands-section">
         <div class="col-md-12">
