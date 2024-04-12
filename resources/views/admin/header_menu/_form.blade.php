@@ -74,7 +74,7 @@
                                     <div class="col-md-4">
                                         <label for="link" class="form-label">Link</label>
                                         <input type="text" id="link" class="form-control" name="link" value="{{old('link', $header_menu->link)}}">
-                                        <div class="error"></div>
+                                        <div class="error">@if ($errors->has('link')) <label id="link-error" class="error">{{ $errors->first('link') }}</label>@endif</div>
                                     </div>
 
                                 </div>

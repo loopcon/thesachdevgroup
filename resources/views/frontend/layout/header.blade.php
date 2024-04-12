@@ -34,16 +34,16 @@
                             @endif
 
                             @if(isset($setting) && isset($setting->email))
-                            <p style="color:{{$setting->email_color}}; font-size:{{$setting->email_font_size}}; font-family:{{$setting->email_font_family}}; margin-bottom: 0px; margin-left: 5px;"> {{$setting->email}}</p>
+                                <p style="color:{{$setting->email_color}}; font-size:{{$setting->email_font_size}}; font-family:{{$setting->email_font_family}}; margin-bottom: 0px; margin-left: 5px;"> {{$setting->email}}</p>
                             @endif  
                         </a>
 
-                        <a href="">
+                        <a href="" style="display: flex; align-items: center;">
                             @if(isset($setting) && isset($setting->call_icon))
                                 <img src="{{url('public/call_icon/'.$setting->call_icon)}}" style="height:30px; width:30px">
                             @endif
                             @if(isset($setting) && isset($setting->mobile_number))
-                                {{$setting->mobile_number}}
+                                <p style="color:{{$setting->mobile_number_color}}; font-size:{{$setting->mobile_number_font_size}}; font-family:{{$setting->mobile_number_font_family}}; margin-bottom: 0px; margin-left: 5px;"> {{$setting->mobile_number}}</p>
                             @endif
                         </a>
                     </div>
@@ -51,7 +51,9 @@
                 <div class="col-md-6 col-sm-5">
                     <div class="social-icon">
                         @if(isset($setting) && isset($setting->payment_button_text))
-                            <a href="_payment.php" class="payment-button" >{{$setting->payment_button_text}}</a>
+                            <a href="_payment.php" class="payment-button" style="color:{{$setting->payment_button_text_color}}; font-size: @if($setting->payment_button_font_size) {{$setting->payment_button_font_size}} @else 16px; @endif; font-family:{{$setting->payment_button_font_family}}; background-color:{{$setting->payment_button_color}};">
+                                {{$setting->payment_button_text}}
+                            </a>
                         @endif
 
                         @foreach ($header_social_media_icons as $header_social_media_icon)
@@ -84,7 +86,9 @@
                 <div class="col-xs-5">
                     <div class="pay-button">
                         @if(isset($setting) && isset($setting->payment_button_text))
-                            <a href="_payment.php" class="payment-button" >{{$setting->payment_button_text}}</a>
+                        <a href="_payment.php" class="payment-button" style="color:{{$setting->payment_button_text_color}}; font-size: @if($setting->payment_button_font_size) {{$setting->payment_button_font_size}} @else 16px; @endif; font-family:{{$setting->payment_button_font_family}}; background-color:{{$setting->payment_button_color}};">
+                            {{$setting->payment_button_text}}
+                        </a>
                         @endif
                     </div>
                 </div>
