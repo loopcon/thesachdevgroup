@@ -140,8 +140,15 @@ body {
 }
 
 @media(max-width:575px){
-    .sliderTitle h2{font-size: 30px !important;}
-    .sliderTitle p{font-size: 20px !important;}
-    #our_businesses_carousel .brand-one{width: 100%;}
-    #our_businesses_carousel{ padding: 0px 15px;}
+  .sliderTitle h2{font-size: 30px !important;}
+  .sliderTitle p{font-size: 20px !important;}
+  #our_businesses_carousel .brand-one{width: 100%;}
+  #our_businesses_carousel{ padding: 0px 15px;}
+  #customers-testimonials .item{margin-bottom: 25px;}
+  #customers-testimonials .shadow-effect p{
+    font-size: 20px;
+  }
+  #customers-testimonials .testimonial-name{
+    font-size: 20px !important;
+  }
 }
