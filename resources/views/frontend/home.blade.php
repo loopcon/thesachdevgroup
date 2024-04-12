@@ -2,7 +2,7 @@
 @section('css')
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-   <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css">
+   {{-- <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css"> --}}
    
    <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Whisper&display=swap');
@@ -105,7 +105,7 @@
 
 
 
-      <section id="our-story">
+    <section id="our-story">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -118,22 +118,24 @@
                 </div>
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-md-3 user-mission-scroll">
-                            <div class="nav nav-pills tabs-width" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                @foreach ($mission_visions as $key => $mission_vision)
-                                @php($active = '')
-                                @if($key == 0)
-                                    @php($active = 'active')
-                                @endif
-                                    <a class="nav-link {{$active}}" id="{{$mission_vision->slug}}-tab" data-toggle="pill" href="#{{$mission_vision->slug}}" role="tab" aria-controls="{{$mission_vision->slug}}">
-                                        <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="45px"> 
-                                        <p style="color:{{$mission_vision->icon_name_color}}; font-size:{{$mission_vision->icon_name_font_size}}; font-family:{{$mission_vision->icon_name_font_family}};">{{$mission_vision->icon_name}}</p>
-                                    </a>
-                                @endforeach
-                            </div>
+                        <div class="col-lg-3">
+                            <div class="user-mission-scroll">
+                                <div class="nav nav-pills tabs-width" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    @foreach ($mission_visions as $key => $mission_vision)
+                                    @php($active = '')
+                                    @if($key == 0)
+                                        @php($active = 'active')
+                                    @endif
+                                        <a class="nav-link {{$active}}" id="{{$mission_vision->slug}}-tab" data-toggle="pill" href="#{{$mission_vision->slug}}" role="tab" aria-controls="{{$mission_vision->slug}}">
+                                            <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="45px"> 
+                                            <p style="color:{{$mission_vision->icon_name_color}}; font-size:{{$mission_vision->icon_name_font_size}}; font-family:{{$mission_vision->icon_name_font_family}};">{{$mission_vision->icon_name}}</p>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>    
                         </div>
             
-                        <div class="col-md-9">
+                        <div class="col-lg-9">
                             <div class="tab-content home-page-tab" id="v-pills-tabContent">
                                 @foreach ($mission_visions as $key => $mission_vision)
                                     @php($show_active = '')
@@ -349,10 +351,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
-<script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
+{{-- <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script> --}}
 
 <script>
-        
+     /*   
         // Инициализация превью слайдера
 const sliderThumbs = new Swiper(".slider__thumbs .swiper-container", {
   // ищем слайдер превью по селектору
@@ -408,7 +410,7 @@ const sliderImages = new Swiper(".slider__images .swiper-container", {
       direction: "vertical" // вертикальная прокрутка
     }
   }
-});
+}); */
 
   $('#owl-carousel').owlCarousel({
     loop: true,
@@ -446,6 +448,18 @@ const sliderImages = new Swiper(".slider__images .swiper-container", {
     dots: false,
     nav: false,
     items: 4,
+    responsiveClass: true,
+    responsive: {
+      0:{
+        items: 2
+      },
+      480:{
+        items: 3
+      },
+      769:{
+        items: 4
+      }
+    }
   });
 
 	
