@@ -62,6 +62,7 @@ class FooterMenuController extends Controller
                         })
                     ],
                     'menu_name' => 'required',
+                    'link' => 'url',
                 ]);
 
                 $footer_menu = new Footer_menu();
@@ -160,6 +161,7 @@ class FooterMenuController extends Controller
                             ->where('menu_name', $request->menu_name)->where('id','!=',decrypt($request->id))->whereNull('deleted_at');
                         })
                     ],
+                    'link' => 'nullable|url',
                 ]);
 
                 $footer_menu = Footer_menu::find(decrypt($id));

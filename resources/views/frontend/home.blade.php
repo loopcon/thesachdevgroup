@@ -104,8 +104,8 @@
     
 
 
-
-      <section id="our-story">
+    {{-- old code --}}
+      {{-- <section id="our-story">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -151,10 +151,62 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
+
+    <section id="our-story">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="our-story-image">
+                      @foreach ($home_details as $home_detail)
+                          <img src="{{url('public/our_story_image/'.$home_detail->our_story_image)}}" alt="" width="100%"> 
+                          
+                      @endforeach
+                  </div>
+              </div>
+              <div class="col-md-8">
+                  <div class="row">
+                      <div class="col-md-3">
+                          <div class="nav nav-pills tabs-width" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                              @foreach ($mission_visions as $key => $mission_vision)
+                              @php($active = '')
+                              @if($key == 0)
+                                  @php($active = 'active')
+                              @endif
+                                  <a class="nav-link {{$active}}" id="{{$mission_vision->slug}}-tab" data-toggle="pill" href="#{{$mission_vision->slug}}" role="tab" aria-controls="{{$mission_vision->slug}}">
+                                      <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="45px"> 
+                                      <p style="color:{{$mission_vision->icon_name_color}}; font-size:{{$mission_vision->icon_name_font_size}}; font-family:{{$mission_vision->icon_name_font_family}};">{{$mission_vision->icon_name}}</p>
+                                  </a>
+                              @endforeach
+                          </div>
+                      </div>
+          
+                      <div class="col-md-9">
+                          <div class="tab-content home-page-tab" id="v-pills-tabContent">
+                              @foreach ($mission_visions as $key => $mission_vision)
+                                  @php($show_active = '')
+                                  @if($key == 0)
+                                      @php($show_active = 'show active')
+                                  @endif
+                                  <div class="tab-pane fade {{$show_active}}" id="{{$mission_vision->slug}}" role="tabpanel" aria-labelledby="{{$mission_vision->slug}}-tab">
+                                      <h2 style="color:{{$mission_vision->title_color}}; font-size:{{$mission_vision->title_font_size}}; font-family:{{$mission_vision->title_font_family}};">{{$mission_vision->title}}</h2>
+                                      <p style="color:{{$mission_vision->description_color}}; font-size:{{$mission_vision->description_font_size}}; font-family:{{$mission_vision->description_font_family}};">{!! $mission_vision->description !!}</p>
+                                  </div>
+                              @endforeach
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
 
 
-    <section class="slider">
+
+
+
+
+    {{-- <section class="slider">
         <div class="slider__flex">
           <div class="slider__col">
       
@@ -200,7 +252,7 @@
           </div>
       
         </div>
-      </section>
+      </section> --}}
 
 
           

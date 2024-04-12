@@ -41,6 +41,7 @@ class HeaderMenuController extends Controller
                         })
                     ],
                     'menu_name' => 'required',
+                    'link' => 'url',
                 ]);
 
                 $header_menu = new Header_menu();
@@ -128,6 +129,7 @@ class HeaderMenuController extends Controller
                             ->where('menu_name', $request->menu_name)->where('id','!=',$request->id)->whereNull('deleted_at');
                         })
                     ],
+                    'link' => 'nullable|url',
                 ]);
 
                 $header_menu = Header_menu::find($id);

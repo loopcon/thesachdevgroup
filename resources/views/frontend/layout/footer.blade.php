@@ -12,7 +12,7 @@
                      <img src="{{asset('logo/'.$setting->logo)}}" alt="">
                   @endif
                   @foreach ($footer_menus as $footer_menu)
-                     <p>{!! $footer_menu->footer_description !!}</p>
+                     <div style="color:@if($footer_menu->footer_description_color) {{$footer_menu->footer_description_color}} @else #b0b0b0; @endif; font-size:{{$footer_menu->footer_description_font_size}}; font-family:{{$footer_menu->footer_description_font_family}};">{!! $footer_menu->footer_description !!}</div>  
                   @endforeach
                   <div class="social-icon-footer float-left">
                      <a href=""> <img src="myown/css/images/facebook (1).png" alt="" width="40px"> </a>
@@ -26,38 +26,32 @@
                <div class="our-service">
                   <h3>Our Services</h3>
                   @foreach($footer_menu_our_services as $footer_menu_our_service)
-
-                  <a href="{{$footer_menu_our_service->link}}"> 
-                     <p><i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        {{$footer_menu_our_service->name}}
-                     </p> 
-                  </a>
+                     <a href="{{$footer_menu_our_service->link}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
+                        <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
+                        <p style="color:{{$footer_menu_our_service->color}}; font-size:{{$footer_menu_our_service->font_size}}; font-family:{{$footer_menu_our_service->font_family}};"> {{$footer_menu_our_service->name}} </p>
+                     </a>
                   @endforeach
                </div>
             </div>
             <div class="col-md-3 col-sm-6">
                <div class="brands">
                   <h3>Our Businesses</h3>
-
                   @foreach($footer_menu_our_businesses as $footer_menu_our_businesse)
-                     <a href="{{$footer_menu_our_businesse->link}}"> 
-                        <p><i class="fa fa-chevron-right" aria-hidden="true"></i>
-                           {{$footer_menu_our_businesse->name}}
-                        </p> 
+                     <a href="{{$footer_menu_our_businesse->link}}" style="display: flex; align-items: center; margin-bottom: 10px; "> 
+                        <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
+                        <p style="color:{{$footer_menu_our_businesse->color}}; font-size:{{$footer_menu_our_businesse->font_size}}; font-family:{{$footer_menu_our_businesse->font_family}}; margin-bottom: 0px;"> {{$footer_menu_our_businesse->name}} </p>
                      </a>
                   @endforeach
-
                </div>
             </div>
             <div class="col-md-3 col-sm-6">
                <div class="useful-link">
                   <h3>Useful Links</h3>
                   @foreach($footer_menu_useful_links as $footer_menu_useful_link)
-                  <a href="{{$footer_menu_useful_link->link}}">
-                     <p><i class="fa fa-chevron-right" aria-hidden="true"></i>
-                        {{$footer_menu_useful_link->name}}
-                     </p> 
-                  </a> 
+                  <a href="{{$footer_menu_useful_link->link}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
+                     <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
+                     <p style="color:{{$footer_menu_useful_link->color}}; font-size:{{$footer_menu_useful_link->font_size}}; font-family:{{$footer_menu_useful_link->font_family}}; margin-bottom: 0px;""> {{$footer_menu_useful_link->name}} </p>
+                  </a>
                   @endforeach
                </div> 
             </div>
@@ -79,7 +73,7 @@
                      <div class="footer-right-text">
                         <a href="mailto:info@thesachdevgroup.com">
                            @if(isset($setting) && isset($setting->email))
-                              <p>{{$setting->email}}</p>
+                              <p style="color:{{$setting->email_color}}; font-size:{{$setting->email_font_size}}; font-family:{{$setting->email_font_family}};">{{$setting->email}}</p>
                            @endif 
                         </a>
                         <a href="mailto:info@thesachdevgroup.com"><p>Drop Us a Line</p></a>
@@ -96,9 +90,7 @@
                      <div class="footer-right-text">
                         @if(isset($setting) && isset($setting->mobile_number))
                            <a href="tel:+4733378901">
-                              <p>
-                                 {{$setting->mobile_number}}
-                              </p>
+                              <p style="color:{{$setting->mobile_number_color}}; font-size:{{$setting->mobile_number_font_size}}; font-family:{{$setting->mobile_number_font_family}};">{{$setting->mobile_number}}</p>
                            </a>
                         @endif
                         <a href="tel:+4733378901"><p>Call Us Now</p></a>
@@ -116,7 +108,7 @@
                      <div class="footer-right-text">
                         @if(isset($setting) && isset($setting->address))
                            <a href="https://www.google.com/maps/dir//Galaxy+Toyota+Service+Center+69+Unit-2,+TSG+Complex+69+Najafgarh+Rd,+Moti+Nagar,+Crossing,+New+Delhi,+Delhi+110015/@28.6595613,77.1467438,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x390d03dd7ed65ed7:0xa85eb68c0a6c5def" target="_blank">
-                              <p>{{$setting->address}}</p>
+                              <p style="color:{{$setting->address_color}}; font-size:{{$setting->address_font_size}}; font-family:{{$setting->address_font_family}};">{{$setting->address}}</p>
                            </a>
                         @endif
                         <a href="https://www.google.com/maps/dir//Galaxy+Toyota+Service+Center+69+Unit-2,+TSG+Complex+69+Najafgarh+Rd,+Moti+Nagar,+Crossing,+New+Delhi,+Delhi+110015/@28.6595613,77.1467438,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x390d03dd7ed65ed7:0xa85eb68c0a6c5def" target="_blank"><p>Get Directions</p></a>
