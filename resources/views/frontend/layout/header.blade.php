@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    
+    @php($setting_detail = getSettingDetail())
+        @if(isset($setting_detail) && isset($setting_detail->logo))
+        <link rel="icon" type="image/png" href="{{url('public/logo/'.$setting_detail->logo)}}">
+        @endif
     @yield('css')
 </head>
 <body>
@@ -97,7 +101,7 @@
             <nav class="navbar navbar-expand-lg navbar-light custom-nav p-0">
                 <a class="navbar-brand" href="">
                     @if(isset($setting) && isset($setting->logo))
-                        <img src="{{asset('logo/'.$setting->logo)}}" width="80%">
+                        <img src="{{url('public/logo/'.$setting->logo)}}" width="80%">
                     @endif 
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,10 +114,12 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Businesses</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @foreach ($header_menu_our_businesses as $header_menu_our_businesse)
-                                        <a class="dropdown-item" href="{{$header_menu_our_businesse->link}}" style="color:{{$header_menu_our_businesse->color}}; font-size:{{$header_menu_our_businesse->font_size}}; font-family:{{$header_menu_our_businesse->font_family}};">
-                                            {{$header_menu_our_businesse->name}}
-                                        </a>
+                                    @foreach($our_business as $business)
+                                        @if($business->url !='')
+                                            <a class="dropdown-item" href="{{$business->url}}">{{$business->title}}</a>
+                                        @else
+                                            <a class="dropdown-item" href="{{url('/'.$business->slug)}}">{{$business->title}}</a>
+                                        @endif
                                     @endforeach
                                 </div>
                             </li>

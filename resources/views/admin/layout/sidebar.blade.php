@@ -369,8 +369,6 @@
             </li>
         @endif
 
-
-
         @php($has_permission = hasPermission('Footer Menu'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -421,12 +419,12 @@
         @endif
 
         @if(isset(Auth::user()->role_id) && Auth::user()->role_id == 1)
-                <li class="nav-item">
+            <li class="nav-item">
                 <a href="{{route('user')}}" class="nav-link">
-                <i class="nav-icon fas fa-users"></i>
-                <p>
-                    Users
-                </p>
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>
+                        Users
+                    </p>
                 </a>
             </li>
         @endif
