@@ -31,6 +31,8 @@ use App\Http\Controllers\Admin\VacancyController;
 use App\Http\Controllers\Admin\CareerController;
 
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\BusinessController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -303,4 +305,7 @@ Route::get('/', function () {
 });
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+
+// business page
+Route::get('/{slug}', [BusinessController::class, 'businessDetail']);
 

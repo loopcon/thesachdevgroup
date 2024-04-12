@@ -18,7 +18,7 @@
             </div>
 
             <div class="col-12">
-                <label for="facility_image" class="form-label">Facility Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                <label for="facility_image" class="form-label">Facility Image</label><span><small>(Hight:325,Width:243; Image Type : jpg,jpeg,png,webp)</small></span>
                 @if(isset($record->facility_image) && $record->facility_image)
                     <img src="{{url('public/uploads/service_center_facility_image/'.$record->facility_image)}}" width="100" style="margin-bottom: 10px; margin-left:5px;">
                 @endif  
@@ -28,7 +28,7 @@
             </div>
 
             <div class="col-12 mt-3">
-                <label for="customer_gallery_image" class="form-label">Customer Gallery Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                <label for="customer_gallery_image" class="form-label">Customer Gallery Image</label><span><small>(Hight:325,Width:243; Image Type : jpg,jpeg,png,webp)</small></span>
                 @if(isset($record->customer_gallery_image) && $record->customer_gallery_image)
                     <img src="{{url('public/uploads/service_center_customer_gallery_image/'.$record->customer_gallery_image)}}" width="100" style="margin-bottom: 10px; margin-left:5px;">
                 @endif  

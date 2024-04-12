@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="image" class="form-label">Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="image" class="form-label">Banner Image</label><span><small>(Hight:1349,Width:281; Image Type : jpg,jpeg,png,webp)</small></span>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/service_center/'.$record->image)}}" width="100">
                                 @endif  
@@ -128,7 +128,7 @@
                             </div> 
 
                             <div class="col-md-4 mt-2">
-                                <label for="image" class="form-label">Address Icon</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="image" class="form-label">Address Icon</label><span><small>(Hight:40,Width:40; Image Type : jpg,jpeg,png,webp)</small></span>
                                 @if(isset($record->address_icon) && $record->address_icon)
                                     <img src="{{url('public/uploads/address_icon/'.$record->address_icon)}}" width="100">
                                 @endif  
@@ -168,7 +168,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="working_hours_icon" class="form-label">Working Hours Icon</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="working_hours_icon" class="form-label">Working Hours Icon</label><span><small>(Hight:40,Width:40; Image Type : jpg,jpeg,png,webp)</small></span>
                                 @if(isset($record->working_hours_icon) && $record->working_hours_icon)
                                     <img src="{{url('public/uploads/working_hours_icon/'.$record->working_hours_icon)}}" width="100">
                                 @endif  
@@ -208,7 +208,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="contact_icon" class="form-label">Contact Number Icon</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="contact_icon" class="form-label">Contact Number Icon</label><span><small>(Hight:40,Width:40; Image Type : jpg,jpeg,png,webp)</small></span>
                                 @if(isset($record->contact_icon) && $record->contact_icon)
                                     <img src="{{url('public/uploads/contact_icon/'.$record->contact_icon)}}" width="100">
                                 @endif  
@@ -274,7 +274,7 @@
                             </div>
 
                             <div class="col-md-4 mb-3 mt-2">
-                                <label for="email_icon" class="form-label">Email Icon</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="email_icon" class="form-label">Email Icon</label><span><small>(Hight:40,Width:40; Image Type : jpg,jpeg,png,webp)</small></span>
                                 @if(isset($record->email_icon) && $record->email_icon)
                                     <img src="{{url('public/uploads/email_icon/'.$record->email_icon)}}" width="100">
                                 @endif  
