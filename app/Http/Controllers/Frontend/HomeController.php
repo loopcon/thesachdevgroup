@@ -11,7 +11,8 @@ use App\Models\Home_slider;
 use App\Models\Home_our_businesses;
 use App\Models\Home_detail;
 use App\Models\Mission_vision;
-use App\Models\OurBusiness;
+use App\Models\Count;
+use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -39,11 +40,16 @@ class HomeController extends Controller
         
         $mission_visions = Mission_vision::get();
 
+        $counts = Count::get();
+
+        $testimonials = Testimonial::get();
+
+
         return view('frontend.home',compact('header_social_media_icons','header_menu_our_businesses',
             'header_menu_our_services','header_menu_awards_recognitions','header_menu_contacts',
             'footer_menus','footer_menu_our_services','footer_menu_our_businesses','footer_menu_useful_links',
             'home_sliders','home_our_businessess','home_our_businesses_background_color','home_details',
-            'mission_visions'
+            'mission_visions','counts','testimonials'
         ));
 
     }
