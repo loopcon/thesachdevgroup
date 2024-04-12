@@ -8,7 +8,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Whisper&display=swap');
     </style>
 
-   @endsection
+@endsection
 @section('content')
 
     <div id="owl-carousel" class="owl-carousel owl-theme">
@@ -87,7 +87,7 @@
                                     @endif
                                     <div class="tab-pane fade {{$show_active}}" id="{{$mission_vision->slug}}" role="tabpanel" aria-labelledby="{{$mission_vision->slug}}-tab">
                                         <h2 style="color:{{$mission_vision->title_color}}; font-size:{{$mission_vision->title_font_size}}; font-family:{{$mission_vision->title_font_family}};">{{$mission_vision->title}}</h2>
-                                        <p style="color:{{$mission_vision->description_color}}; font-size:{{$mission_vision->description_font_size}}; font-family:{{$mission_vision->description_font_family}};">{!! $mission_vision->description !!}</p>
+                                        <div style="color:{{$mission_vision->description_color}}; font-size:{{$mission_vision->description_font_size}}; font-family:{{$mission_vision->description_font_family}};">{!! $mission_vision->description !!}</div>
                                     </div>
                                 @endforeach
                             </div>
@@ -101,13 +101,41 @@
     
 
 
-
-
     <!-- countup -->
     <div id="projectFacts" class="sectionClass">
         <div class="fullWidth eight columns">
             <div class="projectFactsWrap ">
-                <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
+                @php($counter = 0)
+                @foreach ($counts as $count)
+                    @php($counter ++)
+                    <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible; background-color:{{$count->background_color}};">
+                        <img src="{{url('public/count_icon/'.$count->icon)}}" style="width:50px; height:50px;"> 
+
+                        <p class="number number{{$counter}}" style="color:{{$count->amount_color}}; font-size:{{$count->amount_font_size}}; 
+                            font-family:{{$count->amount_font_family}};">
+                            {{$count->amount}}
+                        </p>
+                        
+
+                        <span></span>
+                        <p style="color:{{$count->name_color}}; font-size:{{$count->name_font_size}}; 
+                            font-family:{{$count->name_font_family}};">{{$count->name}}</p>
+                    </div> 
+
+                   
+                    {{-- <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        
+                        <p class="number number{{$counter}}">750000</p>
+                        <span></span>
+                        <p>Customer Base</p>
+                    </div> --}}
+
+                @endforeach
+
+             
+
+                {{-- <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <p id="number1" class="number">750000</p>
                     <span></span>
@@ -130,7 +158,7 @@
                     <p id="number4" class="number">600000</p>
                     <span></span>
                     <p>Satisfied Customers</p>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -140,17 +168,25 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="about-left-image">
-                        <img src="assets/image/Happy Customer.svg" alt="" width="100%">
+                        @foreach ($home_details as $home_detail)
+                            <img src="{{url('public/home_detail/'.$home_detail->image)}}" alt="" width="100%"> 
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="about-right-content">
-                        <h3>We are the Largest Car Dealers in India</h3>
-                        <h2>Keeping Our Customers Happy</h2>
-                        <p>The Sachdev Group is the largest dealer of Toyota and Hyundai cars. We are also authorized to provide car services for Toyota, Hyundai, and Ford. We offer complete automotive solutions by providing assistance in car insurance and financing. </p>
-                        <p>Our world-class car showrooms display the latest car models offering the best prices and offers to customers. Our expert staff members provide complete assistance to customers ensuring a great customer experience.</p>
-                        <p>Our state-of-the-art service centers are equipped with the latest technology and equipment to deliver exceptional quality car services. Certified technicians have the required skills and expertise to provide diagnostics, repairs, and services.
-                            We are committed to providing complete customer satisfaction and fostering a transparent relationship with them.</p>
+                        @foreach ($home_details as $home_detail)
+                            <h3 style="color:{{$home_detail->title_color}}; font-size:{{$home_detail->title_font_size}}; 
+                                font-family:{{$home_detail->title_font_family}};">{{$home_detail->title}}</h3>    
+                            
+                            <h2 style="color:{{$home_detail->sub_title_color}}; font-size:{{$home_detail->sub_title_font_size}}; 
+                                font-family:{{$home_detail->sub_title_font_family}};">{{$home_detail->sub_title}}</h2>
+                        
+                            <div style="color:{{$home_detail->description_color}}; font-size:{{$home_detail->description_font_size}}; font-family:{{$home_detail->description_font_family}};">
+                                {!! $home_detail->description !!}
+                            </div>
+
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -161,57 +197,31 @@
     <section class="testimonials">
         <div class="container">
             <div class="testimonial-heading">
-                <h2>Our Customer Testimonials</h2>
+                @foreach ($testimonials as $testimonial)
+                    <h2 style="color:{{$testimonial->testimonials_title_color}}; font-size:{{$testimonial->testimonials_title_font_size}}; 
+                        font-family:{{$testimonial->testimonials_title_font_family}};">{{$testimonial->testimonials_title}}</h2>
+                @endforeach
             </div>
- 
+            
             <div class="row">
                 <div class="col-sm-12">
                     <div id="customers-testimonials" class="owl-carousel">
-                        <!--TESTIMONIAL 1 -->
+                        @foreach ($testimonials as $testimonial)
                         <div class="item">
                             <div class="shadow-effect">
-                                <img class="img-circle" src="assets/image/unnamed (7).png" alt="">
-                                <p maxlength="20">Connected with Pradeep Meena. Slightly more expensive as compared to dealer price but good knowledge and proactive support.</p>
+                            <img src="{{url('public/testimonials/'.$testimonial->image)}}" alt=""> 
+
+                                <div style="color:{{$testimonial->description_color}}; font-size:{{$testimonial->description_font_size}}; 
+                                    font-family:{{$testimonial->description_font_family}};">
+                                    {!! $testimonial->description !!}
+                                </div>
                             </div>
-                            <div class="testimonial-name">Karunjit Singh</div>
-                        </div>
-                        <!--END OF TESTIMONIAL 1 -->
-                        <!--TESTIMONIAL 2 -->
-                        <div class="item">
-                            <div class="shadow-effect">
-                                <img class="img-circle" src="assets/image/unnamed (3).png" alt="">
-                                <p>This is a big organization where customers and employees are treated well. One of the largest Auto Dealerships of India. Huge infrastructure, Best facilities and best customer services.</p>
+                            <div class="testimonial-name" style="color:{{$testimonial->name_color}}; font-size:{{$testimonial->name_font_size}}; 
+                                font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}}">
+                                {{$testimonial->name}}
                             </div>
-                            <div class="testimonial-name">Santosh singh Dagur</div>
                         </div>
-                        <!--END OF TESTIMONIAL 2 -->
-                        <!--TESTIMONIAL 3 -->
-                        <div class="item">
-                            <div class="shadow-effect">
-                                <img class="img-circle" src="assets/image/unnamed (4).png" alt="">
-                                <p>My experience was not good with TSG group.now my issue has been resolved specially i would like to thanks to HR person Miss Richa.</p>
-                            </div>
-                            <div class="testimonial-name">Hemant sharma</div>
-                        </div>
-                        <!--END OF TESTIMONIAL 3 -->
-                        <!--TESTIMONIAL 4 -->
-                        <div class="item">
-                            <div class="shadow-effect">
-                                <img class="img-circle" src="assets/image/unnamed (5).png" alt="">
-                                <p>One of the biggest organisations of Delhi NCR. With over 30 Location across Delhi NCR, it has over millions of customer base and thousands of employees.</p>
-                            </div>
-                            <div class="testimonial-name">Satish Kumar</div>
-                        </div>
-                        <!--END OF TESTIMONIAL 4 -->
-                        <!--TESTIMONIAL 5 -->
-                        <div class="item">
-                            <div class="shadow-effect">
-                                <img class="img-circle" src="assets/image/unnamed (6).png" alt="">
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                            </div>
-                            <div class="testimonial-name">MICHAEL TEDDY</div>
-                        </div>
-                        <!--END OF TESTIMONIAL 5 -->
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -291,10 +301,18 @@
 		});
 	};
 
-    $('#number1').jQuerySimpleCounter({end: 750000,duration: 3000});
-    $('#number2').jQuerySimpleCounter({end: 500000,duration: 3000});
-    $('#number3').jQuerySimpleCounter({end: 7200000,duration: 3000});
-    $('#number4').jQuerySimpleCounter({end: 600000,duration: 3000});
+    // $('#number1').jQuerySimpleCounter({end: 750000,duration: 3000});
+    // $('#number2').jQuerySimpleCounter({end: 500000,duration: 3000});
+    // $('#number3').jQuerySimpleCounter({end: 7200000,duration: 3000});
+    // $('#number4').jQuerySimpleCounter({end: 600000,duration: 3000});
+
+    // $('.number1').jQuerySimpleCounter({end: 750000,duration: 3000});
+    // $('.number2').jQuerySimpleCounter({end: 500000,duration: 3000});
+    // $('.number3').jQuerySimpleCounter({end: 7200000,duration: 3000});
+    // $('.number4').jQuerySimpleCounter({end: 600000,duration: 3000});
+
+
+
 
 
 
