@@ -119,7 +119,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 user-mission-scroll">
                             <div class="nav nav-pills tabs-width" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 @foreach ($mission_visions as $key => $mission_vision)
                                 @php($active = '')
@@ -155,7 +155,7 @@
     </section>
 
 
-    <section class="slider">
+    {{-- <section class="slider">
         <div class="slider__flex">
           <div class="slider__col">
       
@@ -166,11 +166,11 @@
                 <div class="swiper-wrapper">
                     @foreach ($mission_visions as $key => $mission_vision)
                     <div class="swiper-slide">
-                       
                         <div class="slider__image">
-                            <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="45px;"> 
-                            <p style="color:{{$mission_vision->icon_name_color}}; font-size:{{$mission_vision->icon_name_font_size}}; font-family:{{$mission_vision->icon_name_font_family}};">{{$mission_vision->icon_name}}</p>
-
+                            <div class="border-box">
+                                <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="45px;"> 
+                                <p style="color:{{$mission_vision->icon_name_color}}; font-size:{{$mission_vision->icon_name_font_size}}; font-family:{{$mission_vision->icon_name_font_family}};">{{$mission_vision->icon_name}}</p>
+                            </div>
                         </div>
                     </div>
                     @endforeach
@@ -201,7 +201,7 @@
           </div>
       
         </div>
-      </section>
+    </section> --}}
 
 
           
@@ -444,12 +444,12 @@ const sliderThumbs = new Swiper(".slider__thumbs .swiper-container", {
   // задаем параметры
   direction: "vertical", // вертикальная прокрутка
   slidesPerView: 3, // показывать по 3 превью
-  spaceBetween: 24, // расстояние между слайдами
-  navigation: {
-    // задаем кнопки навигации
-    nextEl: ".slider__next", // кнопка Next
-    prevEl: ".slider__prev" // кнопка Prev
-  },
+  spaceBetween: 14, // расстояние между слайдами
+//   navigation: {
+//     // задаем кнопки навигации
+//     nextEl: ".slider__next", // кнопка Next
+//     prevEl: ".slider__prev" // кнопка Prev
+//   },
   mousewheel: true,
   freeMode: false, // при перетаскивании превью ведет себя как при скролле
   breakpoints: {
@@ -470,7 +470,7 @@ const sliderImages = new Swiper(".slider__images .swiper-container", {
   // задаем параметры
   direction: "vertical", // вертикальная прокрутка
   slidesPerView: 1, // показывать по 1 изображению
-  spaceBetween: 32, // расстояние между слайдами
+  spaceBetween: 14, // расстояние между слайдами
   mousewheel: false, // можно прокручивать изображения колёсиком мыши
   navigation: {
     // задаем кнопки навигации
