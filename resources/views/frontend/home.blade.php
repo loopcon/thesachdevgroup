@@ -158,7 +158,7 @@
     <section id="our-story">
       <div class="container">
           <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-5 col-lg-4">
                   <div class="our-story-image">
                       @foreach ($home_details as $home_detail)
                           <img src="{{url('public/our_story_image/'.$home_detail->our_story_image)}}" alt="" width="100%"> 
@@ -166,9 +166,10 @@
                       @endforeach
                   </div>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-7 col-lg-8">
                   <div class="row">
-                      <div class="col-md-3">
+                      <div class="col-lg-3">
+                        <div class="user-mission-scroll">
                           <div class="nav nav-pills tabs-width" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                               @foreach ($mission_visions as $key => $mission_vision)
                               @php($active = '')
@@ -181,9 +182,10 @@
                                   </a>
                               @endforeach
                           </div>
+                        </div>
                       </div>
           
-                      <div class="col-md-9">
+                      <div class="col-lg-9">
                           <div class="tab-content home-page-tab" id="v-pills-tabContent">
                               @foreach ($mission_visions as $key => $mission_vision)
                                   @php($show_active = '')

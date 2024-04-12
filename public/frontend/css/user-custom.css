@@ -178,6 +178,12 @@
     .user-mission-scroll .nav::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);background-color: #F5F5F5;display: none;}
     .user-mission-scroll .nav::-webkit-scrollbar{width: 6px;background-color: #F5F5F5;display: none;}
     .user-mission-scroll .nav::-webkit-scrollbar-thumb{background-color: #000000;display: none;}
+    .our-service a{font-size: 18px !important;}
+    .our-service a p{font-size: 18px !important;}
+    #customers-testimonials .shadow-effect p{font-size: 20px !important;}
+    .testimonial-name{font-size: 17px !important;}
+    .testimonial-heading h2{font-size: 35px !important;}
+    .about-right-content p{ font-size: 16px !important; }
 }
 
 @media(max-width:575px){
@@ -194,4 +200,8 @@
   .user-mission-scroll .nav::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);background-color: #F5F5F5;display: none;}
   .user-mission-scroll .nav::-webkit-scrollbar{width: 6px;background-color: #F5F5F5;display: none;}
   .user-mission-scroll .nav::-webkit-scrollbar-thumb{background-color: #000000;display: none;}
+  #brands-section{padding: 20px 0px;}
+  #our_businesses_carousel .owl-item img{margin-bottom: 0px;}
+  .our-service a{font-size: 14px !important;}
+  .our-service a p{font-size: 16px !important;}
 }
