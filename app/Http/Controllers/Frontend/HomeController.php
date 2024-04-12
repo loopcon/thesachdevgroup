@@ -11,6 +11,7 @@ use App\Models\Home_slider;
 use App\Models\Home_our_businesses;
 use App\Models\Home_detail;
 use App\Models\Mission_vision;
+use App\Models\OurBusiness;
 
 class HomeController extends Controller
 {

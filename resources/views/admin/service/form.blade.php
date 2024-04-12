@@ -76,7 +76,7 @@
                             </div>
 
                             <div class="col-md-4 mb-3 mt-2">
-                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Hight:90,Width:90; Image Type : jpg,jpeg,png,webp)</small></span>
                                 @if(isset($record->icon) && $record->icon)
                                     <img src="{{url('public/uploads/service/'.$record->icon)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
                                 @endif  

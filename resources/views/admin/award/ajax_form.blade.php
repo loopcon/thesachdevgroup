@@ -23,7 +23,7 @@
             </div>
 
             <div class="col-12 mt-3">
-                <label for="image" class="form-label">Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                <label for="image" class="form-label">Image</label><span><small>(Hight:360,Width:270; Image Type : jpg,jpeg,png,webp)</small></span>
                 @if(isset($record->image) && $record->image)
                     <img src="{{url('public/uploads/award/'.$record->image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
                 @endif  

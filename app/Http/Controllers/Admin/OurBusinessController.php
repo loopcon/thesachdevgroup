@@ -57,7 +57,7 @@ class OurBusinessController extends Controller
             {
                 $request->validate([
                     'page_link' => 'required',
-                    'title' => 'required',
+                    'title' => 'required|unique:our_business',
                     'banner_image' => 'required|image|mimes:jpeg,png,jpg,webp',
                 ]);
                 $our_business = new OurBusiness();
@@ -156,7 +156,7 @@ class OurBusinessController extends Controller
                 $id = decrypt($id);
                 $request->validate([
                     'page_link' => 'required',
-                    'title' => 'required',
+                    'title' => 'required|unique:our_business,title,'.$id,
                     'banner_image' => 'image|mimes:jpeg,png,jpg,webp',
                 ]);
                 $our_business = OurBusiness::find($id);
