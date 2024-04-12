@@ -307,7 +307,7 @@
             </li>
         @endif
 
-        @if(hasPermission('Vacancies'))
+        @if(hasPermission('Vacancies') || hasPermission('Career'))
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                 <i class="fa fa-graduation-cap"></i>
@@ -318,6 +318,18 @@
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
+                    @php($has_permission = hasPermission('Career'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item">
+                                <a href="{{route('career')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Career</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
                     @php($has_permission = hasPermission('Vacancies'))
                     @if(isset($has_permission) && $has_permission)
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)

@@ -2,7 +2,7 @@
 @section('css')
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-   
+   <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css">
    
    <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Whisper&display=swap');
@@ -71,7 +71,7 @@
                                     @php($active = 'active')
                                 @endif
                                     <a class="nav-link {{$active}}" id="{{$mission_vision->slug}}-tab" data-toggle="pill" href="#{{$mission_vision->slug}}" role="tab" aria-controls="{{$mission_vision->slug}}">
-                                        <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="100%"> 
+                                        <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="45px"> 
                                         <p style="color:{{$mission_vision->icon_name_color}}; font-size:{{$mission_vision->icon_name_font_size}}; font-family:{{$mission_vision->icon_name_font_family}};">{{$mission_vision->icon_name}}</p>
                                     </a>
                                 @endforeach
@@ -99,7 +99,65 @@
     </section>
 
     
-
+          
+      <section class="slider">
+        <div class="slider__flex">
+          <div class="slider__col">
+      
+            <div class="slider__prev">Prev</div> <!-- Кнопка для переключения на предыдущий слайд -->
+      
+            <div class="slider__thumbs">
+              <div class="swiper-container">
+                <!-- Слайдер с превью -->
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="slider__image"><img src="//into-the-program.com/demo/images/sample002.jpg" alt="" /></div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="slider__image"><img src="//into-the-program.com/demo/images/sample005.jpg" alt="" /></div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="slider__image"><img src="//into-the-program.com/demo/images/sample007.jpg" alt="" /></div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="slider__image"><img src="//into-the-program.com/demo/images/sample008.jpg" alt="" /></div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="slider__image"><img src="//into-the-program.com/demo/images/sample009.jpg" alt="" /></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <div class="slider__next">Next</div> <!-- Кнопка для переключения на следующий слайд -->
+      
+          </div>
+      
+          <div class="slider__images">
+            <div class="swiper-container">
+              <!-- Слайдер с изображениями -->
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="slider__image"><img src="//into-the-program.com/demo/images/sample002.jpg" alt="" /></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slider__image"><img src="//into-the-program.com/demo/images/sample005.jpg" alt="" /></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slider__image"><img src="//into-the-program.com/demo/images/sample007.jpg" alt="" /></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slider__image"><img src="//into-the-program.com/demo/images/sample008.jpg" alt="" /></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slider__image"><img src="//into-the-program.com/demo/images/sample009.jpg" alt="" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </section>
 
     <!-- countup -->
     <div id="projectFacts" class="sectionClass">
@@ -241,10 +299,69 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
-
+<script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
 
 <script>
         
+        // Инициализация превью слайдера
+const sliderThumbs = new Swiper(".slider__thumbs .swiper-container", {
+  // ищем слайдер превью по селектору
+  // задаем параметры
+  direction: "vertical", // вертикальная прокрутка
+  slidesPerView: 3, // показывать по 3 превью
+  spaceBetween: 24, // расстояние между слайдами
+  navigation: {
+    // задаем кнопки навигации
+    nextEl: ".slider__next", // кнопка Next
+    prevEl: ".slider__prev" // кнопка Prev
+  },
+  mousewheel: true,
+  freeMode: false, // при перетаскивании превью ведет себя как при скролле
+  breakpoints: {
+    // условия для разных размеров окна браузера
+    0: {
+      // при 0px и выше
+      direction: "horizontal" // горизонтальная прокрутка
+    },
+    768: {
+      // при 768px и выше
+      direction: "vertical" // вертикальная прокрутка
+    }
+  }
+});
+// Инициализация слайдера изображений
+const sliderImages = new Swiper(".slider__images .swiper-container", {
+  // ищем слайдер превью по селектору
+  // задаем параметры
+  direction: "vertical", // вертикальная прокрутка
+  slidesPerView: 1, // показывать по 1 изображению
+  spaceBetween: 32, // расстояние между слайдами
+  mousewheel: false, // можно прокручивать изображения колёсиком мыши
+  navigation: {
+    // задаем кнопки навигации
+    nextEl: ".slider__next", // кнопка Next
+    prevEl: ".slider__prev" // кнопка Prev
+  },
+  grabCursor: true, // менять иконку курсора
+  thumbs: {
+    // указываем на превью слайдер
+    swiper: sliderThumbs // указываем имя превью слайдера
+  },
+  breakpoints: {
+    // условия для разных размеров окна браузера
+    0: {
+      // при 0px и выше
+      direction: "horizontal" // горизонтальная прокрутка
+    },
+    768: {
+      // при 768px и выше
+      direction: "vertical" // вертикальная прокрутка
+    }
+  }
+});
+
+
+
     $('#owl-carousel').owlCarousel({
         loop: true,
         margin: 30,
