@@ -27,7 +27,7 @@
         @endforeach
     </div>
     
-    <!-- our brands -->
+    <!-- our businesses -->
     <section id="brands-section" style="background-color:{{$home_our_businesses_background_color[0] ?? null}};">
      
         <div class="col-md-12">
@@ -50,7 +50,63 @@
     </section>
 
     <!-- our story section  -->
-    <section id="our-story">
+    {{-- <section id="our-story">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="our-story-image">
+                        @foreach ($home_details as $home_detail)
+                            <img src="{{url('public/our_story_image/'.$home_detail->our_story_image)}}" alt="" width="100%"> 
+                            
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="nav nav-pills tabs-width" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                @foreach ($mission_visions as $key => $mission_vision)
+                                @php($active = '')
+                                @if($key == 0)
+                                    @php($active = 'active')
+                                @endif
+                                    <a class="nav-link {{$active}}" id="{{$mission_vision->slug}}-tab" data-toggle="pill" href="#{{$mission_vision->slug}}" role="tab" aria-controls="{{$mission_vision->slug}}">
+                                        <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="45px"> 
+                                        <p style="color:{{$mission_vision->icon_name_color}}; font-size:{{$mission_vision->icon_name_font_size}}; font-family:{{$mission_vision->icon_name_font_family}};">{{$mission_vision->icon_name}}</p>
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+            
+                        <div class="col-md-9">
+                            <div class="tab-content home-page-tab" id="v-pills-tabContent">
+                                @foreach ($mission_visions as $key => $mission_vision)
+                                    @php($show_active = '')
+                                    @if($key == 0)
+                                        @php($show_active = 'show active')
+                                    @endif
+                                    <div class="tab-pane fade {{$show_active}}" id="{{$mission_vision->slug}}" role="tabpanel" aria-labelledby="{{$mission_vision->slug}}-tab">
+                                        <h2 style="color:{{$mission_vision->title_color}}; font-size:{{$mission_vision->title_font_size}}; font-family:{{$mission_vision->title_font_family}};">{{$mission_vision->title}}</h2>
+                                        <div style="color:{{$mission_vision->description_color}}; font-size:{{$mission_vision->description_font_size}}; font-family:{{$mission_vision->description_font_family}};">{!! $mission_vision->description !!}</div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> --}}
+
+    
+
+    
+
+    
+
+
+
+      <section id="our-story">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -98,9 +154,58 @@
         </div>
     </section>
 
-    
+
+    <section class="slider">
+        <div class="slider__flex">
+          <div class="slider__col">
+      
+            <div class="slider__prev">Prev</div> 
+      
+            <div class="slider__thumbs">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    @foreach ($mission_visions as $key => $mission_vision)
+                    <div class="swiper-slide">
+                       
+                        <div class="slider__image">
+                            <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="45px;"> 
+                            <p style="color:{{$mission_vision->icon_name_color}}; font-size:{{$mission_vision->icon_name_font_size}}; font-family:{{$mission_vision->icon_name_font_family}};">{{$mission_vision->icon_name}}</p>
+
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+              </div>
+            </div>
+      
+            <div class="slider__next">Next</div> 
+      
+          </div>
+      
+          <div class="slider__images">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                @foreach ($mission_visions as $key => $mission_vision)
+                    <div class="swiper-slide">
+                        <div class="slider__image">
+                          <div style="color: black;">
+                          <h2 style="color:{{$mission_vision->title_color}}; font-size:{{$mission_vision->title_font_size}}; font-family:{{$mission_vision->title_font_family}};">{{$mission_vision->title}}</h2>
+                          <div style="color:{{$mission_vision->description_color}}; font-size:{{$mission_vision->description_font_size}}; font-family:{{$mission_vision->description_font_family}};">{!! $mission_vision->description !!}</div>
+                          </div>
+                        </div>
+                    </div>
+                @endforeach
+
+              </div>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+
+
           
-      <section class="slider">
+      {{-- <section class="slider">
         <div class="slider__flex">
           <div class="slider__col">
       
@@ -157,10 +262,17 @@
           </div>
       
         </div>
-      </section>
+      </section> --}}
+
+
+
+
+
+
+
 
     <!-- countup -->
-    <div id="projectFacts" class="sectionClass">
+    {{-- <div id="projectFacts" class="sectionClass">
         <div class="fullWidth eight columns">
             <div class="projectFactsWrap ">
                 @php($counter = 0)
@@ -180,20 +292,11 @@
                             font-family:{{$count->name_font_family}};">{{$count->name}}</p>
                     </div> 
 
-                   
-                    {{-- <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        
-                        <p class="number number{{$counter}}">750000</p>
-                        <span></span>
-                        <p>Customer Base</p>
-                    </div> --}}
-
                 @endforeach
 
              
 
-                {{-- <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
+                <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <p id="number1" class="number">750000</p>
                     <span></span>
@@ -216,10 +319,42 @@
                     <p id="number4" class="number">600000</p>
                     <span></span>
                     <p>Satisfied Customers</p>
-                </div> --}}
+                </div>
+
+
             </div>
         </div>
-    </div>
+    </div> --}}
+
+
+    
+
+
+
+   
+
+
+    <div class="contain">
+        <div id="count_owl" class="owl-carousel owl-theme projectFactsWrap">
+            @php($counter = 0)
+            @foreach ($counts as $count)
+            @php($counter ++)
+            <div class="item" style="background-color:{{$count->background_color}};">
+                <img src="{{url('public/count_icon/'.$count->icon)}}" style="width:50px; height:50px;"> 
+                <p class="number number{{$counter}}" style="color:{{$count->amount_color}}; font-size:{{$count->amount_font_size}}; 
+                    font-family:{{$count->amount_font_family}};">
+                    {{$count->amount}}
+                </p>
+                <span></span>
+                        <p style="color:{{$count->name_color}}; font-size:{{$count->name_font_size}}; 
+                            font-family:{{$count->name_font_family}};">{{$count->name}}</p>
+            </div>
+          @endforeach
+        </div>
+      </div>
+
+
+
   
     <section id="about-us">
         <div class="container">
@@ -395,6 +530,13 @@ const sliderImages = new Swiper(".slider__images .swiper-container", {
         }
     });
 
+
+    $('#count_owl').owlCarousel({
+        loop: false,
+        dots: false,
+        nav: false,
+        items: 4,
+    })
 
 	$.fn.jQuerySimpleCounter = function( options ) {
 	    var settings = $.extend({
