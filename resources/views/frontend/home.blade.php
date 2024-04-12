@@ -2,7 +2,13 @@
 @section('css')
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-@endsection
+   
+   
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Whisper&display=swap');
+    </style>
+
+   @endsection
 @section('content')
 
     <div id="owl-carousel" class="owl-carousel owl-theme">
@@ -12,8 +18,8 @@
                 <div class="sliderTitle">
                     <div class="container">
                         <div class="">
-                            <h2 style="text-align: {{$slider->text_position}}; color: {{$slider->title_color}}; font-size:{{$slider->title_font_size}};">{{$slider->title}}</h2>
-                            <p>{{$slider->subtitle}}</p>
+                            <h2 style="text-align: {{$slider->text_position}}; color: {{$slider->title_color}}; font-size:{{$slider->title_font_size}}; font-family:{{$slider->title_font_family}};">{{$slider->title}}</h2>
+                            <p style="text-align: {{$slider->text_position}}; color: {{$slider->sub_title_color}}; font-size:{{$slider->sub_title_font_size}}; font-family:{{$slider->sub_title_font_family}};">{{$slider->subtitle}}</p>
                         </div>
                     </div>
                 </div>    
@@ -22,88 +28,68 @@
     </div>
     
     <!-- our brands -->
-    <section id="brands-section">
+    <section id="brands-section" style="background-color:{{$home_our_businesses_background_color[0] ?? null}};">
+     
         <div class="col-md-12">
            <div class="brand-title">
-              <h2>Our Businesses</h2>
-              <p></p>
+            @foreach($home_our_businessess as $home_our_businesses)
+                <h2 style="color: {{$home_our_businesses->businesses_title_color}}; font-size:{{$home_our_businesses->businesses_title_font_size}}; font-family:{{$home_our_businesses->businesses_title_font_family}};">{{$home_our_businesses->businesses_title}}</h2>
+                <p></p>
+            @endforeach
            </div>
         </div>
-        <div class="brands-logo-parent">
-            <div class="brands-logo">
+        <div class="brands-logo-parent owl-carousel owl-theme" id="our_businesses_carousel">
+            @foreach($home_our_businessess as $home_our_businesses)
                 <div class="brand-one">
-                    <a href="https://www.galaxytoyota.in/" target="_blank"><img src="assets/image/Toyota1.1 (1).png" alt="" width="100%"></a>
-                </div>
-
-                <div class="brand-one">
-                    <a href="https://hanshyundai.com/" target="_blank"><img src="assets/image/Hyundai (1).png" alt="" width="100%"></a>
-                </div>
-
-                <div class="brand-one">
-                    <a href="https://harpreetford.com/" target="_blank"><img src="assets/image/Ford.svg" alt="" width="100%"></a>
-                </div>
-
-                <div class="brand-one">
-                    <a href="https://tsgusedcars.com/" target="_blank"><img src="assets/image/TSG Used Car.png" alt="" width="100%"></a>
-                </div>
-
-                <div class="brand-one">
-                    <a href="https://autocarrepair.in/" target="_blank"><img src="assets/image/ACR (5).png" alt="" width="100%"></a>
-                </div>
-
-                <div class="brand-one">
-                    <a href="https://amsdryice.com/" target="_blank"><img src="assets/image/AMS.svg" alt="" width="100%"></a>
-                </div>
-
-                <div class="brand-one">
-                    <a href="https://tsgauctionmart.com/" target="_blank"><img src="assets/image/TSG Auction Mart (1).png" alt="" width="100%"></a>
-                </div>
-            </div>
+                    <a href="{{$home_our_businesses->link}}" target="_blank">
+                        <img src="{{url('public/home_our_businesses/'.$home_our_businesses->image)}}" alt="" width="100%"> 
+                    </a>
+                </div> 
+            @endforeach
         </div>
     </section>
-  
+
     <!-- our story section  -->
     <section id="our-story">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <div class="our-story-image">
-                        <img src="assets/image/Toyota Building.svg" alt="" width="100%">
+                        @foreach ($home_details as $home_detail)
+                            <img src="{{url('public/our_story_image/'.$home_detail->our_story_image)}}" alt="" width="100%"> 
+                            
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="nav nav-pills tabs-width" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                                    <img src="assets/image/google-docs.png" alt="" width="45px"> 
-                                    <p>Our Story</p>
-                                </a>
-                                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                                    <img src="assets/image/mission.png" alt="" width="45px"> 
-                                    <p>Our Mission</p>
-                                </a>
-                                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                                    <img src="assets/image/2421371.png" alt="" width="45px"> 
-                                    <p>Our Vision</p>
-                                </a>  
+                                @foreach ($mission_visions as $key => $mission_vision)
+                                @php($active = '')
+                                @if($key == 0)
+                                    @php($active = 'active')
+                                @endif
+                                    <a class="nav-link {{$active}}" id="{{$mission_vision->slug}}-tab" data-toggle="pill" href="#{{$mission_vision->slug}}" role="tab" aria-controls="{{$mission_vision->slug}}">
+                                        <img src="{{url('public/mission_vision/'.$mission_vision->icon)}}" alt="" width="100%"> 
+                                        <p style="color:{{$mission_vision->icon_name_color}}; font-size:{{$mission_vision->icon_name_font_size}}; font-family:{{$mission_vision->icon_name_font_family}};">{{$mission_vision->icon_name}}</p>
+                                    </a>
+                                @endforeach
                             </div>
                         </div>
             
                         <div class="col-md-9">
                             <div class="tab-content home-page-tab" id="v-pills-tabContent">
-                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                    <h2>We Have Decades of Experience in the Automobile Industry</h2>
-                                    <p>The Sachdev Group has been providing exceptional services to customers from decades. We pride ourselves in providing transparent, professional, and world-class services to our customers. Our loyal customers are a proof of our commitment to provide complete customer satisfaction by meeting their demands and preferences.</p>
-                                </div>
-                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                    <h2>Our Mission for Uncompromising Quality</h2>
-                                    <p>The Sachdev Group is committed to fulfilling the automotive needs of customers, meeting their preferences and expectations. We provide world-class infrastructure, transparent pricing, and excellent customer services aiming for complete customer satisfaction.</p>
-                                </div>
-                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                    <h2>Our Vision of Progress and Possibility</h2>
-                                    <p>The Sachdev Group aims to build long-lasting customer relationships by understanding and meeting their preferences. We also aim to build an employee-first environment promoting transparency, openness, and team building.</p>
-                                </div>
+                                @foreach ($mission_visions as $key => $mission_vision)
+                                    @php($show_active = '')
+                                    @if($key == 0)
+                                        @php($show_active = 'show active')
+                                    @endif
+                                    <div class="tab-pane fade {{$show_active}}" id="{{$mission_vision->slug}}" role="tabpanel" aria-labelledby="{{$mission_vision->slug}}-tab">
+                                        <h2 style="color:{{$mission_vision->title_color}}; font-size:{{$mission_vision->title_font_size}}; font-family:{{$mission_vision->title_font_family}};">{{$mission_vision->title}}</h2>
+                                        <p style="color:{{$mission_vision->description_color}}; font-size:{{$mission_vision->description_font_size}}; font-family:{{$mission_vision->description_font_family}};">{!! $mission_vision->description !!}</p>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -111,7 +97,12 @@
             </div>
         </div>
     </section>
-  
+
+    
+
+
+
+
     <!-- countup -->
     <div id="projectFacts" class="sectionClass">
         <div class="fullWidth eight columns">
@@ -256,6 +247,27 @@
     ]
     // navContainer: '.main-content .custom-nav',
     });
+
+    
+    $('#our_businesses_carousel').owlCarousel({
+        loop: false,
+        dots: false,
+        nav: false,
+        items: 7,
+        responsiveClass: true,
+        responsive: {
+            0:{
+            items: 2
+            },
+            480:{
+            items: 3
+            },
+            769:{
+            items: 7
+            }
+        }
+    });
+
 
 	$.fn.jQuerySimpleCounter = function( options ) {
 	    var settings = $.extend({

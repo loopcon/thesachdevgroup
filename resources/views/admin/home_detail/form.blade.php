@@ -311,7 +311,7 @@
             rules: {
                 'image': {
                     required: checkImage,
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'title': {
                     required: true,
@@ -321,7 +321,7 @@
                 },
                 'our_story_image': {
                   required: checkMissionVisionImage,  
-                  extension: "jpg,jpeg,png,webp",
+                  extension: "jpg,jpeg,png,webp,svg",
                 },
             },
             messages: {

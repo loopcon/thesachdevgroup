@@ -30,14 +30,19 @@
                                         <th style="width:45px;">No</th>
                                         <th>Icon</th>
                                         <th>Icon Name</th>
-                                        <th>Title</th>
+
                                         <th>Icon Name Color</th>
                                         <th>Icon Name Font Size</th>
                                         <th>Icon Name Font Family</th>
+
+                                        <th>Title</th>
+
                                         <th>Title Color</th>
                                         <th>Title Font Size</th>
                                         <th>Title Font Family</th>
+
                                         <th>Description</th>
+                                        
                                         <th>Description Color</th>
                                         <th>Description Font Size</th>
                                         <th>Description Font Family</th>

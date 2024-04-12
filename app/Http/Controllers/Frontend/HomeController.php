@@ -8,6 +8,9 @@ use App\Models\Header_menu_social_media_icon;
 use App\Models\Header_menu;
 use App\Models\Footer_menu;
 use App\Models\Home_slider;
+use App\Models\Home_our_businesses;
+use App\Models\Home_detail;
+use App\Models\Mission_vision;
 
 class HomeController extends Controller
 {
@@ -28,10 +31,18 @@ class HomeController extends Controller
 
         $home_sliders = Home_slider::get();
 
+        $home_our_businessess = Home_our_businesses::get();
+        $home_our_businesses_background_color = Home_our_businesses::pluck('background_color')->toArray();
+
+        $home_details = Home_detail::get();
+        
+        $mission_visions = Mission_vision::get();
+
         return view('frontend.home',compact('header_social_media_icons','header_menu_our_businesses',
             'header_menu_our_services','header_menu_awards_recognitions','header_menu_contacts',
             'footer_menus','footer_menu_our_services','footer_menu_our_businesses','footer_menu_useful_links',
-            'home_sliders'
+            'home_sliders','home_our_businessess','home_our_businesses_background_color','home_details',
+            'mission_visions'
         ));
 
     }

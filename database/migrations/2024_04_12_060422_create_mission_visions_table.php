@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('icon')->nullable();
             $table->string('icon_name')->nullable();
+            $table->string('slug')->nullable();
             $table->string('title')->nullable();
             $table->string('icon_name_color')->nullable();
             $table->string('icon_name_font_size')->nullable();

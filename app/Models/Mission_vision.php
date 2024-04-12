@@ -13,6 +13,7 @@ class Mission_vision extends Model
     protected $fillable = [
         'icon',
         'icon_name',
+        'slug',
         'title',
         'icon_name_color',
         'icon_name_font_size',

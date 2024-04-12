@@ -91,7 +91,7 @@
             rules: {
                 'image': {
                     required: true,
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'link': {
                     url: "url",

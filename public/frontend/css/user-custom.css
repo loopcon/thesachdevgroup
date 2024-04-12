@@ -7,7 +7,9 @@
 #owl-carousel .owl-next{position: absolute;top: 50%;right: 7%;transform: translateY(-50%);}
 #owl-carousel .owl-next:hover, #owl-carousel .owl-next:focus{background: unset;}
 #owl-carousel .owl-next i{font-size: 40px;color: #fff;font-weight: bold;}
-#owl-carousel .owl-item img{height: 500px !important;object-fit: cover;max-width: 100% !important;}
+#owl-carousel .owl-item img{object-fit: cover;max-width: 100% !important;}
 .sliderTitle{position: absolute; top: 5%; width: 100%; }
 /* .sliderTitle h2{color: #fff; font-size: 76px;}
 .sliderTitle p{color: #fff; font-size: 31px;} */
+#our_businesses_carousel {padding: 0px 80px;}
+#our_businesses_carousel .owl-item img{max-width: 100% !important;}

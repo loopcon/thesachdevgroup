@@ -979,23 +979,26 @@ text-align: justify;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 0px 80px;
 }
 
 .brand-one{
-  width: 12%;
+  /* width: 12%; */
   width: 145px;
   /*height: 145px;*/
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
-  background-color: #fff;
+  /* background-color: #fff; */
   border-radius: 10px;
   transition: all ease 0.2s;
+  margin-right: 20px;
+  background-color: unset;
+  transform: scale(0.9);
 }
 .brand-one:hover{
-  transform: scale(1.1);
+  transform: scale(1);
 }
 .brand-one img{
   border-radius: 10px;

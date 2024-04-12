@@ -69,6 +69,9 @@ class MissionVisionController extends Controller
                 }
 
                 $mission_vision->icon_name = $request->icon_name;
+
+                $mission_vision->slug = $request->icon_name ? slugify($request->icon_name) : NULL;
+
                 $mission_vision->title = $request->title;
                 $mission_vision->icon_name_color = $request->icon_name_color;
                 $mission_vision->icon_name_font_size = $request->icon_name_font_size;
@@ -185,6 +188,7 @@ class MissionVisionController extends Controller
                 }
 
                 $mission_vision->icon_name = $request->icon_name;
+                $mission_vision->slug = $request->icon_name ? slugify($request->icon_name) : NULL;
                 $mission_vision->title = $request->title;
                 $mission_vision->icon_name_color = $request->icon_name_color;
                 $mission_vision->icon_name_font_size = $request->icon_name_font_size;
