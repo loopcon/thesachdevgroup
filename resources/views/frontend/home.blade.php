@@ -11,43 +11,42 @@
 @endsection
 @section('content')
 
-    <div id="owl-carousel" class="owl-carousel owl-theme">
-        @foreach($home_sliders as $key => $slider)
-            <div class="{{$key == 0 ? 'active' : '' }}">
-                <img src="{{url('public/home_slider/'.$slider->image)}}" class="d-block w-100"  alt="..."> 
-                <div class="sliderTitle">
-                    <div class="container">
-                        <div class="">
-                            <h2 style="text-align: {{$slider->text_position}}; color: {{$slider->title_color}}; font-size:{{$slider->title_font_size}}; font-family:{{$slider->title_font_family}};">{{$slider->title}}</h2>
-                            <p style="text-align: {{$slider->text_position}}; color: {{$slider->sub_title_color}}; font-size:{{$slider->sub_title_font_size}}; font-family:{{$slider->sub_title_font_family}};">{{$slider->subtitle}}</p>
-                        </div>
-                    </div>
-                </div>    
+  <div id="owl-carousel" class="owl-carousel owl-theme">
+    @foreach($home_sliders as $key => $slider)
+      <div class="{{$key == 0 ? 'active' : '' }}">
+        <img src="{{url('public/home_slider/'.$slider->image)}}" class="d-block w-100"  alt="..."> 
+          <div class="sliderTitle">
+            <div class="container">
+                <div class="">
+                  <h2 style="text-align: {{$slider->text_position}}; color: {{$slider->title_color}}; font-size:{{$slider->title_font_size}}; font-family:{{$slider->title_font_family}};">{{$slider->title}}</h2>
+                  <p style="text-align: {{$slider->text_position}}; color: {{$slider->sub_title_color}}; font-size:{{$slider->sub_title_font_size}}; font-family:{{$slider->sub_title_font_family}};">{{$slider->subtitle}}</p>
+                </div>
             </div>
-        @endforeach
-    </div>
+          </div>    
+      </div>
+    @endforeach
+  </div>
     
-    <!-- our businesses -->
-    <section id="brands-section" style="background-color:{{$home_our_businesses_background_color[0] ?? null}};">
-     
-        <div class="col-md-12">
-           <div class="brand-title">
-            @foreach($home_our_businessess as $home_our_businesses)
-                <h2 style="color: {{$home_our_businesses->businesses_title_color}}; font-size:{{$home_our_businesses->businesses_title_font_size}}; font-family:{{$home_our_businesses->businesses_title_font_family}};">{{$home_our_businesses->businesses_title}}</h2>
-                <p></p>
-            @endforeach
-           </div>
-        </div>
-        <div class="brands-logo-parent owl-carousel owl-theme" id="our_businesses_carousel">
-            @foreach($home_our_businessess as $home_our_businesses)
-                <div class="brand-one">
-                    <a href="{{$home_our_businesses->link}}" target="_blank">
-                        <img src="{{url('public/home_our_businesses/'.$home_our_businesses->image)}}" alt="" width="100%"> 
-                    </a>
-                </div> 
-            @endforeach
-        </div>
-    </section>
+  <!-- our businesses -->
+  <section id="brands-section" style="background-color:{{$home_our_businesses_background_color[0] ?? null}};">
+    <div class="col-md-12">
+      <div class="brand-title">
+        @foreach($home_our_businessess as $home_our_businesses)
+          <h2 style="color: {{$home_our_businesses->businesses_title_color}}; font-size:{{$home_our_businesses->businesses_title_font_size}}; font-family:{{$home_our_businesses->businesses_title_font_family}};">{{$home_our_businesses->businesses_title}}</h2>
+          <p></p>
+        @endforeach
+      </div>
+    </div>
+    <div class="brands-logo-parent owl-carousel owl-theme" id="our_businesses_carousel">
+      @foreach($home_our_businessess as $home_our_businesses)
+        <div class="brand-one">
+            <a href="{{$home_our_businesses->link}}" target="_blank">
+              <img src="{{url('public/home_our_businesses/'.$home_our_businesses->image)}}" alt="" width="100%"> 
+            </a>
+        </div> 
+      @endforeach
+    </div>
+  </section>
 
     <!-- our story section  -->
     {{-- <section id="our-story">
@@ -264,164 +263,80 @@
         </div>
       </section> --}}
 
+  <!-- count -->
+  <div class="contain">
+    <div id="count_owl" class="owl-carousel owl-theme projectFactsWrap">
+      @php($counter = 0)
+      @foreach ($counts as $count)
+        @php($counter ++)
+        <div class="item" style="background-color:{{$count->background_color}};">
+            <img src="{{url('public/count_icon/'.$count->icon)}}" style="width:50px; height:50px;"> 
+            <p class="number number{{$counter}}" style="color:{{$count->amount_color}}; font-size:{{$count->amount_font_size}}; font-family:{{$count->amount_font_family}};">
+              {{$count->amount}}
+            </p>
+            <span></span>
+            <p style="color:{{$count->name_color}}; font-size:{{$count->name_font_size}}; font-family:{{$count->name_font_family}};">{{$count->name}}</p>
+        </div>
+      @endforeach
+    </div>
+  </div>
 
-
-
-
-
-
-
-    <!-- countup -->
-    {{-- <div id="projectFacts" class="sectionClass">
-        <div class="fullWidth eight columns">
-            <div class="projectFactsWrap ">
-                @php($counter = 0)
-                @foreach ($counts as $count)
-                    @php($counter ++)
-                    <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible; background-color:{{$count->background_color}};">
-                        <img src="{{url('public/count_icon/'.$count->icon)}}" style="width:50px; height:50px;"> 
-
-                        <p class="number number{{$counter}}" style="color:{{$count->amount_color}}; font-size:{{$count->amount_font_size}}; 
-                            font-family:{{$count->amount_font_family}};">
-                            {{$count->amount}}
-                        </p>
-                        
-
-                        <span></span>
-                        <p style="color:{{$count->name_color}}; font-size:{{$count->name_font_size}}; 
-                            font-family:{{$count->name_font_family}};">{{$count->name}}</p>
-                    </div> 
-
+  <!-- home deatail -->
+  <section id="about-us">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+            <div class="about-left-image">
+                @foreach ($home_details as $home_detail)
+                  <img src="{{url('public/home_detail/'.$home_detail->image)}}" alt="" width="100%"> 
                 @endforeach
-
-             
-
-                <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible;">
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                    <p id="number1" class="number">750000</p>
-                    <span></span>
-                    <p>Customer Base</p>
-                </div>
-                <div class="item wow fadeInUpBig animated animated" data-number="55" style="visibility: visible;">
-                    <i class="fa fa-car" aria-hidden="true"></i>
-                    <p id="number2" class="number">500000</p>
-                    <span></span>
-                    <p>Cars Sold</p>
-                </div>
-                <div class="item wow fadeInUpBig animated animated" data-number="359" style="visibility: visible;">
-                    <i class="fa fa-wrench" aria-hidden="true"></i>
-                    <p id="number3" class="number">7200000</p>
-                    <span></span>
-                    <p>Cars Serviced</p>
-                </div>
-                <div class="item wow fadeInUpBig animated animated" data-number="246" style="visibility: visible;">
-                    <i class="fa fa-smile-o" aria-hidden="true"></i>
-                    <p id="number4" class="number">600000</p>
-                    <span></span>
-                    <p>Satisfied Customers</p>
-                </div>
-
-
             </div>
         </div>
-    </div> --}}
-
-
-    
-
-
-
-   
-
-
-    <div class="contain">
-        <div id="count_owl" class="owl-carousel owl-theme projectFactsWrap">
-            @php($counter = 0)
-            @foreach ($counts as $count)
-            @php($counter ++)
-            <div class="item" style="background-color:{{$count->background_color}};">
-                <img src="{{url('public/count_icon/'.$count->icon)}}" style="width:50px; height:50px;"> 
-                <p class="number number{{$counter}}" style="color:{{$count->amount_color}}; font-size:{{$count->amount_font_size}}; 
-                    font-family:{{$count->amount_font_family}};">
-                    {{$count->amount}}
-                </p>
-                <span></span>
-                        <p style="color:{{$count->name_color}}; font-size:{{$count->name_font_size}}; 
-                            font-family:{{$count->name_font_family}};">{{$count->name}}</p>
-            </div>
-          @endforeach
+        <div class="col-md-6">
+          <div class="about-right-content">
+            @foreach ($home_details as $home_detail)
+              <h3 style="color:{{$home_detail->title_color}}; font-size:{{$home_detail->title_font_size}}; font-family:{{$home_detail->title_font_family}};">{{$home_detail->title}}</h3>    
+              <h2 style="color:{{$home_detail->sub_title_color}}; font-size:{{$home_detail->sub_title_font_size}}; font-family:{{$home_detail->sub_title_font_family}};">{{$home_detail->sub_title}}</h2>
+              <div style="color:{{$home_detail->description_color}}; font-size:{{$home_detail->description_font_size}}; font-family:{{$home_detail->description_font_family}};">
+                {!! $home_detail->description !!}
+              </div>
+            @endforeach
+          </div>
         </div>
       </div>
-
-
-
-  
-    <section id="about-us">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="about-left-image">
-                        @foreach ($home_details as $home_detail)
-                            <img src="{{url('public/home_detail/'.$home_detail->image)}}" alt="" width="100%"> 
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="about-right-content">
-                        @foreach ($home_details as $home_detail)
-                            <h3 style="color:{{$home_detail->title_color}}; font-size:{{$home_detail->title_font_size}}; 
-                                font-family:{{$home_detail->title_font_family}};">{{$home_detail->title}}</h3>    
-                            
-                            <h2 style="color:{{$home_detail->sub_title_color}}; font-size:{{$home_detail->sub_title_font_size}}; 
-                                font-family:{{$home_detail->sub_title_font_family}};">{{$home_detail->sub_title}}</h2>
-                        
-                            <div style="color:{{$home_detail->description_color}}; font-size:{{$home_detail->description_font_size}}; font-family:{{$home_detail->description_font_family}};">
-                                {!! $home_detail->description !!}
-                            </div>
-
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+  </section>
  
-    <!-- testimonial -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="testimonial-heading">
-                @foreach ($testimonials as $testimonial)
-                    <h2 style="color:{{$testimonial->testimonials_title_color}}; font-size:{{$testimonial->testimonials_title_font_size}}; 
-                        font-family:{{$testimonial->testimonials_title_font_family}};">{{$testimonial->testimonials_title}}</h2>
-                @endforeach
-            </div>
-            
-            <div class="row">
-                <div class="col-sm-12">
-                    <div id="customers-testimonials" class="owl-carousel">
-                        @foreach ($testimonials as $testimonial)
-                        <div class="item">
-                            <div class="shadow-effect">
-                            <img src="{{url('public/testimonials/'.$testimonial->image)}}" alt=""> 
-
-                                <div style="color:{{$testimonial->description_color}}; font-size:{{$testimonial->description_font_size}}; 
-                                    font-family:{{$testimonial->description_font_family}};">
-                                    {!! $testimonial->description !!}
-                                </div>
-                            </div>
-                            <div class="testimonial-name" style="color:{{$testimonial->name_color}}; font-size:{{$testimonial->name_font_size}}; 
-                                font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}}">
-                                {{$testimonial->name}}
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
+  <!-- testimonial -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="testimonial-heading">
+        @foreach ($testimonials as $testimonial)
+          <h2 style="color:{{$testimonial->testimonials_title_color}}; font-size:{{$testimonial->testimonials_title_font_size}}; font-family:{{$testimonial->testimonials_title_font_family}};">{{$testimonial->testimonials_title}}</h2>
+        @endforeach
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="customers-testimonials" class="owl-carousel">
+            @foreach ($testimonials as $testimonial)
+              <div class="item">
+                <div class="shadow-effect">
+                  <img src="{{url('public/testimonials/'.$testimonial->image)}}" alt=""> 
+                  <div style="color:{{$testimonial->description_color}}; font-size:{{$testimonial->description_font_size}}; font-family:{{$testimonial->description_font_family}};">
+                    {!! $testimonial->description !!}
+                  </div>
                 </div>
-            </div>
+                <div class="testimonial-name" style="color:{{$testimonial->name_color}}; font-size:{{$testimonial->name_font_size}}; font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}}">
+                  {{$testimonial->name}}
+                </div>
+              </div>
+            @endforeach
+          </div>
         </div>
-    </section>
-    <!-- END OF TESTIMONIALS -->
-    
+      </div>
+    </div>
+  </section>
+
 @endsection
 
 @section('javascript')
@@ -495,119 +410,106 @@ const sliderImages = new Swiper(".slider__images .swiper-container", {
   }
 });
 
-
-
-    $('#owl-carousel').owlCarousel({
-        loop: true,
-        margin: 30,
-        dots: true,
-        nav: true,
-        items: 1,
-        navText: [
-        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+  $('#owl-carousel').owlCarousel({
+    loop: true,
+    margin: 30,
+    dots: true,
+    nav: true,
+    items: 1,
+    navText: [
+      '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+      '<i class="fa fa-angle-right" aria-hidden="true"></i>'
     ]
-    // navContainer: '.main-content .custom-nav',
-    });
+  });
 
-    
-    $('#our_businesses_carousel').owlCarousel({
-        loop: false,
-        dots: false,
-        nav: false,
-        items: 7,
-        responsiveClass: true,
-        responsive: {
-            0:{
-            items: 2
-            },
-            480:{
-            items: 3
-            },
-            769:{
-            items: 7
-            }
-        }
-    });
+  $('#our_businesses_carousel').owlCarousel({
+    loop: false,
+    dots: false,
+    nav: false,
+    items: 7,
+    responsiveClass: true,
+    responsive: {
+      0:{
+        items: 2
+      },
+      480:{
+        items: 3
+      },
+      769:{
+        items: 7
+      }
+    }
+  });
 
+  $('#count_owl').owlCarousel({
+    loop: false,
+    dots: false,
+    nav: false,
+    items: 4,
+  });
 
-    $('#count_owl').owlCarousel({
-        loop: false,
-        dots: false,
-        nav: false,
-        items: 4,
-    })
+	
+  $(document).ready(function() {
+    $.fn.jQuerySimpleCounter = function(options) {
+      var settings = $.extend({
+        start: 0,
+        end: 100,
+        easing: 'swing',
+        duration: 400,
+        complete: ''
+      }, options);
 
-	$.fn.jQuerySimpleCounter = function( options ) {
-	    var settings = $.extend({
-	        start:  0,
-	        end:    100,
-	        easing: 'swing',
-	        duration: 400,
-	        complete: ''
-	    }, options );
+      var thisElement = $(this);
 
-	    var thisElement = $(this);
+      $({count: settings.start}).animate({count: settings.end}, {
+        duration: settings.duration,
+        easing: settings.easing,
+        step: function() {
+          var mathCount = Math.ceil(this.count);
+          thisElement.text(mathCount);
+        },
+        complete: settings.complete
+      });
+    };
 
-	    $({count: settings.start}).animate({count: settings.end}, {
-			duration: settings.duration,
-			easing: settings.easing,
-			step: function() {
-				var mathCount = Math.ceil(this.count);
-				thisElement.text(mathCount);
-			},
-			complete: settings.complete
-		});
-	};
+    @php($counter = 0)
+    @foreach ($counts as $count)
+      @php($counter ++)
+      $('.number{{$counter}}').jQuerySimpleCounter({end: {{$count->amount}}, duration: 3000});
+    @endforeach
+  });
 
-    // $('#number1').jQuerySimpleCounter({end: 750000,duration: 3000});
-    // $('#number2').jQuerySimpleCounter({end: 500000,duration: 3000});
-    // $('#number3').jQuerySimpleCounter({end: 7200000,duration: 3000});
-    // $('#number4').jQuerySimpleCounter({end: 600000,duration: 3000});
-
-    // $('.number1').jQuerySimpleCounter({end: 750000,duration: 3000});
-    // $('.number2').jQuerySimpleCounter({end: 500000,duration: 3000});
-    // $('.number3').jQuerySimpleCounter({end: 7200000,duration: 3000});
-    // $('.number4').jQuerySimpleCounter({end: 600000,duration: 3000});
-
-
-
-
-
-
-  	/* AUTHOR LINK */
-    $('.about-me-img').hover(function(){
-        $('.authorWindowWrapper').stop().fadeIn('fast').find('p').addClass('trans');
-    }, function(){
-        $('.authorWindowWrapper').stop().fadeOut('fast').find('p').removeClass('trans');
-    });
+  /* AUTHOR LINK */
+  $('.about-me-img').hover(function(){
+    $('.authorWindowWrapper').stop().fadeIn('fast').find('p').addClass('trans');
+  }, function(){
+      $('.authorWindowWrapper').stop().fadeOut('fast').find('p').removeClass('trans');
+  });
   
-    jQuery(document).ready(function($) {
-        "use strict";
-        //  TESTIMONIALS CAROUSEL HOOK
-        $('#customers-testimonials').owlCarousel({
-            loop: true,
-            center: true,
-            items: 3,
-            margin: 0,
-            autoplay: true,
-            dots:true,
-            autoplayTimeout: 8500,
-            smartSpeed: 450,
-            responsive: {
-                0: {
-                    items: 1 
-                },
-                768: {
-                    items: 2
-                },
-                1170: {
-                    items: 3
-                }
-            }
-        });
+  jQuery(document).ready(function($) {
+    "use strict";
+    //  TESTIMONIALS CAROUSEL HOOK
+    $('#customers-testimonials').owlCarousel({
+      loop: true,
+      center: true,
+      items: 3,
+      margin: 0,
+      autoplay: true,
+      dots:true,
+      autoplayTimeout: 8500,
+      smartSpeed: 450,
+      responsive: {
+        0: {
+            items: 1 
+        },
+        768: {
+            items: 2
+        },
+        1170: {
+            items: 3
+        }
+      }
     });
-    
+  });
 </script>
-
 @endsection

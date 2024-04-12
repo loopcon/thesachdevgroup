@@ -24,15 +24,16 @@
                     <div class="contact-detail">
                         @php($setting = getSettingDetail())
                     
-                        <a href="">
+                        <a href="" style="display: flex; align-items: center;">
                             @if(isset($setting) && isset($setting->email_icon))
                                 <img src="{{url('public/email_icon/'.$setting->email_icon)}}" style="height:30px; width:30px">
                             @endif
+
                             @if(isset($setting) && isset($setting->email))
-                                {{$setting->email}}
-                            @endif
+                            <p style="color:{{$setting->email_color}}; font-size:{{$setting->email_font_size}}; font-family:{{$setting->email_font_family}}; margin-bottom: 0px; margin-left: 5px;"> {{$setting->email}}</p>
+                            @endif  
                         </a>
-                    
+
                         <a href="">
                             @if(isset($setting) && isset($setting->call_icon))
                                 <img src="{{url('public/call_icon/'.$setting->call_icon)}}" style="height:30px; width:30px">
@@ -106,7 +107,9 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Businesses</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach ($header_menu_our_businesses as $header_menu_our_businesse)
-                                        <a class="dropdown-item" href="{{$header_menu_our_businesse->link}}">{{$header_menu_our_businesse->name}}</a>
+                                        <a class="dropdown-item" href="{{$header_menu_our_businesse->link}}" style="color:{{$header_menu_our_businesse->color}}; font-size:{{$header_menu_our_businesse->font_size}}; font-family:{{$header_menu_our_businesse->font_family}};">
+                                            {{$header_menu_our_businesse->name}}
+                                        </a>
                                     @endforeach
                                 </div>
                             </li>
@@ -115,7 +118,9 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Services</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach ($header_menu_our_services as $header_menu_our_service)
-                                        <a class="dropdown-item" href="{{$header_menu_our_service->link}}">{{$header_menu_our_service->name}}</a>
+                                        <a class="dropdown-item" href="{{$header_menu_our_service->link}}" style="color:{{$header_menu_our_service->color}}; font-size:{{$header_menu_our_service->font_size}}; font-family:{{$header_menu_our_service->font_family}};">
+                                            {{$header_menu_our_service->name}}
+                                        </a>
                                     @endforeach
                                 </div>
                             </li>
@@ -128,7 +133,9 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Awards & Recognition</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach ($header_menu_awards_recognitions as $header_menu_awards_recognition)
-                                        <a class="dropdown-item" href="{{$header_menu_awards_recognition->link}}">{{$header_menu_awards_recognition->name}}</a>
+                                        <a class="dropdown-item" href="{{$header_menu_awards_recognition->link}}" style="color:{{$header_menu_awards_recognition->color}}; font-size:{{$header_menu_awards_recognition->font_size}}; font-family:{{$header_menu_awards_recognition->font_family}};">
+                                            {{$header_menu_awards_recognition->name}}
+                                        </a>
                                     @endforeach
                                 </div>
                             </li>
@@ -137,7 +144,9 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contact Us</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach ($header_menu_contacts as $header_menu_contact)
-                                        <a class="dropdown-item" href="{{$header_menu_contact->link}}">{{$header_menu_contact->name}}</a>
+                                        <a class="dropdown-item" href="{{$header_menu_contact->link}}" style="color:{{$header_menu_contact->color}}; font-size:{{$header_menu_contact->font_size}}; font-family:{{$header_menu_contact->font_family}};">
+                                            {{$header_menu_contact->name}}
+                                        </a>
                                     @endforeach
                                 </div>
                             </li>
