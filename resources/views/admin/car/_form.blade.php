@@ -39,7 +39,7 @@
                                 </div>
     
                                 <div class="col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:348px,Width:219px; Image Type : jpg,jpeg,png,webp)</small>
                                     @if(isset($car->image) && isset($car->image))
                                         <img src="{{url('public/car/'.$car->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                     @endif

@@ -127,7 +127,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label><small>(Height:45px,Width:45px; Image Type : jpg,jpeg,png,webp)</small>
                                     <input type="file" id="address_icon" class="form-control" name="address_icon">
                                     <div id="error"></div>
                                 </div>
@@ -164,7 +164,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,webp)</small>
                                     <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon">
                                     <div id="error"></div>
                                 </div>
@@ -203,7 +203,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label><small>(Height:45px,Width:45px; Image Type : jpg,jpeg,png,webp)</small>
                                     <input type="file" id="contact_number_icon" class="form-control" name="contact_number_icon">
                                     <div id="error"></div>
                                 </div>

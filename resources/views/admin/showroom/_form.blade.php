@@ -136,7 +136,7 @@
 
 
                                 <div class="col-md-4">
-                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label><small>(Height:45px,Width:45px; Image Type : jpg,jpeg,png,webp)</small>
                                     @if(isset($showroom->address_icon) && isset($showroom->address_icon))
                                         <img src="{{url('public/showrooms_address_icon/'.$showroom->address_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
@@ -176,7 +176,7 @@
                                 </div>
 
                                 <div class="mb-3 col-md-4">
-                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,webp)</small>
                                     @if(isset($showroom->working_hours_icon) && isset($showroom->working_hours_icon))
                                         <img src="{{url('public/showrooms_working_hours_icon/'.$showroom->working_hours_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
@@ -218,7 +218,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,webp)</small>
                                     @if(isset($showroom->contact_number_icon) && isset($showroom->contact_number_icon))
                                         <img src="{{url('public/showrooms_contact_number_icon/'.$showroom->contact_number_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
@@ -260,7 +260,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="email_icon" class="form-label">Email Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="email_icon" class="form-label">Email Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,webp)</small>
                                     @if(isset($showroom->email_icon) && isset($showroom->email_icon))
                                         <img src="{{url('public/showrooms_email_icon/'.$showroom->email_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif

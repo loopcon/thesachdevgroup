@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:90px,Width:90px; Image Type : jpg,jpeg,png,webp)</small>
                                     @if(isset($testimonial->image) && isset($testimonial->image))
                                         <img src="{{url('public/testimonials/'.$testimonial->image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif

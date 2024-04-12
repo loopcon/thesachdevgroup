@@ -25,7 +25,7 @@
 
                         <div class="row">
                             <div class="mb-3 col-md-4">
-                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:145px,Width:145px; Image Type : jpg,jpeg,png,webp)</small>
                                 <input type="file" id="image" class="form-control" name="image">
                             </div>
 

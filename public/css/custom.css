@@ -2,8 +2,8 @@
 .brand-link{display: block;text-align: center;padding: 10px 0;}
 .logo-image{width: 80px;}
 .adm-navigation{height: 75px;}
-/* .show{color: #007bff;background-color: rgb(22, 5, 5);}
-.active{color: #007bff;}  */
+ /* .show{color: #007bff;background-color: rgb(22, 5, 5);} */
+.active{background-color: #3c71aa;}  
 .adm-table-no-wrap{ white-space: nowrap;}
 .footer_menu thead tr th:first-child{min-width: 45px ;text-align: left;}
 .footer_menu tbody tr td:first-child{min-width: 45px ;text-align: left;}

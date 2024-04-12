@@ -59,7 +59,7 @@
 
 
                             <div class="col-md-4">
-                                <label for="name" class="form-label">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="name" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:90px,Width:90px; Image Type : jpg,jpeg,png,webp)</small>
                                 <input type="file" id="image" class="form-control" name="image">
                                 <div class="error"></div>
                             </div>
