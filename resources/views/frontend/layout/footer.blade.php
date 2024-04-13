@@ -4,7 +4,7 @@
    <div class="container">
       <div class="footer-new">
          <div class="row">
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-6 col-lg-3">
                <div class="footer-about">
                   @php($setting = getSettingDetail())
 
@@ -22,7 +22,7 @@
                   </div>
                </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-6 col-lg-3">
                <div class="our-service">
                   <h3>Our Services</h3>
                   @foreach($footer_menu_our_services as $footer_menu_our_service)
@@ -33,7 +33,7 @@
                   @endforeach
                </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-6 col-lg-3">
                <div class="brands">
                   <h3>Our Businesses</h3>
                   @foreach($footer_menu_our_businesses as $footer_menu_our_businesse)
@@ -44,7 +44,7 @@
                   @endforeach
                </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-6 col-lg-3">
                <div class="useful-link">
                   <h3>Useful Links</h3>
                   @foreach($footer_menu_useful_links as $footer_menu_useful_link)
@@ -123,7 +123,7 @@
    <div class="copyright">
       <div class="container">
          <div class="row">
-            <div class="col-md-8 p-0">
+            <div class="col-lg-8 p-0">
                <div class="term-page">
                   <a href="terms-conditions.php"><p>Terms of Use</p></a> 
                   <a href="privacy-policy.php"><p> Privacy Policy </p> </a>
@@ -131,7 +131,7 @@
                   <a href="refund-cancellation-policy.php"><p>Refund Cancellation Policy</p> </a>
                </div>
             </div>
-            <div class="col-md-4 p-0">
+            <div class="col-lg-4 p-0">
                <div class="copyright-text">
                   <p>TSG (THE SACHDEV GROUP) © 2024</p>
                </div>

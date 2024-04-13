@@ -113,28 +113,12 @@
     border-right: 5px solid #EC3237;
   } */
 
-  .user-mission-scroll{
-    height: 400px;
-    overflow: auto;
-  }
-  
-  .user-mission-scroll::-webkit-scrollbar-track{
-	  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	  background-color: #F5F5F5;
-    display: none;
-  }
-
-  .user-mission-scroll::-webkit-scrollbar{
-	  width: 6px;
-	  background-color: #F5F5F5;
-    display: none;
-  }
-
-  .user-mission-scroll::-webkit-scrollbar-thumb{
-	  background-color: #000000;
-    display: none;
-  }
-
+  .user-mission-scroll{height: 400px;overflow: auto;}
+  .user-mission-scroll::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);background-color: #F5F5F5;display: none;}
+  .user-mission-scroll::-webkit-scrollbar{width: 6px;background-color: #F5F5F5;display: none;}
+  .user-mission-scroll::-webkit-scrollbar-thumb{background-color: #000000;display: none;}
+  #count_owl .owl-item img{ opacity: 0.8;}
+  #count_owl .owl-item:hover img{ opacity: 1;}
 
   /* @media (max-width: 767.98px) {
     .slider__flex {
@@ -184,6 +168,13 @@
     .testimonial-name{font-size: 17px !important;}
     .testimonial-heading h2{font-size: 35px !important;}
     .about-right-content p{ font-size: 16px !important; }
+    .image-footerlogo img{ height: auto !important; width: 35px !important; }
+    .address{ padding: 15px;}
+    .call-footer{padding: 15px;}
+    .email-footer{padding: 15px;}
+    #our_businesses_carousel .owl-item img{
+      margin-bottom: 0px;
+    }
 }
 
 @media(max-width:575px){
