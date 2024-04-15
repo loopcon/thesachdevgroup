@@ -120,6 +120,7 @@
   #count_owl .owl-item img{ opacity: 0.8;}
   #count_owl .owl-item:hover img{ opacity: 1;}
   .contact-detail a img{ padding: 5px;}
+  .image-footerlogo img { padding: 15px; background-color: #252628;}
 
   /* @media (max-width: 767.98px) {
     .slider__flex {
