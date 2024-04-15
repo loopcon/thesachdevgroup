@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="banner_image" class="form-label">Banner Image</label>&nbsp;<small>(banner_image Type : jpg,jpeg,png,webp)</small>
+                                <label for="banner_image" class="form-label">Banner Image</label>&nbsp;<small>(Hight:478px,Width:1349px; banner_image Type : jpg,jpeg,png,webp)</small>
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->banner_image) ? $record->banner_image : old('banner_image')}}">
                                 @if(isset($record->banner_image) && $record->banner_image)
                                     <img src="{{url('public/uploads/career/'.$record->banner_image)}}" width="100">
@@ -68,7 +68,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="offer_first_icon" class="form-label">Offer First Icon</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="offer_first_icon" class="form-label">Offer First Icon</label>&nbsp;<small>(Hight:64px,Width:64px; Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->offer_first_icon) && $record->offer_first_icon)
                                     <img src="{{url('public/uploads/career_icon1/'.$record->offer_first_icon)}}" width="100">
                                 @endif  
@@ -140,7 +140,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="offer_second_icon" class="form-label">Offer Second Icon</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="offer_second_icon" class="form-label">Offer Second Icon</label>&nbsp;<small>(Hight:64px,Width:64px; Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->offer_second_icon) && $record->offer_second_icon)
                                     <img src="{{url('public/uploads/career_icon2/'.$record->offer_second_icon)}}" width="100">
                                 @endif  
@@ -212,7 +212,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="offer_third_icon" class="form-label">Offer Third Icon</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="offer_third_icon" class="form-label">Offer Third Icon</label>&nbsp;<small>(Hight:64px,Width:64px; Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->offer_third_icon) && $record->offer_third_icon)
                                     <img src="{{url('public/uploads/career_icon3/'.$record->offer_third_icon)}}" width="100">
                                 @endif  

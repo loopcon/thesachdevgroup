@@ -294,6 +294,47 @@
                                 @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                             </div>
 
+                            <div class="col-md-4">
+                                <label for="slider_service_center_name" class="form-label">Slider Service Center Name</label>
+                                <input type="text" class="form-control" id="slider_service_center_name" name="slider_service_center_name" value="{{isset($record->slider_service_center_name) ? $record->slider_service_center_name : old('slider_service_center_name')}}">
+                                @if ($errors->has('slider_service_center_name')) <div class="text-danger">{{ $errors->first('slider_service_center_name') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="slider_service_center_name_color" class="form-label">Slider Service Center Name Color</label>
+                                <input type="text" id="slider_service_center_name_color" class="form-control colorpicker" name="slider_service_center_name_color" value="{{isset($record->slider_service_center_name_color) ? $record->slider_service_center_name_color : old('slider_service_center_name_color')}}">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="slider_service_center_name_size" class="form-label">Slider Service Center Name Font Size</label>
+                                <select class="form-control select2" name="slider_service_center_name_size">
+                                    <option value="">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->slider_service_center_name_size) && $record->slider_service_center_name_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            @php($fontfamily = fontFamily())
+                            <div class="col-md-4 mt-2">
+                                <label for="slider_service_center_name_font_family" class="form-label">Slider Service Center Name Font Family</label>
+                                <select class="form-control select2" name="slider_service_center_name_font_family">
+                                    <option value="">Select</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->slider_service_center_name_font_family) && $record->slider_service_center_name_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="slider_image" class="form-label">Slider Image</label><span><small>(Hight:243,Width:325; Image Type : jpg,jpeg,png,webp)</small></span>
+                                @if(isset($record->slider_image) && $record->slider_image)
+                                    <img src="{{url('public/uploads/service_center/slider_image/'.$record->slider_image)}}" width="100">
+                                @endif  
+                                <input type="file" id="slider_image" class="form-control" name="slider_image" value="">
+                                @if ($errors->has('slider_image')) <div class="text-danger">{{ $errors->first('slider_image') }}</div>@endif
+                            </div>
+
                             <?php /* <div class="col-12">
                                 <h5>Why Choose Section</h5>
                                 <hr>

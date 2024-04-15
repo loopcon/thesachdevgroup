@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="col-md-5 mb-3 mt-2">
-                                <label for="banner_image" class="form-label">Award Banner Image<span class="text-danger">*</span></label><small>(Hight:1349,Width:478; Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="banner_image" class="form-label">Award Banner Image<span class="text-danger">*</span></label><small>(Hight:478px,Width:1349px; Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->banner_image) && $record->banner_image)
                                     <img src="{{url('public/uploads/award_banner/'.$record->banner_image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
                                 @endif  

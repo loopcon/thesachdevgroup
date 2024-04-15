@@ -102,12 +102,12 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4 mt-2 mb-3">
+                            <div class="col-md-4 mt-2">
                                 <label for="description_font_color" class="form-label">Description Font Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
                             </div>
 
-                            <div class="col-md-5 mt-2">
+                            <div class="col-md-4 mt-3">
                                 <label for="banner_image" class="form-label">Banner Image</label><span class="text-danger">*</span><small>(Hight:281,Width:1349; Image Type : jpg,jpeg,png,webp)</small></span>
                                 @if(isset($record->banner_image) && $record->banner_image)
                                     <img src="{{url('public/uploads/our_business/'.$record->banner_image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
@@ -115,6 +115,130 @@
                                 <input type="file" id="banner_image" class="form-control" name="banner_image" value="">
                                 @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
                                 <div class="error"></div>
+                            </div>
+
+                            <div class="col-md-4 mt-3">
+                                <label for="showroom_title" class="form-label">Showroom Title</label>
+                                <input type="text" id="showroom_title" class="form-control" name="showroom_title" value="{{isset($record->showroom_title) ? $record->showroom_title : old('showroom_title')}}">
+                            </div>
+
+                            <div class="col-md-4 mt-3">
+                                <label for="showroom_title_color" class="form-label">Showroom Title Font Color</label>
+                                <input type="text" id="showroom_title_color" class="form-control colorpicker" name="showroom_title_color" value="{{isset($record->showroom_title_color) ? $record->showroom_title_color : old('showroom_title_color')}}">
+                            </div>
+ 
+                            <div class="col-md-4 mt-2">
+                                <label for="showroom_title_font_size" class="form-label">Showroom Title Font Size</label>
+                                <select class="form-control select2" name="showroom_title_font_size">
+                                    <option value="">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->showroom_title_font_size) && $record->showroom_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            @php($fontfamily = fontFamily())
+                            <div class="col-md-4 mt-2">
+                                <label for="showroom_title_font_family" class="form-label">Showroom Title Font Family</label>
+                                <select class="form-control select2" name="showroom_title_font_family">
+                                    <option value="">Select</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->showroom_title_font_family) && $record->showroom_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="service_center_title" class="form-label">Service Center Title</label>
+                                <input type="text" id="service_center_title" class="form-control" name="service_center_title" value="{{isset($record->service_center_title) ? $record->service_center_title : old('service_center_title')}}">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="service_center_title_color" class="form-label">Service Center Title Font Color</label>
+                                <input type="text" id="service_center_title_color" class="form-control colorpicker" name="service_center_title_color" value="{{isset($record->service_center_title_color) ? $record->service_center_title_color : old('service_center_title_color')}}">
+                            </div>
+ 
+                            <div class="col-md-4 mt-2">
+                                <label for="service_center_title_font_size" class="form-label">Service Center Title Font Size</label>
+                                <select class="form-control select2" name="service_center_title_font_size">
+                                    <option value="">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->service_center_title_font_size) && $record->service_center_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            @php($fontfamily = fontFamily())
+                            <div class="col-md-4 mt-2">
+                                <label for="service_center_title_font_family" class="form-label">Service Center Title Font Family</label>
+                                <select class="form-control select2" name="service_center_title_font_family">
+                                    <option value="">Select</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->service_center_title_font_family) && $record->service_center_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="body_shop_title" class="form-label">Body Shop Title</label>
+                                <input type="text" id="body_shop_title" class="form-control" name="body_shop_title" value="{{isset($record->body_shop_title) ? $record->body_shop_title : old('body_shop_title')}}">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="body_shop_title_color" class="form-label">Body Shop Title Font Color</label>
+                                <input type="text" id="body_shop_title_color" class="form-control colorpicker" name="body_shop_title_color" value="{{isset($record->body_shop_title_color) ? $record->body_shop_title_color : old('body_shop_title_color')}}">
+                            </div>
+ 
+                            <div class="col-md-4 mt-2">
+                                <label for="body_shop_title_font_size" class="form-label">Body Shop Title Font Size</label>
+                                <select class="form-control select2" name="body_shop_title_font_size">
+                                    <option value="">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->body_shop_title_font_size) && $record->body_shop_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            @php($fontfamily = fontFamily())
+                            <div class="col-md-4 mt-2">
+                                <label for="body_shop_title_font_family" class="form-label">Body Shop Title Font Family</label>
+                                <select class="form-control select2" name="body_shop_title_font_family">
+                                    <option value="">Select</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->body_shop_title_font_family) && $record->body_shop_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="insurance_title" class="form-label">Insurance Title</label>
+                                <input type="text" id="insurance_title" class="form-control" name="insurance_title" value="{{isset($record->insurance_title) ? $record->insurance_title : old('insurance_title')}}">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="insurance_title_color" class="form-label">Insurance Title Font Color</label>
+                                <input type="text" id="insurance_title_color" class="form-control colorpicker" name="insurance_title_color" value="{{isset($record->insurance_title_color) ? $record->insurance_title_color : old('insurance_title_color')}}">
+                            </div>
+ 
+                            <div class="col-md-4 mb-2">
+                                <label for="insurance_title_font_size" class="form-label">Insurance Title Font Size</label>
+                                <select class="form-control select2" name="insurance_title_font_size">
+                                    <option value="">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->insurance_title_font_size) && $record->insurance_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            @php($fontfamily = fontFamily())
+                            <div class="col-md-4 mt-2">
+                                <label for="insurance_title_font_family" class="form-label">Insurance Title Font Family</label>
+                                <select class="form-control select2" name="insurance_title_font_family">
+                                    <option value="">Select</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->insurance_title_font_family) && $record->insurance_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="col-12">
@@ -165,7 +289,7 @@
 
                             <div class="col-md-12 mb-2">
                                 <label for="why_choose_description" class="form-label">Why Choose Description</label>
-                                <textarea class="ckeditor form-control" value="{{isset($record->why_choose_description) ? $record->why_choose_description : old('why_choose_description')}}" name="why_choose_description" id="why_choose_description"></textarea>
+                                <textarea class="form-control ckeditor" name="why_choose_description" id="why_choose_description">{{isset($record->why_choose_description) ? $record->why_choose_description : old('why_choose_description')}}</textarea>
                             </div>
 
                             <div class="col-md-4 mb-2 mt-2">
@@ -211,6 +335,17 @@
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
+
+        // CKEDITOR.replace('why_choose_description', {
+        //     height:500,
+        //     removePlugins : 'resize',
+        //     filebrowserBrowseUrl : '<?php echo url("public/plugins/kcfinder/browse.php?opener=ckeditor&type=files") ?>',
+        //     filebrowserImageBrowseUrl : '<?php echo url("public/plugins/kcfinder/browse.php?opener=ckeditor&type=images") ?>',
+        //     filebrowserFlashBrowseUrl : '<?php echo url("public/plugins/kcfinder/browse.php?opener=ckeditor&type=flash") ?>',
+        //     filebrowserUploadUrl : '<?php echo url("public/plugins/kcfinder/upload.php?opener=ckeditor&type=files") ?>',
+        //     filebrowserImageUploadUrl : '<?php echo url("public/plugins/kcfinder/upload.php?opener=ckeditor&type=images") ?>',
+        //     filebrowserFlashUploadUrl : '<?php echo url("public/plugins/kcfinder/upload.php?opener=ckeditor&type=flash") ?>',
+        // });
 
         $('.page_url').hide();
         var page = $('#page_link').val();
