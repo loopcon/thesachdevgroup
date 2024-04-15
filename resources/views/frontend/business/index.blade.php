@@ -98,12 +98,12 @@
     </div>
 </section>
 
-<!-- toyota showroom locaions slider  -->
+<!-- showroom -->
 @if(isset($showrooms) && $showrooms)
 <section id="location-section">
     <div class="container">
         <div class="location-tittle">
-            <h2>Galaxy Toyota Showrooms</h2>
+            <h2>{{isset($business->showroom_title) && $business->showroom_title ? $business->showroom_title : NULL}}</h2>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -114,7 +114,7 @@
                                 <div class="image-content">
                                     <!-- <span class="overlay"></span> -->
                                     <div class="card-image">
-                                    <img src="public/uploads/service/GeneralService1712989895.png" alt="" class="card-img">
+                                    <img src="" alt="" class="card-img">
                                     </div>
                                 </div>
                                 <div class="card-content">
@@ -146,12 +146,12 @@
 @endif
 <!-- toyota showroom location end  -->
 
-<!-- toyota showroom locaions slider  -->
 <!-- service center -->
+@if(isset($service_centers) && $service_centers)
 <section id="service-location">
     <div class="container">
         <div class="location-tittle">
-            <h2>Galaxy Toyota Service Centers</h2>
+            <h2>{{isset($business->service_center_title) && $business->service_center_title ? $business->service_center_title : NULL}}</h2>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -192,6 +192,7 @@
     </div>
 </div>
 </section>
+@endif
 <!-- service center end -->
 
 <!-- toyota showroom locaions slider  -->
@@ -421,12 +422,11 @@
 <!-- toyota showroom location end  -->
 
 <!-- insurence  -->
-
 @if(isset($business_insurance) && $business_insurance)
 <section id="insurence-page">
     <div class="container">
         <div class="heading-title-insurence">
-            <h2>Galaxy Toyota Insurance</h2>
+            <h2>{{isset($business->insurance_title) && $business->insurance_title ? $business->insurance_title : NULL}}</h2>
         </div>
         <div class="insurence-parent">
             @foreach($business_insurance as $record)
@@ -476,7 +476,7 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="left-image-insurence">
-                    <img src="{{asset('uploads/why_choose/'.$business->why_choose_image)}}" alt="">
+                    <img src="{{asset('uploads/our_business_why_choose/'.$business->why_choose_image)}}" alt="">
                 </div>
             </div>
 

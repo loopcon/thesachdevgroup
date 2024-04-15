@@ -280,7 +280,7 @@
                             <div class="col-md-6 mb-2 mt-2">
                                 <label for="why_choose_image" class="form-label">Why Choose Image</label>&nbsp;<small>(Hight:540,Width:405; Image Type : jpg,jpeg,png,webp)</small>
                                 @if(isset($record->why_choose_image) && $record->why_choose_image)
-                                    <img src="{{url('public/uploads/why_choose_image/'.$record->why_choose_image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    <img src="{{url('public/uploads/our_business_why_choose/'.$record->why_choose_image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                 @endif  
                                 <input type="file" id="why_choose_image" class="form-control" name="why_choose_image" value="">
                                 @if ($errors->has('why_choose_image')) <div class="text-danger">{{ $errors->first('why_choose_image') }}</div>@endif

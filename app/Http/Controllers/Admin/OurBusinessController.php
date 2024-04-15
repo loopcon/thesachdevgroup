@@ -189,7 +189,7 @@ class OurBusinessController extends Controller
                     {
                         removeFile('uploads/our_business_why_choose'.$oldimage);
                     }
-                    $why_choose_image = fileUpload($request, 'why_choose_image', 'uploads/our_business');
+                    $why_choose_image = fileUpload($request, 'why_choose_image', 'uploads/our_business_why_choose');
                     $our_business->why_choose_image = $why_choose_image;
                 }
 
