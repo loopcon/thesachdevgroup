@@ -144,7 +144,7 @@
     </div>
 </section>
 @endif
-<!-- toyota showroom location end  -->
+<!-- showroom end  -->
 
 <!-- service center -->
 @if(isset($service_centers) && $service_centers)
@@ -158,7 +158,7 @@
                 <div class="card-wrapper swiper-wrapper">
                     @foreach($service_centers as $service_center)
                         <div class="card swiper-slide">
-                            <a href="/galaxy-toyota-service-okhla.php">
+                            <a href="#">
                                 <div class="image-content">
                                     <!-- <span class="overlay"></span> -->
                                     <div class="card-image">
