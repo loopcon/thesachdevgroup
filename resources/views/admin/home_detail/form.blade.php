@@ -10,12 +10,6 @@
           <div class="col-sm-6">
             <h1>Home Detail</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Home Detail</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -31,7 +25,7 @@
 
                             <div class="form-row">
                               <div class="col-md-4 mb-3">
-                                  <label for="image">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                  <label for="image">Image<span class="text-danger">*</span></label><small>(Height:479px,Width:540px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 
                                   <input type="hidden" name="old_image" id="old_image" value="{{$home_detail->image}}">
 
@@ -152,7 +146,7 @@
                             <div class="form-row">
 
                               <div class="form-group col-md-4">
-                                <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label><small>(Height:367px,Width:350px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 
                                   <input type="hidden" name="mission_vision_image" id="mission_vision_image" value="{{$home_detail->our_story_image}}">
 
@@ -169,7 +163,7 @@
 
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
-                              <label for="image">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                              <label for="image">Image<span class="text-danger">*</span></label><small>(Height:479px,Width:540px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               <input type="file" id="image" class="form-control image" name="image">
                               <div class="error"></div>
                           </div>
@@ -282,7 +276,7 @@
                         <div class="form-row">
 
                           <div class="form-group col-md-4">
-                            <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                            <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label><small>(Height:367px,Width:350px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             <input type="file" id="our_story_image" class="form-control our_story_image" name="our_story_image">
                             <div class="error"></div>
                           </div>
@@ -327,7 +321,7 @@
             messages: {
                 'image': {
                     required: "The image field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'title': {
                     required: "The title field is required.",
@@ -337,7 +331,7 @@
                 },
                 'our_story_image': {
                     required: "The mission vision image field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
             },
             errorPlacement: function(error, element) {

@@ -12,6 +12,12 @@ class Showroom extends Model
 
     protected $fillable = [
         'our_business_id',
+        'slider_image',
+        'slider_showroom_name',
+        'slider_showroom_color',
+        'slider_showroom_font_size',
+        'slider_showroom_font_family',
+        'image',
         'name',
         'name_color',
         'name_font_size',

@@ -7,12 +7,6 @@
           <div class="col-sm-6">
             <h1>Testimonials Edit</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Testimonials Edit</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -61,7 +55,7 @@
                                 </div>
 
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:90px,Width:90px; Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                     @if(isset($testimonial->image) && isset($testimonial->image))
                                         <img src="{{url('public/testimonials/'.$testimonial->image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
@@ -164,7 +158,7 @@
                     required: true,
                 },
                 image: {
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
             },
             messages: {
@@ -172,7 +166,7 @@
                     required: "The name field is required.",
                 },
                 image: {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
             },
             errorPlacement: function(error, element) {

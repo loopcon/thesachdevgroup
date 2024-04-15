@@ -7,12 +7,6 @@
           <div class="col-sm-6">
             <h1>Home Slider Edit</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Home Slider Edit</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -27,7 +21,7 @@
                            
                             <div class="row">
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span><small>(Image Type : jpg,jpeg,png,webp)</small></label>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:478px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                     @if(isset($homeslider->image) && isset($homeslider->image))
                                         <img src="{{url('public/home_slider/'.$homeslider->image)}}" width="100" style="margin-bottom:10px; margin-left:5px;"> 
                                     @endif
@@ -132,7 +126,7 @@
             },
             messages: {
                 image: {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
             },
         });

@@ -11,12 +11,6 @@
           <div class="col-sm-6">
             <h1>{{$site_title}}</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">{{$site_title}}</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -29,7 +23,7 @@
                         <div class="row">
 
                             <div class="mb-3 col-md-4">
-                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Height:50px,Width:50px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->icon) ? $record->icon : old('old_image')}}">
                                 
@@ -134,7 +128,7 @@
             rules: {
                 'icon': {
                     required: checkIconImage,
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'amount': {
                     required: true,
@@ -143,7 +137,7 @@
             messages: {
                 'icon': {
                     required: "The icon field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'amount': {
                     required: "The amount field is required.",

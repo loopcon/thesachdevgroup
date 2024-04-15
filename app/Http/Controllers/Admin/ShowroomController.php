@@ -44,6 +44,31 @@ class ShowroomController extends Controller
 
                 $showroom->our_business_id = $request->our_business_id;
 
+                if($file = $request->hasFile('slider_image')) {
+                    $file = $request->file('slider_image');
+                    $extension = $file->getClientOriginalExtension();
+                    $sliderImagefileName = time(). '.' . $extension;
+            
+                    $destinationPath = public_path().'/showrooms_slider_image' ;
+                    $file->move($destinationPath,$sliderImagefileName);
+                    $showroom->slider_image = $sliderImagefileName;
+                }
+
+                $showroom->slider_showroom_name = $request->slider_showroom_name;
+                $showroom->slider_showroom_color = $request->slider_showroom_color;
+                $showroom->slider_showroom_font_size = $request->slider_showroom_font_size;
+                $showroom->slider_showroom_font_family = $request->slider_showroom_font_family;
+                
+                if($file = $request->hasFile('image')) {
+                    $file = $request->file('image');
+                    $extension = $file->getClientOriginalExtension();
+                    $ImagefileName = time(). '.' . $extension;
+            
+                    $destinationPath = public_path().'/showrooms_image' ;
+                    $file->move($destinationPath,$ImagefileName);
+                    $showroom->image = $ImagefileName;
+                }
+
                 $showroom->name = $request->name;
                 $showroom->name_color = $request->name_color;
                 $showroom->name_font_size = $request->name_font_size;
@@ -172,6 +197,24 @@ class ShowroomController extends Controller
                     return $our_business_name;
                 })
 
+                ->editColumn('slider_image', function($showroom){
+
+                    if(isset($showroom->slider_image) && isset($showroom->slider_image)){
+                        $url= asset('showrooms_slider_image/'.$showroom->slider_image);
+                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        return $image;
+                    }
+                })
+
+                ->editColumn('image', function($showroom){
+
+                    if(isset($showroom->image) && isset($showroom->image)){
+                        $url= asset('showrooms_image/'.$showroom->image);
+                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        return $image;
+                    }
+                })
+
                 ->editColumn('brand', function($showroom){
                     $brand_name =  isset($showroom->brand->name) && $showroom->brand->name ? $showroom->brand->name: NULL;
                     return $brand_name;
@@ -223,7 +266,7 @@ class ShowroomController extends Controller
                     }
                 })
 
-            ->rawColumns(['action','our_business_id','brand','car','description','address_icon','working_hours_icon','contact_number_icon','email_icon'])
+            ->rawColumns(['action','our_business_id','slider_image','image','brand','car','description','address_icon','working_hours_icon','contact_number_icon','email_icon'])
             ->make(true);
         }
         
@@ -258,6 +301,40 @@ class ShowroomController extends Controller
                 $showroom = Showroom::find($id);
 
                 $showroom->our_business_id = $request->our_business_id;
+
+
+                if($request->hasFile('slider_image'))
+                {
+                    $destination = 'public/showrooms_slider_image/' . $showroom->slider_image;
+                    if(File::exists($destination))
+                    {
+                        File::delete($destination);
+                    }
+                    $file = $request->file('slider_image');
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = time(). '.' . $extension;
+                    $file->move('public/showrooms_slider_image/', $filename);
+                    $showroom->slider_image = $filename;
+                }
+
+                $showroom->slider_showroom_name = $request->slider_showroom_name;
+                $showroom->slider_showroom_color = $request->slider_showroom_color;
+                $showroom->slider_showroom_font_size = $request->slider_showroom_font_size;
+                $showroom->slider_showroom_font_family = $request->slider_showroom_font_family;
+
+                if($request->hasFile('image'))
+                {
+                    $destination = 'public/showrooms_image/' . $showroom->image;
+                    if(File::exists($destination))
+                    {
+                        File::delete($destination);
+                    }
+                    $file = $request->file('image');
+                    $extension = $file->getClientOriginalExtension();
+                    $filename = time(). '.' . $extension;
+                    $file->move('public/showrooms_image/', $filename);
+                    $showroom->image = $filename;
+                }
 
                 $showroom->name = $request->name;
                 
@@ -374,6 +451,22 @@ class ShowroomController extends Controller
                 if (Showroom_facility_customer_gallery::where('showroom_id', $id)->exists()) {
                     return redirect('showroom_list')->with('error', trans('Showroom facility customer gallery associated with this showroom exist. Cannot delete showroom.'));
                 } else {
+
+                    if($showroom->slider_image != NULL)
+                    {
+                        $image = public_path("showrooms_slider_image/{$showroom->slider_image}");
+                        if (File::exists($image)) {
+                            unlink($image);
+                        }
+                    }
+
+                    if($showroom->image != NULL)
+                    {
+                        $image = public_path("showrooms_image/{$showroom->image}");
+                        if (File::exists($image)) {
+                            unlink($image);
+                        }
+                    }
 
                     if($showroom->address_icon != NULL)
                     {

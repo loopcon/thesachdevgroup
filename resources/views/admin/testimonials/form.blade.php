@@ -7,12 +7,6 @@
           <div class="col-sm-6">
             <h1>Testimonials Create</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Testimonials Create</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -59,7 +53,7 @@
 
 
                             <div class="col-md-4">
-                                <label for="name" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:90px,Width:90px; Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="name" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 <input type="file" id="image" class="form-control" name="image">
                                 <div class="error"></div>
                             </div>
@@ -155,7 +149,7 @@
                 },
                 'image': {
                     required: true,
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
             },
             messages: {
@@ -164,7 +158,7 @@
                 },
                 'image': {
                     required: "The image field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
             },
             errorPlacement: function(error, element) {

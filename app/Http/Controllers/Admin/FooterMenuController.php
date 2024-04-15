@@ -62,7 +62,7 @@ class FooterMenuController extends Controller
                         })
                     ],
                     'menu_name' => 'required',
-                    'link' => 'url',
+                    'link' => 'nullable|url',
                 ]);
 
                 $footer_menu = new Footer_menu();

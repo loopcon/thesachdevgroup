@@ -41,7 +41,7 @@ class HeaderMenuController extends Controller
                         })
                     ],
                     'menu_name' => 'required',
-                    'link' => 'url',
+                    'link' => 'nullable|url',
                 ]);
 
                 $header_menu = new Header_menu();
