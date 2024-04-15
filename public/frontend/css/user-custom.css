@@ -122,6 +122,15 @@
   .contact-detail a img{ padding: 5px;}
   .image-footerlogo img { padding: 15px; background-color: #252628;}
 
+  #owl-insurence-carousel .item {
+    align-items: center;
+    background-color: tomato;
+    color: white;
+    display: flex;
+    height: 300px;
+    justify-content: center;
+  }
+
   /* @media (max-width: 767.98px) {
     .slider__flex {
       flex-direction: column-reverse;

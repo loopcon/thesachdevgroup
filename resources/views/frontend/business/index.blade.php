@@ -24,7 +24,7 @@
                     @foreach($services as $service)
                         <div class="car-image">
                             <a href="{{$service->url}}" target="_blank">
-                            <img src="{{asset('uploads/service/'.$service->icon)}}" alt="" width="90px">
+                            <img src="{{asset('uploads/service/'.$service->icon)}}" alt="" width="300px">
                             <p>{{$service->name}}</p>
                             </a>
                         </div>
@@ -446,6 +446,30 @@
 </section>
 @endif
 
+<div class="container">
+    <div id="owl-insurence-carousel" class="owl-carousel owl-theme">
+      <div class="item">
+        1
+      </div>
+      <div class="item">
+        2
+      </div>
+      <div class="item">
+        3
+      </div>
+      <div class="item">
+        4
+      </div>
+      <div class="item">
+        5
+      </div>
+      <div class="item">
+        6
+      </div>
+    </div>
+  </div>
+
+
 <!-- why choose us  -->
 <section id="insurence-page">
     <div class="container">
@@ -483,34 +507,44 @@
     <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
     <script>
         var swiper = new Swiper(".slide-content", {
-    slidesPerView: 3,
-    spaceBetween: 25,
-    loop: true,
-    centerSlide: 'true',
-    fade: 'true',
-    grabCursor: 'true',
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      dynamicBullets: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-
-    breakpoints:{
-        0: {
-            slidesPerView: 1,
-        },
-        520: {
-            slidesPerView: 2,
-        },
-        950: {
             slidesPerView: 3,
-        },
-    },
-  });
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: 'true',
+            fade: 'true',
+            grabCursor: 'true',
+            pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            dynamicBullets: true,
+            },
+            navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+            },
+
+            breakpoints:{
+                0: {
+                    slidesPerView: 1,
+                },
+                520: {
+                    slidesPerView: 2,
+                },
+                950: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        $(document).ready(function() {
+            $('#owl-insurence-carousel').owlCarousel({
+                loop: true,
+                margin: 30,
+                dots: true,
+                nav: true,
+                items: 3,
+            });
+        });
 </script>
 @endsection
 
