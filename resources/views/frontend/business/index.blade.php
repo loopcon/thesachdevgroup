@@ -68,16 +68,13 @@
                                 <div class="card-content">
                                     <h2 class="name">{{$showroom->name}}</h2>
                                     <div class="rating">
-                                        <img src="" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/rating.png" alt="">
+                                        @php($rating = $showroom->rating * 20)
+                                        <div class='stars'><div id='pid-{{$showroom->id}}' class='percent' style='width:{{$rating}}%;'></div></div>
                                     </div>
                                     <div class="star-parent">
                                         <img src="assets/image/locations-banner/google.png" alt="" width="6%">
-                                        <p>4.7</p>
-                                        <p>(946 reviews)</p>
+                                        <p>{{$showroom->rating}}</p>
+                                        <p>{{$showroom->number_of_rating}}</p>
                                     </div>
                                 </div>
                             </a>
@@ -439,7 +436,6 @@
 <!-- why choose end -->
 @endsection
 @section('javascript')
-<!-- <script src="{{url('public/frontend/js/star_script.js')}}"></script> -->
    <!-- Swiper JS -->
    <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
     <!-- JavaScript -->
