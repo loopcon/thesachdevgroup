@@ -394,7 +394,7 @@
                             <div class="insurence-card-one">
                                 <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
                                 <div class="insurence-content">
-                                    <p style="color:{{$business_insurance->name_font_color}}; font-size:{{$business_insurance->name_font_size}}; font-family:{{$business_insurance->name_font_family}};">{{$record->name}}</p>
+                                    <p style="color:{{$record->name_font_color}}; font-size:{{$record->name_font_size}}; font-family:{{$record->name_font_family}};">{{$record->name}}</p>
                                 </div>
                             </div>
                         </a>
