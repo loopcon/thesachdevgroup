@@ -14,8 +14,8 @@
 <section id="introduction-location">
     <div class="container">
         <div class="location-text">
-            <h1>{{isset($business->title) && $business->title ? $business->title : ''}}</h1>
-            <p>{{ isset($business->description) && $business->description ? $business->description : '' }}</p>
+            <h1 style="color:{{$business->title_font_color}}; font-size:{{$business->title_font_size}}; font-family:{{$business->title_font_family}};">{{isset($business->title) && $business->title ? $business->title : ''}}</h1>
+            <p tyle="color:{{$business->description_font_color}}; font-size:{{$business->description_font_size}}; font-family:{{$business->title_font_family}};">{{ isset($business->description) && $business->description ? $business->description : '' }}</p>
         </div>
 
         <div class="top-car-image"> 
@@ -116,11 +116,9 @@
                                 <div class="card-content">
                                     <h2 class="name">{{$service_center->slider_service_center_name}}</h2>
                                     <div class="rating">
-                                        <img src="public/front_img/star.webp" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/rating.png" alt="">
+                                        @php($rate = $service_center->rating * 20)
+                                        <div class='stars'><div id='pid-{{$service_center->id}}' class='percent' style='width:{{$rate}}%;'></div></div>
+                                        <!-- <img src="public/front_img/star.webp" alt=""> -->
                                     </div>
                                     <div class="star-parent">
                                         <img src="assets/image/locations-banner/google.png" alt="" width="6%">
@@ -441,6 +439,7 @@
 <!-- why choose end -->
 @endsection
 @section('javascript')
+<!-- <script src="{{url('public/frontend/js/star_script.js')}}"></script> -->
    <!-- Swiper JS -->
    <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
     <!-- JavaScript -->
