@@ -51,7 +51,7 @@
 <section id="location-section">
     <div class="container">
         <div class="location-tittle">
-            <h2 style="color:{{$showrooms->slider_showroom_name_color}}; font-size:{{$showrooms->slider_showroom_name_font_size}}; font-family:{{$showrooms->slider_showroom_name_font_family}};">{{isset($business->showroom_title) && $business->showroom_title ? $business->showroom_title : NULL}}</h2>
+            <h2 style="color:{{$business->showroom_title_color}}; font-size:{{$business->showroom_title_font_size}}; font-family:{{$business->showroom_title_font_family}};">{{isset($business->showroom_title) && $business->showroom_title ? $business->showroom_title : NULL}}</h2>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    <h2 class="name">{{$showroom->name}}</h2>
+                                    <h2 class="name" style="color:{{$showroom->slider_showroom_name_color}}; font-size:{{$showroom->slider_showroom_name_font_size}}; font-family:{{$showroom->slider_showroom_name_font_family}};">{{$showroom->name}}</h2>
                                     <div class="rating">
                                         @php($rating = $showroom->rating * 20)
                                         <div class='stars'><div id='pid-{{$showroom->id}}' class='percent' style='width:{{$rating}}%;'></div></div>
@@ -96,7 +96,7 @@
 <section id="service-location">
     <div class="container">
         <div class="location-tittle">
-            <h2>{{isset($business->service_center_title) && $business->service_center_title ? $business->service_center_title : NULL}}</h2>
+            <h2 style="color:{{$business->service_center_title_color}}; font-size:{{$business->service_center_title_font_size}}; font-family:{{$business->service_center_title_font_family}};">{{isset($business->service_center_title) && $business->service_center_title ? $business->service_center_title : NULL}}</h2>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    <h2 class="name">{{$service_center->slider_service_center_name}}</h2>
+                                    <h2 class="name" style="color:{{$service_center->slider_service_center_name_color}}; font-size:{{$service_center->slider_service_center_name_size}}; font-family:{{$service_center->slider_service_center_name_font_family}};">{{$service_center->slider_service_center_name}}</h2>
                                     <div class="rating">
                                         @php($rate = $service_center->rating * 20)
                                         <div class='stars'><div id='pid-{{$service_center->id}}' class='percent' style='width:{{$rate}}%;'></div></div>
@@ -369,7 +369,7 @@
 <section id="insurence-page">
     <div class="container">
         <div class="heading-title-insurence">
-            <h2>{{isset($business->insurance_title) && $business->insurance_title ? $business->insurance_title : NULL}}</h2>
+            <h2 style="color:{{$business->insurance_title_color}}; font-size:{{$business->insurance_title_font_size}}; font-family:{{$business->insurance_title_font_family}};">{{isset($business->insurance_title) && $business->insurance_title ? $business->insurance_title : NULL}}</h2>
         </div>
         <div class="insurence-parent">
             @if($business_insurance->count() > 3)
@@ -380,7 +380,7 @@
                                 <div class="insurence-card-one">
                                     <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
                                     <div class="insurence-content">
-                                        <p>{{$record->name}}</p>
+                                        <p style="color:{{$record->name_font_color}}; font-size:{{$record->name_font_size}}; font-family:{{$record->name_font_family}};">{{$record->name}}</p>
                                     </div>
                                 </div>
                             </a>
@@ -394,7 +394,7 @@
                             <div class="insurence-card-one">
                                 <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
                                 <div class="insurence-content">
-                                    <p>{{$record->name}}</p>
+                                    <p style="color:{{$business_insurance->name_font_color}}; font-size:{{$business_insurance->name_font_size}}; font-family:{{$business_insurance->name_font_family}};">{{$record->name}}</p>
                                 </div>
                             </div>
                         </a>
@@ -418,8 +418,10 @@
 
             <div class="col-md-6">
                 <div class="heading-title-advantage">
-                    <h2>{{isset($business->why_choose_title) && $business->why_choose_title ? $business->why_choose_title : ''}}</h2>
-                    {!! isset($business->why_choose_description) && $business->why_choose_description ? $business->why_choose_description : '' !!}
+                    <h2 style="color:{{$business->why_choose_title_color}}; font-size:{{$business->why_choose_title_font_size}}; font-family:{{$business->why_choose_title_font_family}};">{{isset($business->why_choose_title) && $business->why_choose_title ? $business->why_choose_title : ''}}</h2>
+                    <div style="color:{{$business->why_choose_description_color}}; font-size:{{$business->why_choose_description_font_size}}; font-family:{{$business->why_choose_description_font_family}};">
+                        {!! isset($business->why_choose_description) && $business->why_choose_description ? $business->why_choose_description : '' !!}
+                    </div>
                     <!-- <ul>
                         <li><img src="assets/image/locations-banner/check (1).png" alt="" width="18px"> Wide Selection Of Toyota Cars</li>
                         <li><img src="assets/image/locations-banner/check (1).png" alt="" width="18px"> Expert Service And Maintenance</li>
