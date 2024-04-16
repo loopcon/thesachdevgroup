@@ -392,6 +392,21 @@
             @endif
         @endif
 
+
+        @php($has_permission = hasPermission('Body Shops'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                <li class="nav-item"> 
+                    <a href="{{url('body_shop')}}" class="nav-link {{request()->is('body_shop*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Body Shops
+                        </p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
         @if(isset(Auth::user()->role_id) && Auth::user()->role_id == 1)
                 <li class="nav-item">
                 <a href="{{route('role-permission')}}" class="nav-link {{ request()->is('role-permission*') ? 'active' : '' }}">

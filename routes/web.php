@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\OurBusinessController;
 use App\Http\Controllers\Admin\OurBusinessInsuranceController;
 use App\Http\Controllers\Admin\VacancyController;
 use App\Http\Controllers\Admin\CareerController;
+use App\Http\Controllers\Admin\BodyShopController;
 
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BusinessController;
@@ -296,6 +297,16 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('career', [CareerController::class, 'career'])->name('career');
     Route::post('career-update', [CareerController::class, 'careerUpdate'])->name('career-update');
+
+    //body shop
+    Route::get('body_shop', [BodyShopController::class, 'body_shop'])->name('body_shop');
+    Route::get('bodyShopCreate', [BodyShopController::class, 'bodyShopCreate'])->name('bodyShopCreate');
+    Route::post('body_shop_insert', [BodyShopController::class, 'body_shop_insert'])->name('body_shop_insert');
+    Route::get('body_shop_index', [BodyShopController::class, 'body_shop_index'])->name('body_shop.index');
+    Route::get('body_shop_edit/{body_shop_edit}', [BodyShopController::class, 'body_shop_edit'])->name('body_shop.edit');
+    Route::post('body_shop_update,{id}', [BodyShopController::class, 'body_shop_update'])->name('body_shop_update');
+    Route::get('body_shop_destroy/{id}', [BodyShopController::class, 'body_shop_destroy'])->name('body_shop_destroy');
+
 });
 
 //Frontend

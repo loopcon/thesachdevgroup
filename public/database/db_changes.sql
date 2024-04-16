@@ -309,3 +309,6 @@ ALTER TABLE `our_business` CHANGE `shwroom_title` `showroom_title` VARCHAR(255) 
 
 -- Disha : 16-04-2023 3:09 AM
 ALTER TABLE `showrooms` CHANGE `slider_showroom_color` `slider_showroom_name_color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL, CHANGE `slider_showroom_font_size` `slider_showroom_name_font_size` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL, CHANGE `slider_showroom_font_family` `slider_showroom_name_font_family` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+
+-- Drashti : 16-04-2023 12:53 AM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Body Shops', NULL, NULL, NULL);
