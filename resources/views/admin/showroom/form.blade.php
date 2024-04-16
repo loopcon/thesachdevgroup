@@ -73,14 +73,14 @@
                             </div>
 
                             <div class="mb-3 col-md-4">
-                                <label for="slider_showroom_color" class="form-label">Slider Showroom Text Color</label>
-                                <input type="text" id="slider_showroom_color" class="form-control colorpicker" name="slider_showroom_color">
+                                <label for="slider_showroom_name_color" class="form-label">Slider Showroom Text Color</label>
+                                <input type="text" id="slider_showroom_name_color" class="form-control colorpicker" name="slider_showroom_name_color">
                             </div>
 
                             <div class="col-md-4">
                                 @php($fontsize = fontSize())
-                                <label for="slider_showroom_font_size" class="form-label">Slider Showroom Text Font Size</label>
-                                <select class="form-control select2" name="slider_showroom_font_size">
+                                <label for="slider_showroom_name_font_size" class="form-label">Slider Showroom Text Font Size</label>
+                                <select class="form-control select2" name="slider_showroom_name_font_size">
                                     <option selected="selected" disabled="disabled">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
@@ -90,8 +90,8 @@
 
                             <div class="col-md-4">
                                 @php($fontfamily = fontFamily())
-                                <label for="slider_showroom_font_family" class="form-label">Slider Showroom Text Font Family</label>
-                                <select class="form-control select2" name="slider_showroom_font_family">
+                                <label for="slider_showroom_name_font_family" class="form-label">Slider Showroom Text Font Family</label>
+                                <select class="form-control select2" name="slider_showroom_name_font_family">
                                     <option selected="selected" disabled="disabled">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}">{{$family['value']}}</option>

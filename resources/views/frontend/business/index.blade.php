@@ -15,7 +15,7 @@
     <div class="container">
         <div class="location-text">
             <h1 style="color:{{$business->title_font_color}}; font-size:{{$business->title_font_size}}; font-family:{{$business->title_font_family}};">{{isset($business->title) && $business->title ? $business->title : ''}}</h1>
-            <p tyle="color:{{$business->description_font_color}}; font-size:{{$business->description_font_size}}; font-family:{{$business->title_font_family}};">{{ isset($business->description) && $business->description ? $business->description : '' }}</p>
+            <p style="color:{{$business->description_font_color}}; font-size:{{$business->description_font_size}}; font-family:{{$business->description_font_family}};">{{ isset($business->description) && $business->description ? $business->description : '' }}</p>
         </div>
 
         <div class="top-car-image"> 
@@ -25,7 +25,7 @@
                         <div class="car-image">
                             <a href="{{$service->url}}" target="_blank">
                             <img src="{{asset('uploads/service/'.$service->icon)}}" alt="" width="90px">
-                            <p>{{$service->name}}</p>
+                            <p style="color:{{$service->name_font_color}}; font-size:{{$service->name_font_size}}; font-family:{{$service->name_font_family}};">{{$service->name}}</p>
                             </a>
                         </div>
                     @endforeach
@@ -36,7 +36,7 @@
                         <div class="car-image">
                             <a href="{{$model->link}}" target="_blank">
                             <img src="{{asset('car/'.$model->image)}}" alt="" width="222px">
-                            <p>{{$model->name}}</p>
+                            <p style="color:{{$model->name_color}}; font-size:{{$model->name_font_size}}; font-family:{{$model->name_font_family}};">{{$model->name}}</p>
                             </a>
                         </div>
                     @endforeach
@@ -51,7 +51,7 @@
 <section id="location-section">
     <div class="container">
         <div class="location-tittle">
-            <h2>{{isset($business->showroom_title) && $business->showroom_title ? $business->showroom_title : NULL}}</h2>
+            <h2 style="color:{{$showrooms->slider_showroom_name_color}}; font-size:{{$showrooms->slider_showroom_name_font_size}}; font-family:{{$showrooms->slider_showroom_name_font_family}};">{{isset($business->showroom_title) && $business->showroom_title ? $business->showroom_title : NULL}}</h2>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -72,9 +72,9 @@
                                         <div class='stars'><div id='pid-{{$showroom->id}}' class='percent' style='width:{{$rating}}%;'></div></div>
                                     </div>
                                     <div class="star-parent">
-                                        <img src="assets/image/locations-banner/google.png" alt="" width="6%">
+                                        <img src="{{asset('front_img/google.webp')}}" alt="" width="6%">
                                         <p>{{$showroom->rating}}</p>
-                                        <p>{{$showroom->number_of_rating}}</p>
+                                        <p>({{$showroom->number_of_rating}} reviews)</p>
                                     </div>
                                 </div>
                             </a>
@@ -118,7 +118,7 @@
                                         <!-- <img src="public/front_img/star.webp" alt=""> -->
                                     </div>
                                     <div class="star-parent">
-                                        <img src="assets/image/locations-banner/google.png" alt="" width="6%">
+                                        <img src="{{asset('front_img/google.webp')}}" alt="" width="6%">
                                         <p>{{$service_center->rating}}</p>
                                         <p>({{$service_center->number_of_rating}} reviews)</p>
                                     </div>
@@ -459,17 +459,17 @@
             prevEl: ".swiper-button-prev",
             },
 
-            breakpoints:{
-                0: {
-                    slidesPerView: 1,
-                },
-                520: {
-                    slidesPerView: 2,
-                },
-                950: {
-                    slidesPerView: 3,
-                },
-            },
+            // breakpoints:{
+            //     0: {
+            //         slidesPerView: 1,
+            //     },
+            //     520: {
+            //         slidesPerView: 2,
+            //     },
+            //     950: {
+            //         slidesPerView: 3,
+            //     },
+            // },
         });
 
         $(document).ready(function() {
