@@ -1705,6 +1705,7 @@ location page
   align-items: center;
   justify-content: center;
   gap: 5px;
+  width: 100%;
 }
 .location-image img{
   border-top-left-radius: 5px;

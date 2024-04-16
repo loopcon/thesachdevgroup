@@ -55,7 +55,7 @@ class ServiceController extends Controller
             {
                 $request->validate([
                     // 'service_center_id' => 'required',
-                    'business_id' => 'required',
+                    // 'business_id' => 'required',
                     'icon' => 'required|image|mimes:jpeg,png,jpg,webp',
                     'url' => 'required|url',
                 ]);
@@ -154,7 +154,7 @@ class ServiceController extends Controller
                 $id = decrypt($id);
                 $request->validate([
                     // 'service_center_id' => 'required',
-                    'business_id' => 'required',
+                    // 'business_id' => 'required',
                     'icon' => 'image|mimes:jpeg,png,jpg,webp',
                     'url' => 'required|url',
                 ]);

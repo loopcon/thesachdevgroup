@@ -35,7 +35,7 @@
                     @foreach($car_model as $model)
                         <div class="car-image">
                             <a href="{{$model->link}}" target="_blank">
-                            <img src="{{asset('car/'.$model->image)}}" alt="" width="90px">
+                            <img src="{{asset('car/'.$model->image)}}" alt="" width="222px">
                             <p>{{$model->name}}</p>
                             </a>
                         </div>
