@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
+            $table->string('our_business_id')->nullable();
             $table->bigInteger('brand_id')->unsigned(); 
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->string('image')->nullable();

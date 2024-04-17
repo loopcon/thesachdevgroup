@@ -20,7 +20,20 @@
                             <input type="hidden" value="{{ $car->id }}" class="id" name="id">
                            
                             <div class="row">
+
                                 <div class="mb-3 col-md-4">
+                                    <label for="our_business_id" class="form-label">Select Our Business<span class="text-danger">*</span></label>
+                                    <select name="our_business_id" id="our_business_id" class="form-control select2">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @foreach($our_business as $our_busines)
+                                            <option value="{{$our_busines->id}}" {{$car->our_business_id == $our_busines->id  ? 'selected' : ''}}>
+                                                {{$our_busines->title}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
                                     <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
                                     <select name="brand_id" id="brand_id" class="form-control select2">
                                         <option selected="selected" disabled="disabled">Select</option>

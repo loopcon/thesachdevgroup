@@ -18,7 +18,19 @@
                         @csrf
 
                         <div class="row">
+
                             <div class="mb-3 col-md-4">
+                                <label for="our_business_id" class="form-label">Select Our Business<span class="text-danger">*</span></label>
+                                <select class="form-control our_business_id select2" name="our_business_id" id="our_business_id">
+                                    <option selected="selected" disabled="disabled" value="">Select</option>
+                                    @foreach($our_business as $our_busines)
+                                        <option value="{{$our_busines->id}}">{{$our_busines->title}}</option>
+                                    @endforeach
+                                </select>
+                                <div id="errorbusinessdiv"></div>
+                            </div>
+
+                            <div class="col-md-4">
                                 <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
                                  <select name="brand_id" id="brand_id" class="form-control select2">
                                     <option selected="selected" disabled="disabled">Select</option>
@@ -126,6 +138,9 @@
     $(document).ready(function () {
         $(".car_form").validate({
             rules: {
+                'our_business_id': {
+                    required: true,
+                },
                 'brand_id': {
                     required: true,
                 },
@@ -145,6 +160,9 @@
                 },
             },
             messages: {
+                'our_business_id': {
+                    required: "The our business field is required.",
+                },
                 'brand_id': {
                     required: "The brand field is required.",
                 },
@@ -164,6 +182,10 @@
                 },
             },
             errorPlacement: function(error, element) {
+                if(element.attr("name") == "our_business_id"){
+                    error.appendTo('#errorbusinessdiv');
+                    return;
+                }
                 if(element.attr("name") == "brand_id"){
                     error.appendTo('#errordiv');
                     return;

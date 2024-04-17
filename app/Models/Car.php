@@ -11,6 +11,7 @@ class Car extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
+        'our_business_id',
         'brand_id',
         'image',
         'name',
@@ -26,5 +27,9 @@ class Car extends Model
 
     public function brand(){
         return $this->belongsTo(Brand::class,'brand_id');
+    }
+
+    public function our_business(){
+        return $this->belongsTo(OurBusiness::class,'our_business_id');
     }
 }
