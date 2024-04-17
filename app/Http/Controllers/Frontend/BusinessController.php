@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\Showroom;
 use App\Models\ServiceCenter;
 use App\Models\OurBusinessInsurance;
+use App\Models\Car;
 
 class BusinessController extends Controller
 {
@@ -21,6 +22,8 @@ class BusinessController extends Controller
         $return_data['showrooms'] = Showroom::select('id', 'our_business_id', 'name', 'name_color', 'name_font_size', 'name_font_family','slider_image','slider_showroom_name','slider_showroom_color','slider_showroom_font_size','slider_showroom_font_family','image',)->where('our_business_id', $business->id)->get();
         $return_data['service_centers'] = ServiceCenter::select('id', 'business_id', 'name', 'name_color', 'name_font_size', 'name_font_family', 'image', 'rating', 'number_of_rating', 'slider_image', 'slider_service_center_name','slider_service_center_name_color', 'slider_service_center_name_size', 'slider_service_center_name_font_family')->where('business_id', $business->id)->get();
         $return_data['business_insurance'] = OurBusinessInsurance::select('id', 'business_id', 'name', 'name_font_size', 'name_font_family', 'name_font_color', 'icon', 'url')->where('business_id', $business->id)->get();
+        $return_data['car_model'] = Car::select('id', 'image', 'name', 'name_font_size', 'name_font_family', 'name_color','link')->where('our_business_id', $business->id)->get();
+
         return view('frontend.business.index',array_merge($return_data));
     }
 }

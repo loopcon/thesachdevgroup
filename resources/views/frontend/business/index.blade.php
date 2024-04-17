@@ -31,68 +31,16 @@
                     @endforeach
                 @endif
 
-                <!-- <div class="car-image">
-                    <a href="https://www.galaxytoyota.in/car/toyota-urban-cruiser-hyryder" target="_blank">
-                    <img src="assets/image/locations-banner/UC.jpg" alt="" width="300px">
-                    <p>Urban Cruiser Hyryder</p>
-                    </a>
-                </div>
-
-                <div class="car-image">
-                    <a href="https://www.galaxytoyota.in/car/toyota-innova-crysta" target="_blank">
-                    <img src="assets/image/locations-banner/Innova.jpg" alt="" width="300px">
-                    <p>Innova Crysta</p>
-                    </a>
-                </div>
-
-                <div class="car-image">
-                    <a href="https://www.galaxytoyota.in/car/toyota-rumion" target="_blank">
-                    <img src="assets/image/locations-banner/Untitled-design.jpg" alt="" width="300px">
-                    <p> Rumion</p>
-                    </a>
-                </div>
-
-                <div class="car-image">
-                    <a href="https://www.galaxytoyota.in/car/toyota-innova-hycross" target="_blank">
-                    <img src="assets/image/locations-banner/Innova-Hycross.jpg" alt="" width="300px">
-                    <p>Innova Hycross</p>
-                    </a>
-                </div>
-
-                <div class="car-image">
-                    <a href="https://www.galaxytoyota.in/car/toyota-hilux" target="_blank">
-                    <img src="assets/image/locations-banner/Hilux (2).jpg" alt="" width="300px">
-                    <p>Hilux</p>
-                    </a>
-                </div>
-
-                <div class="car-image">
-                    <a href="https://www.galaxytoyota.in/car/toyota-fortuner" target="_blank">
-                    <img src="assets/image/locations-banner/Fortuner (3).jpg" alt="" width="300px">
-                    <p>Fortuner</p>
-                    </a>
-                </div>
-
-                <div class="car-image">
-                    <a href="https://www.galaxytoyota.in/car/toyota-legender" target="_blank">
-                    <img src="assets/image/locations-banner/Legender.jpg" alt="" width="300px">
-                    <p>Legender</p>
-                    </a>
-                </div>
-
-                <div class="car-image">
-                    <a href="https://www.galaxytoyota.in/car/toyota-camry" target="_blank">
-                    <img src="assets/image/locations-banner/Camry (1).jpg" alt="" width="300px">
-                    <p>Camry</p>
-                    </a>
-                </div>
-
-                <div class="car-image">
-                    <a href="https://www.galaxytoyota.in/car/toyota-vellfire" target="_blank">
-                    <img src="assets/image/locations-banner/Vellfire (1).jpg" alt="" width="300px">
-                    <p>Vellfire</p>
-                    </a>
-                </div> -->
+                @if(isset($car_model) && $car_model->count())
+                    @foreach($car_model as $model)
+                        <div class="car-image">
+                            <a href="{{$model->link}}" target="_blank">
+                            <img src="{{asset('car/'.$model->image)}}" alt="" width="222px">
+                            <p>{{$model->name}}</p>
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
@@ -490,11 +438,11 @@
         </div>
     </div>
 </section>
+<!-- why choose end -->
 @endsection
 @section('javascript')
    <!-- Swiper JS -->
    <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
-
     <!-- JavaScript -->
       <!--Uncomment this line-->
     <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
@@ -534,7 +482,7 @@
                 loop: true,
                 margin: 30,
                 dots: true,
-                nav: true,
+                // nav: true,
                 items: 3,
             });
         });
