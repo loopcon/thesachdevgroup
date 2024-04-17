@@ -35,6 +35,8 @@
 .stars .percent {position: absolute;left: 0;float: left;overflow: hidden;z-index: 0;}
 .stars .percent:after { content: "\2605\2605\2605\2605\2605";color: rgb(255, 200, 0);display: flex;}
 .heading-title-advantage{padding: 0px 20px;}
+#owl-insurence-carousel .owl-dots {display: none;}
+
 
 @media(max-width:1199px){
     #our_businesses_carousel .brand-one{width: 100%;}

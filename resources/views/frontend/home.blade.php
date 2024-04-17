@@ -187,14 +187,18 @@
     navText: [
       '<i class="fa fa-angle-left" aria-hidden="true"></i>',
       '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-    ]
+    ],
+    autoplay:true,
+    autoplayTimeout:2000,
   });
 
   $('#our_businesses_carousel').owlCarousel({
-    loop: false,
+    loop: true,
     dots: false,
     nav: false,
     items: 7,
+    autoplay:true,
+    autoplayTimeout:2000,
     responsiveClass: true,
     responsive: {
       0:{
@@ -210,10 +214,12 @@
   });
 
   $('#count_owl').owlCarousel({
-    loop: false,
+    loop: true,
     dots: false,
     nav: false,
     items: 4,
+    autoplay:true,
+    autoplayTimeout:2000,
     responsiveClass: true,
     responsive: {
       0:{
@@ -273,6 +279,7 @@
       loop: true,
       center: true,
       items: 3,
+      autoplayTimeout:2000,
       margin: 0,
       autoplay: true,
       dots:true,
