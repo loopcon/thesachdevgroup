@@ -11,12 +11,6 @@
           <div class="col-sm-6">
             <h1>{{$site_title}}</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">{{$site_title}}</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>

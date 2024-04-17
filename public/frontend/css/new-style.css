@@ -89,7 +89,7 @@ a:hover {
     background-color: #fff;
     color: #000;
 }
-#our-story{
+#our_story_section{
     padding: 40px 0px;
 }
 
@@ -1634,13 +1634,13 @@ location page
 }
 
 
-.rating{
+/* .rating{
   margin-bottom: 8px;
   text-align: center;
 }
 .star p:nth-child(1){
   margin-bottom: 0px;
-}
+} */
 /* .location-custom-tab{
   justify-content: center !important;
 }
@@ -1705,6 +1705,7 @@ location page
   align-items: center;
   justify-content: center;
   gap: 5px;
+  width: 100%;
 }
 .location-image img{
   border-top-left-radius: 5px;
@@ -1972,15 +1973,6 @@ location page
   font-size: 35px;
   margin-bottom: 20px;
 }
-
-
-
-
-
-
-
-
-
 
 @media screen and (max-width: 768px) {
   .slide-content{

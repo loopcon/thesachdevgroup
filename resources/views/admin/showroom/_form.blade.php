@@ -7,12 +7,6 @@
           <div class="col-sm-6">
             <h1>Showroom Edit</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Showroom Edit</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -25,7 +19,7 @@
                             @csrf
                             <input type="hidden" value="{{ $showroom->id }}" class="id" name="id">
 
-                        <div class="row">
+                            <div class="row">
                             
                                 <div class="mb-3 col-md-4">
                                     <label for="our_business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
@@ -58,11 +52,10 @@
                                         @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$showroom->name_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
-                                </select>
+                                    </select>
                                 </div>
 
-                            
-                                <div class="mb-3 col-md-4">
+                                <div class="col-md-4">
                                     @php($fontfamily = fontFamily())
                                     <label for="name_font_family" class="form-label">Showroom Name Text Font Family</label>
                                     <select class="form-control select2" name="name_font_family">
@@ -70,9 +63,57 @@
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}" {{$showroom->name_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                         @endforeach
-                                </select>
+                                    </select>
                                 </div>
 
+                                <div class="mb-3 col-md-4">
+                                    <label for="slider_image" class="form-label">Slider Image</label><small>(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    @if(isset($showroom->slider_image) && isset($showroom->slider_image))
+                                        <img src="{{url('public/showrooms_slider_image/'.$showroom->slider_image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="slider_image" class="form-control" name="slider_image">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="slider_showroom_name" class="form-label">Slider Showroom Name</label>
+                                    <input type="text" id="slider_showroom_name" class="form-control" name="slider_showroom_name" value="{{$showroom->slider_showroom_name}}">
+                                </div>
+
+                                <div class="mb-3 col-md-4">
+                                    <label for="slider_showroom_name_color" class="form-label">Slider Showroom Text Color</label>
+                                    <input type="text" id="slider_showroom_name_color" class="form-control colorpicker" name="slider_showroom_name_color" value="{{$showroom->slider_showroom_name_color}}">
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    @php($fontsize = fontSize())
+                                    <label for="slider_showroom_name_font_size" class="form-label">Slider Showroom Text Font Size</label>
+                                    <select class="form-control select2" name="slider_showroom_name_font_size">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                            <option value="{{$i}}px" {{$showroom->slider_showroom_name_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    @php($fontfamily = fontFamily())
+                                    <label for="slider_showroom_name_font_family" class="form-label">Slider Showroom Text Font Family</label>
+                                    <select class="form-control select2" name="slider_showroom_name_font_family">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$showroom->slider_showroom_name_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="mb-3 col-md-4">
+                                    <label for="image" class="form-label">Image</label><small>(Height:281px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    @if(isset($showroom->image) && isset($showroom->image))
+                                        <img src="{{url('public/showrooms_image/'.$showroom->image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="image" class="form-control" name="image">
+                                </div>
 
                                 <div class="col-md-4">
                                     <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
@@ -136,7 +177,7 @@
 
 
                                 <div class="col-md-4">
-                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label><small>(Height:45px,Width:45px; Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label><small>(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                     @if(isset($showroom->address_icon) && isset($showroom->address_icon))
                                         <img src="{{url('public/showrooms_address_icon/'.$showroom->address_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
@@ -176,7 +217,7 @@
                                 </div>
 
                                 <div class="mb-3 col-md-4">
-                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                     @if(isset($showroom->working_hours_icon) && isset($showroom->working_hours_icon))
                                         <img src="{{url('public/showrooms_working_hours_icon/'.$showroom->working_hours_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
@@ -196,7 +237,7 @@
                                 </div>
 
                             
-                            <div class="col-md-4">
+                                <div class="col-md-4">
                                     <label for="contact_number_font_size" class="form-label">Contact Number Text Font Size</label>
                                     <select class="form-control select2" name="contact_number_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>
@@ -218,7 +259,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                     @if(isset($showroom->contact_number_icon) && isset($showroom->contact_number_icon))
                                         <img src="{{url('public/showrooms_contact_number_icon/'.$showroom->contact_number_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
@@ -260,11 +301,23 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="email_icon" class="form-label">Email Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="email_icon" class="form-label">Email Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                     @if(isset($showroom->email_icon) && isset($showroom->email_icon))
                                         <img src="{{url('public/showrooms_email_icon/'.$showroom->email_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input type="file" id="email_icon" class="form-control" name="email_icon">
+                                    <div id="error"></div>
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="rating" id="rating" value="{{$showroom->rating}}">
+                                    <div id="error"></div>
+                                </div>
+    
+                                <div class="col-md-4 mt-2">
+                                    <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating" value="{{$showroom->number_of_rating}}">
                                     <div id="error"></div>
                                 </div>
 
@@ -339,6 +392,12 @@
 
         $(".edit_form").validate({
             rules: {
+                'slider_image': {
+                    extension: "jpg,jpeg,png,webp,svg",
+                },
+                'image': {
+                    extension: "jpg,jpeg,png,webp,svg",
+                },
                 'name': {
                     required: true,
                 },
@@ -360,21 +419,36 @@
                     required: true,
                 },
                 'address_icon': {
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'working_hours_icon': {
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'contact_number_icon': {
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'email_icon': {
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
+                },
+                'rating': {
+                    required: true,
+                    number: true,
+                    max: 5
+                },
+                'number_of_rating': {
+                    required: true,
+                    number: true,
                 },
             },
             messages: {
+                'slider_image': {
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
+                },
+                'image': {
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
+                },
                 'name': {
-                    required: "The name field is required.",
+                    required: "The showroom name field is required.",
                 },
                 'car_id[]': { 
                     required: "The car field is required.",
@@ -392,16 +466,23 @@
                     required: "The email field is required.",
                 },
                 'address_icon': {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'working_hours_icon': {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'contact_number_icon': {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'email_icon': {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
+                },
+                'rating': {
+                    required: "The rating field is required.",
+                    max: "The rating must not be greater than 5."
+                },
+                'number_of_rating': {
+                    required: "The number of rating field is required.",
                 },
             },
             errorPlacement: function(error, element) {

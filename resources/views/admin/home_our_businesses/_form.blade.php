@@ -7,12 +7,6 @@
           <div class="col-sm-6">
             <h1>Home Our Businesses Edit</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Home Our Businesses Edit</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -26,7 +20,7 @@
                             <input type="hidden" value="{{ $home_our_businesse->id }}" class="id" name="id">
                             <div class="row">
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:145px,Width:145px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                     @if(isset($home_our_businesse->image) && isset($home_our_businesse->image))
                                         <img src="{{url('public/home_our_businesses/'.$home_our_businesse->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                     @endif
@@ -97,10 +91,16 @@
                 image: {
                     extension: "jpg,jpeg,png,webp,svg",
                 },
+                'link': {
+                    url: "url",
+                },
             },
             messages: {
                 image: {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
+                },
+                'link': {
+                    url: "Please enter a valid link.",
                 },
             },
         });

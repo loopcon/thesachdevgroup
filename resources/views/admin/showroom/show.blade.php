@@ -34,11 +34,16 @@
                                         <tr>
                                             <th style="width:50px;">No</th>
                                             <th>Our Business</th>
-
                                             <th>Showroom Name</th>
                                             <th>Showroom Name Color</th> 
                                             <th>Showroom Name Font Size</th>
                                             <th>Showroom Name Font Family</th>
+                                            <th>Slider Image</th>
+                                            <th>Slider Showroom Name</th>
+                                            <th>Slider Showroom Color</th>
+                                            <th>Slider Showroom Font Size</th>
+                                            <th>Slider Showroom Font Family</th>
+                                            <th>Image</th>
                                             <th>Brand</th>
                                             <th>Car</th>
                                             <th>Address</th>
@@ -61,6 +66,10 @@
                                             <th>Email Font Size</th>
                                             <th>Email Font Family</th>
                                             <th>Email Icon</th>
+
+                                            <th>Rating</th>
+                                            <th>Number of Rating</th>
+
                                             <th>Description</th>
                                             <th>Description Color</th>
                                             <th>Description Font Size</th>
@@ -124,13 +133,13 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                                    <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label><small>(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                     <input type="file" id="facility_image" class="form-control facility_image" name="facility_image">
                                                     <div id="error"></div>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                                    <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label><small>(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                     <input type="file" id="customer_gallery_image" class="form-control customer_gallery_image" name="customer_gallery_image">
                                                     <div id="error"></div>
                                                 </div>
@@ -175,14 +184,14 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                                    <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label><small>(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                     <img src="" width="100" class="facility_icon" style="margin-bottom: 10px; margin-left: 5px;">
                                                     <input type="file" id="facility_image" class="form-control facility_image" name="facility_image">
                                                     <div id="error"></div>
                                                 </div> 
 
                                                 <div class="form-group">
-                                                    <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                                    <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label><small>(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                     <img src="" width="100" class="customer_gallery_icon" style="margin-bottom: 10px; margin-left: 5px;">
                                                     <input type="file" id="customer_gallery_image" class="form-control customer_gallery_image" name="customer_gallery_image">
                                                     <div id="error"></div>
@@ -249,10 +258,19 @@
                 columns: [
                     {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
                     {data: 'our_business_id', name: 'our_business_id'},
+
                     {data: 'name', name: 'name'},
                     {data: 'name_color', name: 'name_color'},
                     {data: 'name_font_size', name: 'name_font_size'},
                     {data: 'name_font_family', name: 'name_font_family'},
+
+                    {data: 'slider_image', name: 'slider_image'},
+                    {data: 'slider_showroom_name', name: 'slider_showroom_name'},
+                    {data: 'slider_showroom_name_color', name: 'slider_showroom_name_color'},
+                    {data: 'slider_showroom_name_font_size', name: 'slider_showroom_name_font_size'},
+                    {data: 'slider_showroom_name_font_family', name: 'slider_showroom_name_font_family'},
+                    {data: 'image', name: 'image'},
+
                     {data: 'brand', name: 'brand'},
                     {data: 'car', name: 'car'},
                     {data: 'address', name: 'address'},
@@ -275,6 +293,10 @@
                     {data: 'email_font_size', name: 'email_font_size'},
                     {data: 'email_font_family', name: 'email_font_family'},
                     {data: 'email_icon', name: 'email_icon'},
+
+                    {data: 'rating', name: 'rating'},
+                    {data: 'number_of_rating', name: 'number_of_rating'},
+
                     {data: 'description', name: 'description'},
                     {data: 'description_color', name: 'description_color'},
                     {data: 'description_font_size', name: 'description_font_size'},
@@ -310,11 +332,11 @@
                 },
                 'facility_image': {
                     required: true,
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'customer_gallery_image': {
                     required: true,
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
             },
             messages: {
@@ -323,11 +345,11 @@
                 },
                 'facility_image': {
                     required: "The facility image field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'customer_gallery_image': {
                     required: "The customer image field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
             },
             errorPlacement: function(error, element) {
@@ -415,18 +437,18 @@
         $(".showroom_facility_customer_gallery_edit_form").validate({
             rules: {
                 'facility_image': {
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'customer_gallery_image': {
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
             },
             messages: {
                 'facility_image': {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'customer_gallery_image': {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
             },
         });

@@ -7,12 +7,6 @@
           <div class="col-sm-6">
             <h1>Brand Edit</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Brand Edit</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -27,7 +21,7 @@
                            
                             <div class="row">
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:145px,Width:145px;Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:145px,Width:145px;Image Type : jpg,jpeg,png,svg,webp)</small>
                                     @if(isset($brand->image) && isset($brand->image))
                                         <img src="{{url('public/brand/'.$brand->image)}}" width="100" style="margin-bottom: 10px;">
                                     @endif
@@ -88,7 +82,7 @@
         $(".edit_form").validate({
             rules: {
                 'image': {
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'name': {
                     required: true,
@@ -96,7 +90,7 @@
             },
             messages: {
                 'image': {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'name': {
                     required: "The name field is required.",

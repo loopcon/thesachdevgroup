@@ -7,12 +7,6 @@
           <div class="col-sm-6">
             <h1>Car Module Create</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Car Module Create</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -24,7 +18,18 @@
                         @csrf
 
                         <div class="row">
+
                             <div class="mb-3 col-md-4">
+                                <label for="our_business_id" class="form-label">Select Our Business<span class="text-danger">*</span></label>
+                                <select class="form-control our_business_id select2" name="our_business_id" id="our_business_id">
+                                    <option selected="selected" disabled="disabled" value="">Select</option>
+                                    @foreach($our_business as $our_busines)
+                                        <option value="{{$our_busines->id}}">{{$our_busines->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
                                 <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
                                  <select name="brand_id" id="brand_id" class="form-control select2">
                                     <option selected="selected" disabled="disabled">Select</option>
@@ -39,7 +44,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:348px,Width:219px; Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:348px,Width:219px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 <input type="file" id="image" class="form-control" name="image">
                                 <div class="error"></div>
                             </div>
@@ -137,7 +142,7 @@
                 },
                 'image': {
                     required: true,
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'name': {
                     required: true,
@@ -156,7 +161,7 @@
                 },
                 'image': {
                     required: "The image field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'name': {
                     required: "The name field is required.",

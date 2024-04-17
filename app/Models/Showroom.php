@@ -12,6 +12,12 @@ class Showroom extends Model
 
     protected $fillable = [
         'our_business_id',
+        'slider_image',
+        'slider_showroom_name',
+        'slider_showroom_name_color',
+        'slider_showroom_name_font_size',
+        'slider_showroom_name_font_family',
+        'image',
         'name',
         'name_color',
         'name_font_size',
@@ -38,6 +44,8 @@ class Showroom extends Model
         'email_font_size',
         'email_font_family',
         'email_icon',
+        'rating',
+        'number_of_rating',
         'description',
         'description_color',
         'description_font_size',

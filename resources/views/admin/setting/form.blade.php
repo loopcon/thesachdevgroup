@@ -10,12 +10,6 @@
           <div class="col-sm-6">
             <h1>Setting</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Setting</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -31,7 +25,7 @@
 
                             <div class="row">
                               <div class="mb-3 col-md-4">
-                                <label for="logo">Logo<span class="text-danger">*</span></label><small>(Height:85px,Width:85px; Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="logo">Logo<span class="text-danger">*</span></label><small>(Height:85px,Width:85px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 
                                   <input type="hidden" name="old_logo" id="old_logo" value="{{$setting->logo}}">
                                   
@@ -170,7 +164,7 @@
                               </div>
     
                               <div class="mb-3 col-md-4">
-                                <label for="email_icon">Email Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="email_icon">Email Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                
                                 <input type="hidden" name="old_email_icon" id="old_email_icon" value="{{$setting->email_icon}}">
 
@@ -182,7 +176,7 @@
                               </div>
     
                               <div class="mb-3 col-md-4">
-                                <label for="call_icon">Call Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="call_icon">Call Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 
                                 <input type="hidden" name="old_call_icon" id="old_call_icon" value="{{$setting->call_icon}}">
                                 
@@ -194,7 +188,7 @@
                               </div>
     
                               <div class="col-md-4">
-                                <label for="address_icon">Address Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="address_icon">Address Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 
                                 <input type="hidden" name="old_address_icon" id="old_address_icon" value="{{$setting->address_icon}}">
 
@@ -247,7 +241,7 @@
                 
                         <div class="row">
                           <div class="mb-3 col-md-4">
-                            <label for="logo">Logo<span class="text-danger">*</span></label><small>(Height:90px,Width:90px; Image Type : jpg,jpeg,png,webp)</small>
+                            <label for="logo">Logo<span class="text-danger">*</span></label><small>(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             <input type="file" id="logo" class="form-control" name="logo">
                             <div class="error"></div>
                           </div>
@@ -380,19 +374,19 @@
                           </div>
 
                           <div class="col-md-4">
-                            <label for="email_icon">Email Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,webp)</small>
+                            <label for="email_icon">Email Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             <input type="file" id="email_icon" class="form-control" name="email_icon">
                             <div class="error"></div>
                           </div>
 
                           <div class="mb-3 col-md-4">
-                            <label for="call_icon">Call Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,webp)</small>
+                            <label for="call_icon">Call Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             <input type="file" id="call_icon" class="form-control" name="call_icon">
                             <div class="error"></div>
                           </div>
 
                           <div class="col-md-4">
-                            <label for="address_icon">Address Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,webp)</small>
+                            <label for="address_icon">Address Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             <input type="file" id="address_icon" class="form-control" name="address_icon">
                             <div class="error"></div>
                           </div>
@@ -452,7 +446,7 @@
             rules: {
                 'logo': {
                     required: checkLogo,
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'email': {
                     required: true,
@@ -470,21 +464,21 @@
                 },
                 'email_icon': {
                   required: checkEmailIcon, 
-                  extension: "jpg,jpeg,png,webp",
+                  extension: "jpg,jpeg,png,webp,svg",
                 },
                 'call_icon': {
                   required: checkCallIcon, 
-                  extension: "jpg,jpeg,png,webp",
+                  extension: "jpg,jpeg,png,webp,svg",
                 },
                 'address_icon': {
                   required: checkAddressIcon, 
-                  extension: "jpg,jpeg,png,webp",
+                  extension: "jpg,jpeg,png,webp,svg",
                 },
             },
             messages: {
                 'logo': {
                     required: "The logo field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'email': {
                     required: "The email field is required.",
@@ -500,15 +494,15 @@
                 },
                 'email_icon': {
                     required: "The email icon field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'call_icon': {
                     required: "The call icon field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'address_icon': {
                     required: "The address icon field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
             },
             errorPlacement: function(error, element) {

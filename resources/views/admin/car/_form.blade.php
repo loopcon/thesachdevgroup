@@ -7,12 +7,6 @@
           <div class="col-sm-6">
             <h1>Car Module Edit</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Car Module Edit</li>
-            </ol>
-          </div>
         </div>
       </div>
     </section>
@@ -26,7 +20,20 @@
                             <input type="hidden" value="{{ $car->id }}" class="id" name="id">
                            
                             <div class="row">
+
                                 <div class="mb-3 col-md-4">
+                                    <label for="our_business_id" class="form-label">Select Our Business<span class="text-danger">*</span></label>
+                                    <select name="our_business_id" id="our_business_id" class="form-control select2">
+                                        <option selected="selected" disabled="disabled">Select</option>
+                                        @foreach($our_business as $our_busines)
+                                            <option value="{{$our_busines->id}}" {{$car->our_business_id == $our_busines->id  ? 'selected' : ''}}>
+                                                {{$our_busines->title}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
                                     <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
                                     <select name="brand_id" id="brand_id" class="form-control select2">
                                         <option selected="selected" disabled="disabled">Select</option>
@@ -39,7 +46,7 @@
                                 </div>
     
                                 <div class="col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:219px,Width:348px; Image Type : jpg,jpeg,png,webp)</small>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:348px,Width:219px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                     @if(isset($car->image) && isset($car->image))
                                         <img src="{{url('public/car/'.$car->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                     @endif
@@ -136,7 +143,7 @@
         $(".edit_form").validate({
             rules: {
                 'image': {
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'name': {
                     required: true,
@@ -151,7 +158,7 @@
             },
             messages: {
                 'image': {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'name': {
                     required: "The name field is required.",

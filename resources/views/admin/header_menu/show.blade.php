@@ -89,7 +89,7 @@
                                             <div class="modal-body">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Height:20px,Width:20px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                     <input type="file" id="icon" class="form-control icon" name="icon">
                                                     <div class="error"></div>
                                                 </div>
@@ -127,7 +127,7 @@
                                                 <input type="hidden" class="id" name="id">
 
                                                 <div class="form-group">
-                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Height:20px,Width:20px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                     <img src="" width="100" class="image_icon" style="margin-bottom: 10px; margin-left: 5px;">
                                                     <input type="file" id="icon" class="form-control icon" name="icon">
                                                     <div class="error"></div>
@@ -239,7 +239,7 @@ $(document).on('click', '.delete', function() {
             rules: {
                 'icon': {
                     required: true,
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'link': {
                     required: true,
@@ -249,7 +249,7 @@ $(document).on('click', '.delete', function() {
             messages: {
                 'icon': {
                     required: "The icon field is required.",
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'link': {
                     required: "The link field is required.",
@@ -304,7 +304,7 @@ $(document).on('click', '.delete', function() {
         $(".social_media_icon_edit_form").validate({
             rules: {
                 'icon': {
-                    extension: "jpg,jpeg,png,webp",
+                    extension: "jpg,jpeg,png,webp,svg",
                 },
                 'link': {
                     required: true,
@@ -313,7 +313,7 @@ $(document).on('click', '.delete', function() {
             },
             messages: {
                 'icon': {
-                    extension: "Image must be jpg,jpeg,png or webp.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
                 'link': {
                     required: "The link field is required.",

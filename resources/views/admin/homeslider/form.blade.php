@@ -7,12 +7,12 @@
           <div class="col-sm-6">
             <h1>Home Slider Create</h1>
           </div>
-          <div class="col-sm-6 d-none d-sm-block">
+          {{-- <div class="col-sm-6 d-none d-sm-block">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Home Slider Create</li>
             </ol>
-          </div>
+          </div> --}}
         </div>
       </div>
     </section>
@@ -25,7 +25,7 @@
 
                         <div class="row">
                             <div class="mb-3 col-md-4">
-                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:478px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 <input type="file" id="image" class="form-control" name="image">
                             </div>
 
@@ -131,7 +131,7 @@
         messages: {
             'image': {
                 required: "The image field is required.",
-                extension: "Image must be jpg,jpeg,png or webp.",
+                extension: "Image must be jpg,jpeg,png,svg or webp.",
             },
         },
         submitHandler: function(form) {
