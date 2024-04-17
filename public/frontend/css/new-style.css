@@ -1634,13 +1634,13 @@ location page
 }
 
 
-.rating{
+/* .rating{
   margin-bottom: 8px;
   text-align: center;
 }
 .star p:nth-child(1){
   margin-bottom: 0px;
-}
+} */
 /* .location-custom-tab{
   justify-content: center !important;
 }
@@ -1973,15 +1973,6 @@ location page
   font-size: 35px;
   margin-bottom: 20px;
 }
-
-
-
-
-
-
-
-
-
 
 @media screen and (max-width: 768px) {
   .slide-content{

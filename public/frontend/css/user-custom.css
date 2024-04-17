@@ -131,6 +131,57 @@
     justify-content: center;
   }
 
+  /* review */
+  .pa-Star .star {
+    width: 36px;
+    height: 36px;
+    background-image: url("stars.png");
+    /*cursor: pointer;*/
+}
+.pa-Star .star.blank { background-position: -36px; }
+.pStar {
+    display: flex;
+    margin-bottom: 15px;
+}
+.pStar .star {
+    width: 36px;
+    height: 36px;
+    background-image: url("stars.png");
+    cursor: pointer;
+}
+.pStar .star.blank { background-position: -36px; }
+.pStat {
+    font-size: 15px;
+    color: #4a4a4a;
+}
+.stars {
+  position: relative;
+  float: left;
+  font-size: 30px;
+  height: 1em;
+  line-height: 1em;
+  overflow: hidden;
+}
+.stars:before { 
+  content: "\2605\2605\2605\2605\2605";
+  float: left;
+  z-index: 1;
+  color: #DDDDDD;
+}
+.stars .percent {
+  position: absolute;
+  left: 0;
+  float: left;
+  overflow: hidden;
+  z-index: 0;
+}
+.stars .percent:after { 
+  content: "\2605\2605\2605\2605\2605";
+  color: rgb(255, 200, 0);
+  display: flex;
+}
+
+
   /* @media (max-width: 767.98px) {
     .slider__flex {
       flex-direction: column-reverse;

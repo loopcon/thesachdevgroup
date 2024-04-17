@@ -14,8 +14,8 @@
 <section id="introduction-location">
     <div class="container">
         <div class="location-text">
-            <h1>{{isset($business->title) && $business->title ? $business->title : ''}}</h1>
-            <p>{{ isset($business->description) && $business->description ? $business->description : '' }}</p>
+            <h1 style="color:{{$business->title_font_color}}; font-size:{{$business->title_font_size}}; font-family:{{$business->title_font_family}};">{{isset($business->title) && $business->title ? $business->title : ''}}</h1>
+            <p tyle="color:{{$business->description_font_color}}; font-size:{{$business->description_font_size}}; font-family:{{$business->title_font_family}};">{{ isset($business->description) && $business->description ? $business->description : '' }}</p>
         </div>
 
         <div class="top-car-image"> 
@@ -68,16 +68,13 @@
                                 <div class="card-content">
                                     <h2 class="name">{{$showroom->name}}</h2>
                                     <div class="rating">
-                                        <img src="" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/rating.png" alt="">
+                                        @php($rating = $showroom->rating * 20)
+                                        <div class='stars'><div id='pid-{{$showroom->id}}' class='percent' style='width:{{$rating}}%;'></div></div>
                                     </div>
                                     <div class="star-parent">
                                         <img src="assets/image/locations-banner/google.png" alt="" width="6%">
-                                        <p>4.7</p>
-                                        <p>(946 reviews)</p>
+                                        <p>{{$showroom->rating}}</p>
+                                        <p>{{$showroom->number_of_rating}}</p>
                                     </div>
                                 </div>
                             </a>
@@ -116,11 +113,9 @@
                                 <div class="card-content">
                                     <h2 class="name">{{$service_center->slider_service_center_name}}</h2>
                                     <div class="rating">
-                                        <img src="public/front_img/star.webp" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
-                                        <img src="assets/image/locations-banner/rating.png" alt="">
+                                        @php($rate = $service_center->rating * 20)
+                                        <div class='stars'><div id='pid-{{$service_center->id}}' class='percent' style='width:{{$rate}}%;'></div></div>
+                                        <!-- <img src="public/front_img/star.webp" alt=""> -->
                                     </div>
                                     <div class="star-parent">
                                         <img src="assets/image/locations-banner/google.png" alt="" width="6%">
