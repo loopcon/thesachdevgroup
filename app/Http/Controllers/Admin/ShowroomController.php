@@ -55,9 +55,9 @@ class ShowroomController extends Controller
                 }
 
                 $showroom->slider_showroom_name = $request->slider_showroom_name;
-                $showroom->slider_showroom_color = $request->slider_showroom_color;
-                $showroom->slider_showroom_font_size = $request->slider_showroom_font_size;
-                $showroom->slider_showroom_font_family = $request->slider_showroom_font_family;
+                $showroom->slider_showroom_name_color = $request->slider_showroom_name_color;
+                $showroom->slider_showroom_name_font_size = $request->slider_showroom_name_font_size;
+                $showroom->slider_showroom_name_font_family = $request->slider_showroom_name_font_family;
                 
                 if($file = $request->hasFile('image')) {
                     $file = $request->file('image');
@@ -321,9 +321,9 @@ class ShowroomController extends Controller
                 }
 
                 $showroom->slider_showroom_name = $request->slider_showroom_name;
-                $showroom->slider_showroom_color = $request->slider_showroom_color;
-                $showroom->slider_showroom_font_size = $request->slider_showroom_font_size;
-                $showroom->slider_showroom_font_family = $request->slider_showroom_font_family;
+                $showroom->slider_showroom_name_color = $request->slider_showroom_name_color;
+                $showroom->slider_showroom_name_font_size = $request->slider_showroom_name_font_size;
+                $showroom->slider_showroom_name_font_family = $request->slider_showroom_name_font_family;
 
                 if($request->hasFile('image'))
                 {

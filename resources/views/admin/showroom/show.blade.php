@@ -266,9 +266,9 @@
 
                     {data: 'slider_image', name: 'slider_image'},
                     {data: 'slider_showroom_name', name: 'slider_showroom_name'},
-                    {data: 'slider_showroom_color', name: 'slider_showroom_color'},
-                    {data: 'slider_showroom_font_size', name: 'slider_showroom_font_size'},
-                    {data: 'slider_showroom_font_family', name: 'slider_showroom_font_family'},
+                    {data: 'slider_showroom_name_color', name: 'slider_showroom_name_color'},
+                    {data: 'slider_showroom_name_font_size', name: 'slider_showroom_name_font_size'},
+                    {data: 'slider_showroom_name_font_family', name: 'slider_showroom_name_font_family'},
                     {data: 'image', name: 'image'},
 
                     {data: 'brand', name: 'brand'},
