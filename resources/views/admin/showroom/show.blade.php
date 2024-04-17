@@ -66,6 +66,10 @@
                                             <th>Email Font Size</th>
                                             <th>Email Font Family</th>
                                             <th>Email Icon</th>
+
+                                            <th>Rating</th>
+                                            <th>Number of Rating</th>
+
                                             <th>Description</th>
                                             <th>Description Color</th>
                                             <th>Description Font Size</th>
@@ -289,6 +293,10 @@
                     {data: 'email_font_size', name: 'email_font_size'},
                     {data: 'email_font_family', name: 'email_font_family'},
                     {data: 'email_icon', name: 'email_icon'},
+
+                    {data: 'rating', name: 'rating'},
+                    {data: 'number_of_rating', name: 'number_of_rating'},
+
                     {data: 'description', name: 'description'},
                     {data: 'description_color', name: 'description_color'},
                     {data: 'description_font_size', name: 'description_font_size'},

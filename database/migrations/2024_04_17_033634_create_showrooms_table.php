@@ -49,6 +49,8 @@ return new class extends Migration
             $table->string('email_font_size')->nullable();
             $table->string('email_font_family')->nullable();
             $table->string('email_icon')->nullable();
+            $table->string('rating')->nullable();
+            $table->string('number_of_rating')->nullable();
             $table->longText('description')->nullable();
             $table->string('description_color')->nullable();
             $table->string('description_font_size')->nullable();

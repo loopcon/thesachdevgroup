@@ -309,6 +309,18 @@
                                     <div id="error"></div>
                                 </div>
 
+                                <div class="col-md-4 mt-2">
+                                    <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="rating" id="rating" value="{{$showroom->rating}}">
+                                    <div id="error"></div>
+                                </div>
+    
+                                <div class="col-md-4 mt-2">
+                                    <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating" value="{{$showroom->number_of_rating}}">
+                                    <div id="error"></div>
+                                </div>
+
                                 <div class="col-md-12 mt-2 mb-3">
                                     <label for="description" class="form-label">Description</label>
                                     <textarea class="ckeditor form-control" name="description">{{$showroom->description}}</textarea>
@@ -418,6 +430,15 @@
                 'email_icon': {
                     extension: "jpg,jpeg,png,webp,svg",
                 },
+                'rating': {
+                    required: true,
+                    number: true,
+                    max: 5
+                },
+                'number_of_rating': {
+                    required: true,
+                    number: true,
+                },
             },
             messages: {
                 'slider_image': {
@@ -455,6 +476,13 @@
                 },
                 'email_icon': {
                     extension: "Image must be jpg,jpeg,png,svg or webp.",
+                },
+                'rating': {
+                    required: "The rating field is required.",
+                    max: "The rating must not be greater than 5."
+                },
+                'number_of_rating': {
+                    required: "The number of rating field is required.",
                 },
             },
             errorPlacement: function(error, element) {

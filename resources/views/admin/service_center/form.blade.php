@@ -289,7 +289,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="number_of_rating" class="form-label">Number of Number of Rating<span class="text-danger">*</span></label>
+                                <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" required="" maxlength="5" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}" name="number_of_rating" id="number_of_rating">
                                 @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                             </div>

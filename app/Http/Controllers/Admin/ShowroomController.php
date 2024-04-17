@@ -138,6 +138,9 @@ class ShowroomController extends Controller
                     $showroom->email_icon = $IconfileName;
                 }
 
+                $showroom->rating = $request->rating;
+                $showroom->number_of_rating = $request->number_of_rating;
+
                 $showroom->description = $request->description;
                 $showroom->description_color = $request->description_color;
                 $showroom->description_font_size = $request->description_font_size;
@@ -420,6 +423,9 @@ class ShowroomController extends Controller
                     $file->move('public/showrooms_email_icon/', $filename);
                     $showroom->email_icon = $filename;
                 }
+
+                $showroom->rating = $request->rating;
+                $showroom->number_of_rating = $request->number_of_rating;
 
                 $showroom->description = $request->description;
                 $showroom->description_color = $request->description_color;

@@ -27,7 +27,6 @@
                                         <option value="{{$our_busines->id}}">{{$our_busines->title}}</option>
                                     @endforeach
                                 </select>
-                                <div id="errorbusinessdiv"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -138,9 +137,6 @@
     $(document).ready(function () {
         $(".car_form").validate({
             rules: {
-                'our_business_id': {
-                    required: true,
-                },
                 'brand_id': {
                     required: true,
                 },
@@ -160,9 +156,6 @@
                 },
             },
             messages: {
-                'our_business_id': {
-                    required: "The our business field is required.",
-                },
                 'brand_id': {
                     required: "The brand field is required.",
                 },
@@ -182,10 +175,6 @@
                 },
             },
             errorPlacement: function(error, element) {
-                if(element.attr("name") == "our_business_id"){
-                    error.appendTo('#errorbusinessdiv');
-                    return;
-                }
                 if(element.attr("name") == "brand_id"){
                     error.appendTo('#errordiv');
                     return;

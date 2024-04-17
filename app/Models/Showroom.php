@@ -44,6 +44,8 @@ class Showroom extends Model
         'email_font_size',
         'email_font_family',
         'email_icon',
+        'rating',
+        'number_of_rating',
         'description',
         'description_color',
         'description_font_size',
