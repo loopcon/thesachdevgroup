@@ -24,7 +24,7 @@
                     @foreach($services as $service)
                         <div class="car-image">
                             <a href="{{$service->url}}" target="_blank">
-                            <img src="{{asset('uploads/service/'.$service->icon)}}" alt="" width="300px">
+                            <img src="{{asset('uploads/service/'.$service->icon)}}" alt="" width="90px">
                             <p>{{$service->name}}</p>
                             </a>
                         </div>
@@ -110,11 +110,11 @@
                 <div class="card-wrapper swiper-wrapper">
                     @foreach($showrooms as $showroom)
                         <div class="card swiper-slide">
-                            <a href="/galaxy-toyota-showroom-motinagar.php">
+                            <a href="#">
                                 <div class="image-content">
                                     <!-- <span class="overlay"></span> -->
                                     <div class="card-image">
-                                    <img src="" alt="" class="card-img">
+                                    <img src="{{asset('showrooms_slider_image/'.$showroom->slider_image)}}" alt="" class="card-img">
                                     </div>
                                 </div>
                                 <div class="card-content">
@@ -168,7 +168,7 @@
                                 <div class="card-content">
                                     <h2 class="name">{{$service_center->slider_service_center_name}}</h2>
                                     <div class="rating">
-                                        <img src="assets/image/locations-banner/star.png" alt="">
+                                        <img src="public/front_img/star.webp" alt="">
                                         <img src="assets/image/locations-banner/star.png" alt="">
                                         <img src="assets/image/locations-banner/star.png" alt="">
                                         <img src="assets/image/locations-banner/star.png" alt="">
@@ -176,8 +176,8 @@
                                     </div>
                                     <div class="star-parent">
                                         <img src="assets/image/locations-banner/google.png" alt="" width="6%">
-                                        <p>4.6</p>
-                                        <p>(4,160 reviews)</p>
+                                        <p>{{$service_center->rating}}</p>
+                                        <p>({{$service_center->number_of_rating}} reviews)</p>
                                     </div>
                                 </div>
                             </a>
@@ -429,46 +429,39 @@
             <h2>{{isset($business->insurance_title) && $business->insurance_title ? $business->insurance_title : NULL}}</h2>
         </div>
         <div class="insurence-parent">
-            @foreach($business_insurance as $record)
-                <div class="insurence-card">
-                    <a href="https://www.galaxytoyota.in/applyforinsurance" target="_blank">
-                        <div class="insurence-card-one">
-                            <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
-                            <div class="insurence-content">
-                                <p>{{$record->name}}</p>
-                            </div>
+            @if($business_insurance->count() > 3)
+                <div id="owl-insurence-carousel" class="owl-carousel owl-theme">
+                    @foreach($business_insurance as $record)
+                        <div class="insurence-card">
+                            <a href="#" target="_blank">
+                                <div class="insurence-card-one">
+                                    <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
+                                    <div class="insurence-content">
+                                        <p>{{$record->name}}</p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </a>
+                    @endforeach
                 </div>
-            @endforeach
+            @else
+                @foreach($business_insurance as $record)
+                    <div class="insurence-card">
+                        <a href="#" target="_blank">
+                            <div class="insurence-card-one">
+                                <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
+                                <div class="insurence-content">
+                                    <p>{{$record->name}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </section>
 @endif
-
-<div class="container">
-    <div id="owl-insurence-carousel" class="owl-carousel owl-theme">
-      <div class="item">
-        1
-      </div>
-      <div class="item">
-        2
-      </div>
-      <div class="item">
-        3
-      </div>
-      <div class="item">
-        4
-      </div>
-      <div class="item">
-        5
-      </div>
-      <div class="item">
-        6
-      </div>
-    </div>
-  </div>
-
 
 <!-- why choose us  -->
 <section id="insurence-page">
