@@ -22,65 +22,19 @@
 .image-footerlogo img { padding: 15px; background-color: #252628;}
 
 .star-parent{ width: 100%;}
-#owl-insurence-carousel .item {
-    align-items: center;
-    background-color: #f1f1f1;
-    color: white;
-    display: flex;
-    height: 300px;
-    justify-content: center;
-  }
-
+#owl-insurence-carousel .item {align-items: center;background-color: #f1f1f1;color: white;display: flex;height: 300px;justify-content: center;}
   /* review */
-  .pa-Star .star {
-    width: 36px;
-    height: 36px;
-    background-image: url("stars.png");
-    /*cursor: pointer;*/
-}
+.pa-Star .star {width: 36px;height: 36px;background-image: url("stars.png");/*cursor: pointer;*/}
 .pa-Star .star.blank { background-position: -36px; }
-.pStar {
-    display: flex;
-    margin-bottom: 15px;
-}
-.pStar .star {
-    width: 36px;
-    height: 36px;
-    background-image: url("stars.png");
-    cursor: pointer;
-}
+.pStar {display: flex;margin-bottom: 15px;}
+.pStar .star {width: 36px;height: 36px;background-image: url("stars.png");cursor: pointer;}
 .pStar .star.blank { background-position: -36px; }
-.pStat {
-    font-size: 15px;
-    color: #4a4a4a;
-}
-.stars {
-  position: relative;
-  float: left;
-  font-size: 30px;
-  height: 1em;
-  line-height: 1em;
-  overflow: hidden;
-}
-.stars:before { 
-  content: "\2605\2605\2605\2605\2605";
-  float: left;
-  z-index: 1;
-  color: #DDDDDD;
-}
-.stars .percent {
-  position: absolute;
-  left: 0;
-  float: left;
-  overflow: hidden;
-  z-index: 0;
-}
-.stars .percent:after { 
-  content: "\2605\2605\2605\2605\2605";
-  color: rgb(255, 200, 0);
-  display: flex;
-}
-
+.pStat {font-size: 15px;color: #4a4a4a;}
+.stars {position: relative;float: left;font-size: 30px;height: 1em;line-height: 1em;overflow: hidden;}
+.stars:before { content: "\2605\2605\2605\2605\2605";float: left;z-index: 1;color: #DDDDDD;}
+.stars .percent {position: absolute;left: 0;float: left;overflow: hidden;z-index: 0;}
+.stars .percent:after { content: "\2605\2605\2605\2605\2605";color: rgb(255, 200, 0);display: flex;}
+.heading-title-advantage{padding: 0px 20px;}
 
 @media(max-width:1199px){
     #our_businesses_carousel .brand-one{width: 100%;}
@@ -105,9 +59,7 @@
     .address{ padding: 15px;}
     .call-footer{padding: 15px;}
     .email-footer{padding: 15px;}
-    #our_businesses_carousel .owl-item img{
-      margin-bottom: 0px;
-    }
+    #our_businesses_carousel .owl-item img{margin-bottom: 0px;}
 }
 
 @media(max-width:575px){
