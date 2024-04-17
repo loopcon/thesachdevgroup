@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\OurBusinessInsuranceController;
 use App\Http\Controllers\Admin\VacancyController;
 use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\BodyShopController;
+use App\Http\Controllers\Admin\UsedCarController;
 
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BusinessController;
@@ -306,6 +307,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('body_shop_edit/{body_shop_edit}', [BodyShopController::class, 'body_shop_edit'])->name('body_shop.edit');
     Route::post('body_shop_update,{id}', [BodyShopController::class, 'body_shop_update'])->name('body_shop_update');
     Route::get('body_shop_destroy/{id}', [BodyShopController::class, 'body_shop_destroy'])->name('body_shop_destroy');
+
+    //used car
+    Route::get('used_car', [UsedCarController::class, 'used_car'])->name('used_car');
+    Route::get('usedCarCreate', [UsedCarController::class, 'usedCarCreate'])->name('usedCarCreate');
+    Route::post('used_car_insert', [UsedCarController::class, 'used_car_insert'])->name('used_car_insert');
+    Route::get('used_car_index', [UsedCarController::class, 'used_car_index'])->name('used_car.index');
+    Route::get('used_car_edit/{used_car_edit}', [UsedCarController::class, 'used_car_edit'])->name('used_car.edit');
+    Route::post('used_car_update,{id}', [UsedCarController::class, 'used_car_update'])->name('used_car_update');
+    Route::get('used_car_destroy/{id}', [UsedCarController::class, 'used_car_destroy'])->name('used_car_destroy');
+
 
 });
 

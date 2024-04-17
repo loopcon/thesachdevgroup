@@ -308,5 +308,8 @@ ALTER TABLE `our_business` ADD `body_shop_title_font_size` VARCHAR(255) NULL DEF
 ALTER TABLE `our_business` CHANGE `shwroom_title` `showroom_title` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `shwroom_title_color` `showroom_title_color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `shwroom_title_font_size` `showroom_title_font_size` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `shwroom_title_font_family` `showroom_title_font_family` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
 
 
--- Drashti : 16-04-2023 12:53 AM
+-- Drashti : 16-04-2024 12:53 AM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Body Shops', NULL, NULL, NULL);
+
+-- Drashti : 16-04-2024 03:17 AM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Used Car', NULL, NULL, NULL);

@@ -398,9 +398,24 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                 <li class="nav-item"> 
                     <a href="{{url('body_shop')}}" class="nav-link {{request()->is('body_shop*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-home"></i>
+                        <i class="nav-icon fa fa-window-restore"></i>
                         <p>
                             Body Shops
+                        </p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
+
+        @php($has_permission = hasPermission('Used Car'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                <li class="nav-item"> 
+                    <a href="{{url('used_car')}}" class="nav-link {{request()->is('used_car*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-ellipsis-h"></i>
+                        <p>
+                            Used Car
                         </p>
                     </a>
                 </li>

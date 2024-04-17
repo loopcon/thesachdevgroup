@@ -133,14 +133,14 @@
 .social_media_icon_edit_form .select2-selection {height: 40px !important; padding-left: 8px; }
 .social_media_icon_edit_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
 .social_media_icon_edit_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
-
 .body_shop_form .form-control{  height: 40px; padding: 4px 8px; }
 .body_shop_form .select2-selection {height: 40px !important; padding-left: 8px; }
 .body_shop_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
 .body_shop_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
-
-
-
+.used_car_form .form-control{  height: 40px; padding: 4px 8px; }
+.used_car_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.used_car_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.used_car_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
 
 
 /* #page_link-error  */
