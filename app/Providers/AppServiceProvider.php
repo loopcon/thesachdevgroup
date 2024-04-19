@@ -11,6 +11,7 @@ use App\Models\Home_our_businesses;
 use App\Models\Home_detail;
 use App\Models\Mission_vision;
 use App\Models\OurBusiness;
+use App\Models\Footer_menu_description;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,6 +46,9 @@ class AppServiceProvider extends ServiceProvider
         $header_menu_our_services = Header_menu::where('menu_name','our_services')->get();
         view()->share('header_menu_our_services', $header_menu_our_services);
 
+        $header_menu_careers = Header_menu::where('menu_name','careers')->get();
+        view()->share('header_menu_careers', $header_menu_careers);
+
         $header_menu_awards_recognitions = Header_menu::where('menu_name','awards_recognition')->get();
         view()->share('header_menu_awards_recognitions', $header_menu_awards_recognitions);
 
@@ -63,15 +67,14 @@ class AppServiceProvider extends ServiceProvider
         $footer_menu_useful_links = Footer_menu::where('menu_name','useful_links')->get();
         view()->share('footer_menu_useful_links', $footer_menu_useful_links);
 
+        $footer_menu_description = Footer_menu_description::first();
+        view()->share('footer_menu_description', $footer_menu_description);
+
         $home_sliders = Home_slider::get();
         view()->share('home_sliders', $home_sliders);
 
         $home_our_businessess = Home_our_businesses::get();
         view()->share('home_our_businessess', $home_our_businessess);
-
-
-        // $home_our_businesses_title = Home_our_businesses_title::first();
-        // view()->share('home_our_businesses_title', $home_our_businesses_title);
 
         $home_details = Home_detail::get();
         view()->share('home_details', $home_details);

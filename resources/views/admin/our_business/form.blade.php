@@ -28,8 +28,8 @@
                                 <label for="page_link" class="form-label">page Link or Url<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="page_link" id="page_link">
                                     <option value="">-- Select --</option>
-                                    <option value="1" @if(isset($record->page_link) && $record->page_link == 1){{'selected'}} @endif>Page Link</option>
-                                    <option value="0" @if(isset($record->page_link) && $record->page_link == 0){{'selected'}} @endif>Url</option>
+                                    <option value="1" @if(isset($record->page_link) && $record->page_link == 1){{'selected'}} @endif>Our Page Link</option>
+                                    <option value="0" @if(isset($record->page_link) && $record->page_link == 0){{'selected'}} @endif>Other Website Url</option>
                                 </select>
                                 @if ($errors->has('page_link')) <div class="text-danger">{{ $errors->first('page_link') }}</div>@endif
                             </div>

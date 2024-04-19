@@ -31,7 +31,7 @@
                     <div class="contact-detail">
                         @php($setting = getSettingDetail())
                     
-                        <a href="" style="display: flex; align-items: center;">
+                        <a href="mailto:info@thesachdevgroup.com" style="display: flex; align-items: center;">
                             @if(isset($setting) && isset($setting->email_icon))
                                 <img src="{{url('public/email_icon/'.$setting->email_icon)}}" style="height:30px; width:30px">
                             @endif
@@ -41,7 +41,7 @@
                             @endif  
                         </a>
 
-                        <a href="" style="display: flex; align-items: center;">
+                        <a href="tel:+4733378901" style="display: flex; align-items: center;">
                             @if(isset($setting) && isset($setting->call_icon))
                                 <img src="{{url('public/call_icon/'.$setting->call_icon)}}" style="height:30px; width:30px">
                             @endif
