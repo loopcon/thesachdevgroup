@@ -461,26 +461,38 @@
             prevEl: ".swiper-button-prev",
             },
 
-            // breakpoints:{
-            //     0: {
-            //         slidesPerView: 1,
-            //     },
-            //     520: {
-            //         slidesPerView: 2,
-            //     },
-            //     950: {
-            //         slidesPerView: 3,
-            //     },
-            // },
+             breakpoints:{
+                0: {
+                     slidesPerView: 1,
+                },
+                520: {
+                    slidesPerView: 2,
+                },
+                950: {
+                    slidesPerView: 3,
+                },
+             },
         });
 
         $(document).ready(function() {
             $('#owl-insurence-carousel').owlCarousel({
                 loop: true,
                 margin: 30,
-                dots: true,
+                autoplay:true,
+                // dots: true,
                 // nav: true,
                 items: 3,
+                responsive: {
+                    0: {
+                        items: 1 
+                    },
+                    768: {
+                        items: 2
+                    },
+                    991: {
+                        items: 3
+                    }
+                }
             });
         });
 </script>

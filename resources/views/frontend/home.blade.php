@@ -219,57 +219,66 @@
 {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> --}}
 
 <script>
-  $(document).ready(function() {
-    $('#owl-carousel').owlCarousel({
-      loop: true,
-      margin: 30,
-      dots: true,
-      nav: true,
-      items: 1,
-      navText: [
-        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-      ]
-    });
+ $(document).ready(function() {
+  $('#owl-carousel').owlCarousel({
+    loop: true,
+    margin: 30,
+    dots: true,
+    nav: true,
+    items: 1,
+    navText: [
+      '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+      '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+    autoplay:true,
+    autoplayTimeout:2000,
+  });
 
-    $('#our_businesses_carousel').owlCarousel({
-      loop: true,
-      dots: false,
-      nav: false,
-      items: 7,
-      responsiveClass: true,
-      responsive: {
-        0:{
-          items: 2
-        },
-        480:{
-          items: 3
-        },
-        769:{
-          items: 7
-        }
+  $('#our_businesses_carousel').owlCarousel({
+    loop: true,
+    dots: false,
+    nav: false,
+    items: 7,
+    autoplay:true,
+    autoplayTimeout:2000,
+    responsiveClass: true,
+    responsive: {
+      0:{
+        items: 2
+      },
+      480:{
+        items: 3
+      },
+      769:{
+        items: 7
       }
-    });
+    }
+  });
 
-    $('#count_owl').owlCarousel({
-      loop: false,
-      dots: false,
-      nav: false,
-      items: 4,
-      responsiveClass: true,
-      responsive: {
-        0:{
-          items: 2
-        },
-        480:{
-          items: 3
-        },
-        769:{
-          items: 4
-        }
+  $('#count_owl').owlCarousel({
+    loop: true,
+    dots: false,
+    nav: false,
+    items: 4,
+    autoplay:true,
+    autoplayTimeout:2000,
+    responsiveClass: true,
+    responsive: {
+      0:{
+        items: 2
+      },
+      480:{
+        items: 3
+      },
+      769:{
+        items: 4
       }
-    });
+    }
+  });
 
+	
+
+   
     $.fn.jQuerySimpleCounter = function(options) {
       var settings = $.extend({
         start: 0,
@@ -314,6 +323,7 @@
       loop: true,
       center: true,
       items: 3,
+      autoplayTimeout:2000,
       margin: 0,
       autoplay: true,
       dots:true,
