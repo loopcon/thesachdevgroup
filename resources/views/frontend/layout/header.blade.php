@@ -138,9 +138,21 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="job.php">Careers</a>
-                            </li>
+                            @if ($header_menu_careers->count() > 0)
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Careers</a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        @foreach ($header_menu_careers as $header_menu_career)
+                                            <a class="dropdown-item" href="{{$header_menu_career->link}}" style="color:{{$header_menu_career->color}}; font-size:{{$header_menu_career->font_size}}; font-family:{{$header_menu_career->font_family}};">
+                                                {{$header_menu_career->name}}
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                </li>
+                            @else
+                                <a class="nav-link" href="">Careers</a>
+                            @endif
+
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Awards & Recognition</a>

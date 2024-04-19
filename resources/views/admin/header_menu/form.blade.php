@@ -24,6 +24,7 @@
                                     <option selected="selected" disabled="disabled">Select</option>
                                     <option value="our_businesses" @if(old('menu_name') == 'our_businesses'){{'selected'}}@endif>Our Businesses</option>
                                     <option value="our_services" @if(old('menu_name') == 'our_services'){{'selected'}}@endif>Our Services</option>
+                                    <option value="careers" @if(old('menu_name') == 'careers'){{'selected'}}@endif>Careers</option>
                                     <option value="awards_recognition" @if(old('menu_name') == 'awards_recognition'){{'selected'}}@endif>Awards & Recognition</option>
                                     <option value="contact_us" @if(old('menu_name') == 'contact_us'){{'selected'}}@endif>Contact Us</option>
                                 </select>

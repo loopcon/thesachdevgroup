@@ -82,13 +82,14 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="image" class="form-label">Banner Image</label><span><small>(Hight:1349,Width:281; Image Type : jpg,jpeg,png,webp)</small></span>
+                                <label for="image" class="form-label">Banner Image</label>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/service_center/'.$record->image)}}" width="100">
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image" value="">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <div class="error"></div>
+                                <small class="image_type">(Hight:1349,Width:281; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -128,13 +129,14 @@
                             </div> 
 
                             <div class="col-md-4 mt-2">
-                                <label for="image" class="form-label">Address Icon</label><span><small>(Hight:40,Width:40; Image Type : jpg,jpeg,png,webp)</small></span>
+                                <label for="image" class="form-label">Address Icon</label>
                                 @if(isset($record->address_icon) && $record->address_icon)
                                     <img src="{{url('public/uploads/address_icon/'.$record->address_icon)}}" width="100">
                                 @endif  
                                 <input type="file" id="address_icon" class="form-control" name="address_icon" value="">
                                 @if ($errors->has('address_icon')) <div class="text-danger">{{ $errors->first('address_icon') }}</div>@endif
                                 <div class="error"></div>
+                                <small class="image_type">(Hight:40,Width:40; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -168,12 +170,13 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="working_hours_icon" class="form-label">Working Hours Icon</label><span><small>(Hight:40,Width:40; Image Type : jpg,jpeg,png,webp)</small></span>
+                                <label for="working_hours_icon" class="form-label">Working Hours Icon</label>
                                 @if(isset($record->working_hours_icon) && $record->working_hours_icon)
                                     <img src="{{url('public/uploads/working_hours_icon/'.$record->working_hours_icon)}}" width="100">
                                 @endif  
                                 <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon" value="">
                                 <div class="error"></div>
+                                <small class="image_type">(Hight:40,Width:40; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -208,13 +211,14 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="contact_icon" class="form-label">Contact Number Icon</label><span><small>(Hight:40,Width:40; Image Type : jpg,jpeg,png,webp)</small></span>
+                                <label for="contact_icon" class="form-label">Contact Number Icon</label>
                                 @if(isset($record->contact_icon) && $record->contact_icon)
                                     <img src="{{url('public/uploads/contact_icon/'.$record->contact_icon)}}" width="100">
                                 @endif  
                                 <input type="file" id="contact_icon" class="form-control" name="contact_icon" value="">
                                 @if ($errors->has('contact_icon')) <div class="text-danger">{{ $errors->first('contact_icon') }}</div>@endif
                                 <div class="error"></div>
+                                <small class="image_type">(Hight:40,Width:40; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -274,12 +278,13 @@
                             </div>
 
                             <div class="col-md-4 mb-3 mt-2">
-                                <label for="email_icon" class="form-label">Email Icon</label><span><small>(Hight:40,Width:40; Image Type : jpg,jpeg,png,webp)</small></span>
+                                <label for="email_icon" class="form-label">Email Icon</label>
                                 @if(isset($record->email_icon) && $record->email_icon)
                                     <img src="{{url('public/uploads/email_icon/'.$record->email_icon)}}" width="100">
                                 @endif  
                                 <input type="file" id="email_icon" class="form-control" name="email_icon" value="">
                                 @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
+                                <small class="image_type">(Hight:40,Width:40; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -327,12 +332,13 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label for="slider_image" class="form-label">Slider Image</label><span><small>(Hight:243,Width:325; Image Type : jpg,jpeg,png,webp)</small></span>
+                                <label for="slider_image" class="form-label">Slider Image</label>
                                 @if(isset($record->slider_image) && $record->slider_image)
                                     <img src="{{url('public/uploads/service_center/slider_image/'.$record->slider_image)}}" width="100">
                                 @endif  
                                 <input type="file" id="slider_image" class="form-control" name="slider_image" value="">
                                 @if ($errors->has('slider_image')) <div class="text-danger">{{ $errors->first('slider_image') }}</div>@endif
+                                <small class="image_type">(Hight:243,Width:325; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <?php /* <div class="col-12">

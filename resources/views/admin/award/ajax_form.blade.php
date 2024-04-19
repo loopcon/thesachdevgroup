@@ -23,12 +23,13 @@
             </div>
 
             <div class="col-12 mt-3">
-                <label for="image" class="form-label">Image</label><span><small>(Hight:270px,Width:360px; Image Type : jpg,jpeg,png,webp)</small></span>
+                <label for="image" class="form-label">Image</label>
                 @if(isset($record->image) && $record->image)
                     <img src="{{url('public/uploads/award/'.$record->image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
                 @endif  
                 <input type="file" id="image" class="form-control" name="image" value="">
                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
+                <small class="image_type">(Hight:270px,Width:360px; Image Type : jpg,jpeg,png,svg,webp)</small>
             </div>
         </div>
     </div>

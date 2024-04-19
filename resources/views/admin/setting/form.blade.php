@@ -25,7 +25,7 @@
 
                             <div class="row">
                               <div class="mb-3 col-md-4">
-                                <label for="logo">Logo<span class="text-danger">*</span></label><small>(Height:85px,Width:85px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <label for="logo">Logo<span class="text-danger">*</span></label>
                                 
                                   <input type="hidden" name="old_logo" id="old_logo" value="{{$setting->logo}}">
                                   
@@ -34,6 +34,7 @@
                                   @endif
                                 <input type="file" id="logo" class="form-control" name="logo">
                                 <div class="error"></div>
+                                <small class="image_type">(Height:85px,Width:85px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
     
                               <div class="col-md-4">
@@ -164,7 +165,7 @@
                               </div>
     
                               <div class="mb-3 col-md-4">
-                                <label for="email_icon">Email Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
                                
                                 <input type="hidden" name="old_email_icon" id="old_email_icon" value="{{$setting->email_icon}}">
 
@@ -173,10 +174,11 @@
                                 @endif
                                 <input type="file" id="email_icon" class="form-control" name="email_icon">
                                 <div class="error"></div>
+                                <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
     
                               <div class="mb-3 col-md-4">
-                                <label for="call_icon">Call Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
                                 
                                 <input type="hidden" name="old_call_icon" id="old_call_icon" value="{{$setting->call_icon}}">
                                 
@@ -185,10 +187,11 @@
                                 @endif
                                 <input type="file" id="call_icon" class="form-control" name="call_icon">
                                 <div class="error"></div>
+                                <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
     
                               <div class="col-md-4">
-                                <label for="address_icon">Address Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <label for="address_icon">Address Icon<span class="text-danger">*</span></label>
                                 
                                 <input type="hidden" name="old_address_icon" id="old_address_icon" value="{{$setting->address_icon}}">
 
@@ -197,6 +200,7 @@
                                 @endif
                                 <input type="file" id="address_icon" class="form-control" name="address_icon">
                                 <div class="error"></div>
+                                <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
 
                               <div class="col-md-4">
@@ -241,9 +245,10 @@
                 
                         <div class="row">
                           <div class="mb-3 col-md-4">
-                            <label for="logo">Logo<span class="text-danger">*</span></label><small>(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            <label for="logo">Logo<span class="text-danger">*</span></label>
                             <input type="file" id="logo" class="form-control" name="logo">
                             <div class="error"></div>
+                            <small class="image_type">(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 
                           <div class="col-md-4">
@@ -374,21 +379,24 @@
                           </div>
 
                           <div class="col-md-4">
-                            <label for="email_icon">Email Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
                             <input type="file" id="email_icon" class="form-control" name="email_icon">
                             <div class="error"></div>
+                            <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 
                           <div class="mb-3 col-md-4">
-                            <label for="call_icon">Call Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
                             <input type="file" id="call_icon" class="form-control" name="call_icon">
                             <div class="error"></div>
+                            <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 
                           <div class="col-md-4">
-                            <label for="address_icon">Address Icon<span class="text-danger">*</span></label><small>(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            <label for="address_icon">Address Icon<span class="text-danger">*</span></label>
                             <input type="file" id="address_icon" class="form-control" name="address_icon">
                             <div class="error"></div>
+                            <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 
                           

@@ -22,45 +22,13 @@
                             <div class="row">
 
                                 <div class="mb-3 col-md-4">
-                                    <label for="testimonials_title" class="form-label">Testimonials Title</label>
-                                    <input type="text" id="testimonials_title" class="form-control" name="testimonials_title" value="{{$testimonial->testimonials_title}}">
-                                    <div class="error"></div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label for="testimonials_title_color" class="form-label">Testimonials Title Text Color</label>
-                                    <input type="text" class="form-control colorpicker" name="testimonials_title_color" id="testimonials_title_color" value="{{$testimonial->testimonials_title_color}}">
-                                </div>
-
-                                <div class="col-md-4">
-                                    @php($fontsize = fontSize())
-                                    <label for="testimonials_title_font_size" class="form-label">Testimonials Title Text Font Size</label>
-                                    <select class="form-control select2" name="testimonials_title_font_size">
-                                        <option selected="selected" disabled="disabled">Select</option>
-                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
-                                            <option value="{{$i}}px" {{$testimonial->testimonials_title_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
-                                        @endfor
-                                    </select>
-                                </div>
-
-                                <div class="mb-3 col-md-4">
-                                    @php($fontfamily = fontFamily())
-                                    <label for="testimonials_title_font_family">Testimonials Title Text Font Family</label>
-                                    <select class="form-control select2" name="testimonials_title_font_family">
-                                        <option selected="selected" disabled="disabled">Select</option>
-                                        @foreach($fontfamily as $family)
-                                            <option value="{{$family['key']}}" {{$testimonial->testimonials_title_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     @if(isset($testimonial->image) && isset($testimonial->image))
                                         <img src="{{url('public/testimonials/'.$testimonial->image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input  type="file" class="form-control" name="image">
                                     <div class="error"></div>
+                                    <small class="image_type">(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="col-md-4">
@@ -76,6 +44,7 @@
                                 </div>
 
                                 <div class="col-md-4">
+                                    @php($fontsize = fontSize())
                                     <label for="name_font_size">Name Text Font Size</label>
                                     <select class="form-control select2" name="name_font_size">
                                         <option selected="selected" disabled="disabled">Select</option>

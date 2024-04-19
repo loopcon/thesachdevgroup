@@ -89,9 +89,10 @@
                                             <div class="modal-body">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Height:20px,Width:20px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
                                                     <input type="file" id="icon" class="form-control icon" name="icon">
                                                     <div class="error"></div>
+                                                    <small class="image_type">(Height:20px,Width:20px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                 </div>
 
                                                 <div class="form-group">
@@ -127,10 +128,11 @@
                                                 <input type="hidden" class="id" name="id">
 
                                                 <div class="form-group">
-                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Height:20px,Width:20px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                                    <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
                                                     <img src="" width="100" class="image_icon" style="margin-bottom: 10px; margin-left: 5px;">
                                                     <input type="file" id="icon" class="form-control icon" name="icon">
                                                     <div class="error"></div>
+                                                    <small class="image_type">(Height:20px,Width:20px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                 </div>
 
                                                 <div class="form-group">

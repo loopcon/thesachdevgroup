@@ -29,7 +29,7 @@
   <section id="brands-section" style="background-color:{{$home_our_businesses_title->background_color ?? null}};">
     <div class="col-md-12">
       <div class="brand-title">
-        <h2 style="color: {{$home_our_businesses_title->businesses_title_color}}; font-size:{{$home_our_businesses_title->businesses_title_font_size}}; font-family:{{$home_our_businesses_title->businesses_title_font_family}};">{{$home_our_businesses_title->businesses_title}}</h2>
+        <h2 style="color: {{$home_our_businesses_title->businesses_title_color ?? null}}; font-size:{{$home_our_businesses_title->businesses_title_font_size ?? null}}; font-family:{{$home_our_businesses_title->businesses_title_font_family ?? null}};">{{$home_our_businesses_title->businesses_title ?? null}}</h2>
         <p></p>
       </div>
     </div>
@@ -57,12 +57,6 @@
      </div>
     @endif
   </section>
-
-
-
-  
-
-
 
     <section id="our_story_section">
       <div class="container">
@@ -149,8 +143,6 @@
     @endif
 
   
-
- 
   <!-- home deatail -->
   <section id="about-us">
     <div class="container">
@@ -181,9 +173,7 @@
   <section class="testimonials">
     <div class="container">
       <div class="testimonial-heading">
-        @foreach ($testimonials as $testimonial)
-          <h2 style="color:{{$testimonial->testimonials_title_color}}; font-size:{{$testimonial->testimonials_title_font_size}}; font-family:{{$testimonial->testimonials_title_font_family}};">{{$testimonial->testimonials_title}}</h2>
-        @endforeach
+        <h2 style="color:{{$testimonials_title->testimonials_title_color ?? null}}; font-size:{{$testimonials_title->testimonials_title_font_size ?? null}}; font-family:{{$testimonials_title->testimonials_title_font_family ?? null}};">{{$testimonials_title->testimonials_title ?? null}}</h2>
       </div>
       <div class="row">
         <div class="col-sm-12">

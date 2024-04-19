@@ -23,7 +23,7 @@
                         <div class="row">
 
                             <div class="mb-3 col-md-4">
-                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label><small>(Height:50px,Width:50px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
                                 
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->icon) ? $record->icon : old('old_image')}}">
                                 
@@ -32,6 +32,7 @@
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon">
                                 <div class="error"></div>
+                                <small class="image_type">(Height:50px,Width:50px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">

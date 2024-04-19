@@ -145,6 +145,15 @@
 .our_businesses_title_form .select2-selection {height: 40px !important; padding-left: 8px; }
 .our_businesses_title_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
 .our_businesses_title_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+.testimonials_title_form .form-control{  height: 40px; padding: 4px 8px; }
+.testimonials_title_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.testimonials_title_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.testimonials_title_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+.footer_menu_description_form .form-control{  height: 40px; padding: 4px 8px; }
+.footer_menu_description_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.footer_menu_description_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.footer_menu_description_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+.mission_vision_title_form .form-control{  height: 40px; padding: 4px 8px; }
 
 /* #page_link-error  */
 .adm-brand-errorbox .error{margin-bottom: 25px;position: absolute;top: 100%;left: 5px;}

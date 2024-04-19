@@ -46,12 +46,13 @@
                                 </div>
     
                                 <div class="col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:348px,Width:219px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     @if(isset($car->image) && isset($car->image))
                                         <img src="{{url('public/car/'.$car->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                     @endif
                                     <input type="file" id="image" class="form-control" name="image">
                                     <div class="error"></div>
+                                    <small class="image_type">(Height:348px,Width:219px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
     
                                 <div class="col-md-4">

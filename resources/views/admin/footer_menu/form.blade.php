@@ -84,50 +84,6 @@
                                 {{-- <div class="error"></div> --}}
                                 <div class="error">@if ($errors->has('link')) <label id="link-error" class="error">{{ $errors->first('link') }}</label>@endif</div>
                             </div>
-
-                            <div class="col-md-12 mt-2 mb-3">
-                                <label for="footer_description">Footer Description</label>
-                                <textarea class="ckeditor form-control" name="footer_description">{{ old('footer_description') ?  old('footer_description') : (isset($record->footer_description) ? $record->footer_description :  '')}}</textarea>
-                                <div class="error"></div>
-                            </div>
-
-                            <div class="mb-3 col-md-4">
-                                <label for="footer_description_color" class="form-label">Footer Description Text Color</label>
-                                <input type="text" class="form-control colorpicker" name="footer_description_color" id="footer_description_color" value="{{ old('footer_description_color') ?  old('footer_description_color') : (isset($record->footer_description_color) ? $record->footer_description_color :  '')}}">
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="footer_description_font_size" class="form-label">Footer Description Text Font Size</label>
-                                <select class="form-control select2" name="footer_description_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
-                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
-                                        @php ($selected_footer_description_font_size = '')
-                                        @if(old('footer_description_font_size') == $i.'px')
-                                            @php ($selected_footer_description_font_size = 'selected')
-                                        @elseif(old('footer_description_font_size') == '' && isset($record->footer_description_font_size) && $record->footer_description_font_size == $i.'px') 
-                                            @php ($selected_footer_description_font_size = 'selected')  
-                                        @endif
-                                        <option value="{{$i}}px" {{$selected_footer_description_font_size}}>{{$i}}px</option>
-                                    @endfor
-                                </select>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="footer_description_font_family" class="form-label">Footer Description Text Font Family</label>
-                                <select class="form-control select2" name="footer_description_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
-                                    @foreach($fontfamily as $footerfamily)
-
-                                        @php ($selected_footer_description_font_family = '')
-                                        @if(old('footer_description_font_family') == $footerfamily['key'])
-                                            @php ($selected_footer_description_font_family = 'selected')
-                                        @elseif(old('footer_description_font_family') == '' && isset($record->footer_description_font_family) && $record->footer_description_font_family == $footerfamily['key']) 
-                                            @php ($selected_footer_description_font_family = 'selected')  
-                                        @endif
-                                        <option value="{{$footerfamily['key']}}" {{$selected_footer_description_font_family}}>{{$footerfamily['key']}}</option>
-                                    @endforeach
-                                </select>
-                              </div>
                         </div> 
                             
                         <div class="box-footer">

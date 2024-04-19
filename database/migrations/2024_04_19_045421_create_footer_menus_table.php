@@ -21,10 +21,6 @@ return new class extends Migration
             $table->string('color')->nullable();
             $table->string('font_size')->nullable();
             $table->string('font_family')->nullable();
-            $table->string('footer_description')->nullable();
-            $table->string('footer_description_color')->nullable();
-            $table->string('footer_description_font_size')->nullable();
-            $table->string('footer_description_font_family')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

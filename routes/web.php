@@ -93,6 +93,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('testimonials_update,{testimonials_update}', [TestimonialController::class, 'testimonials_update'])->name('testimonials_update');
     Route::get('testimonials_destroy/{id}', [TestimonialController::class, 'testimonials_destroy'])->name('testimonials_destroy');
 
+    //testimonials title 
+    Route::post('testimonials_title_insert', [TestimonialController::class, 'testimonials_title_insert'])->name('testimonials_title_insert');
+
+
     //Home Detail
     Route::get('home_detail', [HomeSettingController::class, 'home_detail'])->name('home_detail');
     Route::post('home_detail_insert', [HomeSettingController::class, 'home_detail_insert'])->name('home_detail_insert');
@@ -163,6 +167,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('footer_menu_edit/{footer_menu_edit}', [FooterMenuController::class, 'footer_menu_edit'])->name('footer_menu.edit');
     Route::post('footer_menu_update,{id}', [FooterMenuController::class, 'footer_menu_update'])->name('footer_menu_update');
     Route::get('footer_menu_destroy/{id}', [FooterMenuController::class, 'footer_menu_destroy'])->name('footer_menu_destroy');
+
+    //footer menu description
+    Route::post('footer_menu_description_insert', [FooterMenuController::class, 'footer_menu_description_insert'])->name('footer_menu_description_insert');
 
     //mission_vision
     Route::get('mission_vision', [MissionVisionController::class, 'mission_vision'])->name('mission_vision');

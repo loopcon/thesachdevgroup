@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Testimonial;
+use App\Models\Testimonials_title;
 use DataTables;
 use File;
 
@@ -47,12 +48,6 @@ class TestimonialController extends Controller
                     $file->move($destinationPath,$fileName);
                     $testimonials->image = $fileName;
                 }
-
-                $testimonials->testimonials_title = $request->testimonials_title;
-
-                $testimonials->testimonials_title_color = $request->testimonials_title_color;
-                $testimonials->testimonials_title_font_size = $request->testimonials_title_font_size;
-                $testimonials->testimonials_title_font_family = $request->testimonials_title_font_family;
 
                 $testimonials->name_background_color = $request->name_background_color;
                 $testimonials->name_color = $request->name_color;
@@ -123,7 +118,9 @@ class TestimonialController extends Controller
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
-                return view('admin.testimonials.show',compact('testimonials'));
+                $testimonials_title = Testimonials_title::first();
+                $return_data['record'] = $testimonials_title;
+                return view("admin.testimonials.show",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('message', 'You have not permission to access this page!');
             }
@@ -173,12 +170,6 @@ class TestimonialController extends Controller
                     $testimonials->image = $filename;
                 }
 
-                $testimonials->testimonials_title = $request->testimonials_title;
-
-                $testimonials->testimonials_title_color = $request->testimonials_title_color;
-                $testimonials->testimonials_title_font_size = $request->testimonials_title_font_size;
-                $testimonials->testimonials_title_font_family = $request->testimonials_title_font_family;
-                
                 $testimonials->name_background_color = $request->name_background_color;
                 $testimonials->name_color = $request->name_color;
                 $testimonials->name_font_size = $request->name_font_size;
@@ -222,6 +213,38 @@ class TestimonialController extends Controller
                     return redirect()->route('testimonials.index')->with('message', 'Testimonial deleted successfully');
                 }
             } else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    //testimonials title
+    public function testimonials_title_insert(Request $request){
+     
+        $has_permission = hasPermission('Testimonials');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $existing_data = Testimonials_title::find(1);
+
+                if($existing_data) {
+                    $testimonials_title = $existing_data;
+                } else {
+                    $testimonials_title = new Testimonials_title();
+                }
+            
+                $testimonials_title->testimonials_title = $request->testimonials_title;
+                $testimonials_title->testimonials_title_color = $request->testimonials_title_color;
+                $testimonials_title->testimonials_title_font_size = $request->testimonials_title_font_size;
+                $testimonials_title->testimonials_title_font_family = $request->testimonials_title_font_family;
+                $testimonials_title->save();
+                
+                return redirect()->route('testimonials.index')->with('success','Testimonials insert successfully.');
+
+            }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }else {

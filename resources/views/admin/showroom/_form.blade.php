@@ -67,11 +67,12 @@
                                 </div>
 
                                 <div class="mb-3 col-md-4">
-                                    <label for="slider_image" class="form-label">Slider Image</label><small>(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="slider_image" class="form-label">Slider Image</label>
                                     @if(isset($showroom->slider_image) && isset($showroom->slider_image))
                                         <img src="{{url('public/showrooms_slider_image/'.$showroom->slider_image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input type="file" id="slider_image" class="form-control" name="slider_image">
+                                    <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="col-md-4">
@@ -108,11 +109,12 @@
                                 </div>
 
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image</label><small>(Height:281px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="image" class="form-label">Image</label>
                                     @if(isset($showroom->image) && isset($showroom->image))
                                         <img src="{{url('public/showrooms_image/'.$showroom->image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input type="file" id="image" class="form-control" name="image">
+                                    <small class="image_type">(Height:281px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="col-md-4">
@@ -177,12 +179,13 @@
 
 
                                 <div class="col-md-4">
-                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label><small>(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label>
                                     @if(isset($showroom->address_icon) && isset($showroom->address_icon))
                                         <img src="{{url('public/showrooms_address_icon/'.$showroom->address_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input type="file" id="address_icon" class="form-control" name="address_icon">
                                     <div id="error"></div>
+                                    <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="col-md-4">
@@ -217,12 +220,13 @@
                                 </div>
 
                                 <div class="mb-3 col-md-4">
-                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label>
                                     @if(isset($showroom->working_hours_icon) && isset($showroom->working_hours_icon))
                                         <img src="{{url('public/showrooms_working_hours_icon/'.$showroom->working_hours_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon">
                                     <div id="error"></div>
+                                    <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="mb-3 col-md-4">
@@ -259,12 +263,13 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label>
                                     @if(isset($showroom->contact_number_icon) && isset($showroom->contact_number_icon))
                                         <img src="{{url('public/showrooms_contact_number_icon/'.$showroom->contact_number_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input type="file" id="contact_number_icon" class="form-control" name="contact_number_icon">
                                     <div id="error"></div>
+                                    <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="mb-3 col-md-4">
@@ -301,12 +306,13 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="email_icon" class="form-label">Email Icon<span class="text-danger">*</span></label><small>(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="email_icon" class="form-label">Email Icon<span class="text-danger">*</span></label>
                                     @if(isset($showroom->email_icon) && isset($showroom->email_icon))
                                         <img src="{{url('public/showrooms_email_icon/'.$showroom->email_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input type="file" id="email_icon" class="form-control" name="email_icon">
                                     <div id="error"></div>
+                                    <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="col-md-4 mt-2">

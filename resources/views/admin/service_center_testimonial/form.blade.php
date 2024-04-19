@@ -113,12 +113,13 @@
                             </div>
 
                             <div class="col-md-4 mt-2 mb-3">
-                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label><span><small>(Hight:90,Width:90; Image Type : jpg,jpeg,png,webp)</small><span>
+                                <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/service_center_testimonial/'.$record->image)}}" width="100">
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image" value="">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
+                                <small class="image_type">(Hight:90,Width:90; Image Type : jpg,jpeg,png,webp)</small>
                             </div>
                         </div>
                         <div class="box-footer">

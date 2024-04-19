@@ -10,9 +10,9 @@
               </a>
             </li>
 
-            @if(hasPermission('Home Slider') || hasPermission('Home Our Businesses') || hasPermission('Home Detail') || hasPermission('Mission Vision') || hasPermission('Faqs'))
-                <li class="nav-item {{ (request()->is('homeslider_index*') || request()->is('home_our_businesses_index*') || request()->is('home_detail') || request()->is('mission_vision') || request()->is('count')) ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ (request()->is('homeslider_index*') || request()->is('home_our_businesses_index*') || request()->is('home_detail') || request()->is('mission_vision') || request()->is('count')) ? 'active' : '' }}"> 
+            @if(hasPermission('Home Slider') || hasPermission('Home Our Businesses') || hasPermission('Home Detail') || hasPermission('Mission Vision') || hasPermission('Faqs') || hasPermission('Testimonials'))
+                <li class="nav-item {{ (request()->is('homeslider_index*') || request()->is('home_our_businesses_index*') || request()->is('home_detail') || request()->is('mission_vision') || request()->is('count') || request()->is('testimonials_index')) ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ (request()->is('homeslider_index*') || request()->is('home_our_businesses_index*') || request()->is('home_detail') || request()->is('mission_vision') || request()->is('count') || request()->is('testimonials_index')) ? 'active' : '' }}"> 
                         <i class="nav-icon fa fa-house-user"></i><p>Home Setting<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul id="sidebar_communication" class="nav nav-treeview">
@@ -44,32 +44,17 @@
                             @endif
                         @endif
 
-                        @php($has_permission = hasPermission('Home Detail'))
+                        @php($has_permission = hasPermission('Mission Vision'))
                         @if(isset($has_permission) && $has_permission)
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item"> 
-                            <a href="{{url('home_detail')}}" class="nav-link {{request()->is('home_detail*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-home"></i>
-                                <p>
-                                Home Detail
-                                </p>
-                            </a>
-                        </li>
-                        @endif
-                        @endif
-
-                        @php($has_permission = hasPermission('Mission Vision'))
-                        @if(isset($has_permission) && $has_permission)
-                            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                            <li class="nav-item"> 
-
-                            <a href="{{url('mission_vision')}}" class="nav-link {{ request()->is('mission_vision*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tasks"></i> 
-                                <p>
-                                Mission Vision
-                                </p>
-                            </a>
-                        </li>
+                                <a href="{{url('mission_vision')}}" class="nav-link {{ request()->is('mission_vision*') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-tasks"></i> 
+                                    <p>
+                                    Mission Vision
+                                    </p>
+                                </a>
+                            </li>
                         @endif
                         @endif
 
@@ -86,6 +71,33 @@
                             </li>
                         @endif
                         @endif
+
+                        @php($has_permission = hasPermission('Home Detail'))
+                        @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item"> 
+                            <a href="{{url('home_detail')}}" class="nav-link {{request()->is('home_detail*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                Home Detail
+                                </p>
+                            </a>
+                        </li>
+                        @endif
+                        @endif
+
+                        @php($has_permission = hasPermission('Testimonials'))
+                        @if(isset($has_permission) && $has_permission)
+                            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                                <li class="nav-item"> 
+                                    <a href="{{url('testimonials_index')}}" class="nav-link {{ (request()->is('testimonials_index*')) ? 'active' : '' }}">
+                                        <i class="nav-icon fas fa-address-card"></i>
+                                        <p>Testimonials</p>
+                                    </a>
+                                </li>
+                            @endif
+                        @endif
+
                     </ul>
                 </li>
             @endif
@@ -125,18 +137,6 @@
                         @endif
                     </ul>
                 </li>
-            @endif
-
-            @php($has_permission = hasPermission('Testimonials'))
-            @if(isset($has_permission) && $has_permission)
-                @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                    <li class="nav-item"> 
-                        <a href="{{url('testimonials_index')}}" class="nav-link {{ (request()->is('testimonials_index*')) ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-address-card"></i>
-                            <p>Testimonials</p>
-                        </a>
-                    </li>
-                @endif
             @endif
 
         @php($has_permission = hasPermission('Setting'))

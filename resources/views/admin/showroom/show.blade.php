@@ -133,15 +133,17 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label><small>(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                                    <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label>
                                                     <input type="file" id="facility_image" class="form-control facility_image" name="facility_image">
                                                     <div id="error"></div>
+                                                    <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label><small>(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                                    <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label>
                                                     <input type="file" id="customer_gallery_image" class="form-control customer_gallery_image" name="customer_gallery_image">
                                                     <div id="error"></div>
+                                                    <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                 </div>
 
                                             </div>
@@ -184,17 +186,19 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label><small>(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                                    <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label>
                                                     <img src="" width="100" class="facility_icon" style="margin-bottom: 10px; margin-left: 5px;">
                                                     <input type="file" id="facility_image" class="form-control facility_image" name="facility_image">
                                                     <div id="error"></div>
+                                                    <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                 </div> 
 
                                                 <div class="form-group">
-                                                    <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label><small>(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                                    <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label>
                                                     <img src="" width="100" class="customer_gallery_icon" style="margin-bottom: 10px; margin-left: 5px;">
                                                     <input type="file" id="customer_gallery_image" class="form-control customer_gallery_image" name="customer_gallery_image">
                                                     <div id="error"></div>
+                                                    <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                 </div>
 
                                             </div>

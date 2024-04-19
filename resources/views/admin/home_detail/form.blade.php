@@ -25,7 +25,7 @@
 
                             <div class="form-row">
                               <div class="col-md-4 mb-3">
-                                  <label for="image">Image<span class="text-danger">*</span></label><small>(Height:479px,Width:540px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                  <label for="image">Image<span class="text-danger">*</span></label>
                                 
                                   <input type="hidden" name="old_image" id="old_image" value="{{$home_detail->image}}">
 
@@ -34,6 +34,7 @@
                                   @endif
                                   <input type="file" id="image" class="form-control image" name="image">
                                   <div class="error"></div>
+                                  <small class="image_type">(Height:479px,Width:540px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
                               <div class="col-md-4 mb-3">
                                 <label for="title">Title<span class="text-danger">*</span></label>
@@ -147,9 +148,10 @@
 
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
-                              <label for="image">Image<span class="text-danger">*</span></label><small>(Height:479px,Width:540px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                              <label for="image">Image<span class="text-danger">*</span></label>
                               <input type="file" id="image" class="form-control image" name="image">
                               <div class="error"></div>
+                              <small class="image_type">(Height:479px,Width:540px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
                           <div class="col-md-4 mb-3">
                             <label for="title">Title<span class="text-danger">*</span></label>

@@ -69,23 +69,25 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="image" class="form-label">Image</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="image" class="form-label">Image</label>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/vacancy/'.$record->image)}}" width="100">
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image" value="">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <div class="error"></div>
+                                <small class="image_type">(Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="icon" class="form-label">Icon</label>&nbsp;<small>(Image Type : jpg,jpeg,png,webp)</small>
+                                <label for="icon" class="form-label">Icon</label>
                                 @if(isset($record->icon) && $record->icon)
                                     <img src="{{url('public/uploads/vacancy_icon/'.$record->icon)}}" width="100">
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon" value="">
                                 @if ($errors->has('icon')) <div class="text-danger">{{ $errors->first('icon') }}</div>@endif
                                 <div class="error"></div>
+                                <small class="image_type">(Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">

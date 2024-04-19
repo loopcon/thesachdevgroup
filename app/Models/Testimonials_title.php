@@ -6,17 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Footer_menu extends Model
+class Testimonials_title extends Model
 {
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
-        'menu_name',
-        'name',
-        'link',
-        'color',
-        'font_size',
-        'font_family',
+        'testimonials_title',
+        'testimonials_title_color',
+        'testimonials_title_font_size',
+        'testimonials_title_font_family',
     ];
 }

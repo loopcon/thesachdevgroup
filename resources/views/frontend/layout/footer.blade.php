@@ -11,9 +11,14 @@
                   @if(isset($setting) && isset($setting->logo))
                      <img src="{{asset('logo/'.$setting->logo)}}" alt="">
                   @endif
-                  @foreach ($footer_menus as $footer_menu)
-                     <div style="color:@if($footer_menu->footer_description_color) {{$footer_menu->footer_description_color}} @else #b0b0b0; @endif; font-size:{{$footer_menu->footer_description_font_size}}; font-family:{{$footer_menu->footer_description_font_family}};">{!! $footer_menu->footer_description !!}</div>  
-                  @endforeach
+   
+                  <div style="color:@if($footer_menu_description->description_color ?? null) 
+                     {{$footer_menu_description->description_color}} @else #b0b0b0; @endif; 
+                     font-size:{{$footer_menu_description->description_font_size ?? null}}; 
+                     font-family:{{$footer_menu_description->description_font_family ?? null}};">
+                        {!! $footer_menu_description->description ?? null !!}
+                  </div>  
+
                   <div class="social-icon-footer float-left">
                      <a href=""> <img src="myown/css/images/facebook (1).png" alt="" width="40px"> </a>
                      <a href=""> <img src="myown/css/images/instagram (2).png" alt="" width="40px"></a>

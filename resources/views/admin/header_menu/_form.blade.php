@@ -26,6 +26,7 @@
                                             <option selected="selected" disabled="disabled">Select</option>
                                             <option value="our_businesses" {{ old('menu_name', $header_menu->menu_name) == 'our_businesses' ? 'selected' : '' }}>Our Businesses</option>
                                             <option value="our_services" {{ old('menu_name', $header_menu->menu_name) == 'our_services' ? 'selected' : '' }}>Our Services</option>
+                                            <option value="careers" {{ old('menu_name', $header_menu->menu_name) == 'careers' ? 'selected' : '' }}>Careers</option>
                                             <option value="awards_recognition" {{ old('menu_name', $header_menu->menu_name) == 'awards_recognition' ? 'selected' : '' }}>Awards & Recognition</option>
                                             <option value="contact_us" {{ old('menu_name', $header_menu->menu_name) == 'contact_us' ? 'selected' : '' }}>Contact Us</option>
                                        </select>

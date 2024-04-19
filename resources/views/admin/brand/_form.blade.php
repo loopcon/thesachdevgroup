@@ -21,12 +21,13 @@
                            
                             <div class="row">
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:145px,Width:145px;Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     @if(isset($brand->image) && isset($brand->image))
                                         <img src="{{url('public/brand/'.$brand->image)}}" width="100" style="margin-bottom: 10px;">
                                     @endif
                                     <input type="file" id="image" class="form-control" name="image">
                                     <div class="error"></div>
+                                    <small class="image_type">(Height:145px,Width:145px;Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
     
                                 <div class="col-md-4">

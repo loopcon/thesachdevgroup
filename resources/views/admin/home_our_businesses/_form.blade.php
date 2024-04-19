@@ -20,11 +20,12 @@
                             <input type="hidden" value="{{ $home_our_businesse->id }}" class="id" name="id">
                             <div class="row">
                                 <div class="mb-3 col-md-6">
-                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label><small>(Height:145px,Width:145px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     @if(isset($home_our_businesse->image) && isset($home_our_businesse->image))
                                         <img src="{{url('public/home_our_businesses/'.$home_our_businesse->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                     @endif
                                     <input type="file" id="image" class="form-control" name="image">
+                                    <small class="image_type">(Height:145px,Width:145px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="col-md-6">
