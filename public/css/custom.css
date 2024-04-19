@@ -141,7 +141,10 @@
 .used_car_form .select2-selection {height: 40px !important; padding-left: 8px; }
 .used_car_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
 .used_car_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
-
+.our_businesses_title_form .form-control{  height: 40px; padding: 4px 8px; }
+.our_businesses_title_form .select2-selection {height: 40px !important; padding-left: 8px; }
+.our_businesses_title_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
+.our_businesses_title_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
 
 /* #page_link-error  */
 .adm-brand-errorbox .error{margin-bottom: 25px;position: absolute;top: 100%;left: 5px;}
@@ -155,8 +158,13 @@
     align-items: center;
     justify-content: center;
 }
+.image_type{
+    word-break: break-all;
+    white-space: nowrap;
+}
 
 @media(max-width:575px){
     .adm-action-sticky tr th:last-child { position: unset;}
     .adm-action-sticky tr td:last-child { position: unset;}
 }
+

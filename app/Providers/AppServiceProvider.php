@@ -69,8 +69,9 @@ class AppServiceProvider extends ServiceProvider
         $home_our_businessess = Home_our_businesses::get();
         view()->share('home_our_businessess', $home_our_businessess);
 
-        $home_our_businesses_background_color = Home_our_businesses::pluck('background_color')->toArray();
-        view()->share('home_our_businesses_background_color', $home_our_businesses_background_color);
+
+        // $home_our_businesses_title = Home_our_businesses_title::first();
+        // view()->share('home_our_businesses_title', $home_our_businesses_title);
 
         $home_details = Home_detail::get();
         view()->share('home_details', $home_details);

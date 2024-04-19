@@ -18,6 +18,54 @@
             </div>
         </div>
         <div class="card">
+            
+            <div class="card-body">
+                <form action="{{ route('home_our_businesses_title_insert') }}" method="POST" class="our_businesses_title_form" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="businesses_title">Businesses Title</label>
+                            <input type="text" id="businesses_title" class="form-control" name="businesses_title" value="{{$record->businesses_title ?? null}}">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="businesses_title_color">Businesses Title Text Color</label>
+                            <input type="text" class="form-control colorpicker" name="businesses_title_color" id="businesses_title_color" value="{{$record->businesses_title_color ?? null}}">
+                        </div>
+
+                        <div class="mb-3 col-md-4">
+                            @php($fontsize = fontSize())
+                            <label for="businesses_title_font_size">Businesses Title Text Font Size</label>
+                            <select class="form-control select2" name="businesses_title_font_size">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                    <option value="{{$i}}px" @if(isset($record->businesses_title_font_size) && $record->businesses_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                @endfor
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            @php($fontfamily = fontFamily())
+                            <label for="businesses_title_font_family">Businesses Title Text Font Family</label>
+                            <select class="form-control select2" name="businesses_title_font_family">
+                                <option selected="selected" disabled="disabled">Select</option>
+                                @foreach($fontfamily as $family)
+                                <option value="{{$family['key']}}" @if(isset($record->businesses_title_font_family) && $record->businesses_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3 col-md-4">
+                            <label for="background_color">Background Color</label>
+                            <input type="text" id="background_color" class="form-control colorpicker" name="background_color" value="{{$record->background_color ?? null}}">
+                        </div>
+                    </div>  
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+
             <div class="col-sm-12  text-end">
                 <a href="{{ route('home_our_businesses') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
             </div>
@@ -29,14 +77,7 @@
                                 <tr>
                                     <th style="width:45px;">No</th>
                                     <th>Image</th>
-                                    <th>Businesses Title</th>
-
-                                    <th>Businesses Title Color</th>
-                                    <th>Businesses Title Font Size</th>
-                                    <th>Businesses Title Font Family</th>
-                                    
                                     <th>Link</th>
-                                    <th>Background Color</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -64,17 +105,7 @@
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
                 {data: 'image', name: 'image'},
-
-                {data: 'businesses_title', name: 'businesses_title'},
-
-                {data: 'businesses_title_color', name: 'businesses_title_color'},
-                {data: 'businesses_title_font_size', name: 'businesses_title_font_size'},
-                {data: 'businesses_title_font_family', name: 'businesses_title_font_family'},
-
                 {data: 'link', name: 'link'},
-
-                {data: 'background_color', name: 'background_color'},
-
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -107,6 +138,22 @@
         $('.paging_simple_numbers').parent().css('padding-right', '0px');
         $('.adm-table-responsive').parent().css('margin', '0px');
         $('.adm-table-responsive').parent().siblings().css('margin', '0px');
+        $('.colorpicker').colorpicker();
     });
+
+    $(document).ready(function () {
+        $(".our_businesses_title_form").validate({
+            rules: {
+                'businesses_title': {
+                    required: true,
+                },
+            },
+            messages: {
+                'businesses_title': {
+                    required: "The businesses title field is required.",
+                },
+            },
+        });
+    });       
 </script>
 @endsection

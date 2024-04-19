@@ -13,6 +13,8 @@ use App\Models\Home_detail;
 use App\Models\Mission_vision;
 use App\Models\Count;
 use App\Models\Testimonial;
+use App\Models\Home_our_businesses_title;
+use App\Models\Mission_vision_image;
 
 class HomeController extends Controller
 {
@@ -34,11 +36,12 @@ class HomeController extends Controller
         $home_sliders = Home_slider::get();
 
         $home_our_businessess = Home_our_businesses::get();
-        $home_our_businesses_background_color = Home_our_businesses::pluck('background_color')->toArray();
-
+        $home_our_businesses_title = Home_our_businesses_title::first();
+      
         $home_details = Home_detail::get();
         
         $mission_visions = Mission_vision::get();
+        $mission_visions_imgae = Mission_vision_image::first();
 
         $counts = Count::get();
 
@@ -48,8 +51,8 @@ class HomeController extends Controller
         return view('frontend.home',compact('header_social_media_icons','header_menu_our_businesses',
             'header_menu_our_services','header_menu_awards_recognitions','header_menu_contacts',
             'footer_menus','footer_menu_our_services','footer_menu_our_businesses','footer_menu_useful_links',
-            'home_sliders','home_our_businessess','home_our_businesses_background_color','home_details',
-            'mission_visions','counts','testimonials'
+            'home_sliders','home_our_businessess','home_our_businesses_title','home_details',
+            'mission_visions','mission_visions_imgae','counts','testimonials'
         ));
 
     }

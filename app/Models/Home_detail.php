@@ -24,6 +24,5 @@ class Home_detail extends Model
         'description_color',
         'description_font_size',
         'description_font_family',
-        'our_story_image',
     ];
 }

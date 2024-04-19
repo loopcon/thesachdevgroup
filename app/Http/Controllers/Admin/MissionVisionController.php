@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Mission_vision;
+use App\Models\Mission_vision_image;
 use DataTables;
 use File;
 
@@ -20,6 +21,8 @@ class MissionVisionController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('Mission Vision');
+                $mission_vision_image = Mission_vision_image::first();
+                $return_data['record'] = $mission_vision_image;
                 return view("admin.mission_vision.list",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('message', 'You have not permission to access this page!');
@@ -244,5 +247,56 @@ class MissionVisionController extends Controller
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
 
+    }
+    
+    //mission vision image 
+    public function mission_vision_image_insert(Request $request){
+     
+        $has_permission = hasPermission('Mission Vision');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $existing_data = Mission_vision_image::find(1);
+
+                if($existing_data) {
+
+                    $mission_vision_image = $existing_data;
+
+                    if($request->hasFile('image'))
+                    {
+                        $oldImage = $mission_vision_image->image;
+                        if($oldImage) {
+                            $oldImagePath = public_path('mission_vision_image/') . $oldImage;
+                            if(File::exists($oldImagePath)) {
+                                File::delete($oldImagePath);
+                            }
+                        }
+                    }
+
+                } else {
+                    $mission_vision_image = new Mission_vision_image();
+                }
+
+                if($file = $request->hasFile('image')) {
+                    $file = $request->file('image');
+                    $extension = $file->getClientOriginalExtension();
+                    $fileName = time(). '.' . $extension;
+            
+                    $destinationPath = public_path().'/mission_vision_image' ;
+                    $file->move($destinationPath,$fileName);
+                    $mission_vision_image->image = $fileName;
+                }
+
+                $mission_vision_image->save();
+                
+            return redirect()->route('mission_vision')->with('success','Mission Vision insert successfully.');
+
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
     }
 }

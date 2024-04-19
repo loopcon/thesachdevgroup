@@ -102,7 +102,7 @@
     <div class="header1">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light custom-nav p-0">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="{{route('home')}}">
                     @if(isset($setting) && isset($setting->logo))
                         <img src="{{url('public/logo/'.$setting->logo)}}" width="80%">
                     @endif 

@@ -6,12 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Home_our_businesses extends Model
+class Mission_vision_image extends Model
 {
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
         'image',
-        'link',
     ];
 }

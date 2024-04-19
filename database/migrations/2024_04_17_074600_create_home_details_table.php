@@ -28,7 +28,6 @@ return new class extends Migration
             $table->string('description_color')->nullable();
             $table->string('description_font_size')->nullable();
             $table->string('description_font_family')->nullable();
-            $table->string('our_story_image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

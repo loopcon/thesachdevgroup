@@ -18,6 +18,28 @@
                 </div>
             </div>
             <div class="card">
+
+                <div class="card-body">
+                    <form action="{{ route('mission_vision_image_insert') }}" method="POST" class="mission_vision_title_form" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="mb-3 col-md-4">
+                                <label for="image">Image<span class="text-danger">*</span></label>
+                                <input type="hidden" name="old_image" id="old_image" value="{{$record->image ?? null}}">
+                                    @if(isset($record->image) && isset($record->image))
+                                        <img src="{{url('public/mission_vision_image/'.$record->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
+                                    @endif
+                                <input type="file" id="image" class="form-control image" name="image">
+                                <small class="image_type">(Height:367px,Width:350px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+                        </div>  
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+
                 <div class="col-sm-12  text-end">
                     <a href="{{ route('missionVisionCreate') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
                 </div>
@@ -121,6 +143,32 @@ $(document).ready(function(){
     $('.adm-table-responsive').parent().css('margin', '0px');
     $('.adm-table-responsive').parent().siblings().css('margin', '0px');
 });
+
+
+    $(document).ready(function () {
+        $(".mission_vision_title_form").validate({
+            rules: {
+                'image': {
+                    required: checkImage,
+                    extension: "jpg,jpeg,png,webp,svg",
+                },
+            },
+            messages: {
+                'image': {
+                    required: "The image field is required.",
+                    extension: "Image must be jpg,jpeg,png,svg or webp.",
+                },
+            },
+        });
+
+        function checkImage() {
+          var old_image = $('#old_image').val();
+          if(old_image){
+            return false;
+          }
+        }
+
+    });
 
 </script>
 @endsection

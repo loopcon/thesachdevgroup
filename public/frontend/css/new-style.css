@@ -176,11 +176,14 @@ a:hover {
 }
 
 .projectFactsWrap .item{
-  width: 100%;
+  /* width: 100%; */
+  width: 25%;
   height: 100%;
   padding: 50px 0px;
   text-align: center;
 }
+
+
 
 .projectFactsWrap .item:nth-child(1){
   background: rgb(16, 31, 46);

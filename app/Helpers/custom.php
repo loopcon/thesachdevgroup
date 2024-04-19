@@ -74,7 +74,9 @@ function fontFamily(){
 function position(){
     return array(
         array('key'=>'left', 'value'=>'Left'),
-        array('key'=>'right', 'value'=>'Right')
+        array('key'=>'right', 'value'=>'Right'),
+        array('key'=>'center', 'value'=>'Center'),
+
     );
 }
 

@@ -81,6 +81,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('home_our_businesses_update,{home_our_businesses_update}', [HomeSettingController::class, 'home_our_businesses_update'])->name('home_our_businesses_update');
     Route::get('home_our_businesses_destroy/{id}', [HomeSettingController::class, 'home_our_businesses_destroy'])->name('home_our_businesses_destroy');
 
+    //home our businesses title
+    Route::post('home_our_businesses_title_insert', [HomeSettingController::class, 'home_our_businesses_title_insert'])->name('home_our_businesses_title_insert');
+
+
     //Testimonials
     Route::get('testimonials', [TestimonialController::class, 'testimonials'])->name('testimonials');
     Route::post('testimonials_insert', [TestimonialController::class, 'testimonials_insert'])->name('testimonials_insert');
@@ -168,6 +172,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('mission_vision_edit/{mission_vision_edit}', [MissionVisionController::class, 'mission_vision_edit'])->name('mission_vision.edit');
     Route::post('mission_vision_update,{id}', [MissionVisionController::class, 'mission_vision_update'])->name('mission_vision_update');
     Route::get('mission_vision_destroy/{id}', [MissionVisionController::class, 'mission_vision_destroy'])->name('mission_vision_destroy');
+
+    // mission_vision_image
+    Route::post('mission_vision_image_insert', [MissionVisionController::class, 'mission_vision_image_insert'])->name('mission_vision_image_insert');
 
     //service center
     Route::get('service-center', [ServiceCenterController::class, 'serviceCenterList'])->name('service-center');

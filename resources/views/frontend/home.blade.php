@@ -26,35 +26,52 @@
   </div>
     
   <!-- our businesses -->
-  <section id="brands-section" style="background-color:{{$home_our_businesses_background_color[0] ?? null}};">
+  <section id="brands-section" style="background-color:{{$home_our_businesses_title->background_color ?? null}};">
     <div class="col-md-12">
       <div class="brand-title">
-        @foreach($home_our_businessess as $home_our_businesses)
-          <h2 style="color: {{$home_our_businesses->businesses_title_color}}; font-size:{{$home_our_businesses->businesses_title_font_size}}; font-family:{{$home_our_businesses->businesses_title_font_family}};">{{$home_our_businesses->businesses_title}}</h2>
-          <p></p>
-        @endforeach
+        <h2 style="color: {{$home_our_businesses_title->businesses_title_color}}; font-size:{{$home_our_businesses_title->businesses_title_font_size}}; font-family:{{$home_our_businesses_title->businesses_title_font_family}};">{{$home_our_businesses_title->businesses_title}}</h2>
+        <p></p>
       </div>
     </div>
-    <div class="brands-logo-parent owl-carousel owl-theme" id="our_businesses_carousel">
-      @foreach($home_our_businessess as $home_our_businesses)
-        <div class="brand-one">
-            <a href="{{$home_our_businesses->link}}" target="_blank">
-              <img src="{{url('public/home_our_businesses/'.$home_our_businesses->image)}}" alt="" width="100%"> 
-            </a>
-        </div> 
-      @endforeach
-    </div>
+    @if($home_our_businessess->count() > 7)
+      <div class="brands-logo-parent owl-carousel owl-theme" id="our_businesses_carousel">
+        @foreach($home_our_businessess as $home_our_businesses)
+          <div class="brand-one">
+              <a href="{{$home_our_businesses->link}}" target="_blank">
+                <img src="{{url('public/home_our_businesses/'.$home_our_businesses->image)}}" alt="" width="100%"> 
+              </a>
+          </div> 
+        @endforeach
+      </div>
+    @else
+    <div class="brands-logo-parent">
+      <div class="brands-logo">
+          @foreach($home_our_businessess as $home_our_businesses)
+               <div class="brand-one">
+                   <a href="{{$home_our_businesses->link}}" target="_blank">
+                     <img src="{{url('public/home_our_businesses/'.$home_our_businesses->image)}}" alt="" width="100%"> 
+                   </a>
+               </div> 
+           @endforeach
+      </div>
+     </div>
+    @endif
   </section>
+
+
+
+  
+
+
 
     <section id="our_story_section">
       <div class="container">
           <div class="row">
               <div class="col-md-4">
                   <div class="our-story-image">
-                      @foreach ($home_details as $home_detail)
-                          <img src="{{url('public/our_story_image/'.$home_detail->our_story_image)}}" alt="" width="100%"> 
-                          
-                      @endforeach
+                      @if(isset($mission_visions_imgae->image) && isset($mission_visions_imgae->image))
+                        <img src="{{url('public/mission_vision_image/'.$mission_visions_imgae->image)}}" width="100%">
+                      @endif
                   </div>
               </div>
               <div class="col-md-8">
@@ -95,23 +112,45 @@
   </section>
 
   <!-- count -->
-  <div class="contain">
-    <div id="count_owl" class="owl-carousel owl-theme projectFactsWrap">
-      @php($counter = 0)
+  
+    @if($counts->count() > 4)
+      <div id="count_owl" class="owl-carousel owl-theme projectFactsWrap">
+        @php($counter = 0)
+        @foreach ($counts as $count)
+          @php($counter ++)
+          <div class="item" style="background-color:{{$count->background_color}};">
+              <img src="{{url('public/count_icon/'.$count->icon)}}" style="width:50px; height:50px;"> 
+              <p class="number number{{$counter}}" style="color:{{$count->amount_color}}; font-size:{{$count->amount_font_size}}; font-family:{{$count->amount_font_family}};">
+                {{$count->amount}}
+              </p>
+              <span></span>
+              <p style="color:{{$count->name_color}}; font-size:{{$count->name_font_size}}; font-family:{{$count->name_font_family}};">{{$count->name}}</p>
+          </div>
+        @endforeach
+      </div>
+
+    @else
+
+    <div class="projectFactsWrap">
+      @php($counter_data = 0)
       @foreach ($counts as $count)
-        @php($counter ++)
+        @php($counter_data ++)
         <div class="item" style="background-color:{{$count->background_color}};">
-            <img src="{{url('public/count_icon/'.$count->icon)}}" style="width:50px; height:50px;"> 
-            <p class="number number{{$counter}}" style="color:{{$count->amount_color}}; font-size:{{$count->amount_font_size}}; font-family:{{$count->amount_font_family}};">
-              {{$count->amount}}
-            </p>
-            <span></span>
-            <p style="color:{{$count->name_color}}; font-size:{{$count->name_font_size}}; font-family:{{$count->name_font_family}};">{{$count->name}}</p>
+          <img src="{{url('public/count_icon/'.$count->icon)}}" style="width:50px; height:50px;"> 
+          <p class="number number{{$counter_data}}" style="color:{{$count->amount_color}}; font-size:{{$count->amount_font_size}}; font-family:{{$count->amount_font_family}};">
+            {{$count->amount}}
+          </p>
+          <span></span>
+          <p style="color:{{$count->name_color}}; font-size:{{$count->name_font_size}}; font-family:{{$count->name_font_family}};">{{$count->name}}</p>
         </div>
       @endforeach
-    </div>
-  </div>
+    </div> 
 
+    @endif
+
+  
+
+ 
   <!-- home deatail -->
   <section id="about-us">
     <div class="container">
@@ -177,59 +216,60 @@
 
 {{-- <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script> --}}
 
+{{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> --}}
+
 <script>
-  $('#owl-carousel').owlCarousel({
-    loop: true,
-    margin: 30,
-    dots: true,
-    nav: true,
-    items: 1,
-    navText: [
-      '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-      '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-    ]
-  });
-
-  $('#our_businesses_carousel').owlCarousel({
-    loop: false,
-    dots: false,
-    nav: false,
-    items: 7,
-    responsiveClass: true,
-    responsive: {
-      0:{
-        items: 2
-      },
-      480:{
-        items: 3
-      },
-      769:{
-        items: 7
-      }
-    }
-  });
-
-  $('#count_owl').owlCarousel({
-    loop: false,
-    dots: false,
-    nav: false,
-    items: 4,
-    responsiveClass: true,
-    responsive: {
-      0:{
-        items: 2
-      },
-      480:{
-        items: 3
-      },
-      769:{
-        items: 4
-      }
-    }
-  });
-
-	
   $(document).ready(function() {
+    $('#owl-carousel').owlCarousel({
+      loop: true,
+      margin: 30,
+      dots: true,
+      nav: true,
+      items: 1,
+      navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+      ]
+    });
+
+    $('#our_businesses_carousel').owlCarousel({
+      loop: true,
+      dots: false,
+      nav: false,
+      items: 7,
+      responsiveClass: true,
+      responsive: {
+        0:{
+          items: 2
+        },
+        480:{
+          items: 3
+        },
+        769:{
+          items: 7
+        }
+      }
+    });
+
+    $('#count_owl').owlCarousel({
+      loop: false,
+      dots: false,
+      nav: false,
+      items: 4,
+      responsiveClass: true,
+      responsive: {
+        0:{
+          items: 2
+        },
+        480:{
+          items: 3
+        },
+        769:{
+          items: 4
+        }
+      }
+    });
+
     $.fn.jQuerySimpleCounter = function(options) {
       var settings = $.extend({
         start: 0,
@@ -258,6 +298,7 @@
       $('.number{{$counter}}').jQuerySimpleCounter({end: {{$count->amount}}, duration: 3000});
     @endforeach
   });
+ 
 
   /* AUTHOR LINK */
   $('.about-me-img').hover(function(){

@@ -8,6 +8,7 @@ use App\Models\Home_slider;
 use App\Models\Home_our_businesses;
 use App\Models\Testimonial;
 use App\Models\Home_detail;
+use App\Models\Home_our_businesses_title;
 use DataTables;
 use File;
 
@@ -249,16 +250,7 @@ class HomeSettingController extends Controller
                 $home_our_businesses->image = $fileName;
             }
 
-            $home_our_businesses->businesses_title = $request->businesses_title;
-
-            $home_our_businesses->businesses_title_color = $request->businesses_title_color;
-            $home_our_businesses->businesses_title_font_size = $request->businesses_title_font_size;
-            $home_our_businesses->businesses_title_font_family = $request->businesses_title_font_family;
-
             $home_our_businesses->link = $request->link;
-
-            $home_our_businesses->background_color = $request->background_color;
-
             $home_our_businesses->save();
 
             return redirect()->route('home_our_businesses.index')->with('success','Home Our Businesses insert successfully.');
@@ -269,7 +261,7 @@ class HomeSettingController extends Controller
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
-   }
+    }
 
    public function home_our_businesses_index(Request $request){
         if ($request->ajax()) {
@@ -311,7 +303,10 @@ class HomeSettingController extends Controller
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
-                return view('admin.home_our_businesses.show');
+                $home_our_businesses_title = Home_our_businesses_title::first();
+
+                $return_data['record'] = $home_our_businesses_title;
+                return view("admin.home_our_businesses.show",array_merge($return_data));
 
             }else {
                 return redirect('dashboard')->with('message', 'You have not permission to access this page!');
@@ -362,15 +357,7 @@ class HomeSettingController extends Controller
                     $home_our_businesses->image = $filename;
                 }
 
-                $home_our_businesses->businesses_title = $request->businesses_title;
-
-                $home_our_businesses->businesses_title_color = $request->businesses_title_color;
-                $home_our_businesses->businesses_title_font_size = $request->businesses_title_font_size;
-                $home_our_businesses->businesses_title_font_family = $request->businesses_title_font_family;
-
                 $home_our_businesses->link = $request->link;
-
-                $home_our_businesses->background_color = $request->background_color;
                 $home_our_businesses->save();
 
                 return redirect()->route('home_our_businesses.index')->with('success','Home Our Businesses update successfully.');
@@ -454,18 +441,6 @@ class HomeSettingController extends Controller
                         }
                     }
 
-                    if($request->hasFile('our_story_image'))
-                    {
-                        $oldstoryImage = $home_detail->our_story_image;
-                        if($oldstoryImage) {
-                            $oldstoryImagePath = public_path('our_story_image/') . $oldstoryImage;
-                            if(File::exists($oldstoryImagePath)) {
-                                File::delete($oldstoryImagePath);
-                            }
-                        }
-                    }
-
-
                 } else {
                     $home_detail = new Home_detail();
                 }
@@ -478,16 +453,6 @@ class HomeSettingController extends Controller
                     $destinationPath = public_path().'/home_detail' ;
                     $file->move($destinationPath,$fileName);
                     $home_detail->image = $fileName;
-                }
-
-                if($file = $request->hasFile('our_story_image')) {
-                    $file = $request->file('our_story_image');
-                    $extension = $file->getClientOriginalExtension();
-                    $fileName = time(). '.' . $extension;
-            
-                    $destinationPath = public_path().'/our_story_image' ;
-                    $file->move($destinationPath,$fileName);
-                    $home_detail->our_story_image = $fileName;
                 }
 
                 $home_detail->title = $request->title;
@@ -518,6 +483,39 @@ class HomeSettingController extends Controller
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
 
+    }
+
+    // home_our_businesses_title_insert
+    public function home_our_businesses_title_insert(Request $request){
+     
+        $has_permission = hasPermission('Home Our Businesses');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $existing_data = Home_our_businesses_title::find(1);
+
+                if($existing_data) {
+                    $home_our_businesses_title = $existing_data;
+                } else {
+                    $home_our_businesses_title = new Home_our_businesses_title();
+                }
+            
+                $home_our_businesses_title->businesses_title = $request->businesses_title;
+                $home_our_businesses_title->businesses_title_color = $request->businesses_title_color;
+                $home_our_businesses_title->businesses_title_font_size = $request->businesses_title_font_size;
+                $home_our_businesses_title->businesses_title_font_family = $request->businesses_title_font_family;
+                $home_our_businesses_title->background_color = $request->background_color;
+                $home_our_businesses_title->save();
+                
+            return redirect()->route('home_our_businesses.index')->with('success','Home Our Businesses insert successfully.');
+
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
     }
 
    

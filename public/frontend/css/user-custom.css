@@ -209,6 +209,9 @@
   }
    */
 
+#count_owl .item{
+    width: 100% !important;
+}
 
 
 @media(max-width:1199px){

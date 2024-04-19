@@ -142,22 +142,6 @@
                                   <div class="error"></div>
                               </div>
                             </div>
-
-                            <div class="form-row">
-
-                              <div class="form-group col-md-4">
-                                <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label><small>(Height:367px,Width:350px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                                
-                                  <input type="hidden" name="mission_vision_image" id="mission_vision_image" value="{{$home_detail->our_story_image}}">
-
-                                  @if(isset($home_detail->our_story_image) && isset($home_detail->our_story_image))
-                                    <img src="{{url('public/our_story_image/'.$home_detail->our_story_image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
-                                  @endif
-                                <input type="file" id="our_story_image" class="form-control our_story_image" name="our_story_image">
-                                <div class="error"></div>
-                              </div>
-                            </div>
-    
                             @endforeach
                         @else
 
@@ -177,7 +161,7 @@
                             <label for="title_color">Title Text Color</label>
                             <input type="text" class="form-control colorpicker" name="title_color" id="title_color">
                             <div class="error"></div>
-                        </div>
+                          </div>
                         </div>
                         
 
@@ -273,16 +257,6 @@
                           </div>
                         </div>
 
-                        <div class="form-row">
-
-                          <div class="form-group col-md-4">
-                            <label for="our_story_image">Mission Vision Image<span class="text-danger">*</span></label><small>(Height:367px,Width:350px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            <input type="file" id="our_story_image" class="form-control our_story_image" name="our_story_image">
-                            <div class="error"></div>
-                          </div>
-
-                        </div>
-
                         @endif
                   
                         <div class="form-row">
@@ -313,10 +287,6 @@
                 'sub_title': {
                     required: true,
                 },
-                'our_story_image': {
-                  required: checkMissionVisionImage,  
-                  extension: "jpg,jpeg,png,webp,svg",
-                },
             },
             messages: {
                 'image': {
@@ -328,10 +298,6 @@
                 },
                 'sub_title': {
                     required: "The sub title field is required.",
-                },
-                'our_story_image': {
-                    required: "The mission vision image field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
                 },
             },
             errorPlacement: function(error, element) {
@@ -345,14 +311,6 @@
             return false;
           }
         }
-
-        function checkMissionVisionImage() {
-          var mission_vision_image = $('#mission_vision_image').val();
-          if(mission_vision_image){
-            return false;
-          }
-        }
-
 
         $('.colorpicker').colorpicker();
     });
