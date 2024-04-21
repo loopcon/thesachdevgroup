@@ -22,11 +22,18 @@
                                 <label for="menu_name" class="form-label">Select Menu<span class="text-danger">*</span></label>
                                 <select class="form-control select2 menu_name" name="menu_name">
                                     <option selected="selected" disabled="disabled">Select</option>
-                                    <option value="our_businesses" @if(old('menu_name') == 'our_businesses'){{'selected'}}@endif>Our Businesses</option>
+                                    {{-- <option value="our_businesses" @if(old('menu_name') == 'our_businesses'){{'selected'}}@endif>Our Businesses</option>
                                     <option value="our_services" @if(old('menu_name') == 'our_services'){{'selected'}}@endif>Our Services</option>
                                     <option value="careers" @if(old('menu_name') == 'careers'){{'selected'}}@endif>Careers</option>
                                     <option value="awards_recognition" @if(old('menu_name') == 'awards_recognition'){{'selected'}}@endif>Awards & Recognition</option>
-                                    <option value="contact_us" @if(old('menu_name') == 'contact_us'){{'selected'}}@endif>Contact Us</option>
+                                    <option value="contact_us" @if(old('menu_name') == 'contact_us'){{'selected'}}@endif>Contact Us</option> --}}
+                                    
+                                    <option value="Our Businesses" @if(old('menu_name') == 'Our Businesses'){{'selected'}}@endif>Our Businesses</option>
+                                    <option value="Our Services" @if(old('menu_name') == 'Our Services'){{'selected'}}@endif>Our Services</option>
+                                    <option value="Careers" @if(old('menu_name') == 'Careers'){{'selected'}}@endif>Careers</option>
+                                    <option value="Awards & Recognition" @if(old('menu_name') == 'Awards & Recognition'){{'selected'}}@endif>Awards & Recognition</option>
+                                    <option value="Contact Us" @if(old('menu_name') == 'Contact Us'){{'selected'}}@endif>Contact Us</option>
+
                                 </select>
                                 {{-- <div class="error"></div> --}}
                                 <div class="error">@if ($errors->has('menu_name')) <label id="menu_name-error" class="error">{{ $errors->first('menu_name') }}</label>@endif</div>

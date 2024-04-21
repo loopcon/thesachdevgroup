@@ -24,11 +24,17 @@
 
                             <div class="mb-3 col-md-4">
                                 <label for="menu_name" class="form-label">Select Menu<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="menu_name">
+                                {{-- <select class="form-control select2" name="menu_name">
                                     <option selected="selected" disabled="disabled">Select</option>
                                     <option value="our_services" {{(old('menu_name') == 'our_services' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'our_services' ? 'selected' : ''))}}>Our Services</option>
                                     <option value="our_businesses" {{(old('menu_name') == 'our_businesses' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'our_businesses' ? 'selected' : ''))}}>Our Businesses</option>
                                     <option value="useful_links" {{(old('menu_name') == 'useful_links' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'useful_links' ? 'selected' : ''))}}>Useful Links</option>
+                                </select> --}}
+                                <select class="form-control select2" name="menu_name">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="Our Services" {{(old('menu_name') == 'Our Services' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'Our Services' ? 'selected' : ''))}}>Our Services</option>
+                                    <option value="Our Businesses" {{(old('menu_name') == 'Our Businesses' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'Our Businesses' ? 'selected' : ''))}}>Our Businesses</option>
+                                    <option value="Useful Links" {{(old('menu_name') == 'Useful Links' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'Useful Links' ? 'selected' : ''))}}>Useful Links</option>
                                 </select>
                                 <div class="error">@if ($errors->has('menu_name')) <label id="menu_name-error" class="error">{{ $errors->first('menu_name') }}</label>@endif</div>
                             </div>

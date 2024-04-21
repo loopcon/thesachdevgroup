@@ -24,17 +24,17 @@ class HomeController extends Controller
 
         $header_social_media_icons = Header_menu_social_media_icon::get();
 
-        $header_menu_our_businesses = Header_menu::where('menu_name','our_businesses')->get();
-        $header_menu_our_services = Header_menu::where('menu_name','our_services')->get();
-        $header_menu_careers = Header_menu::where('menu_name','careers')->get();
-        $header_menu_awards_recognitions = Header_menu::where('menu_name','awards_recognition')->get();
-        $header_menu_contacts = Header_menu::where('menu_name','contact_us')->get();
+        $header_menu_our_businesses = Header_menu::where('menu_name','Our Businesses')->get();
+        $header_menu_our_services = Header_menu::where('menu_name','Our Services')->get();
+        $header_menu_careers = Header_menu::where('menu_name','Careers')->get();
+        $header_menu_awards_recognitions = Header_menu::where('menu_name','Awards & Recognition')->get();
+        $header_menu_contacts = Header_menu::where('menu_name','Contact Us')->get();
 
         $footer_menus = Footer_menu::get();
 
-        $footer_menu_our_services = Footer_menu::where('menu_name','our_services')->get();
-        $footer_menu_our_businesses = Footer_menu::where('menu_name','our_businesses')->get();
-        $footer_menu_useful_links = Footer_menu::where('menu_name','useful_links')->get();
+        $footer_menu_our_services = Footer_menu::where('menu_name','Our Services')->get();
+        $footer_menu_our_businesses = Footer_menu::where('menu_name','Our Businesses')->get();
+        $footer_menu_useful_links = Footer_menu::where('menu_name','Useful Links')->get();
 
         $footer_menu_description = Footer_menu_description::first();
 

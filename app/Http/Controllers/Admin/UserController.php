@@ -34,7 +34,8 @@ class UserController extends Controller
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
                 $return_data = array();
-                $return_data['role'] = DB::table('roles')->select('id','name')->get();
+                // $return_data['role'] = DB::table('roles')->select('id','name')->get();
+                $return_data['role'] = DB::table('roles')->select('id','name')->whereNot('id',1)->get();
                 $return_data['site_title'] = trans('User Create');
                 return view("admin.user.form",array_merge($return_data));
             }else {
@@ -117,7 +118,8 @@ class UserController extends Controller
                 $return_data['site_title'] = trans('User Edit');
                 $user = User::find($id);
                 $return_data['record'] = $user;
-                $return_data['role'] = DB::table('roles')->select('id','name')->get();
+                // $return_data['role'] = DB::table('roles')->select('id','name')->get();
+                $return_data['role'] = DB::table('roles')->select('id','name')->whereNot('id',1)->get();
                 return view("admin.user.form",array_merge($return_data));
             }
         }else {

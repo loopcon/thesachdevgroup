@@ -49,15 +49,16 @@
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-3">
                                 <label for="password">Password<span class="text-danger">*</span></label>
-                                <input type="password" id="password" name="password" value="{{isset($record->visible_password) ? $record->visible_password : ''}}" required="" class="form-control">
+                                <input type="text" id="password" name="password" value="{{isset($record->visible_password) ? $record->visible_password : ''}}" required="" class="form-control">
                                 @if ($errors->has('password')) <div class="text-danger">{{ $errors->first('password') }}</div>@endif
+                                <small>(Password must contain at least one special character,capital)</small>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="password">Confirm Password<span class="text-danger">*</span></label>
-                                <input type="password" name="cpassword" class="form-control" required data-parsley-equalto="#password">
+                                <input type="text" name="cpassword" class="form-control" required data-parsley-equalto="#password" value="{{isset($record->visible_password) ? $record->visible_password : ''}}">
                                 @if ($errors->has('cpassword')) <div class="text-danger">{{ $errors->first('cpassword') }}</div>@endif
                             </div>
                         </div>

@@ -295,7 +295,7 @@
         @if(hasPermission('Vacancies') || hasPermission('Career'))
             <li class="nav-item has-treeview {{ (request()->is('career*') || request()->is('vacancies*')) ? 'menu-open' : '' }}">
                 <a href="#" class="nav-link {{ (request()->is('career*') || request()->is('vacancies*')) ? 'active' : '' }}">
-                <i class="fa fa-graduation-cap"></i>
+                <i class="nav-icon fa fa-graduation-cap"></i>
 
                     <p>
                     Careers
@@ -416,6 +416,21 @@
                         <i class="nav-icon fas fa-ellipsis-h"></i>
                         <p>
                             Used Car
+                        </p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
+        
+        @php($has_permission = hasPermission('Contact Us'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                <li class="nav-item"> 
+                    <a href="{{url('contact_us')}}" class="nav-link {{request()->is('contact_us*') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-phone"></i> 
+                        <p>
+                            Contact Us
                         </p>
                     </a>
                 </li>

@@ -316,3 +316,5 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 -- Drashti : 16-04-2024 03:17 AM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Used Car', NULL, NULL, NULL);
 
+-- Drashti : 19-04-2024 12:53 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Contact Us', NULL, NULL, NULL);

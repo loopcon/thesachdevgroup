@@ -24,6 +24,18 @@
                     <form action="@if(isset($record->id)) {{ route('our-business-update', array('id' => encrypt($record->id))) }} @else{{ route('our-business-store') }} @endif" method="POST" class="our-business-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
+
+                            <div class="col-md-4 mt-3">
+                                <label for="banner_image" class="form-label">Banner Image</label><span class="text-danger">*</span>
+                                @if(isset($record->banner_image) && $record->banner_image)
+                                    <img src="{{url('public/uploads/our_business/'.$record->banner_image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                @endif  
+                                <input type="file" id="banner_image" class="form-control" name="banner_image" value="">
+                                @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
+                                <div class="error"></div>
+                                <small class="image_type">(Hight:281,Width:1349; Image Type : jpg,jpeg,png,webp)</small>
+                            </div>
+                            
                             <div class="col-md-4 adm-brand-errorbox">
                                 <label for="page_link" class="form-label">page Link or Url<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="page_link" id="page_link">
@@ -105,17 +117,6 @@
                             <div class="col-md-4 mt-2">
                                 <label for="description_font_color" class="form-label">Description Font Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
-                            </div>
-
-                            <div class="col-md-4 mt-3">
-                                <label for="banner_image" class="form-label">Banner Image</label><span class="text-danger">*</span>
-                                @if(isset($record->banner_image) && $record->banner_image)
-                                    <img src="{{url('public/uploads/our_business/'.$record->banner_image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
-                                @endif  
-                                <input type="file" id="banner_image" class="form-control" name="banner_image" value="">
-                                @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
-                                <div class="error"></div>
-                                <small class="image_type">(Hight:281,Width:1349; Image Type : jpg,jpeg,png,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-3">

@@ -22,14 +22,22 @@
                                 <div class="row">
                                     <div class="mb-3 col-md-4">
                                         <label for="menu_name" class="form-label">Select Menu<span class="text-danger">*</span></label>
-                                        <select class="form-control select2 menu_name" name="menu_name">
+                                        {{-- <select class="form-control select2 menu_name" name="menu_name">
                                             <option selected="selected" disabled="disabled">Select</option>
                                             <option value="our_businesses" {{ old('menu_name', $header_menu->menu_name) == 'our_businesses' ? 'selected' : '' }}>Our Businesses</option>
                                             <option value="our_services" {{ old('menu_name', $header_menu->menu_name) == 'our_services' ? 'selected' : '' }}>Our Services</option>
                                             <option value="careers" {{ old('menu_name', $header_menu->menu_name) == 'careers' ? 'selected' : '' }}>Careers</option>
                                             <option value="awards_recognition" {{ old('menu_name', $header_menu->menu_name) == 'awards_recognition' ? 'selected' : '' }}>Awards & Recognition</option>
                                             <option value="contact_us" {{ old('menu_name', $header_menu->menu_name) == 'contact_us' ? 'selected' : '' }}>Contact Us</option>
-                                       </select>
+                                       </select> --}}
+                                        <select class="form-control select2 menu_name" name="menu_name">
+                                            <option selected="selected" disabled="disabled">Select</option>
+                                            <option value="Our Businesses" {{ old('menu_name', $header_menu->menu_name) == 'Our Businesses' ? 'selected' : '' }}>Our Businesses</option>
+                                            <option value="Our Services" {{ old('menu_name', $header_menu->menu_name) == 'Our Services' ? 'selected' : '' }}>Our Services</option>
+                                            <option value="Careers" {{ old('menu_name', $header_menu->menu_name) == 'Careers' ? 'selected' : '' }}>Careers</option>
+                                            <option value="Awards & Recognition" {{ old('menu_name', $header_menu->menu_name) == 'Awards & Recognition' ? 'selected' : '' }}>Awards & Recognition</option>
+                                            <option value="Contact Us" {{ old('menu_name', $header_menu->menu_name) == 'Contact Us' ? 'selected' : '' }}>Contact Us</option>
+                                        </select>
                                     </div>
         
                                     <div class="col-md-4">

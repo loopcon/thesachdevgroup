@@ -65,7 +65,7 @@
                                 @endif  
                                 <input type="file" id="banner_image" class="form-control" name="banner_image" required="" value="">
                                 @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
-                                <small class="image_type">(Hight:478px,Width:1349px; banner_image Type : jpg,jpeg,png,svg,webp)</small>
+                                <small class="image_type">(Hight:478px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
