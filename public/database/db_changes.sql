@@ -318,3 +318,6 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 
 -- Drashti : 19-04-2024 12:53 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Contact Us', NULL, NULL, NULL);
+
+-- Disha : 23-04-2024 5:55 PM
+ALTER TABLE `service_center` CHANGE `service_id` `service_id` VARCHAR(255) NULL DEFAULT NULL COMMENT '`id` of `service`';

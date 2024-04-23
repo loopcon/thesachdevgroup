@@ -36,12 +36,12 @@
                                 @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4 adm-brand-errorbox">
+                            <div class="col-md-4 adm-select-car-drop">
                                 <label for="service_id" class="form-label">Service<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="service_id" id="service_id" required="">
-                                    <option value="">-- Select Service --</option>
+                                <select class="form-control select2" name="service_id[]" id="service_id" required="" multiple>
+                                    <option value="" disabled>-- Select Service --</option>
                                     @foreach($services as $value)
-                                        <option value="{{$value->id}}"@if(isset($record->service_id) && $record->service_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
+                                    <option value="{{$value->id}}"@if(isset($record->service_id) && in_array($value->id, json_decode($record->service_id)) == $value->id){{'selected'}}@endif>{{$value->name}}</option>
                                     @endforeach
                                 </select>
                                 <div id="error"></div>

@@ -68,12 +68,13 @@ class ServiceCenterController extends Controller
                     'number_of_rating' => 'required|numeric',
                 ]);
                 $service_center = new ServiceCenter();
-                $fields = array('service_id', 'business_id', 'name', 'name_color', 'name_font_size','name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color', 'rating', 'number_of_rating', 'slider_service_center_name', 'slider_service_center_name_color', 'slider_service_center_name_size', 'slider_service_center_name_font_family');
+                $fields = array('business_id', 'name', 'name_color', 'name_font_size','name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color', 'rating', 'number_of_rating', 'slider_service_center_name', 'slider_service_center_name_color', 'slider_service_center_name_size', 'slider_service_center_name_font_family');
                 foreach($fields as $field)
                 {
                     $service_center->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
                 }
 
+                $service_center->service_id = json_encode($request->service_id);
                 if($request->hasFile('image')) {
                     $image = fileUpload($request, 'image', 'uploads/service_center');
                     $service_center->image = $image;
@@ -215,12 +216,13 @@ class ServiceCenterController extends Controller
                     'number_of_rating' => 'required|numeric',
                 ]);
                 $service_center = ServiceCenter::find($id);
-                $fields = array('business_id', 'service_id', 'name', 'name_color', 'name_font_size','name_font_family', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color', 'rating', 'number_of_rating','slider_service_center_name','slider_service_center_name_color', 'slider_service_center_name_size', 'slider_service_center_name_font_family');
+                $fields = array('business_id', 'name', 'name_color', 'name_font_size','name_font_family', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color', 'rating', 'number_of_rating','slider_service_center_name','slider_service_center_name_color', 'slider_service_center_name_size', 'slider_service_center_name_font_family');
                 foreach($fields as $field)
                 {
                     $service_center->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
                 }
 
+                $service_center->service_id = json_encode($request->service_id);
                 if($request->hasFile('image')) {
                     $oldimage = $service_center->image;
                     if($oldimage)
