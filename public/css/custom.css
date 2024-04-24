@@ -167,11 +167,10 @@
 .sidebar-collapse .logo-image{width: 30px;}
 .sidebar-collapse .brand-link{height: 75px;display: flex;align-items: center;justify-content: center;}
 .nav-treeview li a{padding-left: 35px !important;}
-.image_type{
-    word-break: break-all;
-    white-space: nowrap;
+.image_type{word-break: break-all;white-space: nowrap;}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    padding-left: 8px !important;
 }
-
 @media(max-width:575px){
     .adm-action-sticky tr th:last-child { position: unset;}
     .adm-action-sticky tr td:last-child { position: unset;}
