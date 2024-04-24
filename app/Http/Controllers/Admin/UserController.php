@@ -126,6 +126,7 @@ class UserController extends Controller
                 $return_data['record'] = $user;
                 // $return_data['role'] = DB::table('roles')->select('id','name')->get();
                 $return_data['role'] = DB::table('roles')->select('id','name')->whereNot('id',1)->get();
+                $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
                 return view("admin.user.form",array_merge($return_data));
             }
         }else {
@@ -184,6 +185,39 @@ class UserController extends Controller
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function getBusiness(request $request)
+    {
+        if($request->ajax()){
+            $showroom = Showroom::select('id', 'name')->where('our_business_id', $request->business_id)->get();
+            $html = '<option value="">'.trans('-- select --').'</option>';
+            if($showroom->count()){
+                foreach($showroom as $value){
+                    $html .= '<option value="'.$value->id.'">'.$value->name.'</option>';
+                }
+            }
+
+            $service_center = ServiceCenter::select('id','name')->where('business_id', $request->business_id)->get();
+            $service_center_html = '<option value="">'.trans('-- select --').'</option>';
+            if($service_center->count()){
+                foreach($service_center as $value){
+                    $service_center_html .= '<option value="'.$value->id.'">'.$value->name.'</option>';
+                }
+            }
+
+            $body_shop = Body_shop::select('id','name')->where('business_id', $request->business_id)->get();
+            $body_shop_html = '<option value="">'.trans('-- select --').'</option>';
+            if($service_center->count()){
+                foreach($service_center as $value){
+                    $service_center_html .= '<option value="'.$value->id.'">'.$value->name.'</option>';
+                }
+            }
+            echo json_encode(array('html' => $html, 'service_center_html' => $service_center_html));
+            exit;
+        } else {
+            return redirect('dashboard');
         }
     }
 }

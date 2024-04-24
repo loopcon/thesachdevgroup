@@ -11,6 +11,7 @@ class Used_car extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
+        'business_id',
         'image',
         'name',
         'slug',
