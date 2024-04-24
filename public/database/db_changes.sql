@@ -321,3 +321,8 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 
 -- Disha : 23-04-2024 5:55 PM
 ALTER TABLE `service_center` CHANGE `service_id` `service_id` VARCHAR(255) NULL DEFAULT NULL COMMENT '`id` of `service`';
+
+-- Disha 24-04-2024 2:00 PM
+ALTER TABLE `body_shops` ADD `business_id` INT(11) NULL DEFAULT NULL AFTER `id`;
+ALTER TABLE `used_cars` ADD `business_id` INT(11) NULL DEFAULT NULL AFTER `id`;
+

@@ -23,6 +23,18 @@
                         <div class="row">
 
                             <div class="mb-3 col-md-4">
+                                <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="business_id" id="business_id">
+                                    <option value="">-- Select Our Business --</option>
+                                    @if(isset($our_business) && $our_business->count())
+                                        @foreach($our_business as $value)
+                                            <option value="{{$value->id}}"@if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}}@endif>{{$value->title}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                 
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->image) ? $record->image : old('old_image')}}">

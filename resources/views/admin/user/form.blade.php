@@ -37,26 +37,32 @@
 
                             <div class="mb-3 col-md-4">
                                 <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="business_id">
+                                <select class="form-control select2" name="business_id" id="business_id">
                                     <option value="">-- Select Our Business --</option>
                                     @if(isset($our_business) && $our_business->count())
                                         @foreach($our_business as $value)
-                                            <option value="{{$value->id}}"@if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
+                                            <option value="{{$value->id}}"@if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}}@endif>{{$value->title}}</option>
                                         @endforeach
                                     @endif
                                 </select>
                             </div>
 
                             <div class="mb-3 col-md-4">
-                                <label for="showroom_id" class="form-label">Showroom<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="showroom_id">
+                                <label for="showroom_id" class="form-label">Showroom</label>
+                                <select class="form-control select2" name="showroom_id" id="showroom_id">
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="service_center_id" class="form-label">Service Center</label>
+                                <select class="form-control select2" name="service_center_id" id="service_center_id">
                                 </select>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : ''}}">
-                            </div>
+                            </div>  
 
                             <div class="col-md-4">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
@@ -88,26 +94,33 @@
         </div>
     </section>
   </div>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
   @endsection
   @section('javascript')
   <script>
     $(document).ready(function () {
 
-        $('#business_id').on('change', function(){
+        $(document).on('change','#business_id',function(){
             var business_id = $(this).val();
-            if(!empty(business_id))
+            if(business_id !="" && business_id != null)
             {
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 $.ajax({
                     method:'post',
-                    url:'{{route('get-showroom')}}',
-                    data:{business_id:business_id},
-                    success : function(result)
-                    {
-                        var result = $.parseJson(result);
+                    url:'{{route('get-business')}}',
+                    data:{_token: CSRF_TOKEN,business_id:business_id},
+                    success : function(result){
+                         var result = JSON.parse(result);
+                        $('#showroom_id').html(result.html);
+                        $('#service_center_id').html(result.service_center_html);
                     }
                 })
+            } else {
+                $('#showroom_id').empty();
+                $('#service_center_id').empty();
             }
         })
+
         $(".user-form").validate({
             rules: {
                 'name': {
