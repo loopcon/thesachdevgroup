@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\OurBusiness;
+use App\Models\Showroom;
+use App\Models\ServiceCenter;
+use App\Models\Body_shop;
+use App\Models\Used_car;
 use DataTables;
 use DB;
 
@@ -36,6 +41,7 @@ class UserController extends Controller
                 $return_data = array();
                 // $return_data['role'] = DB::table('roles')->select('id','name')->get();
                 $return_data['role'] = DB::table('roles')->select('id','name')->whereNot('id',1)->get();
+                $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
                 $return_data['site_title'] = trans('User Create');
                 return view("admin.user.form",array_merge($return_data));
             }else {

@@ -33,13 +33,29 @@
                                         @endforeach
                                     @endif
                                 </select>
-                                <div class="error"></div>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="business_id">
+                                    <option value="">-- Select Our Business --</option>
+                                    @if(isset($our_business) && $our_business->count())
+                                        @foreach($our_business as $value)
+                                            <option value="{{$value->id}}"@if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="showroom_id" class="form-label">Showroom<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="showroom_id">
+                                </select>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : ''}}">
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -76,6 +92,22 @@
   @section('javascript')
   <script>
     $(document).ready(function () {
+
+        $('#business_id').on('change', function(){
+            var business_id = $(this).val();
+            if(!empty(business_id))
+            {
+                $.ajax({
+                    method:'post',
+                    url:'{{route('get-showroom')}}',
+                    data:{business_id:business_id},
+                    success : function(result)
+                    {
+                        var result = $.parseJson(result);
+                    }
+                })
+            }
+        })
         $(".user-form").validate({
             rules: {
                 'name': {
