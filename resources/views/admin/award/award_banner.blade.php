@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('award-banner-update') }}" method="POST" class="award-banner-form" enctype="multipart/form-data">
+                    <form action="{{ route('award-banner-update') }}" method="POST" class="award-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -69,6 +69,7 @@
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Update</button>
+                            <a href="{{ route('awards') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
                 </div>
