@@ -159,6 +159,11 @@
                                </select>
                             </div>
 
+                            <div class="col-md-4">
+                                <label for="map_link" class="form-label">Map Link</label>
+                                <input type="text" class="form-control" name="map_link" id="map_link" value="{{isset($record->map_link) ? $record->map_link : old('map_link')}}">
+                            </div>
+
                         </div>
 
                         <div class="box-footer">

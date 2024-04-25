@@ -104,6 +104,17 @@ class ServiceCenterController extends Controller
                     $slider_image = fileUpload($request, 'slider_image', 'uploads/service_center/slider_image');
                     $service_center->slider_image = $slider_image;
                 }
+
+                if($request->hasFile('facility_image')) {
+                    $facility_image = fileUpload($request, 'facility_image', 'uploads/service_center_facility_image');
+                    $service_center->facility_image = $facility_image;
+                }
+
+                if($request->hasFile('customer_gallery_image')) {
+                    $customer_gallery_image = fileUpload($request, 'customer_gallery_image', 'uploads/service_center_customer_gallery_image');
+                    $service_center->customer_gallery_image = $customer_gallery_image;
+                }
+
                 $service_center->save();
 
                 if($service_center)
@@ -281,6 +292,26 @@ class ServiceCenterController extends Controller
                     }
                     $slider_image = fileUpload($request, 'slider_image', 'uploads/service_center/slider_image');
                     $service_center->slider_image = $slider_image;
+                }
+
+                if($request->hasFile('facility_image')) {
+                    $oldimage = $service_center->facility_image;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/service_center_facility_image/'.$oldimage);
+                    }
+                    $facility_image = fileUpload($request, 'facility_image', 'uploads/service_center_facility_image');
+                    $service_center->facility_image = $facility_image;
+                }
+
+                if($request->hasFile('customer_gallery_image')) {
+                    $oldimage = $service_center->customer_gallery_image;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/service_center_customer_gallery_image/'.$oldimage);
+                    }
+                    $customer_gallery_image = fileUpload($request, 'customer_gallery_image', 'uploads/service_center_customer_gallery_image');
+                    $service_center->customer_gallery_image = $customer_gallery_image;
                 }
 
                 $service_center->save();

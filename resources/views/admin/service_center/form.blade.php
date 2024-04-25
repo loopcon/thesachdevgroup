@@ -338,6 +338,29 @@
                                 <small class="image_type">(Hight:243,Width:325; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
+
+                            <div class="col-md-4">
+                                <label for="facility_image" class="form-label">Facility Image</label>
+                                @if(isset($record->facility_image) && $record->facility_image)
+                                    <img src="{{url('public/uploads/service_center_facility_image/'.$record->facility_image)}}" width="100" style="margin-bottom: 10px; margin-left:5px;">
+                                @endif  
+                                <input type="file" id="facility_image" class="form-control" name="facility_image" value="">
+                                @if ($errors->has('facility_image')) <div class="text-danger">{{ $errors->first('facility_image') }}</div>@endif
+                                <div class="error"></div>
+                                <small class="image_type">(Hight:325,Width:243; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label for="customer_gallery_image" class="form-label">Customer Gallery Image</label>
+                                @if(isset($record->customer_gallery_image) && $record->customer_gallery_image)
+                                    <img src="{{url('public/uploads/service_center_customer_gallery_image/'.$record->customer_gallery_image)}}" width="100" style="margin-bottom: 10px; margin-left:5px;">
+                                @endif  
+                                <input type="file" id="customer_gallery_image" class="form-control" name="customer_gallery_image" value="">
+                                @if ($errors->has('customer_gallery_image')) <div class="text-danger">{{ $errors->first('customer_gallery_image') }}</div>@endif
+                                <div class="error"></div>
+                                <small class="image_type">(Hight:325,Width:243; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
                             <?php /* <div class="col-12">
                                 <h5>Why Choose Section</h5>
                                 <hr>

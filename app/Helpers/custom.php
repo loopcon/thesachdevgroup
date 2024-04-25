@@ -85,7 +85,7 @@ function getSettingDetail(){
     'email_icon','call_icon','address','address_icon','email_color','email_font_size','email_font_family',
     'mobile_number_color','mobile_number_font_size','mobile_number_font_family','payment_button_text_color',
     'payment_button_font_size','payment_button_font_family','payment_button_color','address_color',
-    'address_font_size','address_font_family')->first();
+    'address_font_size','address_font_family','time','time_color','time_font_size','time_font_family')->first();
     // $settings = array();
     // if (count($AdminSetting_list) != 0) {
     //     foreach ($AdminSetting_list as $item) {
