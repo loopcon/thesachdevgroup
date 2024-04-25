@@ -19,6 +19,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'business_id',
+        'showroom_id',
+        'service_center_id',
+        'body_shop_id',
+        'used_car_id',
         'name',
         'email',
         'password',
@@ -43,4 +48,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function businessDetail()
+    {
+        return $this->belongsTo(OurBusiness::class,'business_id');
+    }
+
+    public function showroomDetail()
+    {
+        return $this->belongsTo(Showroom::class,'showroom_id');
+    }
+
+    public function serviceCenterDetail()
+    {
+        return $this->belongsTo(ServiceCenter::class,'service_center_id');
+    }
+
+    public function bodyShopDetail()
+    {
+        return $this->belongsTo(Body_shop::class,'body_shop_id');
+    }
+
+    public function usedCarDetail()
+    {
+        return $this->belongsTo(Used_car::class,'used_car_id');
+    }
 }

@@ -24,6 +24,11 @@ class UserController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('Users');
+                $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
+                $return_data['showroom'] = Showroom::select('id', 'name')->get();
+                $return_data['service_center'] = ServiceCenter::select('id', 'name')->get();
+                $return_data['body_shop'] = Body_shop::select('id', 'name')->get();
+                $return_data['used_car'] = Used_car::select('id', 'name')->get();
                 return view("admin.user.list",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -92,11 +97,50 @@ class UserController extends Controller
     public function userDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = User::select('id', 'name', 'email')->where('id','!=',1)->orderBy('id', 'DESC');
-
+            $query = User::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail','usedCarDetail')->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'used_car_id', 'name', 'email')->where('id','!=',1)->orderBy('id', 'DESC');
+            if(isset($request->business_id) && $request->business_id)
+            {
+                $query->where('business_id','=',$request->business_id);
+            }
+            if(isset($request->showroom_id) && $request->showroom_id)
+            {
+                $query->where('showroom_id','=',$request->showroom_id);
+            }
+            if(isset($request->service_center_id) && $request->service_center_id)
+            {
+                $query->where('service_center_id','=',$request->service_center_id);
+            }
+            if(isset($request->body_shop_id) && $request->body_shop_id)
+            {
+                $query->where('body_shop_id','=',$request->body_shop_id);
+            }
+            if(isset($request->used_car_id) && $request->used_car_id)
+            {
+                $query->where('used_car_id','=',$request->used_car_id);
+            }
             $list = $query->get();
             return DataTables::of($list)
-                ->addColumn('action', function ($list) {
+                    ->addColumn('business_id', function ($list) {
+                        $business_id = isset($list->businessDetail->title) && $list->businessDetail->title ? $list->businessDetail->title : NULL;
+                        return $business_id;
+                    })
+                    ->addColumn('showroom_id', function ($list) {
+                        $showroom_id = isset($list->showroomDetail->name) && $list->showroomDetail->name ? $list->showroomDetail->name : NULL;
+                        return $showroom_id;
+                    })
+                    ->addColumn('service_center_id', function ($list) {
+                        $service_center_id = isset($list->serviceCenterDetail->name) && $list->serviceCenterDetail->name ? $list->serviceCenterDetail->name : NULL;
+                        return $service_center_id;
+                    })
+                    ->addColumn('body_shop_id', function ($list) {
+                        $body_shop_id = isset($list->bodyShopDetail->name) && $list->bodyShopDetail->name ? $list->bodyShopDetail->name : NULL;
+                        return $body_shop_id;
+                    })
+                    ->addColumn('used_car_id', function ($list) {
+                        $used_car_id = isset($list->usedCarDetail->name) && $list->usedCarDetail->name ? $list->usedCarDetail->name : NULL;
+                        return $used_car_id;
+                    })
+                    ->addColumn('action', function ($list) {
                     $html = "";
                     $id = encrypt($list->id);
                     $has_permission = hasPermission('Users');

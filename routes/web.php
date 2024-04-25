@@ -244,7 +244,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user-edit/{id}', [UserController::class, 'userEdit'])->name('user-edit');
     Route::post('user-update/{id}', [UserController::class, 'userUpdate'])->name('user-update');
     Route::get('user-delete/{id}', [UserController::class, 'userDestroy'])->name('user-delete');
-    Route::get('user-datatable', [UserController::class, 'userDatatable'])->name('user-datatable');
+    Route::post('user-datatable', [UserController::class, 'userDatatable'])->name('user-datatable');
     Route::post('get-business', [UserController::class, 'getBusiness'])->name('get-business');
 
     //faq
