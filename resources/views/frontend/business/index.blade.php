@@ -188,7 +188,7 @@
 <section id="used-car-locations">
     <div class="container">
         <div class="location-tittle">
-            <h2>Galaxy Toyota Used car</h2>
+            <h2 style="color:{{$business->used_car_title_color}}; font-size:{{$business->used_car_titlt_font_size}}; font-family:{{$business->used_car_title_font_family}};">{{isset($business->used_car_title) && $business->used_car_title ? $business->used_car_title : ''}}</h2>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
