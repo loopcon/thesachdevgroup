@@ -32,11 +32,12 @@ use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\BodyShopController;
 use App\Http\Controllers\Admin\UsedCarController;
 use App\Http\Controllers\Admin\ContactUsController;
-
+use App\Http\Controllers\Admin\OurLocationController;
 
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BusinessController;
 use App\Http\Controllers\Frontend\ContactUsDetailController;
+use App\Http\Controllers\Frontend\locationDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -338,6 +339,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('contact_us', [ContactUsController::class, 'contact_us'])->name('contact_us');
     Route::post('contact_us_insert', [ContactUsController::class, 'contact_us_insert'])->name('contact_us_insert');
 
+    //our_location
+    Route::get('our_location', [OurLocationController::class, 'our_location'])->name('our_location');
+    Route::post('our_location_insert', [OurLocationController::class, 'our_location_insert'])->name('our_location_insert');
+
 });
 
 //Frontend
@@ -350,6 +355,9 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 
 //contactus_detail
 Route::get('contactus/contact', [ContactUsDetailController::class, 'contactusDetail'])->name('contactus_detail');
+
+//location
+Route::get('contactus/location', [locationDetailController::class, 'locationDetail'])->name('location_detail');
 
 // business page
 Route::get('/{slug}', [BusinessController::class, 'businessDetail']);

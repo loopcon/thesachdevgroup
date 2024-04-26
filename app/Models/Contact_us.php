@@ -29,5 +29,6 @@ class Contact_us extends Model
         'form_sub_title_color',
         'form_sub_title_font_size',
         'form_sub_title_font_family',
+        'map_link',
     ];
 }

@@ -94,6 +94,9 @@ class ContactUsController extends Controller
                 $contact_us->form_sub_title_font_size = $request->form_sub_title_font_size;
                 $contact_us->form_sub_title_font_family = $request->form_sub_title_font_family;
 
+                $contact_us->map_link = $request->map_link;
+
+
                 $contact_us->save();
             
                 return redirect()->route('contact_us')->with('success','Contact Us update successfully.');

@@ -265,7 +265,7 @@
                         @endif
                     @endif
 
-                    @php($has_permission = hasPermission('Service Center Facility Customer Gallery'))
+                    {{-- @php($has_permission = hasPermission('Service Center Facility Customer Gallery'))
                     @if(isset($has_permission) && $has_permission)
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item">
@@ -275,7 +275,7 @@
                                 </a>
                             </li>
                         @endif
-                    @endif
+                    @endif --}}
 
                     @php($has_permission = hasPermission('Service Center Testimonial'))
                     @if(isset($has_permission) && $has_permission)
@@ -431,6 +431,22 @@
                         <i class="nav-icon fa fa-phone"></i> 
                         <p>
                             Contact Us
+                        </p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
+        
+
+        @php($has_permission = hasPermission('Our Locations'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                <li class="nav-item"> 
+                    <a href="{{url('our_location')}}" class="nav-link {{request()->is('our_location*') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-location-arrow"></i>
+                        <p>
+                            Our Locations
                         </p>
                     </a>
                 </li>

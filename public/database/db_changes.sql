@@ -318,3 +318,13 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 
 -- Drashti : 19-04-2024 12:53 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Contact Us', NULL, NULL, NULL);
+
+-- Drashti : 22-04-2024 10:21 AM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Our Locations', NULL, NULL, NULL);
+
+-- Drashti : 23-04-2024 01:08 AM
+ALTER TABLE `service_center` ADD `facility_image` VARCHAR(255) NOT NULL AFTER `why_choose_description`;
+ALTER TABLE `service_center` ADD `customer_gallery_image` VARCHAR(255) NOT NULL AFTER `facility_image`;
+
+-- Drashti : 25-04-2024 02:08 AM
+ALTER TABLE `contact_uses` ADD `map_link` LONGTEXT NOT NULL AFTER `form_sub_title_font_family`;

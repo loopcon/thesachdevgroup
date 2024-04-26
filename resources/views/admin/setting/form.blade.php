@@ -237,6 +237,7 @@
                                 <label for="payment_button_color" class="form-label">Payment Button Color</label>
                                 <input type="text" class="form-control colorpicker" name="payment_button_color" id="payment_button_color" value="{{$setting->payment_button_color}}">
                               </div>
+                            
                             </div>
 
                             @endforeach

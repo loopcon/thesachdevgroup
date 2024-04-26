@@ -9,7 +9,9 @@
                   @php($setting = getSettingDetail())
 
                   @if(isset($setting) && isset($setting->logo))
-                     <img src="{{asset('logo/'.$setting->logo)}}" alt="">
+                     {{-- <img src="{{asset('logo/'.$setting->logo)}}" alt=""> --}}
+                     <img src="{{url('public/logo/'.$setting->logo)}}" alt="">
+
                   @endif
    
                   <div style="color:@if($footer_menu_description->description_color ?? null) 
