@@ -197,7 +197,7 @@
                             <a href="{{$used_car->link}}">
                                 <div class="image-content">
                                     <div class="card-image">
-                                    <img src="{{url('public/used_car_image/'.$used_car->image)}}" alt="" class="card-img">
+                                        <img src="{{url('public/used_car_image/'.$used_car->image)}}" alt="" class="card-img">
                                     </div>
                                 </div>
 
@@ -205,7 +205,10 @@
                                     <h2 class="name" style="color:{{$used_car->name_color}}; font-size:{{$used_car->name_font_size}}; font-family:{{$used_car->name_font_family}};">{{$used_car->name}}</h2>
                                     <div class="rating">
                                         @php($rating = $used_car->rating * 20)
-                                        <div class='stars'><div id='pid-{{$body_shop->id}}' class='percent' style='width:{{$rating}}%;'></div></div>
+                                        <div class='stars'>
+                                            <div id='pid-{{$body_shop->id}}' class='percent' style='width:{{$rating}}%;'>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="star-parent">
                                         <img src="{{asset('front_img/google.webp')}}" alt="" width="6%">
@@ -302,7 +305,7 @@
 @endsection
 @section('javascript')
 <!-- Swiper JS -->
-<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+<script src="{{url('//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js')}}"></script>
 <!-- JavaScript -->
 <!--Uncomment this line-->
 <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>

@@ -345,3 +345,5 @@ ALTER TABLE `users` CHANGE `role_id` `role_id` INT(11) NULL DEFAULT NULL;
 -- Disha : 25-04-2024 5:44 PM
 ALTER TABLE `our_business` ADD `used_car_title` VARCHAR(255) NULL DEFAULT NULL AFTER `body_shop_title_font_family`, ADD `used_car_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `used_car_title`, ADD `used_car_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `used_car_title_color`, ADD `used_car_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `used_car_title_font_size`;
 
+-- Disha : 26-04-2024 2:51 PM
+ALTER TABLE `pages` CHANGE `description` `description` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;

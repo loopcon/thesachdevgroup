@@ -38,7 +38,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BusinessController;
 use App\Http\Controllers\Frontend\ContactUsDetailController;
 use App\Http\Controllers\Frontend\locationDetailController;
-
+use App\Http\Controllers\Frontend\PageDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -361,3 +361,15 @@ Route::get('contactus/location', [locationDetailController::class, 'locationDeta
 
 // business page
 Route::get('/{slug}', [BusinessController::class, 'businessDetail']);
+
+Route::get('/{slug}', [PageDetailController::class, 'cmsPage']);
+// $compnycms = Cache::remember('pages', 10, function() { 
+//     return DB::table('pages')
+//     ->get();
+//         });
+
+//     if(!empty($compnycms)) {
+//     foreach ($compnycms as $page) {
+//         Route::get($page->slug, [App\Http\Controllers\Frontend\PageController::class, 'cmsPage'])->name($page->slug);
+//     }
+// }

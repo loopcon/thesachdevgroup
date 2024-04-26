@@ -119,7 +119,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach($our_business as $business)
                                         @if($business->url !='')
-                                            <a class="dropdown-item" href="{{$business->url}}">{{$business->title}}</a>
+                                            <a class="dropdown-item" href="{{url($business->url)}}">{{$business->title}}</a>
                                         @else
                                             <a class="dropdown-item" href="{{url('/'.$business->slug)}}">{{$business->title}}</a>
                                         @endif

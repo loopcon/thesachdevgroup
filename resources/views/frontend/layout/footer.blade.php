@@ -131,11 +131,18 @@
       <div class="container">
          <div class="row">
             <div class="col-lg-8 p-0">
-               <div class="term-page">
+               <!-- <div class="term-page">
                   <a href="terms-conditions.php"><p>Terms of Use</p></a> 
                   <a href="privacy-policy.php"><p> Privacy Policy </p> </a>
                   <a href="purchasing-t&c.php"><p>Purchasing-T&C</p> </a>
                   <a href="refund-cancellation-policy.php"><p>Refund Cancellation Policy</p> </a>
+               </div> -->
+               <div class="term-page">
+                  @if(isset($cms_pages) && !empty($cms_pages))
+                     @foreach($cms_pages as $page)
+                        <a href="{{url($page->slug)}}"><p>{{$page->name}}</p></a> 
+                     @endforeach
+                  @endif
                </div>
             </div>
             <div class="col-lg-4 p-0">
