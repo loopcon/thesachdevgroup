@@ -40,7 +40,7 @@ class OurBusinessController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('Our Business Create');
-                $return_data['our_business'] = Header_menu::select('id','name','menu_name')->where('menu_name','=','our_businesses')->get();
+                $return_data['our_business'] = Header_menu::select('id','name','menu_name')->where('menu_name','=','Our Businesses')->get();
                 return view("admin.our_business.form",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -138,7 +138,7 @@ class OurBusinessController extends Controller
                 $return_data['site_title'] = trans('Our Business Edit');
                 $our_business = OurBusiness::find($id);
                 $return_data['record'] = $our_business;
-                $return_data['our_business'] = Header_menu::select('id','name','menu_name')->where('menu_name','=','our_businesses')->get();
+                $return_data['our_business'] = Header_menu::select('id','name','menu_name')->where('menu_name','=','Our Businesses')->get();
                 return view("admin.our_business.form",array_merge($return_data));
             }
         }else {

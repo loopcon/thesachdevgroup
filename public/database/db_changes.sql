@@ -328,3 +328,17 @@ ALTER TABLE `service_center` ADD `customer_gallery_image` VARCHAR(255) NOT NULL 
 
 -- Drashti : 25-04-2024 02:08 AM
 ALTER TABLE `contact_uses` ADD `map_link` LONGTEXT NOT NULL AFTER `form_sub_title_font_family`;
+
+-- Disha : 23-04-2024 5:55 PM
+ALTER TABLE `service_center` CHANGE `service_id` `service_id` VARCHAR(255) NULL DEFAULT NULL COMMENT '`id` of `service`';
+
+-- Disha 24-04-2024 2:00 PM
+ALTER TABLE `body_shops` ADD `business_id` INT(11) NULL DEFAULT NULL AFTER `id`;
+ALTER TABLE `used_cars` ADD `business_id` INT(11) NULL DEFAULT NULL AFTER `id`;
+ALTER TABLE `users` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`' AFTER `id`, ADD `showroom_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `showrooms`' AFTER `business_id`, ADD `service_center_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `service_center`' AFTER `showroom_id`, ADD `body_shop_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `body_shops`\r\n' AFTER `service_center_id`, ADD `used_car_id` INT(11) NULL DEFAULT NULL COMMENT '\r\n`id` of `used_cars`\r\n' AFTER `body_shop_id`;
+ALTER TABLE `body_shops` CHANGE `business_id` `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`';
+ALTER TABLE `used_cars` CHANGE `business_id` `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`';
+
+-- Disha : 25-04-2024 11:40 Am
+ALTER TABLE `users` CHANGE `role_id` `role_id` INT(11) NULL DEFAULT NULL;
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Body_shop;
+use App\Models\OurBusiness;
 use DataTables;
 use File;
 
@@ -39,6 +40,7 @@ class BodyShopController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('Body Shop Create');
+                $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
                 return view("admin.body_shop.form",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -73,7 +75,7 @@ class BodyShopController extends Controller
                 $body_shop->name = $request->name;
 
                 $body_shop->slug = $request->name ? slugify($request->name) : NULL;
-
+                $body_shop->business_id = $request->business_id;
                 $body_shop->name_color = $request->name_color;
                 $body_shop->name_font_size	 = $request->name_font_size;
                 $body_shop->name_font_family	 = $request->name_font_family;
@@ -142,6 +144,7 @@ class BodyShopController extends Controller
                 $return_data['site_title'] = trans('Body Shop Edit');
                 $body_shop = Body_shop::find($id);
                 $return_data['record'] = $body_shop;
+                $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
                 return view("admin.body_shop.form",array_merge($return_data));
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -180,6 +183,7 @@ class BodyShopController extends Controller
 
                 $body_shop->slug = $request->name ? slugify($request->name) : NULL;
 
+                $body_shop->business_id = $request->business_id;
                 $body_shop->name_color = $request->name_color;
                 $body_shop->name_font_size	 = $request->name_font_size;
                 $body_shop->name_font_family	 = $request->name_font_family;

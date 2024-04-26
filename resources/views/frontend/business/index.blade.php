@@ -66,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    <h2 class="name" style="color:{{$showroom->slider_showroom_name_color}}; font-size:{{$showroom->slider_showroom_name_font_size}}; font-family:{{$showroom->slider_showroom_name_font_family}};">{{$showroom->name}}</h2>
+                                    <h2 class="name" style="color:{{$showroom->slider_showroom_name_color}}; font-size:{{$showroom->slider_showroom_name_font_size}}; font-family:{{$showroom->slider_showroom_name_font_family}};">{{$showroom->slider_showroom_name}}</h2>
                                     <div class="rating">
                                         @php($rating = $showroom->rating * 20)
                                         <div class='stars'><div id='pid-{{$showroom->id}}' class='percent' style='width:{{$rating}}%;'></div></div>

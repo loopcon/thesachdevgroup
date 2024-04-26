@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Used_car;
+use App\Models\OurBusiness;
 use DataTables;
 use File;
 
@@ -40,6 +41,7 @@ class UsedCarController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('Used Car Create');
+                $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
                 return view("admin.used_car.form",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -75,6 +77,7 @@ class UsedCarController extends Controller
 
                 $used_car->slug = $request->name ? slugify($request->name) : NULL;
 
+                $used_car->business_id = $request->business_id;
                 $used_car->name_color = $request->name_color;
                 $used_car->name_font_size	 = $request->name_font_size;
                 $used_car->name_font_family	 = $request->name_font_family;
@@ -144,6 +147,7 @@ class UsedCarController extends Controller
                 $return_data['site_title'] = trans('Used Car Edit');
                 $used_car = Used_car::find($id);
                 $return_data['record'] = $used_car;
+                $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
                 return view("admin.used_car.form",array_merge($return_data));
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -182,6 +186,7 @@ class UsedCarController extends Controller
 
                 $used_car->slug = $request->name ? slugify($request->name) : NULL;
 
+                $used_car->business_id = $request->business_id;
                 $used_car->name_color = $request->name_color;
                 $used_car->name_font_size	 = $request->name_font_size;
                 $used_car->name_font_family	 = $request->name_font_family;

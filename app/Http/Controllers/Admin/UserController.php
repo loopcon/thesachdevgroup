@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\OurBusiness;
+use App\Models\Showroom;
+use App\Models\ServiceCenter;
+use App\Models\Body_shop;
+use App\Models\Used_car;
 use DataTables;
 use DB;
 
@@ -36,6 +41,7 @@ class UserController extends Controller
                 $return_data = array();
                 // $return_data['role'] = DB::table('roles')->select('id','name')->get();
                 $return_data['role'] = DB::table('roles')->select('id','name')->whereNot('id',1)->get();
+                $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
                 $return_data['site_title'] = trans('User Create');
                 return view("admin.user.form",array_merge($return_data));
             }else {
@@ -52,6 +58,8 @@ class UserController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $request->validate([
+                    'role_id' => 'required',
+                    'name' => 'required',
                     'email' => 'required|email|unique:users',
                     'password' => 'required|min:6|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
                     'cpassword' => 'required|same:password'
@@ -62,6 +70,11 @@ class UserController extends Controller
                 $user->email = $request->email ? $request->email : NULL;
                 $user->password = \Hash::make($request->password);
                 $user->visible_password = $request->password;
+                $user->business_id = $request->business_id;
+                $user->showroom_id = $request->showroom_id;
+                $user->service_center_id = $request->service_center_id;
+                $user->body_shop_id = $request->body_shop_id;
+                $user->used_car_id = $request->used_car_id;
                 $user->save();
 
                 if($user)
@@ -120,6 +133,7 @@ class UserController extends Controller
                 $return_data['record'] = $user;
                 // $return_data['role'] = DB::table('roles')->select('id','name')->get();
                 $return_data['role'] = DB::table('roles')->select('id','name')->whereNot('id',1)->get();
+                $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
                 return view("admin.user.form",array_merge($return_data));
             }
         }else {
@@ -136,6 +150,8 @@ class UserController extends Controller
             {
                 $id = decrypt($id);
                 $request->validate([
+                    'role_id' => 'required',
+                    'name' => 'required',
                     'email' => 'required|email|unique:users,email,'.$id,
                     'password' => 'required|min:6|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
                     'cpassword' => 'required|same:password'
@@ -146,6 +162,11 @@ class UserController extends Controller
                 $user->email = $request->email ? $request->email : NULL;
                 $user->password = \Hash::make($request->password);
                 $user->visible_password = $request->password;
+                $user->business_id = $request->business_id;
+                $user->showroom_id = $request->showroom_id;
+                $user->service_center_id = $request->service_center_id;
+                $user->body_shop_id = $request->body_shop_id;
+                $user->used_car_id = $request->used_car_id;
                 $user->save();
 
                 if($user)
@@ -178,6 +199,47 @@ class UserController extends Controller
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function getBusiness(request $request)
+    {
+        if($request->ajax()){
+            $showroom = Showroom::select('id', 'name')->where('our_business_id', $request->business_id)->get();
+            $html = '<option value="">'.trans('-- select --').'</option>';
+            if($showroom->count()){
+                foreach($showroom as $value){
+                    $html .= '<option value="'.$value->id.'">'.$value->name.'</option>';
+                }
+            }
+
+            $service_center = ServiceCenter::select('id','name')->where('business_id', $request->business_id)->get();
+            $service_center_html = '<option value="">'.trans('-- select --').'</option>';
+            if($service_center->count()){
+                foreach($service_center as $value){
+                    $service_center_html .= '<option value="'.$value->id.'">'.$value->name.'</option>';
+                }
+            }
+
+            $body_shop = Body_shop::select('id','name')->where('business_id', $request->business_id)->get();
+            $body_shop_html = '<option value="">'.trans('-- select --').'</option>';
+            if($body_shop->count()){
+                foreach($body_shop as $value){
+                    $body_shop_html .= '<option value="'.$value->id.'">'.$value->name.'</option>';
+                }
+            }
+
+            $usedcar = Used_car::select('id','name')->where('business_id', $request->business_id)->get();
+            $usedcar_html = '<option value="">'.trans('-- select --').'</option>';
+            if($usedcar->count()){
+                foreach($usedcar as $value){
+                    $usedcar_html .= '<option value="'.$value->id.'">'.$value->name.'</option>';
+                }
+            }
+            echo json_encode(array('html' => $html, 'service_center_html' => $service_center_html, 'body_shop_html' => $body_shop_html, 'usedcar_html' => $usedcar_html));
+            exit;
+        } else {
+            return redirect('dashboard');
         }
     }
 }

@@ -246,6 +246,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('user-update/{id}', [UserController::class, 'userUpdate'])->name('user-update');
     Route::get('user-delete/{id}', [UserController::class, 'userDestroy'])->name('user-delete');
     Route::get('user-datatable', [UserController::class, 'userDatatable'])->name('user-datatable');
+    Route::post('get-business', [UserController::class, 'getBusiness'])->name('get-business');
 
     //faq
     Route::get('faq', [FaqController::class, 'faqList'])->name('faq');
@@ -313,7 +314,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('vacancy-datatable', [VacancyController::class, 'vacancyDatatable'])->name('vacancy-datatable');
 
     // career
-    
     Route::get('career', [CareerController::class, 'career'])->name('career');
     Route::post('career-update', [CareerController::class, 'careerUpdate'])->name('career-update');
 

@@ -1,7 +1,5 @@
 @extends('admin.layout.header')
 @section('css')
-    <link class="js-stylesheet" href="{{ url('public/plugins/select2/css/select2.css') }}" rel="stylesheet">
-    <link class="js-stylesheet" href="{{ url('public/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
 @endsection
 @section('content')
@@ -22,7 +20,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('service-center-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-store') }} @endif" method="POST" class="service-center-form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('service-center-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-store') }} @endif" method="POST" class="showroom_form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
@@ -36,15 +34,14 @@
                                 @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4 adm-brand-errorbox">
+                            <div class="col-md-4 adm-select-car-drop">
                                 <label for="service_id" class="form-label">Service<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="service_id" id="service_id" required="">
-                                    <option value="">-- Select Service --</option>
+                                <select class="form-control select2" name="service_id[]" id="service_id" required="" multiple>
+                                    <option value="" disabled>-- Select Service --</option>
                                     @foreach($services as $value)
-                                        <option value="{{$value->id}}"@if(isset($record->service_id) && $record->service_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
+                                    <option value="{{$value->id}}"@if(isset($record->service_id) && in_array($value->id, json_decode($record->service_id)) == $value->id){{'selected'}}@endif>{{$value->name}}</option>
                                     @endforeach
                                 </select>
-                                <div id="error"></div>
                                 @if ($errors->has('service_id')) <div class="text-danger">{{ $errors->first('service_id') }}</div>@endif
                             </div>
 
@@ -402,7 +399,6 @@
 @endsection
 @section('javascript')
 <script type="text/javascript" src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
-<script src="{{ url('public/plugins/select2/js/select2.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
