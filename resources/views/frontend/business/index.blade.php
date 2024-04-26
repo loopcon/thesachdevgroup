@@ -133,7 +133,6 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
-</div>
 </section>
 @endif
 <!-- service center end -->
@@ -203,11 +202,11 @@
                                 </div>
 
                                 <div class="card-content">
-                                    <h2 class="name">{{$used_car->name}}</h2>
-                                <div class="rating">
-                                    @php($rating = $used_car->rating * 20)
-                                    <div class='stars'><div id='pid-{{$body_shop->id}}' class='percent' style='width:{{$rating}}%;'></div></div>
-                                </div>
+                                    <h2 class="name" style="color:{{$used_car->name_color}}; font-size:{{$used_car->name_font_size}}; font-family:{{$used_car->name_font_family}};">{{$used_car->name}}</h2>
+                                    <div class="rating">
+                                        @php($rating = $used_car->rating * 20)
+                                        <div class='stars'><div id='pid-{{$body_shop->id}}' class='percent' style='width:{{$rating}}%;'></div></div>
+                                    </div>
                                     <div class="star-parent">
                                         <img src="{{asset('front_img/google.webp')}}" alt="" width="6%">
                                         <p>{{$used_car->rating}}</p>
@@ -240,7 +239,7 @@
                 <div id="owl-insurence-carousel" class="owl-carousel owl-theme">
                     @foreach($business_insurance as $record)
                         <div class="insurence-card">
-                            <a href="#" target="_blank">
+                            <a href="{{$record->url}}" target="_blank">
                                 <div class="insurence-card-one">
                                     <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
                                     <div class="insurence-content">
@@ -254,7 +253,7 @@
             @else
                 @foreach($business_insurance as $record)
                     <div class="insurence-card">
-                        <a href="#" target="_blank">
+                        <a href="{{$record->url}}" target="_blank">
                             <div class="insurence-card-one">
                                 <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
                                 <div class="insurence-content">
@@ -302,63 +301,62 @@
 <!-- why choose end -->
 @endsection
 @section('javascript')
-   <!-- Swiper JS -->
-   <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
-    <!-- JavaScript -->
-      <!--Uncomment this line-->
-    <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
-    <script>
-        var swiper = new Swiper(".slide-content", {
-            slidesPerView: 3,
-            spaceBetween: 25,
+<!-- Swiper JS -->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+<!-- JavaScript -->
+<!--Uncomment this line-->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
+<script>
+    var swiper = new Swiper(".slide-content", {
+        slidesPerView: 3,
+        spaceBetween: 25,
+        loop: true,
+        centerSlide: 'true',
+        fade: 'true',
+        grabCursor: 'true',
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+        },
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+        },
+            breakpoints:{
+            0: {
+                    slidesPerView: 1,
+            },
+            520: {
+                slidesPerView: 2,
+            },
+            950: {
+                slidesPerView: 3,
+            },
+            },
+    });
+
+    $(document).ready(function() {
+        $('#owl-insurence-carousel').owlCarousel({
             loop: true,
-            centerSlide: 'true',
-            fade: 'true',
-            grabCursor: 'true',
-            pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            dynamicBullets: true,
-            },
-            navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-            },
-
-             breakpoints:{
+            margin: 30,
+            autoplay:true,
+            // dots: true,
+            // nav: true,
+            items: 3,
+            responsive: {
                 0: {
-                     slidesPerView: 1,
+                    items: 1 
                 },
-                520: {
-                    slidesPerView: 2,
+                768: {
+                    items: 2
                 },
-                950: {
-                    slidesPerView: 3,
-                },
-             },
-        });
-
-        $(document).ready(function() {
-            $('#owl-insurence-carousel').owlCarousel({
-                loop: true,
-                margin: 30,
-                autoplay:true,
-                // dots: true,
-                // nav: true,
-                items: 3,
-                responsive: {
-                    0: {
-                        items: 1 
-                    },
-                    768: {
-                        items: 2
-                    },
-                    991: {
-                        items: 3
-                    }
+                991: {
+                    items: 3
                 }
-            });
+            }
         });
+    });
 </script>
 @endsection
 
