@@ -18,6 +18,52 @@
             </div>
         </div>
         <div class="card">
+            <div class="col-md-12 text-left">
+                <h5 class="title ml-3 mt-3">Faq Title</h5>
+                <form action="{{ route('faq-title-update') }}" method="POST" class="faq-form" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-3 mt-3 mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{isset($record->title) ? $record->title : old('title')}}">
+                            @if ($errors->has('title')) <div class="text-danger">{{ $errors->first('title') }}</div>@endif
+                            <div class="error"></div>
+                        </div>
+
+                        <div class="col-md-3 mt-3">
+                            <label for="title_color" class="form-label">Title Color</label>
+                            <input type="text" class="form-control colorpicker" id="title_color" name="title_color" value="{{isset($record->title_color) ? $record->title_color : old('title_color')}}">
+                            @if ($errors->has('title_color')) <div class="text-danger">{{ $errors->first('title_color') }}</div>@endif
+                            <div class="error"></div>
+                        </div>
+
+                        <div class="col-md-3 mt-3">
+                            <label for="title_font_size" class="form-label">Title Font Size</label>
+                            <select class="form-control select2" name="title_font_size">
+                                <option value="">-- Select --</option>
+                                @for($i=24; $i<=50; $i+=2)
+                                    <option value="{{$i}}px" @if(isset($record->title_font_size) && $record->title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                @endfor
+                            </select>
+                        </div>
+
+                        @php($fontfamily = fontFamily())
+                        <div class="col-md-3 mt-3">
+                            <label for="title_font_family" class="form-label">Title Font Family</label>
+                            <select class="form-control select2" name="title_font_family">
+                                <option value="">-- Select --</option>
+                                @foreach($fontfamily as $family)
+                                    <option value="{{$family['key']}}" @if(isset($record->title_font_family) && $record->title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary submit">Update</button>
+                    </div>
+                </form>
+            </div>
+
             <div class="col-sm-12  text-end">
                 <a href="{{ route('faq-create') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
             </div>
@@ -84,6 +130,8 @@
         $('.paging_simple_numbers').parent().css('padding-right', '0px');
         $('.adm-table-responsive').parent().css('margin', '0px');
         $('.adm-table-responsive').parent().siblings().css('margin', '0px');
+
+        $('.colorpicker').colorpicker();
     });
     
 </script>

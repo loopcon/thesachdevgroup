@@ -32,7 +32,7 @@
                                         <option value="{{$value->id}}" @if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}} @endif>{{$value->title}}</option>
                                     @endforeach
                                 </select>
-                                @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
+                                @if ($errors->has('business_id'))<div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
                             <div class="col-md-4">

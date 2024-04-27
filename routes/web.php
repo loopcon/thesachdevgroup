@@ -257,6 +257,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('faq-delete/{id}', [FaqController::class, 'faqDestroy'])->name('faq-delete');
     Route::get('faq-datatable', [FaqController::class, 'faqDatatable'])->name('faq-datatable');
 
+    Route::post('faq-title-update', [FaqController::class, 'faqTitleUpdate'])->name('faq-title-update');
+
 
     //showroom_facility_customer_gallery
     Route::get('showroom_facility_customer_gallery', [ShowroomFacilityCustomerGalleryController::class, 'showroom_facility_customer_gallery'])->name('showroom_facility_customer_gallery');
@@ -360,9 +362,13 @@ Route::get('contactus/contact', [ContactUsDetailController::class, 'contactusDet
 Route::get('contactus/location', [locationDetailController::class, 'locationDetail'])->name('location_detail');
 
 // business page
-Route::get('/{slug}', [BusinessController::class, 'businessDetail']);
+Route::get('business/{slug}', [BusinessController::class, 'businessDetail']);
 
-Route::get('/{slug}', [PageDetailController::class, 'cmsPage']);
+// faq page
+Route::get('faqs', [PageDetailController::class, 'faqPage'])->name('faqs');
+
+// cms pages
+Route::get('{slug}', [PageDetailController::class, 'cmsPage']);
 // $compnycms = Cache::remember('pages', 10, function() { 
 //     return DB::table('pages')
 //     ->get();

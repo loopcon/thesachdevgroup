@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Models\Faq;
+use App\Models\FaqTitle;
 
 class PageDetailController extends Controller
 {
@@ -23,5 +25,13 @@ class PageDetailController extends Controller
                 return redirect('/');
             }
         }
+    }
+
+    public function faqPage()
+    {
+        $return_data = array();
+        $return_data['faqs'] = Faq::select('id','name','description')->get();
+        $return_data['faq_title'] = FaqTitle::first();
+        return view('frontend.faq.index',array_merge($return_data));
     }
 }

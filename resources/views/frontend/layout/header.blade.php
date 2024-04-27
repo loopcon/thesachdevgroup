@@ -121,7 +121,7 @@
                                         @if($business->url !='')
                                             <a class="dropdown-item" href="{{url($business->url)}}">{{$business->title}}</a>
                                         @else
-                                            <a class="dropdown-item" href="{{url('/'.$business->slug)}}">{{$business->title}}</a>
+                                            <a class="dropdown-item" href="{{url('business/'.$business->slug)}}">{{$business->title}}</a>
                                         @endif
                                     @endforeach
                                 </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Faq;
+use App\Models\FaqTitle;
 use DataTables;
 use DB;
 
@@ -21,6 +22,8 @@ class FaqController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('FAQ');
+                $faq_title = FaqTitle::first();
+                $return_data['record'] = $faq_title;
                 return view("admin.faq.list",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -176,6 +179,34 @@ class FaqController extends Controller
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function faqTitleUpdate(Request $request)
+    {
+        $has_permission = hasPermission('Faqs');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $return_data = array();
+                $faq_title = FaqTitle::first();
+                $faq_title->title = $request->title;
+                $faq_title->title_font_size = $request->title_font_size;
+                $faq_title->title_color = $request->title_color;
+                $faq_title->title_font_family = $request->title_font_family;
+                
+                $faq_title->save();
+
+                if($faq_title)
+                {
+                    return redirect()->route('faq')->with('success', 'Faq Title update successfully.');
+                } else {
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
+                }
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
         }
     }
 }
