@@ -12,8 +12,8 @@ class Awards extends Model
     protected $table = 'award_and_recognition';
     protected $fields = ['showroom_id', 'name', 'image'];
 
-    public function showroomdDetail()
+    public function businessdDetail()
     {
-        return $this->belongsTo(Showroom::class, 'showroom_id');
+        return $this->belongsTo(OurBusiness::class, 'showroom_id');
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Awards;
 use App\Models\Showroom;
 use App\Models\AwardBanner;
+use App\Models\OurBusiness;
 use DataTables;
 use File;
 
@@ -41,8 +42,8 @@ class AwardsController extends Controller
                     $id = $request->id;
                     $id = $id ? decrypt($id) : NULL;
                     $record = $id ? Awards::find($id) : NULL;
-                    $showrooms = Showroom::select('id', 'name')->get();
-                    $html = view('admin.award.ajax_form', array('record' => $record, 'showrooms' => $showrooms))->render();
+                    $our_business = OurBusiness::select('id', 'title')->get();
+                    $html = view('admin.award.ajax_form', array('record' => $record, 'our_business' => $our_business))->render();
                     $return = array();
                     $return['html'] = $html;
                     echo json_encode($return);
@@ -91,7 +92,7 @@ class AwardsController extends Controller
     public function awardDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = Awards::with('showroomdDetail')->select('id', 'showroom_id', 'name', 'image')->orderBy('id', 'DESC');
+            $query = Awards::with('businessdDetail')->select('id', 'showroom_id', 'name', 'image')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -100,7 +101,7 @@ class AwardsController extends Controller
                     return '<img src="' . $image . '" alt="" width="100">';
                 }) 
                 ->addColumn('showroom_id', function($list){
-                    $showroom_id = isset($list->showroomdDetail->name) && $list->showroomdDetail->name ? $list->showroomdDetail->name : NULL;
+                    $showroom_id = isset($list->businessdDetail->title) && $list->businessdDetail->title ? $list->businessdDetail->title : NULL;
                     return $showroom_id;
                 })
                 ->addColumn('action', function ($list) {

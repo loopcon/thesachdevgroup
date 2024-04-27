@@ -47,7 +47,7 @@
     <div id="myBtnContainer">
         <button class="btn active" onclick="filterSelection('all')"> Show all</button>
         @foreach($awards_data as $award)
-            <button class="btn" onclick="filterSelection('{{$award->showroom_id}}')"> {{isset($award->showroomdDetail->name) && $award->showroomdDetail->name ? $award->showroomdDetail->name : ''}}</button>
+            <button class="btn" onclick="filterSelection('{{$award->showroom_id}}')"> {{isset($award->businessdDetail->title) && $award->businessdDetail->title ? $award->businessdDetail->title : ''}}</button>
             <!-- <button class="btn" onclick="filterSelection('nature')"> Galaxy Toyota</button>
             <button class="btn" onclick="filterSelection('cars')"> Hans Hyundai</button>
             <button class="btn" onclick="filterSelection('people')"> Ford</button> -->
@@ -59,7 +59,7 @@
             <div class="columnn {{$award->showroom_id}}">
                 <div class="content">
                 <img src="{{url('public/uploads/award/'.$award->image)}}" alt="" style="width:100%">
-                <h4>{{$award->showroomdDetail->name}}</h4>
+                <h4>{{isset($award->businessdDetail->title) && $award->businessdDetail->title ? $award->businessdDetail->title : ''}}</h4>
                 <p></p>
                 </div>
             </div>
