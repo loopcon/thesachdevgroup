@@ -158,7 +158,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Awards & Recognition</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach ($header_menu_awards_recognitions as $header_menu_awards_recognition)
-                                        <a class="dropdown-item" href="{{$header_menu_awards_recognition->link}}" style="color:{{$header_menu_awards_recognition->color}}; font-size:{{$header_menu_awards_recognition->font_size}}; font-family:{{$header_menu_awards_recognition->font_family}};">
+                                        <a class="dropdown-item" href="{{url('awards/gallery')}}" style="color:{{$header_menu_awards_recognition->color}}; font-size:{{$header_menu_awards_recognition->font_size}}; font-family:{{$header_menu_awards_recognition->font_family}};">
                                             {{$header_menu_awards_recognition->name}}
                                         </a>
                                     @endforeach

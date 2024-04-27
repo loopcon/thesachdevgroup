@@ -34,11 +34,13 @@ use App\Http\Controllers\Admin\UsedCarController;
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\OurLocationController;
 
+// frontend controller
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BusinessController;
 use App\Http\Controllers\Frontend\ContactUsDetailController;
 use App\Http\Controllers\Frontend\locationDetailController;
 use App\Http\Controllers\Frontend\PageDetailController;
+use App\Http\Controllers\Frontend\AwardsDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -379,3 +381,6 @@ Route::get('{slug}', [PageDetailController::class, 'cmsPage']);
 //         Route::get($page->slug, [App\Http\Controllers\Frontend\PageController::class, 'cmsPage'])->name($page->slug);
 //     }
 // }
+
+// awards
+Route::get('awards/gallery', [AwardsDetailController::class, 'gallery'])->name('awards-gallery');

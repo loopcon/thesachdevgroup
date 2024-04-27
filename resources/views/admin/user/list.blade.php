@@ -18,8 +18,8 @@
                 </div>
             </div>
             <div class="card">
-                <div class="row">
-                    <div class="mt-3 ml-3 col-md-3">
+                <div class="row m-0">
+                    <div class="mt-3 col-md-3 select-menu">
                         <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
                         <select class="form-control select2" name="business_id" id="business_id">
                             <option value="">-- Select Our Business --</option>
@@ -31,7 +31,7 @@
                         </select>
                     </div>
 
-                    <div class="mt-3 col-md-3">
+                    <div class="mt-3 col-md-3 select-menu">
                         <label for="showroom_id" class="form-label">Showroom<span class="text-danger">*</span></label>
                         <select class="form-control select2" name="showroom_id" id="showroom_id">
                             <option value="">-- Select Showroom --</option>
@@ -43,7 +43,7 @@
                         </select>
                     </div>
 
-                    <div class="mt-3 col-md-3">
+                    <div class="mt-3 col-md-3 select-menu">
                         <label for="service_center_id" class="form-label">Service Center<span class="text-danger">*</span></label>
                         <select class="form-control select2" name="service_center_id" id="service_center_id">
                             <option value ="">-- Select --</option>
@@ -54,9 +54,8 @@
                             @endif
                         </select>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="mt-3 ml-3 col-md-3">
+
+                    <div class="mt-3 col-md-3 select-menu">
                         <label for="body_shop_id" class="form-label">Bosy Shop<span class="text-danger">*</span></label>
                         <select class="form-control select2" name="body_shop_id" id="body_shop_id">
                             <option value="">-- Select --</option>
@@ -68,7 +67,7 @@
                         </select>
                     </div>
 
-                    <div class="mt-3 ml-3 col-md-3">
+                    <div class="mt-3 col-md-3 select-menu">
                         <label for="used_car_id" class="form-label">Used Car<span class="text-danger">*</span></label>
                         <select class="form-control select2" name="used_car_id" id="used_car_id">
                             <option value="">-- Select --</option>

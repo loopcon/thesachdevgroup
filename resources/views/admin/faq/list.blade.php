@@ -37,7 +37,7 @@
                             <div class="error"></div>
                         </div>
 
-                        <div class="col-md-3 mt-3">
+                        <div class="col-md-3 mt-3 select-menu">
                             <label for="title_font_size" class="form-label">Title Font Size</label>
                             <select class="form-control select2" name="title_font_size">
                                 <option value="">-- Select --</option>
@@ -48,7 +48,7 @@
                         </div>
 
                         @php($fontfamily = fontFamily())
-                        <div class="col-md-3 mt-3">
+                        <div class="col-md-3 mt-3 select-menu">
                             <label for="title_font_family" class="form-label">Title Font Family</label>
                             <select class="form-control select2" name="title_font_family">
                                 <option value="">-- Select --</option>
