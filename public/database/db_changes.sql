@@ -347,3 +347,27 @@ ALTER TABLE `our_business` ADD `used_car_title` VARCHAR(255) NULL DEFAULT NULL A
 
 -- Disha : 26-04-2024 2:51 PM
 ALTER TABLE `pages` CHANGE `description` `description` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+
+-- Disha : 27-04-2024 10:50 AM
+--
+-- Table structure for table `faq_title`
+--
+
+CREATE TABLE `faq_title` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_color` varchar(255) DEFAULT NULL,
+  `title_font_size` varchar(255) DEFAULT NULL,
+  `title_font_family` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `faq_title` (`id`, `title`, `title_color`, `title_font_size`, `title_font_family`, `created_at`, `updated_at`) VALUES
+(1, 'Frequently Asked Questions', '#e01818', '26px', 'sans-serif', '2024-04-27 04:53:54', '2024-04-26 23:42:43');
+
+ALTER TABLE `faq_title`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `faq_title`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
