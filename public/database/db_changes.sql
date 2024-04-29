@@ -328,6 +328,8 @@ ALTER TABLE `service_center` ADD `customer_gallery_image` VARCHAR(255) NOT NULL 
 
 -- Drashti : 25-04-2024 02:08 AM
 ALTER TABLE `contact_uses` ADD `map_link` LONGTEXT NOT NULL AFTER `form_sub_title_font_family`;
+ALTER TABLE `contact_uses` CHANGE `map_link` `map_link` LONGTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+
 
 -- Disha : 23-04-2024 5:55 PM
 ALTER TABLE `service_center` CHANGE `service_id` `service_id` VARCHAR(255) NULL DEFAULT NULL COMMENT '`id` of `service`';
