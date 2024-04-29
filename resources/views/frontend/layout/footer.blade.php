@@ -55,10 +55,10 @@
                <div class="useful-link">
                   <h3>Useful Links</h3>
                   @foreach($footer_menu_useful_links as $footer_menu_useful_link)
-                  <a href="{{$footer_menu_useful_link->link}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
-                     <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
-                     <p style="color:{{$footer_menu_useful_link->color}}; font-size:{{$footer_menu_useful_link->font_size}}; font-family:{{$footer_menu_useful_link->font_family}}; margin-bottom: 0px;""> {{$footer_menu_useful_link->name}} </p>
-                  </a>
+                        <a href="{{$footer_menu_useful_link->link}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
+                           <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
+                           <p style="color:{{$footer_menu_useful_link->color}}; font-size:{{$footer_menu_useful_link->font_size}}; font-family:{{$footer_menu_useful_link->font_family}}; margin-bottom: 0px;""> {{$footer_menu_useful_link->name}} </p>
+                        </a>
                   @endforeach
                </div> 
             </div>
@@ -131,11 +131,18 @@
       <div class="container">
          <div class="row">
             <div class="col-lg-8 p-0">
-               <div class="term-page">
+               <!-- <div class="term-page">
                   <a href="terms-conditions.php"><p>Terms of Use</p></a> 
                   <a href="privacy-policy.php"><p> Privacy Policy </p> </a>
                   <a href="purchasing-t&c.php"><p>Purchasing-T&C</p> </a>
                   <a href="refund-cancellation-policy.php"><p>Refund Cancellation Policy</p> </a>
+               </div> -->
+               <div class="term-page">
+                  @if(isset($cms_pages) && !empty($cms_pages))
+                     @foreach($cms_pages as $page)
+                        <a href="{{url($page->slug)}}"><p>{{$page->name}}</p></a> 
+                     @endforeach
+                  @endif
                </div>
             </div>
             <div class="col-lg-4 p-0">
@@ -155,6 +162,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
 
-
- </body>
- </html>
+<!-- gallery script -->
+<script src="https://thesachdevgroup.com/myown/js/lightbox-plus-jquery.min.js" ></script>
+</body>
+</html>

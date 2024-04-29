@@ -34,11 +34,13 @@ use App\Http\Controllers\Admin\UsedCarController;
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\OurLocationController;
 
+// frontend controller
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BusinessController;
 use App\Http\Controllers\Frontend\ContactUsDetailController;
 use App\Http\Controllers\Frontend\locationDetailController;
-
+use App\Http\Controllers\Frontend\PageDetailController;
+use App\Http\Controllers\Frontend\AwardsDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -245,7 +247,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('user-edit/{id}', [UserController::class, 'userEdit'])->name('user-edit');
     Route::post('user-update/{id}', [UserController::class, 'userUpdate'])->name('user-update');
     Route::get('user-delete/{id}', [UserController::class, 'userDestroy'])->name('user-delete');
-    Route::get('user-datatable', [UserController::class, 'userDatatable'])->name('user-datatable');
+    Route::post('user-datatable', [UserController::class, 'userDatatable'])->name('user-datatable');
     Route::post('get-business', [UserController::class, 'getBusiness'])->name('get-business');
 
     //faq
@@ -256,6 +258,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('faq-update/{id}', [FaqController::class, 'faqUpdate'])->name('faq-update');
     Route::get('faq-delete/{id}', [FaqController::class, 'faqDestroy'])->name('faq-delete');
     Route::get('faq-datatable', [FaqController::class, 'faqDatatable'])->name('faq-datatable');
+
+    Route::post('faq-title-update', [FaqController::class, 'faqTitleUpdate'])->name('faq-title-update');
 
 
     //showroom_facility_customer_gallery
@@ -360,4 +364,23 @@ Route::get('contactus/contact', [ContactUsDetailController::class, 'contactusDet
 Route::get('contactus/location', [locationDetailController::class, 'locationDetail'])->name('location_detail');
 
 // business page
-Route::get('/{slug}', [BusinessController::class, 'businessDetail']);
+Route::get('business/{slug}', [BusinessController::class, 'businessDetail']);
+
+// faq page
+Route::get('faqs', [PageDetailController::class, 'faqPage'])->name('faqs');
+
+// cms pages
+Route::get('{slug}', [PageDetailController::class, 'cmsPage']);
+// $compnycms = Cache::remember('pages', 10, function() { 
+//     return DB::table('pages')
+//     ->get();
+//         });
+
+//     if(!empty($compnycms)) {
+//     foreach ($compnycms as $page) {
+//         Route::get($page->slug, [App\Http\Controllers\Frontend\PageController::class, 'cmsPage'])->name($page->slug);
+//     }
+// }
+
+// awards
+Route::get('awards/gallery', [AwardsDetailController::class, 'gallery'])->name('awards-gallery');

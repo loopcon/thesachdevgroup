@@ -120,34 +120,22 @@
 <script type="text/javascript" src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
   <script>
     $(document).ready(function () {
-
+        // business selection
+        var business_id = "{{isset($record->business_id) && $record->business_id ? $record->business_id : ''}}";
+        if(business_id)
+        {
+            getBusiness(business_id);
+        }
         $(document).on('change','#business_id',function(){
             var business_id = $(this).val();
-            if(business_id !="" && business_id != null)
-            {
-                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                $.ajax({
-                    method:'post',
-                    url:'{{route('get-business')}}',
-                    data:{_token: CSRF_TOKEN,business_id:business_id},
-                    success : function(result){
-                         var result = JSON.parse(result);
-                        $('#showroom_id').html(result.html);
-                        $('#service_center_id').html(result.service_center_html);
-                        $('#body_shop_id').html(result.body_shop_html);
-                        $('#used_car_id').html(result.usedcar_html);
-                    }
-                })
-            } else {
-                $('#showroom_id').empty();
-                $('#service_center_id').empty();
-                $('#body_shop_id').empty();
-                $('#used_car_id').empty();
-            }
+            getBusiness(business_id);
         })
+        // end business selection
 
+        // showroom dropdown event
         $(document).on('change', '#showroom_id', function(){
             var showroom = $(this).val();
+            console.log(showroom);
             if(showroom !='')
             {
                 $('.service-center').hide();
@@ -159,7 +147,9 @@
                 $('.used-car').show();
             }
         })
+        // end showroom dropdown event
 
+        // service center dropdown event
         $(document).on('change', '#service_center_id', function(){
             var service_center = $(this).val();
             if(service_center !='')
@@ -173,7 +163,9 @@
                 $('.used-car').show();
             }
         })
+        // end service center dropdown event
 
+        // body shop dropdown event
         $(document).on('change', '#body_shop_id', function(){
             var body_shop = $(this).val();
             if(body_shop !='')
@@ -187,9 +179,12 @@
                 $('.used-car').show();
             }
         })
+        // end body dropdown event
 
+        // used car dropdown event
         $(document).on('change', '#used_car_id', function(){
             var used_car = $(this).val();
+            console.log(used_car);
             if(used_car !='')
             {
                 $('.showroom').hide();
@@ -201,7 +196,9 @@
                 $('.body-shop').show();
             }
         })
+        // end used car dropdown event
 
+        // form validation
         $(".user-form").validate({
             rules: {
                 'name': {
@@ -235,8 +232,42 @@
                 form.submit();
             }
         });
-    $('.colorpicker').colorpicker();
-
+        $('.colorpicker').colorpicker();
     });
+    // end form validation
+
+    function getBusiness(business_id)
+    {
+        if(business_id !="" && business_id != null)
+        {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                method:'post',
+                url:'{{route('get-business')}}',
+                data:{_token: CSRF_TOKEN,business_id:business_id},
+                success : function(result){
+                    var result = JSON.parse(result);
+                    $('#showroom_id').html(result.html);
+                    $('#service_center_id').html(result.service_center_html);
+                    $('#body_shop_id').html(result.body_shop_html);
+                    $('#used_car_id').html(result.usedcar_html);
+
+                    var showroom_id = "{{ isset($record->showroom_id) ? $record->showroom_id : '' }}";
+                    $('#showroom_id').val(showroom_id);
+                    var service_center_id = "{{ isset($record->service_center_id) ? $record->service_center_id : '' }}";
+                    $('#service_center_id').val(service_center_id);
+                    var body_shop_id = "{{ isset($record->body_shop_id) ? $record->body_shop_id : '' }}";
+                    $('#body_shop_id').val(body_shop_id);
+                    var used_car_id = "{{ isset($record->used_car_id) ? $record->used_car_id : '' }}";
+                    $('#used_car_id').val(used_car_id);
+                }
+            })
+        } else {
+            $('#showroom_id').empty();
+            $('#service_center_id').empty();
+            $('#body_shop_id').empty();
+            $('#used_car_id').empty();
+        }
+    }
 </script>
 @endsection

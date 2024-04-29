@@ -12,6 +12,7 @@ use App\Models\Home_detail;
 use App\Models\Mission_vision;
 use App\Models\OurBusiness;
 use App\Models\Footer_menu_description;
+use App\Models\Page;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -84,5 +85,8 @@ class AppServiceProvider extends ServiceProvider
 
         $our_business = OurBusiness::select('id', 'title', 'slug', 'url')->get();
         view()->share('our_business', $our_business);
+
+        $cms_pages = Page::select('id','name', 'slug')->get();
+        view()->share('cms_pages', $cms_pages);
     }
 }

@@ -29,7 +29,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Showroom</th>
+                                    <th>Our Business</th>
                                     <th>Name</th>
                                     <th>Image</th>
                                     <th>Action</th>

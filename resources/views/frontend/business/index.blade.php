@@ -133,236 +133,102 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
-</div>
 </section>
 @endif
 <!-- service center end -->
 
-<!-- toyota showroom locaions slider  -->
-<?php /*<section id="bodyshop-location">
+<!-- body shop slider  -->
+@if(isset($body_shops) && $body_shops)
+<section id="bodyshop-location">
     <div class="container">
-    <div class="location-tittle">
-        <h2>Galaxy Toyota Body Shops</h2>
-    </div>
-    <div class="slide-container swiper">
-                <div class="slide-content">
-                    <div class="card-wrapper swiper-wrapper">
-                    
+        <div class="location-tittle">
+            <h2 style="color:{{$business->body_shop_title_color}}; font-size:{{$business->body_shop_title_font_size}}; font-family:{{$business->body_shop_title_font_family}};">{{isset($business->body_shop_title) && $business->body_shop_title ? $business->body_shop_title : ''}}</h2>
+        </div>
+        <div class="slide-container swiper">
+            <div class="slide-content">
+                <div class="card-wrapper swiper-wrapper">
+                    @foreach($body_shops as $body_shop)
                         <div class="card swiper-slide">
-                        <a href="https://www.galaxytoyota.in/service/body-paint">
-                            <div class="image-content">
-                                <!-- <span class="overlay"></span> -->
-                                <div class="card-image">
-                                <img src="assets/image/locations-banner/service-motinagar.jpg" alt="" class="card-img">
+                            <a href="{{$body_shop->link}}">
+                                <div class="image-content">
+                                    <!-- <span class="overlay"></span> -->
+                                    <div class="card-image">
+                                        <img src="{{url('public/body_shop_image/'.$body_shop->image)}}" alt="" class="card-img">
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="card-content">
-                                <h2 class="name">Galaxy Toyota Body Shop Moti Nagar
-    </h2>
-    <div class="rating">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/rating.png" alt="">
-                            </div>
-                                <div class="star-parent">
-                                <img src="assets/image/locations-banner/google.png" alt="" width="6%">
-                            <p>4.6</p>
-                            <p>(4,160 reviews)</p>
-                            
-                            </div>
-                            
-                                
-                            </div>
+                                <div class="card-content">
+                                    <h2 class="name" style="color:{{$body_shop->name_color}}; font-size:{{$body_shop->name_font_size}}; font-family:{{$body_shop->name_font_family}};">{{$body_shop->name}}</h2>
+                                    <div class="rating">
+                                        @php($rating = $body_shop->rating * 20)
+                                        <div class='stars'><div id='pid-{{$body_shop->id}}' class='percent' style='width:{{$rating}}%;'></div></div>
+                                    </div>
+                                    <div class="star-parent">
+                                        <img src="{{asset('front_img/google.webp')}}" alt="" width="6%">
+                                        <p>{{$body_shop->rating}}</p>
+                                        <p>({{$body_shop->number_of_rating}} reviews)</p>
+                                    </div>
+                                </div>
                             </a>
                         </div>
-                    
-                        <div class="card swiper-slide">
-                        <a href="https://www.galaxytoyota.in/service/body-paint">
-                            <div class="image-content">
-                                <!-- <span class="overlay"></span> -->
-                                <div class="card-image">
-                                <img src="assets/image/locations-banner/kundli-service.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <h2 class="name">Galaxy Toyota Body Shop Kundli
-    </h2>
-    <div class="rating">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/rating.png" alt="">
-                            </div>
-                                <div class="star-parent">
-                                <img src="assets/image/locations-banner/google.png" alt="" width="6%">
-                            <p>4.7</p>
-                            <p>(946 reviews)</p>
-                            
-                            </div>
-                            
-                                
-                            </div>
-                            </a>
-                        </div>
-                        <div class="card swiper-slide">
-                        <a href="https://www.galaxytoyota.in/service/body-paint">
-                            <div class="image-content">
-                                <!-- <span class="overlay"></span> -->
-                                <div class="card-image">
-                                <img src="assets/image/locations-banner/azadpur-service.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <h2 class="name">Galaxy Toyota Body Shop Azadpur
-    </h2>
-    <div class="rating">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/rating.png" alt="">
-                            </div>
-                                <div class="star-parent">
-                                <img src="assets/image/locations-banner/google.png" alt="" width="6%">
-                            <p>4.6</p>
-                            <p>(420 reviews)</p>
-                            
-                            </div>
-                            
-                                
-                            </div>
-                            </a>
-                        </div> 
-                        
-                    </div>
+                    @endforeach
                 </div>
-
-                <div class="swiper-button-next swiper-navBtn"></div>
-                <div class="swiper-button-prev swiper-navBtn"></div>
-                <div class="swiper-pagination"></div>
             </div>
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
     </div>
-</section>*/ ?>
-<!-- toyota showroom location end  -->
+</section>
+@endif
+<!-- body shop slider end  -->
 
-<!-- toyota showroom locaions slider  -->
-<?php /**<section id="used-car-locations">
+<!-- used car slider  -->
+@if(isset($used_cars) && $used_cars)
+<section id="used-car-locations">
     <div class="container">
-    <div class="location-tittle">
-        <h2>Galaxy Toyota Used car</h2>
-    </div>
-    <div class="slide-container swiper">
-                <div class="slide-content">
-                    <div class="card-wrapper swiper-wrapper">
-                    
+        <div class="location-tittle">
+            <h2 style="color:{{$business->used_car_title_color}}; font-size:{{$business->used_car_titlt_font_size}}; font-family:{{$business->used_car_title_font_family}};">{{isset($business->used_car_title) && $business->used_car_title ? $business->used_car_title : ''}}</h2>
+        </div>
+        <div class="slide-container swiper">
+            <div class="slide-content">
+                <div class="card-wrapper swiper-wrapper">
+                    @foreach($used_cars as $used_car)
                         <div class="card swiper-slide">
-                        <a href="">
-                            <div class="image-content">
-                                <!-- <span class="overlay"></span> -->
-                                <div class="card-image">
-                                <img src="assets/image/locations-banner/2.jpg" alt="" class="card-img">
+                            <a href="{{$used_car->link}}">
+                                <div class="image-content">
+                                    <div class="card-image">
+                                        <img src="{{url('public/used_car_image/'.$used_car->image)}}" alt="" class="card-img">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="card-content">
-                                <h2 class="name">Galaxy Toyota U Dwarka
-    </h2>
-    <div class="rating">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/rating.png" alt="">
-                            </div>
-                                <div class="star-parent">
-                                <img src="assets/image/locations-banner/google.png" alt="" width="6%">
-                            <p>4.6</p>
-                            <p>(4,160 reviews)</p>
-                            
-                            </div>
-                            
-                                
-                            </div>
+                                <div class="card-content">
+                                    <h2 class="name" style="color:{{$used_car->name_color}}; font-size:{{$used_car->name_font_size}}; font-family:{{$used_car->name_font_family}};">{{$used_car->name}}</h2>
+                                    <div class="rating">
+                                        @php($rating = $used_car->rating * 20)
+                                        <div class='stars'>
+                                            <div id='pid-{{$body_shop->id}}' class='percent' style='width:{{$rating}}%;'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="star-parent">
+                                        <img src="{{asset('front_img/google.webp')}}" alt="" width="6%">
+                                        <p>{{$used_car->rating}}</p>
+                                        <p>({{$used_car->number_of_rating}} reviews)</p>
+                                    </div>
+                                </div>
                             </a>
                         </div>
-                    
-                        <div class="card swiper-slide">
-                        <a href="">
-                            <div class="image-content">
-                                <!-- <span class="overlay"></span> -->
-                                <div class="card-image">
-                                <img src="assets/image/locations-banner/1.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <h2 class="name">Galaxy Toyota U Moti Nagar
-    </h2>
-    <div class="rating">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/rating.png" alt="">
-                            </div>
-                                <div class="star-parent">
-                                <img src="assets/image/locations-banner/google.png" alt="" width="6%">
-                            <p>4.7</p>
-                            <p>(946 reviews)</p>
-                            
-                            </div>
-                            
-                                
-                            </div>
-                            </a>
-                        </div>
-                        <div class="card swiper-slide">
-                        <a href="">
-                            <div class="image-content">
-                                <!-- <span class="overlay"></span> -->
-                                <div class="card-image">
-                                <img src="assets/image/locations-banner/4.jpg" alt="" class="card-img">
-                                </div>
-                            </div>
-
-                            <div class="card-content">
-                                <h2 class="name">Galaxy Toyota U Shalimar
-    </h2>
-    <div class="rating">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/star.png" alt="">
-                            <img src="assets/image/locations-banner/rating.png" alt="">
-                            </div>
-                                <div class="star-parent">
-                                <img src="assets/image/locations-banner/google.png" alt="" width="6%">
-                            <p>4.6</p>
-                            <p>(420 reviews)</p>
-                            
-                            </div>
-                            
-                                
-                            </div>
-                            </a>
-                        </div> 
-                        
-                    </div>
+                    @endforeach
                 </div>
-
-                <div class="swiper-button-next swiper-navBtn"></div>
-                <div class="swiper-button-prev swiper-navBtn"></div>
-                <div class="swiper-pagination"></div>
             </div>
+            <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div>
+            <div class="swiper-pagination"></div>
+        </div>
     </div>
-</section>**/ ?>
-<!-- toyota showroom location end  -->
+</section>
+@endif
+<!-- used car end  -->
 
 <!-- insurence  -->
 @if(isset($business_insurance) && $business_insurance)
@@ -376,7 +242,7 @@
                 <div id="owl-insurence-carousel" class="owl-carousel owl-theme">
                     @foreach($business_insurance as $record)
                         <div class="insurence-card">
-                            <a href="#" target="_blank">
+                            <a href="{{$record->url}}" target="_blank">
                                 <div class="insurence-card-one">
                                     <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
                                     <div class="insurence-content">
@@ -390,7 +256,7 @@
             @else
                 @foreach($business_insurance as $record)
                     <div class="insurence-card">
-                        <a href="#" target="_blank">
+                        <a href="{{$record->url}}" target="_blank">
                             <div class="insurence-card-one">
                                 <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
                                 <div class="insurence-content">
@@ -438,63 +304,62 @@
 <!-- why choose end -->
 @endsection
 @section('javascript')
-   <!-- Swiper JS -->
-   <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
-    <!-- JavaScript -->
-      <!--Uncomment this line-->
-    <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
-    <script>
-        var swiper = new Swiper(".slide-content", {
-            slidesPerView: 3,
-            spaceBetween: 25,
+<!-- Swiper JS -->
+<script src="{{url('//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js')}}"></script>
+<!-- JavaScript -->
+<!--Uncomment this line-->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
+<script>
+    var swiper = new Swiper(".slide-content", {
+        slidesPerView: 3,
+        spaceBetween: 25,
+        loop: true,
+        centerSlide: 'true',
+        fade: 'true',
+        grabCursor: 'true',
+        pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+        },
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+        },
+            breakpoints:{
+            0: {
+                    slidesPerView: 1,
+            },
+            520: {
+                slidesPerView: 2,
+            },
+            950: {
+                slidesPerView: 3,
+            },
+            },
+    });
+
+    $(document).ready(function() {
+        $('#owl-insurence-carousel').owlCarousel({
             loop: true,
-            centerSlide: 'true',
-            fade: 'true',
-            grabCursor: 'true',
-            pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            dynamicBullets: true,
-            },
-            navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-            },
-
-             breakpoints:{
+            margin: 30,
+            autoplay:true,
+            // dots: true,
+            // nav: true,
+            items: 3,
+            responsive: {
                 0: {
-                     slidesPerView: 1,
+                    items: 1 
                 },
-                520: {
-                    slidesPerView: 2,
+                768: {
+                    items: 2
                 },
-                950: {
-                    slidesPerView: 3,
-                },
-             },
-        });
-
-        $(document).ready(function() {
-            $('#owl-insurence-carousel').owlCarousel({
-                loop: true,
-                margin: 30,
-                autoplay:true,
-                // dots: true,
-                // nav: true,
-                items: 3,
-                responsive: {
-                    0: {
-                        items: 1 
-                    },
-                    768: {
-                        items: 2
-                    },
-                    991: {
-                        items: 3
-                    }
+                991: {
+                    items: 3
                 }
-            });
+            }
         });
+    });
 </script>
 @endsection
 
