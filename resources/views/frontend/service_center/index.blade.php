@@ -19,8 +19,8 @@
 <section id="introduction-location">
     <div class="container">
         <div class="location-text">
-            <h1 style="color:{{$service_center->name_color}}; font-size:{{$service_center->name_font_size}}; font-family}};">{{isset($service_center->name) && $service_center->name ? $service_center->name : ''}}</h1>
-            <p style="color:{{$service_center->name_color}}; font-size:{{$service_center->name_font_size}}; font-family}};">{!! isset($service_center->description) && $service_center->description ? $service_center->description : '' !!}</p>
+            <h1 style="color:{{$service_center->name_color}}; font-size:{{$service_center->name_font_size}}; font-family:{{$service_center->name_font_family}};">{{isset($service_center->name) && $service_center->name ? $service_center->name : ''}}</h1>
+            <p style="color:{{$service_center->description_font_color}}; font-size:{{$service_center->description_font_size}}; font-family:{{$service_center->description_font_family}};">{!! isset($service_center->description) && $service_center->description ? $service_center->description : '' !!}</p>
         </div>
         @php($services = isset($service_center->service) && $service_center->service ? $service_center->service : '')
         <div class="top-car-image">
@@ -29,8 +29,8 @@
                     @foreach($services as $service)
                         <div class="car-image">
                             <a href="https://www.galaxytoyota.in/service/general-repair">
-                            <img src="{{url('public/uploads/service/'.$service->icon)}}" alt="" width="90px">
-                            <p>{{$service->name}}</p>
+                                <img src="{{url('public/uploads/service/'.$service->icon)}}" alt="" width="90px">
+                                <p style="color:{{$service->name_color}}; font-size:{{$service->name_font_size}}; font-family:{{$service->name_font_family}};">{{$service->name}}</p>
                             </a>
                         </div>
                     @endforeach
@@ -51,8 +51,8 @@
                         @endif
                     </div>
                     <div class="location-text-one">
-                        <h4>ADDRESS</h4>
-                        <p>{{isset($service_center->address) && $service_center->address ? $service_center->address : ''}}</p>
+                        <h4 style="color:{{$service_center->address_title_color}}; font-size:{{$service_center->address_title_font_size}}; font-family:{{$service_center->address_title_font_family}};">{{isset($service_center->address_title) && $service_center->address_title ? $service_center->address_title : ''}}</h4>
+                        <p style="color:{{$service_center->address_font_color}}; font-size:{{$service_center->address_font_size}}; font-family:{{$service_center->address_font_family}};">{{isset($service_center->address) && $service_center->address ? $service_center->address : ''}}</p>
                     </div>
                 </div>
             </div>
@@ -64,8 +64,8 @@
                         @endif
                     </div>
                     <div class="location-text-one">
-                        <h4>WORKING HOURS</h4>
-                        <p>{{isset($service_center->working_hours) && $service_center->working_hours ? $service_center->working_hours : ''}}</p>
+                        <h4 style="color:{{$service_center->working_hour_title_color}}; font-size:{{$service_center->working_hour_title_font_size}}; font-family:{{$service_center->working_hour_title_font_family}};">{{isset($service_center->working_hour_title) && $service_center->working_hour_title ? $service_center->working_hour_title : ''}}</h4>
+                        <p style="color:{{$service_center->working_hours_font_color}}; font-size:{{$service_center->working_hours_font_size}}; font-family:{{$service_center->working_hours_font_family}};">{{isset($service_center->working_hours) && $service_center->working_hours ? $service_center->working_hours : ''}}</p>
                     </div>
                 </div>
             </div>
@@ -77,8 +77,8 @@
                         @endif
                     </div>
                     <div class="location-text-one">
-                        <h4>CONTACT NUMBERS</h4>
-                        <p><a href="tel:+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}">+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}</a></p>
+                        <h4 style="color:{{$service_center->contact_title_color}}; font-size:{{$service_center->contact_title_font_size}}; font-family:{{$service_center->contact_title_font_family}};">{{isset($service_center->contact_title) && $service_center->contact_title ? $service_center->contact_title : ''}}</h4>
+                        <p style="color:{{$service_center->contact_font_color}}; font-size:{{$service_center->contact_font_size}}; font-family:{{$service_center->contact_font_family}};"><a href="tel:+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}">+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}</a></p>
                     </div>
                 </div>
             </div>
@@ -91,8 +91,8 @@
                         @endif
                     </div>
                     <div class="location-text-one">
-                        <h4>EMAIL</h4>
-                        <p><a href="mailto: {{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}">{{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}</a></p>
+                        <h4 style="color:{{$service_center->email_title_color}}; font-size:{{$service_center->email_title_font_size}}; font-family:{{$service_center->email_title_font_family}};">{{isset($service_center->email_title) && $service_center->email_title ? $service_center->email_title : ''}}</h4>
+                        <p style="color:{{$service_center->email_font_color}}; font-size:{{$service_center->email_font_size}}; font-family:{{$service_center->email_font_family}};"><a href="mailto: {{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}">{{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}</a></p>
                     </div>
                 </div>
             </div>
@@ -100,10 +100,11 @@
     </div>
 </section>
 
+@if(isset($facility) && !empty($facility))
 <section id="facility">
     <div class="container">
         <div class="text-facility">
-            <h3>FACILITIES</h3>
+            <h3 style="color:{{$service_center->facility_title_color}}; font-size:{{$service_center->facility_title_font_size}}; font-family:{{$service_center->facility_title_font_family}};">{{isset($service_center->facility_title) && $service_center->facility_title ? $service_center->facility_title : ''}}</h3>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -130,12 +131,13 @@
         </div>
     </div>
 </section>
+@endif
 <!-- slider end  -->
 
 <section id="facility">
     <div class="container">
         <div class="text-facility">
-            <h3>CUSTOMER GALLERY</h3>
+            <h3 style="color:{{$service_center->customer_gallery_title_color}}; font-size:{{$service_center->customer_gallery_title_font_size}}; font-family:{{$service_center->customer_gallery_title_font_family}};">{{isset($service_center->customer_gallery_title) && $service_center->customer_gallery_title ? $service_center->customer_gallery_title : ''}}</h3>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -213,7 +215,9 @@
             </div>
             <div class="col-md-6">
                 <div class="locations-contact-us">
-                    <img src="{{url('public/front_img/Lets Connect.webp')}}" alt="" width="65%">
+                    @if(isset($service_center->lets_connect_image) && $service_center->lets_connect_image)
+                        <img src="{{url('public/uploads/service_center/lets_connect_image/'.$service_center->lets_connect_image)}}" alt="" width="65%">
+                    @endif
                 </div>
             </div>
         </div>
@@ -225,7 +229,7 @@
 <section id="testimonial">
     <div class="container">
         <div class="location-testimonial">
-            <h2>Testimonial</h2>
+            <h2 style="color:{{$service_center->testimonial_title_font_color}}; font-size:{{$service_center->testimonial_title_font_size}}; font-family:{{$service_center->testimonial_title_font_family}};"><a href="mailto: {{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}">{{isset($service_center->testimonial_title) && $service_center->testimonial_title ? $service_center->testimonial_title : ''}}</h2>
         </div>
         <div class="reviews">
             <section class="testimonials">

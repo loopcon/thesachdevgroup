@@ -68,7 +68,7 @@ class ServiceCenterController extends Controller
                     'number_of_rating' => 'required|numeric',
                 ]);
                 $service_center = new ServiceCenter();
-                $fields = array('business_id', 'name', 'name_color', 'name_font_size','name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color', 'rating', 'number_of_rating', 'slider_service_center_name', 'slider_service_center_name_color', 'slider_service_center_name_size', 'slider_service_center_name_font_family','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','lets_connect_image','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size', 'email_title_font_family');
+                $fields = array('business_id', 'name', 'name_color', 'name_font_size','name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color', 'rating', 'number_of_rating', 'slider_service_center_name', 'slider_service_center_name_color', 'slider_service_center_name_size', 'slider_service_center_name_font_family','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size', 'email_title_font_family');
                 foreach($fields as $field)
                 {
                     $service_center->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -104,6 +104,11 @@ class ServiceCenterController extends Controller
                 if($request->hasFile('slider_image')) {
                     $slider_image = fileUpload($request, 'slider_image', 'uploads/service_center/slider_image');
                     $service_center->slider_image = $slider_image;
+                }
+
+                if($request->hasFile('lets_connect_image')) {
+                    $lets_connect_image = fileUpload($request, 'lets_connect_image', 'uploads/service_center/lets_connect_image');
+                    $service_center->lets_connect_image = $lets_connect_image;
                 }
 
                 // if($request->hasFile('facility_image')) {
@@ -228,7 +233,7 @@ class ServiceCenterController extends Controller
                     'number_of_rating' => 'required|numeric',
                 ]);
                 $service_center = ServiceCenter::find($id);
-                $fields = array('business_id', 'name', 'name_color', 'name_font_size','name_font_family', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color', 'rating', 'number_of_rating','slider_service_center_name','slider_service_center_name_color', 'slider_service_center_name_size', 'slider_service_center_name_font_family','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','lets_connect_image','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size', 'email_title_font_family');
+                $fields = array('business_id', 'name', 'name_color', 'name_font_size','name_font_family', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_font_size', 'email_font_family', 'email_font_color', 'rating', 'number_of_rating','slider_service_center_name','slider_service_center_name_color', 'slider_service_center_name_size', 'slider_service_center_name_font_family','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size', 'email_title_font_family');
                 foreach($fields as $field)
                 {
                     $service_center->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -294,6 +299,16 @@ class ServiceCenterController extends Controller
                     }
                     $slider_image = fileUpload($request, 'slider_image', 'uploads/service_center/slider_image');
                     $service_center->slider_image = $slider_image;
+                }
+
+                if($request->hasFile('lets_connect_image')) {
+                    $oldimage = $service_center->lets_connect_image;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/service_center/lets_connect_image/'.$oldimage);
+                    }
+                    $lets_connect_image = fileUpload($request, 'lets_connect_image', 'uploads/service_center/lets_connect_image');
+                    $service_center->lets_connect_image = $lets_connect_image;
                 }
 
                 // if($request->hasFile('facility_image')) {
@@ -393,6 +408,16 @@ class ServiceCenterController extends Controller
                         removeFile('uploads/service_center/slider_image/'.$slider_image);
                     }
                 }
+
+                if($service_center->lets_connect_image != NULL)
+                {
+                    $lets_connect_image = $service_center->lets_connect_image;
+                    if($lets_connect_image)
+                    {
+                        removeFile('uploads/service_center/lets_connect_image/'.$lets_connect_image);
+                    }
+                }
+
                 $service_center = ServiceCenter::where('id',$id)->delete();
                 if($service_center)
                 {
