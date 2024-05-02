@@ -62,8 +62,8 @@ class ServiceCenterFacilityCustomerGalleryController extends Controller
             {
                 $request->validate([
                     'service_center_id' => 'required',
-                    'facility_image' => 'required|image|mimes:jpeg,png,jpg,webp',
-                    'customer_gallery_image' => 'required|image|mimes:jpeg,png,jpg,webp',
+                    'facility_image' => 'image|mimes:jpeg,png,jpg,webp',
+                    'customer_gallery_image' => 'image|mimes:jpeg,png,jpg,webp',
                 ]);
                 $service_center_facility_gallery = new ServiceCenterFacilityCustomerGallery();
                 $service_center_facility_gallery->service_center_id = $request->service_center_id ? $request->service_center_id : NULL;

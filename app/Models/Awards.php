@@ -10,10 +10,10 @@ class Awards extends Model
 {
     use HasFactory,SoftDeletes;
     protected $table = 'award_and_recognition';
-    protected $fields = ['showroom_id', 'name', 'image'];
+    protected $fields = ['business_id', 'name', 'image'];
 
     public function businessdDetail()
     {
-        return $this->belongsTo(OurBusiness::class, 'showroom_id');
+        return $this->belongsTo(OurBusiness::class, 'business_id');
     }
 }

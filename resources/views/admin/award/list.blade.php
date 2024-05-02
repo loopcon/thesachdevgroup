@@ -63,7 +63,7 @@
             ajax: "{{ route('award-datatable') }}",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'showroom_id', name: 'showroom_id'},
+                {data: 'business_id', name: 'business_id'},
                 {data: 'name', name: 'name'},
                 {data: 'image', name: 'image'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -112,11 +112,11 @@
                 var result = $.parseJSON(result);
                 $('#form-detail').html(result.html);
                 $('#form_modal').modal('show');
-                $('#showroom_id').select2({width:'100%'});
+                $('#business_id').select2({width:'100%'});
 
             $(".award-form").validate({
                 rules: {
-                    'showroom_id': {
+                    'business_id': {
                         required: true,
                     },
                     'image': {
@@ -124,7 +124,7 @@
                     },
                 },
                 messages: {
-                    'showroom_id': {
+                    'business_id': {
                         required: "Showroom is required",
                     },
                     'image': {

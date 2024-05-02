@@ -7,14 +7,14 @@
     <div class="modal-body m-3" id="form-detail">
         <div class="row">
             <div class="col-12">
-                <label for="showroom_id" class="form-label">Our Business<span class="text-danger">*</span></label>
-                <select class="form-control select2" name="showroom_id" id="showroom_id">
+                <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
+                <select class="form-control select2" name="business_id" id="business_id">
                     <option value="">-- Select Business --</option>
                     @foreach($our_business as $value)
-                        <option value="{{$value->id}}"@if(isset($record->showroom_id) && $record->showroom_id == $value->id){{'selected'}}@endif>{{$value->title}}</option>
+                        <option value="{{$value->id}}"@if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}}@endif>{{$value->title}}</option>
                     @endforeach
                 </select>
-                @if ($errors->has('showroom_id')) <div class="text-danger">{{ $errors->first('showroom_id') }}</div>@endif
+                @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
             </div>
 
             <div class="col-12">

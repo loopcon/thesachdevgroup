@@ -373,3 +373,14 @@ ALTER TABLE `faq_title`
 
 ALTER TABLE `faq_title`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 01-05-2024 10:19 AM
+ALTER TABLE `award_and_recognition` CHANGE `showroom_id` `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`';
+ALTER TABLE `service_center` ADD `slug` VARCHAR(255) NULL DEFAULT NULL AFTER `name`;
+
+-- Disha : 01-05-2024 6:03 PM
+ALTER TABLE `service_center` ADD `facility_title` VARCHAR(255) NULL DEFAULT NULL AFTER `email_font_color`, ADD `facility_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `facility_title`, ADD `facility_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `facility_title_color`, ADD `facility_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `facility_title_font_size`, ADD `customer_gallery_title` VARCHAR(255) NULL DEFAULT NULL AFTER `facility_title_font_family`, ADD `customer_gallery_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `customer_gallery_title`, ADD `customer_gallery_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `customer_gallery_title_color`, ADD `customer_gallery_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `customer_gallery_title_font_size`, ADD `testimonial_title` VARCHAR(255) NULL DEFAULT NULL AFTER `customer_gallery_title_font_family`, ADD `testimonial_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `testimonial_title`, ADD `testimonial_t[...]
+ALTER TABLE `service_center` ADD `lets_connect_image` VARCHAR(255) NULL DEFAULT NULL AFTER `testimonial_title_font_family`;
+
+ALTER TABLE `service_center` ADD `address_title` VARCHAR(255) NULL DEFAULT NULL AFTER `lets_connect_image`, ADD `address_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `address_title`, ADD `address_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `address_title_color`, ADD `address_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `address_title_font_size`, ADD `working_hour_title` VARCHAR(255) NULL DEFAULT NULL AFTER `address_title_font_family`, ADD `working_hour_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hour_title`, ADD `working_hour_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hour_title_color`, ADD `working_hour_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hour_title_font_size`, ADD `contact_title` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hour_title_font_family`, ADD `contact_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_title`, ADD `contact_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `[...]
+ALTER TABLE `service_center` ADD `email_title` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_title_font_family`, ADD `email_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `email_title`, ADD `email_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `email_title_color`, ADD `email_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `email_title_font_size`;

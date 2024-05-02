@@ -64,12 +64,12 @@ class AwardsController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $request->validate([
-                    'showroom_id' => 'required',
+                    'business_id' => 'required',
                     'image' => 'image|mimes:jpeg,png,jpg,webp',
                 ]);
 
                 $award = new Awards();
-                $award->showroom_id = $request->showroom_id ? $request->showroom_id : NULL;
+                $award->business_id = $request->business_id ? $request->business_id : NULL;
                 $award->name = $request->name ? $request->name : NULL;
                 if($request->hasFile('image')) {
                     $image = fileUpload($request, 'image', 'uploads/award');
@@ -92,7 +92,7 @@ class AwardsController extends Controller
     public function awardDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = Awards::with('businessdDetail')->select('id', 'showroom_id', 'name', 'image')->orderBy('id', 'DESC');
+            $query = Awards::with('businessdDetail')->select('id', 'business_id', 'name', 'image')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -100,9 +100,9 @@ class AwardsController extends Controller
                     $image = $list->image ? asset('uploads/award/'.$list->image) : '';
                     return '<img src="' . $image . '" alt="" width="100">';
                 }) 
-                ->addColumn('showroom_id', function($list){
-                    $showroom_id = isset($list->businessdDetail->title) && $list->businessdDetail->title ? $list->businessdDetail->title : NULL;
-                    return $showroom_id;
+                ->addColumn('business_id', function($list){
+                    $business_id = isset($list->businessdDetail->title) && $list->businessdDetail->title ? $list->businessdDetail->title : NULL;
+                    return $business_id;
                 })
                 ->addColumn('action', function ($list) {
                     $html = "";
@@ -120,7 +120,7 @@ class AwardsController extends Controller
                     }
                     return $html;
                 })
-                ->rawColumns(['image', 'showroom_id', 'action'])
+                ->rawColumns(['image', 'business_id', 'action'])
                 ->make(true);
         } else {
             return redirect()->back()->with('message','something went wrong');
@@ -136,11 +136,11 @@ class AwardsController extends Controller
             {
                 $id = decrypt($id);
                 $request->validate([
-                    'showroom_id' => 'required',
+                    'business_id' => 'required',
                     'image' => 'image|mimes:jpeg,png,jpg,webp',
                 ]);
                 $award = Awards::find($id);
-                $award->showroom_id = $request->showroom_id ? $request->showroom_id : NULL;
+                $award->business_id = $request->business_id ? $request->business_id : NULL;
                 $award->name = $request->name ? $request->name : NULL;
 
                 if($request->hasFile('image')) {

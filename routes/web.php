@@ -41,6 +41,7 @@ use App\Http\Controllers\Frontend\ContactUsDetailController;
 use App\Http\Controllers\Frontend\locationDetailController;
 use App\Http\Controllers\Frontend\PageDetailController;
 use App\Http\Controllers\Frontend\AwardsDetailController;
+use App\Http\Controllers\Frontend\ServiceCenterDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -384,3 +385,6 @@ Route::get('{slug}', [PageDetailController::class, 'cmsPage']);
 
 // awards
 Route::get('awards/gallery', [AwardsDetailController::class, 'gallery'])->name('awards-gallery');
+
+// service center
+Route::get('/{slug}', [ServiceCenterDetailController::class, 'serviceCenter']);

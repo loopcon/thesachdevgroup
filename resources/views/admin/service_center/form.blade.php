@@ -119,6 +119,38 @@
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
                             </div>
 
+                            
+                            <div class="col-md-4 mt-2 mb-2">
+                                <label for="address_title" class="form-label">Address Title</label>
+                                <input type="address_title" class="form-control" value="{{isset($record->address_title) ? $record->address_title : old('address_title')}}" name="address_title" id="address_title">
+                                @if ($errors->has('address_title')) <div class="text-danger">{{ $errors->first('address_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="address_title_font_size" class="form-label">Address Title Font Size</label>
+                                <select class="form-control select2" name="address_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->address_title_font_size) && $record->address_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="address_title_font_family" class="form-label">Address Title Font Family</label>
+                                <select class="form-control select2" name="address_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->address_title_font_family) && $record->address_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="address_title_color" class="form-label">Address Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->address_title_color) ? $record->address_title_color : old('address_title_color')}}" name="address_title_color" id="address_title_color">
+                            </div>
+
                             <div class="col-md-4 mt-2">
                                 <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="address" required="" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
@@ -161,6 +193,37 @@
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->address_font_color) ? $record->address_font_color : old('address_font_color')}}" name="address_font_color" id="address_font_color">
                             </div>
 
+                            <div class="col-md-4 mt-2 mb-2">
+                                <label for="working_hour_title" class="form-label">Working Hours Title</label>
+                                <input type="working_hour_title" class="form-control" value="{{isset($record->working_hour_title) ? $record->working_hour_title : old('working_hour_title')}}" name="working_hour_title" id="working_hour_title">
+                                @if ($errors->has('working_hour_title')) <div class="text-danger">{{ $errors->first('working_hour_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hour_title_font_size" class="form-label">Working Hours Title Font Size</label>
+                                <select class="form-control select2" name="working_hour_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->working_hour_title_font_size) && $record->working_hour_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hour_title_font_family" class="form-label">Working Hours Title Font Family</label>
+                                <select class="form-control select2" name="working_hour_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->working_hour_title_font_family) && $record->working_hour_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hour_title_color" class="form-label">Working Hours Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->working_hour_title_color) ? $record->working_hour_title_color : old('working_hour_title_color')}}" name="working_hour_title_color" id="working_hour_title_color">
+                            </div>
+
                             <div class="col-md-4 mt-2">
                                 <label for="working_hours" class="form-label">Working Hours</label>
                                 <input type="text" class="form-control" value="{{isset($record->working_hours) ? $record->working_hours : old('working_hours')}}" name="working_hours" id="working_hours">
@@ -199,6 +262,37 @@
                             <div class="col-md-4 mt-2">
                                 <label for="working_hours_font_color" class="form-label">Working Hours Font Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->working_hours_font_color) ? $record->working_hours_font_color : old('working_hours_font_color')}}" name="working_hours_font_color" id="working_hours_font_color">
+                            </div>
+
+                            <div class="col-md-4 mt-2 mb-2">
+                                <label for="contact_title" class="form-label">Contact Number Title</label>
+                                <input type="contact_title" class="form-control" value="{{isset($record->contact_title) ? $record->contact_title : old('contact_title')}}" name="contact_title" id="contact_title">
+                                @if ($errors->has('contact_title')) <div class="text-danger">{{ $errors->first('contact_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="contact_title_font_size" class="form-label">Contact Number Title Font Size</label>
+                                <select class="form-control select2" name="contact_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->contact_title_font_size) && $record->contact_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="contact_title_font_family" class="form-label">Contact Number Title Font Family</label>
+                                <select class="form-control select2" name="contact_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->contact_title_font_family) && $record->contact_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="contact_title_color" class="form-label">Contact Number Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->contact_title_color) ? $record->contact_title_color : old('contact_title_color')}}" name="contact_title_color" id="contact_title_color">
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -244,6 +338,37 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
+                                <label for="email_title" class="form-label">Email Title</label>
+                                <input type="text" class="form-control" value="{{isset($record->email_title) ? $record->email_title : old('email_title')}}" name="email_title" id="email_title">
+                                @if ($errors->has('email_title')) <div class="text-danger">{{ $errors->first('email_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="email_title_font_size" class="form-label">Email Title Font Size</label>
+                                <select class="form-control select2" name="email_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->email_title_font_size) && $record->email_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="email_title_font_family" class="form-label">Email Title Font Family</label>
+                                <select class="form-control select2" name="email_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->email_title_font_family) && $record->email_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="email_title_color" class="form-label">Email Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->email_title_color) ? $record->email_title_color : old('email_title_color')}}" name="email_title_color" id="email_title_color">
+                            </div>
+
+                            <div class="col-md-4 mt-2">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" value="{{isset($record->email) ? $record->email : old('email')}}" name="email" id="email">
                                 @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
@@ -284,25 +409,148 @@
                                 <small class="image_type">(Hight:40,Width:40; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
+                            <div class="col-12">
+                                <h5>Facility Title</h5>
+                                <hr>
+                            </div>
+
+                            <div class="col-md-3 mt-2 mb-2">
+                                <label for="facility_title" class="form-label">Facility Title</label>
+                                <input type="facility_title" class="form-control" value="{{isset($record->facility_title) ? $record->facility_title : old('facility_title')}}" name="facility_title" id="facility_title">
+                                @if ($errors->has('facility_title')) <div class="text-danger">{{ $errors->first('facility_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="facility_title_font_size" class="form-label">Facility Title Font Size</label>
+                                <select class="form-control select2" name="facility_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->facility_title_font_size) && $record->facility_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="facility_title_font_family" class="form-label">Facility Title Font Family</label>
+                                <select class="form-control select2" name="facility_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->facility_title_font_family) && $record->facility_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="facility_title_color" class="form-label">Facility Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->facility_title_color) ? $record->facility_title_color : old('facility_title_color')}}" name="facility_title_color" id="facility_title_color">
+                            </div>
+
+                            <div class="col-12">
+                                <h5>Customer Gallery Title</h5>
+                                <hr>
+                            </div>
+
+                            <div class="col-md-3 mt-2 mb-2">
+                                <label for="customer_gallery_title" class="form-label">Customer Gallery Title</label>
+                                <input type="customer_gallery_title" class="form-control" value="{{isset($record->customer_gallery_title) ? $record->customer_gallery_title : old('customer_gallery_title')}}" name="customer_gallery_title" id="customer_gallery_title">
+                                @if ($errors->has('customer_gallery_title')) <div class="text-danger">{{ $errors->first('customer_gallery_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="customer_gallery_title_font_size" class="form-label">Customer Gallery Title Font Size</label>
+                                <select class="form-control select2" name="customer_gallery_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->customer_gallery_title_font_size) && $record->customer_gallery_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="customer_gallery_title_font_family" class="form-label">Customer Gallery Title Font Family</label>
+                                <select class="form-control select2" name="customer_gallery_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->customer_gallery_title_font_family) && $record->customer_gallery_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="customer_gallery_title_color" class="form-label">Customer Gallery Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->customer_gallery_title_color) ? $record->customer_gallery_title_color : old('customer_gallery_title_color')}}" name="customer_gallery_title_color" id="customer_gallery_title_color">
+                            </div>
+
                             <div class="col-md-4 mt-2">
+                                <label for="lets_connect_image" class="form-label">Let's Connect Image</label>
+                                @if(isset($record->lets_connect_image) && $record->lets_connect_image)
+                                    <img src="{{url('public/uploads/service_center/lets_connect_image/'.$record->lets_connect_image)}}" width="100">
+                                @endif  
+                                <input type="file" id="lets_connect_image" class="form-control" name="lets_connect_image" value="">
+                                @if ($errors->has('lets_connect_image')) <div class="text-danger">{{ $errors->first('lets_connect_image') }}</div>@endif
+                                <div class="error"></div>
+                                <small class="image_type">(Hight:444,Width:351; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="col-12">
+                                <h5>Testimonial Title</h5>
+                                <hr>
+                            </div>
+
+                            <div class="col-md-3 mt-2 mb-2">
+                                <label for="testimonial_title" class="form-label">Testimonial Title</label>
+                                <input type="testimonial_title" class="form-control" value="{{isset($record->testimonial_title) ? $record->testimonial_title : old('testimonial_title')}}" name="testimonial_title" id="testimonial_title">
+                                @if ($errors->has('testimonial_title')) <div class="text-danger">{{ $errors->first('testimonial_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="testimonial_title_font_size" class="form-label">Testimonial Title Font Size</label>
+                                <select class="form-control select2" name="testimonial_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->testimonial_title_font_size) && $record->testimonial_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="testimonial_title_font_family" class="form-label">Testimonial Title Font Family</label>
+                                <select class="form-control select2" name="testimonial_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->testimonial_title_font_family) && $record->testimonial_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="testimonial_title_color" class="form-label">Testimonial Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->testimonial_title_color) ? $record->testimonial_title_color : old('testimonial_title_color')}}" name="testimonial_title_color" id="testimonial_title_color">
+                            </div>
+
+                            <div class="col-12">
+                                <h5> Slider Section </h5>
+                                <hr>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="slider_service_center_name" class="form-label">Slider Service Center Name</label>
+                                <input type="text" class="form-control" id="slider_service_center_name" name="slider_service_center_name" value="{{isset($record->slider_service_center_name) ? $record->slider_service_center_name : old('slider_service_center_name')}}">
+                                @if ($errors->has('slider_service_center_name')) <div class="text-danger">{{ $errors->first('slider_service_center_name') }}</div>@endif
+                            </div>
+                            <div class="col-md-3 mt-2">
                                 <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" required="" value="{{isset($record->rating) ? $record->rating : old('rating')}}" name="rating" id="rating">
                                 @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4 mt-2">
+                            <div class="col-md-3 mt-2">
                                 <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" required="" maxlength="5" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}" name="number_of_rating" id="number_of_rating">
                                 @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="slider_service_center_name" class="form-label">Slider Service Center Name</label>
-                                <input type="text" class="form-control" id="slider_service_center_name" name="slider_service_center_name" value="{{isset($record->slider_service_center_name) ? $record->slider_service_center_name : old('slider_service_center_name')}}">
-                                @if ($errors->has('slider_service_center_name')) <div class="text-danger">{{ $errors->first('slider_service_center_name') }}</div>@endif
-                            </div>
-
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="slider_service_center_name_color" class="form-label">Slider Service Center Name Color</label>
                                 <input type="text" id="slider_service_center_name_color" class="form-control colorpicker" name="slider_service_center_name_color" value="{{isset($record->slider_service_center_name_color) ? $record->slider_service_center_name_color : old('slider_service_center_name_color')}}">
                             </div>
@@ -336,29 +584,6 @@
                                 <input type="file" id="slider_image" class="form-control" name="slider_image" value="">
                                 @if ($errors->has('slider_image')) <div class="text-danger">{{ $errors->first('slider_image') }}</div>@endif
                                 <small class="image_type">(Hight:243,Width:325; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
-
-                            <div class="col-md-4">
-                                <label for="facility_image" class="form-label">Facility Image</label>
-                                @if(isset($record->facility_image) && $record->facility_image)
-                                    <img src="{{url('public/uploads/service_center_facility_image/'.$record->facility_image)}}" width="100" style="margin-bottom: 10px; margin-left:5px;">
-                                @endif  
-                                <input type="file" id="facility_image" class="form-control" name="facility_image" value="">
-                                @if ($errors->has('facility_image')) <div class="text-danger">{{ $errors->first('facility_image') }}</div>@endif
-                                <div class="error"></div>
-                                <small class="image_type">(Hight:325,Width:243; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
-                            <div class="col-md-4 mb-3">
-                                <label for="customer_gallery_image" class="form-label">Customer Gallery Image</label>
-                                @if(isset($record->customer_gallery_image) && $record->customer_gallery_image)
-                                    <img src="{{url('public/uploads/service_center_customer_gallery_image/'.$record->customer_gallery_image)}}" width="100" style="margin-bottom: 10px; margin-left:5px;">
-                                @endif  
-                                <input type="file" id="customer_gallery_image" class="form-control" name="customer_gallery_image" value="">
-                                @if ($errors->has('customer_gallery_image')) <div class="text-danger">{{ $errors->first('customer_gallery_image') }}</div>@endif
-                                <div class="error"></div>
-                                <small class="image_type">(Hight:325,Width:243; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <?php /* <div class="col-12">

@@ -184,7 +184,7 @@
                         @endif
                     @endif
 
-                    {{-- @php($has_permission = hasPermission('Service Center Facility Customer Gallery'))
+                    @php($has_permission = hasPermission('Service Center Facility Customer Gallery'))
                     @if(isset($has_permission) && $has_permission)
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item">
@@ -194,7 +194,7 @@
                                 </a>
                             </li>
                         @endif
-                    @endif --}}
+                    @endif
 
                     @php($has_permission = hasPermission('Service Center Testimonial'))
                     @if(isset($has_permission) && $has_permission)
