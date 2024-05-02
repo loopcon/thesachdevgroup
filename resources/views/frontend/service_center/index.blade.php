@@ -22,7 +22,6 @@
             <h1 style="color:{{$service_center->name_color}}; font-size:{{$service_center->name_font_size}}; font-family:{{$service_center->name_font_family}};">{{isset($service_center->name) && $service_center->name ? $service_center->name : ''}}</h1>
             <p style="color:{{$service_center->description_font_color}}; font-size:{{$service_center->description_font_size}}; font-family:{{$service_center->description_font_family}};">{!! isset($service_center->description) && $service_center->description ? $service_center->description : '' !!}</p>
         </div>
-        @php($services = isset($service_center->service) && $service_center->service ? $service_center->service : '')
         <div class="top-car-image">
             <div class="top-car-parent">
                 @if(isset($services) && $services)
