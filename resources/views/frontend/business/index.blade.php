@@ -24,7 +24,7 @@
                     @foreach($services as $service)
                         <div class="car-image">
                             <a href="{{$service->url}}" target="_blank">
-                            <img src="{{asset('uploads/service/'.$service->icon)}}" alt="" width="90px">
+                            <img src="{{url('public/uploads/service/'.$service->icon)}}" alt="" width="90px">
                             <p style="color:{{$service->name_font_color}}; font-size:{{$service->name_font_size}}; font-family:{{$service->name_font_family}};">{{$service->name}}</p>
                             </a>
                         </div>
@@ -35,7 +35,7 @@
                     @foreach($car_model as $model)
                         <div class="car-image">
                             <a href="{{$model->link}}" target="_blank">
-                            <img src="{{asset('car/'.$model->image)}}" alt="" width="222px">
+                            <img src="{{url('public/car/'.$model->image)}}" alt="" width="222px">
                             <p style="color:{{$model->name_color}}; font-size:{{$model->name_font_size}}; font-family:{{$model->name_font_family}};">{{$model->name}}</p>
                             </a>
                         </div>
@@ -62,7 +62,7 @@
                                 <div class="image-content">
                                     <!-- <span class="overlay"></span> -->
                                     <div class="card-image">
-                                    <img src="{{asset('showrooms_slider_image/'.$showroom->slider_image)}}" alt="" class="card-img">
+                                    <img src="{{url('public/showrooms_slider_image/'.$showroom->slider_image)}}" alt="" class="card-img">
                                     </div>
                                 </div>
                                 <div class="card-content">
@@ -107,7 +107,7 @@
                                 <div class="image-content">
                                     <!-- <span class="overlay"></span> -->
                                     <div class="card-image">
-                                    <img src="{{asset('uploads/service_center/slider_image/'.$service_center->slider_image)}}" alt="" class="card-img">
+                                    <img src="{{url('public/uploads/service_center/slider_image/'.$service_center->slider_image)}}" alt="" class="card-img">
                                     </div>
                                 </div>
                                 <div class="card-content">
@@ -244,7 +244,7 @@
                         <div class="insurence-card">
                             <a href="{{$record->url}}" target="_blank">
                                 <div class="insurence-card-one">
-                                    <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
+                                    <img src="{{url('public/uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
                                     <div class="insurence-content">
                                         <p style="color:{{$record->name_font_color}}; font-size:{{$record->name_font_size}}; font-family:{{$record->name_font_family}};">{{$record->name}}</p>
                                     </div>
@@ -258,7 +258,7 @@
                     <div class="insurence-card">
                         <a href="{{$record->url}}" target="_blank">
                             <div class="insurence-card-one">
-                                <img src="{{asset('uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
+                                <img src="{{url('public/uploads/our_business_insurance/'.$record->icon)}}" alt="" width="30%">
                                 <div class="insurence-content">
                                     <p style="color:{{$record->name_font_color}}; font-size:{{$record->name_font_size}}; font-family:{{$record->name_font_family}};">{{$record->name}}</p>
                                 </div>
@@ -278,7 +278,7 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="left-image-insurence">
-                    <img src="{{asset('uploads/our_business_why_choose/'.$business->why_choose_image)}}" alt="">
+                    <img src="{{url('public/uploads/our_business_why_choose/'.$business->why_choose_image)}}" alt="">
                 </div>
             </div>
 

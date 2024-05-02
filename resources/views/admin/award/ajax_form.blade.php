@@ -6,7 +6,7 @@
     @csrf
     <div class="modal-body m-3" id="form-detail">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 mb-2">
                 <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
                 <select class="form-control select2" name="business_id" id="business_id">
                     <option value="">-- Select Business --</option>
@@ -17,7 +17,7 @@
                 @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
             </div>
 
-            <div class="col-12">
+            <div class="col-12 mt-2">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
             </div>

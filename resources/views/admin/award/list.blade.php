@@ -125,7 +125,7 @@
                 },
                 messages: {
                     'business_id': {
-                        required: "Showroom is required",
+                        required: "Our Business is required",
                     },
                     'image': {
                         extension: "Image must be jpg,jpeg,png or webp",
