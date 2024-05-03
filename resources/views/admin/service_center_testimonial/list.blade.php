@@ -58,7 +58,7 @@
             // scrollX: true,
             ajax: "{{ route('service-center-testimonial-datatable') }}",
             columns: [
-                {data: 'id', name: 'id'},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'name', name: 'name'},
                 {data: 'name_font_size', name: 'name_font_size'},
                 {data: 'name_font_family', name: 'name_font_family'},

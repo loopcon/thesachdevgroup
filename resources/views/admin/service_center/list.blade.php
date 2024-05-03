@@ -79,7 +79,7 @@
             // scrollX: true,
             ajax: "{{ route('service-center-datatable') }}",
             columns: [
-                {data: 'id', name: 'id'},
+                {data: 'id', name: 'id',orderable: false, searchable: false},
                 {data: 'business_id', name: 'business_id'},
                 {data: 'service_id', name: 'service_id'},
                 {data: 'name', name: 'name'},

@@ -51,7 +51,7 @@
             serverSide: true,
             ajax: "{{ route('our-business-datatable') }}",
             columns: [
-                {data: 'id', name: 'id'},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'title', name: 'title'},
                 {data: 'banner_image', name: 'banner_image'},
                 {data: 'url', name: 'url'},

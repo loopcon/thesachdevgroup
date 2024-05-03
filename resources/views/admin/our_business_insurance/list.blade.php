@@ -55,7 +55,7 @@
             // scrollX: true,
             ajax: "{{ route('our-business-insurance-datatable') }}",
             columns: [
-                {data: 'id', name: 'id'},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'business_id', name: 'business_id'},
                 {data: 'icon', name: 'icon'},
                 {data: 'name', name: 'name'},

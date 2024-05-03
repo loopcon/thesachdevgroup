@@ -61,7 +61,7 @@
             // scrollX: true,
             ajax: "{{ route('service-center-facility-customergallery-datatable') }}",
             columns: [
-                {data: 'id', name: 'id'},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'facility_image', name: 'facility_image'},
                 {data: 'customer_gallery_image', name: 'customer_gallery_image'},
                 {data: 'service_center_id', name: 'service_center_id'},

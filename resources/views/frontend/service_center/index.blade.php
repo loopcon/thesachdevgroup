@@ -50,7 +50,7 @@
                         @endif
                     </div>
                     <div class="location-text-one">
-                        <h4 style="color:{{$service_center->address_title_color}}; font-size:{{$service_center->address_title_font_size}}; font-family:{{$service_center->address_title_font_family}};">{{isset($service_center->address_title) && $service_center->address_title ? $service_center->address_title : ''}}</h4>
+                        <h4 style="color:{{$service_center->address_title_color}}; font-size:{{$service_center->address_title_font_size}}; font-family:{{$service_center->address_title_font_family}};">{{isset($service_center->address_title) && $service_center->address_title ? strtoupper($service_center->address_title) : ''}}</h4>
                         <p style="color:{{$service_center->address_font_color}}; font-size:{{$service_center->address_font_size}}; font-family:{{$service_center->address_font_family}};">{{isset($service_center->address) && $service_center->address ? $service_center->address : ''}}</p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                         @endif
                     </div>
                     <div class="location-text-one">
-                        <h4 style="color:{{$service_center->working_hour_title_color}}; font-size:{{$service_center->working_hour_title_font_size}}; font-family:{{$service_center->working_hour_title_font_family}};">{{isset($service_center->working_hour_title) && $service_center->working_hour_title ? $service_center->working_hour_title : ''}}</h4>
+                        <h4 style="color:{{$service_center->working_hour_title_color}}; font-size:{{$service_center->working_hour_title_font_size}}; font-family:{{$service_center->working_hour_title_font_family}};">{{isset($service_center->working_hour_title) && $service_center->working_hour_title ? strtoupper($service_center->working_hour_title) : ''}}</h4>
                         <p style="color:{{$service_center->working_hours_font_color}}; font-size:{{$service_center->working_hours_font_size}}; font-family:{{$service_center->working_hours_font_family}};">{{isset($service_center->working_hours) && $service_center->working_hours ? $service_center->working_hours : ''}}</p>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                         @endif
                     </div>
                     <div class="location-text-one">
-                        <h4 style="color:{{$service_center->contact_title_color}}; font-size:{{$service_center->contact_title_font_size}}; font-family:{{$service_center->contact_title_font_family}};">{{isset($service_center->contact_title) && $service_center->contact_title ? $service_center->contact_title : ''}}</h4>
+                        <h4 style="color:{{$service_center->contact_title_color}}; font-size:{{$service_center->contact_title_font_size}}; font-family:{{$service_center->contact_title_font_family}};">{{isset($service_center->contact_title) && $service_center->contact_title ? strtoupper($service_center->contact_title) : ''}}</h4>
                         <p style="color:{{$service_center->contact_font_color}}; font-size:{{$service_center->contact_font_size}}; font-family:{{$service_center->contact_font_family}};"><a href="tel:+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}">+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}</a></p>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                         @endif
                     </div>
                     <div class="location-text-one">
-                        <h4 style="color:{{$service_center->email_title_color}}; font-size:{{$service_center->email_title_font_size}}; font-family:{{$service_center->email_title_font_family}};">{{isset($service_center->email_title) && $service_center->email_title ? $service_center->email_title : ''}}</h4>
+                        <h4 style="color:{{$service_center->email_title_color}}; font-size:{{$service_center->email_title_font_size}}; font-family:{{$service_center->email_title_font_family}};">{{isset($service_center->email_title) && $service_center->email_title ? strtoupper($service_center->email_title) : ''}}</h4>
                         <p style="color:{{$service_center->email_font_color}}; font-size:{{$service_center->email_font_size}}; font-family:{{$service_center->email_font_family}};"><a href="mailto: {{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}">{{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}</a></p>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
 <section id="facility">
     <div class="container">
         <div class="text-facility">
-            <h3 style="color:{{$service_center->facility_title_color}}; font-size:{{$service_center->facility_title_font_size}}; font-family:{{$service_center->facility_title_font_family}};">{{isset($service_center->facility_title) && $service_center->facility_title ? $service_center->facility_title : ''}}</h3>
+            <h3 style="color:{{$service_center->facility_title_color}}; font-size:{{$service_center->facility_title_font_size}}; font-family:{{$service_center->facility_title_font_family}};">{{isset($service_center->facility_title) && $service_center->facility_title ? strtoupper($service_center->facility_title) : ''}}</h3>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -136,7 +136,7 @@
 <section id="facility">
     <div class="container">
         <div class="text-facility">
-            <h3 style="color:{{$service_center->customer_gallery_title_color}}; font-size:{{$service_center->customer_gallery_title_font_size}}; font-family:{{$service_center->customer_gallery_title_font_family}};">{{isset($service_center->customer_gallery_title) && $service_center->customer_gallery_title ? $service_center->customer_gallery_title : ''}}</h3>
+            <h3 style="color:{{$service_center->customer_gallery_title_color}}; font-size:{{$service_center->customer_gallery_title_font_size}}; font-family:{{$service_center->customer_gallery_title_font_family}};">{{isset($service_center->customer_gallery_title) && $service_center->customer_gallery_title ? strtoupper($service_center->customer_gallery_title) : ''}}</h3>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -224,19 +224,19 @@
 </section>
 
 <!-- testimonials -->
-@if(isset($testimonials) && $testimonials)
+@if(isset($testimonials) && !empty($testimonials))
 <section id="testimonial">
     <div class="container">
         <div class="location-testimonial">
-            <h2 style="color:{{$service_center->testimonial_title_font_color}}; font-size:{{$service_center->testimonial_title_font_size}}; font-family:{{$service_center->testimonial_title_font_family}};"><a href="mailto: {{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}">{{isset($service_center->testimonial_title) && $service_center->testimonial_title ? $service_center->testimonial_title : ''}}</h2>
+            <h2 style="color:{{$service_center->testimonial_title_font_color}}; font-size:{{$service_center->testimonial_title_font_size}}; font-family:{{$service_center->testimonial_title_font_family}};">{{isset($service_center->testimonial_title) && $service_center->testimonial_title ? $service_center->testimonial_title : ''}}</h2>
         </div>
         <div class="reviews">
             <section class="testimonials">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
-                            @foreach($testimonials as $testimonial)
-                                <div id="customers-testimonials" class="owl-carousel">
+                            <div id="customers-testimonials" class="owl-carousel">
+                                @foreach($testimonials as $testimonial)
                                     <!--TESTIMONIAL 1 -->
                                     <div class="item">
                                         <div class="shadow-effect">
@@ -246,8 +246,8 @@
                                         <div class="testimonial-name" style="color:{{$testimonial->name_font_color}}; font-size:{{$testimonial->name_font_size}}; font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}};">{{$testimonial->name}}</div>
                                     </div>
                                     <!--END OF TESTIMONIAL 1 -->
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

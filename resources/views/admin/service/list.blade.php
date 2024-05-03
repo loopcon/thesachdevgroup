@@ -56,7 +56,7 @@
             // responsive: true,
             ajax: "{{ route('service-datatable') }}",
             columns: [
-                {data: 'id', name: 'id'},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'name', name: 'name'},
                 {data: 'name_font_color', name: 'name_font_color'},
                 {data: 'name_font_size', name: 'name_font_size'},

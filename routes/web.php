@@ -387,4 +387,4 @@ Route::get('{slug}', [PageDetailController::class, 'cmsPage']);
 Route::get('awards/gallery', [AwardsDetailController::class, 'gallery'])->name('awards-gallery');
 
 // service center
-Route::get('/{slug}', [ServiceCenterDetailController::class, 'serviceCenter']);
+Route::get('service_center/{slug}', [ServiceCenterDetailController::class, 'serviceCenter']);
