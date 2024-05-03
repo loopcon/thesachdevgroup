@@ -351,7 +351,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 //Frontend
-
 Route::get('/', function () {
     return redirect()->route('home');
 });

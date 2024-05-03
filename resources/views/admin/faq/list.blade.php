@@ -97,7 +97,7 @@
             // scrollX: true,
             ajax: "{{ route('faq-datatable') }}",
             columns: [
-                {data: 'id', name: 'id'},
+                {data: 'id', name: 'id',orderable: false, searchable: false},
                 {data: 'name', name: 'name'},
                 {data: 'description', name: 'description'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},

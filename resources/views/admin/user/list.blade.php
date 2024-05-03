@@ -121,7 +121,7 @@
             serverSide: true,
             ajax: "{{ route('user-datatable') }}",
             columns: [
-                {data: 'id', name: 'id'},
+                {data: 'id', name: 'id',orderable: false, searchable: false},
                 {data: 'business_id', name: 'business_id'},
                 {data: 'showroom_id', name: 'showroom_id'},
                 {data: 'service_center_id', name: 'service_center_id'},
