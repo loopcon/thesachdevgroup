@@ -119,7 +119,6 @@
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
                             </div>
 
-                            
                             <div class="col-md-4 mt-2 mb-2">
                                 <label for="address_title" class="form-label">Address Title</label>
                                 <input type="address_title" class="form-control" value="{{isset($record->address_title) ? $record->address_title : old('address_title')}}" name="address_title" id="address_title">

@@ -41,8 +41,14 @@ class ShowroomController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $showroom = new Showroom();
+                $feilds = array('our_business_id','slider_showroom_name','slider_showroom_name_color','slider_showroom_name_font_size','slider_showroom_name_font_family','name','name_color','name_font_size','name_font_family','brand_id','address','working_hours','contact_number','email','address_color','address_font_size','address_font_family','working_hours_color','working_hours_font_size','working_hours_font_family','working_hours_icon','contact_number_color','contact_number_font_size','contact_number_font_family','email_color','email_font_size','email_font_family','rating','number_of_rating','description','description_color','description_font_size','description_font_family','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size','email_title_font_family');
+                foreach($feilds as $field)
+                {
+                    $showroom->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
+                }
 
-                $showroom->our_business_id = $request->our_business_id;
+                $showroom->slug = $request->name ? slugify($request->name) : NULL;
+                $showroom->car_id = json_encode($request->car_id);
 
                 if($file = $request->hasFile('slider_image')) {
                     $file = $request->file('slider_image');
@@ -54,11 +60,6 @@ class ShowroomController extends Controller
                     $showroom->slider_image = $sliderImagefileName;
                 }
 
-                $showroom->slider_showroom_name = $request->slider_showroom_name;
-                $showroom->slider_showroom_name_color = $request->slider_showroom_name_color;
-                $showroom->slider_showroom_name_font_size = $request->slider_showroom_name_font_size;
-                $showroom->slider_showroom_name_font_family = $request->slider_showroom_name_font_family;
-                
                 if($file = $request->hasFile('image')) {
                     $file = $request->file('image');
                     $extension = $file->getClientOriginalExtension();
@@ -68,22 +69,6 @@ class ShowroomController extends Controller
                     $file->move($destinationPath,$ImagefileName);
                     $showroom->image = $ImagefileName;
                 }
-
-                $showroom->name = $request->name;
-                $showroom->name_color = $request->name_color;
-                $showroom->name_font_size = $request->name_font_size;
-                $showroom->name_font_family = $request->name_font_family;
-
-                $showroom->brand_id = $request->brand_id;
-                $showroom->car_id = json_encode($request->car_id);
-                $showroom->address = $request->address;
-                $showroom->working_hours = $request->working_hours;
-                $showroom->contact_number = $request->contact_number;
-                $showroom->email = $request->email;
-
-                $showroom->address_color = $request->address_color;
-                $showroom->address_font_size = $request->address_font_size;
-                $showroom->address_font_family = $request->address_font_family;
 
                 if($file = $request->hasFile('address_icon')) {
                     $file = $request->file('address_icon');
@@ -95,10 +80,6 @@ class ShowroomController extends Controller
                     $showroom->address_icon = $addressiconfileName;
                 }
 
-                $showroom->working_hours_color = $request->working_hours_color;
-                $showroom->working_hours_font_size = $request->working_hours_font_size;
-                $showroom->working_hours_font_family = $request->working_hours_font_family;
-
                 if($file = $request->hasFile('working_hours_icon')) {
                     $file = $request->file('working_hours_icon');
                     $extension = $file->getClientOriginalExtension();
@@ -108,10 +89,6 @@ class ShowroomController extends Controller
                     $file->move($destinationPath,$working_hours_iconfileName);
                     $showroom->working_hours_icon = $working_hours_iconfileName;
                 }
-
-                $showroom->contact_number_color = $request->contact_number_color;
-                $showroom->contact_number_font_size = $request->contact_number_font_size;
-                $showroom->contact_number_font_family = $request->contact_number_font_family;
 
                 if($file = $request->hasFile('contact_number_icon')) {
                     $file = $request->file('contact_number_icon');
@@ -123,11 +100,6 @@ class ShowroomController extends Controller
                     $showroom->contact_number_icon = $callfileName;
                 }
 
-                $showroom->email_color = $request->email_color;
-                $showroom->email_font_size = $request->email_font_size;
-                $showroom->email_font_family = $request->email_font_family;
-
-
                 if($file = $request->hasFile('email_icon')) {
                     $file = $request->file('email_icon');
                     $extension = $file->getClientOriginalExtension();
@@ -138,13 +110,10 @@ class ShowroomController extends Controller
                     $showroom->email_icon = $IconfileName;
                 }
 
-                $showroom->rating = $request->rating;
-                $showroom->number_of_rating = $request->number_of_rating;
-
-                $showroom->description = $request->description;
-                $showroom->description_color = $request->description_color;
-                $showroom->description_font_size = $request->description_font_size;
-                $showroom->description_font_family = $request->description_font_family;
+                if($request->hasFile('lets_connect_image')) {
+                    $lets_connect_image = fileUpload($request, 'lets_connect_image', 'uploads/showroom/lets_connect_image');
+                    $showroom->lets_connect_image = $lets_connect_image;
+                }
                 $showroom->save();
 
                 return redirect()->route('showroom_list')->with('success','Showroom insert successfully.');
@@ -302,9 +271,14 @@ class ShowroomController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $showroom = Showroom::find($id);
+                $feilds = array('our_business_id','slider_showroom_name','slider_showroom_name_color','slider_showroom_name_font_size','slider_showroom_name_font_family','name','name_color','name_font_size','name_font_family','brand_id','address','working_hours','contact_number','email','address_color','address_font_size','address_font_family','working_hours_color','working_hours_font_size','working_hours_font_family','working_hours_icon','contact_number_color','contact_number_font_size','contact_number_font_family','email_color','email_font_size','email_font_family','rating','number_of_rating','description','description_color','description_font_size','description_font_family','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size','email_title_font_family');
+                foreach($feilds as $field)
+                {
+                    $showroom->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
+                }
 
-                $showroom->our_business_id = $request->our_business_id;
-
+                $showroom->slug = $request->name ? slugify($request->name) : NULL;
+                $showroom->car_id = json_encode($request->car_id);
 
                 if($request->hasFile('slider_image'))
                 {
@@ -320,11 +294,6 @@ class ShowroomController extends Controller
                     $showroom->slider_image = $filename;
                 }
 
-                $showroom->slider_showroom_name = $request->slider_showroom_name;
-                $showroom->slider_showroom_name_color = $request->slider_showroom_name_color;
-                $showroom->slider_showroom_name_font_size = $request->slider_showroom_name_font_size;
-                $showroom->slider_showroom_name_font_family = $request->slider_showroom_name_font_family;
-
                 if($request->hasFile('image'))
                 {
                     $destination = 'public/showrooms_image/' . $showroom->image;
@@ -338,23 +307,6 @@ class ShowroomController extends Controller
                     $file->move('public/showrooms_image/', $filename);
                     $showroom->image = $filename;
                 }
-
-                $showroom->name = $request->name;
-                
-                $showroom->name_color = $request->name_color;
-                $showroom->name_font_size = $request->name_font_size;
-                $showroom->name_font_family = $request->name_font_family;
-
-                $showroom->brand_id = $request->brand_id;
-                $showroom->car_id = json_encode($request->car_id);
-                $showroom->address = $request->address;
-                $showroom->working_hours = $request->working_hours;
-                $showroom->contact_number = $request->contact_number;
-                $showroom->email = $request->email;
-
-                $showroom->address_color = $request->address_color;
-                $showroom->address_font_size = $request->address_font_size;
-                $showroom->address_font_family = $request->address_font_family;
 
                 if($request->hasFile('address_icon'))
                 {
@@ -370,10 +322,6 @@ class ShowroomController extends Controller
                     $showroom->address_icon = $filename;
                 }
 
-                $showroom->working_hours_color = $request->working_hours_color;
-                $showroom->working_hours_font_size = $request->working_hours_font_size;
-                $showroom->working_hours_font_family = $request->working_hours_font_family;
-
                 if($request->hasFile('working_hours_icon'))
                 {
                     $destination = 'public/showrooms_working_hours_icon/' . $showroom->working_hours_icon;
@@ -387,10 +335,6 @@ class ShowroomController extends Controller
                     $file->move('public/showrooms_working_hours_icon/', $filename);
                     $showroom->working_hours_icon = $filename;
                 }
-
-                $showroom->contact_number_color = $request->contact_number_color;
-                $showroom->contact_number_font_size = $request->contact_number_font_size;
-                $showroom->contact_number_font_family = $request->contact_number_font_family;
 
                 if($request->hasFile('contact_number_icon'))
                 {
@@ -406,10 +350,6 @@ class ShowroomController extends Controller
                     $showroom->contact_number_icon = $filename;
                 }
 
-                $showroom->email_color = $request->email_color;
-                $showroom->email_font_size = $request->email_font_size;
-                $showroom->email_font_family = $request->email_font_family;
-
                 if($request->hasFile('email_icon'))
                 {
                     $destination = 'public/showrooms_email_icon/' . $showroom->email_icon;
@@ -424,14 +364,15 @@ class ShowroomController extends Controller
                     $showroom->email_icon = $filename;
                 }
 
-                $showroom->rating = $request->rating;
-                $showroom->number_of_rating = $request->number_of_rating;
-
-                $showroom->description = $request->description;
-                $showroom->description_color = $request->description_color;
-                $showroom->description_font_size = $request->description_font_size;
-                $showroom->description_font_family = $request->description_font_family;
-                
+                if($request->hasFile('lets_connect_image')) {
+                    $oldimage = $showroom->lets_connect_image;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/showroom/lets_connect_image/'.$oldimage);
+                    }
+                    $lets_connect_image = fileUpload($request, 'lets_connect_image', 'uploads/showroom/lets_connect_image');
+                    $showroom->lets_connect_image = $lets_connect_image;
+                }
                 $showroom->save();
 
                 return redirect()->route('showroom_list')->with('success','Showroom update successfully.');

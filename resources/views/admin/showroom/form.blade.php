@@ -61,27 +61,20 @@
                                 </select>
                             </div>
 
-                            <div class="mb-3 col-md-4">
-                                <label for="slider_image" class="form-label">Slider Image</label>
-                                <input type="file" id="slider_image" class="form-control" name="slider_image">
-                                <div id="error"></div>
-                                <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="slider_showroom_name" class="form-label">Slider Showroom Name</label>
-                                <input type="text" id="slider_showroom_name" class="form-control" name="slider_showroom_name">
+                            <div class="col-md-12 mt-2 mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="ckeditor form-control" name="description"></textarea>
+                                <div class="error"></div>
                             </div>
 
                             <div class="mb-3 col-md-4">
-                                <label for="slider_showroom_name_color" class="form-label">Slider Showroom Text Color</label>
-                                <input type="text" id="slider_showroom_name_color" class="form-control colorpicker" name="slider_showroom_name_color">
+                                <label for="description_color" class="form-label">Description Text Color</label>
+                                <input type="text" class="form-control colorpicker" name="description_color" id="description_color">
                             </div>
-
-                            <div class="col-md-4">
-                                @php($fontsize = fontSize())
-                                <label for="slider_showroom_name_font_size" class="form-label">Slider Showroom Text Font Size</label>
-                                <select class="form-control select2" name="slider_showroom_name_font_size">
+    
+                            <div class="mb-3 col-md-4">
+                                <label for="description_font_size" class="form-label">Description Text Font Size</label>
+                                <select class="form-control select2" name="description_font_size">
                                     <option selected="selected" disabled="disabled">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
@@ -90,9 +83,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                @php($fontfamily = fontFamily())
-                                <label for="slider_showroom_name_font_family" class="form-label">Slider Showroom Text Font Family</label>
-                                <select class="form-control select2" name="slider_showroom_name_font_family">
+                                <label for="description_font_family" class="form-label">Description Text Font Family</label>
+                                <select class="form-control select2" name="description_font_family">
                                     <option selected="selected" disabled="disabled">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}">{{$family['value']}}</option>
@@ -126,6 +118,37 @@
                                     <option disabled>Select</option>
                                 </select>
                                 <div id="errorcardiv"></div>
+                            </div>
+
+                            <div class="col-md-4 mt-2 mb-2">
+                                <label for="address_title" class="form-label">Address Title</label>
+                                <input type="address_title" class="form-control" name="address_title" id="address_title">
+                                @if ($errors->has('address_title')) <div class="text-danger">{{ $errors->first('address_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="address_title_font_size" class="form-label">Address Title Font Size</label>
+                                <select class="form-control select2" name="address_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="address_title_font_family" class="form-label">Address Title Font Family</label>
+                                <select class="form-control select2" name="address_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="address_title_color" class="form-label">Address Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" name="address_title_color" id="address_title_color">
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -168,6 +191,37 @@
                                 <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
+                            <div class="col-md-4 mt-2 mb-2">
+                                <label for="working_hour_title" class="form-label">Working Hours Title</label>
+                                <input type="working_hour_title" class="form-control" name="working_hour_title" id="working_hour_title">
+                                @if ($errors->has('working_hour_title')) <div class="text-danger">{{ $errors->first('working_hour_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hour_title_font_size" class="form-label">Working Hours Title Font Size</label>
+                                <select class="form-control select2" name="working_hour_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hour_title_font_family" class="form-label">Working Hours Title Font Family</label>
+                                <select class="form-control select2" name="working_hour_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hour_title_color" class="form-label">Working Hours Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" name="working_hour_title_color" id="working_hour_title_color">
+                            </div>
+
                             <div class="col-md-4">
                                 <label for="working_hours" class="form-label">Working Hours<span class="text-danger">*</span></label>
                                 <input type="text" id="working_hours" class="form-control" name="working_hours">
@@ -206,6 +260,37 @@
                                 <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
+                            <div class="col-md-4 mt-2 mb-2">
+                                <label for="contact_title" class="form-label">Contact Number Title</label>
+                                <input type="contact_title" class="form-control" name="contact_title" id="contact_title">
+                                @if ($errors->has('contact_title')) <div class="text-danger">{{ $errors->first('contact_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="contact_title_font_size" class="form-label">Contact Number Title Font Size</label>
+                                <select class="form-control select2" name="contact_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="contact_title_font_family" class="form-label">Contact Number Title Font Family</label>
+                                <select class="form-control select2" name="contact_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="contact_title_color" class="form-label">Contact Number Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" name="contact_title_color" id="contact_title_color">
+                            </div>
+
                             <div class="col-md-4">
                                 <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
                                 <input type="number" id="contact_number" class="form-control" name="contact_number">
@@ -242,6 +327,37 @@
                                 <input type="file" id="contact_number_icon" class="form-control" name="contact_number_icon">
                                 <div id="error"></div>
                                 <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="email_title" class="form-label">Email Title</label>
+                                <input type="text" class="form-control" name="email_title" id="email_title">
+                                @if ($errors->has('email_title')) <div class="text-danger">{{ $errors->first('email_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="email_title_font_size" class="form-label">Email Title Font Size</label>
+                                <select class="form-control select2" name="email_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="email_title_font_family" class="form-label">Email Title Font Family</label>
+                                <select class="form-control select2" name="email_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="email_title_color" class="form-label">Email Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" name="email_title_color" id="email_title_color">
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -295,20 +411,148 @@
                                 <div id="error"></div>
                             </div>
 
-                            <div class="col-md-12 mt-2 mb-3">
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="ckeditor form-control" name="description"></textarea>
+                            <div class="col-12">
+                                <h5>Facility Title</h5>
+                                <hr>
+                            </div>
+
+                            <div class="col-md-3 mt-2 mb-2">
+                                <label for="facility_title" class="form-label">Facility Title</label>
+                                <input type="facility_title" class="form-control" name="facility_title" id="facility_title">
+                                @if ($errors->has('facility_title')) <div class="text-danger">{{ $errors->first('facility_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="facility_title_font_size" class="form-label">Facility Title Font Size</label>
+                                <select class="form-control select2" name="facility_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="facility_title_font_family" class="form-label">Facility Title Font Family</label>
+                                <select class="form-control select2" name="facility_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="facility_title_color" class="form-label">Facility Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" name="facility_title_color" id="facility_title_color">
+                            </div>
+
+                            <div class="col-12">
+                                <h5>Customer Gallery Title</h5>
+                                <hr>
+                            </div>
+
+                            <div class="col-md-3 mt-2 mb-2">
+                                <label for="customer_gallery_title" class="form-label">Customer Gallery Title</label>
+                                <input type="customer_gallery_title" class="form-control" name="customer_gallery_title" id="customer_gallery_title">
+                                @if ($errors->has('customer_gallery_title')) <div class="text-danger">{{ $errors->first('customer_gallery_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="customer_gallery_title_font_size" class="form-label">Customer Gallery Title Font Size</label>
+                                <select class="form-control select2" name="customer_gallery_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="customer_gallery_title_font_family" class="form-label">Customer Gallery Title Font Family</label>
+                                <select class="form-control select2" name="customer_gallery_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="customer_gallery_title_color" class="form-label">Customer Gallery Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" name="customer_gallery_title_color" id="customer_gallery_title_color">
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="lets_connect_image" class="form-label">Let's Connect Image</label>
+                                <input type="file" id="lets_connect_image" class="form-control" name="lets_connect_image" value="">
+                                @if ($errors->has('lets_connect_image')) <div class="text-danger">{{ $errors->first('lets_connect_image') }}</div>@endif
                                 <div class="error"></div>
+                                <small class="image_type">(Hight:444,Width:351; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="col-12">
+                                <h5>Testimonial Title</h5>
+                                <hr>
+                            </div>
+
+                            <div class="col-md-3 mt-2 mb-2">
+                                <label for="testimonial_title" class="form-label">Testimonial Title</label>
+                                <input type="testimonial_title" class="form-control" name="testimonial_title" id="testimonial_title">
+                                @if ($errors->has('testimonial_title')) <div class="text-danger">{{ $errors->first('testimonial_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="testimonial_title_font_size" class="form-label">Testimonial Title Font Size</label>
+                                <select class="form-control select2" name="testimonial_title_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px">{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="testimonial_title_font_family" class="form-label">Testimonial Title Font Family</label>
+                                <select class="form-control select2" name="testimonial_title_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}">{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-3 mt-2">
+                                <label for="testimonial_title_color" class="form-label">Testimonial Title Font Color</label>
+                                <input type="text" class="form-control colorpicker" name="testimonial_title_color" id="testimonial_title_color">
+                            </div>
+
+                            <div class="col-12">
+                                <h5> Slider Section </h5>
+                                <hr>
                             </div>
 
                             <div class="mb-3 col-md-4">
-                                <label for="description_color" class="form-label">Description Text Color</label>
-                                <input type="text" class="form-control colorpicker" name="description_color" id="description_color">
+                                <label for="slider_image" class="form-label">Slider Image</label>
+                                <input type="file" id="slider_image" class="form-control" name="slider_image">
+                                <div id="error"></div>
+                                <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
-    
+
+                            <div class="col-md-4">
+                                <label for="slider_showroom_name" class="form-label">Slider Showroom Name</label>
+                                <input type="text" id="slider_showroom_name" class="form-control" name="slider_showroom_name">
+                            </div>
+
                             <div class="mb-3 col-md-4">
-                                <label for="description_font_size" class="form-label">Description Text Font Size</label>
-                                <select class="form-control select2" name="description_font_size">
+                                <label for="slider_showroom_name_color" class="form-label">Slider Showroom Text Color</label>
+                                <input type="text" id="slider_showroom_name_color" class="form-control colorpicker" name="slider_showroom_name_color">
+                            </div>
+
+                            <div class="col-md-4 mb-2">
+                                @php($fontsize = fontSize())
+                                <label for="slider_showroom_name_font_size" class="form-label">Slider Showroom Text Font Size</label>
+                                <select class="form-control select2" name="slider_showroom_name_font_size">
                                     <option selected="selected" disabled="disabled">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
@@ -317,8 +561,9 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="description_font_family" class="form-label">Description Text Font Family</label>
-                                <select class="form-control select2" name="description_font_family">
+                                @php($fontfamily = fontFamily())
+                                <label for="slider_showroom_name_font_family" class="form-label">Slider Showroom Text Font Family</label>
+                                <select class="form-control select2" name="slider_showroom_name_font_family">
                                     <option selected="selected" disabled="disabled">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}">{{$family['value']}}</option>
