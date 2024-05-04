@@ -42,6 +42,7 @@ use App\Http\Controllers\Frontend\locationDetailController;
 use App\Http\Controllers\Frontend\PageDetailController;
 use App\Http\Controllers\Frontend\AwardsDetailController;
 use App\Http\Controllers\Frontend\ServiceCenterDetailController;
+use App\Http\Controllers\Frontend\ShowroomDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -386,4 +387,10 @@ Route::get('{slug}', [PageDetailController::class, 'cmsPage']);
 Route::get('awards/gallery', [AwardsDetailController::class, 'gallery'])->name('awards-gallery');
 
 // service center
-Route::get('service_center/{slug}', [ServiceCenterDetailController::class, 'serviceCenter']);
+Route::get('service-center/{slug}', [ServiceCenterDetailController::class, 'serviceCenter']);
+
+// showroom
+Route::get('showroom/{slug}', [ShowroomDetailController::class, 'showroom']);
+
+// careers
+Route::get('/job', [ShowroomDetailController::class, 'job']);

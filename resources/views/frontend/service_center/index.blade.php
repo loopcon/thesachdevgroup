@@ -99,6 +99,7 @@
     </div>
 </section>
 
+<!-- facility slider -->
 @if(isset($facility) && !empty($facility))
 <section id="facility">
     <div class="container">
@@ -131,8 +132,9 @@
     </div>
 </section>
 @endif
-<!-- slider end  -->
+<!-- facility slider end  -->
 
+<!-- customer gallery slider -->
 <section id="facility">
     <div class="container">
         <div class="text-facility">
@@ -163,6 +165,7 @@
         </div>
     </div>
 </section>
+<!-- customer gallery slider end  -->
 
 <!-- form  -->
 <section id="location-wiseform">
@@ -203,7 +206,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="gridCheck">
                                     <label class="form-check-label" for="gridCheck">
-                                    I agree to the <a href="privacy-policy.php"> Privacy Policy </a>.
+                                    I agree to the <a href="{{url('privacy-policy')}}"> Privacy Policy </a>.
                                     </label>
                                 </div>
                             </div>
@@ -222,6 +225,7 @@
         </div>
     </div>
 </section>
+<!-- end form  -->
 
 <!-- testimonials -->
 @if(isset($testimonials) && !empty($testimonials))
@@ -256,6 +260,7 @@
     </div>
 </section>
 @endif
+<!-- end testimonials -->
 @endsection
 @section('javascript')
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>

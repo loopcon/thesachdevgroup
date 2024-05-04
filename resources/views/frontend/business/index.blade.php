@@ -58,7 +58,7 @@
                 <div class="card-wrapper swiper-wrapper">
                     @foreach($showrooms as $showroom)
                         <div class="card swiper-slide">
-                            <a href="#">
+                            <a href="{{url('showroom/'.$showroom->slug)}}">
                                 <div class="image-content">
                                     <!-- <span class="overlay"></span> -->
                                     <div class="card-image">
@@ -103,7 +103,7 @@
                 <div class="card-wrapper swiper-wrapper">
                     @foreach($service_centers as $service_center)
                         <div class="card swiper-slide">
-                            <a href="{{url('service_center/'.$service_center->slug)}}">
+                            <a href="{{url('service-center/'.$service_center->slug)}}">
                                 <div class="image-content">
                                     <!-- <span class="overlay"></span> -->
                                     <div class="card-image">
