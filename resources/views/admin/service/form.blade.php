@@ -82,7 +82,7 @@
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon" value="">
                                 @if ($errors->has('icon')) <div class="text-danger">{{ $errors->first('icon') }}</div>@endif
-                                <small class="image_type">(Hight:90,Width:90; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <small class="image_type">(Hight:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
                         </div>
                         <div class="box-footer">

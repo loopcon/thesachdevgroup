@@ -52,7 +52,7 @@
                                     @endif
                                     <input type="file" id="image" class="form-control" name="image">
                                     <div class="error"></div>
-                                    <small class="image_type">(Height:348px,Width:219px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <small class="image_type">(Height:219px,Width:348px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
     
                                 <div class="col-md-4">

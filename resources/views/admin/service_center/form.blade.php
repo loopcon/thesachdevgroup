@@ -86,7 +86,7 @@
                                 <input type="file" id="image" class="form-control" name="image" value="">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <div class="error"></div>
-                                <small class="image_type">(Hight:1349,Width:281; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <small class="image_type">(Hight:281px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -164,7 +164,7 @@
                                 <input type="file" id="address_icon" class="form-control" name="address_icon" value="">
                                 @if ($errors->has('address_icon')) <div class="text-danger">{{ $errors->first('address_icon') }}</div>@endif
                                 <div class="error"></div>
-                                <small class="image_type">(Hight:40,Width:40; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -235,7 +235,7 @@
                                 @endif  
                                 <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon" value="">
                                 <div class="error"></div>
-                                <small class="image_type">(Hight:40,Width:40; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -308,7 +308,7 @@
                                 <input type="file" id="contact_icon" class="form-control" name="contact_icon" value="">
                                 @if ($errors->has('contact_icon')) <div class="text-danger">{{ $errors->first('contact_icon') }}</div>@endif
                                 <div class="error"></div>
-                                <small class="image_type">(Hight:40,Width:40; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -405,7 +405,7 @@
                                 @endif  
                                 <input type="file" id="email_icon" class="form-control" name="email_icon" value="">
                                 @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
-                                <small class="image_type">(Hight:40,Width:40; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-12">
@@ -488,7 +488,7 @@
                                 <input type="file" id="lets_connect_image" class="form-control" name="lets_connect_image" value="">
                                 @if ($errors->has('lets_connect_image')) <div class="text-danger">{{ $errors->first('lets_connect_image') }}</div>@endif
                                 <div class="error"></div>
-                                <small class="image_type">(Hight:444,Width:351; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <small class="image_type">(Hight:444px,Width:351px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-12">
@@ -582,7 +582,7 @@
                                 @endif  
                                 <input type="file" id="slider_image" class="form-control" name="slider_image" value="">
                                 @if ($errors->has('slider_image')) <div class="text-danger">{{ $errors->first('slider_image') }}</div>@endif
-                                <small class="image_type">(Hight:243,Width:325; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <small class="image_type">(Hight:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <?php /* <div class="col-12">

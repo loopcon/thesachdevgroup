@@ -18,7 +18,6 @@
                         @csrf
 
                         <div class="row">
-
                             <div class="mb-3 col-md-4">
                                 <label for="our_business_id" class="form-label">Select Our Business<span class="text-danger">*</span></label>
                                 <select class="form-control our_business_id select2" name="our_business_id" id="our_business_id">
@@ -47,7 +46,7 @@
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                 <input type="file" id="image" class="form-control" name="image">
                                 <div class="error"></div>
-                                <small class="image_type">(Height:348px,Width:219px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                <small class="image_type">(Height:219px,Width:348px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">

@@ -203,7 +203,6 @@
         // showroom dropdown event
         $(document).on('change', '#showroom_id', function(){
             var showroom = $(this).val();
-            console.log(showroom);
             if(showroom !='')
             {
                 var showroom_flag = 0;

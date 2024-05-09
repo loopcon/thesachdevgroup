@@ -339,7 +339,7 @@
                                 <input type="file" id="why_choose_image" class="form-control" name="why_choose_image" value="">
                                 @if ($errors->has('why_choose_image')) <div class="text-danger">{{ $errors->first('why_choose_image') }}</div>@endif
                                 <div class="error"></div>
-                                <small class="image_type">(Hight:540,Width:405; Image Type : jpg,jpeg,png,webp)</small>
+                                <small class="image_type">(Hight:405px,Width:540px; Image Type : jpg,jpeg,png,webp)</small>
                             </div>
 
                             <div class="col-md-12 mb-2">

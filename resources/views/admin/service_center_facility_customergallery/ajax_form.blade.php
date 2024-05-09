@@ -25,7 +25,7 @@
                 <input type="file" id="facility_image" class="form-control" name="facility_image" value="">
                 @if ($errors->has('facility_image')) <div class="text-danger">{{ $errors->first('facility_image') }}</div>@endif
                 <div class="error"></div>
-                <small class="image_type">(Hight:325,Width:243; Image Type : jpg,jpeg,png,svg,webp)</small>
+                <small class="image_type">(Hight:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
             </div>
 
             <div class="col-12 mt-3">

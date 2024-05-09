@@ -135,17 +135,16 @@
         // showroom dropdown event
         $(document).on('change', '#showroom_id', function(){
             var showroom = $(this).val();
-            console.log(showroom);
             if(showroom !='')
             {
-                $('.service-center').hide();
-                $('.body-shop').hide();
-                $('.used-car').hide();
+                var showroom_flag = 0;
             }else{
-                $('.service-center').show();
-                $('.body-shop').show();
-                $('.used-car').show();
+                var showroom_flag = 1;
+               
             }
+            serviceCenterBlankAndHide(showroom_flag);
+            bodyShopBlankAndHide(showroom_flag);
+            usedCarBlankAndHide(showroom_flag);
         })
         // end showroom dropdown event
 
@@ -154,14 +153,13 @@
             var service_center = $(this).val();
             if(service_center !='')
             {
-                $('.showroom').hide();
-                $('.body-shop').hide();
-                $('.used-car').hide();
+                var service_flag = 0;
             }else{
-                $('.showroom').show();
-                $('.body-shop').show();
-                $('.used-car').show();
+                var service_flag = 1;
             }
+            showroomBlankAndHide(service_flag);
+            bodyShopBlankAndHide(service_flag);
+            usedCarBlankAndHide(service_flag);
         })
         // end service center dropdown event
 
@@ -170,14 +168,14 @@
             var body_shop = $(this).val();
             if(body_shop !='')
             {
-                $('.showroom').hide();
-                $('.service-center').hide();
-                $('.used-car').hide();
+                var bodyshop_flag = 0;
             }else{
-                $('.showroom').show();
-                $('.service-center').show();
-                $('.used-car').show();
+                var bodyshop_flag = 1;
             }
+            
+            showroomBlankAndHide(bodyshop_flag);
+            serviceCenterBlankAndHide(bodyshop_flag);
+            usedCarBlankAndHide(bodyshop_flag);
         })
         // end body dropdown event
 
@@ -187,14 +185,13 @@
             console.log(used_car);
             if(used_car !='')
             {
-                $('.showroom').hide();
-                $('.service-center').hide();
-                $('.body-shop').hide();
+               var usedcar_flag = 0;
             }else{
-                $('.showroom').show();
-                $('.service-center').show();
-                $('.body-shop').show();
+               var usedcar_flag = 1;
             }
+            showroomBlankAndHide(usedcar_flag);
+            serviceCenterBlankAndHide(usedcar_flag);
+            bodyShopBlankAndHide(usedcar_flag);
         })
         // end used car dropdown event
 
@@ -267,6 +264,58 @@
             $('#service_center_id').empty();
             $('#body_shop_id').empty();
             $('#used_car_id').empty();
+        }
+    }
+
+    function serviceCenterBlankAndHide(flag)
+    {
+        if(flag==0)
+        {
+            $('#service_center_id').select2('destroy')
+            $('#service_center_id').val('')
+            $('#service_center_id').select2()
+            $('.service-center').hide()
+        }else{
+            $('.service-center').show()
+        }
+    }
+
+    function bodyShopBlankAndHide(flag)
+    {
+        if(flag==0)
+        {
+            $('#body_shop_id').select2('destroy')
+            $('#body_shop_id').val('')
+            $('#body_shop_id').select2()
+            $('.body-shop').hide()
+        }else{
+            $('.body-shop').show()
+        }
+    }
+
+    function usedCarBlankAndHide(flag)
+    {
+        if(flag==0)
+        {
+            $('#used_car_id').select2('destroy')
+            $('#used_car_id').val('')
+            $('#used_car_id').select2()
+            $('.used-car').hide()
+        }else{
+            $('.used-car').show()
+        }
+    }
+
+    function showroomBlankAndHide(flag)
+    {
+        if(flag==0)
+        {
+            $('#showroom_id').select2('destroy')
+            $('#showroom_id').val('')
+            $('#showroom_id').select2()
+            $('.showroom').hide()
+        }else{
+            $('.showroom').show()
         }
     }
 </script>
