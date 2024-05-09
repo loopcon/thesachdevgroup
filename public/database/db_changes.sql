@@ -398,3 +398,31 @@ ALTER TABLE `vacancies` ADD `showroom_id` INT(11) NULL DEFAULT NULL COMMENT '`id
 -- Disha : 09-05-2024 10:27 AM
 ALTER TABLE `vacancies` ADD `icon_background_color` VARCHAR(255) NULL DEFAULT NULL AFTER `offer_salary`;
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'New Cars', NULL, NULL, NULL);
+
+-- Disha : 09-05-2024 3:06 PM
+--
+-- Table structure for table `new_car`
+--
+
+CREATE TABLE `new_car` (
+  `id` int(11) NOT NULL,
+  `banner_image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_color` varchar(255) DEFAULT NULL,
+  `title_font_size` varchar(255) DEFAULT NULL,
+  `title_font_family` varchar(255) DEFAULT NULL,
+  `brand_id` varchar(255) DEFAULT NULL COMMENT '`id` of `brands`',
+  `car_id` varchar(255) DEFAULT NULL COMMENT '`id` of `cars`',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `new_car` (`id`, `banner_image`, `title`, `title_color`, `title_font_size`, `title_font_family`, `brand_id`, `car_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'th116908913591715236733.jfif', 'sa', '#3f0a0a', '26px', 'sans-serif', NULL, NULL, '2024-05-09 01:08:53', '2024-05-09 07:35:46', NULL);
+
+ALTER TABLE `new_car`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `new_car`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

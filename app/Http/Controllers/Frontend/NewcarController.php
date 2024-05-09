@@ -8,7 +8,7 @@ use App\Models\Brand;
 use App\Models\Car;
 use App\Models\NewCar;
 
-class NewcarController extends Controller
+class NewCarController extends Controller
 {
     public function carList()
     {
