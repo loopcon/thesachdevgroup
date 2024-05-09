@@ -134,6 +134,37 @@
             </li>
         @endif
 
+        @if(hasPermission('New Cars'))
+            <li class="nav-item {{ (request()->is('new-cars*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('new-cars*')) ? 'active' : '' }}">
+                    <i class="nav-icon fa fa-briefcase"></i><p>Our Services<i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @php($has_business_permission = hasPermission('New Cars'))
+                    @if(isset($has_business_permission) && $has_business_permission)
+                        @if($has_business_permission->read_permission == 1 || $has_business_permission->full_permission == 1)
+                            <li class="nav-item"> 
+                                <a href="{{url('new-cars')}}" class="nav-link {{ (request()->is('new-cars*')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>New Cars</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
+                    <!-- @php($has_business_insurance_permission = hasPermission('Business Insurance'))
+                    @if(isset($has_business_insurance_permission) && $has_business_insurance_permission)
+                        @if($has_business_insurance_permission->read_permission == 1 || $has_business_insurance_permission->full_permission == 1)
+                            <li class="nav-item"> 
+                                <a href="{{url('our-business-insurance')}}" class="nav-link {{ (request()->is('our-business-insurance*')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Business Insurance</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif -->
+                </ul>
+            </li>
+        @endif
+
         @php($has_permission = hasPermission('Car'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)

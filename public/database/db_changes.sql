@@ -397,3 +397,4 @@ ALTER TABLE `vacancies` ADD `showroom_id` INT(11) NULL DEFAULT NULL COMMENT '`id
 
 -- Disha : 09-05-2024 10:27 AM
 ALTER TABLE `vacancies` ADD `icon_background_color` VARCHAR(255) NULL DEFAULT NULL AFTER `offer_salary`;
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'New Cars', NULL, NULL, NULL);
