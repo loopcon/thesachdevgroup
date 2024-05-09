@@ -137,7 +137,7 @@
         @if(hasPermission('New Cars') || hasPermission('After Sales Service'))
             <li class="nav-item {{ (request()->is('new-cars*') || request()->is('after-sales-service*')) ? 'menu-open' : '' }}">
                 <a href="#" class="nav-link {{ (request()->is('new-cars*') || request()->is('after-sales-service*')) ? 'active' : '' }}">
-                    <i class="nav-icon fa fa-briefcase"></i><p>Our Services<i class="right fas fa-angle-left"></i></p>
+                    <i class="fa fa-wrench nav-icon" aria-hidden="true"></i><p>Our Services<i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
                     @php($has_business_permission = hasPermission('New Cars'))
