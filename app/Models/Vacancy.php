@@ -10,7 +10,7 @@ class Vacancy extends Model
 {
     use HasFactory,SoftDeletes;
     protected $table = 'vacancies';
-    protected $fields = ['business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'used_car_id', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'description', 'description_front_color', 'description_font_family', 'description_font_size', 'icon', 'image', 'experience', 'work_level', 'employee_type', 'offer_salary'];
+    protected $fields = ['business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'used_car_id', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'description', 'description_front_color', 'description_font_family', 'description_font_size', 'icon', 'image', 'experience', 'work_level', 'employee_type', 'offer_salary','icon_background_color'];
 
     public function businessDetail()
     {

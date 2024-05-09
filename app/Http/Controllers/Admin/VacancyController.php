@@ -60,7 +60,7 @@ class VacancyController extends Controller
                     'name' => 'required',
                 ]);
                 $vacancy = new Vacancy();
-                $fields = array('business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'used_car_id', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'description', 'description_font_color', 'description_font_family', 'description_font_size', 'experience', 'work_level', 'employee_type', 'offer_salary');
+                $fields = array('business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'used_car_id', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'description', 'description_font_color', 'description_font_family', 'description_font_size', 'experience', 'work_level', 'employee_type', 'offer_salary', 'icon_background_color');
                 foreach($fields as $field)
                 {
                     $vacancy->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
@@ -164,38 +164,16 @@ class VacancyController extends Controller
                     'name' => 'required',
                 ]);
                 $vacancy = Vacancy::find($id);
-                $fields = array('business_id', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'description', 'description_font_color', 'description_font_family', 'description_font_size', 'experience', 'work_level', 'employee_type', 'offer_salary');
+                $fields = array('business_id', 'name', 'name_font_color', 'name_font_size', 'name_font_family', 'description', 'description_font_color', 'description_font_family', 'description_font_size', 'experience', 'work_level', 'employee_type', 'offer_salary', 'icon_background_color');
                 foreach($fields as $field)
                 {
                     $vacancy->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL; 
                 }
 
-                // if($request->showroom_id)
-                // {
-                //     $vacancy->showroom_id = $request->showroom_id;
-                //     $vacancy->service_center_id = NULL;
-                //     $vacancy->body_shop_id = NULL;
-                //     $vacancy->used_car_id = NULL;
-                // }
-                // if($request->service_center_id && $request->service_center_id)
-                // {
-                //     $vacancy->service_center_id = $request->service_center_id;
-                //     $vacancy->showroom_id = NULL;
-                //     $vacancy->body_shop_id = NULL;
-                //     $vacancy->used_car_id = NULL;
-                // }
-                // if($request->body_shop_id && $request->body_shop_id)
-                // {
-                //     $vacancy->body_shop_id = $request->body_shop_id;
-                //     $vacancy->showroom_id = NULL;
-                //     $vacancy->body_shop_id = NULL;
-                //     $vacancy->service_center_id = NULL;
-                //     $vacancy->used_car_id = NULL;
-                // }
-                    $vacancy->showroom_id = $request->showroom_id ? $request->showroom_id : NULL;
-                    $vacancy->service_center_id = $request->service_center_id ? $request->service_center_id : NULL;
-                    $vacancy->body_shop_id = $request->body_shop_id ? $request->body_shop_id : NULL;
-                    $vacancy->used_car_id = $request->used_car_id ? $request->used_car_id : NULL;
+                $vacancy->showroom_id = $request->showroom_id ? $request->showroom_id : NULL;
+                $vacancy->service_center_id = $request->service_center_id ? $request->service_center_id : NULL;
+                $vacancy->body_shop_id = $request->body_shop_id ? $request->body_shop_id : NULL;
+                $vacancy->used_car_id = $request->used_car_id ? $request->used_car_id : NULL;
 
                 if($request->hasFile('image')) {
                     $oldimage = $vacancy->image;

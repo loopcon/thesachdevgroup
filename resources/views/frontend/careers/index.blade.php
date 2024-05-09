@@ -100,7 +100,7 @@
     font-size: 18px;
     cursor: pointer;
     }
-    .logo svg {
+    .logo img {
     width: 24px;
     margin-right: 12px;
     }
@@ -110,7 +110,7 @@
     align-items: center;
     font-weight: 500;
     }
-    .user-settings svg {
+    .user-settings img {
     width: 20px;
     color: #94949f;
     }
@@ -444,6 +444,14 @@
     padding: 10px;
     border-radius: 8px;
     }
+
+    /* heart */
+    .job-card svg {
+    width: 46px;
+    padding: 10px;
+    border-radius: 8px;
+    }
+
     .job-card-title {
     font-weight: 600;
     margin-top: 16px;
@@ -609,7 +617,7 @@
     display: flex;
     align-items: center;
     }
-    .job-overview .overview-wrapper svg:first-child {
+    .job-overview .overview-wrapper img:first-child {
     width: 42px;
     margin-right: 10px;
     }
@@ -655,7 +663,7 @@
     margin-bottom: -36px;
     padding: 0 20px;
     }
-    .job-logos svg {
+    .job-logos img {
     width: 66px;
     padding: 12px;
     background-color: #fff;
@@ -1053,7 +1061,7 @@
                                         </g>
                                         <path d="M512 92L383.7 0 256 91.5v1l127.7 91.6zm0 0M512 276.4l-128.3-92L256 275.9v1l127.7 91.5zm0 0M256 486.1l128.4-92-128.3-92zm0 0" fill="#feb0a5" />
                                     </svg> -->
-                                    <img src="{{url('public/uploads/vacancy_icon/'.$record->icon)}}" width="46px" style="background-color:{{$record->name_font_color}};">
+                                    <img src="{{url('public/uploads/vacancy_icon/'.$record->icon)}}" width="46px" style="background-color:{{$record->icon_background_color}};">
                                     <div class="menu-dot"></div>
                                 </div>
                                 <div class="job-card-title">{{$record->name}}</div>
@@ -1103,7 +1111,7 @@
                                             </g>
                                             <path d="M512 92L383.7 0 256 91.5v1l127.7 91.6zm0 0M512 276.4l-128.3-92L256 275.9v1l127.7 91.5zm0 0M256 486.1l128.4-92-128.3-92zm0 0" fill="#feb0a5" />
                                         </svg> -->
-                                        <img src="{{url('public/uploads/vacancy_icon/'.$vacancy->icon)}}" width="46px" style="background-color:#2e2882;margin-right:10px;">
+                                        <img src="{{url('public/uploads/vacancy_icon/'.$vacancy->icon)}}" width="46px" style="background-color:{{$vacancy->icon_background_color}};;margin-right:10px;">
 
                                         <div class="overview-detail">
                                             <div class="job-card-title">{{$vacancy->name}}</div>

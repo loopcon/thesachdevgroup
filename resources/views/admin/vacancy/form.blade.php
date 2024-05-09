@@ -115,6 +115,11 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
+                                <label for="icon_background_color" class="form-label">Icon Background Color</label>
+                                <input type="text" id="icon_background_color" class="form-control colorpicker" name="icon_background_color" value="{{isset($record->icon_background_color) ? $record->icon_background_color : old('icon_background_color')}}">
+                            </div>
+
+                            <div class="col-md-4 mt-2">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control" name="description" id="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
                             </div>
