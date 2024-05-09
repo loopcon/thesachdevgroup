@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\UsedCarController;
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\OurLocationController;
 use App\Http\Controllers\Admin\NewCarsController;
+use App\Http\Controllers\Admin\AfterSalesServiceController;
 
 // frontend controller
 use App\Http\Controllers\Frontend\HomeController;
@@ -352,9 +353,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('our_location', [OurLocationController::class, 'our_location'])->name('our_location');
     Route::post('our_location_insert', [OurLocationController::class, 'our_location_insert'])->name('our_location_insert');
 
-     // new cars
-     Route::get('new-cars', [NewCarsController::class, 'newCars'])->name('new-cars');
-     Route::post('new-cars-update', [NewCarsController::class, 'newCarsUpdate'])->name('new-cars-update');
+    // new cars
+    Route::get('new-cars', [NewCarsController::class, 'newCars'])->name('new-cars');
+    Route::post('new-cars-update', [NewCarsController::class, 'newCarsUpdate'])->name('new-cars-update');
+
+    // after sales service
+    Route::get('after-sales-service', [AfterSalesServiceController::class, 'afterSalesService'])->name('after-sales-service');
+    Route::post('after-sales-service-update', [AfterSalesServiceController::class, 'afterSalesServiceUpdate'])->name('after-sales-service-update');
 
 });
 

@@ -134,9 +134,9 @@
             </li>
         @endif
 
-        @if(hasPermission('New Cars'))
-            <li class="nav-item {{ (request()->is('new-cars*')) ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link {{ (request()->is('new-cars*')) ? 'active' : '' }}">
+        @if(hasPermission('New Cars') || hasPermission('After Sales Service'))
+            <li class="nav-item {{ (request()->is('new-cars*') || request()->is('after-sales-service*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('new-cars*') || request()->is('after-sales-service*')) ? 'active' : '' }}">
                     <i class="nav-icon fa fa-briefcase"></i><p>Our Services<i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
@@ -151,16 +151,16 @@
                         @endif
                     @endif
 
-                    <!-- @php($has_business_insurance_permission = hasPermission('Business Insurance'))
+                    @php($has_business_insurance_permission = hasPermission('After Sales Service'))
                     @if(isset($has_business_insurance_permission) && $has_business_insurance_permission)
                         @if($has_business_insurance_permission->read_permission == 1 || $has_business_insurance_permission->full_permission == 1)
                             <li class="nav-item"> 
-                                <a href="{{url('our-business-insurance')}}" class="nav-link {{ (request()->is('our-business-insurance*')) ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i><p>Business Insurance</p>
+                                <a href="{{url('after-sales-service')}}" class="nav-link {{ (request()->is('after-sales-service*')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>After Sales Service</p>
                                 </a>
                             </li>
                         @endif
-                    @endif -->
+                    @endif
                 </ul>
             </li>
         @endif

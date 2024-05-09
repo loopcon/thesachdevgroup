@@ -426,3 +426,6 @@ ALTER TABLE `new_car`
 
 ALTER TABLE `new_car`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 09-05-2024 4:25 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'After Sales Service', NULL, NULL, NULL);
