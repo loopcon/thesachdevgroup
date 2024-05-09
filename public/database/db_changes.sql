@@ -429,3 +429,35 @@ ALTER TABLE `new_car`
 
 -- Disha : 09-05-2024 4:25 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'After Sales Service', NULL, NULL, NULL);
+
+-- Disha : 09-05-2024 5:07 PM
+--
+-- Table structure for table `after_sales_service`
+--
+
+CREATE TABLE `after_sales_service` (
+  `id` int(11) NOT NULL,
+  `brand_id` varchar(255) DEFAULT NULL COMMENT '`id` of `brands`',
+  `banner_image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_color` varchar(255) NOT NULL,
+  `title_font_size` varchar(255) DEFAULT NULL,
+  `title_font_family` varchar(255) DEFAULT NULL,
+  `book_service_form_title` varchar(255) DEFAULT NULL,
+  `book_service_form_title_color` varchar(255) DEFAULT NULL,
+  `book_service_form_title_font_size` varchar(255) DEFAULT NULL,
+  `book_service_form_title_font_family` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `description_font_color` varchar(255) DEFAULT NULL,
+  `description_font_size` varchar(255) DEFAULT NULL,
+  `description_font_family` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `after_sales_service`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `after_sales_service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
