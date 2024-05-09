@@ -439,7 +439,7 @@
     .job-card:hover {
     transform: scale(1.02);
     }
-    .job-card svg {
+    .job-card img {
     width: 46px;
     padding: 10px;
     border-radius: 8px;
@@ -969,24 +969,28 @@
 @section('content')
 <section id="contact-us">
     <div class="contact-banner">
-        <img src="assets/image/Careers.svg" alt="">
+        @if(isset($career->banner_image) && $career->banner_image)
+            <img src="{{url('public/uploads/career/'.$career->banner_image)}}" alt="">
+        @endif
     </div>
 </section>
 
 <section class="about-cards-section" style="margin-top:20px;">
     <div class="container">
         <div class="carrer-offer">
-            <h2>What We Offer?</h2>
+            <h2 style="color:{{$career->offer_main_title_color}}; font-size:{{$career->offer_main_title_font_size}}; font-family:{{$career->offer_main_title_font_family}};">{{isset($career->offer_main_title) && $career->offer_main_title ? $career->offer_main_title : ''}}</h2>
         </div>
         <div class="row">
             <div class="col-sm-4 card-wrapper">
                 <div class="card border-0">
                     <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
-                        <img class="w-100 h-100" src="assets/image/sound.png" alt="Card image cap">
+                        @if(isset($career->offer_first_icon) && $career->offer_first_icon)
+                            <img class="w-100 h-100" src="{{url('public/uploads/career_icon1/'.$career->offer_first_icon)}}" alt="Card image cap">
+                        @endif
                     </div>
                     <div class="card-body text-center mt-4">
-                        <h3 class=" card-title" style="font-size: 1.4em;color: #e52334;"> Everyone has a Voice</h3>
-                        <p class="qq">The Sachdev Group is committed to providing an open environment for creativity, ideas, and innovation.</p>
+                        <h3 class="card-title" style="font-size:{{$career->offer_first_title_font_size ? $career->offer_first_title_font_size : '1.4em'}};color: {{$career->offer_first_title_color ? $career->offer_first_title_color : '#e52334'}};">{{isset($career->offer_first_title) && $career->offer_first_title ? $career->offer_first_title : ''}}</h3>
+                        <p class="qq" style="color:{{$career->offer_first_description_font_color}}; font-size:{{$career->offer_first_description_font_size}}; font-family:{{$career->offer_first_description_font_family}};">{{isset($career->offer_first_description) && $career->offer_first_description ? $career->offer_first_description : ''}}</p>
                     </div>
                 </div>
             </div>
@@ -994,11 +998,13 @@
             <div class="col-sm-4 card-wrapper">
                 <div class="card border-0">
                     <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
-                        <img class="w-100 h-100" src="assets/image/growth.png" alt="Card image cap">
+                        @if(isset($career->offer_second_icon) && $career->offer_second_icon)
+                            <img class="w-100 h-100" src="{{url('public/uploads/career_icon2/'.$career->offer_second_icon)}}" alt="Card image cap">
+                        @endif
                     </div>
                     <div class="card-body text-center mt-4">
-                        <h3 class="card-title" style="font-size: 1.4em;color: #e52334;">Room to Grow</h3>
-                        <p class="qq">Grow on your career path with exciting learning opportunities at The Sachdev Group.</p>
+                        <h3 class="card-title" style="font-size:{{$career->offer_second_title_font_size ? $career->offer_second_title_font_size : '1.4em'}};color: {{$career->offer_second_title_color ? $career->offer_second_title_color : '#e52334'}};">{{isset($career->offer_second_title) && $career->offer_second_title ? $career->offer_second_title : ''}}</h3>
+                        <p class="qq" style="color:{{$career->offer_second_description_font_color}}; font-size:{{$career->offer_second_description_font_size}}; font-family:{{$career->offer_second_description_font_family}};">{{isset($career->offer_second_description) && $career->offer_second_description ? $career->offer_second_description : ''}}</p>
                     </div>
                 </div>
             </div>
@@ -1006,11 +1012,13 @@
             <div class="col-sm-4 card-wrapper">
                 <div class="card border-0">
                     <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
-                        <img class="w-100 h-100" src="assets/image/positive.png" alt="Card image cap">
+                        @if(isset($career->offer_third_icon) && $career->offer_third_icon)
+                            <img class="w-100 h-100" src="{{url('public/uploads/career_icon3/'.$career->offer_third_icon)}}" alt="Card image cap">
+                        @endif
                     </div>
                     <div class="card-body text-center mt-4">
-                        <h3 class="card-title" style="font-size: 1.4em;color: #e52334;">Positivity is a Value</h3>
-                        <p class="qq">We provide a positive and inclusive environment to help you achieve your goals with us.</p>
+                        <h3 class="card-title" style="font-size:{{$career->offer_third_title_font_size ? $career->offer_third_title_font_size : '1.4em'}};color: {{$career->offer_third_title_color ? $career->offer_third_title_color : '#e52334'}};">{{isset($career->offer_third_title) && $career->offer_third_title ? $career->offer_third_title : ''}}</h3>
+                        <p class="qq" style="color:{{$career->offer_third_description_font_color}}; font-size:{{$career->offer_third_description_font_size}}; font-family:{{$career->offer_third_description_font_family}};">{{isset($career->offer_third_description) && $career->offer_third_description ? $career->offer_third_description : ''}}</p>
                     </div>
                 </div>
             </div>
@@ -1024,8 +1032,8 @@
             <div class="dark-light"></div>
             <div class="container" style="text-align: -webkit-center;">
                 <div class="job-opning-heading"> 
-                    <h3>Join Us</h3>  
-                    <h2>Current Vacancies</h2> 
+                    <h3 style="color:{{$career->vacancy_sub_title_color}}; font-size:{{$career->vacancy_sub_title_font_size}}; font-family:{{$career->vacancy_sub_title_font_family}};">{{isset($career->vacancy_sub_title) && $career->vacancy_sub_title ? $career->vacancy_sub_title : ''}}</h3>  
+                    <h2 style="color:{{$career->vacancy_title_color}}; font-size:{{$career->vacancy_title_font_size}}; font-family:{{$career->vacancy_title_font_family}};">{{isset($career->vacancy_title) && $career->vacancy_title ? $career->vacancy_title : ''}}</h2> 
                 </div>
             </div>
         </div>  
@@ -1034,168 +1042,118 @@
         <div class="main-container">
             <div class="searched-jobs">
                 <div class="job-cards">
-                    <div class="job-card">
-                        <div class="job-card-header">
-                            <svg viewBox="0 -13 512 512" xmlns="http://www.w3.org/2000/svg" style="background-color:#2e2882">
-                                <g fill="#feb0a5">
-                                    <path d="M256 92.5l127.7 91.6L512 92 383.7 0 256 91.5 128.3 0 0 92l128.3 92zm0 0M256 275.9l-127.7-91.5L0 276.4l128.3 92L256 277l127.7 91.5 128.3-92-128.3-92zm0 0" />
-                                    <path d="M127.7 394.1l128.4 92 128.3-92-128.3-92zm0 0" />
-                                </g>
-                                <path d="M512 92L383.7 0 256 91.5v1l127.7 91.6zm0 0M512 276.4l-128.3-92L256 275.9v1l127.7 91.5zm0 0M256 486.1l128.4-92-128.3-92zm0 0" fill="#feb0a5" />
-                            </svg>
-                            <div class="menu-dot"></div>
-                        </div>
-                        <div class="job-card-title">Automotive Technician</div>
-                        <div class="job-card-subtitle">An automotive technician will diagnose and repair vehicle issues, perform maintenance tasks, and ensure vehicles meet safety and performance standards.</div>
-                        <div class="job-detail-buttons">
-                            <button class="search-buttons detail-button">Full Time</button>
-                            <button class="search-buttons detail-button">Min. 1 Year</button>
-                            <button class="search-buttons detail-button">Senior Level</button>
-                        </div>
-                        <div class="job-card-buttons">
-                            <button class="search-buttons card-buttons">Apply Now</button>
-                            <!--<button class="search-buttons card-buttons-msg">Messages</button>-->
-                        </div>
-                    </div>
-                    <div class="job-card">
-                        <div class="job-card-header">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="background-color:#f76754">
-                                <path xmlns="http://www.w3.org/2000/svg" d="M0 .5h4.2v23H0z" fill="#042b48" data-original="#212121" />
-                                <path xmlns="http://www.w3.org/2000/svg" d="M15.4.5a8.6 8.6 0 100 17.2 8.6 8.6 0 000-17.2z" fill="#fefefe" data-original="#f4511e" />
-                            </svg>
-                            <div class="menu-dot"></div>
-                        </div>
-                        <div class="job-card-title">Sales Associate</div>
-                        <div class="job-card-subtitle">A sales associate will engage with customers, assist in vehicle selection, provide information on features and financing, and facilitate test drives.</div>
-                        <div class="job-detail-buttons">
-                            <button class="search-buttons detail-button">Full Time</button>
-                            <button class="search-buttons detail-button">Min. 1 Year</button>
-                            <button class="search-buttons detail-button">Senior Level</button>
-                        </div>
-                        <div class="job-card-buttons">
-                            <button class="search-buttons card-buttons">Apply Now</button>
-                            <!--<button class="search-buttons card-buttons-msg">Messages</button>-->
-                        </div>
-                    </div>
-                </div>
-                <div class="job-overview">
-                    <div class="job-overview-cards">
-                        <div class="job-overview-card">
-                            <div class="job-card overview-card">
-                                <div class="overview-wrapper">
-                                    <svg viewBox="0 -13 512 512" xmlns="http://www.w3.org/2000/svg" style="background-color:#2e2882">
-                                        <g fill="#feb0a5" >
+                    @if(isset($vacancies) && $vacancies)
+                        @foreach($vacancies as $record)
+                            <div class="job-card">
+                                <div class="job-card-header">
+                                    <!-- <svg viewBox="0 -13 512 512" xmlns="http://www.w3.org/2000/svg" style="background-color:#2e2882">
+                                        <g fill="#feb0a5">
                                             <path d="M256 92.5l127.7 91.6L512 92 383.7 0 256 91.5 128.3 0 0 92l128.3 92zm0 0M256 275.9l-127.7-91.5L0 276.4l128.3 92L256 277l127.7 91.5 128.3-92-128.3-92zm0 0" />
                                             <path d="M127.7 394.1l128.4 92 128.3-92-128.3-92zm0 0" />
                                         </g>
                                         <path d="M512 92L383.7 0 256 91.5v1l127.7 91.6zm0 0M512 276.4l-128.3-92L256 275.9v1l127.7 91.5zm0 0M256 486.1l128.4-92-128.3-92zm0 0" fill="#feb0a5" />
-                                    </svg>
-                                    <div class="overview-detail">
-                                        <div class="job-card-title">UI / UX Designer</div>
-                                        <div class="job-card-subtitle">Moti Nagar</div>
+                                    </svg> -->
+                                    <img src="{{url('public/uploads/vacancy_icon/'.$record->icon)}}" width="46px" style="background-color:{{$record->name_font_color}};">
+                                    <div class="menu-dot"></div>
+                                </div>
+                                <div class="job-card-title">{{$record->name}}</div>
+                                <div class="company-name" style="display:none;">{{isset($record->businessDetail->title) && $record->businessDetail->title ? $record->businessDetail->title : ''}}
+                                    <span class="comp-location"> 
+                                        @if($record->showroom_id)
+                                            {{isset($record->showroomDetail->name) && $record->showroomDetail->name ? $record->showroomDetail->name : ''}}
+                                        @endif
+                                        @if($record->service_center_id)
+                                            {{isset($record->serviceCenterDetail->name) && $record->serviceCenterDetail->name ? $record->serviceCenterDetail->name : ''}}
+                                        @endif
+                                        @if($record->body_shop_id)
+                                            {{isset($record->bodyShopDetail->name) && $record->bodyShopDetail->name ? $record->bodyShopDetail->name : ''}}
+                                        @endif
+                                    </span>
+                                </div>
+                                <div class="explain-subtitle experience" style="display:none;">{{$record->experience}}</div>
+                                <div class="explain-subtitle work-level" style="display:none;">{{$record->work_level}}</div>
+                                <div class="explain-subtitle employee-type" style="display:none;">{{$record->employee_type}}</div>
+                                <div class="explain-subtitle offer-salary" style="display:none;">{{$record->offer_salary}}</div>
+
+                                <div class="job-card-subtitle">{{$record->description}}</div>
+                                <div class="job-detail-buttons">
+                                    <button class="search-buttons detail-button">Full Time</button>
+                                    <button class="search-buttons detail-button">Min. 1 Year</button>
+                                    <button class="search-buttons detail-button">Senior Level</button>
+                                </div>
+                                <div class="job-card-buttons">
+                                    <button class="search-buttons card-buttons">Apply Now</button>
+                                    <!--<button class="search-buttons card-buttons-msg">Messages</button>-->
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
+                <div class="job-overview">
+                    <div class="job-overview-cards">
+                        @foreach($vacancies as $vacancy)
+                            <div class="job-overview-card">
+                                <div class="job-card overview-card">
+                                    <div class="overview-wrapper">
+                                        <!-- <svg viewBox="0 -13 512 512" xmlns="http://www.w3.org/2000/svg" style="background-color:#2e2882">
+                                            <g fill="#feb0a5" >
+                                                <path d="M256 92.5l127.7 91.6L512 92 383.7 0 256 91.5 128.3 0 0 92l128.3 92zm0 0M256 275.9l-127.7-91.5L0 276.4l128.3 92L256 277l127.7 91.5 128.3-92-128.3-92zm0 0" />
+                                                <path d="M127.7 394.1l128.4 92 128.3-92-128.3-92zm0 0" />
+                                            </g>
+                                            <path d="M512 92L383.7 0 256 91.5v1l127.7 91.6zm0 0M512 276.4l-128.3-92L256 275.9v1l127.7 91.5zm0 0M256 486.1l128.4-92-128.3-92zm0 0" fill="#feb0a5" />
+                                        </svg> -->
+                                        <img src="{{url('public/uploads/vacancy_icon/'.$vacancy->icon)}}" width="46px" style="background-color:#2e2882;margin-right:10px;">
+
+                                        <div class="overview-detail">
+                                            <div class="job-card-title">{{$vacancy->name}}</div>
+
+                                            <div class="company-name" style="display:none;">{{isset($vacancy->businessDetail->title) && $vacancy->businessDetail->title ? $vacancy->businessDetail->title : ''}}
+                                                <span class="comp-location"> 
+                                                    @if($vacancy->showroom_id)
+                                                        {{isset($vacancy->showroomDetail->name) && $vacancy->showroomDetail->name ? $vacancy->showroomDetail->name : ''}}
+                                                    @endif
+                                                    @if($vacancy->service_center_id)
+                                                        {{isset($vacancy->serviceCenterDetail->name) && $vacancy->serviceCenterDetail->name ? $vacancy->serviceCenterDetail->name : ''}}
+                                                    @endif
+                                                    @if($vacancy->body_shop_id)
+                                                        {{isset($vacancy->bodyShopDetail->name) && $vacancy->bodyShopDetail->name ? $vacancy->bodyShopDetail->name : ''}}
+                                                    @endif
+                                                </span>
+                                            </div>
+                                            <div class="explain-subtitle experience" style="display:none;">{{$vacancy->experience}}</div>
+                                            <div class="explain-subtitle work-level" style="display:none;">{{$vacancy->work_level}}</div>
+                                            <div class="explain-subtitle employee-type" style="display:none;">{{$vacancy->employee_type}}</div>
+                                            <div class="explain-subtitle offer-salary" style="display:none;">{{$vacancy->offer_salary}}</div>
+                                            <div class="job-card-subtitle">
+                                                @if($vacancy->showroom_id)
+                                                    {{isset($vacancy->showroomDetail->name) && $vacancy->showroomDetail->name ? $vacancy->showroomDetail->name : ''}}
+                                                @endif
+                                                @if($vacancy->service_center_id)
+                                                    {{isset($vacancy->serviceCenterDetail->name) && $vacancy->serviceCenterDetail->name ? $vacancy->serviceCenterDetail->name : ''}}
+                                                @endif
+                                                @if($vacancy->body_shop_id)
+                                                    {{isset($vacancy->bodyShopDetail->name) && $vacancy->bodyShopDetail->name ? $vacancy->bodyShopDetail->name : ''}}
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                                            <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" />
+                                        </svg>
                                     </div>
-                                    <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
-                                        <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" />
-                                    </svg>
-                                </div>
-                                <div class="job-overview-buttons">
-                                    <div class="search-buttons time-button">Full Time</div>
-                                    <div class="search-buttons level-button">Senior Level</div>
-                                    <div class="job-stat">New</div>
-                                    <div class="job-day">4d</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="job-overview-card">
-                            <div class="job-card overview-card">
-                                <div class="overview-wrapper">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="background-color:#f76754">
-                                        <path xmlns="http://www.w3.org/2000/svg" d="M0 .5h4.2v23H0z" fill="#042b48" data-original="#212121" />
-                                        <path xmlns="http://www.w3.org/2000/svg" d="M15.4.5a8.6 8.6 0 100 17.2 8.6 8.6 0 000-17.2z" fill="#fefefe" data-original="#f4511e" /></svg>
-                                    <div class="overview-detail">
-                                    <div class="job-card-title">Sr. Product Designer</div>
-                                    <div class="job-card-subtitle">Moti Nagar</div>
-                                </div>
-                                <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
-                                <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" /></svg>
-                            </div>
-                            <div class="job-overview-buttons">
-                                <div class="search-buttons time-button">Full Time</div>
-                                <div class="search-buttons level-button">Senior Level</div>
-                                <div class="job-stat">New</div>
-                                <div class="job-day">4d</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-overview-card">
-                        <div class="job-card overview-card">
-                            <div class="overview-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff" style="background-color:#55acee">
-                                    <path d="M512 97.2c-19 8.4-39.3 14-60.5 16.6 21.8-13 38.4-33.4 46.2-58a209.8 209.8 0 01-66.6 25.4A105 105 0 00249.5 153c0 8.3.8 16.3 2.5 24A297.1 297.1 0 0135.6 67 105.1 105.1 0 0068 207.4c-16.9-.3-33.4-5.2-47.4-12.9v1.1c0 51 36.4 93.4 84 103.2-8.5 2.3-17.8 3.4-27.4 3.4-6.8 0-13.5-.3-20-1.8a106 106 0 0098.2 73.2A211 211 0 010 416.9 295.5 295.5 0 00161 464c193.2 0 298.8-160 298.8-298.7 0-4.6-.2-9.1-.4-13.6A209.4 209.4 0 00512 97.2z" /></svg>
-                                    <div class="overview-detail">
-                                        <div class="job-card-title">User Experience Designer</div>
-                                        <div class="job-card-subtitle">Moti Nagar</div>
+                                    <div class="job-overview-buttons">
+                                        <div class="search-buttons time-button">Full Time</div>
+                                        <div class="search-buttons level-button">Senior Level</div>
+                                        <div class="job-stat">New</div>
+                                        <div class="job-day">4d</div>
                                     </div>
-                                    <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
-                                    <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" />
-                                </svg>
-                            </div>
-                            <div class="job-overview-buttons">
-                                <div class="search-buttons time-button">Full Time</div>
-                                <div class="search-buttons level-button">Senior Level</div>
-                                <div class="job-stat">New</div>
-                                <div class="job-day">4d</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-overview-card">
-                        <div class="job-card overview-card">
-                            <div class="overview-wrapper">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#fff" style="background-color:#1e1f26">
-                                    <path d="M24 7.6c0-.3 0-.5-.4-.6C12.2.2 12.4-.3 11.6 0 3 5.5.6 6.7.2 7.1c-.3.3-.2.8-.2 8.3 0 .9 7.7 5.5 11.5 8.4.4.3.8.2 1 0 11.2-8 11.5-7.6 11.5-8.4V7.6zm-1.5 6.5l-3.9-2.4L22.5 9zm-5.3-3.2l-4.5-2.7V2L22 7.6zM12 14.5l-3.9-2.7L12 9.5l3.9 2.3zm-.8-12.4v6L6.8 11 2.1 7.6zm-5.8 9.6l-3.9 2.4V9zm1.3 1l4.5 3.1v6l-9-6.3zm6 9.1v-6l4.6-3.1 4.6 2.8z" />
-                                </svg>
-                                <div class="overview-detail">
-                                    <div class="job-card-title">Product Designer</div>
-                                    <div class="job-card-subtitle">Moti Nagar</div>
-                                </div>
-                                <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
-                                    <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" />
-                                </svg>
-                            </div>
-                            <div class="job-overview-buttons">
-                                <div class="search-buttons time-button">Full Time</div>
-                                <div class="search-buttons level-button">Senior Level</div>
-                                <div class="job-stat">New</div>
-                                <div class="job-day">4d</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-overview-card">
-                        <div class="job-card overview-card">
-                            <div class="overview-wrapper">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="background-color:#ffe80f">
-                                    <path d="M9.5 9.3l-.7 2h1.4z" />
-                                    <path d="M12 1C5.4 1 0 5.2 0 10.4c0 3.4 2.2 6.3 5.6 8-1.3 4.4-1.3 4.4-1 4.6.2.1.5 0 5.3-3.4l2.1.2c6.6 0 12-4.2 12-9.4S18.6 1 12 1zM6 13c0 .4-.3.7-.6.7s-.7-.3-.7-.7V9H3.6c-.4 0-.7-.4-.7-.7s.3-.7.7-.7H7c.4 0 .7.3.7.7s-.3.6-.7.6h-1zm5.4.7c-.7 0-.6-.6-.9-1.2h-2c-.4.6-.3 1.2-1 1.2s-.8-.4-.6-1.1l1.6-4.3a1 1 0 011-.7c.4 0 .8.3.9.7 1 3.4 2.6 5.4 1 5.4zm4-.1h-2.2c-1.2 0-.5-1.6-.7-5.3 0-.4.3-.7.7-.7s.7.3.7.7v4h1.5c.3 0 .6.3.6.6 0 .4-.3.7-.6.7zm5.4-.5l-.3.4c-1 .7-1.6-1.4-2.6-2.3l-.2.3V13c0 .4-.3.7-.7.7a.7.7 0 01-.7-.7V8.3a.7.7 0 011.4 0v1.5c1.3-1 2-2.7 2.8-2 .8.9-.9 1.6-1.5 2.5 1.6 2.2 1.9 2.3 1.8 2.8z" />
-                                </svg>
-                                <div class="overview-detail">
-                                    <div class="job-card-title">UI / UX Designer</div>
-                                        <div class="job-card-subtitle">Moti Nagar</div>
-                                    </div>
-                                    <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
-                                        <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" />
-                                    </svg>
-                                </div>
-                                <div class="job-overview-buttons">
-                                    <div class="search-buttons time-button">Full Time</div>
-                                    <div class="search-buttons level-button">Senior Level</div>
-                                    <div class="job-stat">New</div>
-                                    <div class="job-day">4d</div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
+
                     <div class="job-explain">
-                        <img class="job-bg" alt="">
+                        <img class="job-bg">
                         <div class="job-logos">
                         </div>
                         <div class="job-explain-content">
@@ -1209,25 +1167,25 @@
                                 </div>
                             </div>
                             <div class="job-subtitle-wrapper">
-                                <div class="company-name">Galaxy Toyota <span class="comp-location">Moti Nagar, ND.</span></div>
+                                <div class="company-name">Galaxy Toyota<span class="comp-location">Moti Nagar, ND.</span></div>
                                 <div class="posted">Posted 8 days ago<span class="app-number">98 Application</span></div>
                             </div>
                             <div class="explain-bar">
                                 <div class="explain-contents">
                                     <div class="explain-title">Experience</div>
-                                    <div class="explain-subtitle">Minimum 1 Year</div>
+                                    <div class="explain-subtitle experience">Minimum 1 Year</div>
                                 </div>
                                 <div class="explain-contents">
                                     <div class="explain-title">Work Level</div>
-                                    <div class="explain-subtitle">Senior level</div>
+                                    <div class="explain-subtitle work-level">Senior level</div>
                                 </div>
                                 <div class="explain-contents">
                                     <div class="explain-title">Employee Type</div>
-                                    <div class="explain-subtitle">Full Time Jobs</div>
+                                    <div class="explain-subtitle employee-type">Full Time Jobs</div>
                                 </div>
                                 <div class="explain-contents">
                                     <div class="explain-title">Offer Salary</div>
-                                    <div class="explain-subtitle">Will be discussed</div>
+                                    <div class="explain-subtitle offer-salary">Will be discussed</div>
                                 </div>
                             </div>
                             <section id="carrer-form">
@@ -1278,11 +1236,14 @@
         </div>
    </div>
 </div>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 @section('javascript')
 <script>
     const wrapper = document.querySelector(".wrapper");
     const header = document.querySelector(".header");
+    localStorage.setItem("image_index",0);
+    var link = "{{ url('/public/uploads/vacancy/')}}/";
 
     wrapper.addEventListener("scroll", (e) => {
         e.target.scrollTop > 30
@@ -1300,120 +1261,47 @@
     const logo = document.querySelector(".logo");
     const jobLogos = document.querySelector(".job-logos");
     const jobDetailTitle = document.querySelector(".job-explain-content .job-card-title");
+    const jobDetailCompany = document.querySelector(".job-explain-content .job-subtitle-wrapper .company-name .comp-location");
+    const jobDetailExperience = document.querySelector(".job-explain-content .experience");
+    const jobDetailWorkLevel = document.querySelector(".job-explain-content .work-level");
+    const jobDetailEmployeeType = document.querySelector(".job-explain-content .employee-type");
+    const jobDetailOfferSalary = document.querySelector(".job-explain-content .offer-salary");
     const jobBg = document.querySelector(".job-bg");
-
     jobCards.forEach((jobCard) => {
         jobCard.addEventListener("click", () => {
-            const number = Math.floor(Math.random() * 10);
-            const url = `https://unsplash.it/640/425?image=${number}`;
-            jobBg.src = url;
+            var imageData = @json($image);
+            var image_index = localStorage.getItem("image_index");
 
-            const logo = jobCard.querySelector("svg");
-            const bg = logo.style.backgroundColor;
-            console.log(bg);
-            jobBg.style.background = bg;
-            const title = jobCard.querySelector(".job-card-title");
-            jobDetailTitle.textContent = title.textContent;
-            jobLogos.innerHTML = logo.outerHTML;
-            wrapper.classList.add("detail-page");
-            wrapper.scrollTop = 0;
+            imageData.forEach((data,index) =>  {
+                const number = Math.floor(Math.random() * imageData.length);
+                const url = link+imageData[image_index].image;
+                jobBg.src = url;
+                const logo = jobCard.querySelector("img");
+                const bg = logo.style.backgroundColor;
+
+                const title = jobCard.querySelector(".job-card-title");
+                const company = jobCard.querySelector(".company-name .comp-location");
+                const experience = jobCard.querySelector(".experience");
+                const worklevel = jobCard.querySelector(".work-level");
+                const employeeType = jobCard.querySelector(".employee-type");
+                const offerSalary = jobCard.querySelector(".offer-salary");
+                jobDetailTitle.textContent = title.textContent;
+                jobDetailCompany.textContent = company.textContent;
+                jobDetailExperience.textContent = experience.textContent;
+                jobDetailWorkLevel.textContent = worklevel.textContent;
+                jobDetailEmployeeType.textContent = employeeType.textContent;
+                jobDetailOfferSalary.textContent = offerSalary.textContent;
+                jobLogos.innerHTML = logo.outerHTML;
+                wrapper.classList.add("detail-page");
+                wrapper.scrollTop = 0;
+            });
+            image_index++;
+            if(imageData.length ==image_index) {
+                localStorage.setItem("image_index",0);
+            } else{
+                localStorage.setItem("image_index",image_index);
+            }
         });
-    });
-
-    logo.addEventListener("click", () => {
-        wrapper.classList.remove("detail-page");
-        wrapper.scrollTop = 0;
-        jobBg.style.background = bg;
     });
 </script>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<section id="carrer-form">-->
-<!--  <div class="container">-->
-<!--  <div class="form-carrer-page">-->
-<!--<form>-->
-<!--  <div class="form-row">-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label for="inputEmail4">First Name</label>-->
-<!--      <input type="text" class="form-control" id="inputEmail4">-->
-<!--    </div>-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label for="inputPassword4">Last Name</label>-->
-<!--      <input type="text" class="form-control" id="inputPassword4">-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <div class="form-row">-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label for="inputEmail4">Email Address</label>-->
-<!--      <input type="email" class="form-control" id="inputEmail4">-->
-<!--    </div>-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label for="inputPassword4">Contact No.</label>-->
-<!--      <input type="number" class="form-control" id="inputPassword4">-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <div class="form-row">-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label for="inputEmail4">Post Applying For</label>-->
-<!--      <input type="text" class="form-control" id="inputEmail4">-->
-<!--    </div>-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label for="inputPassword4">Upload your Resume</label>-->
-<!--      <input type="file" class="form-control" id="inputPassword4">-->
-<!--    </div>-->
-<!--  </div>-->
-
- 
-<!--  <button type="submit" class="btn btn-primary">Sign in</button>-->
-<!--</form>-->
-<!--</div>-->
-<!--</div>-->
-<!--</section>-->
-
-
-<?php
-require_once('footer.php'); 
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

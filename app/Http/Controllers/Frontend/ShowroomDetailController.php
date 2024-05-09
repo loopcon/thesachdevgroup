@@ -23,9 +23,4 @@ class ShowroomDetailController extends Controller
         $return_data['testimonials'] = ShowroomTestimonial::where('showroom_id',$showroom->id)->get();
         return view('frontend.showroom.index',array_merge($return_data));
     }
-
-    public function job()
-    {
-        return view('frontend.careers.index');
-    }
 }

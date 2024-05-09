@@ -126,7 +126,6 @@
                                     @endforeach
                                 </div>
                             </li>
-
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Services</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -150,9 +149,8 @@
                                     </div>
                                 </li>
                             @else
-                                <a class="nav-link" href="">Careers</a>
+                                <a class="nav-link" href="{{route('job')}}">Careers</a>
                             @endif
-
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Awards & Recognition</a>

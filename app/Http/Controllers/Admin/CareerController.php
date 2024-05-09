@@ -35,7 +35,7 @@ class CareerController extends Controller
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
                 $request->validate([
-                    'banner_image' => 'image|mimes:jpeg,png,jpg,webp',
+                    'banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
                     'offer_main_title' => 'required',
                 ]);
                 $career = Career::first();
