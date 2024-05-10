@@ -470,3 +470,7 @@ ALTER TABLE `cars` ADD `driven` VARCHAR(255) NULL DEFAULT NULL AFTER `price_font
 ALTER TABLE `cars` ADD `year` INT(11) NULL DEFAULT NULL AFTER `fuel_type_font_family`, ADD `year_color` VARCHAR(255) NULL DEFAULT NULL AFTER `year`, ADD `year_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `year_color`, ADD `year_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `year_font_size`, ADD `body_style` VARCHAR(255) NOT NULL AFTER `year_font_family`, ADD `body_style_color` VARCHAR(255) NULL DEFAULT NULL AFTER `body_style`, ADD `body_style_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `body_style_color`, ADD `body_style_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `body_style_font_size`;
 ALTER TABLE `cars` CHANGE `fuel_type_font_family` `fuel_type_font_family` VARCHAR(255) NULL DEFAULT NULL;
 ALTER TABLE `cars` CHANGE `driven_fon_family` `driven_font_family` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+
+-- Disha : 10-05-2024 3:41 PM
+ALTER TABLE `new_car` ADD `used_car_banner_image` VARCHAR(255) NULL DEFAULT NULL AFTER `title_font_family`;
+

@@ -64,6 +64,16 @@ class NewCarsController extends Controller
                         $new_car->banner_image = $banner_image;
                     }
 
+                    if($request->hasFile('used_car_banner_image')) {
+                        $oldimage = $new_car->used_car_banner_image;
+                        if($oldimage)
+                        {
+                            removeFile('uploads/new_car'.$oldimage);
+                        }
+                        $used_car_banner_image = fileUpload($request, 'used_car_banner_image', 'uploads/usedCar');
+                        $new_car->used_car_banner_image = $used_car_banner_image;
+                    }
+
                     $new_car->save();
                 }else{
 
@@ -78,6 +88,11 @@ class NewCarsController extends Controller
                     if($request->hasFile('banner_image')) {
                         $banner_image = fileUpload($request, 'banner_image', 'uploads/new_car');
                         $new_car->banner_image = $banner_image;
+                    }
+
+                    if($request->hasFile('used_car_banner_image')) {
+                        $used_car_banner_image = fileUpload($request, 'used_car_banner_image', 'uploads/usedCar');
+                        $new_car->used_car_banner_image = $used_car_banner_image;
                     }
                     $new_car->save();
                 }
