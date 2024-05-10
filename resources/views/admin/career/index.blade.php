@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="banner_image" class="form-label">Banner Image</label>
+                                <label for="banner_image" class="form-label">Banner Image<span class="text-danger">*</span></label>
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->banner_image) ? $record->banner_image : old('banner_image')}}">
                                 @if(isset($record->banner_image) && $record->banner_image)
                                     <img src="{{url('public/uploads/career/'.$record->banner_image)}}" width="100">

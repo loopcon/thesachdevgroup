@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -46,17 +49,18 @@
     
                                 <div class="col-md-4">
                                     <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
+                                    <input type="hidden" name="old_image" id="old_image" value="{{isset($car->image) ? $car->image : ''}}">
                                     @if(isset($car->image) && isset($car->image))
                                         <img src="{{url('public/car/'.$car->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                     @endif
-                                    <input type="file" id="image" class="form-control" name="image">
+                                    <input type="file" id="image" class="form-control" name="image" requird>
                                     <div class="error"></div>
                                     <small class="image_type">(Height:219px,Width:348px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
     
                                 <div class="col-md-4">
                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                    <input  type="text" class="form-control" name="name" value="{{$car->name}}">
+                                    <input  type="text" class="form-control" name="name" value="{{$car->name}}" required>
                                     <div class="error"></div>
                                 </div>
 
@@ -89,7 +93,7 @@
     
                                 <div class="mb-3 col-md-4">
                                     <label for="price" class="form-label">Price<span class="text-danger">*</span></label>
-                                    <input  type="text" class="form-control" name="price" value="{{$car->price}}">
+                                    <input  type="text" class="form-control" name="price" value="{{$car->price}}" required>
                                     <div class="error"></div>
                                 </div>
 
@@ -120,7 +124,7 @@
     
                                 <div class="col-md-4">
                                     <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
-                                    <input  type="text" class="form-control" name="link" value="{{$car->link}}">
+                                    <input  type="text" class="form-control" name="link" value="{{$car->link}}" required>
                                     <div class="error"></div>
                                 </div>
 
@@ -266,45 +270,23 @@
 </div>
 @endsection
 @section('javascript')
+<script type="text/javascript" src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
         $(".edit_form").validate({
             rules: {
-                'image': {
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'name': {
-                    required: true,
-                },
-                'price': {
-                    required: true,
-                },
-                'link': {
-                    url: "url",
-                    required: true,
-                },
-            },
-            messages: {
-                'image': {
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'name': {
-                    required: "The name field is required.",
-                },
-                'price': {
-                    required: "The price field is required.",
-                },
-                'link': {
-                    required: "The link field is required.",
-                    url: "Please enter a valid link.",
-                },
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
             },
         });
         $('.colorpicker').colorpicker();
 
+        // image validation
+        var old_image = $('#old_image').val();
+        var image = $('#image').val();
+        if(old_image != '' || image != ''){
+            document.getElementById("image").required = false;
+        }else{
+            document.getElementById("image").required = true;
+        }
     });
 </script>
 @endsection
