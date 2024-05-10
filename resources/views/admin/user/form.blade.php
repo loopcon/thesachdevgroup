@@ -115,8 +115,8 @@
     </section>
   </div>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-  @endsection
-  @section('javascript')
+@endsection
+@section('javascript')
 <script type="text/javascript" src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
   <script>
     $(document).ready(function () {

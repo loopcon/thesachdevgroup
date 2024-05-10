@@ -16,5 +16,6 @@ class Brand extends Model
         'color',
         'font_size',
         'font_family',
+        'link',
     ];
 }

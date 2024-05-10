@@ -47,6 +47,7 @@ use App\Http\Controllers\Frontend\ServiceCenterDetailController;
 use App\Http\Controllers\Frontend\ShowroomDetailController;
 use App\Http\Controllers\Frontend\CareerDetailController;
 use App\Http\Controllers\Frontend\NewCarController;
+use App\Http\Controllers\Frontend\AfterSalesServicedDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -409,3 +410,7 @@ Route::get('careers/job', [CareerDetailController::class, 'job'])->name('job');
 
 // new cars
 Route::get('our_service/buy_new_car_landing_page', [NewCarController::class, 'carList'])->name('buy_new_car_landing_page');
+
+
+// after sales service
+Route::get('our-service/bookservice', [AfterSalesServicedDetailController::class, 'bookService'])->name('bookservice');

@@ -98,9 +98,9 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4 mb-2 adm-select-car-drop">
+                            <div class="col-md-4 mb-4 adm-select-car-drop adm-brand-errorbox">
                                 <label for="brand_id" class="form-label">Brand</label>
-                                <select class="form-control select2" name="brand_id[]" id="brand_id" multiple>
+                                <select class="form-control select2" name="brand_id[]" id="brand_id" required multiple>
                                     <option value="" disabled>-- Select Brand --</option>
                                     @foreach($brands as $value)
                                     <option value="{{$value->id}}"@if(isset($record->brand_id) && in_array($value->id, json_decode($record->brand_id)) == $value->id){{'selected'}}@endif>{{$value->name}}</option>

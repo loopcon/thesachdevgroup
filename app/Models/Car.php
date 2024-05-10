@@ -23,6 +23,22 @@ class Car extends Model
         'price_font_size',
         'name_font_family',
         'price_font_family',
+        'driven',
+        'driven_color',
+        'driven_font_size',
+        'driven_font_family',
+        'fuel_type',
+        'fuel_type_color',
+        'fuel_type_font_size',
+        'fuel_type_font_family',
+        'year',
+        'year_color',
+        'year_font_size',
+        'year_font_family',
+        'body_style',
+        'body_style_color',
+        'body_style_font_size',
+        'body_style_font_family',
     ];
 
     public function brand(){

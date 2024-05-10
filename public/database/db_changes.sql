@@ -461,3 +461,12 @@ ALTER TABLE `after_sales_service`
 
 ALTER TABLE `after_sales_service`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 10-05-2024 10:18 AM
+ALTER TABLE `brands` ADD `link` VARCHAR(255) NULL DEFAULT NULL AFTER `font_family`;
+
+-- Disha : 10-05-2024 10:53 AM
+ALTER TABLE `cars` ADD `driven` VARCHAR(255) NULL DEFAULT NULL AFTER `price_font_family`, ADD `driven_color` VARCHAR(255) NULL DEFAULT NULL AFTER `driven`, ADD `driven_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `driven_color`, ADD `driven_fon_family` VARCHAR(255) NULL DEFAULT NULL AFTER `driven_font_size`, ADD `fuel_type` VARCHAR(255) NULL DEFAULT NULL AFTER `driven_fon_family`, ADD `fuel_type_color` VARCHAR(255) NULL DEFAULT NULL AFTER `fuel_type`, ADD `fuel_type_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `fuel_type_color`, ADD `fuel_type_font_family` INT NOT NULL AFTER `fuel_type_font_size`;
+ALTER TABLE `cars` ADD `year` INT(11) NULL DEFAULT NULL AFTER `fuel_type_font_family`, ADD `year_color` VARCHAR(255) NULL DEFAULT NULL AFTER `year`, ADD `year_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `year_color`, ADD `year_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `year_font_size`, ADD `body_style` VARCHAR(255) NOT NULL AFTER `year_font_family`, ADD `body_style_color` VARCHAR(255) NULL DEFAULT NULL AFTER `body_style`, ADD `body_style_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `body_style_color`, ADD `body_style_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `body_style_font_size`;
+ALTER TABLE `cars` CHANGE `fuel_type_font_family` `fuel_type_font_family` VARCHAR(255) NULL DEFAULT NULL;
+ALTER TABLE `cars` CHANGE `driven_fon_family` `driven_font_family` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;

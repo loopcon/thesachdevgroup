@@ -48,11 +48,9 @@
         <button class="btn active" onclick="filterSelection('all')"> Show all</button>
         @foreach($awards_data as $award)
             <button class="btn" onclick="filterSelection('{{$award->business_id}}')"> {{isset($award->businessdDetail->title) && $award->businessdDetail->title ? $award->businessdDetail->title : ''}}</button>
-            <!-- <button class="btn" onclick="filterSelection('nature')"> Galaxy Toyota</button>
-            <button class="btn" onclick="filterSelection('cars')"> Hans Hyundai</button>
-            <button class="btn" onclick="filterSelection('people')"> Ford</button> -->
         @endforeach
     </div>
+
     <!-- Portfolio Gallery Grid -->
     <div class="row">
         @foreach($awards as $award)
@@ -64,20 +62,6 @@
                 </div>
             </div>
         @endforeach
-        <!-- <div class="columnn nature">
-            <div class="content">
-            <img src="assets/image/gallery-img/photo-31.png" alt="Mountains" alt="Lights" style="width:100%">
-            <h4>Galaxy Toyota</h4>
-            <p></p>
-            </div>
-        </div>
-        <div class="columnn nature">
-            <div class="content">
-            <img src="assets/image/gallery-img/photo-37.png" alt="Mountains" alt="Nature" style="width:100%">
-            <h4>Galaxy Toyota</h4>
-            <p></p>
-            </div>
-        </div> -->
     </div> 
 </div>
 @endsection

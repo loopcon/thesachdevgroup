@@ -53,6 +53,7 @@
 .car_form .select2-selection {min-height: 40px !important; padding-left: 8px; }
 .car_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
 .car_form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
+.car_form .adm-brand-errorbox {margin-bottom: 55px;position: relative;}
 .showroom_form .form-control{  height: 40px; padding: 4px 8px; }
 .showroom_form .select2-selection {min-height: 40px !important; padding-left: 8px; }
 .showroom_form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
