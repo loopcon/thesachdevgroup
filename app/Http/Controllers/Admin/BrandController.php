@@ -51,6 +51,7 @@ class BrandController extends Controller
                 $brand->color = $request->color;
                 $brand->font_size = $request->font_size;
                 $brand->font_family = $request->font_family;
+                $brand->link = $request->link;
                 $brand->save();
 
                 return redirect()->route('brand.index')->with('success','Brand insert successfully.');
@@ -151,6 +152,7 @@ class BrandController extends Controller
                 $brand->color = $request->color;
                 $brand->font_size = $request->font_size;
                 $brand->font_family = $request->font_family;
+                $brand->link = $request->link;
                 $brand->save();
 
                 return redirect()->route('brand.index')->with('success','Brand update successfully.');

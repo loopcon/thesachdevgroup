@@ -46,7 +46,7 @@ class CarController extends Controller
                 {
                     $car->$field = isset($request->$field) && $request->$field != '' ? $request->$field : NULL;
                 }
-                
+
                 $car->our_business_id = $request->our_business_id;
                 $car->brand_id = $request->brand_id;
 

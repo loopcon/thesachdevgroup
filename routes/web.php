@@ -409,8 +409,7 @@ Route::get('showroom/{slug}', [ShowroomDetailController::class, 'showroom']);
 Route::get('careers/job', [CareerDetailController::class, 'job'])->name('job');
 
 // new cars
-Route::get('our_service/buy_new_car_landing_page', [NewCarController::class, 'carList'])->name('buy_new_car_landing_page');
-
+Route::get('our-service/buy_new_car_landing_page', [NewCarController::class, 'carList'])->name('buy_new_car_landing_page');
 
 // after sales service
 Route::get('our-service/bookservice', [AfterSalesServicedDetailController::class, 'bookService'])->name('bookservice');

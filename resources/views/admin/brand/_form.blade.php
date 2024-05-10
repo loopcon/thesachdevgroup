@@ -62,13 +62,17 @@
                                         @endforeach
                                    </select>
                                 </div>
-                            </div>
-    
-                            <div class="box-footer">
-                                <button type="submit" class="btn btn-primary submit">Submit</button>
-                                <a href="{{ route('brand.index') }}" class="btn btn-danger">Cancel</a>
-                            </div>
 
+                                <div class="col-md-4">
+                                    <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
+                                    <input type="text" id="link" class="form-control" value="{{$brand->link}}" name="link">
+                                </div>
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary submit">Submit</button>
+                                    <a href="{{ route('brand.index') }}" class="btn btn-danger">Cancel</a>
+                                </div>
+                            </div>
                         </form>
                     @endforeach 
                 </div>
@@ -88,6 +92,10 @@
                 'name': {
                     required: true,
                 },
+                'link': {
+                    required: true,
+                    url: "url",
+                },
             },
             messages: {
                 'image': {
@@ -95,6 +103,10 @@
                 },
                 'name': {
                     required: "The name field is required.",
+                },
+                'link': {
+                    required: "The link field is required.",
+                    url: "Please enter a valid link.",
                 },
             },
             errorPlacement: function(error, element) {

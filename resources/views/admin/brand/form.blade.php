@@ -55,6 +55,11 @@
                                     @endforeach
                                </select>
                             </div>
+
+                            <div class="col-md-4">
+                                <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
+                                <input type="text" id="link" class="form-control" name="link">
+                            </div>
                         </div>
 
                         <div class="box-footer">
@@ -81,6 +86,10 @@
                 'name': {
                     required: true,
                 },
+                'link': {
+                    required: true,
+                    url: "url",
+                },
             },
             messages: {
                 'image': {
@@ -89,6 +98,10 @@
                 },
                 'name': {
                     required: "The name field is required.",
+                },
+                'link': {
+                    required: "The link field is required.",
+                    url: "Please enter a valid link.",
                 },
             },
             submitHandler: function(form) {
