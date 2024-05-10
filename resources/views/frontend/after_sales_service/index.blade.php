@@ -18,7 +18,7 @@
             @if(isset($brands) && $brands)
                 @foreach($brands as $brand)
                     <div class="brand-one">
-                        <a href="https://hanshyundai.com/" target="_blank"><img src="{{url('public/brand/'.$brand->image)}}" alt="" width="100%"></a>
+                        <a href="{{$brand->link}}" target="_blank"><img src="{{url('public/brand/'.$brand->image)}}" alt="" width="100%"></a>
                     </div>
                 @endforeach
             @endif
