@@ -508,3 +508,5 @@ ALTER TABLE `car_insurance`
 
 ALTER TABLE `car_insurance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `car_insurance` CHANGE `insurance_form_title_font_size` `insurance_form_title_font_size` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `insurance_form_title_font_family` `insurance_form_title_font_family` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;

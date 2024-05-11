@@ -35,7 +35,7 @@
 <section id="form-insurence">
     <div class="container">
         <div class="insurencetext">
-            <h2>{{isset($car_insurance->insurance_form_title) && $car_insurance->insurance_form_title ? $car_insurance->insurance_form_title : ''}}</h2>
+            <h2 style="color:{{$car_insurance->insurance_form_title_color}}; font-size:{{$car_insurance->insurance_form_title_font_size}}; font-family:{{$car_insurance->insurance_form_title_font_family}};">{{isset($car_insurance->insurance_form_title) && $car_insurance->insurance_form_title ? $car_insurance->insurance_form_title : ''}}</h2>
         </div>
         <div class="insurence-form">
             <form action="" method="post">
