@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\OurLocationController;
 use App\Http\Controllers\Admin\NewCarsController;
 use App\Http\Controllers\Admin\AfterSalesServiceController;
+use App\Http\Controllers\Admin\CarInsuranceController;
 
 // frontend controller
 use App\Http\Controllers\Frontend\HomeController;
@@ -362,6 +363,11 @@ Route::group(['middleware' => 'auth'], function () {
     // after sales service
     Route::get('after-sales-service', [AfterSalesServiceController::class, 'afterSalesService'])->name('after-sales-service');
     Route::post('after-sales-service-update', [AfterSalesServiceController::class, 'afterSalesServiceUpdate'])->name('after-sales-service-update');
+
+    
+    // car insurance
+    Route::get('car-insurance', [CarInsuranceController::class, 'carInsurance'])->name('car-insurance');
+    Route::post('car-insurance-update', [CarInsuranceController::class, 'carInsuranceUpdate'])->name('car-insurance-update');
 
 });
 

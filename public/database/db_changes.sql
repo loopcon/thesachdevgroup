@@ -474,3 +474,7 @@ ALTER TABLE `cars` CHANGE `driven_fon_family` `driven_font_family` VARCHAR(255) 
 -- Disha : 10-05-2024 3:41 PM
 ALTER TABLE `new_car` ADD `used_car_banner_image` VARCHAR(255) NULL DEFAULT NULL AFTER `title_font_family`;
 ALTER TABLE `after_sales_service` CHANGE `title_color` `title_color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
+
+-- Disha : 11-05-2024 11:09 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Car Insurance', NULL, NULL, NULL);
+ALTER TABLE `car_insurance` CHANGE `title_font_color` `title_font_size` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
