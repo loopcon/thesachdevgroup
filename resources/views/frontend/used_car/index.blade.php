@@ -32,7 +32,7 @@
                         </div>
                         <div class="usedcar-button">
                             <a href="https://tsgusedcars.com/buy" target="_blank">Contact Us</a>
-                            <a href="https://tsgusedcars.com/used-renault-duster-rxl-2015" target="_blank">View Details</a>
+                            <a href="{{$model->link}}" target="_blank">View Details</a>
                         </div>
                     </div>
                 @endforeach

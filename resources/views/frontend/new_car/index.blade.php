@@ -52,7 +52,7 @@
                                                 <div class="card-body">
                                                     <h4 class="card-title" style="color:{{$data->name_color}}; font-size:{{$data->name_font_size}}; font-family:{{$data->name_font_family}};">{{$model->name}}</h4>
                                                     <p class="card-text" style="color:{{$data->price_color}}; font-size:{{$data->price_font_size}}; font-family:{{$data->price_font_family}};">{{$model->price}}</p>
-                                                    <a href="https://hanshyundai.com/hyundai-alcazar"  target="_blank">View Details</a>
+                                                    <a href="{{$model->link}}"  target="_blank">View Details</a>
                                                 </div>
                                             </div>
                                         </div>

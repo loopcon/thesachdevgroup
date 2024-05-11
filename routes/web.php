@@ -50,6 +50,7 @@ use App\Http\Controllers\Frontend\CareerDetailController;
 use App\Http\Controllers\Frontend\NewCarController;
 use App\Http\Controllers\Frontend\AfterSalesServicedDetailController;
 use  App\Http\Controllers\Frontend\UsedCarDetailController;
+use  App\Http\Controllers\Frontend\CarInsuranceDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -421,6 +422,8 @@ Route::get('our-service/buy_new_car_landing_page', [NewCarController::class, 'ca
 // after sales service
 Route::get('our-service/bookservice', [AfterSalesServicedDetailController::class, 'bookService'])->name('bookservice');
 
-
 // used car
 Route::get('our-service/used-car', [UsedCarDetailController::class, 'usedCar']);
+
+// used car
+Route::get('our-service/book-insurance', [CarInsuranceDetailController::class, 'bookInsurance']);

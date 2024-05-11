@@ -99,7 +99,7 @@
                             </div>
 
                             <div class="col-md-4 mb-4 adm-select-car-drop adm-brand-errorbox">
-                                <label for="brand_id" class="form-label">Brand</label>
+                                <label for="brand_id" class="form-label">Brand<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="brand_id[]" id="brand_id" required multiple>
                                     <option value="" disabled>-- Select Brand --</option>
                                     @foreach($brands as $value)
