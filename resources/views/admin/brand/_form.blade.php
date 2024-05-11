@@ -65,7 +65,8 @@
 
                                 <div class="col-md-4">
                                     <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
-                                    <input type="text" id="link" class="form-control" value="{{$brand->link}}" name="link">
+                                    <input type="text" class="form-control" value="{{$brand->link}}" name="link">
+                                    <div class="error"></div>
                                 </div>
 
                                 <div class="box-footer">

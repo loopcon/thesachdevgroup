@@ -40,6 +40,7 @@ class NewCarsController extends Controller
             {
                 $request->validate([
                     'banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                    'used_car_banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
                     'title' => 'required',
                 ]);
                 $new_car = NewCar::first();
@@ -77,6 +78,11 @@ class NewCarsController extends Controller
                     $new_car->save();
                 }else{
 
+                    $request->validate([
+                        'banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                        'used_car_banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                        'title' => 'required',
+                    ]);
                     $new_car = new NewCar();
                     $fields = array('title','title_color','title_font_size','title_font_family');
                     foreach($fields as $field)

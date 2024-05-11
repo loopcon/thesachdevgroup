@@ -21,6 +21,7 @@ class AfterSalesServiceController extends Controller
                 $return_data['site_title'] = trans('After Sales Service');
                 $return_data['brands'] = Brand::select('id','name')->get();
                 $return_data['record'] = AfterSalesService::first();
+
                 return view("admin.after_sales_service.index",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -61,8 +62,8 @@ class AfterSalesServiceController extends Controller
                         $banner_image = fileUpload($request, 'banner_image', 'uploads/afterSalesService');
                         $after_sales_service->banner_image = $banner_image;
                     }
-
                     $after_sales_service->save();
+
                 }else{
 
                     $after_sales_service = new AfterSalesService();

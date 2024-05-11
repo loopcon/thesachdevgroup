@@ -65,7 +65,7 @@ class AwardsController extends Controller
             {
                 $request->validate([
                     'business_id' => 'required',
-                    'image' => 'image|mimes:jpeg,png,jpg,webp',
+                    'image' => 'image|mimes:jpeg,png,jpg,webp,svg',
                 ]);
 
                 $award = new Awards();
@@ -137,7 +137,7 @@ class AwardsController extends Controller
                 $id = decrypt($id);
                 $request->validate([
                     'business_id' => 'required',
-                    'image' => 'image|mimes:jpeg,png,jpg,webp',
+                    'image' => 'image|mimes:jpeg,png,jpg,webp,svg',
                 ]);
                 $award = Awards::find($id);
                 $award->business_id = $request->business_id ? $request->business_id : NULL;
@@ -223,6 +223,10 @@ class AwardsController extends Controller
             {
                 $return_data = array();
                 $return_data['site_title'] = trans('Award Banner');
+                $request->validate([
+                    'banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                    'award_title' => 'required',
+                ]);
                 $banner = AwardBanner::first();
                 $banner->award_title = $request->award_title;
                 $banner->award_title_font_size = $request->award_title_font_size;

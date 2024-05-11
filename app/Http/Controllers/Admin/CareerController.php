@@ -36,6 +36,9 @@ class CareerController extends Controller
             {
                 $request->validate([
                     'banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                    'offer_first_icon' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                    'offer_second_icon' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                    'offer_third_icon' => 'image|mimes:jpeg,png,jpg,webp,svg',
                     'offer_main_title' => 'required',
                 ]);
                 $career = Career::first();
@@ -89,6 +92,14 @@ class CareerController extends Controller
 
                     $career->save();
                 }else{
+
+                    $request->validate([
+                        'banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                        'offer_first_icon' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                        'offer_second_icon' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                        'offer_third_icon' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                        'offer_main_title' => 'required',
+                    ]);
 
                     $career = new Career();
                     $fields = array('banner_image', 'offer_main_title', 'offer_main_title_color', 'offer_main_title_font_size', 'offer_main_title_font_family', 'offer_first_icon', 'offer_first_title', 'offer_first_title_color', 'offer_first_title_font_size', 'offer_first_title_font_family', 'offer_first_description', 'offer_first_description_font_size', 'offer_first_description_font_family', 'offer_first_description_font_color', 'offer_second_icon', 'offer_second_title', 'offer_second_title_color', 'offer_second_title_font_size', 'offer_second_title_font_family', 'offer_second_description', 'offer_second_description_font_color', 'offer_second_description_font_size', 'offer_second_description_font_family', 'offer_third_icon', 'offer_third_title', 'offer_third_title_color', 'offer_third_title_font_size', 'offer_third_title_font_family', 'offer_third_description', 'offer_third_description_font_color', 'offer_third_description_font_size', 'offer_third_description_font_family', 'vacancy_title', 'vacancy_title_color', 'vacancy_title_font_size', 'vacancy_title_font_family', 'vacancy_sub_title', 'vacancy_sub_title_color', 'vacancy_sub_title_font_size', 'vacancy_sub_title_font_family');

@@ -473,4 +473,4 @@ ALTER TABLE `cars` CHANGE `driven_fon_family` `driven_font_family` VARCHAR(255) 
 
 -- Disha : 10-05-2024 3:41 PM
 ALTER TABLE `new_car` ADD `used_car_banner_image` VARCHAR(255) NULL DEFAULT NULL AFTER `title_font_family`;
-
+ALTER TABLE `after_sales_service` CHANGE `title_color` `title_color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;

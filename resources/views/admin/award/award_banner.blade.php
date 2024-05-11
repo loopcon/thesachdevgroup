@@ -59,6 +59,7 @@
 
                             <div class="col-md-5 mb-3 mt-2">
                                 <label for="banner_image" class="form-label">Award Banner Image<span class="text-danger">*</span></label>
+                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->banner_image) ? $record->banner_image : ''}}">
                                 @if(isset($record->banner_image) && $record->banner_image)
                                     <img src="{{url('public/uploads/award_banner/'.$record->banner_image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
                                 @endif  
@@ -85,35 +86,21 @@
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
-        $(".service-form").validate({
+        $(".award-form").validate({
             rules: {
-                'name': {
+                'award_title': {
                     required: true,
                 },
-                'service_center_id': {
-                    required: true,
-                },
-                'icon': {
+                'banner_image': {
                     extension: "jpg,jpeg,png,webp",
-                },
-                'url': {
-                    required: true,
-                    url: "url",
                 },
             },
             messages: {
-                'name': {
-                    required: "Name is required",
+                'award_title': {
+                    required: "Award Title is required",
                 },
-                'service_center_id': {
-                    required: "Service Center is required",
-                },
-                'icon': {
+                'banner_image': {
                     extension: "Image must be jpg,jpeg,png or webp",
-                },
-                'url': {
-                    required: "Url is required",
-                    url: "Enter valid url",
                 },
             },
             submitHandler: function(form) {
@@ -121,6 +108,15 @@
                 form.submit();
             }
         });
+
+        // image validation
+        var old_image = $('#old_image').val();
+        var image = $('#banner_image').val();
+        if(old_image != '' || image != ''){
+            document.getElementById("banner_image").required = false;
+        }else{
+            document.getElementById("banner_image").required = true;
+        }
 
         $('.colorpicker').colorpicker();
     });
