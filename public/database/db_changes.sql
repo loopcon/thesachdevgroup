@@ -477,4 +477,34 @@ ALTER TABLE `after_sales_service` CHANGE `title_color` `title_color` VARCHAR(255
 
 -- Disha : 11-05-2024 11:09 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Car Insurance', NULL, NULL, NULL);
-ALTER TABLE `car_insurance` CHANGE `title_font_color` `title_font_size` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
+
+-- Disha : 11-05-2024 12:05 PM
+--
+-- Table structure for table `car_insurance`
+--
+
+CREATE TABLE `car_insurance` (
+  `id` int(11) NOT NULL,
+  `brand_id` varchar(255) DEFAULT NULL COMMENT '`id` of `brands`',
+  `banner_image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_color` varchar(255) DEFAULT NULL,
+  `title_font_size` varchar(255) DEFAULT NULL,
+  `title_font_family` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `description_font_color` varchar(255) DEFAULT NULL,
+  `description_font_size` varchar(255) DEFAULT NULL,
+  `description_font_family` varchar(255) DEFAULT NULL,
+  `insurance_form_title` varchar(255) DEFAULT NULL,
+  `insurance_form_title_color` varchar(255) DEFAULT NULL,
+  `insurance_form_title_font_size` varchar(255) NOT NULL,
+  `insurance_form_title_font_family` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `car_insurance`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `car_insurance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
