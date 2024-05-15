@@ -48,7 +48,7 @@
 
                             @php($fontfamily = fontFamily())
                             <div class="col-md-4 mt-2">
-                                <label for="award_title_font_family" class="form-label">Name Font Family</label>
+                                <label for="award_title_font_family" class="form-label">Award Title Font Family</label>
                                 <select class="form-control select2" name="award_title_font_family">
                                     <option value="">-- Select --</option>
                                     @foreach($fontfamily as $family)
