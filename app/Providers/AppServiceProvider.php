@@ -83,7 +83,7 @@ class AppServiceProvider extends ServiceProvider
         $mission_visions = Mission_vision::get();
         view()->share('mission_visions', $mission_visions);
 
-        $our_business = OurBusiness::select('id', 'title', 'slug', 'url')->get();
+        $our_business = OurBusiness::select('id', 'title', 'slug', 'url', 'title_font_size', 'title_font_color', 'title_font_family')->get();
         view()->share('our_business', $our_business);
 
         $cms_pages = Page::select('id','name', 'slug')->get();

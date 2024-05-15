@@ -43,12 +43,23 @@
             <div class="col-md-6 col-lg-3">
                <div class="brands">
                   <h3>Our Businesses</h3>
-                  @foreach($footer_menu_our_businesses as $footer_menu_our_businesse)
+                     @foreach($our_business as $business)
+                           @if($business->url !='')
+                              <a href="{{url($business->url)}}" style="display: flex; align-items: center; margin-bottom: 10px; "> 
+                              <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
+                              <p style="color:{{$business->title_font_color}}; font-size:{{$business->title_font_size}}; font-family:{{$business->title_font_family}}; margin-bottom: 0px;"> {{$business->title}} </p>
+                           @else
+                           <a href="{{url('business/'.$business->slug)}}" style="display: flex; align-items: center; margin-bottom: 10px; "> 
+                              <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
+                              <p style="color:{{$business->title_font_color}}; font-size:{{$business->title_font_size}}; font-family:{{$business->title_font_family}}; margin-bottom: 0px;"> {{$business->title}} </p>
+                           @endif
+                     @endforeach
+                 <?php /**@foreach($footer_menu_our_businesses as $footer_menu_our_businesse)
                      <a href="{{$footer_menu_our_businesse->link}}" style="display: flex; align-items: center; margin-bottom: 10px; "> 
                         <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
                         <p style="color:{{$footer_menu_our_businesse->color}}; font-size:{{$footer_menu_our_businesse->font_size}}; font-family:{{$footer_menu_our_businesse->font_family}}; margin-bottom: 0px;"> {{$footer_menu_our_businesse->name}} </p>
                      </a>
-                  @endforeach
+                  @endforeach**/ ?>
                </div>
             </div>
             <div class="col-md-6 col-lg-3">

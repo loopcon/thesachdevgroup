@@ -389,8 +389,8 @@
                                                             </div>
                                                         @endforeach
 
-                                                        @foreach($service_center as $key => $record)
-                                                            <div class="tab-pane fade rounded bg-white service-map service-map-{{$record->id}} show @if($key == 0)active @endif" id="{{$record->id}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                                        @foreach($service_center as $record)
+                                                            <div class="tab-pane fade rounded bg-white service-map service-map-{{$record->id}}" id="{{$record->id}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                                                 <iframe src="{{$record->map_link}}" width="100%" height="625" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                                             </div>
                                                         @endforeach

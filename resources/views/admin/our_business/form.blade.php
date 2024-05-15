@@ -442,7 +442,7 @@
                     required: "Page Link or Url is required",
                 },
                 'title': {
-                    required: "title is required",
+                    required: "Title is required",
                 },
                 'banner_image': {
                     extension: "Banner Image must be jpg,jpeg,png or webp",
@@ -458,6 +458,15 @@
         });
 
         $('.colorpicker').colorpicker();
+
+        // banner image validation
+        var old_image = $('#old_image').val();
+        var banner_image = $('#banner_image').val();
+        if(old_image != '' || banner_image != ''){
+            document.getElementById("banner_image").required = false;
+        }else{
+            document.getElementById("banner_image").required = true;
+        }
     });
 </script>
 @endsection
