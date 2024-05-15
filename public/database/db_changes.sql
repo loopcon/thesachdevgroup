@@ -535,15 +535,10 @@ ALTER TABLE `our_locations`
 ALTER TABLE `our_locations`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
--- Disha : 13-05-2024 12:17
-ALTER TABLE `our_locations` ADD `business_id` VARCHAR(255) NULL DEFAULT NULL AFTER `id`;
-
 -- Disha : 14-05-2024 12:42 PM
 ALTER TABLE `body_shops` ADD `address` TEXT NULL DEFAULT NULL AFTER `number_of_rating`, ADD `address_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `address`, ADD `address_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `address_font_size`, ADD `address_font_color` VARCHAR(255) NULL DEFAULT NULL AFTER `address_font_family`, ADD `email` VARCHAR(255) NULL DEFAULT NULL AFTER `address_font_color`, ADD `email_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `email`, ADD `email_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `email_font_size`, ADD `email_font_color` VARCHAR(255) NULL DEFAULT NULL AFTER `email_font_family`, ADD `contact_number` VARCHAR(255) NULL DEFAULT NULL AFTER `email_font_color`, ADD `contact_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_number`, ADD `contact_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_font_size`, ADD `contact_font_color` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_font_family`;
 
 -- Disha : 14-05-2024 3:38 PM
-ALTER TABLE `our_locations` ADD `latitude` DECIMAL(11) NULL DEFAULT NULL AFTER `title_font_family`, ADD `longitude` FLOAT(8,2) NULL DEFAULT NULL AFTER `latitude`;
-ALTER TABLE `our_locations` CHANGE `latitude` `latitude` FLOAT(8,2) NULL DEFAULT NULL;
 ALTER TABLE `our_business` ADD `map_link` VARCHAR(255) NULL DEFAULT NULL AFTER `insurance_title_font_family`;
 ALTER TABLE `our_business` CHANGE `map_link` `map_link` LONGTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
 

@@ -292,7 +292,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="job-title">
+                                                                                <div class="skills-container">
                                                                                     <p class="mobile-font-color">Mobile Number: <a href="tel:+91 {{$showroom->contact_number}}">@if(isset($showroom->contact_number)) +91 {{$showroom->contact_number}} @endif</a></p>
                                                                                     <p class="mobile-font-color">E-mail: <a href="mailto:{{$showroom->email}}">{{$showroom->email}}</a></p>
                                                                                 </div>
@@ -327,7 +327,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="job-title">
+                                                                                <div class="skills-container">
                                                                                     <p class="mobile-font-color">Mobile Number: <a href="tel:+91 {{$service->contact_number}}">@if(isset($service->contact_number)) +91 {{$service->contact_number}} @endif</a></p>
                                                                                     <p class="mobile-font-color">E-mail: <a href="mailto:{{$service->email}}">{{$service->email}}</a></p>
                                                                                 </div>
@@ -362,7 +362,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="job-title">
+                                                                                <div class="skills-container">
                                                                                     <p class="mobile-font-color">Mobile Number: <a href="tel:+91 {{$body_shop->contact_number}}">@if(isset($body_shop->contact_number)) +91 {{$body_shop->contact_number}} @endif</a></p>
                                                                                     <p class="mobile-font-color">E-mail: <a href="mailto:{{$body_shop->email}}">{{$body_shop->email}}</a></p>
                                                                                 </div>
@@ -395,9 +395,9 @@
                                                             </div>
                                                         @endforeach
 
-                                                        @foreach($body_shops as $record)
-                                                            <div class="tab-pane fade rounded bg-white bodyshop-map bodyshop-map-{{$record->id}} show" id="{{$record->id}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                                                <iframe src="{{$record->map_link}}" width="100%" height="625" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                                        @foreach($body_shops as $body_shop_data)
+                                                            <div class="tab-pane fade rounded bg-white bodyshop-map bodyshop-map-{{$body_shop_data->id}} show" id="{{$body_shop_data->id}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                                                <iframe src="{{$body_shop_data->map_link}}" width="100%" height="625" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                                             </div>
                                                         @endforeach
                                                         <!-- <div class="tab-pane fade  rounded bg-white" id="motinagar-sales" role="tabpanel" aria-labelledby="v-pills-profile-tab">
