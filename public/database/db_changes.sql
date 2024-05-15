@@ -545,3 +545,6 @@ ALTER TABLE `our_business` CHANGE `map_link` `map_link` LONGTEXT CHARACTER SET u
 -- Disha : 14-05-2024 5:55 PM
 ALTER TABLE `showrooms` ADD `map_link` LONGTEXT NULL DEFAULT NULL AFTER `email_title_font_family`;
 ALTER TABLE `service_center` ADD `map_link` LONGTEXT NULL DEFAULT NULL AFTER `slider_service_center_name_font_family`;
+
+-- Disha : 15-05-2024 12:02 PM
+ALTER TABLE `body_shops` ADD `map_link` LONGTEXT NULL DEFAULT NULL AFTER `contact_font_color`;

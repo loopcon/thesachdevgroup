@@ -92,6 +92,12 @@
                                 <div class="error"></div>
                             </div>
 
+                            <div class="col-md-4 mt-2">
+                                <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" required="" maxlength="5" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}" name="number_of_rating" id="number_of_rating">
+                                @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
+                            </div>
+
                             <div class="col-md-4">
                                 <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="address" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
@@ -187,6 +193,11 @@
                             <div class="col-md-4 mt-2">
                                 <label for="contact_font_color" class="form-label">Contact Number Font Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->contact_font_color) ? $record->contact_font_color : old('contact_font_color')}}" name="contact_font_color" id="contact_font_color">
+                            </div>
+
+                            <div class="col-md-4 mb-2">
+                                <label for="map_link">Map Link</label>
+                                <input type="text" id="map_link" class="form-control" name="map_link" value="{{isset($record->map_link) ? $record->map_link : old('map_link')}}">
                             </div>
                         </div> 
 

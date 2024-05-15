@@ -33,5 +33,6 @@ class Body_shop extends Model
         'contact_font_size',
         'contact_font_family',
         'contact_font_color',
+        'map_link',
     ];
 }

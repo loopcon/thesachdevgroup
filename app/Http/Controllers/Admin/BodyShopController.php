@@ -60,7 +60,7 @@ class BodyShopController extends Controller
             {
   
                 $body_shop = new Body_shop();
-                $fields = array('address','address_font_size','address_font_family','address_font_color','email','email_font_size','email_font_family','email_font_color','contact_number','contact_font_size','contact_font_family','contact_font_color');
+                $fields = array('address','address_font_size','address_font_family','address_font_color','email','email_font_size','email_font_family','email_font_color','contact_number','contact_font_size','contact_font_family','contact_font_color','map_link');
                 foreach($fields as $field)
                 {
                     $body_shop->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
@@ -169,7 +169,7 @@ class BodyShopController extends Controller
             {
 
                 $body_shop = Body_shop::find(decrypt($id));
-                $fields = array('address','address_font_size','address_font_family','address_font_color','email','email_font_size','email_font_family','email_font_color','contact_number','contact_font_size','contact_font_family','contact_font_color');
+                $fields = array('address','address_font_size','address_font_family','address_font_color','email','email_font_size','email_font_family','email_font_color','contact_number','contact_font_size','contact_font_family','contact_font_color','map_link');
                 foreach($fields as $field)
                 {
                     $body_shop->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
