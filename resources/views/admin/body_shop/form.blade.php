@@ -86,7 +86,6 @@
                                 <div class="error"></div>
                             </div>
 
-                            
                             <div class="mb-3 col-md-4">
                                 <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="rating" id="rating" value="{{isset($record->rating) ? $record->rating : old('rating')}}">
@@ -94,13 +93,103 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}">
+                                <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
+                                <textarea class="form-control" name="address" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
                                 <div class="error"></div>
                             </div>
 
-                             </div> 
-                            
+                            <div class="col-md-4">
+                                <label for="address_font_color" class="form-label">Address Font Color</label>
+                                <input type="text" class="form-control colorpicker" name="address_font_color" id="address_font_color" value="{{isset($record->address_font_color) ? $record->address_font_color : old('address_font_color')}}">
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                @php($fontsize = fontSize())
+                                <label for="address_font_size" class="form-label">Address Font Size</label>
+                                <select class="form-control select2" name="address_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                        <option value="{{$i}}px" @if(isset($record->address_font_size) && $record->address_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                @php($fontfamily = fontFamily())
+                                <label for="address_font_family" class="form-label">Address Font Family</label>
+                                <select class="form-control select2" name="address_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->address_font_family) && $record->address_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                               </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="email" value="{{isset($record->email) ? $record->email : old('email')}}" id="email">
+                                <div class="error"></div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="email_font_color" class="form-label">Email Font Color</label>
+                                <input type="text" class="form-control colorpicker" name="email_font_color" id="email_font_color" value="{{isset($record->email_font_color) ? $record->email_font_color : old('email_font_color')}}">
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                @php($fontsize = fontSize())
+                                <label for="email_font_size" class="form-label">Email Font Size</label>
+                                <select class="form-control select2" name="email_font_size">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                        <option value="{{$i}}px" @if(isset($record->email_font_size) && $record->email_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                               </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                @php($fontfamily = fontFamily())
+                                <label for="email_font_family" class="form-label">Email Font Family</label>
+                                <select class="form-control select2" name="email_font_family">
+                                    <option selected="selected" disabled="disabled">Select</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->email_font_family) && $record->email_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                               </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" required="" maxlength="10" minlength="10" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
+                                @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="contact_font_size" class="form-label">Contact Number Font Size</label>
+                                <select class="form-control select2" name="contact_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->contact_font_size) && $record->contact_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2 mb-2">
+                                <label for="contact_font_family" class="form-label">Contact Number Font Family</label>
+                                <select class="form-control select2" name="contact_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->contact_font_family) && $record->contact_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="contact_font_color" class="form-label">Contact Number Font Color</label>
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->contact_font_color) ? $record->contact_font_color : old('contact_font_color')}}" name="contact_font_color" id="contact_font_color">
+                            </div>
+                        </div> 
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
                             <a href="{{ route('body_shop') }}" class="btn btn-danger">Cancel</a>

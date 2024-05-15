@@ -11,11 +11,14 @@ class Our_location extends Model
     use HasFactory,SoftDeletes;
 
     protected $fillable = [
+        'business_id',
         'image',
         'title',
         'slug',
         'title_color',
         'title_font_size',
         'title_font_family',
+        'latitude',
+        'longitude',
     ];
 }

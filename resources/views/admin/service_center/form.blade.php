@@ -585,6 +585,10 @@
                                 <small class="image_type">(Hight:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
+                            <div class="col-md-4 mb-2">
+                                <label for="map_link">Map Link</label>
+                                <input type="text" id="map_link" class="form-control" name="map_link" value="{{isset($record->map_link) ? $record->map_link : old('map_link')}}">
+                            </div>
                             <?php /* <div class="col-12">
                                 <h5>Why Choose Section</h5>
                                 <hr>

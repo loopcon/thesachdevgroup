@@ -75,6 +75,9 @@ class OurLocationController extends Controller
                 $our_location->title_color = $request->title_color;
                 $our_location->title_font_size = $request->title_font_size;
                 $our_location->title_font_family = $request->title_font_family;
+                $our_location->latitude = $request->latitude;
+                $our_location->longitude = $request->longitude;
+
                 $our_location->save();
             
                 return redirect()->route('our_location')->with('success','Our Locations update successfully.');

@@ -510,3 +510,43 @@ ALTER TABLE `car_insurance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `car_insurance` CHANGE `insurance_form_title_font_size` `insurance_form_title_font_size` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `insurance_form_title_font_family` `insurance_form_title_font_family` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
+
+-- Drashti
+--
+-- Table structure for table `our_locations`
+--
+
+CREATE TABLE `our_locations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_font_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title_font_family` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `our_locations`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `our_locations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+-- Disha : 13-05-2024 12:17
+ALTER TABLE `our_locations` ADD `business_id` VARCHAR(255) NULL DEFAULT NULL AFTER `id`;
+
+-- Disha : 14-05-2024 12:42 PM
+ALTER TABLE `body_shops` ADD `address` TEXT NULL DEFAULT NULL AFTER `number_of_rating`, ADD `address_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `address`, ADD `address_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `address_font_size`, ADD `address_font_color` VARCHAR(255) NULL DEFAULT NULL AFTER `address_font_family`, ADD `email` VARCHAR(255) NULL DEFAULT NULL AFTER `address_font_color`, ADD `email_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `email`, ADD `email_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `email_font_size`, ADD `email_font_color` VARCHAR(255) NULL DEFAULT NULL AFTER `email_font_family`, ADD `contact_number` VARCHAR(255) NULL DEFAULT NULL AFTER `email_font_color`, ADD `contact_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_number`, ADD `contact_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_font_size`, ADD `contact_font_color` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_font_family`;
+
+-- Disha : 14-05-2024 3:38 PM
+ALTER TABLE `our_locations` ADD `latitude` DECIMAL(11) NULL DEFAULT NULL AFTER `title_font_family`, ADD `longitude` FLOAT(8,2) NULL DEFAULT NULL AFTER `latitude`;
+ALTER TABLE `our_locations` CHANGE `latitude` `latitude` FLOAT(8,2) NULL DEFAULT NULL;
+ALTER TABLE `our_business` ADD `map_link` VARCHAR(255) NULL DEFAULT NULL AFTER `insurance_title_font_family`;
+ALTER TABLE `our_business` CHANGE `map_link` `map_link` LONGTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
+
+-- Disha : 14-05-2024 5:55 PM
+ALTER TABLE `showrooms` ADD `map_link` LONGTEXT NULL DEFAULT NULL AFTER `email_title_font_family`;
+ALTER TABLE `service_center` ADD `map_link` LONGTEXT NULL DEFAULT NULL AFTER `slider_service_center_name_font_family`;

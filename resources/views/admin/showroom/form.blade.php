@@ -570,6 +570,11 @@
                                     @endforeach
                                 </select>
                             </div>
+
+                            <div class="col-md-4 mb-2">
+                                <label for="map_link">Map Link</label>
+                                <input type="text" id="map_link" class="form-control" name="map_link">
+                            </div>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>

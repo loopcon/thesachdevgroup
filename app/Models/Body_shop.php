@@ -21,5 +21,17 @@ class Body_shop extends Model
         'link',
         'rating',
         'number_of_rating',
+        'address',
+        'address_font_size',
+        'address_font_family',
+        'address_font_color',
+        'email',
+        'email_font_size',
+        'email_font_family',
+        'email_font_color',
+        'contact_number',
+        'contact_font_size',
+        'contact_font_family',
+        'contact_font_color',
     ];
 }

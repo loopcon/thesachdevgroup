@@ -80,6 +80,7 @@ class Showroom extends Model
         'email_title_color',
         'email_title_font_size',
         'email_title_font_family',
+        'map_link',
     ];
 
     public function brand(){
