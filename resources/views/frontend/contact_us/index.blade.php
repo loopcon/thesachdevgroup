@@ -521,7 +521,7 @@
                                         <input class="form-check-input" type="checkbox" id="gridCheck">
                                         <label class="form-check-label" for="gridCheck">
                                         I agree to the 
-                                        <a href="privacy-policy.php"> Privacy Policy. </a>
+                                        <a href="{{url('privacy-policy')}}"> Privacy Policy. </a>
                                         </label>
                                     </div>
                                 </div>
@@ -534,12 +534,8 @@
             </div>
             <div class="col-md-3" style="margin-top: 15px; margin-bottom: 15px;">
                 <div class="card">
-                    
                     {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.0042941758775!2d77.14451381456026!3d28.659590089607708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0544f1a7bf87%3A0x5001b9e8509f6ab0!2sGalaxy+Toyota+Showroom%2C+Motinagar!5e0!3m2!1sen!2sin!4v1544683633989" width="600" height="400" style="border:0; width:100%; " allowfullscreen=""></iframe> --}}
                     <iframe src="{{$contact_us->map_link}}" width="600" height="400" style="border:0; width:100%; " allowfullscreen=""></iframe>
-                    
-
-                  
                 </div>  
             </div>
         </div>
