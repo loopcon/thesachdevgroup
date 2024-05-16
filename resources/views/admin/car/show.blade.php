@@ -28,8 +28,6 @@
                         <thead>
                             <tr>
                                 <th style="width:45px;">No</th>
-                                <th>Our Business</th>
-
                                 <th>Brand</th>
                                 <th>Image</th>
                                 <th>Name</th>
@@ -70,8 +68,6 @@
             ajax: "{{ route('car.index') }}",
             columns: [
                 {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
-                {data: 'our_business_id', name: 'our_business_id'},
-
                 {data: 'brand', name: 'brand'},
                 {data: 'image', name: 'image'},
                 {data: 'name', name: 'name'},

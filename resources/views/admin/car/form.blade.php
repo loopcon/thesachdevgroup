@@ -21,16 +21,6 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
-                                <label for="our_business_id" class="form-label">Select Our Business<span class="text-danger">*</span></label>
-                                <select class="form-control our_business_id select2" name="our_business_id" id="our_business_id" required>
-                                    <option selected="selected" disabled="disabled" value="">Select</option>
-                                    @foreach($our_business as $our_busines)
-                                        <option value="{{$our_busines->id}}">{{$our_busines->title}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-md-4 adm-brand-errorbox">
                                 <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
                                  <select name="brand_id" id="brand_id" class="form-control select2" required>
                                     <option selected="selected" disabled="disabled">Select</option>

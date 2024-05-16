@@ -23,8 +23,7 @@ class CarController extends Controller
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
                 $brands = Brand::get();
-                $our_business = OurBusiness::get();
-                return view("admin.car.form",compact('brands','our_business')); 
+                return view("admin.car.form",compact('brands')); 
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
@@ -47,7 +46,6 @@ class CarController extends Controller
                     $car->$field = isset($request->$field) && $request->$field != '' ? $request->$field : NULL;
                 }
 
-                $car->our_business_id = $request->our_business_id;
                 $car->brand_id = $request->brand_id;
 
                 if($file = $request->hasFile('image')) {
@@ -111,17 +109,11 @@ class CarController extends Controller
                             return $image;
                         }
                     })
-                    
-                    ->editColumn('our_business_id', function($car){
-                        $our_business_name = isset($car->our_business->title) && $car->our_business->title ? $car->our_business->title: NULL;
-                        return $our_business_name;
-                    })
-
                     ->editColumn('brand', function($car){
                         $brand_name = isset($car->brand->name) && $car->brand->name ? $car->brand->name: NULL;
                         return $brand_name;
                     })
-            ->rawColumns(['action','image','brand','our_business_id'])
+            ->rawColumns(['action','image','brand'])
             ->make(true);
         }
         
@@ -147,8 +139,7 @@ class CarController extends Controller
             {
                 $cars  = Car::where('id',decrypt($id))->get();
                 $brands = Brand::get();
-                $our_business = OurBusiness::get();
-                return view('admin.car._form',compact('cars','brands','our_business'));
+                return view('admin.car._form',compact('cars','brands'));
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
@@ -172,7 +163,6 @@ class CarController extends Controller
                     $car->$field = isset($request->$field) && $request->$field != '' ? $request->$field : NULL;
                 }
 
-                $car->our_business_id = $request->our_business_id;
                 $car->brand_id = $request->brand_id;
 
                 if($request->hasFile('image'))
