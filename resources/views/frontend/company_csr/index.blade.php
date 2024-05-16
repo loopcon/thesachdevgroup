@@ -11,8 +11,8 @@
 <section id="csr-toptext">
     <div class="container">
         <div class="csr-content">
-            <h3>{{isset($csr->title) && $csr->title ? $csr->title : ''}}</h3>
-            <p>{{isset($csr->description) && $csr->description ? $csr->description : ''}}</p>
+            <h3 style="color:{{$csr->title_color}}; font-size:{{$csr->title_font_size}}; font-family:{{$csr->title_font_family}};">{{isset($csr->title) && $csr->title ? $csr->title : ''}}</h3>
+            <p style="color:{{$csr->description_font_color}}; font-size:{{$csr->description_font_size}}; font-family:{{$csr->description_font_family}};">{{isset($csr->description) && $csr->description ? $csr->description : ''}}</p>
         </div>
     </div>
 
@@ -24,8 +24,8 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="csr-left-text">
-                        <h3>{{isset($csr->left_title) && $csr->left_title ? $csr->left_title : ''}}</h3>
-                        <p>{!! isset($csr->left_description) && $csr->left_description ? $csr->left_description : '' !!}</p>
+                        <h3 style="color:{{$csr->left_title_color}}; font-size:{{$csr->left_title_font_size}}; font-family:{{$csr->left_title_font_family}};">{{isset($csr->left_title) && $csr->left_title ? $csr->left_title : ''}}</h3>
+                        <p style="color:{{$csr->left_description_font_color}}; font-size:{{$csr->left_description_font_size}}; font-family:{{$csr->left_description_font_family}};">{!! isset($csr->left_description) && $csr->left_description ? $csr->left_description : '' !!}</p>
                     </div>
                 </div>
                 <div class="col-md-7">
