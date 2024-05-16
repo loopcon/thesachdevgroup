@@ -36,6 +36,7 @@ use App\Http\Controllers\Admin\OurLocationController;
 use App\Http\Controllers\Admin\NewCarsController;
 use App\Http\Controllers\Admin\AfterSalesServiceController;
 use App\Http\Controllers\Admin\CarInsuranceController;
+use App\Http\Controllers\Admin\CompanyCsrController;
 
 // frontend controller
 use App\Http\Controllers\Frontend\HomeController;
@@ -365,11 +366,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('after-sales-service', [AfterSalesServiceController::class, 'afterSalesService'])->name('after-sales-service');
     Route::post('after-sales-service-update', [AfterSalesServiceController::class, 'afterSalesServiceUpdate'])->name('after-sales-service-update');
 
-    
     // car insurance
     Route::get('car-insurance', [CarInsuranceController::class, 'carInsurance'])->name('car-insurance');
     Route::post('car-insurance-update', [CarInsuranceController::class, 'carInsuranceUpdate'])->name('car-insurance-update');
 
+    // csr
+    Route::get('company-csr', [CompanyCsrController::class, 'companyCsr'])->name('company-csr');
+    Route::post('company-csr-update', [CompanyCsrController::class, 'companyCsrUpdate'])->name('company-csr-update');
 });
 
 //Frontend

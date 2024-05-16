@@ -552,3 +552,39 @@ ALTER TABLE `body_shops` ADD `map_link` LONGTEXT NULL DEFAULT NULL AFTER `contac
 -- Disha : 16-05-2024 10:38 AM
 ALTER TABLE `our_business` ADD `car_id` VARCHAR(255) NULL DEFAULT NULL COMMENT '`id` of `cars`' AFTER `id`;
 
+-- Disha : 16-05-2024 3:24 AM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Company CSR', NULL, NULL, NULL);
+
+--
+-- Table structure for table `company_csr`
+--
+
+CREATE TABLE `company_csr` (
+  `id` int(11) NOT NULL,
+  `banner_image` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `title_color` varchar(255) DEFAULT NULL,
+  `title_font_size` varchar(255) DEFAULT NULL,
+  `title_font_family` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `description_font_color` varchar(255) DEFAULT NULL,
+  `description_font_size` varchar(255) DEFAULT NULL,
+  `description_font_family` varchar(255) DEFAULT NULL,
+  `left_title` varchar(255) DEFAULT NULL,
+  `left_title_color` varchar(255) DEFAULT NULL,
+  `left_title_font_size` varchar(255) DEFAULT NULL,
+  `left_title_font_family` varchar(255) DEFAULT NULL,
+  `left_description` text DEFAULT NULL,
+  `left_description_font_color` varchar(255) DEFAULT NULL,
+  `left_description_font_size` varchar(255) DEFAULT NULL,
+  `left_description_font_family` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `company_csr`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `company_csr`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
