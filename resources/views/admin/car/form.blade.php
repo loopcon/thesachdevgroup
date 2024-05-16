@@ -112,7 +112,7 @@
 
                             <div class="col-md-4">
                                 <label for="driven" class="form-label">Driven<span class="text-danger">*</span></label>
-                                <input type="text" id="driven" class="form-control" name="driven" required>
+                                <input type="text" id="driven" class="form-control num_only" name="driven" required>
                             </div>
 
                             <div class="col-md-4">
@@ -255,7 +255,13 @@
     $(document).ready(function () {
         $(".car_form").validate({
             rules: {
-            }
+                'driven': {
+                    number: true,
+                },
+                'year': {
+                    number: true,
+                },
+            },
         });
         $('.colorpicker').colorpicker();
     });
