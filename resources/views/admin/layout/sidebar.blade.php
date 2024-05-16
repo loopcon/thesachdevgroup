@@ -396,7 +396,7 @@
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                 <li class="nav-item"> 
-                    <a href="{{url('company-csr')}}" class="nav-link {{ request()->is('faq*') ? 'active' : '' }}">
+                    <a href="{{url('csr')}}" class="nav-link {{ request()->is('faq*') ? 'active' : '' }}">
                     <i class="fa fa-question-circle nav-icon"></i>
                         <p>Company CSR</p>
                     </a>

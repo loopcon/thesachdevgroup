@@ -54,7 +54,7 @@
                               <p style="color:{{$business->title_font_color}}; font-size:{{$business->title_font_size}}; font-family:{{$business->title_font_family}}; margin-bottom: 0px;"> {{$business->title}} </p>
                            @endif
                      @endforeach
-                 <?php /**@foreach($footer_menu_our_businesses as $footer_menu_our_businesse)
+                  <?php /**@foreach($footer_menu_our_businesses as $footer_menu_our_businesse)
                      <a href="{{$footer_menu_our_businesse->link}}" style="display: flex; align-items: center; margin-bottom: 10px; "> 
                         <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
                         <p style="color:{{$footer_menu_our_businesse->color}}; font-size:{{$footer_menu_our_businesse->font_size}}; font-family:{{$footer_menu_our_businesse->font_family}}; margin-bottom: 0px;"> {{$footer_menu_our_businesse->name}} </p>
@@ -65,12 +65,30 @@
             <div class="col-md-6 col-lg-3">
                <div class="useful-link">
                   <h3>Useful Links</h3>
-                  @foreach($footer_menu_useful_links as $footer_menu_useful_link)
+                  @if ($footer_menu_useful_links->count() > 2)
+                      @foreach($footer_menu_useful_links as $footer_menu_useful_link)
                         <a href="{{$footer_menu_useful_link->link}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
                            <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
                            <p style="color:{{$footer_menu_useful_link->color}}; font-size:{{$footer_menu_useful_link->font_size}}; font-family:{{$footer_menu_useful_link->font_family}}; margin-bottom: 0px;""> {{$footer_menu_useful_link->name}} </p>
                         </a>
-                  @endforeach
+                     @endforeach
+                  @else
+                        <a href="{{route('faqs')}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
+                           <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
+                           <p style=""> FAQs </p>
+                        </a>
+                        <a href="{{url('company/csr')}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
+                           <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
+                           <p style=""> CSR </p>
+                        </a>
+                  @endif
+
+                  <?php /**@foreach($footer_menu_useful_links as $footer_menu_useful_link)
+                        <a href="{{$footer_menu_useful_link->link}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
+                           <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
+                           <p style="color:{{$footer_menu_useful_link->color}}; font-size:{{$footer_menu_useful_link->font_size}}; font-family:{{$footer_menu_useful_link->font_family}}; margin-bottom: 0px;""> {{$footer_menu_useful_link->name}} </p>
+                        </a>
+                  @endforeach**/ ?>
                </div> 
             </div>
          </div>

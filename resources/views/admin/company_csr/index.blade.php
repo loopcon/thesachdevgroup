@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('company-csr-update') }}" method="POST" class="service-center-form" enctype="multipart/form-data">
+                    <form action="{{ route('csr-update') }}" method="POST" class="service-center-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">

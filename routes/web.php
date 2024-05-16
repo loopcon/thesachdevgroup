@@ -52,6 +52,7 @@ use App\Http\Controllers\Frontend\NewCarController;
 use App\Http\Controllers\Frontend\AfterSalesServicedDetailController;
 use  App\Http\Controllers\Frontend\UsedCarDetailController;
 use  App\Http\Controllers\Frontend\CarInsuranceDetailController;
+use  App\Http\Controllers\Frontend\CompanyCsrDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -371,8 +372,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('car-insurance-update', [CarInsuranceController::class, 'carInsuranceUpdate'])->name('car-insurance-update');
 
     // csr
-    Route::get('company-csr', [CompanyCsrController::class, 'companyCsr'])->name('company-csr');
-    Route::post('company-csr-update', [CompanyCsrController::class, 'companyCsrUpdate'])->name('company-csr-update');
+    Route::get('csr', [CompanyCsrController::class, 'companyCsr'])->name('csr');
+    Route::post('csr-update', [CompanyCsrController::class, 'companyCsrUpdate'])->name('csr-update');
 });
 
 //Frontend
@@ -430,3 +431,6 @@ Route::get('our-service/used-car', [UsedCarDetailController::class, 'usedCar']);
 
 // used car
 Route::get('our-service/book-insurance', [CarInsuranceDetailController::class, 'bookInsurance']);
+
+// company CSR
+Route::get('company/csr', [CompanyCsrDetailController::class, 'companyCsr']);
