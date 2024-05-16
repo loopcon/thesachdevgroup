@@ -28,6 +28,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Car</th>
                                     <th>Title</th>
                                     <th>Banner Image</th>
                                     <th>Url</th>
@@ -52,6 +53,7 @@
             ajax: "{{ route('our-business-datatable') }}",
             columns: [
                 {data: 'id', name: 'id', orderable: false, searchable: false},
+                {data: 'car_id', name: 'car_id'},
                 {data: 'title', name: 'title'},
                 {data: 'banner_image', name: 'banner_image'},
                 {data: 'url', name: 'url'},

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\OurBusiness;
 use App\Models\Header_menu;
+use App\Models\Car;
 use DataTables;
 use File;
 use Auth;
@@ -41,6 +42,7 @@ class OurBusinessController extends Controller
                 $return_data = array();
                 $return_data['site_title'] = trans('Our Business Create');
                 $return_data['our_business'] = Header_menu::select('id','name','menu_name')->where('menu_name','=','Our Businesses')->get();
+                $return_data['cars'] = Car::select('id','name')->get();
                 return view("admin.our_business.form",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -69,6 +71,8 @@ class OurBusinessController extends Controller
                 }
 
                 $our_business->slug = $request->title ? slugify($request->title) : NULL;
+                $our_business->car_id = json_encode($request->car_id);
+
                 if($request->hasFile('banner_image')) {
                     $banner_image = fileUpload($request, 'banner_image', 'uploads/our_business');
                     $our_business->banner_image = $banner_image;
@@ -96,13 +100,18 @@ class OurBusinessController extends Controller
     public function ourBusinessDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = OurBusiness::select('id', 'title', 'slug', 'description', 'banner_image', 'url', 'page_link', 'title_font_size', 'title_font_color', 'title_font_family', 'description_font_size', 'description_font_color', 'description_font_family')->orderBy('id', 'DESC');
+            $query = OurBusiness::with('carDetail')->select('id', 'car_id', 'title', 'slug', 'description', 'banner_image', 'url', 'page_link', 'title_font_size', 'title_font_color', 'title_font_family', 'description_font_size', 'description_font_color', 'description_font_family')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
                 ->addColumn('banner_image', function($list){
                     $imageSrc = $list->banner_image ? asset('uploads/our_business/'.$list->banner_image) : '';
                     return '<img src="' . $imageSrc . '" alt="" width="100">';
+                })
+                ->addColumn('car_id', function($list){
+                    $car_id = json_decode($list->car_id); 
+                    $car_names = isset($car_id) && $car_id ? Car::whereIn('id', $car_id)->pluck('name')->implode(', ') : ''; 
+                    return $car_names;
                 })
                 ->addColumn('action', function ($list) {
                     $html = "";
@@ -140,6 +149,7 @@ class OurBusinessController extends Controller
                 $our_business = OurBusiness::find($id);
                 $return_data['record'] = $our_business;
                 $return_data['our_business'] = Header_menu::select('id','name','menu_name')->where('menu_name','=','Our Businesses')->get();
+                $return_data['cars'] = Car::select('id','name')->get();
                 return view("admin.our_business.form",array_merge($return_data));
             }
         }else {
@@ -175,6 +185,7 @@ class OurBusinessController extends Controller
                     $our_business->url = NULL;
                 }
                 $our_business->slug = $request->title ? slugify($request->title) : NULL;
+                $our_business->car_id = json_encode($request->car_id);
                 if($request->hasFile('banner_image')) {
                     $oldimage = $our_business->banner_image;
                     if($oldimage)

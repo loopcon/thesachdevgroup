@@ -1,8 +1,4 @@
 @extends('admin.layout.header')
-@section('css')
-    <link class="js-stylesheet" href="{{ url('public/plugins/select2/css/select2.css') }}" rel="stylesheet">
-    <link class="js-stylesheet" href="{{ url('public/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -117,6 +113,16 @@
                             <div class="col-md-4 mt-2">
                                 <label for="description_font_color" class="form-label">Description Font Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
+                            </div>
+
+                            <div class="col-md-4 adm-select-car-drop adm-brand-errorbox">
+                                <label for="car_id" class="form-label">Select Car<span class="text-danger">*</span></label>
+                                <select name="car_id[]" id="car_id" class="form-control select2" multiple>
+                                    <option value="">Select</option>
+                                    @foreach($cars as $car)
+                                        <option value="{{$car->id}}"@if(isset($record->car_id) && in_array($car->id, json_decode($record->car_id)) == $car->id){{'selected'}}@endif>{{$car->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="mt-3 col-12">
@@ -390,8 +396,6 @@
 </div>
 @endsection
 @section('javascript')
-<script src="{{ url('public/plugins/select2/js/select2.js') }}"></script>
-<script src="{{ url('public/plugins/select2/js/select2.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
@@ -433,6 +437,9 @@
                 'banner_image': {
                     extension: "jpg,jpeg,png,webp",
                 },
+                'car_id[]': {
+                    required: true,
+                },
                 url: {
                     url: "url",
                 },
@@ -443,6 +450,9 @@
                 },
                 'title': {
                     required: "Title is required",
+                },
+                'car_id[]': {
+                    required: "Car is required",
                 },
                 'banner_image': {
                     extension: "Banner Image must be jpg,jpeg,png or webp",

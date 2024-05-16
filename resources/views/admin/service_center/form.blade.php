@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('service-center-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-store') }} @endif" method="POST" class="showroom_form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('service-center-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-store') }} @endif" method="POST" class="service-center-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
@@ -34,7 +34,7 @@
                                 @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4 adm-select-car-drop">
+                            <div class="col-md-4 adm-select-car-drop adm-brand-errorbox">
                                 <label for="service_id" class="form-label">Service<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="service_id[]" id="service_id" required="" multiple>
                                     <option value="" disabled>-- Select Service --</option>

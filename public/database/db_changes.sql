@@ -548,3 +548,7 @@ ALTER TABLE `service_center` ADD `map_link` LONGTEXT NULL DEFAULT NULL AFTER `sl
 
 -- Disha : 15-05-2024 12:02 PM
 ALTER TABLE `body_shops` ADD `map_link` LONGTEXT NULL DEFAULT NULL AFTER `contact_font_color`;
+
+-- Disha : 16-05-2024 10:38 AM
+ALTER TABLE `our_business` ADD `car_id` VARCHAR(255) NULL DEFAULT NULL COMMENT '`id` of `cars`' AFTER `id`;
+
