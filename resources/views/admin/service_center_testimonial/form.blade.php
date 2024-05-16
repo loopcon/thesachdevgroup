@@ -114,6 +114,8 @@
 
                             <div class="col-md-4 mt-2 mb-3">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
+                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->image) ? $record->image : old('old_image')}}">
+
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/service_center_testimonial/'.$record->image)}}" width="100">
                                 @endif  
@@ -149,6 +151,7 @@
                     required: true,
                 },
                 'image': {
+                    required: checkImage,
                     extension: "jpg,jpeg,png,webp",
                 },
             },
@@ -160,6 +163,7 @@
                     required: "Service Center is required",
                 },
                 'image': {
+                    required: "Image field is required",
                     extension: "Image must be jpg,jpeg,png or webp",
                 },
             },
@@ -170,6 +174,17 @@
         });
 
         $('.colorpicker').colorpicker();
+
+         // image validation
+        function checkImage() {
+            var old_image = $('#old_image').val();
+            var image = $('#image').val();
+
+            if(old_image != '' || image != ''){
+                return false;
+            }
+            return true;
+        }
     });
 </script>
 @endsection

@@ -101,11 +101,11 @@ class ServiceCenterFacilityCustomerGalleryController extends Controller
             return DataTables::of($list)
                 ->addColumn('facility_image', function($list){
                     $facility_image = $list->facility_image ? asset('uploads/service_center_facility_image/'.$list->facility_image) : '';
-                    return '<img src="' . $facility_image . '" alt="" width="100" height="80">';
+                    return isset($facility_image) && $facility_image !='' ? '<img src="' . $facility_image . '" alt="" width="100" height="80">' : '';
                 })
                 ->addColumn('customer_gallery_image', function($list){
                     $customer_gallery_image = $list->customer_gallery_image ? asset('uploads/service_center_customer_gallery_image/'.$list->customer_gallery_image) : '';
-                    return '<img src="' . $customer_gallery_image . '" alt="" width="100" height="80">';
+                    return isset($customer_gallery_image) && $customer_gallery_image !='' ? '<img src="' . $customer_gallery_image . '" alt="" width="100" height="80">' : '';
                 })
                 ->addColumn('service_center_id', function($list){
                     $service_center_id = isset($list->serviceCenterDetail->name) && $list->serviceCenterDetail->name ? $list->serviceCenterDetail->name : NULL;
