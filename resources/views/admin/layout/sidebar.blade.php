@@ -397,7 +397,7 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                 <li class="nav-item"> 
                     <a href="{{url('csr')}}" class="nav-link {{ request()->is('csr*') ? 'active' : '' }}">
-                    <i class="fa fa-question-circle nav-icon"></i>
+                    <i class="fa fa-globe nav-icon"></i>
                         <p>Company CSR</p>
                     </a>
                 </li>
@@ -485,6 +485,20 @@
                     </p>
                 </a>
             </li>
+        @endif
+
+        @php($has_permission = hasPermission('Booked Car Service'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                <li class="nav-item"> 
+                    <a href="{{route('booked-car-service')}}" class="nav-link {{request()->is('booked-car-service*') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-location-arrow"></i>
+                        <p>
+                        Booked Car Service
+                        </p>
+                    </a>
+                </li>
+            @endif
         @endif
     </ul>
 </nav>

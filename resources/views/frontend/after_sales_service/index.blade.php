@@ -1,4 +1,7 @@
 @extends('frontend.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <section id="contact-us">
     <div class="contact-banner">
@@ -27,26 +30,35 @@
 </section>
 
 <section id="bookservice-form">
+    @if(session('message'))
+        <div class="alert alert-dismissible alert-info" role="alert" style="margin-left:245px;margin-right:245px;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="alert-message">
+                {{ session('message') }}
+            </div>
+        </div>
+    @endif
     <div class="container">
         <div class="heading-bookservice">
             <h2 style="color:{{$after_sales_service->book_service_form_title_color}}; font-size:{{$after_sales_service->book_service_form_title_font_size}}; font-family:{{$after_sales_service->book_service_form_title_font_family}};">{{isset($after_sales_service->book_service_form_title) && $after_sales_service->book_service_form_title ? $after_sales_service->book_service_form_title : ''}}</h2>
         </div>
         <div class="bookservice-form">
-            <form action="" method="post">
+            <form action="{{route('book-car-service')}}" method="post" enctype="maltipart/form-data">
+                @csrf
                 <div class="row">
                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                        <input type="text" class="form-control" placeholder="First Name" required>
+                        <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
                     </div>
                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                        <input type="email" class="form-control" placeholder="Email" required>
+                        <input type="email" class="form-control" name="email" placeholder="Email" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                        <input type="tel" class="form-control" placeholder="Phone" required>
+                        <input type="tel" class="form-control" name="phone" placeholder="Phone" required>
                     </div>
                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                        <select id="inputState" class="form-control">
+                        <select id="inputState" class="form-control" name="brans_id">
                             <option selected>Choose Brand</option>
                             @if(isset($brands) && $brands)
                                 @foreach($brands as $data)
@@ -67,4 +79,7 @@
         </div>
     </div>
 </section>
+@endsection
+@section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 @endsection

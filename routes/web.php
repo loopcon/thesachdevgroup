@@ -367,6 +367,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('after-sales-service', [AfterSalesServiceController::class, 'afterSalesService'])->name('after-sales-service');
     Route::post('after-sales-service-update', [AfterSalesServiceController::class, 'afterSalesServiceUpdate'])->name('after-sales-service-update');
 
+    Route::get('booked-car-service', [AfterSalesServiceController::class, 'bookedCarService'])->name('booked-car-service');
+    Route::post('booked-car-service-datatable', [AfterSalesServiceController::class, 'bookedCarServiceDatatable'])->name('booked-car-service-datatable');
+    Route::get('booked-car-service-delete/{id}', [AfterSalesServiceController::class, 'bookedCarServiceDestroy'])->name('booked-car-service-delete');
+
     // car insurance
     Route::get('car-insurance', [CarInsuranceController::class, 'carInsurance'])->name('car-insurance');
     Route::post('car-insurance-update', [CarInsuranceController::class, 'carInsuranceUpdate'])->name('car-insurance-update');
@@ -425,6 +429,7 @@ Route::get('our-service/buy_new_car_landing_page', [NewCarController::class, 'ca
 
 // after sales service
 Route::get('our-service/bookservice', [AfterSalesServicedDetailController::class, 'bookService'])->name('bookservice');
+Route::post('book-car-service', [AfterSalesServicedDetailController::class, 'bookCarService'])->name('book-car-service');
 
 // used car
 Route::get('our-service/used-car', [UsedCarDetailController::class, 'usedCar']);

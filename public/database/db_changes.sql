@@ -588,3 +588,6 @@ ALTER TABLE `company_csr`
 
 ALTER TABLE `company_csr`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 17-05-2024 3:36 AM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Booked Car Service', NULL, NULL, NULL);

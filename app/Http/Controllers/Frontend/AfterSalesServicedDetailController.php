@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AfterSalesService;
 use App\Models\Brand;
+use App\Models\BookCarService;
 
 class AfterSalesServicedDetailController extends Controller
 {
@@ -17,5 +18,23 @@ class AfterSalesServicedDetailController extends Controller
         $return_data['brands'] = Brand::select('id','name','image','link')->whereIn('id',$brand_id)->get();
         
         return view('frontend.after_sales_service.index',array_merge($return_data));
+    }
+
+    public function bookCarService(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'phone' => 'required|numeric',
+            'email' => 'required',
+        ]);
+
+        $book_service = new BookCarService();
+        $book_service->first_name = $request->first_name;
+        $book_service->phone = $request->phone;
+        $book_service->email = $request->email;
+        $book_service->brand_id = $request->brand_id;
+
+        $book_service->save();
+        return redirect()->back()->with('message','Service booked successfully!');
     }
 }
