@@ -193,5 +193,13 @@
 
 <!-- gallery script -->
 <script src="https://thesachdevgroup.com/myown/js/lightbox-plus-jquery.min.js" ></script>
+<script>
+   $(document).on("keypress", ".num_only", function (e) {
+      var keyCode = e.which ? e.which : e.keyCode;
+      if (!((keyCode >= 48 && keyCode <= 57))) {
+            return false;
+      }
+   });
+</script>
 </body>
 </html>

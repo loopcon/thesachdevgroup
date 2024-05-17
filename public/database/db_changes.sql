@@ -590,4 +590,46 @@ ALTER TABLE `company_csr`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 -- Disha : 17-05-2024 3:36 AM
+--
+-- Table structure for table `book_car_service`
+--
+
+CREATE TABLE `book_car_service` (
+  `id` int(11) NOT NULL,
+  `brand_id` int(11) DEFAULT NULL COMMENT '`id` of `brands`',
+  `first_name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `book_car_service`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `book_car_service`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Booked Car Service', NULL, NULL, NULL);
+
+-- Disha : 17-05-2024 05:26 AM
+--
+-- Table structure for table `book_insurance`
+--
+CREATE TABLE `book_insurance` (
+  `id` int(11) NOT NULL,
+  `brand_id` int(11) DEFAULT NULL COMMENT '`id` of `brands`',
+  `first_name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `book_insurance`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `book_insurance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

@@ -31,7 +31,7 @@
 
 <section id="bookservice-form">
     @if(session('message'))
-        <div class="alert alert-dismissible alert-info" role="alert" style="margin-left:245px;margin-right:245px;">
+        <div class="alert alert-dismissible alert-info" role="alert" style="margin-left:175px;margin-right:175px;">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <div class="alert-message">
                 {{ session('message') }}
@@ -43,7 +43,7 @@
             <h2 style="color:{{$after_sales_service->book_service_form_title_color}}; font-size:{{$after_sales_service->book_service_form_title_font_size}}; font-family:{{$after_sales_service->book_service_form_title_font_family}};">{{isset($after_sales_service->book_service_form_title) && $after_sales_service->book_service_form_title ? $after_sales_service->book_service_form_title : ''}}</h2>
         </div>
         <div class="bookservice-form">
-            <form action="{{route('book-car-service')}}" method="post" enctype="maltipart/form-data">
+            <form action="{{route('book-car-service')}}" method="post" class="book-service" enctype="maltipart/form-data" data-parsley-validate="">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 col-sm-12 margin-bookservice">
@@ -55,11 +55,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                        <input type="tel" class="form-control" name="phone" placeholder="Phone" required>
+                        <input type="text" class="form-control num_only" maxlength="10" name="phone" placeholder="Phone" required data-parsley-required-message="{{ __("This value is required.")}}">
+                        <div class="error"></div>
                     </div>
                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                        <select id="inputState" class="form-control" name="brans_id">
-                            <option selected>Choose Brand</option>
+                        <select id="inputState" class="form-control" name="brand_id">
+                            <option value="">Choose Brand</option>
                             @if(isset($brands) && $brands)
                                 @foreach($brands as $data)
                                     <option value="{{$data->id}}">{{$data->name}}</option>
