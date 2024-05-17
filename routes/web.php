@@ -435,7 +435,8 @@ Route::post('book-car-service', [AfterSalesServicedDetailController::class, 'boo
 Route::get('our-service/used-car', [UsedCarDetailController::class, 'usedCar']);
 
 // used car
-Route::get('our-service/book-insurance', [CarInsuranceDetailController::class, 'bookInsurance']);
+Route::get('our-service/book-insurance', [CarInsuranceDetailController::class, 'carInsurance']);
+Route::post('book-insurance-store', [CarInsuranceDetailController::class, 'bookInsurance'])->name('book-insurance-store');
 
 // company CSR
 Route::get('company/csr', [CompanyCsrDetailController::class, 'companyCsr']);
