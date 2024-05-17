@@ -633,3 +633,5 @@ ALTER TABLE `book_insurance`
 
 ALTER TABLE `book_insurance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Booked Insurance', NULL, NULL, NULL);

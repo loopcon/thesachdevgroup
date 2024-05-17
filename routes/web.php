@@ -367,6 +367,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('after-sales-service', [AfterSalesServiceController::class, 'afterSalesService'])->name('after-sales-service');
     Route::post('after-sales-service-update', [AfterSalesServiceController::class, 'afterSalesServiceUpdate'])->name('after-sales-service-update');
 
+    //booked car service
     Route::get('booked-car-service', [AfterSalesServiceController::class, 'bookedCarService'])->name('booked-car-service');
     Route::post('booked-car-service-datatable', [AfterSalesServiceController::class, 'bookedCarServiceDatatable'])->name('booked-car-service-datatable');
     Route::get('booked-car-service-delete/{id}', [AfterSalesServiceController::class, 'bookedCarServiceDestroy'])->name('booked-car-service-delete');
@@ -374,6 +375,11 @@ Route::group(['middleware' => 'auth'], function () {
     // car insurance
     Route::get('car-insurance', [CarInsuranceController::class, 'carInsurance'])->name('car-insurance');
     Route::post('car-insurance-update', [CarInsuranceController::class, 'carInsuranceUpdate'])->name('car-insurance-update');
+
+    // booked car insurance
+    Route::get('booked-insurance', [CarInsuranceController::class, 'bookedInsurance'])->name('booked-insurance');
+    Route::post('booked-insurance-datatable', [CarInsuranceController::class, 'bookedInsuranceDatatable'])->name('booked-insurance-datatable');
+    Route::get('booked-insurance-delete/{id}', [CarInsuranceController::class, 'bookedInsuranceDestroy'])->name('booked-insurance-delete');
 
     // csr
     Route::get('csr', [CompanyCsrController::class, 'companyCsr'])->name('csr');

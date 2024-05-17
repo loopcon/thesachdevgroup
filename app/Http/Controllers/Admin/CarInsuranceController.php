@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CarInsurance;
 use App\Models\Brand;
+use App\Models\BookInsurance;
+use DataTables;
 
 class CarInsuranceController extends Controller
 {
@@ -89,6 +91,81 @@ class CarInsuranceController extends Controller
                 }
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function bookedInsurance()
+    {
+        $has_permission = hasPermission('Booked Insurance');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $return_data = array();
+                $return_data['site_title'] = trans('Booked Insurance');
+
+                return view("admin.booked_insurance.list",array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function bookedInsuranceDatatable(Request $request)
+    {
+        if($request->ajax()){
+            $query = BookInsurance::with('brandDetail')->select('id', 'brand_id', 'first_name', 'phone', 'email')->orderBy('id', 'DESC');
+
+            $list = $query->get();
+            return DataTables::of($list)
+                ->addColumn('brand_id', function($list){
+                    $brand_id = isset($list->brandDetail->name) && $list->brandDetail->name ? $list->brandDetail->name : NULL;
+                    return $brand_id;
+                })
+                ->addColumn('action', function ($list) {
+                    $html = "";
+                    $id = encrypt($list->id);
+                    $has_permission = hasPermission('Booked Insurance');
+                    if(isset($has_permission) && $has_permission)
+                    {
+                        if($has_permission->full_permission == 1)
+                        {
+                        $html .= "<span class='text-nowrap'>";
+                        // $html .= "<a href='javascript:void(0);' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                        $html .= "<a href='javascript:void(0);' data-href='".route('booked-insurance-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                        $html .= "</span>";
+                        }
+                    }
+                    return $html;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        } else {
+            return redirect()->back()->with('message','something went wrong');
+        }
+    }
+
+    public function bookedInsuranceDestroy($id)
+    {
+        $has_permission = hasPermission('Booked Insurance');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $booked_insurance = BookInsurance::where('id',$id)->delete();
+
+                if($booked_insurance)
+                {
+                    return redirect('booked-insurance')->with('success',trans('Booked Insurance deleted successfully.'));
+                }else{
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
+                }
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
