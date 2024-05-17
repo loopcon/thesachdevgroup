@@ -35,6 +35,12 @@ class AfterSalesServicedDetailController extends Controller
         $book_service->brand_id = $request->brand_id;
 
         $book_service->save();
-        return redirect()->back()->with('message','Service booked successfully!');
+
+        if($book_service)
+        {
+            return redirect()->back()->with('message','Service booked successfully!');
+        }else{
+            return redirect()->back()->with('message','Service not booked, please try again!');
+        }
     }
 }
