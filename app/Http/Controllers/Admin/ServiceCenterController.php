@@ -138,7 +138,7 @@ class ServiceCenterController extends Controller
     public function serviceCenterDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = ServiceCenter::with('serviceDetail', 'businessDetail')->select('id', 'service_id', 'business_id', 'name','name_color', 'name_font_size', 'name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_icon', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_icon', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_icon', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_icon', 'email_font_size', 'email_font_family', 'email_font_color')->orderBy('id', 'DESC');
+            $query = ServiceCenter::with('service', 'businessDetail')->select('id', 'service_id', 'business_id', 'name','name_color', 'name_font_size', 'name_font_family', 'image', 'description', 'description_font_size', 'description_font_family', 'description_font_color', 'address', 'address_icon', 'address_font_size', 'address_font_family', 'address_font_color', 'working_hours', 'working_hours_icon', 'working_hours_font_size', 'working_hours_font_family', 'working_hours_font_color', 'contact_number', 'contact_icon', 'contact_font_size', 'contact_font_family', 'contact_font_color', 'email', 'email_icon', 'email_font_size', 'email_font_family', 'email_font_color')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -163,8 +163,9 @@ class ServiceCenterController extends Controller
                     return '<img src="' . $email_icon . '" alt="" width="100">';
                 })
                 ->addColumn('service_id', function($list){
-                    $service_id = isset($list->serviceDetail->name) && $list->serviceDetail->name ? $list->serviceDetail->name : NULL;
-                    return $service_id;
+                    $service_id = json_decode($list->service_id); 
+                    $service_names = isset($service_id) && $service_id ? Service::whereIn('id', $service_id)->pluck('name')->implode(', ') : ''; 
+                    return $service_names;
                 })
                 ->addColumn('business_id', function($list){
                     $business_id = isset($list->businessDetail->title) && $list->businessDetail->title ? $list->businessDetail->title : NULL;

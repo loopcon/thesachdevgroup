@@ -613,7 +613,7 @@ ALTER TABLE `book_car_service`
 
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Booked Car Service', NULL, NULL, NULL);
 
--- Disha : 17-05-2024 05:26 AM
+-- Disha : 17-05-2024 05:26 PM
 --
 -- Table structure for table `book_insurance`
 --
@@ -635,3 +635,6 @@ ALTER TABLE `book_insurance`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Booked Insurance', NULL, NULL, NULL);
+
+-- Disha : 18-05-2024 10:09 AM
+ALTER TABLE `our_business` ADD `service_id` VARCHAR(255) NULL DEFAULT NULL COMMENT '`id` of `service`' AFTER `car_id`;
