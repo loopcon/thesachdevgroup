@@ -28,7 +28,6 @@ class CareerDetailController extends Controller
       //    'contact_no' => 'required|numeric',
       //    'email' => 'required',
       // ]);
-
       $career_form = new CareerForm();
       $career_form->first_name = $request->first_name;
       $career_form->last_name = $request->last_name;

@@ -428,9 +428,11 @@ Route::get('awards/gallery', [AwardsDetailController::class, 'gallery'])->name('
 
 // service center
 Route::get('service-center/{slug}', [ServiceCenterDetailController::class, 'serviceCenter']);
+Route::post('service-center-contact-query-store', [ServiceCenterDetailController::class, 'serviceCenterContactQueryStore'])->name('service-center-contact-query-store');
 
 // showroom
 Route::get('showroom/{slug}', [ShowroomDetailController::class, 'showroom']);
+Route::post('showroom-contact-query-store', [ShowroomDetailController::class, 'showroomContactQueryStore'])->name('showroom-contact-query-store');
 
 // careers
 Route::get('careers/job', [CareerDetailController::class, 'job'])->name('job');

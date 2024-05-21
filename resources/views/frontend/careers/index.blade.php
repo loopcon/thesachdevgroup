@@ -1268,18 +1268,26 @@
 <script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function(){
-        $("#submit").click(function(e){
+        $(document).on('click','#submit',function(e) //id(button)
+        {
             e.preventDefault();
-            // document.getElementById("shipping_last_name").required = true;
+            var formData = new FormData();
             var isValid = true;
             first_name = $("#first_name").val(); 
-            last_name = $("#last_name").val();
-            email = $("#email").val();
-            contact_no = $("#contact_no").val();
-            post_apply_for = $("#post_apply_for").val();
-            resume = $("#resume").val();
+            var last_name = $("#last_name").val();
+            var email = $("#email").val();
+            var contact_no = $("#contact_no").val();
+            var post_apply_for = $("#post_apply_for").val();
+            var resume = $('#resume').prop('files')[0];   
 
-            // validation
+            formData.append('first_name', first_name);
+            formData.append('last_name', last_name);
+            formData.append('email', email);
+            formData.append('contact_no', contact_no);
+            formData.append('post_apply_for', post_apply_for);
+            formData.append('resume', resume);
+            
+            //   validation
             if(first_name == '')
             {
                 $("#first-name-error").text('First name is required.');
@@ -1305,14 +1313,15 @@
             }
 
             if(isValid) {
-                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
                 $.ajax({
-                    type:"POST",
-                    dataType: "json",
-                    data:{_token: CSRF_TOKEN,"first_name":first_name,"last_name":last_name,"email":email,"contact_no":contact_no,"post_apply_for":post_apply_for,"resume":resume},
                     url:"{{ route('job-apply') }}",
-                    enctype: 'multipart/form-data',
-                    success:function(data){
+                    type: "post",
+                    data:formData,
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    contentType: false,
+                    processData: false,
+                    success: function(data)
+                    {
                         if(data.status == 1){
                             toastr.success('Application send successfully!');
                             document.getElementById('career_form').reset();
@@ -1322,7 +1331,61 @@
                     }
                 });
             }
+
         });
+        // $("#submit").click(function(e){
+        //     e.preventDefault();
+        //     var isValid = true;
+        //     var first_name = $("#first_name").val(); 
+        //     last_name = $("#last_name").val();
+        //     email = $("#email").val();
+        //     contact_no = $("#contact_no").val();
+        //     post_apply_for = $("#post_apply_for").val();
+
+        //     var formData = new FormData();
+        //     var resume = $('#resume').prop('files')[0];  
+        //     formData.append('resume', resume); 
+
+        //     // validation
+        //     if(first_name == '')
+        //     {
+        //         $("#first-name-error").text('First name is required.');
+        //         isValid = false;
+        //     }else{
+        //          $("#first-name-error").text('First name is required.');
+        //     }
+
+        //     if(email == '')
+        //     {
+        //         $("#email-error").text('Email is required.');
+        //         isValid = false;
+        //     }
+
+        //     if(contact_no == '')
+        //     {
+        //         $("#contact-error").text('Contact No is required.');
+        //         isValid = false;
+        //     }
+
+        //     if(isValid) {
+        //         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        //         $.ajax({
+        //             type:"POST",
+        //             dataType: "json",
+        //             data:{_token: CSRF_TOKEN,"first_name":first_name,"last_name":last_name,"email":email,"contact_no":contact_no,"post_apply_for":post_apply_for,"resume":resume},
+        //             url:"{{ route('job-apply') }}",
+        //             processData: false,
+        //             success:function(data){
+        //                 if(data.status == 1){
+        //                     toastr.success('Application send successfully!');
+        //                     document.getElementById('career_form').reset();
+        //                 }else{
+        //                     toastr.success('Somthing went wrong!please try again');
+        //                 }
+        //             }
+        //         });
+        //     }
+        // });
     });
 
     const wrapper = document.querySelector(".wrapper");

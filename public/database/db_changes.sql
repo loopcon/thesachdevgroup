@@ -641,3 +641,49 @@ ALTER TABLE `our_business` ADD `service_id` VARCHAR(255) NULL DEFAULT NULL COMME
 
 -- Disha : 18-05-2024 1:27 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Career Form', NULL, NULL, NULL);
+
+-- Disha : 20-05-2024 4:00 PM
+--
+-- Table structure for table `career_form`
+--
+
+CREATE TABLE `career_form` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `contact_no` varchar(255) DEFAULT NULL,
+  `post_apply_for` varchar(255) DEFAULT NULL,
+  `resume` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `career_form`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `career_form`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 21-05-2024 01:14 PM
+-- Table structure for table `showroom_contact_query`
+--
+CREATE TABLE `showroom_contact_query` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `our_service` varchar(255) DEFAULT NULL COMMENT '`our_service` of `header_menus`',
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `showroom_contact_query`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `showroom_contact_query`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+

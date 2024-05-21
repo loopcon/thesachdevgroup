@@ -1,5 +1,6 @@
 @extends('frontend.layout.header')
 @section('css')
+<link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="http://themes.audemedia.com/html/goodgrowth/css/owl.theme.default.min.css">
@@ -173,31 +174,35 @@
                     <h3>Let’s connect!</h3>
                     <p>We’d love to hear from you. Drop a message or give us a call. You can use the form below to get in touch with us.</p>
                     <div class="form-contact-us">
-                        <form action="" method="post">
+                        <form action="{{route('showroom-contact-query-store')}}" method="post" enctype="maltipart/form-data" data-parsley-validate="">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6 col-sm-12 margin-bookservice">
-                                    <input type="text" class="form-control" placeholder="First Name" required>
+                                    <input type="text" class="form-control" placeholder="First Name" name="first_name" required>
                                 </div>
                                 <div class="col-md-6 col-sm-12 margin-bookservice">
-                                    <input type="email" class="form-control" placeholder="Email" required>
+                                    <input type="email" class="form-control" placeholder="Email" name="email" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-12 margin-bookservice">
-                                    <input type="tel" class="form-control" placeholder="Phone" required>
+                                    <input type="tel" class="form-control num_only" placeholder="Phone" name="phone" maxlength="10" required>
                                 </div>
                                 <div class="col-md-6 col-sm-12 margin-bookservice">
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Choose Service</option>
-                                        <option>New Car</option>
+                                    <select id="inputState" class="form-control" name="our_service">
+                                        <option value="" selected>Choose Service</option>
+                                        @foreach($our_services as $service)
+                                            <option value="{{$service->id}}">{{$service->name}}</option>
+                                        @endforeach
+                                        <!-- <option>New Car</option>
                                         <option>Used Car</option>
                                         <option>Service</option>
-                                        <option>Insurence</option>
+                                        <option>Insurence</option> -->
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
                             </div>
                             <div class="form-group margin-bookservice">
                                 <div class="form-check">
@@ -260,6 +265,7 @@
 
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script>
 <!-- Swiper JS -->
@@ -268,6 +274,10 @@
 <!--Uncomment this line-->
 <script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
 <script>
+    @if(session('message'))
+        toastr.success('{{ session('message') }}');
+    @endif
+
     var swiper = new Swiper(".slide-content", {
     slidesPerView: 3,
     spaceBetween: 25,

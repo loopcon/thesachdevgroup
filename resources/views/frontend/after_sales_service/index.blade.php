@@ -30,14 +30,6 @@
 </section>
 
 <section id="bookservice-form">
-    @if(session('message'))
-        <div class="alert alert-dismissible alert-info" role="alert" style="margin-left:175px;margin-right:175px;">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="alert-message">
-                {{ session('message') }}
-            </div>
-        </div>
-    @endif
     <div class="container">
         <div class="heading-bookservice">
             <h2 style="color:{{$after_sales_service->book_service_form_title_color}}; font-size:{{$after_sales_service->book_service_form_title_font_size}}; font-family:{{$after_sales_service->book_service_form_title_font_family}};">{{isset($after_sales_service->book_service_form_title) && $after_sales_service->book_service_form_title ? $after_sales_service->book_service_form_title : ''}}</h2>
@@ -83,4 +75,9 @@
 @endsection
 @section('javascript')
 <script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
+<script>
+    @if(session('message'))
+        toastr.success('{{ session('message') }}');
+    @endif
+</script>
 @endsection

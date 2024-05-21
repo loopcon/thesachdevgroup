@@ -9,6 +9,8 @@ use App\Models\OurBusiness;
 use App\Models\ServiceCenterFacilityCustomerGallery;
 use App\Models\ServiceCenterTestimonial;
 use App\Models\Service;
+use App\Models\ServiceCenterContactQuery;
+use App\Models\Header_menu;
 
 class ServiceCenterDetailController extends Controller
 {
@@ -22,6 +24,32 @@ class ServiceCenterDetailController extends Controller
         $return_data['services'] = Service::whereIn('id',$service_id)->get();
         $return_data['facility'] = ServiceCenterFacilityCustomerGallery::where('service_center_id',$service_center->id)->get();
         $return_data['testimonials'] = ServiceCenterTestimonial::where('service_center_id',$service_center->id)->get();
+        $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();
+
         return view('frontend.service_center.index',array_merge($return_data));
+    }
+
+    public function serviceCenterContactQueryStore(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $contact_query = new ServiceCenterContactQuery();
+        $contact_query->first_name = $request->first_name;
+        $contact_query->email = $request->email;
+        $contact_query->phone = $request->phone;
+        $contact_query->our_service = $request->our_service;
+        $contact_query->description = $request->description;
+        $contact_query->save();
+
+        if($contact_query)
+        {
+            return redirect()->back()->with('message','Your query submit successfully!');
+        }else{
+            return redirect()->back()->with('message','Your query not submited!please try again');
+        }
     }
 }

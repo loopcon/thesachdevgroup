@@ -36,14 +36,6 @@
 </section>
 
 <section id="form-insurence">
-    @if(session('message'))
-        <div class="alert alert-dismissible alert-info" role="alert" style="margin-left:175px;margin-right:175px;">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="alert-message">
-                {{ session('message') }}
-            </div>
-        </div>
-    @endif
     <div class="container">
         <div class="insurencetext">
             <h2 style="color:{{$car_insurance->insurance_form_title_color}}; font-size:{{$car_insurance->insurance_form_title_font_size}}; font-family:{{$car_insurance->insurance_form_title_font_family}};">{{isset($car_insurance->insurance_form_title) && $car_insurance->insurance_form_title ? $car_insurance->insurance_form_title : ''}}</h2>
@@ -92,4 +84,9 @@
 @endsection
 @section('javascript')
 <script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
+<script>
+    @if(session('message'))
+        toastr.success('{{ session('message') }}');
+    @endif
+</script>
 @endsection

@@ -8,6 +8,8 @@ use App\Models\Showroom;
 use App\Models\Car;
 use App\Models\Showroom_facility_customer_gallery;
 use App\Models\ShowroomTestimonial;
+use App\Models\ShowroomContatQuery;
+use App\Models\Header_menu;
 
 class ShowroomDetailController extends Controller
 {
@@ -21,6 +23,31 @@ class ShowroomDetailController extends Controller
         $return_data['cars'] = Car::whereIn('id',$car_id)->select('name','image','name_color','name_font_size','name_font_family','link')->get();
         $return_data['facility'] = Showroom_facility_customer_gallery::where('showroom_id',$showroom->id)->get();
         $return_data['testimonials'] = ShowroomTestimonial::where('showroom_id',$showroom->id)->get();
+        $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();
         return view('frontend.showroom.index',array_merge($return_data));
+    }
+
+    public function showroomContactQueryStore(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $contact_query = new ShowroomContatQuery();
+        $contact_query->first_name = $request->first_name;
+        $contact_query->email = $request->email;
+        $contact_query->phone = $request->phone;
+        $contact_query->our_service = $request->our_service;
+        $contact_query->description = $request->description;
+        $contact_query->save();
+
+        if($contact_query)
+        {
+            return redirect()->back()->with('message','Your query submit successfully!');
+        }else{
+            return redirect()->back()->with('message','Your query not submited!please try again');
+        }
     }
 }

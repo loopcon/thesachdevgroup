@@ -69,15 +69,15 @@
                       @foreach($footer_menu_useful_links as $footer_menu_useful_link)
                         <a href="{{$footer_menu_useful_link->link}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
                            <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
-                           <p style="color:{{$footer_menu_useful_link->color}}; font-size:{{$footer_menu_useful_link->font_size}}; font-family:{{$footer_menu_useful_link->font_family}}; margin-bottom: 0px;""> {{$footer_menu_useful_link->name}} </p>
+                           <p style="color:{{$footer_menu_useful_link->color}}; font-size:{{$footer_menu_useful_link->font_size}}; font-family:{{$footer_menu_useful_link->font_family}}; margin-bottom: 0px;"> {{$footer_menu_useful_link->name}} </p>
                         </a>
                      @endforeach
                   @else
-                        <a href="{{route('faqs')}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
+                        <a href="{{route('faqs')}}" style="display: flex; align-items: center; margin-bottom:;"> 
                            <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
                            <p style=""> FAQs </p>
                         </a>
-                        <a href="{{url('company/csr')}}" style="display: flex; align-items: center; margin-bottom: 10px;"> 
+                        <a href="{{url('company/csr')}}" style="display: flex; align-items: center; margin-bottom: ;"> 
                            <i class="fa fa-chevron-right" aria-hidden="true" style="color:#b0b0b0;"></i>
                            <p style=""> CSR </p>
                         </a>
