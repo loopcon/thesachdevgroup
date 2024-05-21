@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Career;
 use App\Models\Vacancy;
+use App\Models\CareerForm;
 
 class CareerDetailController extends Controller
 {
@@ -18,5 +19,42 @@ class CareerDetailController extends Controller
       $return_data['image'] = Vacancy::select('id','image')->get();
       //  json_encode($data);
       return view('frontend.careers.index',array_merge($return_data));
+   }
+
+   public function jobApply(Request $request)
+   {
+      // $request->validate([
+      //    'first_name' => 'required',
+      //    'contact_no' => 'required|numeric',
+      //    'email' => 'required',
+      // ]);
+
+      $career_form = new CareerForm();
+      $career_form->first_name = $request->first_name;
+      $career_form->last_name = $request->last_name;
+      $career_form->email = $request->email;
+      $career_form->contact_no = $request->contact_no;
+      $career_form->post_apply_for = $request->post_apply_for;
+
+      if($request->hasFile('resume')) {
+         $resume = fileUpload($request, 'resume', 'uploads/career/resume');
+         $career_form->resume = $resume;
+     }
+      $career_form->save();
+      if($career_form)
+      {
+         return response()->json(['status'=>1]);
+      }else{
+         return response()->json(['status'=>0]);
+      }
+      
+      // return json_encode(array('career_form'=>$career_form,'status'=>1));
+
+      // if($career_form)
+      // {
+      //    return redirect()->back()->with('message','Your application send successfully!');
+      // }else{
+      //    return redirect()->back()->with('message','Your application not send, please try again!');
+      // }
    }
 }

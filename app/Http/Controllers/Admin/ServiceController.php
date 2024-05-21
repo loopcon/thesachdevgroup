@@ -88,7 +88,7 @@ class ServiceController extends Controller
     public function serviceDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = Service::with('serviceCenterDetail')->select('id', 'business_id', 'name', 'icon', 'name_font_color', 'name_font_size', 'name_font_family', 'url')->orderBy('id', 'DESC');
+            $query = Service::select('id', 'business_id', 'name', 'icon', 'name_font_color', 'name_font_size', 'name_font_family', 'url')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -96,10 +96,7 @@ class ServiceController extends Controller
                     $icon = $list->icon ? asset('uploads/service/'.$list->icon) : '';
                     return '<img src="' . $icon . '" alt="" width="100">';
                 })
-                // ->addColumn('service_center_id', function($list){
-                //     $service_center_id = isset($list->serviceCenterDetail->name) && $list->serviceCenterDetail->name ? $list->serviceCenterDetail->name : NULL;
-                //     return $service_center_id;
-                // })
+
                 ->addColumn('action', function ($list) {
                     $html = "";
                     $id = encrypt($list->id);

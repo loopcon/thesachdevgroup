@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
 
+    <!-- toastr message -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+
     @php($setting_detail = getSettingDetail())
         @if(isset($setting_detail) && isset($setting_detail->logo))
         <link rel="icon" type="image/png" href="{{url('public/logo/'.$setting_detail->logo)}}">

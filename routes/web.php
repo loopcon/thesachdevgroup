@@ -333,6 +333,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('career', [CareerController::class, 'career'])->name('career');
     Route::post('career-update', [CareerController::class, 'careerUpdate'])->name('career-update');
 
+    // career form
+    Route::get('career-form', [CareerController::class, 'careerFormList'])->name('career-form');
+    Route::post('career-form-datatable', [CareerController::class, 'careerFormDataTable'])->name('career-form-datatable');
+    Route::get('career-form-delete/{id}', [CareerController::class, 'careerFormDestroy'])->name('career-form-delete');
+
     //body shop
     Route::get('body_shop', [BodyShopController::class, 'body_shop'])->name('body_shop');
     Route::get('bodyShopCreate', [BodyShopController::class, 'bodyShopCreate'])->name('bodyShopCreate');
@@ -429,6 +434,9 @@ Route::get('showroom/{slug}', [ShowroomDetailController::class, 'showroom']);
 
 // careers
 Route::get('careers/job', [CareerDetailController::class, 'job'])->name('job');
+
+// career form
+Route::post('job-apply', [CareerDetailController::class, 'jobApply'])->name('job-apply');
 
 // new cars
 Route::get('our-service/buy_new_car_landing_page', [NewCarController::class, 'carList'])->name('buy_new_car_landing_page');

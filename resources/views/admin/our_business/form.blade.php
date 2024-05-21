@@ -20,7 +20,6 @@
                     <form action="@if(isset($record->id)) {{ route('our-business-update', array('id' => encrypt($record->id))) }} @else{{ route('our-business-store') }} @endif" method="POST" class="our-business-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-
                             <div class="col-md-4 adm-brand-errorbox">
                                 <label for="page_link" class="form-label">page Link or Url<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="page_link" id="page_link">
@@ -115,14 +114,25 @@
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
                             </div>
 
-                            <div class="col-md-4 adm-select-car-drop adm-brand-errorbox">
-                                <label for="car_id" class="form-label">Select Car<span class="text-danger">*</span></label>
+                            <div class="col-md-4 adm-select-car-drop adm-brand-errorbox car">
+                                <label for="car_id" class="form-label">Select Car</label>
                                 <select name="car_id[]" id="car_id" class="form-control select2" multiple>
-                                    <option value="">Select</option>
+                                    <option value="" disabled>Select</option>
                                     @foreach($cars as $car)
                                         <option value="{{$car->id}}"@if(isset($record->car_id) && in_array($car->id, json_decode($record->car_id)) == $car->id){{'selected'}}@endif>{{$car->name}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+
+                            <div class="col-md-4 adm-select-car-drop adm-brand-errorbox service">
+                                <label for="service_id" class="form-label">Service</label>
+                                <select class="form-control select2" name="service_id[]" id="service_id" multiple>
+                                    <option value="" disabled>-- Select Service --</option>
+                                    @foreach($services as $value)
+                                    <option value="{{$value->id}}"@if(isset($record->service_id) && in_array($value->id, json_decode($record->service_id)) == $value->id){{'selected'}}@endif>{{$value->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('service_id')) <div class="text-danger">{{ $errors->first('service_id') }}</div>@endif
                             </div>
 
                             <div class="mt-3 col-12">
@@ -437,9 +447,6 @@
                 'banner_image': {
                     extension: "jpg,jpeg,png,webp",
                 },
-                'car_id[]': {
-                    required: true,
-                },
                 url: {
                     url: "url",
                 },
@@ -450,9 +457,6 @@
                 },
                 'title': {
                     required: "Title is required",
-                },
-                'car_id[]': {
-                    required: "Car is required",
                 },
                 'banner_image': {
                     extension: "Banner Image must be jpg,jpeg,png or webp",
@@ -477,6 +481,60 @@
         }else{
             document.getElementById("banner_image").required = true;
         }
+
+        // $(document).on('change', '#car_id', function(){
+        //     var car = $(this).val();
+        //     $('.custom-select').find("option").hide();
+        //     $('.custom-select').not(this).val("");
+        //     console.log(car)
+        //     if(car = null || car !='')
+        //     {
+        //         var car_flag = 0;
+        //     }else{
+        //         var car_flag = 1;
+               
+        //     }
+        //     serviceBlankAndHide(car_flag);
+        // })
+
+        
+        // $(document).on('change', '#service_id', function(){
+        //     var service = $(this).val();
+        //     if(service !='')
+        //     {
+        //         var service_flag = 0;
+        //     }else{
+        //         var service_flag = 1;
+               
+        //     }
+        //     carBlankAndHide(service_flag);
+        // })
     });
+
+    // function serviceBlankAndHide(flag)
+    // {
+    //     if(flag==0)
+    //     {
+    //         $('#service_id').select2('destroy')
+    //         $('#service_id').val('')
+    //         $('#service_id').select2()
+    //         $('.service').hide()
+    //     }else{
+    //         $('.service').show()
+    //     }
+    // }
+
+    // function carBlankAndHide(flag)
+    // {
+    //     if(flag==0)
+    //     {
+    //         $('#car_id').select2('destroy')
+    //         $('#car_id').val('')
+    //         $('#car_id').select2()
+    //         $('.car').hide()
+    //     }else{
+    //         $('.car').show()
+    //     }
+    // }
 </script>
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\OurBusiness;
 use App\Models\Header_menu;
 use App\Models\Car;
+use App\Models\Service;
 use DataTables;
 use File;
 use Auth;
@@ -43,6 +44,8 @@ class OurBusinessController extends Controller
                 $return_data['site_title'] = trans('Our Business Create');
                 $return_data['our_business'] = Header_menu::select('id','name','menu_name')->where('menu_name','=','Our Businesses')->get();
                 $return_data['cars'] = Car::select('id','name')->get();
+                $return_data['services'] = Service::select('id','name')->get();
+
                 return view("admin.our_business.form",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -72,6 +75,7 @@ class OurBusinessController extends Controller
 
                 $our_business->slug = $request->title ? slugify($request->title) : NULL;
                 $our_business->car_id = json_encode($request->car_id);
+                $our_business->service_id = json_encode($request->service_id);
 
                 if($request->hasFile('banner_image')) {
                     $banner_image = fileUpload($request, 'banner_image', 'uploads/our_business');
@@ -150,6 +154,7 @@ class OurBusinessController extends Controller
                 $return_data['record'] = $our_business;
                 $return_data['our_business'] = Header_menu::select('id','name','menu_name')->where('menu_name','=','Our Businesses')->get();
                 $return_data['cars'] = Car::select('id','name')->get();
+                $return_data['services'] = Service::select('id','name')->get();
                 return view("admin.our_business.form",array_merge($return_data));
             }
         }else {
@@ -186,6 +191,8 @@ class OurBusinessController extends Controller
                 }
                 $our_business->slug = $request->title ? slugify($request->title) : NULL;
                 $our_business->car_id = json_encode($request->car_id);
+                $our_business->service_id = json_encode($request->service_id);
+
                 if($request->hasFile('banner_image')) {
                     $oldimage = $our_business->banner_image;
                     if($oldimage)

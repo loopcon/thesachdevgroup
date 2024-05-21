@@ -193,6 +193,9 @@
 
 <!-- gallery script -->
 <script src="https://thesachdevgroup.com/myown/js/lightbox-plus-jquery.min.js" ></script>
+
+<!-- toastr message -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 <script>
    $(document).on("keypress", ".num_only", function (e) {
       var keyCode = e.which ? e.which : e.keyCode;

@@ -638,3 +638,6 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 
 -- Disha : 18-05-2024 10:09 AM
 ALTER TABLE `our_business` ADD `service_id` VARCHAR(255) NULL DEFAULT NULL COMMENT '`id` of `service`' AFTER `car_id`;
+
+-- Disha : 18-05-2024 1:27 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Career Form', NULL, NULL, NULL);

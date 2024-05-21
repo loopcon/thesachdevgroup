@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Career;
+use App\Models\CareerForm;
+use DataTables;
 
 class CareerController extends Controller
 {
@@ -138,6 +140,81 @@ class CareerController extends Controller
                 }
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function careerFormList()
+    {
+        $has_permission = hasPermission('Career Form');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $return_data = array();
+                $return_data['site_title'] = trans('Career Form');
+
+                return view("admin.career_form.list",array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function careerFormDataTable(Request $request)
+    {
+        if($request->ajax()){
+            $query = CareerForm::select('id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
+
+            $list = $query->get();
+            return DataTables::of($list)
+                // ->addColumn('resume', function($list){
+                //     $imageSrc = $list->resume ? asset('uploads/career/resume/'.$list->resume) : '';
+                //     return '<img src="' . $imageSrc . '" alt="" width="100">';
+                // })
+                ->addColumn('action', function ($list) {
+                    $html = "";
+                    $id = encrypt($list->id);
+                    $has_permission = hasPermission('Career Form');
+                    if(isset($has_permission) && $has_permission)
+                    {
+                        if($has_permission->full_permission == 1)
+                        {
+                        $html .= "<span class='text-nowrap'>";
+                        // $html .= "<a href='javascript:void(0);' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                        $html .= "<a href='javascript:void(0);' data-href='".route('career-form-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                        $html .= "</span>";
+                        }
+                    }
+                    return $html;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        } else {
+            return redirect()->back()->with('message','something went wrong');
+        }
+    }
+
+    public function careerFormDestroy($id)
+    {
+        $has_permission = hasPermission('Career Form');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $career_form = CareerForm::where('id',$id)->delete();
+
+                if($career_form)
+                {
+                    return redirect('career-form')->with('success',trans('Career Form deleted successfully.'));
+                }else{
+                    return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
+                }
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
