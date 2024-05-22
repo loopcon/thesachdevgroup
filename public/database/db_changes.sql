@@ -687,3 +687,25 @@ ALTER TABLE `showroom_contact_query`
 ALTER TABLE `showroom_contact_query`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
+-- Disha : 21-05-2024 06:42 PM
+--
+-- Table structure for table `service_center_contact_query`
+--
+
+CREATE TABLE `service_center_contact_query` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `our_service` varchar(255) DEFAULT NULL COMMENT '`our_service` of `header_menus`',
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `service_center_contact_query`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `service_center_contact_query`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
