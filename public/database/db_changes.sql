@@ -712,3 +712,6 @@ ALTER TABLE `service_center_contact_query`
 
 -- Disha : 22-05-2024 11:50 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Showroom Contact Query', NULL, NULL, NULL);
+
+-- Disha : 22-05-2024 12:16 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Service Center Contact Query', NULL, NULL, NULL);

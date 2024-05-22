@@ -11,4 +11,9 @@ class ServiceCenterContactQuery extends Model
     use HasFactory,SoftDeletes;
     protected $table = 'service_center_contact_query';
     protected $fields = ['first_name','phone','email','our_service','description'];
+
+    public function ourService()
+    {
+        return $this->belongsTO(Header_menu::class,'our_service');
+    }
 }

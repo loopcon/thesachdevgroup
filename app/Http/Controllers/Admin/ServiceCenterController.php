@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ServiceCenter;
 use App\Models\Service;
 use App\Models\OurBusiness;
+use App\Models\ServiceCenterContactQuery;
 use DataTables;
 use File;
 use Auth;
@@ -430,5 +431,79 @@ class ServiceCenterController extends Controller
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
+    }
+
+    public function serviceCenterContactQueryList(Request $request)
+    {
+        $has_permission = hasPermission('Service Center Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $return_data = array();
+                $return_data['site_title'] = trans('Service Center Contact Query');
+                return view("admin.service_center_contact_query.list",array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+
+    }
+
+    public function serviceCenterContactQueryDatatable(Request $request)
+    {
+        if($request->ajax()){
+            $query = ServiceCenterContactQuery::with('ourService')->select('id', 'first_name','phone','email','our_service')->orderBy('id', 'DESC');
+
+            $list = $query->get();
+            return DataTables::of($list)
+                ->addColumn('our_service', function($list){
+                    $our_service = isset($list->ourService->name) && $list->ourService->name ? $list->ourService->name : NULL;
+                    return $our_service;
+                })
+                ->addColumn('action', function ($list) {
+                    $html = "";
+                    $id = encrypt($list->id);
+                    $has_permission = hasPermission('Service Center Contact Query');
+                    if(isset($has_permission) && $has_permission)
+                    {
+                        if($has_permission->full_permission == 1)
+                        {
+                            $html .= "<span class='text-nowrap'>";
+                            // $html .= "<a href='".url('showroom-testimonial-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                            $html .= "<a href='javascript:void(0);' data-href='".route('service-center-contact-query-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                            $html .= "</span>";
+                        }
+                    }
+                    return $html;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        } else {
+            return redirect()->back()->with('error','something went wrong');
+        }
+    }
+
+    public function serviceCenterContactQueryDestroy($id)
+    {
+        $has_permission = hasPermission('Service Center Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $service_center_contact_query = ServiceCenterContactQuery::where('id',$id)->delete();
+
+                if($service_center_contact_query)
+                {
+                    return redirect()->back()->with('success','Service Center Contact Query deleted successfully.');
+                }else{
+                    return redirect()->back()->with('error','Something went wrong, please try again later!');
+                }
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+
     }
 }
