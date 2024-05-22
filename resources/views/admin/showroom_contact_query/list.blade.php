@@ -25,7 +25,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Brand</th>
+                                    <th>Our Service</th>
                                     <th>First Name</th>
                                     <th>Phone</th>
                                     <th>Email</th>
@@ -50,14 +50,14 @@
         // scrollX: true,
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: false},
-            {data: 'brand_id', name: 'brand_id'},
+            {data: 'our_service', name: 'our_service'},
             {data: 'first_name', name: 'first_name'},
             {data: 'phone', name: 'phone'},
             {data: 'email', name: 'email'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
         ajax : {
-            url : "{{ route('booked-car-service-datatable') }}",
+            url : "{{ route('showroom-contact-query-datatable') }}",
             type : "POST",
             data : function(d) {
                 d._token = "{{ csrf_token() }}"
@@ -69,7 +69,7 @@
         var href = $(this).data('href');
         return new swal({
             title: "",
-            text: "{{__('Are you sure? Delete this Booked Car Service!')}}",
+            text: "{{__('Are you sure? Delete this Showroom Contact Query')}}",
             showCancelButton: true,
             confirmButtonText: "{{__('Yes, delete it!')}}",
             icon: "warning"

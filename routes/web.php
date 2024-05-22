@@ -389,6 +389,11 @@ Route::group(['middleware' => 'auth'], function () {
     // csr
     Route::get('csr', [CompanyCsrController::class, 'companyCsr'])->name('csr');
     Route::post('csr-update', [CompanyCsrController::class, 'companyCsrUpdate'])->name('csr-update');
+
+    // showroom contact query list
+    Route::get('showroom-contact-query', [ShowroomController::class, 'showroomContactQueryList'])->name('showroom-contact-query');
+    Route::post('showroom-contact-query-datatable', [ShowroomController::class, 'showroomContactQueryDatatable'])->name('showroom-contact-query-datatable');
+    Route::get('showroom-contact-query-delete/{id}', [ShowroomController::class, 'showroomContactQueryDestroy'])->name('showroom-contact-query-delete');
 });
 
 //Frontend

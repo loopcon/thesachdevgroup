@@ -11,4 +11,9 @@ class ShowroomContatQuery extends Model
     use HasFactory,SoftDeletes;
     protected $table = 'showroom_contact_query';
     protected $fields = ['first_name','phone','email','our_service','description'];
+
+    public function ourService()
+    {
+        return $this->belongsTo(Header_menu::class,'our_service');
+    }
 }

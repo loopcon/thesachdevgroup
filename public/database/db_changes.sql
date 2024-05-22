@@ -709,3 +709,6 @@ ALTER TABLE `service_center_contact_query`
 
 ALTER TABLE `service_center_contact_query`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 22-05-2024 11:50 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Showroom Contact Query', NULL, NULL, NULL);
