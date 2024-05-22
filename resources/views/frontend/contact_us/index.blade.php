@@ -483,7 +483,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                                        {{-- <select id="inputState" class="form-control">
+                                        <!-- <select id="inputState" class="form-control">
                                             <option selected>Choose Brand</option>
                                             <option>Galaxy Toyota</option>
                                             <option>Hans Hyundai</option>
@@ -492,7 +492,7 @@
                                             <option value=""> AMS Dry ice</option>
                                             <option value=""> ACR</option>
                                             <option value=""> Tsg Auction Mart</option>
-                                        </select> --}}
+                                        </select> -->
                                         <select id="inputState" class="form-control">
                                             <option selected>Choose Brand</option>
                                             @foreach($our_business as $business)

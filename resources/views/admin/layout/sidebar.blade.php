@@ -272,10 +272,7 @@
             <li class="nav-item has-treeview {{ (request()->is('showroom_list*') || request()->is('showroom-testimonial*')) ? 'menu-open' : '' }}">
                 <a href="#" class="nav-link {{ (request()->is('showroom_list*') || request()->is('showroom-testimonial*')) ? 'active' : '' }}">
                     <i class="nav-icon fas fa-building"></i>
-                    <p>
-                        Showrooms
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
+                    <p>Showrooms<i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
 
@@ -285,8 +282,7 @@
                         $has_facility_customer_gallery_permission && ($has_facility_customer_gallery_permission->read_permission == 1 || $has_facility_customer_gallery_permission->full_permission == 1))
                         <li class="nav-item">
                             <a href="{{url('showroom_list')}}" class="nav-link {{ request()->is('showroom_list') ? ' active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Showroom</p>
+                                <i class="far fa-circle nav-icon"></i><p>Showroom</p>
                             </a>
                         </li>
                     @endif
@@ -296,8 +292,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                         <li class="nav-item">
                             <a href="{{route('showroom-testimonial')}}" class="nav-link {{ request()->is('showroom-testimonial') ? ' active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Showroom Testimonial</p>
+                                <i class="far fa-circle nav-icon"></i><p>Showroom Testimonial</p>
                             </a>
                         </li>
                         @endif
@@ -319,8 +314,8 @@
         @endif
 
         @if(hasPermission('Vacancies') || hasPermission('Career'))
-            <li class="nav-item has-treeview {{ (request()->is('career*') || request()->is('vacancies*')) ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link {{ (request()->is('career*') || request()->is('vacancies*')) ? 'active' : '' }}">
+            <li class="nav-item has-treeview {{ (request()->is('career') || request()->is('vacancies*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('career') || request()->is('vacancies*')) ? 'active' : '' }}">
                 <i class="nav-icon fa fa-graduation-cap"></i>
                     <p>Careers<i class="right fas fa-angle-left"></i></p>
                 </a>
@@ -329,7 +324,7 @@
                     @if(isset($has_permission) && $has_permission)
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item">
-                                <a href="{{route('career')}}" class="nav-link {{ request()->is('career*') ? 'active' : '' }}">
+                                <a href="{{route('career')}}" class="nav-link {{ request()->is('career') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i><p>Career</p>
                                 </a>
                             </li>
@@ -366,7 +361,8 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                 <li class="nav-item"> 
                     <a href="{{url('pages')}}" class="nav-link {{ request()->is('pages*') ? 'active' : '' }}">
-                        <i class="fas fa-file nav-icon"></i><p>CMS Pages</p></a>
+                        <i class="fas fa-file nav-icon"></i><p>CMS Pages</p>
+                    </a>
                 </li>
             @endif
         @endif
@@ -463,7 +459,7 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                 <li class="nav-item"> 
                     <a href="{{route('booked-car-service')}}" class="nav-link {{request()->is('booked-car-service*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-location-arrow"></i><p>Booked Car Service</p>
+                        <i class="nav-icon fas fa-car-crash"></i><p>Booked Car Service</p>
                     </a>
                 </li>
             @endif
@@ -474,7 +470,7 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                 <li class="nav-item"> 
                     <a href="{{route('booked-insurance')}}" class="nav-link {{request()->is('booked-insurance*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-location-arrow"></i><p>Booked Insurance</p>
+                        <i class="nav-icon fas fa-shield-alt"></i><p>Booked Insurance</p>
                     </a>
                 </li>
             @endif
@@ -496,7 +492,7 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                 <li class="nav-item"> 
                     <a href="{{route('showroom-contact-query')}}" class="nav-link {{request()->is('showroom-contact-query*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-book fa-fw"></i><p>Showroom Contact Query</p>
+                        <i class="nav-icon fa fa-comment"></i><p>Showroom Contact Query</p>
                     </a>
                 </li>
             @endif
@@ -507,7 +503,7 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                 <li class="nav-item"> 
                     <a href="{{route('service-center-contact-query')}}" class="nav-link {{request()->is('service-center-contact-query*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-book fa-fw"></i><p>Service Center Contact Query</p>
+                        <i class="nav-icon fa fa-comment-dots"></i><p>Service Center Contact Query</p>
                     </a>
                 </li>
             @endif
