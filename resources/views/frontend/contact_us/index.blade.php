@@ -495,7 +495,7 @@
                                             <option value=""> ACR</option>
                                             <option value=""> Tsg Auction Mart</option>
                                         </select> -->
-                                        <select id="inputState" class="form-control" name="brand_id">
+                                        <select id="inputState" class="form-control" name="business_id">
                                             <option value="" selected>Choose Brand</option>
                                             @foreach($our_business as $business)
                                                 <option value="{{$business->id}}">{{$business->title}}</option>
