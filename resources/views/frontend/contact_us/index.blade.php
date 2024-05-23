@@ -1,6 +1,7 @@
 @extends('frontend.layout.header')
 @section('css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
     <style>
         .card{
             width: 100%; 
@@ -467,18 +468,19 @@
                         <h3 style="margin-top: 30px; margin-bottom: 10px; color: {{$contact_us->form_title_color ?? null}}; font-size:{{$contact_us->form_title_font_size ?? null}}; font-family:{{$contact_us->form_title_font_family ?? null}};">{{$contact_us->form_title ?? null}}</h3>
                             <p style="color: {{$contact_us->form_sub_title_color ?? null}}; font-size:{{$contact_us->form_sub_title_font_size ?? null}}; font-family:{{$contact_us->form_sub_title_font_family ?? null}};">{{$contact_us->form_sub_title ?? null}}</p>
                         <div class="form-contact-us">
-                            <form action="" method="post">
+                            <form action="{{route('contat-us-form-store')}}" method="post" enctype="maltipart/form-data" data-parsley-validate="">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                                        <input type="text" class="form-control" placeholder="First Name" required>
+                                        <input type="text" class="form-control" placeholder="First Name" name="first_name" required>
                                     </div>
                                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                                        <input  type="tel" class="form-control" placeholder="Phone" pattern="[0-9]{10}" title="Please enter a 10-digit contact number" required>
+                                        <input  type="tel" class="form-control num_only" placeholder="Phone" name="phone" maxlength="10" pattern="[0-9]{10}" title="Please enter a 10-digit contact number" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 margin-bookservice">
-                                        <input type="email" class="form-control" placeholder="Email" required>
+                                        <input type="email" class="form-control" placeholder="Email" name="email" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -493,27 +495,27 @@
                                             <option value=""> ACR</option>
                                             <option value=""> Tsg Auction Mart</option>
                                         </select> -->
-                                        <select id="inputState" class="form-control">
-                                            <option selected>Choose Brand</option>
+                                        <select id="inputState" class="form-control" name="brand_id">
+                                            <option value="" selected>Choose Brand</option>
                                             @foreach($our_business as $business)
-                                                <option>{{$business->title}}</option>
+                                                <option value="{{$business->id}}">{{$business->title}}</option>
                                             @endforeach
                                         </select> 
                                     </div>
                                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                                        <select id="inputState" class="form-control">
+                                        <select id="inputState" class="form-control" name="location">
                                             <option selected>Choose Location</option>
-                                            <option>Moti Nagar</option>
-                                            <option>Shalimar Place</option>
-                                            <option>Lajpat Nagar</option>
-                                            <option>Dwarka</option>
-                                            <option value=""> Gurugram</option>
+                                            <option value="Moti Nagar">Moti Nagar</option>
+                                            <option value="Shalimar Place">Shalimar Place</option>
+                                            <option value="Lajpat Nagar">Lajpat Nagar</option>
+                                            <option value="Dwarka">Dwarka</option>
+                                            <option value="Gurugram"> Gurugram</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
                                 </div>
 
                                 <div class="form-group margin-bookservice">
@@ -540,4 +542,12 @@
             </div>
         </div>
     </section>  
+@endsection
+@section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
+<script>
+    @if(session('message'))
+        toastr.success('{{ session('message') }}');
+    @endif
+</script>
 @endsection

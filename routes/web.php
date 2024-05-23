@@ -411,6 +411,9 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 //contactus_detail
 Route::get('contactus/contact', [ContactUsDetailController::class, 'contactusDetail'])->name('contactus_detail');
 
+// contact us form
+Route::post('contat-us-form-store', [ContactUsDetailController::class, 'contactUsFormStore'])->name('contat-us-form-store');
+
 //location
 Route::get('contactus/location', [locationDetailController::class, 'locationDetail'])->name('location_detail');
 
