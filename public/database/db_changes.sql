@@ -737,3 +737,7 @@ ALTER TABLE `quick_contact_us`
 
 ALTER TABLE `quick_contact_us`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 23-05-2024 04:02 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Quick Contact Us Query', NULL, NULL, NULL);
+ALTER TABLE `quick_contact_us` CHANGE `brand_id` `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`';

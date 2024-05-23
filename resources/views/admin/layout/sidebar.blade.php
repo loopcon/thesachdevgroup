@@ -454,59 +454,80 @@
             </li>
         @endif
 
-        @php($has_permission = hasPermission('Booked Car Service'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
-                <li class="nav-item"> 
-                    <a href="{{route('booked-car-service')}}" class="nav-link {{request()->is('booked-car-service*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-car-crash"></i><p>Booked Car Service</p>
-                    </a>
-                </li>
-            @endif
-        @endif
+        @if(hasPermission('Booked Car Service') || hasPermission('Booked Insurance') || hasPermission('Career Form') || hasPermission('Showroom Contact Query') || hasPermission('Service Center Contact Query') || hasPermission('Quick Contact Us Query'))
+            <li class="nav-item has-treeview {{ (request()->is('booked-car-service') || request()->is('booked-insurance*') || request()->is('career-form*') || request()->is('showroom-contact-query*') || request()->is('service-center-contact-query*') || request()->is('contact-us-query*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('booked-car-service') || request()->is('booked-insurance*') || request()->is('career-form*') || request()->is('showroom-contact-query*') || request()->is('service-center-contact-query*') || request()->is('contact-us-query*')) ? 'active' : '' }}">
+                <i class="nav-icon fa fa-comment-dots"></i>
+                    <p>Query<i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @php($has_permission = hasPermission('Booked Car Service'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                            <li class="nav-item"> 
+                                <a href="{{route('booked-car-service')}}" class="nav-link {{request()->is('booked-car-service*') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-car-crash"></i><p>Booked Car Service</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
 
-        @php($has_permission = hasPermission('Booked Insurance'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
-                <li class="nav-item"> 
-                    <a href="{{route('booked-insurance')}}" class="nav-link {{request()->is('booked-insurance*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-shield-alt"></i><p>Booked Insurance</p>
-                    </a>
-                </li>
-            @endif
-        @endif
+                    @php($has_permission = hasPermission('Booked Insurance'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                            <li class="nav-item"> 
+                                <a href="{{route('booked-insurance')}}" class="nav-link {{request()->is('booked-insurance*') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-shield-alt"></i><p>Booked Insurance</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
 
-        @php($has_permission = hasPermission('Career Form'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
-                <li class="nav-item"> 
-                    <a href="{{route('career-form')}}" class="nav-link {{request()->is('career-form*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-book fa-fw"></i><p>Career Form</p>
-                    </a>
-                </li>
-            @endif
-        @endif
+                    @php($has_permission = hasPermission('Career Form'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                            <li class="nav-item"> 
+                                <a href="{{route('career-form')}}" class="nav-link {{request()->is('career-form*') ? 'active' : '' }}">
+                                    <i class="nav-icon fa fa-book fa-fw"></i><p>Career Form</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
 
-        @php($has_permission = hasPermission('Showroom Contact Query'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
-                <li class="nav-item"> 
-                    <a href="{{route('showroom-contact-query')}}" class="nav-link {{request()->is('showroom-contact-query*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-comment"></i><p>Showroom Contact Query</p>
-                    </a>
-                </li>
-            @endif
-        @endif
+                    @php($has_permission = hasPermission('Showroom Contact Query'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                            <li class="nav-item"> 
+                                <a href="{{route('showroom-contact-query')}}" class="nav-link {{request()->is('showroom-contact-query*') ? 'active' : '' }}">
+                                    <i class="nav-icon fa fa-comment"></i><p>Showroom Contact Query</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
 
-        @php($has_permission = hasPermission('Service Center Contact Query'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
-                <li class="nav-item"> 
-                    <a href="{{route('service-center-contact-query')}}" class="nav-link {{request()->is('service-center-contact-query*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-comment-dots"></i><p>Service Center Contact Query</p>
-                    </a>
-                </li>
-            @endif
+                    @php($has_permission = hasPermission('Service Center Contact Query'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                            <li class="nav-item"> 
+                                <a href="{{route('service-center-contact-query')}}" class="nav-link {{request()->is('service-center-contact-query*') ? 'active' : '' }}">
+                                    <i class="nav-icon fa fa-comment-dots"></i><p>Service Center Contact Query</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
+                    @php($has_permission = hasPermission('Quick Contact Us Query'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                            <li class="nav-item"> 
+                                <a href="{{route('contact-us-query')}}" class="nav-link {{request()->is('contact-us-query*') ? 'active' : '' }}">
+                                    <i class="nav-icon fa fa-comment-dots"></i><p>Quick Contact Us Query</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+                </ul>
+            </li>
         @endif
     </ul>
 </nav>

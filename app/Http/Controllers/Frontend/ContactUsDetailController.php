@@ -31,7 +31,7 @@ class ContactUsDetailController extends Controller
         $contact_us->first_name = $request->first_name;
         $contact_us->phone = $request->phone;
         $contact_us->email = $request->email;
-        $contact_us->brand_id = $request->brand_id;
+        $contact_us->business_id = $request->business_id;
         $contact_us->location = $request->location;
         $contact_us->description = $request->description;
         $contact_us->save();

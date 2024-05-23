@@ -39,6 +39,12 @@
 <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 
 <script>
+  $(document).on("keypress", ".num_only", function (e) {
+      var keyCode = e.which ? e.which : e.keyCode;
+      if (!((keyCode >= 48 && keyCode <= 57))) {
+            return false;
+      }
+   });
 $(function () {
   $("#example1").DataTable({
     "responsive": true, "lengthChange": false, "autoWidth": false,

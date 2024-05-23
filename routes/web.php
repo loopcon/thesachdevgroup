@@ -399,6 +399,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('service-center-contact-query', [ServiceCenterController::class, 'serviceCenterContactQueryList'])->name('service-center-contact-query');
     Route::post('service-center-contact-query-datatable', [ServiceCenterController::class, 'serviceCenterContactQueryDatatable'])->name('service-center-contact-query-datatable');
     Route::get('service-center-contact-query-delete/{id}', [ServiceCenterController::class, 'serviceCenterContactQueryDestroy'])->name('service-center-contact-query-delete');
+
+    // contact us form
+    Route::get('contact-us-query', [ContactUsController::class, 'contactUsQueryList'])->name('contact-us-query');
+    Route::get('contact-us-query-edit/{id}', [ContactUsController::class, 'contactUsQueryEdit'])->name('contact-us-query-edit');
+    Route::post('contact-us-query-update/{id}', [ContactUsController::class, 'contactUsQueryUpdate'])->name('contact-us-query-update');
+    Route::post('contact-us-query-datatable', [ContactUsController::class, 'contactUsQueryDatatable'])->name('contact-us-query-datatable');
+    Route::get('contact-us-query-delete/{id}', [ContactUsController::class, 'contactUsQueryDestroy'])->name('contact-us-query-delete');
 });
 
 //Frontend

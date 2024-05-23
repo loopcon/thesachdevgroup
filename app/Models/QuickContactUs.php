@@ -10,5 +10,10 @@ class QuickContactUs extends Model
 {
     use HasFactory,SoftDeletes;
     protected $table = 'quick_contact_us';
-    protected $fields = ['brand_id','first_name','phone','email','location','description'];
+    protected $fields = ['business_id','first_name','phone','email','location','description'];
+
+    public function businessDetail()
+    {
+        return $this->belongsTo(OurBusiness::class,'business_id');
+    }
 }
