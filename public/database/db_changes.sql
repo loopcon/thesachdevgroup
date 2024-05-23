@@ -715,3 +715,25 @@ INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`)
 
 -- Disha : 22-05-2024 12:16 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Service Center Contact Query', NULL, NULL, NULL);
+
+-- Disha : 23-05-2024 02:49 PM
+-- Table structure for table `quick_contact_us`
+--
+CREATE TABLE `quick_contact_us` (
+  `id` int(11) NOT NULL,
+  `brand_id` int(11) DEFAULT NULL COMMENT '`id` of `brands`',
+  `first_name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `quick_contact_us`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `quick_contact_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
