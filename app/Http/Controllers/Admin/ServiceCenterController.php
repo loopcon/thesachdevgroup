@@ -8,6 +8,7 @@ use App\Models\ServiceCenter;
 use App\Models\Service;
 use App\Models\OurBusiness;
 use App\Models\ServiceCenterContactQuery;
+use App\Models\Header_menu;
 use DataTables;
 use File;
 use Auth;
@@ -470,7 +471,7 @@ class ServiceCenterController extends Controller
                         if($has_permission->full_permission == 1)
                         {
                             $html .= "<span class='text-nowrap'>";
-                            // $html .= "<a href='".url('showroom-testimonial-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                            $html .= "<a href='".url('service-center-contact-query-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";
                             $html .= "<a href='javascript:void(0);' data-href='".route('service-center-contact-query-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                             $html .= "</span>";
                         }
@@ -481,6 +482,54 @@ class ServiceCenterController extends Controller
                 ->make(true);
         } else {
             return redirect()->back()->with('error','something went wrong');
+        }
+    }
+
+    public function serviceCenterContactQueryEdit($id)
+    {
+        $has_permission = hasPermission('Service Center Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $return_data = array();
+                $return_data['site_title'] = trans('Service Center Contact Query Edit');
+                $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();
+                $return_data['record'] = ServiceCenterContactQuery::find($id);
+
+                return view('admin.service_center_contact_query.form',array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+    }
+
+    public function serviceCenterContactQueryUpdate(Request $request,$id)
+    {
+        $has_permission = hasPermission('Service Center Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $service_center_contact_query = ServiceCenterContactQuery::find($id);
+                $service_center_contact_query->first_name = $request->first_name;
+                $service_center_contact_query->email = $request->email;
+                $service_center_contact_query->phone = $request->phone;
+                $service_center_contact_query->our_service = $request->our_service;
+                $service_center_contact_query->description = $request->description;
+                $service_center_contact_query->save();
+
+                if($service_center_contact_query)
+                {
+                    return redirect()->route('service-center-contact-query')->with('success','Service Center Contact Query update successfully!');
+                }else{
+                    return redirect()->back()->with('error','Something went wrong, please try again later!');
+                }
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
         }
     }
 

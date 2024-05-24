@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('showroom-contact-query-update', array('id' => encrypt($record->id))) }}" method="post" class="service-form" enctype="maltipart/form-data" data-parsley-validate="">
+                    <form action="{{route('service-center-contact-query-update', array('id' => encrypt($record->id))) }}" method="post" class="service-form" enctype="maltipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">

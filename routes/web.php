@@ -399,6 +399,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // service center contact query list
     Route::get('service-center-contact-query', [ServiceCenterController::class, 'serviceCenterContactQueryList'])->name('service-center-contact-query');
+    Route::get('service-center-contact-query-edit/{id}', [ServiceCenterController::class, 'serviceCenterContactQueryEdit'])->name('service-center-contact-query-edit');
+    Route::post('service-center-contact-query-update/{id}', [ServiceCenterController::class, 'serviceCenterContactQueryUpdate'])->name('service-center-contact-query-update');
     Route::post('service-center-contact-query-datatable', [ServiceCenterController::class, 'serviceCenterContactQueryDatatable'])->name('service-center-contact-query-datatable');
     Route::get('service-center-contact-query-delete/{id}', [ServiceCenterController::class, 'serviceCenterContactQueryDestroy'])->name('service-center-contact-query-delete');
 
