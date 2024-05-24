@@ -392,6 +392,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // showroom contact query list
     Route::get('showroom-contact-query', [ShowroomController::class, 'showroomContactQueryList'])->name('showroom-contact-query');
+    Route::get('showroom-contact-query-edit/{id}', [ShowroomController::class, 'showroomContactQueryEdit'])->name('showroom-contact-query-edit');
+    Route::post('showroom-contact-query-update/{id}', [ShowroomController::class, 'showroomContactQueryUpdate'])->name('showroom-contact-query-update');
     Route::post('showroom-contact-query-datatable', [ShowroomController::class, 'showroomContactQueryDatatable'])->name('showroom-contact-query-datatable');
     Route::get('showroom-contact-query-delete/{id}', [ShowroomController::class, 'showroomContactQueryDestroy'])->name('showroom-contact-query-delete');
 

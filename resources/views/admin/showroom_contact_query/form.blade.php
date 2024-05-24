@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('contact-us-query-update', array('id' => encrypt($record->id))) }}" method="post" class="service-form" enctype="maltipart/form-data" data-parsley-validate="">
+                    <form action="{{route('showroom-contact-query-update', array('id' => encrypt($record->id))) }}" method="post" class="service-form" enctype="maltipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -40,24 +40,13 @@
                             </div>
 
                             <div class="col-md-4 adm-brand-errorbox">
-                                <label for="business_id" class="form-label">Select Brand</label>
-                                <select id="business_id" class="form-control select2" name="business_id">
-                                    <option value="" selected>Choose Brand</option>
-                                    @foreach($our_business as $business)
-                                        <option value="{{$business->id}}" {{$record->business_id == $business->id ? 'selected' : ''}}>{{$business->title}}</option>
-                                    @endforeach
+                                <label for="our_service" class="form-label">Select Our Service</label>
+                                <select id="our_service" class="form-control select2" name="our_service">
+                                    <option value="" selected>Choose Service</option>
+                                        @foreach($our_services as $service)
+                                            <option value="{{$service->id}}" {{$record->our_service == $service->id ? 'selected' : ''}}>{{$service->name}}</option>
+                                        @endforeach
                                 </select> 
-                            </div>
-                            <div class="col-md-4 adm-brand-errorbox">
-                                <label for="name" class="form-label">Select Location</label>
-                                <select id="location" class="form-control select2" name="location">
-                                    <option value="" selected>Choose Location</option>
-                                    <option value="Moti Nagar" {{$record->location == 'Moti Nagar' ? 'selected' : ''}}>Moti Nagar</option>
-                                    <option value="Shalimar Place" {{$record->location == 'Shalimar Place' ? 'selected' : ''}}>Shalimar Place</option>
-                                    <option value="Lajpat Nagar" {{$record->location == 'Lajpat Nagar' ? 'selected' : ''}}>Lajpat Nagar</option>
-                                    <option value="Dwarka" {{$record->location == 'Dwarka' ? 'selected' : ''}}>Dwarka</option>
-                                    <option value="Gurugram" {{$record->location == 'Gurugram' ? 'selected' : ''}}> Gurugram</option>
-                                </select>
                             </div>
 
                             <div class="col-md-4">
@@ -67,7 +56,8 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary bookservice-button">Submit</button>
-                        <a href="{{ route('contact-us-query') }}" class="btn btn-danger">Cancel</a>
+                        <a href="{{ route('showroom-contact-query') }}" class="btn btn-danger">Cancel</a>
+
                     </form>
                 </div>
             </div>

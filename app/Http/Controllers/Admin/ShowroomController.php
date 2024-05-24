@@ -11,6 +11,7 @@ use App\Models\Showroom;
 use App\Models\Showroom_facility_customer_gallery;
 use App\Models\OurBusiness;
 use App\Models\ShowroomContatQuery;
+use App\Models\Header_menu;
 use DataTables;
 use File;
 
@@ -508,7 +509,7 @@ class ShowroomController extends Controller
                         if($has_permission->full_permission == 1)
                         {
                             $html .= "<span class='text-nowrap'>";
-                            // $html .= "<a href='".url('showroom-testimonial-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                            $html .= "<a href='".url('showroom-contact-query-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";
                             $html .= "<a href='javascript:void(0);' data-href='".route('showroom-contact-query-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                             $html .= "</span>";
                         }
@@ -519,6 +520,54 @@ class ShowroomController extends Controller
                 ->make(true);
         } else {
             return redirect()->back()->with('error','something went wrong');
+        }
+    }
+
+    public function showroomContactQueryEdit($id)
+    {
+        $has_permission = hasPermission('Showroom Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $return_data = array();
+                $id = decrypt($id);
+                $return_data['site_title'] = trans('Showroom Contact Query Edit');
+                $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();
+                $return_data['record'] = ShowroomContatQuery::find($id);
+
+                return view('admin.showroom_contact_query.form',array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+    }
+
+    public function showroomContactQueryUpdate(Request $request,$id)
+    {
+        $has_permission = hasPermission('Showroom Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $showroom_contact_query = ShowroomContatQuery::find($id);
+                $showroom_contact_query->first_name = $request->first_name;
+                $showroom_contact_query->email = $request->email;
+                $showroom_contact_query->phone = $request->phone;
+                $showroom_contact_query->our_service = $request->our_service;
+                $showroom_contact_query->description = $request->description;
+                $showroom_contact_query->save();
+
+                if($showroom_contact_query)
+                {
+                    return redirect()->route('showroom-contact-query')->with('success','Showrooom Contact Query update successfully!');
+                }else{
+                    return redirect()->back()->with('error','Something went wrong, please try again later!');
+                }
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
         }
     }
 
