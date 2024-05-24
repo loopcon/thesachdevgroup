@@ -41,7 +41,7 @@
 
                             <div class="col-md-4 mb-2">
                                 <label for="brand_id" class="form-label">Brand</label>
-                                <select id="brand_id" class="form-control" name="brand_id">
+                                <select id="brand_id" class="form-control select2" name="brand_id">
                                     <option value="">Choose Brand</option>
                                     @if(isset($brands) && $brands)
                                         @foreach($brands as $data)
