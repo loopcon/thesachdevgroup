@@ -374,6 +374,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     //booked car service
     Route::get('booked-car-service', [AfterSalesServiceController::class, 'bookedCarService'])->name('booked-car-service');
+    Route::get('booked-car-service-edit/{id}', [AfterSalesServiceController::class, 'bookedCarServiceEdit'])->name('booked-car-service-edit');
+    Route::post('booked-car-service-update/{id}', [AfterSalesServiceController::class, 'bookedCarServiceUpdate'])->name('booked-car-service-update');
     Route::post('booked-car-service-datatable', [AfterSalesServiceController::class, 'bookedCarServiceDatatable'])->name('booked-car-service-datatable');
     Route::get('booked-car-service-delete/{id}', [AfterSalesServiceController::class, 'bookedCarServiceDestroy'])->name('booked-car-service-delete');
 

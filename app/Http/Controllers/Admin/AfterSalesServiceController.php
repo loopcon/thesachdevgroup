@@ -134,7 +134,7 @@ class AfterSalesServiceController extends Controller
                         if($has_permission->full_permission == 1)
                         {
                         $html .= "<span class='text-nowrap'>";
-                        // $html .= "<a href='javascript:void(0);' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                        $html .= "<a href='".route('booked-car-service-edit',array($id))."' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
                         $html .= "<a href='javascript:void(0);' data-href='".route('booked-car-service-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                         $html .= "</span>";
                         }
@@ -145,6 +145,59 @@ class AfterSalesServiceController extends Controller
                 ->make(true);
         } else {
             return redirect()->back()->with('message','something went wrong');
+        }
+    }
+
+    public function bookedCarServiceEdit($id)
+    {
+        $has_permission = hasPermission('Booked Car Service');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $return_data = array();
+                $return_data['site_title'] = trans('Booked Car Service Edit');
+                $return_data['brands'] = Brand::select('id','name')->get();
+                $return_data['record'] = BookCarService::find($id);
+
+                return view('admin.booked_car_service.form',array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function bookedCarServiceUpdate(Request $request,$id)
+    {
+        $has_permission = hasPermission('Booked Car Service');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $book_service = BookCarService::find($id);
+                $book_service->first_name = $request->first_name;
+                $book_service->phone = $request->phone;
+                $book_service->email = $request->email;
+                $book_service->brand_id = $request->brand_id;
+
+                $book_service->save();
+
+                if($book_service)
+                {
+                    return redirect()->route('booked-car-service')->with('success','Booked Service update successfully!');
+                }else{
+                    return redirect()->back()->with('error','Something went wrong,please try again letter!');
+                }
+
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 
