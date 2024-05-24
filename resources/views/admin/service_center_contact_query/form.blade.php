@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary bookservice-button">Submit</button>
-                        <a href="{{ route('showroom-contact-query') }}" class="btn btn-danger">Cancel</a>
+                        <a href="{{ route('service-center-contact-query') }}" class="btn btn-danger">Cancel</a>
                     </form>
                 </div>
             </div>
