@@ -136,7 +136,7 @@ class CarInsuranceController extends Controller
                         if($has_permission->full_permission == 1)
                         {
                         $html .= "<span class='text-nowrap'>";
-                        // $html .= "<a href='javascript:void(0);' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                        $html .= "<a href='".route('booked-insurance-edit',array($id))."' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
                         $html .= "<a href='javascript:void(0);' data-href='".route('booked-insurance-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                         $html .= "</span>";
                         }
@@ -147,6 +147,58 @@ class CarInsuranceController extends Controller
                 ->make(true);
         } else {
             return redirect()->back()->with('message','something went wrong');
+        }
+    }
+
+    public function bookedInsuranceEdit($id)
+    {
+        $has_permission = hasPermission('Booked Insurance');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $return_data = array();
+                $return_data['site_title'] = trans('Booked Insurance Edit');
+                $return_data['brands'] = Brand::select('id','name')->get();
+                $return_data['record'] = BookInsurance::find($id);
+
+                return view('admin.booked_insurance.form',array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function bookedInsuranceUpdate(Request $request,$id)
+    {
+        $has_permission = hasPermission('Booked Insurance');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $booked_insurance = BookInsurance::find($id);
+                $booked_insurance->first_name = $request->first_name;
+                $booked_insurance->phone = $request->phone;
+                $booked_insurance->email = $request->email;
+                $booked_insurance->brand_id = $request->brand_id;
+
+                $booked_insurance->save();
+                if($booked_insurance)
+                {
+                    return redirect()->route('booked-insurance')->with('success','Booked Insurance update successfully!');
+                }else{
+                    return redirect()->back()->with('error','Something went wrong,please try again letter!');
+                }
+
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
 

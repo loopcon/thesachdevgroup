@@ -385,6 +385,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // booked car insurance
     Route::get('booked-insurance', [CarInsuranceController::class, 'bookedInsurance'])->name('booked-insurance');
+    Route::get('booked-insurance-edit/{id}', [CarInsuranceController::class, 'bookedInsuranceEdit'])->name('booked-insurance-edit');
+    Route::post('booked-insurance-update/{id}', [CarInsuranceController::class, 'bookedInsuranceUpdate'])->name('booked-insurance-update');
     Route::post('booked-insurance-datatable', [CarInsuranceController::class, 'bookedInsuranceDatatable'])->name('booked-insurance-datatable');
     Route::get('booked-insurance-delete/{id}', [CarInsuranceController::class, 'bookedInsuranceDestroy'])->name('booked-insurance-delete');
 
