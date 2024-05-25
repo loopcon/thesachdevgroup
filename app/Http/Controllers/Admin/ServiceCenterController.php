@@ -513,6 +513,12 @@ class ServiceCenterController extends Controller
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
                 $id = decrypt($id);
+                $request->validate([
+                    'first_name' => 'requird',
+                    'email' => 'required',
+                    'phone' => 'required|numeric',
+                ]);
+
                 $service_center_contact_query = ServiceCenterContactQuery::find($id);
                 $service_center_contact_query->first_name = $request->first_name;
                 $service_center_contact_query->email = $request->email;

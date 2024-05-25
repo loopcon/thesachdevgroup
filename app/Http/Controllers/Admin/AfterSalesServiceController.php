@@ -178,6 +178,12 @@ class AfterSalesServiceController extends Controller
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
                 $id = decrypt($id);
+                $request->validate([
+                    'first_name' => 'requird',
+                    'email' => 'required',
+                    'phone' => 'required|numeric',
+                ]);
+
                 $book_service = BookCarService::find($id);
                 $book_service->first_name = $request->first_name;
                 $book_service->phone = $request->phone;

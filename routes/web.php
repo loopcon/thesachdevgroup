@@ -335,6 +335,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // career form
     Route::get('career-form', [CareerController::class, 'careerFormList'])->name('career-form');
+    Route::get('career-form-edit/{id}', [CareerController::class, 'careerFormEdit'])->name('career-form-edit');
+    Route::post('career-form-update/{id}', [CareerController::class, 'careerFormUpdate'])->name('career-form-update');
     Route::post('career-form-datatable', [CareerController::class, 'careerFormDataTable'])->name('career-form-datatable');
     Route::get('career-form-delete/{id}', [CareerController::class, 'careerFormDestroy'])->name('career-form-delete');
 

@@ -180,6 +180,12 @@ class CarInsuranceController extends Controller
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
                 $id = decrypt($id);
+                $request->validate([
+                    'first_name' => 'requird',
+                    'email' => 'required',
+                    'phone' => 'required|numeric',
+                ]);
+
                 $booked_insurance = BookInsurance::find($id);
                 $booked_insurance->first_name = $request->first_name;
                 $booked_insurance->phone = $request->phone;

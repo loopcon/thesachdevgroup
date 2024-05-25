@@ -185,7 +185,7 @@ class CareerController extends Controller
                         if($has_permission->full_permission == 1)
                         {
                         $html .= "<span class='text-nowrap'>";
-                        // $html .= "<a href='javascript:void(0);' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                        $html .= "<a href='".route('career-form-edit',array($id))."' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
                         $html .= "<a href='javascript:void(0);' data-href='".route('career-form-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                         $html .= "</span>";
                         }
@@ -197,6 +197,71 @@ class CareerController extends Controller
         } else {
             return redirect()->back()->with('message','something went wrong');
         }
+    }
+
+    public function careerFormEdit($id)
+    {
+        $has_permission = hasPermission('Career Form');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $return_data = array();
+                $return_data['site_title'] = trans('Career Form Edit');
+                $return_data['record'] = CareerForm::find($id);
+                
+                return view('admin.career_form.form',array_merge($return_data));
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function careerFormUpdate(Request $request,$id)
+    {
+        $has_permission = hasPermission('Career Form');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $request->validate([
+                    'first_name' => 'required',
+                    'email' => 'required',
+                    'contact_no' => 'required|numeric',
+                    'resume' => 'mimes:pdf,docx',
+                ]);
+
+                $career_form = CareerForm::find($id);
+                $career_form->first_name = $request->first_name;
+                $career_form->last_name = $request->last_name;
+                $career_form->email = $request->email;
+                $career_form->contact_no = $request->contact_no;
+                $career_form->post_apply_for = $request->post_apply_for;
+                if($request->hasFile('resume'))
+                {
+                    $oldimage = $career_form->resume;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/career/resume'.$oldimage);
+                    }
+                    $resume = fileUpload($request, 'resume', 'uploads/career/resume');
+                    $career_form->resume = $resume;
+                }
+                
+                $career_form->save();
+                if($career_form)
+                {
+                    return redirect()->route('career-form')->with('success','Career Form update successfully.');
+                }else{
+                    return redirect()->back()->with('error','Something went wrong,please try again letter.');
+                }
+            }
+        }else {
+            return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+
     }
 
     public function careerFormDestroy($id)

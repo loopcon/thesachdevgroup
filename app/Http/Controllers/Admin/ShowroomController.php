@@ -551,6 +551,12 @@ class ShowroomController extends Controller
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
                 $id = decrypt($id);
+                $request->validate([
+                    'first_name' => 'requird',
+                    'email' => 'required',
+                    'phone' => 'required|numeric',
+                ]);
+
                 $showroom_contact_query = ShowroomContatQuery::find($id);
                 $showroom_contact_query->first_name = $request->first_name;
                 $showroom_contact_query->email = $request->email;
