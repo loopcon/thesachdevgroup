@@ -741,3 +741,6 @@ ALTER TABLE `quick_contact_us`
 -- Disha : 23-05-2024 04:02 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Quick Contact Us Query', NULL, NULL, NULL);
 ALTER TABLE `quick_contact_us` CHANGE `brand_id` `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`';
+
+-- Disha : 28-05-2024 02:55 PM
+ALTER TABLE `career_form` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`' AFTER `id`, ADD `showroom_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `showrooms`' AFTER `business_id`, ADD `service_center_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `service_center`' AFTER `showroom_id`, ADD `body_shop_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `body_shops`' AFTER `service_center_id`;

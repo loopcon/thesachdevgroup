@@ -514,7 +514,7 @@ class ServiceCenterController extends Controller
             {
                 $id = decrypt($id);
                 $request->validate([
-                    'first_name' => 'requird',
+                    'first_name' => 'required',
                     'email' => 'required',
                     'phone' => 'required|numeric',
                 ]);

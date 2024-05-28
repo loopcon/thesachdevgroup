@@ -6,7 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Career;
 use App\Models\CareerForm;
+use App\Models\ModulePermission;
+use App\Models\User;
+use App\Exports\ExportCareerForm;
 use DataTables;
+use Excel;
+use Constant;
+use Auth;
 
 class CareerController extends Controller
 {
@@ -167,15 +173,75 @@ class CareerController extends Controller
 
     public function careerFormDataTable(Request $request)
     {
+        $user_role_id = User::select('role_id','business_id','showroom_id','service_center_id','body_shop_id')->where('role_id',Auth::user()->role_id)->first();
+
+        if($user_role_id->role_id == constant::HR)
+        {
+            if($request->ajax()){
+                $query = CareerForm::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail')->where('business_id',$user_role_id->business_id)->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
+
+                $list = $query->get();
+                return DataTables::of($list)
+                ->addColumn('business_id', function($list){
+                    $business_id = isset($list->businessDetail->title) && $list->businessDetail->title ? $list->businessDetail->title : NULL;
+                    return $business_id;
+                })
+                ->addColumn('showroom_id', function($list){
+                    $showroom_id = isset($list->showroomDetail->name) && $list->showroomDetail->name ? $list->showroomDetail->name : NULL;
+                    return $showroom_id;
+                })
+                ->addColumn('service_center_id', function($list){
+                    $service_center_id = isset($list->serviceCenterDetail->name) && $list->serviceCenterDetail->name ? $list->serviceCenterDetail->name : NULL;
+                    return $service_center_id;
+                })
+                ->addColumn('body_shop_id', function($list){
+                    $body_shop_id = isset($list->bodyShopDetail->name) && $list->bodyShopDetail->name ? $list->bodyShopDetail->name : NULL;
+                    return $body_shop_id;
+                })
+                ->addColumn('action', function ($list) {
+                    $html = "";
+                    $id = encrypt($list->id);
+                    $has_permission = hasPermission('Career Form');
+                    if(isset($has_permission) && $has_permission)
+                    {
+                        if($has_permission->full_permission == 1)
+                        {
+                        $html .= "<span class='text-nowrap'>";
+                        $html .= "<a href='".route('career-form-edit',array($id))."' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                        $html .= "<a href='javascript:void(0);' data-href='".route('career-form-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                        $html .= "</span>";
+                        }
+                    }
+                    return $html;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+            } else {
+                return redirect()->back()->with('message','something went wrong');
+            }
+        }
+
         if($request->ajax()){
-            $query = CareerForm::select('id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
+            $query = CareerForm::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail')->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
-                // ->addColumn('resume', function($list){
-                //     $imageSrc = $list->resume ? asset('uploads/career/resume/'.$list->resume) : '';
-                //     return '<img src="' . $imageSrc . '" alt="" width="100">';
-                // })
+                ->addColumn('business_id', function($list){
+                    $business_id = isset($list->businessDetail->title) && $list->businessDetail->title ? $list->businessDetail->title : NULL;
+                    return $business_id;
+                })
+                ->addColumn('showroom_id', function($list){
+                    $showroom_id = isset($list->showroomDetail->name) && $list->showroomDetail->name ? $list->showroomDetail->name : NULL;
+                    return $showroom_id;
+                })
+                ->addColumn('service_center_id', function($list){
+                    $service_center_id = isset($list->serviceCenterDetail->name) && $list->serviceCenterDetail->name ? $list->serviceCenterDetail->name : NULL;
+                    return $service_center_id;
+                })
+                ->addColumn('body_shop_id', function($list){
+                    $body_shop_id = isset($list->bodyShopDetail->name) && $list->bodyShopDetail->name ? $list->bodyShopDetail->name : NULL;
+                    return $body_shop_id;
+                })
                 ->addColumn('action', function ($list) {
                     $html = "";
                     $id = encrypt($list->id);
@@ -284,5 +350,10 @@ class CareerController extends Controller
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new ExportCareerForm, 'careerFrom.xlsx');
     }
 }

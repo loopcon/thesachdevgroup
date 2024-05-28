@@ -1083,6 +1083,11 @@
                                         @endif
                                     </span>
                                 </div>
+                                <textarea name="business_id" style="display:none;" class="business">{{$record->business_id}}</textarea>
+                                <textarea name="showroom_id" style="display:none;" class="showroom">{{$record->showroom_id}}</textarea>
+                                <textarea name="service_center_id" style="display:none;" class="service_center">{{$record->service_center_id}}</textarea>
+                                <textarea name="body_shop_id" style="display:none;" class="body_shop">{{$record->body_shop_id}}</textarea>
+
                                 <div class="explain-subtitle experience" style="display:none;">{{$record->experience}}</div>
                                 <div class="explain-subtitle work-level" style="display:none;">{{$record->work_level}}</div>
                                 <div class="explain-subtitle employee-type" style="display:none;">{{$record->employee_type}}</div>
@@ -1119,8 +1124,7 @@
                                         <img src="{{url('public/uploads/vacancy_icon/'.$vacancy->icon)}}" width="46px" style="background-color:{{$vacancy->icon_background_color}};;margin-right:10px;">
 
                                         <div class="overview-detail">
-                                            <div class="job-card-title">{{$vacancy->name}}</div>
-
+                                            <div class="job-card-title">{{$vacancy->name}}</div>                                            
                                             <div class="company-name" style="display:none;">{{isset($vacancy->businessDetail->title) && $vacancy->businessDetail->title ? $vacancy->businessDetail->title : ''}}
                                                 <span class="comp-location"> 
                                                     @if($vacancy->showroom_id)
@@ -1150,6 +1154,11 @@
                                                 @endif
                                             </div>
                                         </div>
+                                        <textarea name="business_id" style="display:none;" class="business">{{$vacancy->business_id}}</textarea>
+                                        <textarea name="showroom_id" style="display:none;" class="showroom">{{$vacancy->showroom_id}}</textarea>
+                                        <textarea name="service_center_id" style="display:none;" class="service_center">{{$vacancy->service_center_id}}</textarea>
+                                        <textarea name="body_shop_id" style="display:none;" class="body_shop">{{$vacancy->body_shop_id}}</textarea>
+
                                         <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
                                             <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" />
                                         </svg>
@@ -1214,6 +1223,11 @@
                                     <div class="form-carrer-page">
                                         <form action="" method="POST" id="career_form" enctype="multipart/form-data" data-parsley-validate="">
                                         @csrf
+                                            <textarea name="business_id" style="display:none;" class="business" id="business_id"></textarea>
+                                            <textarea name="showroom_id" style="display:none;" class="showroom" id="showroom_id"></textarea>
+                                            <textarea name="service_center_id" style="display:none;" class="service_center" id="service_center_id"></textarea>
+                                            <textarea name="body_shop_id" style="display:none;" class="body_shop" id="body_shop_id"></textarea>
+
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="first_name">First Name</label>
@@ -1278,6 +1292,10 @@
             var email = $("#email").val();
             var contact_no = $("#contact_no").val();
             var post_apply_for = $("#post_apply_for").val();
+            var business_id = $("#business_id").val();
+            var showroom_id = $("#showroom_id").val();
+            var service_center_id = $("#service_center_id").val();
+            var body_shop_id = $("#body_shop_id").val();
             var resume = $('#resume').prop('files')[0];   
 
             formData.append('first_name', first_name);
@@ -1285,6 +1303,10 @@
             formData.append('email', email);
             formData.append('contact_no', contact_no);
             formData.append('post_apply_for', post_apply_for);
+            formData.append('business_id', business_id);
+            formData.append('showroom_id', showroom_id);
+            formData.append('service_center_id', service_center_id);
+            formData.append('body_shop_id', body_shop_id);
             formData.append('resume', resume);
             
             //   validation
@@ -1414,8 +1436,17 @@
     const jobDetailWorkLevel = document.querySelector(".job-explain-content .work-level");
     const jobDetailEmployeeType = document.querySelector(".job-explain-content .employee-type");
     const jobDetailOfferSalary = document.querySelector(".job-explain-content .offer-salary");
+
+    const jobDetailBusiness = document.querySelector(".job-explain-content .business");
+    const jobDetailShowroom = document.querySelector(".job-explain-content .showroom");
+    const jobDetailServiceCenter = document.querySelector(".job-explain-content .service_center");
+    const jobDetailBodyShop = document.querySelector(".job-explain-content .body_shop");
+
+    // const jobDetailCareerFrom = document.querySelector(".job-explain-content .form-carrer-page");
+
     const jobBg = document.querySelector(".job-bg");
     jobCards.forEach((jobCard) => {
+        console.log(jobCard)
         jobCard.addEventListener("click", () => {
             var imageData = @json($image);
             var image_index = localStorage.getItem("image_index");
@@ -1433,12 +1464,24 @@
                 const worklevel = jobCard.querySelector(".work-level");
                 const employeeType = jobCard.querySelector(".employee-type");
                 const offerSalary = jobCard.querySelector(".offer-salary");
+
+                const business = jobCard.querySelector(".business");
+                const showroom = jobCard.querySelector(".showroom");
+                const serviceCenter = jobCard.querySelector(".service_center");
+                const bodyshop = jobCard.querySelector(".body_shop");
+
                 jobDetailTitle.textContent = title.textContent;
                 jobDetailCompany.textContent = company.textContent;
                 jobDetailExperience.textContent = experience.textContent;
                 jobDetailWorkLevel.textContent = worklevel.textContent;
                 jobDetailEmployeeType.textContent = employeeType.textContent;
                 jobDetailOfferSalary.textContent = offerSalary.textContent;
+
+                jobDetailBusiness.textContent = business.textContent;
+                jobDetailShowroom.textContent = showroom.textContent;
+                jobDetailServiceCenter.textContent = serviceCenter.textContent;
+                jobDetailBodyShop.textContent = bodyshop.textContent;
+
                 jobLogos.innerHTML = logo.outerHTML;
                 wrapper.classList.add("detail-page");
                 wrapper.scrollTop = 0;

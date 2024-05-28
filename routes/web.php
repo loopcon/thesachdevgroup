@@ -339,6 +339,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('career-form-update/{id}', [CareerController::class, 'careerFormUpdate'])->name('career-form-update');
     Route::post('career-form-datatable', [CareerController::class, 'careerFormDataTable'])->name('career-form-datatable');
     Route::get('career-form-delete/{id}', [CareerController::class, 'careerFormDestroy'])->name('career-form-delete');
+    Route::get('career-form-export', [CareerController::class, 'export'])->name('career-form-export');
+
 
     //body shop
     Route::get('body_shop', [BodyShopController::class, 'body_shop'])->name('body_shop');

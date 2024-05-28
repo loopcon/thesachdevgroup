@@ -34,6 +34,10 @@ class CareerDetailController extends Controller
       $career_form->email = $request->email;
       $career_form->contact_no = $request->contact_no;
       $career_form->post_apply_for = $request->post_apply_for;
+      $career_form->business_id = $request->business_id;
+      $career_form->showroom_id = $request->showroom_id;
+      $career_form->service_center_id = $request->service_center_id;
+      $career_form->body_shop_id = $request->body_shop_id;
 
       if($request->hasFile('resume')) {
          $resume = fileUpload($request, 'resume', 'uploads/career/resume');
@@ -46,7 +50,6 @@ class CareerDetailController extends Controller
       }else{
          return response()->json(['status'=>0]);
       }
-      
       // return json_encode(array('career_form'=>$career_form,'status'=>1));
 
       // if($career_form)
