@@ -1070,8 +1070,8 @@
                                     <div class="menu-dot"></div>
                                 </div>
                                 <div class="job-card-title">{{$record->name}}</div>
-                                <div class="company-name" style="display:none;">{{isset($record->businessDetail->title) && $record->businessDetail->title ? $record->businessDetail->title : ''}}
-                                    <span class="comp-location"> 
+                                <div class="company-name" style="display:none;">{{isset($record->businessDetail->title) && $record->businessDetail->title ? $record->businessDetail->title : ''}}</div>
+                                    <span class="comp-location" style="display:none;"> 
                                         @if($record->showroom_id)
                                             {{isset($record->showroomDetail->name) && $record->showroomDetail->name ? $record->showroomDetail->name : ''}}
                                         @endif
@@ -1082,7 +1082,6 @@
                                             {{isset($record->bodyShopDetail->name) && $record->bodyShopDetail->name ? $record->bodyShopDetail->name : ''}}
                                         @endif
                                     </span>
-                                </div>
                                 <textarea name="business_id" style="display:none;" class="business">{{$record->business_id}}</textarea>
                                 <textarea name="showroom_id" style="display:none;" class="showroom">{{$record->showroom_id}}</textarea>
                                 <textarea name="service_center_id" style="display:none;" class="service_center">{{$record->service_center_id}}</textarea>
@@ -1125,8 +1124,8 @@
 
                                         <div class="overview-detail">
                                             <div class="job-card-title">{{$vacancy->name}}</div>                                            
-                                            <div class="company-name" style="display:none;">{{isset($vacancy->businessDetail->title) && $vacancy->businessDetail->title ? $vacancy->businessDetail->title : ''}}
-                                                <span class="comp-location"> 
+                                            <div class="company-name" style="display:none;">{{isset($vacancy->businessDetail->title) && $vacancy->businessDetail->title ? $vacancy->businessDetail->title : ''}}</div>
+                                                <span class="comp-location" style="display:none;"> 
                                                     @if($vacancy->showroom_id)
                                                         {{isset($vacancy->showroomDetail->name) && $vacancy->showroomDetail->name ? $vacancy->showroomDetail->name : ''}}
                                                     @endif
@@ -1137,7 +1136,6 @@
                                                         {{isset($vacancy->bodyShopDetail->name) && $vacancy->bodyShopDetail->name ? $vacancy->bodyShopDetail->name : ''}}
                                                     @endif
                                                 </span>
-                                            </div>
                                             <div class="explain-subtitle experience" style="display:none;">{{$vacancy->experience}}</div>
                                             <div class="explain-subtitle work-level" style="display:none;">{{$vacancy->work_level}}</div>
                                             <div class="explain-subtitle employee-type" style="display:none;">{{$vacancy->employee_type}}</div>
@@ -1189,7 +1187,7 @@
                                 </div>
                             </div>
                             <div class="job-subtitle-wrapper">
-                                <div class="company-name">Galaxy Toyota<span class="comp-location">Moti Nagar, ND.</span></div>
+                                <div class="company-name">Galaxy Toyota</div><span class="comp-location">Moti Nagar, ND.</span>
                                 <div class="posted">Posted 8 days ago<span class="app-number">98 Application</span></div>
                             </div>
                             <div class="explain-bar">
@@ -1436,7 +1434,9 @@
     const logo = document.querySelector(".logo");
     const jobLogos = document.querySelector(".job-logos");
     const jobDetailTitle = document.querySelector(".job-explain-content .job-card-title");
-    const jobDetailCompany = document.querySelector(".job-explain-content .job-subtitle-wrapper .company-name .comp-location");
+    const jobDetailCompany = document.querySelector(".job-explain-content .job-subtitle-wrapper .company-name");
+
+    const Location = document.querySelector(".job-explain-content .job-subtitle-wrapper .comp-location");
     const jobDetailExperience = document.querySelector(".job-explain-content .experience");
     const jobDetailWorkLevel = document.querySelector(".job-explain-content .work-level");
     const jobDetailEmployeeType = document.querySelector(".job-explain-content .employee-type");
@@ -1464,7 +1464,8 @@
                 const bg = logo.style.backgroundColor;
 
                 const title = jobCard.querySelector(".job-card-title");
-                const company = jobCard.querySelector(".company-name .comp-location");
+                const company = jobCard.querySelector(".company-name");
+                const location = jobCard.querySelector(" .comp-location");
                 const experience = jobCard.querySelector(".experience");
                 const worklevel = jobCard.querySelector(".work-level");
                 const employeeType = jobCard.querySelector(".employee-type");
@@ -1477,6 +1478,7 @@
 
                 jobDetailTitle.textContent = title.textContent;
                 jobDetailCompany.textContent = company.textContent;
+                Location.textContent = location.textContent;
                 jobDetailExperience.textContent = experience.textContent;
                 jobDetailWorkLevel.textContent = worklevel.textContent;
                 jobDetailEmployeeType.textContent = employeeType.textContent;
