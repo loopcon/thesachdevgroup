@@ -26,7 +26,7 @@
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="first_name">First Name</label>
+                                <label for="first_name">First Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="first_name" value="{{isset($record->first_name) ? $record->first_name : old('first_name')}}" id="first_name" required>
                                 <span class="text-danger" id="first-name-error"></span>
                                 @if ($errors->has('first_name')) <div class="text-danger">{{ $errors->first('first_name') }}</div>@endif
@@ -40,13 +40,13 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="email">Email Address</label>
+                                <label for="email">Email Address<span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" name="email" value="{{isset($record->email) ? $record->email : old('email')}}" id="email" required>
                                 <span class="text-danger" id="email-error"></span>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="contact_no">Contact No.</label>
+                                <label for="contact_no">Contact No.<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control num_only" name="contact_no" value="{{isset($record->contact_no) ? $record->contact_no : old('contact_no')}}" id="contact_no" maxlength="10" required>
                                 <span class="text-danger" id="contact-error"></span>
                             </div>

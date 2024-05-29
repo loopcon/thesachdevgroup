@@ -29,6 +29,7 @@ class CareerDetailController extends Controller
             'contact_no' => 'required|numeric',
             'email' => 'required|email',
          ]);
+
          $career_form = new CareerForm();
          $career_form->first_name = $request->first_name;
          $career_form->last_name = $request->last_name;
@@ -49,7 +50,7 @@ class CareerDetailController extends Controller
          {
             return response()->json(['status'=>1]);
          }else{
-            return response()->json(['status'=>0,'message'=>'errors']);
+            return response()->json(['status'=>0]);
          }
          // return json_encode(array('career_form'=>$career_form,'status'=>1));
       } else {

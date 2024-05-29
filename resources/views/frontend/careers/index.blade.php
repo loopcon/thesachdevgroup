@@ -10,7 +10,7 @@
         .navigation .navbar .dropdown-item::before {position: absolute; content: ''; left: 0px !important;}
         th {background-color:#4D525B; color:#fff !important; border: 0 !important;}
         table{width: 100%;}
-        /* .btn-primary {background-color: #ec3237; border-color: #ec3237; color: #fff;} */
+        .btn-primary {background-color: #007bff; border-color: #007bff; color: #fff;}
     
         .carrer-offer h2{
             color:black;
@@ -1228,7 +1228,7 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="first_name">First Name</label>
+                                                    <label for="first_name">First Name<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="first_name" id="first_name" required>
                                                     <span class="text-danger" id="first-name-error"></span>
                                                     @if ($errors->has('first_name')) <div class="text-danger">{{ $errors->first('first_name') }}</div>@endif
@@ -1241,13 +1241,13 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="email">Email Address</label>
+                                                    <label for="email">Email Address<span class="text-danger">*</span></label>
                                                     <input type="email" class="form-control" name="email" id="email" required>
                                                     @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
                                                     <span class="text-danger" id="email-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="contact_no">Contact No.</label>
+                                                    <label for="contact_no">Contact No.<span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control num_only" name="contact_no" id="contact_no" maxlength="10" required>
                                                     <span class="text-danger" id="contact-error"></span>
                                                 </div>
@@ -1261,6 +1261,8 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="resume">Upload your Resume</label>
                                                     <input type="file" class="form-control" name="resume" accept="file/pdf, file/docx" id="resume">
+                                                    <small class="image_type">(File Type : pdf,docx,jpg,jpeg,png,webp)</small><br>
+                                                    <span class="text-danger" id="resume-error"></span>
                                                 </div>
                                             </div>
                                             <button type="submit" id="submit" class="btn btn-primary">Sign in</button>
@@ -1338,6 +1340,26 @@
                 $("#contact-error").text('');
             }
 
+
+            // Image validation
+            if (resume) {
+                var validFileTypes = [
+                    'image/jpeg', 'image/png',
+                    'application/pdf', 'application/msword', 
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                ];
+                var validExtensions = ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx'];
+                var fileType = resume.type;
+                var fileExtension = resume.name.split('.').pop().toLowerCase();
+
+                if ($.inArray(fileType, validFileTypes) < 0 && $.inArray(fileExtension, validExtensions) < 0) {
+                    $("#resume-error").text('Only jpg, jpeg, png, pdf, doc, and docx files are allowed.');
+                    isValid = false;
+                } else {
+                    $("#resume-error").text('');
+                }
+            }
+
             if(isValid) {
                 $.ajax({
                     url:"{{ route('job-apply') }}",
@@ -1346,6 +1368,7 @@
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     contentType: false,
                     processData: false,
+                    dataType:'json',
                     success: function(data)
                     {
                         if(data.status == 1){
