@@ -8,6 +8,7 @@ use App\Models\Career;
 use App\Models\CareerForm;
 use App\Models\ModulePermission;
 use App\Models\User;
+use App\Models\OurBusiness;
 use App\Exports\ExportCareerForm;
 use DataTables;
 use Excel;
@@ -173,12 +174,11 @@ class CareerController extends Controller
 
     public function careerFormDataTable(Request $request)
     {
-        $user_role_id = User::select('role_id','business_id','showroom_id','service_center_id','body_shop_id')->where('role_id',Auth::user()->role_id)->first();
-
+        $user_role_id = User::select('id','role_id','business_id','showroom_id','service_center_id','body_shop_id')->where([['id',Auth::user()->id],['role_id',Auth::user()->role_id]])->first();
         if($user_role_id->role_id == constant::HR)
         {
             if($request->ajax()){
-                $query = CareerForm::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail')->where('business_id',$user_role_id->business_id)->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
+                $query = CareerForm::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail')->where([['business_id',$user_role_id->business_id]])->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
 
                 $list = $query->get();
                 return DataTables::of($list)
