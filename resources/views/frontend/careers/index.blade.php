@@ -1245,6 +1245,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="email">Email Address</label>
                                                     <input type="email" class="form-control" name="email" id="email" required>
+                                                    @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
                                                     <span class="text-danger" id="email-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -1261,7 +1262,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="resume">Upload your Resume</label>
-                                                    <input type="file" class="form-control" name="resume" id="resume">
+                                                    <input type="file" class="form-control" name="resume" accept="file/pdf, file/docx" id="resume">
                                                 </div>
                                             </div>
                                             <button type="submit" id="submit" class="btn btn-primary">Sign in</button>
@@ -1325,6 +1326,11 @@
             }else{
                 $("#email-error").text('');
             }
+            if(!valid(email))//call a function which validates email and returns true or false
+            {
+                $("#email-error").text('Enter a valid email.');
+                isValid = false;
+            }
 
             if(contact_no == '')
             {
@@ -1353,7 +1359,6 @@
                     }
                 });
             }
-
         });
         // $("#submit").click(function(e){
         //     e.preventDefault();
@@ -1494,5 +1499,12 @@
             }
         });
     });
+
+    // email validation
+    function valid(email)
+    {
+        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        return emailReg.test(email);
+    }
 </script>
 @endsection

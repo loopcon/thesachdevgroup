@@ -23,40 +23,37 @@ class CareerDetailController extends Controller
 
    public function jobApply(Request $request)
    {
-      // $request->validate([
-      //    'first_name' => 'required',
-      //    'contact_no' => 'required|numeric',
-      //    'email' => 'required',
-      // ]);
-      $career_form = new CareerForm();
-      $career_form->first_name = $request->first_name;
-      $career_form->last_name = $request->last_name;
-      $career_form->email = $request->email;
-      $career_form->contact_no = $request->contact_no;
-      $career_form->post_apply_for = $request->post_apply_for;
-      $career_form->business_id = $request->business_id;
-      $career_form->showroom_id = $request->showroom_id;
-      $career_form->service_center_id = $request->service_center_id;
-      $career_form->body_shop_id = $request->body_shop_id;
+      if($request->ajax()) {
+         $request->validate([
+            'first_name' => 'required',
+            'contact_no' => 'required|numeric',
+            'email' => 'required|email',
+         ]);
+         $career_form = new CareerForm();
+         $career_form->first_name = $request->first_name;
+         $career_form->last_name = $request->last_name;
+         $career_form->email = $request->email;
+         $career_form->contact_no = $request->contact_no;
+         $career_form->post_apply_for = $request->post_apply_for;
+         $career_form->business_id = $request->business_id;
+         $career_form->showroom_id = $request->showroom_id;
+         $career_form->service_center_id = $request->service_center_id;
+         $career_form->body_shop_id = $request->body_shop_id;
 
-      if($request->hasFile('resume')) {
-         $resume = fileUpload($request, 'resume', 'uploads/career/resume');
-         $career_form->resume = $resume;
-     }
-      $career_form->save();
-      if($career_form)
-      {
-         return response()->json(['status'=>1]);
-      }else{
-         return response()->json(['status'=>0]);
+         if($request->hasFile('resume')) {
+            $resume = fileUpload($request, 'resume', 'uploads/career/resume');
+            $career_form->resume = $resume;
+         }
+         $career_form->save();
+         if($career_form)
+         {
+            return response()->json(['status'=>1]);
+         }else{
+            return response()->json(['status'=>0,'message'=>'errors']);
+         }
+         // return json_encode(array('career_form'=>$career_form,'status'=>1));
+      } else {
+         return redirect('dashboard');
       }
-      // return json_encode(array('career_form'=>$career_form,'status'=>1));
-
-      // if($career_form)
-      // {
-      //    return redirect()->back()->with('message','Your application send successfully!');
-      // }else{
-      //    return redirect()->back()->with('message','Your application not send, please try again!');
-      // }
    }
 }
