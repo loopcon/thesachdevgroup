@@ -68,6 +68,7 @@
                             </div>
                         </div>
                         <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                        <a href="{{ route('career-form') }}" class="btn btn-danger">Cancel</a>
                     </form>  
                 </div>
             </div>

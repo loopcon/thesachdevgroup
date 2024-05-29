@@ -69,6 +69,19 @@ use  App\Http\Controllers\Frontend\CompanyCsrDetailController;
 //     return redirect()->route('admin');
 // });
 
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    // return what you want
+ });
+ Route::get('/clear-optimize', function() {
+    $exitCode = Artisan::call('optimize:clear');
+    // return what you want
+ });
+ Route::get('/clear-view', function() {
+    $exitCode = Artisan::call('view:clear');
+    // return what you want
+ });
+
 //login
 Route::get('admin', [LoginController::class, 'login'])->name('admin');
 Route::post('customlogin', [LoginController::class, 'customLogin'])->name('login.custom'); 
