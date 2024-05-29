@@ -56,8 +56,10 @@
         @foreach($awards as $award)
             <div class="columnn {{$award->business_id}}">
                 <div class="content">
-                <img src="{{url('public/uploads/award/'.$award->image)}}" alt="" style="width:100%">
-                <h4>{{isset($award->businessdDetail->title) && $award->businessdDetail->title ? $award->businessdDetail->title : ''}}</h4>
+                @if(isset($award->image) && $award->image)
+                  <img src="{{url('public/uploads/award/'.$award->image)}}" alt="" style="width:100%">
+                  <h4>{{isset($award->businessdDetail->title) && $award->businessdDetail->title ? $award->businessdDetail->title : ''}}</h4>
+                @endif
                 <p></p>
                 </div>
             </div>

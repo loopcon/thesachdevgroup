@@ -254,7 +254,7 @@ class CareerController extends Controller
                         $html .= "<span class='text-nowrap'>";
                         $html .= "<a href='".route('career-form-edit',array($id))."' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
                         $html .= "<a href='javascript:void(0);' data-href='".route('career-form-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
-                        $html .= "<a href='".url('public/uploads/career/resume/'.$list->resume)."' rel='tooltip' title='".trans('Pdf')."' class='btn btn-secondary btn-sm download'><i class='fa fa-file-pdf'>&nbsp;</i></a>&nbsp";
+                        $html .= "<a href='".url('public/uploads/career/resume/'.$list->resume)."' rel='tooltip' title='".trans('Pdf')."' class='btn btn-secondary btn-sm' download><i class='fa fa-file-pdf'>&nbsp;</i></a>&nbsp";
                         $html .= "</span>";
                         }
                     }
@@ -298,7 +298,7 @@ class CareerController extends Controller
                     'first_name' => 'required',
                     'email' => 'required',
                     'contact_no' => 'required|numeric',
-                    'resume' => 'mimes:pdf,docx',
+                    'resume' => 'mimes:pdf,docx,jpg,png,jpeg,webp',
                 ]);
 
                 $career_form = CareerForm::find($id);

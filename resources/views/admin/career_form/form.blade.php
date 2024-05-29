@@ -64,6 +64,7 @@
                                 <i class="fas fa-file-alt" style="font-size:36px;"></i>
                                 @endif  
                                 <input type="file" class="form-control" name="resume" accept="file/pdf, file/docx" id="resume">
+                                <small class="image_type">(File Type : pdf,docx,jpg,jpeg,png,webp)</small>
                                 @if ($errors->has('resume')) <div class="text-danger">{{ $errors->first('resume') }}</div>@endif
                             </div>
                         </div>
