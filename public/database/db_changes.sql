@@ -744,3 +744,6 @@ ALTER TABLE `quick_contact_us` CHANGE `brand_id` `business_id` INT(11) NULL DEFA
 
 -- Disha : 28-05-2024 02:55 PM
 ALTER TABLE `career_form` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `our_business`' AFTER `id`, ADD `showroom_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `showrooms`' AFTER `business_id`, ADD `service_center_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `service_center`' AFTER `showroom_id`, ADD `body_shop_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `body_shops`' AFTER `service_center_id`;
+
+-- Disha : 29-05-2024 6:00 PM
+ALTER TABLE `module_permission` CHANGE `id` `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT;

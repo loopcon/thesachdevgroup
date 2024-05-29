@@ -24,8 +24,8 @@ class AfterSalesServicedDetailController extends Controller
     {
         $request->validate([
             'first_name' => 'required',
-            'phone' => 'required|numeric',
-            'email' => 'required',
+            'phone' => 'required|numeric|max:10',
+            'email' => 'required|email',
         ]);
 
         $book_service = new BookCarService();

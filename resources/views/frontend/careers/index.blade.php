@@ -1288,7 +1288,7 @@
             e.preventDefault();
             var formData = new FormData();
             var isValid = true;
-            first_name = $("#first_name").val(); 
+            var first_name = $("#first_name").val(); 
             var last_name = $("#last_name").val();
             var email = $("#email").val();
             var contact_no = $("#contact_no").val();
@@ -1340,7 +1340,6 @@
                 $("#contact-error").text('');
             }
 
-
             // Image validation
             if (resume) {
                 var validFileTypes = [
@@ -1381,59 +1380,6 @@
                 });
             }
         });
-        // $("#submit").click(function(e){
-        //     e.preventDefault();
-        //     var isValid = true;
-        //     var first_name = $("#first_name").val(); 
-        //     last_name = $("#last_name").val();
-        //     email = $("#email").val();
-        //     contact_no = $("#contact_no").val();
-        //     post_apply_for = $("#post_apply_for").val();
-
-        //     var formData = new FormData();
-        //     var resume = $('#resume').prop('files')[0];  
-        //     formData.append('resume', resume); 
-
-        //     // validation
-        //     if(first_name == '')
-        //     {
-        //         $("#first-name-error").text('First name is required.');
-        //         isValid = false;
-        //     }else{
-        //          $("#first-name-error").text('First name is required.');
-        //     }
-
-        //     if(email == '')
-        //     {
-        //         $("#email-error").text('Email is required.');
-        //         isValid = false;
-        //     }
-
-        //     if(contact_no == '')
-        //     {
-        //         $("#contact-error").text('Contact No is required.');
-        //         isValid = false;
-        //     }
-
-        //     if(isValid) {
-        //         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        //         $.ajax({
-        //             type:"POST",
-        //             dataType: "json",
-        //             data:{_token: CSRF_TOKEN,"first_name":first_name,"last_name":last_name,"email":email,"contact_no":contact_no,"post_apply_for":post_apply_for,"resume":resume},
-        //             url:"{{ route('job-apply') }}",
-        //             processData: false,
-        //             success:function(data){
-        //                 if(data.status == 1){
-        //                     toastr.success('Application send successfully!');
-        //                     document.getElementById('career_form').reset();
-        //                 }else{
-        //                     toastr.success('Somthing went wrong!please try again');
-        //                 }
-        //             }
-        //         });
-        //     }
-        // });
     });
 
     const wrapper = document.querySelector(".wrapper");
@@ -1458,23 +1404,18 @@
     const jobLogos = document.querySelector(".job-logos");
     const jobDetailTitle = document.querySelector(".job-explain-content .job-card-title");
     const jobDetailCompany = document.querySelector(".job-explain-content .job-subtitle-wrapper .company-name");
-
     const Location = document.querySelector(".job-explain-content .job-subtitle-wrapper .comp-location");
     const jobDetailExperience = document.querySelector(".job-explain-content .experience");
     const jobDetailWorkLevel = document.querySelector(".job-explain-content .work-level");
     const jobDetailEmployeeType = document.querySelector(".job-explain-content .employee-type");
     const jobDetailOfferSalary = document.querySelector(".job-explain-content .offer-salary");
-
     const jobDetailBusiness = document.querySelector(".job-explain-content .business");
     const jobDetailShowroom = document.querySelector(".job-explain-content .showroom");
     const jobDetailServiceCenter = document.querySelector(".job-explain-content .service_center");
     const jobDetailBodyShop = document.querySelector(".job-explain-content .body_shop");
 
-    // const jobDetailCareerFrom = document.querySelector(".job-explain-content .form-carrer-page");
-
     const jobBg = document.querySelector(".job-bg");
     jobCards.forEach((jobCard) => {
-        console.log(jobCard)
         jobCard.addEventListener("click", () => {
             var imageData = @json($image);
             var image_index = localStorage.getItem("image_index");
@@ -1506,7 +1447,6 @@
                 jobDetailWorkLevel.textContent = worklevel.textContent;
                 jobDetailEmployeeType.textContent = employeeType.textContent;
                 jobDetailOfferSalary.textContent = offerSalary.textContent;
-
                 jobDetailBusiness.textContent = business.textContent;
                 jobDetailShowroom.textContent = showroom.textContent;
                 jobDetailServiceCenter.textContent = serviceCenter.textContent;

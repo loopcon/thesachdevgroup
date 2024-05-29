@@ -25,7 +25,7 @@ class CarInsuranceDetailController extends Controller
         $request->validate([
             'first_name' => 'required',
             'phone' => 'required|numeric',
-            'email' => 'required',
+            'email' => 'required|email',
         ]);
 
         $book_insurance = new BookInsurance();
