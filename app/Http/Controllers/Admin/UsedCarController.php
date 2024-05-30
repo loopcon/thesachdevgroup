@@ -59,6 +59,13 @@ class UsedCarController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+                $request->validate([
+                    'business_id' => 'required',
+                    'name' => 'required',
+                    'rating' => 'required',
+                    'number_of_rating' => 'required',
+                    'image' => 'required|image|mimes:jpeg,png,jpg,webp',
+                ]);
   
                 $used_car = new Used_car();
 
@@ -166,6 +173,13 @@ class UsedCarController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+                $request->validate([
+                    'business_id' => 'required',
+                    'name' => 'required',
+                    'rating' => 'required',
+                    'number_of_rating' => 'required',
+                    'image' => 'image|mimes:jpeg,png,jpg,webp',
+                ]);
                 $used_car = Used_car::find(decrypt($id));
 
                 if($request->hasFile('image'))

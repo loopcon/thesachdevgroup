@@ -21,7 +21,6 @@
                     <form action="@if(isset($record->id)) {{ route('used_car_update', array('id' => encrypt($record->id))) }} @else{{ route('used_car_insert') }} @endif" method="POST" class="used_car_form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-
                             <div class="mb-3 col-md-4">
                                 <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="business_id" id="business_id">
@@ -32,17 +31,17 @@
                                         @endforeach
                                     @endif
                                 </select>
+                                @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
                             <div class="mb-3 col-md-4">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
-                                
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->image) ? $record->image : old('old_image')}}">
-                                
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/used_car_image/'.$record->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image">
+                                @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <div class="error"></div>
                                 <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
@@ -50,6 +49,7 @@
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+                                @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
@@ -86,19 +86,21 @@
                                 <div class="error"></div>
                             </div>
 
-                            
                             <div class="mb-3 col-md-4">
                                 <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="rating" id="rating" value="{{isset($record->rating) ? $record->rating : old('rating')}}">
+                                @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}">
+                                @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                                 <div class="error"></div>
                             </div>
                         </div> 
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
                             <a href="{{ route('used_car') }}" class="btn btn-danger">Cancel</a>
@@ -165,6 +167,7 @@
             }
         });
 
+        // image validation
         function checkImage() {
             var old_image = $('#old_image').val();
             var image = $('#image').val();
