@@ -25,12 +25,14 @@
                                         <option value="{{$our_busines->id}}">{{$our_busines->title}}</option>
                                     @endforeach
                                 </select>
+                                @if ($errors->has('our_business_id')) <div class="text-danger">{{ $errors->first('our_business_id') }}</div>@endif
                                 <div id="errorbusinessdiv"></div>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Showroom Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name">
+                                @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div id="error"></div>
                             </div>
 
@@ -109,6 +111,7 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                @if ($errors->has('brand_id')) <div class="text-danger">{{ $errors->first('brand_id') }}</div>@endif
                                 <div id="errordiv"></div>
                             </div>
 
@@ -117,6 +120,7 @@
                                 <select name="car_id[]" id="car_id" class="form-control select2" multiple>
                                     <option disabled>Select</option>
                                 </select>
+                                @if ($errors->has('car_id')) <div class="text-danger">{{ $errors->first('car_id') }}</div>@endif
                                 <div id="errorcardiv"></div>
                             </div>
 
@@ -154,6 +158,7 @@
                             <div class="mb-3 col-md-4">
                                 <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="address"></textarea>
+                                @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
@@ -294,6 +299,7 @@
                             <div class="col-md-4">
                                 <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
                                 <input type="number" id="contact_number" class="form-control" name="contact_number">
+                                @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
@@ -363,6 +369,7 @@
                             <div class="mb-3 col-md-4">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="email" id="email" class="form-control" name="email">
+                                @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
                                 <div class="error"></div>
                             </div>
                                 
@@ -402,12 +409,14 @@
                             <div class="col-md-4 mt-2">
                                 <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="rating" id="rating">
+                                @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
                                 <div id="error"></div>
                             </div>
 
                             <div class="col-md-4 mt-2">
                                 <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating">
+                                @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                                 <div id="error"></div>
                             </div>
 
