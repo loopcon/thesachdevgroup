@@ -57,7 +57,9 @@ class MissionVisionController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
-  
+                $request->validate([
+                    'icon_name' => 'required',
+                ]);
                 $mission_vision = new Mission_vision();
 
                 if($file = $request->hasFile('icon')) {
@@ -173,7 +175,9 @@ class MissionVisionController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
-
+                $request->validate([
+                    'icon_name' => 'required',
+                ]);
                 $mission_vision = Mission_vision::find(decrypt($id));
 
                 if($request->hasFile('icon'))

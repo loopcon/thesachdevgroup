@@ -36,6 +36,10 @@ class OurLocationController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+                $request->validate([
+                    'title' => 'required',
+                    'image'  => 'required',
+                ]);
                 $existing_data = Our_location::find(1);
 
                 if($existing_data) {
@@ -57,7 +61,10 @@ class OurLocationController extends Controller
 
                 } else {
                     $our_location = new Our_location();
-
+                    $request->validate([
+                        'title' => 'required',
+                        'image'  => 'required',
+                    ]);
                     $our_location->slug = slugify($request->title);
                 }
             
