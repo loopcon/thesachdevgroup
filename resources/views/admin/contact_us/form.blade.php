@@ -16,24 +16,22 @@
                 <div class="card-body">
                     <form action="{{ route('contact_us_insert') }}" method="POST" class="contact_us_form" enctype="multipart/form-data">
                         @csrf
-                        
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
-                               
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->image) ? $record->image : old('old_image')}}">
-                                
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/contact_us/'.$record->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
-
                                 <input type="file" id="image" class="form-control image" name="image">
+                                @if($errors->has('image')) <div class="text-danger">{{ $errors->first('image')}}</div> @endif
                                 <small class="image_type">(Height:478px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="title">Title<span class="text-danger">*</span></label>
                                 <input type="text" id="title" class="form-control" name="title" value="{{isset($record->title) ? $record->title : old('title')}}">
+                                @if($errors->has('title')) <div class="text-danger">{{ $errors->first('title')}}</div> @endif
                             </div>
 
                             <div class="col-md-4">
@@ -163,7 +161,6 @@
                                 <label for="map_link" class="form-label">Map Link</label>
                                 <input type="text" class="form-control" name="map_link" id="map_link" value="{{isset($record->map_link) ? $record->map_link : old('map_link')}}">
                             </div>
-
                         </div>
 
                         <div class="box-footer">
@@ -204,6 +201,7 @@
             }
         });
 
+        // image validation
         function checkImage() {
             var old_image = $('#old_image').val();
             var image = $('#image').val();

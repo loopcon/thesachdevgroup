@@ -172,8 +172,8 @@
                                     @endforeach
                                 </select>
                             </div>
-
                         </div>
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Update</button>
                         </div>

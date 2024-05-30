@@ -21,7 +21,6 @@
                     <form action="@if(isset($record->id)) {{ route('body_shop_update', array('id' => encrypt($record->id))) }} @else{{ route('body_shop_insert') }} @endif" method="POST" class="body_shop_form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-
                             <div class="mb-3 col-md-4">
                                 <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="business_id" id="business_id">
@@ -32,6 +31,7 @@
                                         @endforeach
                                     @endif
                                 </select>
+                                @if($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id')}}</div> @endif
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -43,6 +43,7 @@
                                     <img src="{{url('public/body_shop_image/'.$record->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image">
+                                @if($errors->has('image')) <div class="text-danger">{{ $errors->first('image')}}</div> @endif
                                 <div class="error"></div>
                                 <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
@@ -50,6 +51,7 @@
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+                                @if($errors->has('name')) <div class="text-danger">{{ $errors->first('name')}}</div> @endif
                                 <div class="error"></div>
                             </div>
 
@@ -89,6 +91,7 @@
                             <div class="mb-3 col-md-4">
                                 <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="rating" id="rating" value="{{isset($record->rating) ? $record->rating : old('rating')}}">
+                                @if($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating')}}</div> @endif
                                 <div class="error"></div>
                             </div>
 
@@ -101,6 +104,7 @@
                             <div class="col-md-4">
                                 <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="address" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
+                                @if($errors->has('address')) <div class="text-danger">{{ $errors->first('address')}}</div> @endif
                                 <div class="error"></div>
                             </div>
 
@@ -134,6 +138,7 @@
                             <div class="col-md-4">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="email" value="{{isset($record->email) ? $record->email : old('email')}}" id="email">
+                                @if($errors->has('email')) <div class="text-danger">{{ $errors->first('email')}}</div> @endif
                                 <div class="error"></div>
                             </div>
 
@@ -277,8 +282,7 @@
             return true;
         }
 
-    $('.colorpicker').colorpicker();
-
+        $('.colorpicker').colorpicker();
     });
 </script>
 @endsection

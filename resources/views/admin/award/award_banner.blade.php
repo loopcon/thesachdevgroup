@@ -68,6 +68,7 @@
                                 <small class="image_type">(Hight:478px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
                         </div>
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Update</button>
                             <a href="{{ route('awards') }}" class="btn btn-danger">Cancel</a>

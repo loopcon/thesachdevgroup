@@ -42,12 +42,14 @@
                             <div class="form-group col-md-6">
                                 <label for="email">Email Address<span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" name="email" value="{{isset($record->email) ? $record->email : old('email')}}" id="email" required>
+                                @if($errors->has('address')) <div class="text-danger">{{ $errors->first('address')}}</div> @endif
                                 <span class="text-danger" id="email-error"></span>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="contact_no">Contact No.<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control num_only" name="contact_no" value="{{isset($record->contact_no) ? $record->contact_no : old('contact_no')}}" id="contact_no" maxlength="10" required>
+                                @if($errors->has('contact_no')) <div class="text-danger">{{ $errors->first('contact_no')}}</div> @endif
                                 <span class="text-danger" id="contact-error"></span>
                             </div>
                         </div>
@@ -68,6 +70,7 @@
                                 @if ($errors->has('resume')) <div class="text-danger">{{ $errors->first('resume') }}</div>@endif
                             </div>
                         </div>
+
                         <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                         <a href="{{ route('career-form') }}" class="btn btn-danger">Cancel</a>
                     </form>  
