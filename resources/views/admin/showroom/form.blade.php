@@ -230,6 +230,7 @@
                             <div class="col-md-4">
                                 <label for="working_hours" class="form-label">Working Hours<span class="text-danger">*</span></label>
                                 <input type="text" id="working_hours" class="form-control" name="working_hours">
+                                @if ($errors->has('working_hours')) <div class="text-danger">{{ $errors->first('working_hours') }}</div>@endif
                                 <div id="error"></div>
                             </div>
 
@@ -261,6 +262,7 @@
                             <div class="mb-3 col-md-4">
                                 <label for="working_hours_icon" class="form-label">Working Hours Icon</label>
                                 <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon">
+                                @if ($errors->has('working_hours_icon')) <div class="text-danger">{{ $errors->first('working_hours_icon') }}</div>@endif
                                 <div id="error"></div>
                                 <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
@@ -331,6 +333,7 @@
                             <div class="mb-3 col-md-4">
                                 <label for="contact_number_icon" class="form-label">Contact Number Icon</label>
                                 <input type="file" id="contact_number_icon" class="form-control" name="contact_number_icon">
+                                @if ($errors->has('contact_number_icon')) <div class="text-danger">{{ $errors->first('contact_number_icon') }}</div>@endif
                                 <div id="error"></div>
                                 <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
@@ -401,6 +404,7 @@
                             <div class="col-md-4">
                                 <label for="email_icon" class="form-label">Email Icon</label>
                                 <input type="file" id="email_icon" class="form-control" name="email_icon">
+                                @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
                                 <div id="error"></div>
                                 <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
@@ -544,6 +548,7 @@
                             <div class="mb-3 col-md-4">
                                 <label for="slider_image" class="form-label">Slider Image</label>
                                 <input type="file" id="slider_image" class="form-control" name="slider_image">
+                                @if ($errors->has('slider_image')) <div class="text-danger">{{ $errors->first('slider_image') }}</div>@endif
                                 <div id="error"></div>
                                 <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>

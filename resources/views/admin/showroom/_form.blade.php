@@ -31,11 +31,13 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('our_business_id')) <div class="text-danger">{{ $errors->first('our_business_id') }}</div>@endif
                                 </div>
 
                                 <div class="col-md-4">
                                     <label for="name" class="form-label">Showroom Name<span class="text-danger">*</span></label>
                                     <input type="text" id="name" class="form-control" name="name" value="{{$showroom->name}}">
+                                    @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                     <div id="error"></div>
                                 </div>
 
@@ -85,6 +87,7 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('brand_id')) <div class="text-danger">{{ $errors->first('brand_id') }}</div>@endif
                                 </div>
 
                                 <div class="col-md-4 adm-select-car-drop">
@@ -97,6 +100,7 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @if ($errors->has('car_id')) <div class="text-danger">{{ $errors->first('car_id') }}</div>@endif
                                     <div id="errorcardiv"></div>
                                 </div>
 
@@ -134,6 +138,7 @@
                                 <div class="mb-3 col-md-4">
                                     <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="address">{{$showroom->address}}</textarea>
+                                    @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                                     <div class="error"></div>
                                 </div>
 
@@ -208,6 +213,7 @@
                                 <div class="col-md-4">
                                     <label for="working_hours" class="form-label">Working Hours<span class="text-danger">*</span></label>
                                     <input  type="text" class="form-control" name="working_hours" value="{{$showroom->working_hours}}">
+                                    @if ($errors->has('working_hours')) <div class="text-danger">{{ $errors->first('working_hours') }}</div>@endif
                                     <div id="error"></div>
                                 </div>
 
@@ -242,6 +248,7 @@
                                         <img src="{{url('public/showrooms_working_hours_icon/'.$showroom->working_hours_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon">
+                                    @if ($errors->has('working_hours_icon')) <div class="text-danger">{{ $errors->first('working_hours_icon') }}</div>@endif
                                     <div id="error"></div>
                                     <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
@@ -280,6 +287,7 @@
                                 <div class="mb-3 col-md-4">
                                     <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
                                     <input type="number" id="contact_number" class="form-control" name="contact_number" value="{{$showroom->contact_number}}">
+                                    @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
                                     <div class="error"></div>
                                 </div>
 
@@ -353,6 +361,7 @@
                                 <div class="mb-3 col-md-4">
                                     <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                     <input type="email" id="email" class="form-control" name="email" value="{{$showroom->email}}">
+                                    @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
                                     <div class="error"></div>
                                 </div>
 
@@ -388,6 +397,7 @@
                                         <img src="{{url('public/showrooms_email_icon/'.$showroom->email_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input type="file" id="email_icon" class="form-control" name="email_icon">
+                                    @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
                                     <div id="error"></div>
                                     <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
@@ -395,12 +405,14 @@
                                 <div class="col-md-4 mt-2">
                                     <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" name="rating" id="rating" value="{{$showroom->rating}}">
+                                    @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
                                     <div id="error"></div>
                                 </div>
     
                                 <div class="col-md-4 mt-2">
                                     <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating" value="{{$showroom->number_of_rating}}">
+                                    @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                                     <div id="error"></div>
                                 </div>
 
@@ -566,6 +578,7 @@
                                         <img src="{{url('public/showrooms_slider_image/'.$showroom->slider_image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input type="file" id="slider_image" class="form-control" name="slider_image">
+                                    @if ($errors->has('slider_image')) <div class="text-danger">{{ $errors->first('slider_image') }}</div>@endif
                                     <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
