@@ -36,6 +36,7 @@
                                         @endforeach
                                     @endif
                                 </select>
+                                @if ($errors->has('role_id')) <div class="text-danger">{{ $errors->first('role_id') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
@@ -49,6 +50,7 @@
                                         @endforeach
                                     @endif
                                 </select>
+                                @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
                             <div class="mb-3 col-md-4 showroom">
@@ -104,6 +106,7 @@
                                 @if ($errors->has('cpassword')) <div class="text-danger">{{ $errors->first('cpassword') }}</div>@endif
                             </div>
                         </div>
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
                             <a href="{{ route('user') }}" class="btn btn-danger">Cancel</a>
@@ -172,7 +175,6 @@
             }else{
                 var bodyshop_flag = 1;
             }
-            
             showroomBlankAndHide(bodyshop_flag);
             serviceCenterBlankAndHide(bodyshop_flag);
             usedCarBlankAndHide(bodyshop_flag);

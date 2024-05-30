@@ -240,7 +240,6 @@
             }else{
                 var bodyshop_flag = 1;
             }
-            
             showroomBlankAndHide(bodyshop_flag);
             serviceCenterBlankAndHide(bodyshop_flag);
             usedCarBlankAndHide(bodyshop_flag);
