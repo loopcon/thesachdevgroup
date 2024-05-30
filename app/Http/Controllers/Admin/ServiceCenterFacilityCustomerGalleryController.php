@@ -130,7 +130,7 @@ class ServiceCenterFacilityCustomerGalleryController extends Controller
                 ->rawColumns(['facility_image', 'customer_gallery_image', 'action'])
                 ->make(true);
         } else {
-            return redirect()->back()->with('message','something went wrong');
+            return redirect()->back()->with('error','something went wrong');
         }
     }
 

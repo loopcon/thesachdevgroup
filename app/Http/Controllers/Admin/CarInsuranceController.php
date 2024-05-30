@@ -146,7 +146,7 @@ class CarInsuranceController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         } else {
-            return redirect()->back()->with('message','something went wrong');
+            return redirect()->back()->with('error','something went wrong');
         }
     }
 
@@ -195,7 +195,7 @@ class CarInsuranceController extends Controller
                 $booked_insurance->save();
                 if($booked_insurance)
                 {
-                    return redirect()->route('booked-insurance')->with('success','Booked Insurance update successfully!');
+                    return redirect()->route('booked-insurance')->with('success','Booked Insurance update successfully.');
                 }else{
                     return redirect()->back()->with('error','Something went wrong,please try again letter!');
                 }

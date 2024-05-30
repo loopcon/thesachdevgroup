@@ -122,7 +122,7 @@ class TestimonialController extends Controller
                 $return_data['record'] = $testimonials_title;
                 return view("admin.testimonials.show",array_merge($return_data));
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -210,7 +210,7 @@ class TestimonialController extends Controller
                 $testimonial = Testimonial::where('id',$id)->delete();
                 if($testimonial)
                 {
-                    return redirect()->route('testimonials.index')->with('message', 'Testimonial deleted successfully');
+                    return redirect()->route('testimonials.index')->with('success', 'Testimonial deleted successfully.');
                 }
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

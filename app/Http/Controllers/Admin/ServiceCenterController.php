@@ -192,7 +192,7 @@ class ServiceCenterController extends Controller
                 ->rawColumns(['image', 'address_icon', 'working_hours_icon', 'contact_icon', 'email_icon', 'action'])
                 ->make(true);
         } else {
-            return redirect()->back()->with('message','something went wrong');
+            return redirect()->back()->with('error','something went wrong');
         }
     }
 
@@ -529,7 +529,7 @@ class ServiceCenterController extends Controller
 
                 if($service_center_contact_query)
                 {
-                    return redirect()->route('service-center-contact-query')->with('success','Service Center Contact Query update successfully!');
+                    return redirect()->route('service-center-contact-query')->with('success','Service Center Contact Query update successfully.');
                 }else{
                     return redirect()->back()->with('error','Something went wrong, please try again later!');
                 }

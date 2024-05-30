@@ -54,7 +54,7 @@ class AfterSalesServiceController extends Controller
                     {
                         $after_sales_service->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
                     }
-                    $after_sales_service->brand_id = json_encode($request->brand_id);
+                    $after_sales_service->brand_id = isset($request->brand_id) && $request->brand_id ? json_encode($request->brand_id) : NULL;
                     if($request->hasFile('banner_image')) {
                         $oldimage = $after_sales_service->banner_image;
                         if($oldimage)
@@ -74,7 +74,7 @@ class AfterSalesServiceController extends Controller
                     {
                         $after_sales_service->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
                     }
-                    $after_sales_service->brand_id = json_encode($request->brand_id);
+                    $after_sales_service->brand_id = isset($request->brand_id) && $request->brand_id ? json_encode($request->brand_id) : NULL;
                     if($request->hasFile('banner_image')) {
                         $banner_image = fileUpload($request, 'banner_image', 'uploads/afterSalesService');
                         $after_sales_service->banner_image = $banner_image;
@@ -194,7 +194,7 @@ class AfterSalesServiceController extends Controller
 
                 if($book_service)
                 {
-                    return redirect()->route('booked-car-service')->with('success','Booked Service update successfully!');
+                    return redirect()->route('booked-car-service')->with('success','Booked Service update successfully.');
                 }else{
                     return redirect()->back()->with('error','Something went wrong,please try again letter!');
                 }

@@ -161,7 +161,7 @@ class HeaderMenuController extends Controller
         
                 if($header_menu)
                 {
-                    return redirect()->route('header_menu.index')->with('message', 'Header Menu deleted successfully');
+                    return redirect()->route('header_menu.index')->with('success', 'Header Menu deleted successfully.');
                 }
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

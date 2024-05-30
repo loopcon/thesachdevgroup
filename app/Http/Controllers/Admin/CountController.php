@@ -11,8 +11,6 @@ use File;
 
 class CountController extends Controller
 {
-    
-    //count
     public function count(Request $request){
         $has_permission = hasPermission('Count');
         if(isset($has_permission) && $has_permission)
@@ -23,7 +21,7 @@ class CountController extends Controller
                 $return_data['site_title'] = trans('Count');
                 return view("admin.count.list",array_merge($return_data));
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -125,7 +123,7 @@ class CountController extends Controller
             ->make(true);
         }
        
-        return redirect()->back()->with('message','something went wrong');
+        return redirect()->back()->with('error','something went wrong');
     }
 
     public function count_edit($id)
@@ -217,7 +215,7 @@ class CountController extends Controller
                 $count = Count::where('id',$id)->delete();
                 if($count)
                 {
-                    return redirect()->route('count')->with('message', 'Count deleted successfully');
+                    return redirect()->route('count')->with('success', 'Count deleted successfully');
                 }
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

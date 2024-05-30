@@ -218,7 +218,7 @@ class CareerController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
             } else {
-                return redirect()->back()->with('message','something went wrong');
+                return redirect()->back()->with('error','something went wrong');
             }
         }
 
@@ -263,7 +263,7 @@ class CareerController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         } else {
-            return redirect()->back()->with('message','something went wrong');
+            return redirect()->back()->with('error','something went wrong');
         }
     }
 

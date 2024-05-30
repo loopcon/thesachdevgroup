@@ -25,7 +25,7 @@ class MissionVisionController extends Controller
                 $return_data['record'] = $mission_vision_image;
                 return view("admin.mission_vision.list",array_merge($return_data));
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -139,7 +139,7 @@ class MissionVisionController extends Controller
             ->make(true);
         }
        
-        return redirect()->back()->with('message','something went wrong');
+        return redirect()->back()->with('error','something went wrong');
     }
 
     public function mission_vision_edit($id)
@@ -238,7 +238,7 @@ class MissionVisionController extends Controller
                 $mission_vision = Mission_vision::where('id',$id)->delete();
                 if($mission_vision)
                 {
-                    return redirect()->route('mission_vision')->with('message', 'Mission Vision deleted successfully');
+                    return redirect()->route('mission_vision')->with('success', 'Mission Vision deleted successfully.');
                 }
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

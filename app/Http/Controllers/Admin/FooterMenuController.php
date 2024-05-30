@@ -11,7 +11,6 @@ use DataTables;
 
 class FooterMenuController extends Controller
 {
-    //footer_menu
     public function footer_menu()
     {
         $has_permission = hasPermission('Footer Menu');
@@ -25,7 +24,7 @@ class FooterMenuController extends Controller
                 $return_data['record'] = $footer_menu_description;
                 return view("admin.footer_menu.list",array_merge($return_data));
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -184,7 +183,7 @@ class FooterMenuController extends Controller
         
                 if($footer_menu)
                 {
-                    return redirect()->route('footer_menu')->with('message', 'Footer Menu deleted successfully');
+                    return redirect()->route('footer_menu')->with('success', 'Footer Menu deleted successfully');
                 }
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

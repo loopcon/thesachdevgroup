@@ -188,7 +188,7 @@ class BrandController extends Controller
 
                     if($brand)
                     {
-                        return redirect()->route('brand.index')->with('message', 'Car deleted successfully');
+                        return redirect()->route('brand.index')->with('success', 'Brand deleted successfully');
                     }
 
                 }

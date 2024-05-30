@@ -5,6 +5,9 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="form-row">
+                    <div class="col-12">
+                        @include('admin.alerts')
+                    </div>
                     <div class="col-md-6">
                         <h1 class="m-0">Role Permission</h1>
                     </div>

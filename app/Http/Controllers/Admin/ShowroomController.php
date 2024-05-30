@@ -18,7 +18,6 @@ use File;
 class ShowroomController extends Controller
 {
     //showroom
-
     public function showroom(Request $request){
         $has_permission = hasPermission('Showroom');
         if(isset($has_permission) && $has_permission)
@@ -453,7 +452,7 @@ class ShowroomController extends Controller
 
                     if($showroom)
                     {
-                        return redirect()->route('showroom_list')->with('message', 'Car deleted successfully');
+                        return redirect()->route('showroom_list')->with('success', 'Car deleted successfully.');
                     }
                 }
             } else {
@@ -567,7 +566,7 @@ class ShowroomController extends Controller
 
                 if($showroom_contact_query)
                 {
-                    return redirect()->route('showroom-contact-query')->with('success','Showrooom Contact Query update successfully!');
+                    return redirect()->route('showroom-contact-query')->with('success','Showrooom Contact Query update successfully.');
                 }else{
                     return redirect()->back()->with('error','Something went wrong, please try again later!');
                 }

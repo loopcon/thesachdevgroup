@@ -25,7 +25,7 @@ class UsedCarController extends Controller
                 $return_data['site_title'] = trans('Used Car');
                 return view("admin.used_car.list",array_merge($return_data));
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -131,7 +131,7 @@ class UsedCarController extends Controller
             ->make(true);
         }
        
-        return redirect()->back()->with('message','something went wrong');
+        return redirect()->back()->with('error','something went wrong');
     }
 
     public function used_car_edit($id)
@@ -226,7 +226,7 @@ class UsedCarController extends Controller
                 $used_car_image = Used_car::where('id',$id)->delete();
                 if($used_car_image)
                 {
-                    return redirect()->route('used_car')->with('message', 'Used Car deleted successfully');
+                    return redirect()->route('used_car')->with('success', 'Used Car deleted successfully.');
                 }
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

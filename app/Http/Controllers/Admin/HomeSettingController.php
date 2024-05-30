@@ -116,7 +116,7 @@ class HomeSettingController extends Controller
                 return view('admin.homeslider.show');
 
             } else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -202,7 +202,7 @@ class HomeSettingController extends Controller
 
                 if($home_slider)
                 {
-                    return redirect()->route('homeslider.index')->with('message', 'Home Slider deleted successfully');
+                    return redirect()->route('homeslider.index')->with('success', 'Home Slider deleted successfully.');
                 }
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -309,7 +309,7 @@ class HomeSettingController extends Controller
                 return view("admin.home_our_businesses.show",array_merge($return_data));
 
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -389,7 +389,7 @@ class HomeSettingController extends Controller
 
                 if($home_our_businesses)
                 {
-                    return redirect()->route('home_our_businesses.index')->with('message', 'Home Our Businesses deleted successfully');
+                    return redirect()->route('home_our_businesses.index')->with('success', 'Home Our Businesses deleted successfully');
                 }
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

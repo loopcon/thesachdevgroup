@@ -24,7 +24,7 @@ class ShowroomFacilityCustomerGalleryController extends Controller
                 $return_data['site_title'] = trans('Showroom Facility Customer Gallery');
                 return view("admin.showroom_facility_customer_gallery.list",array_merge($return_data));
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -124,7 +124,7 @@ class ShowroomFacilityCustomerGalleryController extends Controller
             ->make(true);
         }
        
-        return redirect()->back()->with('message','something went wrong');
+        return redirect()->back()->with('error','something went wrong');
     }
 
     public function showroom_facility_customer_gallery_edit(Request $request){
@@ -229,7 +229,7 @@ class ShowroomFacilityCustomerGalleryController extends Controller
 
                 if($showroom_facility_customer_gallery)
                 {
-                    return redirect()->route('showroom_list')->with('message', 'Showroom Facility Customer Gallery deleted successfully');
+                    return redirect()->route('showroom_list')->with('success', 'Showroom Facility Customer Gallery deleted successfully.');
                 }
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

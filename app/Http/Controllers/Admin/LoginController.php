@@ -29,7 +29,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard');
         }
-        return redirect("admin")->withErrors(['meassage'=>'Login details are not valid.']);
+        return redirect("admin")->withErrors(['error'=>'Login details are not valid.']);
 
     }
     public function logout(){

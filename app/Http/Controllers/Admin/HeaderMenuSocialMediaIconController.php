@@ -85,7 +85,7 @@ class HeaderMenuSocialMediaIconController extends Controller
             {
                 return view('admin.header_menu.show');
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -172,7 +172,7 @@ class HeaderMenuSocialMediaIconController extends Controller
                 $header_menu_social_media_icon = Header_menu_social_media_icon::where('id',$id)->delete();
                 if($header_menu_social_media_icon)
                 {
-                    return redirect()->route('header_menu.index')->with('message', 'Header Menu Social Media Icon deleted successfully');
+                    return redirect()->route('header_menu.index')->with('success', 'Header Menu Social Media Icon deleted successfully');
                 }
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

@@ -119,7 +119,7 @@ class OurBusinessInsuranceController extends Controller
                 ->rawColumns(['icon', 'action'])
                 ->make(true);
         } else {
-            return redirect()->back()->with('message','something went wrong');
+            return redirect()->back()->with('error','something went wrong');
         }
     }
 

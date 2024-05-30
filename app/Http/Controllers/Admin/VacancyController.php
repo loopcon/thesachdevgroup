@@ -127,7 +127,7 @@ class VacancyController extends Controller
                 ->rawColumns(['image', 'icon', 'action'])
                 ->make(true);
         } else {
-            return redirect()->back()->with('message','something went wrong');
+            return redirect()->back()->with('error','something went wrong');
         }
     }
 

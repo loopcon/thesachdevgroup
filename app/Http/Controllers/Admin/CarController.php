@@ -124,7 +124,7 @@ class CarController extends Controller
             {
                 return view('admin.car.show');
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -218,7 +218,7 @@ class CarController extends Controller
                     $car->delete();
                     if($car)
                     {
-                        return redirect()->route('car.index')->with('message', 'Car Model deleted successfully');
+                        return redirect()->route('car.index')->with('success', 'Car Model deleted successfully');
                     }
                 }
 

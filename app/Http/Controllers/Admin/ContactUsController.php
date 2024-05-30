@@ -12,8 +12,6 @@ use DataTables;
 
 class ContactUsController extends Controller
 {
-    //contact_us
-
     public function contact_us()
     {
         $has_permission = hasPermission('Contact Us');
@@ -27,7 +25,7 @@ class ContactUsController extends Controller
                 $return_data['record'] = $contact_us;
                 return view("admin.contact_us.form",array_merge($return_data));
             }else {
-                return redirect('dashboard')->with('message', 'You have not permission to access this page!');
+                return redirect('dashboard')->with('error', 'You have not permission to access this page!');
             }
         } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -161,7 +159,7 @@ class ContactUsController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         } else {
-            return redirect()->back()->with('message','something went wrong');
+            return redirect()->back()->with('error','something went wrong');
         }
     }
 
@@ -178,7 +176,7 @@ class ContactUsController extends Controller
                 {
                     return redirect()->back()->with('success','Contact Query deleted successfully.');
                 }else{
-                    return redirect()->back()->with('success','something went wrong,please try again.');
+                    return redirect()->back()->with('error','something went wrong,please try again.');
                 }
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

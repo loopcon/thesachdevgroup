@@ -43,7 +43,7 @@ class RolePermissionController extends Controller
                 $permission->save();
             }
          }
-        return redirect()->back()->with('message', 'Role permission updated successfully.');
+        return redirect()->back()->with('success', 'Role permission updated successfully.');
     }
 
 }
