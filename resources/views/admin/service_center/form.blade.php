@@ -639,32 +639,6 @@
                 'number_of_rating': {
                     number: true,
                 },
-            //     'service_id': {
-            //         required: true,
-            //     },
-            //     'address': {
-            //         required: true,
-            //     },
-            //     'email': {
-            //         required: true,
-            //     },
-            // },
-            // messages: {
-            //     'name': {
-            //         required: "Name is required",
-            //     },
-            //     'service_id': {
-            //         required: "Service is required",
-            //     },
-            //     'business_id': {
-            //         required: "Our Business is required",
-            //     },
-            //     'address': {
-            //         required: "Address is required",
-            //     },
-            //     'email': {
-            //         required: "Email is required",
-            //     },
             },
             submitHandler: function(form) {
                 $(form).find('.submit').prop("disabled", true);

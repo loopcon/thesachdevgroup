@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="title" class="form-label">Name Font Color</label>
+                                <label for="name_font_color" class="form-label">Name Font Color</label>
                                 <input type="text" id="name_font_color" class="form-control colorpicker" name="name_font_color" value="{{isset($record->name_font_color) ? $record->name_font_color : old('name_font_color')}}">
                             </div>
 
@@ -85,6 +85,7 @@
                                 <small class="image_type">(Hight:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
                         </div>
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
                             <a href="{{ route('service') }}" class="btn btn-danger">Cancel</a>

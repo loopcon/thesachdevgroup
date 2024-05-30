@@ -26,17 +26,21 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="name" class="form-label">First Name<span class="text-danger">*</span></label>
+                                <label for="first_name" class="form-label">First Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="first_name" value="{{isset($record->first_name) ? $record->first_name : old('first_name')}}" required>
+                                @if ($errors->has('first_name')) <div class="text-danger">{{ $errors->first('first_name') }}</div>@endif
                             </div>
+
                             <div class="col-md-4">
-                                <label for="name" class="form-label">Phone<span class="text-danger">*</span></label>
+                                <label for="phone" class="form-label">Phone<span class="text-danger">*</span></label>
                                 <input  type="tel" class="form-control num_only" name="phone" value="{{isset($record->phone) ? $record->phone : old('phone')}}" maxlength="10" pattern="[0-9]{10}" title="Please enter a 10-digit contact number" required>
+                                @if ($errors->has('phone')) <div class="text-danger">{{ $errors->first('phone') }}</div>@endif
                             </div>
                         
                             <div class="col-md-4 mt-2">
-                                <label for="name" class="form-label">Email<span class="text-danger">*</span></label>
+                                <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" name="email" value="{{isset($record->email) ? $record->email : old('email')}}" required>
+                                @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
                             </div>
 
                             <div class="col-md-4 adm-brand-errorbox">

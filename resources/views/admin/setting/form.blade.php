@@ -19,16 +19,12 @@
                 <div class="card-body">
                     <form action="{{ route('setting_insert') }}" method="POST" class="setting_form" enctype="multipart/form-data">
                         @csrf
-
                         @if(isset($settings) && count($settings) > 0)
                             @foreach($settings as $setting)
-
                             <div class="row">
                               <div class="mb-3 col-md-4">
                                 <label for="logo">Logo<span class="text-danger">*</span></label>
-                                
                                   <input type="hidden" name="old_logo" id="old_logo" value="{{$setting->logo}}">
-                                  
                                   @if(isset($setting->logo) && isset($setting->logo))
                                     <img src="{{url('public/logo/'.$setting->logo)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                   @endif
@@ -40,6 +36,7 @@
                               <div class="col-md-4">
                                 <label for="email">Email<span class="text-danger">*</span></label>
                                 <input type="email" id="email" class="form-control" name="email" value="{{$setting->email}}">
+                                @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif 
                                 <div class="error"></div>
                               </div>
     
@@ -73,6 +70,7 @@
                               <div class="mb-3 col-md-4">
                                 <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
                                 <input type="number" id="mobile_number" class="form-control" name="mobile_number" value="{{$setting->mobile_number}}">
+                                @if ($errors->has('mobile_number')) <div class="text-danger">{{ $errors->first('mobile_number') }}</div>@endif
                                 <div class="error"></div>
                               </div>
     
@@ -105,6 +103,7 @@
                               <div class="mb-3 col-md-4">
                                 <label for="time">Time<span class="text-danger">*</span></label>
                                 <input type="text" id="time" class="form-control" name="time" value="{{$setting->time}}">
+                                @if ($errors->has('time')) <div class="text-danger">{{ $errors->first('time') }}</div>@endif
                                 <div class="error"></div>
                               </div>
     
@@ -136,6 +135,7 @@
                               <div class="mb-3 col-md-4">
                                 <label for="address">Address<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="address">{{$setting->address}}</textarea>
+                                @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                                 <div class="error"></div>
                               </div>
     
@@ -255,6 +255,7 @@
                           <div class="col-md-4">
                             <label for="email">Email<span class="text-danger">*</span></label>
                             <input type="email" id="email" class="form-control" name="email">
+                            @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
                             <div class="error"></div>
                           </div>
 
@@ -288,6 +289,7 @@
                           <div class="mb-3 col-md-4">
                             <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
                             <input type="number" id="mobile_number" class="form-control" name="mobile_number">
+                            @if ($errors->has('mobile_number')) <div class="text-danger">{{ $errors->first('mobile_number') }}</div>@endif
                             <div class="error"></div>
                           </div>
 
@@ -320,6 +322,7 @@
                           <div class="mb-3 col-md-4">
                             <label for="time">Time<span class="text-danger">*</span></label>
                             <input type="text" id="time" class="form-control" name="time">
+                            @if ($errors->has('time')) <div class="text-danger">{{ $errors->first('time') }}</div>@endif
                             <div class="error"></div>
                           </div>
 
@@ -351,6 +354,7 @@
                           <div class="mb-3 col-md-4">
                             <label for="address">Address<span class="text-danger">*</span></label>
                             <textarea class="form-control" name="address"></textarea>
+                            @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                             <div class="error"></div>
                           </div>
 

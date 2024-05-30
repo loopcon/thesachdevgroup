@@ -34,6 +34,12 @@ class SettingController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+                $request->validate([
+                    'email' => 'required|email',
+                    'mobile_number' => 'required|numeric',
+                    'time' => 'required',
+                    'address' => 'address',
+                ]);
 
                 $setting = Setting::find(1);
 
