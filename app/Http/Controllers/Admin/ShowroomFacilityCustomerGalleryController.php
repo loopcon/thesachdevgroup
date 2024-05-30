@@ -38,7 +38,11 @@ class ShowroomFacilityCustomerGalleryController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
-  
+                $request->validate([
+                    'showroom_id' => 'required',
+                    'image' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                    'customer_gallery_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                ]);
                 $showroom_facility_customer_gallery = new Showroom_facility_customer_gallery();
                 $showroom_facility_customer_gallery->showroom_id = $request->showroom_id;
 
@@ -155,6 +159,11 @@ class ShowroomFacilityCustomerGalleryController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+                $request->validate([
+                    'showroom_id' => 'required',
+                    'image' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                    'customer_gallery_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
+                ]);
                 $showroom_facility_customer_gallery = Showroom_facility_customer_gallery::find($request->id);
                 $showroom_facility_customer_gallery->showroom_id = $request->showroom_id;
 

@@ -129,12 +129,14 @@
                                                             <option value="{{$showroom->id}}">{{$showroom->name}}</option>
                                                         @endforeach
                                                     </select>
+                                                    @if ($errors->has('showroom_id')) <div class="text-danger">{{ $errors->first('showroom_id') }}</div>@endif
                                                     <div id="errordiv"></div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label>
                                                     <input type="file" id="facility_image" class="form-control facility_image" name="facility_image">
+                                                    @if ($errors->has('facility_image')) <div class="text-danger">{{ $errors->first('facility_image') }}</div>@endif
                                                     <div id="error"></div>
                                                     <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                 </div>
@@ -142,6 +144,7 @@
                                                 <div class="form-group">
                                                     <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label>
                                                     <input type="file" id="customer_gallery_image" class="form-control customer_gallery_image" name="customer_gallery_image">
+                                                    @if ($errors->has('customer_gallery_image')) <div class="text-danger">{{ $errors->first('customer_gallery_image') }}</div>@endif
                                                     <div id="error"></div>
                                                     <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                 </div>
@@ -183,12 +186,14 @@
                                                             </option>
                                                         @endforeach
                                                     </select>
+                                                    @if ($errors->has('showroom_id')) <div class="text-danger">{{ $errors->first('showroom_id') }}</div>@endif
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="facility_image" class="form-label">Facility Image<span class="text-danger">*</span></label>
                                                     <img src="" width="100" class="facility_icon" style="margin-bottom: 10px; margin-left: 5px;">
                                                     <input type="file" id="facility_image" class="form-control facility_image" name="facility_image">
+                                                    @if ($errors->has('facility_image')) <div class="text-danger">{{ $errors->first('facility_image') }}</div>@endif
                                                     <div id="error"></div>
                                                     <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                 </div> 
@@ -197,6 +202,7 @@
                                                     <label for="customer_gallery_image" class="form-label">Customer Gallery Image<span class="text-danger">*</span></label>
                                                     <img src="" width="100" class="customer_gallery_icon" style="margin-bottom: 10px; margin-left: 5px;">
                                                     <input type="file" id="customer_gallery_image" class="form-control customer_gallery_image" name="customer_gallery_image">
+                                                    @if ($errors->has('customer_gallery_image')) <div class="text-danger">{{ $errors->first('customer_gallery_image') }}</div>@endif
                                                     <div id="error"></div>
                                                     <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                                 </div>
@@ -236,9 +242,6 @@
                 </div>
             @endif
         @endif
-
-
-
     </div>
 @endsection
 @section('javascript')
@@ -246,7 +249,6 @@
 <script type="text/javascript">
 
     // $(document).ready(function () {
-
         $(function () {
             var table = $('.data-table').DataTable({
                 processing: true,
