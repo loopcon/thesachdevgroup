@@ -27,6 +27,7 @@
                                         <img src="{{url('public/testimonials/'.$testimonial->image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                     @endif
                                     <input  type="file" class="form-control" name="image">
+                                    @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                     <div class="error"></div>
                                     <small class="image_type">(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
@@ -34,6 +35,7 @@
                                 <div class="col-md-4">
                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                     <input  type="text" class="form-control" name="name" value="{{$testimonial->name}}">
+                                    @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                     <div class="error"></div>
                                 </div>
 

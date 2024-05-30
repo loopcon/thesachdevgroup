@@ -35,6 +35,10 @@ class TestimonialController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+                $request->validate([
+                    'name' => 'required',
+                    'image' => 'image|mimes:jpeg,png,jpg,webp',
+                ]);
                 $testimonials = new Testimonial();
                 $testimonials->name = $request->name;
 
@@ -153,6 +157,10 @@ class TestimonialController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+                $request->validate([
+                    'name' => 'required',
+                    'image' => 'image|mimes:jpeg,png,jpg,webp',
+                ]);
                 $testimonials = Testimonial::find($id);
                 $testimonials->name = $request->name;
 
@@ -197,7 +205,6 @@ class TestimonialController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
-
                 $id = decrypt($id);
                 $testimonial = Testimonial::find($id);
                 if($testimonial->image !=NULL)
@@ -221,8 +228,8 @@ class TestimonialController extends Controller
     }
 
     //testimonials title
-    public function testimonials_title_insert(Request $request){
-     
+    public function testimonials_title_insert(Request $request)
+    {
         $has_permission = hasPermission('Testimonials');
         if(isset($has_permission) && $has_permission)
         {
