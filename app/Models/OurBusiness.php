@@ -16,4 +16,9 @@ class OurBusiness extends Model
     {
         return $this->hasMany(Car::class,'id');
     }
+
+    public function serviceDetail()
+    {
+        return $this->hasMany(Service::class,'id');
+    }
 }

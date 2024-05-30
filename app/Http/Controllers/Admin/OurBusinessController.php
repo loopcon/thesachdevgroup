@@ -104,7 +104,7 @@ class OurBusinessController extends Controller
     public function ourBusinessDatatable(Request $request)
     {
         if($request->ajax()){
-            $query = OurBusiness::with('carDetail')->select('id', 'car_id', 'title', 'slug', 'description', 'banner_image', 'url', 'page_link', 'title_font_size', 'title_font_color', 'title_font_family', 'description_font_size', 'description_font_color', 'description_font_family')->orderBy('id', 'DESC');
+            $query = OurBusiness::with('carDetail','serviceDetail')->select('id', 'car_id', 'service_id', 'title', 'slug', 'description', 'banner_image', 'url', 'page_link', 'title_font_size', 'title_font_color', 'title_font_family', 'description_font_size', 'description_font_color', 'description_font_family')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -116,6 +116,11 @@ class OurBusinessController extends Controller
                     $car_id = json_decode($list->car_id); 
                     $car_names = isset($car_id) && $car_id ? Car::whereIn('id', $car_id)->pluck('name')->implode(', ') : ''; 
                     return $car_names;
+                })
+                ->addColumn('service_id', function($list){
+                    $service_id = json_decode($list->service_id); 
+                    $service = isset($service_id) && $service_id ? Service::whereIn('id', $service_id)->pluck('name')->implode(', ') : ''; 
+                    return $service;
                 })
                 ->addColumn('action', function ($list) {
                     $html = "";

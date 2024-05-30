@@ -24,7 +24,7 @@
                     <form action="@if(isset($record->id)) {{ route('service-update', array('id' => encrypt($record->id))) }} @else{{ route('service-store') }} @endif" method="POST" class="service-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4 adm-brand-errorbox">
+                            <?php /**<div class="col-md-4 adm-brand-errorbox">
                                 <label for="business_id" class="form-label">Our Business</label>
                                 <select class="form-control select2" name="business_id" id="business_id">
                                     <option value="">-- Select Business--</option>
@@ -33,7 +33,7 @@
                                     @endforeach
                                 </select>
                                 @if ($errors->has('business_id'))<div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
-                            </div>
+                            </div>**/ ?>
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>

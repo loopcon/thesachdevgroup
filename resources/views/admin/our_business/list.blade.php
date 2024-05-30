@@ -29,6 +29,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Car</th>
+                                    <th>Service</th>
                                     <th>Title</th>
                                     <th>Banner Image</th>
                                     <th>Url</th>
@@ -54,6 +55,7 @@
             columns: [
                 {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'car_id', name: 'car_id'},
+                {data: 'service_id', name: 'service_id'},
                 {data: 'title', name: 'title'},
                 {data: 'banner_image', name: 'banner_image'},
                 {data: 'url', name: 'url'},
