@@ -15,14 +15,21 @@
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
-                        <div class="mb-3 col-md-4">
-                            <label class="form-label" for="name">{{__('Role')}}<span class="text-danger">*</span></label>
-                            <select class="form-control" onchange="if (this.value) window.location.href=this.value">
-                                <option value="">-- select --</option>
-                                <option value="{{url('role-permission/'.Constant::SUPERADMIN)}}" {{$role_id == Constant::SUPERADMIN ? 'selected' : ''}}>{{__('Super Admin')}}</option>
-                                <option value="{{url('role-permission/'.Constant::HR)}}" {{$role_id == Constant::HR ? 'selected' : ''}}>{{__('HR')}}</option>
-                                <option value="{{url('role-permission/'.Constant::MANAGER)}}" {{$role_id == Constant::MANAGER ? 'selected' : ''}}>{{__('MANAGER')}}</option>
-                            </select>
+                        <div class="row">
+                            <div class="mb-3 col-md-4">
+                                <label class="form-label" for="name">{{__('Role')}}<span class="text-danger">*</span></label>
+                                <select class="form-control" onchange="if (this.value) window.location.href=this.value">
+                                    <option value="">-- select --</option>
+                                    <option value="{{url('role-permission/'.Constant::SUPERADMIN)}}" {{$role_id == Constant::SUPERADMIN ? 'selected' : ''}}>{{__('Super Admin')}}</option>
+                                    <option value="{{url('role-permission/'.Constant::HR)}}" {{$role_id == Constant::HR ? 'selected' : ''}}>{{__('HR')}}</option>
+                                    <option value="{{url('role-permission/'.Constant::MANAGER)}}" {{$role_id == Constant::MANAGER ? 'selected' : ''}}>{{__('MANAGER')}}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-8 text-end">
+                                <a href="javascript:void(0);" class="btn btn-info" id="check">Check All</a>
+                                <a href="javascript:void(0);" class="btn btn-danger" id="uncheck">Uncheck All</a>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -70,11 +77,20 @@
     @endif
       
     @if(session()->has('message'))
-      swal({
-          title: "Role Permission",
-          text: '{{ $message }}',
-          icon: "success",
-      })
-  @endif
+        swal({
+            title: "Role Permission",
+            text: '{{ $message }}',
+            icon: "success",
+        })
+    @endif
+
+    $(document).ready(function(){
+        $("#check").click(function(){
+            $('input[type="checkbox"]').prop("checked", true);
+        });
+        $("#uncheck").click(function(){
+            $('input[type="checkbox"]').prop("checked", false);
+        });
+    });
 </script>
 @endsection

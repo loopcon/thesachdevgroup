@@ -190,8 +190,8 @@ class OurBusinessController extends Controller
                     $our_business->url = NULL;
                 }
                 $our_business->slug = $request->title ? slugify($request->title) : NULL;
-                $our_business->car_id = json_encode($request->car_id);
-                $our_business->service_id = json_encode($request->service_id);
+                $our_business->car_id = isset($request->car_id) && $request->car_id ? json_encode($request->car_id) : NULL;
+                $our_business->service_id = isset($request->service_id) && $request->service_id ? json_encode($request->service_id) : NULL;
 
                 if($request->hasFile('banner_image')) {
                     $oldimage = $our_business->banner_image;
