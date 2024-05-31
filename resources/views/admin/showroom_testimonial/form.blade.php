@@ -2,6 +2,7 @@
 @section('css')
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -18,12 +19,12 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('showroom-testimonial-update', array('id' => encrypt($record->id))) }} @else{{ route('showroom-testimonial-store') }} @endif" method="POST" class="showroom_form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('showroom-testimonial-update', array('id' => encrypt($record->id))) }} @else{{ route('showroom-testimonial-store') }} @endif" method="POST" class="showroom_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 adm-brand-errorbox">
                                 <label for="showroom_id" class="form-label">Select Showroom<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="showroom_id" id="showroom_id">
+                                <select class="form-control select2" name="showroom_id" id="showroom_id" required="">
                                     <option value="">Select</option>
                                     @foreach($showrooms as $value)
                                         <option value="{{$value->id}}"@if(isset($record->showroom_id) && $record->showroom_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
@@ -37,7 +38,7 @@
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
-                                <div class="error"></div>
+                                <div class="errordiv"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -128,132 +129,76 @@
 @section('javascript')
 <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
+<script src="{{ url('public/plugins/select2/js/select2.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
-        $('#brand_id').change(function () {
-            var brand_id = $(this).val();
-            if (brand_id) {
-                $.ajax({
-                    type: "GET",
-                    url: "{{ route('getcars') }}",
-                    data: { brand_id: brand_id },
-                    success: function (cars) {
-                        $('#car_id').empty();
-                        $('#car_id').append('<option disabled>Select Car</option>');
-                        $.each(cars, function (key, car) {
-                            $('#car_id').append('<option value="' + car.id + '">' + car.name + '</option>');
-                        });
-                    }
-                });
-            } else {
-                $('#car_id').empty();
-            }
-        });
-
         $(".showroom_form").validate({
-            rules: {
-                'brand_id': {
-                    required: true,
-                },
-                'car_id[]': { 
-                    required: true,
-                },
-                'address': {
-                    required: true,
-                },
-                'working_hours': {
-                    required: true,
-                },
-                'contact_number': {
-                    required: true,
-                    maxlength:"10",
-                    minlength:"10",
-                },
-                'email': {
-                    required: true,
-                },
-            },
-            messages: {
-                'brand_id': {
-                    required: "Brand is required",
-                },
-                'car_id[]': { 
-                    required: "Car is required",
-                },
-                'address': {
-                    required: "Address is required",
-                },
-                'working_hours': {
-                    required: "Working hours is required",
-                },
-                'contact_number': {
-                    required: "Contact number is required",
-                },
-                'email': {
-                    required: "Email is required",
-                },
-            },
-            errorPlacement: function(error, element) {
-                if(element.attr("name") == "brand_id"){
-                    error.appendTo('#errordiv');
-                    return;
-                }
-                if(element.attr("name") == "car_id[]"){
-                    error.appendTo('#errorcardiv');
-                    return;
-                }
-                if(element.attr("name") == "name"){
-                        error.appendTo('#error');
-                        return;
-                }else {
-                    error.insertAfter(element);
-                }
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
+            // rules: {
+            //     'name': {
+            //         required: true,
+            //     },
+            //     // 'car_id[]': { 
+            //     //     required: true,
+            //     // },
+            //     // 'address': {
+            //     //     required: true,
+            //     // },
+            //     // 'working_hours': {
+            //     //     required: true,
+            //     // },
+            //     // 'contact_number': {
+            //     //     required: true,
+            //     //     maxlength:"10",
+            //     //     minlength:"10",
+            //     // },
+            //     // 'email': {
+            //     //     required: true,
+            //     // },
+            // },
+            // messages: {
+            //     'name': {
+            //         required: "This field is required.",
+            //     },
+            //     // 'car_id[]': { 
+            //     //     required: "Car is required",
+            //     // },
+            //     // 'address': {
+            //     //     required: "Address is required",
+            //     // },
+            //     // 'working_hours': {
+            //     //     required: "Working hours is required",
+            //     // },
+            //     // 'contact_number': {
+            //     //     required: "Contact number is required",
+            //     // },
+            //     // 'email': {
+            //     //     required: "Email is required",
+            //     // },
+            // },
+            // errorPlacement: function(error, element) {
+            //     if(element.attr("name") == "brand_id"){
+            //         error.appendTo('#errordiv');
+            //         return;
+            //     }
+            //     if(element.attr("name") == "car_id[]"){
+            //         error.appendTo('#errorcardiv');
+            //         return;
+            //     }
+            //     if(element.attr("name") == "name"){
+            //             error.appendTo('#error');
+            //             return;
+            //     }else {
+            //         error.insertAfter(element);
+            //     }
+            // },
+            // submitHandler: function(form) {
+            //     $(form).find('.submit').prop("disabled", true);
+            //     form.submit();
+            // }
         });
 
-        $('body').on('click' ,".add",function(){
-            var $tr = $(this).closest('.sub_table');
-            var $clone = $tr.clone();
-
-            $clone.find('input').val('');
-            $clone.find('span:nth-child(3)').remove();
-
-            $tr.after($clone);
-            sr_change();
-        });
-
-        $('body').on('click' ,".minus",function(event){
-            if($(".sub_table").length > 1){
-
-                $(this).closest(".sub_table").remove();
-                sr_change();
-            }
-        });
-
-        $('body').on('click' ,".customer_gallery_add",function(){
-            var $tr = $(this).closest('.customer_gallery_table');
-            var $clone = $tr.clone();
-
-            $clone.find('input').val('');
-            $clone.find('span:nth-child(3)').remove();
-
-            $tr.after($clone);
-            sr_change();
-        });
-
-        $('body').on('click' ,".customer_gallery_minus",function(event){
-            if($(".customer_gallery_table").length > 1){
-
-                $(this).closest(".customer_gallery_table").remove();
-                sr_change();
-            }
-        });
         $('.colorpicker').colorpicker();
     });
 </script>

@@ -38,7 +38,7 @@ class SettingController extends Controller
                     'email' => 'required|email',
                     'mobile_number' => 'required|numeric',
                     'time' => 'required',
-                    'address' => 'address',
+                    'address' => 'required',
                 ]);
 
                 $setting = Setting::find(1);
