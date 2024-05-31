@@ -132,7 +132,7 @@ class OurBusinessInsuranceController extends Controller
             {
                 $return_data = array();
                 $id = decrypt($id);
-                $return_data['site_title'] = trans('Our Business Edit');
+                $return_data['site_title'] = trans('Business Insurance Edit');
                 $our_business_insurance = OurBusinessInsurance::find($id);
                 $return_data['record'] = $our_business_insurance;
                 $return_data['business'] = OurBusiness::select('id','title')->get();
