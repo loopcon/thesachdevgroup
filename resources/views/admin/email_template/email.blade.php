@@ -32,14 +32,14 @@
                     <div class="tab-content">
                         @if($email_templates)
                             @foreach($email_templates as $key => $value)
-                                <div class="tab-pane fade {{ $key == 0 ? 'active show' : ''}}" id="tab-{{$value->label}}" data-toggle="tab" role="tabpanel">
+                                <div class="tab-pane fade {{ $key == 0 ? 'active show' : ''}}" id="tab-{{$value->label}}" role="tabpanel">
                                     <div class="card">
                                         <form role="form" action="{{route('email-template-update')}}" name="{{$value->label}}" method="post" data-parsley-validate enctype="multipart/form-data">
                                             @csrf
                                             <div class="card-body">
                                                 <div class="mb-3">
                                                     <h2 class="col-form-label">{{$value->value}}</h2>
-                                                    <textarea class="form-control ckeditor" name="{{$value->label}}" id="{{$value->label}}" required="" style="height: 1000px">{{$value->template}}</textarea>
+                                                    <textarea class="ckeditor form-control" name="{{$value->label}}" id="{{$value->label}}" required="" style="height: 1000px">{{$value->template}}</textarea>
                                                     <input type="hidden" name="id" value="{{$value->label}}">
                                                 </div>
                                             </div>
