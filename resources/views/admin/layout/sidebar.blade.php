@@ -268,6 +268,17 @@
             @endif
         @endif
 
+        @php($has_permission = hasPermission('Email Templates'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item">
+                    <a href="{{url('email-template')}}" class="nav-link {{ (request()->is('email-template*')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-cogs"></i><p>Email Templates</p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
         @if(hasPermission('Showroom') || hasPermission('Showroom Testimonial') || hasPermission('Showroom Model'))
             <li class="nav-item has-treeview {{ (request()->is('showroom_list*') || request()->is('showroom-testimonial*')) ? 'menu-open' : '' }}">
                 <a href="#" class="nav-link {{ (request()->is('showroom_list*') || request()->is('showroom-testimonial*')) ? 'active' : '' }}">

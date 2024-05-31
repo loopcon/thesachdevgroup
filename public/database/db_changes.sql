@@ -747,3 +747,6 @@ ALTER TABLE `career_form` ADD `business_id` INT(11) NULL DEFAULT NULL COMMENT '`
 
 -- Disha : 29-05-2024 6:00 PM
 ALTER TABLE `module_permission` CHANGE `id` `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+-- Disha : 31-05-2024 3:17 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Email Templates', NULL, NULL, NULL);

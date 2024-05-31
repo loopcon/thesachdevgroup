@@ -189,6 +189,9 @@ class FaqController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
+                $request->validate([
+                    'name' => 'required',
+                ]);
                 $return_data = array();
                 $faq_title = FaqTitle::first();
                 $faq_title->title = $request->title;

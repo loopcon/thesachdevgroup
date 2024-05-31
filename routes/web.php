@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\NewCarsController;
 use App\Http\Controllers\Admin\AfterSalesServiceController;
 use App\Http\Controllers\Admin\CarInsuranceController;
 use App\Http\Controllers\Admin\CompanyCsrController;
+use App\Http\Controllers\Admin\EmailTemplatesController;
 
 // frontend controller
 use App\Http\Controllers\Frontend\HomeController;
@@ -431,6 +432,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('contact-us-query-update/{id}', [ContactUsController::class, 'contactUsQueryUpdate'])->name('contact-us-query-update');
     Route::post('contact-us-query-datatable', [ContactUsController::class, 'contactUsQueryDatatable'])->name('contact-us-query-datatable');
     Route::get('contact-us-query-delete/{id}', [ContactUsController::class, 'contactUsQueryDestroy'])->name('contact-us-query-delete');
+
+    // email template
+    Route::get('email-template', [EmailTemplatesController::class, 'emailTemplate'])->name('email-template');
+    Route::post('email-template-update', [EmailTemplatesController::class, 'emailTemplateUpdate'])->name('email-template-update');
+
 });
 
 //Frontend
