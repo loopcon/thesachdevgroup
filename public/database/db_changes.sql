@@ -750,3 +750,24 @@ ALTER TABLE `module_permission` CHANGE `id` `id` INT(11) UNSIGNED NOT NULL AUTO_
 
 -- Disha : 31-05-2024 3:17 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Email Templates', NULL, NULL, NULL);
+
+--
+-- Table structure for table `email_templates`
+--
+
+CREATE TABLE `email_templates` (
+  `id` int(11) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `template` text DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_by` int(11) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `email_templates`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `email_templates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
