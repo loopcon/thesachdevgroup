@@ -25,7 +25,6 @@
         </p>
     </div>
     <div class="login-box">
-        
         <div class="card">
         <div class="card-body login-card-body">
         <div class="login-logo">
@@ -37,6 +36,7 @@
         </div>
             <form method="POST" action="{{ route('login.custom') }}" class="login_form">
             @csrf
+            @include('admin.alerts')
             <div class="form-group">
                 <label>Email</label>
                 <div class="input-group mb-3">
@@ -51,8 +51,6 @@
                     <span class="text-danger">{{ $errors->first('meassage') }}</span>
                 @endif
             </div>
-
-
             <div class="form-group">
                 <label>Password</label>
                 <div class="input-group mb-3">
