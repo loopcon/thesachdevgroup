@@ -139,6 +139,15 @@
         }else{
             document.getElementById("banner_image").required = true;
         }
+
+          // used car banner image validation
+          var old_image = $('#old_image').val();
+        var used_car_banner_image = $('#used_car_banner_image').val();
+        if(old_image != '' || used_car_banner_image != ''){
+            document.getElementById("used_car_banner_image").required = false;
+        }else{
+            document.getElementById("used_car_banner_image").required = true;
+        }
     });
 </script>
 @endsection
