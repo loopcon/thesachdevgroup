@@ -273,7 +273,7 @@
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                 <li class="nav-item">
                     <a href="{{url('email-template')}}" class="nav-link {{ (request()->is('email-template*')) ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cogs"></i><p>Email Templates</p>
+                        <i class="fa fa-envelope nav-icon"></i><p>Email Templates</p>
                     </a>
                 </li>
             @endif
