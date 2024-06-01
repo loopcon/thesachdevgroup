@@ -681,57 +681,57 @@
                     number: true,
                 },
             },
-            messages: {
-                'our_business_id': {
-                    required: "The our business field is required.",
-                },
-                'slider_image': {
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'image': {
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'name': {
-                    required: "The showroom name field is required.",
-                },
-                'brand_id': {
-                    required: "The brand field is required.",
-                },
-                'car_id[]': { 
-                    required: "The car field is required.",
-                },
-                'address': {
-                    required: "The address field is required.",
-                },
-                'working_hours': {
-                    required: "The working hours field is required.",
-                },
-                'contact_number': {
-                    required: "The contact number field is required.",
-                },
-                'email': {
-                    required: "The email field is required.",
-                },
-                'address_icon': {
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'working_hours_icon': {
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'contact_number_icon': {
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'email_icon': {
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'rating': {
-                    required: "The rating field is required.",
-                    max: "The rating must not be greater than 5."
-                },
-                'number_of_rating': {
-                    required: "The number of rating field is required.",
-                },
-            },
+            // messages: {
+            //     'our_business_id': {
+            //         required: "The our business field is required.",
+            //     },
+            //     'slider_image': {
+            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+            //     },
+            //     'image': {
+            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+            //     },
+            //     'name': {
+            //         required: "The showroom name field is required.",
+            //     },
+            //     'brand_id': {
+            //         required: "The brand field is required.",
+            //     },
+            //     'car_id[]': { 
+            //         required: "The car field is required.",
+            //     },
+            //     'address': {
+            //         required: "The address field is required.",
+            //     },
+            //     'working_hours': {
+            //         required: "The working hours field is required.",
+            //     },
+            //     'contact_number': {
+            //         required: "The contact number field is required.",
+            //     },
+            //     'email': {
+            //         required: "The email field is required.",
+            //     },
+            //     'address_icon': {
+            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+            //     },
+            //     'working_hours_icon': {
+            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+            //     },
+            //     'contact_number_icon': {
+            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+            //     },
+            //     'email_icon': {
+            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+            //     },
+            //     'rating': {
+            //         required: "The rating field is required.",
+            //         max: "The rating must not be greater than 5."
+            //     },
+            //     'number_of_rating': {
+            //         required: "The number of rating field is required.",
+            //     },
+            // },
             errorPlacement: function(error, element) {
                 if(element.attr("name") == "our_business_id"){
                     error.appendTo('#errorbusinessdiv');

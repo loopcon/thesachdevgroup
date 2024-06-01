@@ -31,6 +31,7 @@
                                         @endforeach
                                     @endif
                                 </select>
+                                <div class="error"></div>
                                 @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
@@ -119,6 +120,9 @@
  $(document).ready(function () {
         $(".used_car_form").validate({
             rules: {
+                'business_id': {
+                    required: true,
+                },
                 'image': {
                     required: checkImage,
                     extension: "jpg,jpeg,png,webp,svg",
@@ -139,25 +143,25 @@
                     number: true,
                 },
             },
-            messages: {
-                'image': {
-                    required: "The image field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'name': {
-                    required: "The name field is required.",
-                },
-                'link': {
-                    url: "Please enter a valid link.",
-                },
-                'rating': {
-                    required: "The rating field is required.",
-                    max: "The rating must not be greater than 5."
-                },
-                'number_of_rating': {
-                    required: "The number of rating field is required.",
-                },
-            },
+            // messages: {
+            //     'image': {
+            //         required: "The image field is required.",
+            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+            //     },
+            //     'name': {
+            //         required: "The name field is required.",
+            //     },
+            //     'link': {
+            //         url: "Please enter a valid link.",
+            //     },
+            //     'rating': {
+            //         required: "The rating field is required.",
+            //         max: "The rating must not be greater than 5."
+            //     },
+            //     'number_of_rating': {
+            //         required: "The number of rating field is required.",
+            //     },
+            // },
             errorPlacement: function(error, element) {
                 error.appendTo(element.parent().find('.error'));
             },
