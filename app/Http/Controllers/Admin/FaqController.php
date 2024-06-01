@@ -190,10 +190,11 @@ class FaqController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $request->validate([
-                    'name' => 'required',
+                    'title' => 'required',
                 ]);
-                $return_data = array();
+
                 $faq_title = FaqTitle::first();
+                // print_r($faq_title);exit;
                 $faq_title->title = $request->title;
                 $faq_title->title_font_size = $request->title_font_size;
                 $faq_title->title_color = $request->title_color;

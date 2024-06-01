@@ -1,6 +1,7 @@
 @extends('admin.layout.header')
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/sweetalert2/sweetalert2.css')}}">
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -20,12 +21,12 @@
         <div class="card">
             <div class="col-md-12 text-left">
                 <h5 class="title ml-3 mt-3">Faq Title</h5>
-                <form action="{{ route('faq-title-update') }}" method="POST" class="faq-form" enctype="multipart/form-data">
+                <form action="{{ route('faq-title-update') }}" method="POST" class="faq-form" enctype="multipart/form-data" data-parsley-validate="">
                     @csrf
                     <div class="row">
                         <div class="col-md-3 mt-3 mb-3">
-                            <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" value="{{isset($record->title) ? $record->title : old('title')}}">
+                            <label for="title" class="form-label">Title<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{isset($record->title) ? $record->title : old('title')}}" required>
                             @if ($errors->has('title')) <div class="text-danger">{{ $errors->first('title') }}</div>@endif
                             <div class="error"></div>
                         </div>
@@ -89,6 +90,7 @@
 @endsection
 @section('javascript')
 <script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script type="text/javascript">
     $(function () {
         var table = $('.table').DataTable({
