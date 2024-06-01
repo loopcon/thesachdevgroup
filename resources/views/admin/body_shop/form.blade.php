@@ -31,6 +31,7 @@
                                         @endforeach
                                     @endif
                                 </select>
+                                <div class="error"></div>
                                 @if($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id')}}</div> @endif
                             </div>
 
@@ -98,6 +99,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" required="" maxlength="5" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}" name="number_of_rating" id="number_of_rating">
+                                <div class="error"></div>
                                 @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                             </div>
 
@@ -138,8 +140,8 @@
                             <div class="col-md-4">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="email" value="{{isset($record->email) ? $record->email : old('email')}}" id="email">
-                                @if($errors->has('email')) <div class="text-danger">{{ $errors->first('email')}}</div> @endif
                                 <div class="error"></div>
+                                @if($errors->has('email')) <div class="text-danger">{{ $errors->first('email')}}</div> @endif
                             </div>
 
                             <div class="col-md-4">
@@ -172,6 +174,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" required="" maxlength="10" minlength="10" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
+                                <div class="error"></div>
                                 @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
                             </div>
 
@@ -224,6 +227,9 @@
  $(document).ready(function () {
         $(".body_shop_form").validate({
             rules: {
+                'business_id': {
+                    required: true,
+                },
                 'image': {
                     required: checkImage,
                     extension: "jpg,jpeg,png,webp,svg",
@@ -239,30 +245,36 @@
                     number: true,
                     max: 5
                 },
+                'email': {
+                    required: true,
+                },
                 'number_of_rating': {
                     required: true,
                     number: true,
                 },
             },
-            messages: {
-                'image': {
-                    required: "The image field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'name': {
-                    required: "The name field is required.",
-                },
-                'link': {
-                    url: "Please enter a valid link.",
-                },
-                'rating': {
-                    required: "The rating field is required.",
-                    max: "The rating must not be greater than 5."
-                },
-                'number_of_rating': {
-                    required: "The number of rating field is required.",
-                },
-            },
+            // messages: {
+            //     'business_id': {
+            //         required: "The Business field is required.",
+            //     },
+            //     'image': {
+            //         required: "The image field is required.",
+            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+            //     },
+            //     'name': {
+            //         required: "The name field is required.",
+            //     },
+            //     'link': {
+            //         url: "Please enter a valid link.",
+            //     },
+            //     'rating': {
+            //         required: "The rating field is required.",
+            //         max: "The rating must not be greater than 5."
+            //     },
+            //     'number_of_rating': {
+            //         required: "The number of rating field is required.",
+            //     },
+            // },
             errorPlacement: function(error, element) {
                 error.appendTo(element.parent().find('.error'));
             },

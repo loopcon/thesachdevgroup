@@ -99,6 +99,7 @@
 .award-form .select2-container--default .select2-selection--single .select2-selection__arrow{ height: 36px; }
 .award-form .select2-container--default .select2-selection--single .select2-selection__rendered{ padding-left: 0px;}
 .adm-brand-errorbox{margin-bottom: 30px; position: relative;}
+.body_shop_form #business_id-error {margin-bottom: 55px;position: relative;}
 /* #brand_id-error{position: absolute;top:100%;left: 5px;} */
 .service-center-testimonial-form .adm-brand-errorbox{margin-bottom: 30px; position: relative;}
 .service-center-testimonial-form #service_center_id-error{position: absolute;top:100%;left: 5px;}
