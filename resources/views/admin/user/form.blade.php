@@ -42,7 +42,7 @@
 
                             <div class="mb-3 col-md-4">
                                 <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="business_id" id="business_id">
+                                <select class="form-control select2" name="business_id" id="business_id" required>
                                     <option value="">-- Select Our Business --</option>
                                     @if(isset($our_business) && $our_business->count())
                                         @foreach($our_business as $value)
@@ -50,6 +50,7 @@
                                         @endforeach
                                     @endif
                                 </select>
+                                <div class="error"></div>
                                 @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
@@ -211,18 +212,18 @@
                     minlength:"6",
                 },
             },
-            messages: {
-                'name': {
-                    required: "The name field is required.",
-                },
-                'email': {
-                    required: "The email field is required.",
-                },
-                'password': {
-                    required: "The password field is required.",
-                    minlength:"Your password must contain at least 1 lowercase, 1 special character, 1 number and password length should be minimum 8 character long.",
-                }
-            },
+            // messages: {
+            //     'name': {
+            //         required: "The name field is required.",
+            //     },
+            //     'email': {
+            //         required: "The email field is required.",
+            //     },
+            //     'password': {
+            //         required: "The password field is required.",
+            //         minlength:"Your password must contain at least 1 lowercase, 1 special character, 1 number and password length should be minimum 8 character long.",
+            //     }
+            // },
             errorPlacement: function(error, element) {
                 error.appendTo(element.parent().find('.error'));
             },

@@ -150,7 +150,7 @@ class ContactUsController extends Controller
                         {
                         $html .= "<span class='text-nowrap'>";
                         $html .= "<a href='".url('contact-us-query-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' data-id='".$id."' class='btn btn-info btn-sm ajax-form'><i class='fas fa-pencil-alt'></i></a>&nbsp";
-                        $html .= "<a href='javascript:void(0);' data-href='".route('booked-car-service-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                        $html .= "<a href='javascript:void(0);' data-href='".route('contact-us-query-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
                         $html .= "</span>";
                         }
                     }
