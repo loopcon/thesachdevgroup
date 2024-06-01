@@ -47,7 +47,7 @@
 </section>
 
 <!-- showroom -->
-@if(isset($showrooms) && $showrooms)
+@if(isset($showrooms) && $showrooms->count())
 <section id="location-section">
     <div class="container">
         <div class="location-tittle">
@@ -92,7 +92,7 @@
 <!-- showroom end  -->
 
 <!-- service center -->
-@if(isset($service_centers) && $service_centers)
+@if(isset($service_centers) && $service_centers->count())
 <section id="service-location">
     <div class="container">
         <div class="location-tittle">
@@ -138,7 +138,7 @@
 <!-- service center end -->
 
 <!-- body shop slider  -->
-@if(isset($body_shops) && $body_shops)
+@if(isset($body_shops) && $body_shops->count())
 <section id="bodyshop-location">
     <div class="container">
         <div class="location-tittle">
@@ -183,7 +183,7 @@
 <!-- body shop slider end  -->
 
 <!-- used car slider  -->
-@if(isset($used_cars) && $used_cars)
+@if(isset($used_cars) && $used_cars->count())
 <section id="used-car-locations">
     <div class="container">
         <div class="location-tittle">
@@ -231,7 +231,7 @@
 <!-- used car end  -->
 
 <!-- insurence  -->
-@if(isset($business_insurance) && $business_insurance)
+@if(isset($business_insurance) && $business_insurance->count())
 <section id="insurence-page">
     <div class="container">
         <div class="heading-title-insurence">
