@@ -101,7 +101,7 @@
 </section>
 
 <!-- facility slider -->
-@if(isset($facility) && !empty($facility))
+@if(isset($facility) && $facility->count())
 <section id="facility">
     <div class="container">
         <div class="text-facility">
@@ -136,6 +136,7 @@
 <!-- facility slider end  -->
 
 <!-- customer gallery slider -->
+@if(isset($facility) && $facility->count())
 <section id="facility">
     <div class="container">
         <div class="text-facility">
@@ -166,6 +167,7 @@
         </div>
     </div>
 </section>
+@endif
 <!-- customer gallery slider end  -->
 
 <!-- form  -->
@@ -233,7 +235,7 @@
 <!-- end form  -->
 
 <!-- testimonials -->
-@if(isset($testimonials) && !empty($testimonials))
+@if(isset($testimonials) && $testimonials->count())
 <section id="testimonial">
     <div class="container">
         <div class="location-testimonial">
