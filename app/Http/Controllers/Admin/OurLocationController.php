@@ -38,7 +38,6 @@ class OurLocationController extends Controller
             {
                 $request->validate([
                     'title' => 'required',
-                    'image'  => 'required',
                 ]);
                 $existing_data = Our_location::find(1);
 

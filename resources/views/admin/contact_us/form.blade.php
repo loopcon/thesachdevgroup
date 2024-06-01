@@ -4,6 +4,9 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row">
+            <div class="col-12">
+                @include('admin.alerts')
+            </div>
           <div class="col-sm-6">
             <h1>{{$site_title}}</h1>
           </div>
