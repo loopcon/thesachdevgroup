@@ -22,7 +22,7 @@
                     <div class="mt-3 col-md-3 select-menu">
                         <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
                         <select class="form-control select2" name="business_id" id="business_id">
-                            <option value="">-- Select Our Business --</option>
+                            <option value="">-- Select --</option>
                             @if(isset($our_business) && $our_business->count())
                                 @foreach($our_business as $value)
                                     <option value="{{$value->id}}">{{$value->title}}</option>
@@ -34,7 +34,7 @@
                     <div class="mt-3 col-md-3 select-menu">
                         <label for="showroom_id" class="form-label">Showroom<span class="text-danger">*</span></label>
                         <select class="form-control select2" name="showroom_id" id="showroom_id">
-                            <option value="">-- Select Showroom --</option>
+                            <option value="">-- Select --</option>
                             @if(isset($showroom) && $showroom->count())
                                 @foreach($showroom as $value)
                                     <option value="{{$value->id}}">{{$value->name}}</option>

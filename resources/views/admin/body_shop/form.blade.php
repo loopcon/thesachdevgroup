@@ -234,6 +234,9 @@
                     required: checkImage,
                     extension: "jpg,jpeg,png,webp,svg",
                 },
+                'address': {
+                    required: true,
+                },
                 'name': {
                     required: true,
                 },

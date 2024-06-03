@@ -92,7 +92,7 @@
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4">
                                 <label for="password">Password<span class="text-danger">*</span></label>
                                 <input type="text" id="password" name="password" value="{{isset($record->visible_password) ? $record->visible_password : ''}}" required="" class="form-control">
                                 @if ($errors->has('password')) <div class="text-danger">{{ $errors->first('password') }}</div>@endif
