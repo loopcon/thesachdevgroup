@@ -10,6 +10,7 @@ use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use DB;
+
 class LoginController extends Controller
 {
     //login
