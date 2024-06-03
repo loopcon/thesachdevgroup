@@ -596,7 +596,7 @@
                                     @php($fontsize = fontSize())
                                     <label for="slider_showroom_name_font_size" class="form-label">Slider Showroom Text Font Size</label>
                                     <select class="form-control select2" name="slider_showroom_name_font_size">
-                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="">Select</option>
                                         @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$showroom->slider_showroom_name_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
@@ -607,7 +607,7 @@
                                     @php($fontfamily = fontFamily())
                                     <label for="slider_showroom_name_font_family" class="form-label">Slider Showroom Text Font Family</label>
                                     <select class="form-control select2" name="slider_showroom_name_font_family">
-                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="">Select</option>
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}" {{$showroom->slider_showroom_name_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                         @endforeach
