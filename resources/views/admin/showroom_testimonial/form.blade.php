@@ -36,7 +36,7 @@
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+                                <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required="">
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="errordiv"></div>
                             </div>

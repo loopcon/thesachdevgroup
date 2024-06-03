@@ -6,7 +6,7 @@
     @csrf
     <div class="modal-body m-3" id="form-detail">
         <div class="row">
-            <div class="col-12 mb-2">
+            <div class="col-12 mb-2 adm-brand-errorbox">
                 <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
                 <select class="form-control select2" name="business_id" id="business_id">
                     <option value="">-- Select Business --</option>
