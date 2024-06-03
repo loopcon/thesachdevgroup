@@ -85,7 +85,8 @@ class FooterMenuController extends Controller
         }
     }
 
-    public function footer_menu_index(Request $request){
+    public function footer_menu_index(Request $request)
+    {
         if ($request->ajax()) {
             $footer_menu = Footer_menu::orderBy('id', 'DESC')->get();
             return Datatables::of($footer_menu)
@@ -109,11 +110,9 @@ class FooterMenuController extends Controller
             ->rawColumns(['action'])
             ->make(true);
         }
-       
         return redirect()->back()->with('message','something went wrong');
     }
 
-    
     public function footer_menu_edit($id)
     {
         $has_permission = hasPermission('Footer Menu');
@@ -142,7 +141,6 @@ class FooterMenuController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
-
                 $request->validate([
                     'name' => ['required',
                         Rule::unique('footer_menus')->where(function ($query) use ($request) {
@@ -163,7 +161,6 @@ class FooterMenuController extends Controller
                 $footer_menu->save();
 
                 return redirect()->route('footer_menu')->with('success','Footer Menu update successfully.');
-    
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
@@ -172,7 +169,8 @@ class FooterMenuController extends Controller
         }
     }
 
-    public function footer_menu_destroy(Request $request,$id){
+    public function footer_menu_destroy(Request $request,$id)
+    {
         $has_permission = hasPermission('Footer Menu');
         if(isset($has_permission) && $has_permission)
         {
@@ -194,8 +192,8 @@ class FooterMenuController extends Controller
     }
 
     //footer_menu_description
-    public function footer_menu_description_insert(Request $request){
-     
+    public function footer_menu_description_insert(Request $request)
+    {
         $has_permission = hasPermission('Footer Menu');
         if(isset($has_permission) && $has_permission)
         {
@@ -208,15 +206,14 @@ class FooterMenuController extends Controller
                 } else {
                     $footer_menu_description = new Footer_menu_description();
                 }
-            
+
                 $footer_menu_description->description = $request->description;
                 $footer_menu_description->description_color = $request->description_color;
                 $footer_menu_description->description_font_size = $request->description_font_size;
                 $footer_menu_description->description_font_family = $request->description_font_family;
                 $footer_menu_description->save();
-                
-                return redirect()->route('footer_menu')->with('success','Footer Menu insert successfully.');
 
+                return redirect()->route('footer_menu')->with('success','Footer Menu insert successfully.');
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }

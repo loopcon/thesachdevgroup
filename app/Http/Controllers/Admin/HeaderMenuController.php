@@ -26,8 +26,8 @@ class HeaderMenuController extends Controller
         }
     }
 
-    public function header_menu_insert(Request $request){
-      
+    public function header_menu_insert(Request $request)
+    {
         $has_permission = hasPermission('Header Menu');
         if(isset($has_permission) && $has_permission)
         {
@@ -62,8 +62,8 @@ class HeaderMenuController extends Controller
         }
     }
 
-    public function header_menu_index(Request $request){
-        
+    public function header_menu_index(Request $request)
+    {
         if ($request->ajax()) {
             $header_menu = Header_menu::orderBy('id', 'DESC')->get();
             return Datatables::of($header_menu)
@@ -86,20 +86,18 @@ class HeaderMenuController extends Controller
             ->rawColumns(['action'])
             ->make(true);
         }
-
         $has_header_menu_permission = hasPermission('Header Menu');
         $has_social_media_permission = hasPermission('Header Menu Social Media Icon');
-
         if(($has_header_menu_permission && ($has_header_menu_permission->read_permission == 1 || $has_header_menu_permission->full_permission == 1)) ||
         ($has_social_media_permission && ($has_social_media_permission->read_permission == 1 || $has_social_media_permission->full_permission == 1))) {
             return view('admin.header_menu.show');
         } else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
-
     }
 
-    public function header_menu_edit($id){
+    public function header_menu_edit($id)
+    {
         $has_permission = hasPermission('Header Menu');
         if(isset($has_permission) && $has_permission)
         {
@@ -150,7 +148,8 @@ class HeaderMenuController extends Controller
         }
     }
 
-    public function header_menu_destroy(Request $request,$id){
+    public function header_menu_destroy(Request $request,$id)
+    {
         $has_permission = hasPermission('Header Menu');
         if(isset($has_permission) && $has_permission)
         {
@@ -169,6 +168,5 @@ class HeaderMenuController extends Controller
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
-  
     }
 }
