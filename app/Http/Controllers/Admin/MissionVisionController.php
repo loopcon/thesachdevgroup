@@ -50,8 +50,8 @@ class MissionVisionController extends Controller
         }
     }
 
-    public function mission_vision_insert(Request $request){
-
+    public function mission_vision_insert(Request $request)
+    {
         $has_permission = hasPermission('Mission Vision');
         if(isset($has_permission) && $has_permission)
         {
@@ -92,7 +92,7 @@ class MissionVisionController extends Controller
                 $mission_vision->description_font_size = $request->description_font_size;
                 $mission_vision->description_font_family = $request->description_font_family;
                 $mission_vision->save();
-        
+
                 return redirect()->route('mission_vision')->with('success','Mission Vision insert successfully.');
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -102,8 +102,10 @@ class MissionVisionController extends Controller
         }
     }
 
-    public function mission_vision_index(Request $request){
-        if ($request->ajax()) {
+    public function mission_vision_index(Request $request)
+    {
+        if ($request->ajax()) 
+        {
             $mission_vision = Mission_vision::orderBy('id', 'DESC')->get();
             return Datatables::of($mission_vision)
                 ->addIndexColumn()
@@ -123,7 +125,6 @@ class MissionVisionController extends Controller
             })
 
             ->editColumn('icon', function($mission_vision){
-
                 if(isset($mission_vision->icon) && isset($mission_vision->icon)){
                     $url= asset('mission_vision/'.$mission_vision->icon);
                     $image = '<img src="'.$url.'" border="0" width="100">';
@@ -132,7 +133,6 @@ class MissionVisionController extends Controller
             })
 
             ->editColumn('description', function($mission_vision){
-
                 $description = $mission_vision->description;
                 return $description;
             })
@@ -140,7 +140,6 @@ class MissionVisionController extends Controller
             ->rawColumns(['action','icon','description'])
             ->make(true);
         }
-       
         return redirect()->back()->with('error','something went wrong');
     }
 
@@ -151,7 +150,6 @@ class MissionVisionController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
-
                 $return_data = array();
                 $id = decrypt($id);
                 $return_data['site_title'] = trans('Mission Vision Edit');
@@ -169,7 +167,6 @@ class MissionVisionController extends Controller
     
     public function mission_vision_update(Request $request, $id)
     {
-
         $has_permission = hasPermission('Mission Vision');
         if(isset($has_permission) && $has_permission)
         {
@@ -230,7 +227,6 @@ class MissionVisionController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
-
                 $mission_vision = Mission_vision::find($id);
                 if($mission_vision->icon != NULL)
                 {
@@ -250,23 +246,19 @@ class MissionVisionController extends Controller
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
-
     }
     
     //mission vision image 
-    public function mission_vision_image_insert(Request $request){
-     
+    public function mission_vision_image_insert(Request $request)
+    {
         $has_permission = hasPermission('Mission Vision');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
             {
                 $existing_data = Mission_vision_image::find(1);
-
                 if($existing_data) {
-
                     $mission_vision_image = $existing_data;
-
                     if($request->hasFile('image'))
                     {
                         $oldImage = $mission_vision_image->image;
@@ -277,7 +269,6 @@ class MissionVisionController extends Controller
                             }
                         }
                     }
-
                 } else {
                     $mission_vision_image = new Mission_vision_image();
                 }
@@ -291,11 +282,8 @@ class MissionVisionController extends Controller
                     $file->move($destinationPath,$fileName);
                     $mission_vision_image->image = $fileName;
                 }
-
                 $mission_vision_image->save();
-                
             return redirect()->route('mission_vision')->with('success','Mission Vision insert successfully.');
-
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }

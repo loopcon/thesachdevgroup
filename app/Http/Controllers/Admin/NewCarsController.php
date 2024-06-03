@@ -74,10 +74,8 @@ class NewCarsController extends Controller
                         $used_car_banner_image = fileUpload($request, 'used_car_banner_image', 'uploads/usedCar');
                         $new_car->used_car_banner_image = $used_car_banner_image;
                     }
-
                     $new_car->save();
                 }else{
-
                     $request->validate([
                         'banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
                         'used_car_banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
