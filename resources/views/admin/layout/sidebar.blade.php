@@ -28,7 +28,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item"> 
                                 <a href="{{url('homeslider_index')}}" class="nav-link {{ request()->is('homeslider_index*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-sliders-h"></i><p>Home Slider</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Home Slider</p>
                                 </a>
                             </li>
                         @endif
@@ -39,7 +39,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item"> 
                                 <a href="{{url('home_our_businesses_index')}}" class="nav-link {{ request()->is('home_our_businesses_index*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-th"></i><p>Home Our Businesses</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Home Our Businesses</p>
                                 </a>
                             </li>
                         @endif
@@ -50,7 +50,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item"> 
                                 <a href="{{url('mission_vision')}}" class="nav-link {{ request()->is('mission_vision*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-tasks"></i> <p>Mission Vision</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Mission Vision</p>
                                 </a>
                             </li>
                         @endif
@@ -61,7 +61,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item"> 
                                 <a href="{{url('count')}}" class="nav-link {{ request()->is('count*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-sort-numeric-down"></i><p>Count</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Count</p>
                                 </a>
                             </li>
                         @endif
@@ -72,7 +72,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item"> 
                                 <a href="{{url('home_detail')}}" class="nav-link {{request()->is('home_detail*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-home"></i><p>Home Detail</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Home Detail</p>
                                 </a>
                             </li>
                         @endif
@@ -83,7 +83,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
                             <li class="nav-item"> 
                                 <a href="{{url('testimonials_index')}}" class="nav-link {{ (request()->is('testimonials_index*')) ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-address-card"></i><p>Testimonials</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Testimonials</p>
                                 </a>
                             </li>
                         @endif
@@ -477,7 +477,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                             <li class="nav-item"> 
                                 <a href="{{route('booked-car-service')}}" class="nav-link {{request()->is('booked-car-service*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-car-crash"></i><p>Booked Car Service</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Booked Car Service</p>
                                 </a>
                             </li>
                         @endif
@@ -488,7 +488,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                             <li class="nav-item"> 
                                 <a href="{{route('booked-insurance')}}" class="nav-link {{request()->is('booked-insurance*') ? 'active' : '' }}">
-                                    <i class="nav-icon fas fa-shield-alt"></i><p>Booked Insurance</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Booked Insurance</p>
                                 </a>
                             </li>
                         @endif
@@ -499,7 +499,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                             <li class="nav-item"> 
                                 <a href="{{route('career-form')}}" class="nav-link {{request()->is('career-form*') ? 'active' : '' }}">
-                                    <i class="nav-icon fa fa-book fa-fw"></i><p>Career Form</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Career Form</p>
                                 </a>
                             </li>
                         @endif
@@ -510,7 +510,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                             <li class="nav-item"> 
                                 <a href="{{route('showroom-contact-query')}}" class="nav-link {{request()->is('showroom-contact-query*') ? 'active' : '' }}">
-                                    <i class="nav-icon fa fa-comment"></i><p>Showroom Contact Query</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Showroom Contact Query</p>
                                 </a>
                             </li>
                         @endif
@@ -521,7 +521,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                             <li class="nav-item"> 
                                 <a href="{{route('service-center-contact-query')}}" class="nav-link {{request()->is('service-center-contact-query*') ? 'active' : '' }}">
-                                    <i class="nav-icon fa fa-comment-dots"></i><p>Service Center Contact Query</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Service Center Contact Query</p>
                                 </a>
                             </li>
                         @endif
@@ -532,7 +532,7 @@
                         @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
                             <li class="nav-item"> 
                                 <a href="{{route('contact-us-query')}}" class="nav-link {{request()->is('contact-us-query*') ? 'active' : '' }}">
-                                    <i class="nav-icon fa fa-comment-dots"></i><p>Quick Contact Us Query</p>
+                                    <i class="far fa-circle nav-icon"></i><p>Quick Contact Us Query</p>
                                 </a>
                             </li>
                         @endif
