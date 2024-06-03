@@ -93,6 +93,10 @@ Route::get('dashboard', [LoginController::class, 'dashboard'])->name('dashboard'
 
 Route::group(['middleware' => 'auth'], function () {
     
+    // change password
+    Route::get('change-password', [LoginController::class, 'showchangePasswordForm'])->name('change-password');
+    Route::post('change-password', [LoginController::class, 'changePassword'])->name('change-password');
+
     //user role permission   
     Route::get('role-permission/{role_id?}', [RolePermissionController::class, 'index'])->name('role-permission');
     Route::post('role-permission', [RolePermissionController::class, 'store'])->name('role-permission');

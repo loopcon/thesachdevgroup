@@ -64,7 +64,7 @@
           @endif
         </a>
         <div class="dropdown-menu dropdown-menu-right header-dropdown-menu">
-          
+          <a href="{{ route('change-password') }}" class="dropdown-item dropdown-footer">Change Password</a>
           <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer">Logout</a>
         </div>
       </li>
