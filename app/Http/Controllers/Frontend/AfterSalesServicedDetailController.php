@@ -24,7 +24,7 @@ class AfterSalesServicedDetailController extends Controller
     {
         $request->validate([
             'first_name' => 'required',
-            'phone' => 'required|numeric|max:10',
+            'phone' => 'required|numeric',
             'email' => 'required|email',
         ]);
 
