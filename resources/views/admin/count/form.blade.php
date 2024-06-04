@@ -21,12 +21,9 @@
                     <form action="@if(isset($record->id)) {{ route('count_update', array('id' => encrypt($record->id))) }} @else{{ route('count_insert') }} @endif" method="POST" class="count_form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-
                             <div class="mb-3 col-md-4">
                                 <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
-                                
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->icon) ? $record->icon : old('old_image')}}">
-                                
                                 @if(isset($record->icon) && $record->icon)
                                     <img src="{{url('public/count_icon/'.$record->icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
@@ -51,7 +48,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="amount_font_size" class="form-label">Amount Text Font Size</label>
                                 <select class="form-control select2" name="amount_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->amount_font_size) && $record->amount_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -62,7 +59,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="amount_font_family" class="form-label">Amount Text Font Family</label>
                                 <select class="form-control select2" name="amount_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->amount_font_family) && $record->amount_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -84,7 +81,7 @@
                             <div class="col-md-4">
                                 <label for="name_font_size" class="form-label">Name Text Font Size</label>
                                 <select class="form-control select2" name="name_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->name_font_size) && $record->name_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -94,7 +91,7 @@
                             <div class="col-md-4">
                                 <label for="name_font_family" class="form-label">Name Text Font Family</label>
                                 <select class="form-control select2" name="name_font_family">
-                                <option selected="selected" disabled="disabled">Select</option>
+                                <option value="">Select</option>
                                 @foreach($fontfamily as $family)
                                     <option value="{{$family['key']}}" @if(isset($record->name_font_family) && $record->name_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                 @endforeach
@@ -162,9 +159,8 @@
             }
             return true;
         }
-        
-        $('.colorpicker').colorpicker();
 
+        $('.colorpicker').colorpicker();
     });
 </script>
 @endsection
