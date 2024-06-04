@@ -18,7 +18,6 @@
                 </div>
             </div>
             <div class="card">
-
                 <div class="card-body">
                     <form action="{{ route('footer_menu_description_insert') }}" method="POST" class="footer_menu_description_form" enctype="multipart/form-data">
                         @csrf
@@ -37,7 +36,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="description_font_size" class="form-label">Description Text Font Size</label>
                                 <select class="form-control select2" name="description_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->description_font_size) && $record->description_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -48,7 +47,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="description_font_family" class="form-label">Description Text Font Family</label>
                                 <select class="form-control select2" name="description_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->description_font_family) && $record->description_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach

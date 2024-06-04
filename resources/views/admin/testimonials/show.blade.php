@@ -18,7 +18,6 @@
                 </div>
             </div>
             <div class="card">
-
                 <div class="card-body">
                     <form action="{{ route('testimonials_title_insert') }}" method="POST" class="testimonials_title_form" enctype="multipart/form-data">
                         @csrf
@@ -37,7 +36,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="testimonials_title_font_size" class="form-label">Testimonials Title Text Font Size</label>
                                 <select class="form-control select2" name="testimonials_title_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->testimonials_title_font_size) && $record->testimonials_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -48,7 +47,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="testimonials_title_font_family">Testimonials Title Text Font Family</label>
                                 <select class="form-control select2" name="testimonials_title_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->testimonials_title_font_family) && $record->testimonials_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -111,15 +110,11 @@
                 {data: 'name_color', name: 'name_color'},
                 {data: 'name_font_size', name: 'name_font_size'},
                 {data: 'name_font_family', name: 'name_font_family'},
-
                 {data: 'name_background_color', name: 'name_background_color'},
-
                 {data: 'description', name: 'description'},
-
                 {data: 'description_color', name: 'description_color'},
                 {data: 'description_font_size', name: 'description_font_size'},
                 {data: 'description_font_family', name: 'description_font_family'},
-                
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

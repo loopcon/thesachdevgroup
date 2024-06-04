@@ -18,9 +18,7 @@
                         <form method="post" action="{{ route('testimonials_update', $testimonial->id) }}" class="edit_form" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $testimonial->id }}" class="id" name="id">
-                           
                             <div class="row">
-
                                 <div class="mb-3 col-md-4">
                                     <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     @if(isset($testimonial->image) && isset($testimonial->image))
@@ -49,19 +47,18 @@
                                     @php($fontsize = fontSize())
                                     <label for="name_font_size">Name Text Font Size</label>
                                     <select class="form-control select2" name="name_font_size">
-                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="">Select</option>
                                         @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$testimonial->name_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
                                     </select>
                                 </div>
 
-
                                 <div class="mb-3 col-md-4">
                                     @php($fontfamily = fontFamily())
                                     <label for="name_font_family">Name Text Font Family</label>
                                     <select class="form-control select2" name="name_font_family">
-                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="">Select</option>
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}" {{$testimonial->name_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                         @endforeach
@@ -88,7 +85,7 @@
                                 <div class="col-md-4 mt-2">
                                     <label for="description_font_size">Description Text Font Size</label>
                                     <select class="form-control select2" name="description_font_size">
-                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="">Select</option>
                                         @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$testimonial->description_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
@@ -98,13 +95,12 @@
                                 <div class="col-md-4 mt-2" >
                                     <label for="description_font_family">Description Text Font Family</label>
                                     <select class="form-control select2" name="description_font_family">
-                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="">Select</option>
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}" {{$testimonial->description_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-
                             </div>
 
                             <div class="box-footer">

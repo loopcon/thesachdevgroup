@@ -771,3 +771,6 @@ ALTER TABLE `email_templates`
 
 ALTER TABLE `email_templates`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 04-06-2024 5:31 PM
+ALTER TABLE `after_sales_service` CHANGE `title_color` `title_color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;

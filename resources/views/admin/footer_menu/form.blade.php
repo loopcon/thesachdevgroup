@@ -21,15 +21,8 @@
                     <form action="@if(isset($record->id)) {{ route('footer_menu_update', array('id' => encrypt($record->id))) }} @else{{ route('footer_menu_insert') }} @endif" method="POST" class="footer_menu_form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-
                             <div class="mb-3 col-md-4">
                                 <label for="menu_name" class="form-label">Select Menu<span class="text-danger">*</span></label>
-                                {{-- <select class="form-control select2" name="menu_name">
-                                    <option selected="selected" disabled="disabled">Select</option>
-                                    <option value="our_services" {{(old('menu_name') == 'our_services' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'our_services' ? 'selected' : ''))}}>Our Services</option>
-                                    <option value="our_businesses" {{(old('menu_name') == 'our_businesses' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'our_businesses' ? 'selected' : ''))}}>Our Businesses</option>
-                                    <option value="useful_links" {{(old('menu_name') == 'useful_links' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'useful_links' ? 'selected' : ''))}}>Useful Links</option>
-                                </select> --}}
                                 <select class="form-control select2" name="menu_name">
                                     <option selected="selected" disabled="disabled">Select</option>
                                     <option value="Our Services" {{(old('menu_name') == 'Our Services' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'Our Services' ? 'selected' : ''))}}>Our Services</option>
@@ -54,7 +47,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="font_size" class="form-label">Name Text Font Size</label>
                                 <select class="form-control select2" name="font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         @php ($selected = '')
                                         @if(old('font_size') == $i.'px')
@@ -71,7 +64,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="font_family" class="form-label">Name Text Font Family</label>
                                 <select class="form-control select2" name="font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         @php ($selected_font_family = '')
                                         @if(old('font_family') == $family['key'])
@@ -87,11 +80,10 @@
                             <div class="col-md-4">
                                 <label for="link" class="form-label">Link</label>
                                 <input type="text" id="link" class="form-control" name="link" value="{{ old('link') ?  old('link') : (isset($record->link) ? $record->link :  '')}}">
-                                {{-- <div class="error"></div> --}}
                                 <div class="error">@if ($errors->has('link')) <label id="link-error" class="error">{{ $errors->first('link') }}</label>@endif</div>
                             </div>
                         </div> 
-                            
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit" onclick="this.disabled='disabled';this.form.submit();">Submit</button>
                             <a href="{{ route('footer_menu') }}" class="btn btn-danger">Cancel</a>

@@ -23,7 +23,7 @@
                             <div class="col-md-4 adm-brand-errorbox">
                                 <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
                                  <select name="brand_id" id="brand_id" class="form-control select2" required>
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($brands as $brand)
                                         <option value="{{$brand->id}}">
                                             {{$brand->name}}
@@ -55,7 +55,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="name_font_size" class="form-label">Name Text Font Size</label>
                                 <select class="form-control select2" name="name_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
@@ -66,7 +66,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="name_font_family" class="form-label">Name Text Font Family</label>
                                 <select class="form-control select2" name="name_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}">{{$family['value']}}</option>
                                         @endforeach
@@ -87,7 +87,7 @@
                             <div class="col-md-4">
                                 <label for="price_font_size" class="form-label">Price Text Font Size</label>
                                 <select class="form-control select2" name="price_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
@@ -97,7 +97,7 @@
                             <div class="mb-3 col-md-4">
                                 <label for="price_font_family" class="form-label">Price Text Font Family</label>
                                 <select class="form-control select2" name="price_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}">{{$family['value']}}</option>
                                         @endforeach
@@ -124,7 +124,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="driven_font_size" class="form-label">Driven Font Size</label>
                                 <select class="form-control select2" name="driven_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
@@ -135,7 +135,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="driven_font_family" class="form-label">Driven Font Family</label>
                                 <select class="form-control select2" name="driven_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}">{{$family['value']}}</option>
                                         @endforeach
@@ -156,7 +156,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="fuel_type_font_size" class="form-label">Fuel Type Font Size</label>
                                 <select class="form-control select2" name="fuel_type_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
@@ -167,7 +167,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="fuel_type_font_family" class="form-label">Fuel Type Font Family</label>
                                 <select class="form-control select2" name="fuel_type_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}">{{$family['value']}}</option>
                                         @endforeach
@@ -188,7 +188,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="year_font_size" class="form-label">year Font Size</label>
                                 <select class="form-control select2" name="year_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
@@ -199,7 +199,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="year_font_family" class="form-label">Year Font Family</label>
                                 <select class="form-control select2" name="year_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}">{{$family['value']}}</option>
                                         @endforeach
@@ -220,7 +220,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="body_style_font_size" class="form-label">Body Style Font Size</label>
                                 <select class="form-control select2" name="body_style_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
@@ -231,7 +231,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="body_style_font_family" class="form-label">Body Style Font Family</label>
                                 <select class="form-control select2" name="body_style_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}">{{$family['value']}}</option>
                                         @endforeach
