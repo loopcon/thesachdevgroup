@@ -18,7 +18,6 @@
                         <form method="post" action="{{ route('brand_update', $brand->id) }}" class="edit_form" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $brand->id }}" class="id" name="id">
-                           
                             <div class="row">
                                 <div class="mb-3 col-md-4">
                                     <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
@@ -45,7 +44,7 @@
                                     @php($fontsize = fontSize())
                                     <label for="font_size" class="form-label">Name Text Font Size</label>
                                     <select class="form-control select2" name="font_size">
-                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="">Select</option>
                                         @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$brand->font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
@@ -56,7 +55,7 @@
                                     @php($fontfamily = fontFamily())
                                     <label for="font_family" class="form-label">Name Text Font Family</label>
                                     <select class="form-control select2" name="font_family">
-                                        <option selected="selected" disabled="disabled">Select</option>
+                                        <option value="">Select</option>
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}" {{$brand->font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                         @endforeach
