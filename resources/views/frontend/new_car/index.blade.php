@@ -33,9 +33,7 @@
                 <h3 class="mb-3" style="color:{{$data->color}}; font-size:{{$data->font_size}}; font-family:{{$data->font_family}};">{{$data->name}}</h3>
             </div>
             <div class="col-6 text-right">
-                <a class="btn btn-primary mb-3 " href="https://hanshyundai.com/" role="button" data-slide="next" target="_blank">
-                   View More</i>
-                </a>
+                <a class="btn btn-primary mb-3" href="{{$data->link}}" role="button" data-slide="next" target="_blank">View More</i></a>
             </div>
             <div class="col-12">
                 <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
