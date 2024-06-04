@@ -16,7 +16,6 @@
                 <div class="card-body">
                     <form action="{{ route('home_our_businesses_insert') }}" method="POST" class="our_businesses_form" enctype="multipart/form-data">
                         @csrf
-                        
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>

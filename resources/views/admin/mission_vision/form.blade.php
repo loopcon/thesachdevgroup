@@ -27,12 +27,9 @@
                     <form action="@if(isset($record->id)) {{ route('mission_vision_update', array('id' => encrypt($record->id))) }} @else{{ route('mission_vision_insert') }} @endif" method="POST" class="mission_vision_form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-
                             <div class="mb-3 col-md-4">
                                 <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
-                                
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->icon) ? $record->icon : old('old_image')}}">
-                                
                                 @if(isset($record->icon) && $record->icon)
                                     <img src="{{url('public/mission_vision/'.$record->icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
@@ -56,7 +53,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="icon_name_font_size" class="form-label">Icon Name Text Font Size</label>
                                 <select class="form-control select2" name="icon_name_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->icon_name_font_size) && $record->icon_name_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -67,7 +64,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="icon_name_font_family" class="form-label">Icon Name Text Font Family</label>
                                 <select class="form-control select2" name="icon_name_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->icon_name_font_family) && $record->icon_name_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -88,7 +85,7 @@
                             <div class="col-md-4">
                                 <label for="title_font_size" class="form-label">Title Text Font Size</label>
                                 <select class="form-control select2" name="title_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->title_font_size) && $record->title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -98,7 +95,7 @@
                             <div class="col-md-4">
                                 <label for="title_font_family" class="form-label">Title Text Font Family</label>
                                 <select class="form-control select2" name="title_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->title_font_family) && $record->title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -119,7 +116,7 @@
                             <div class="mb-3 col-md-4">
                                 <label for="description_font_size" class="form-label">Description Text Font Size</label>
                                 <select class="form-control select2" name="description_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->description_font_size) && $record->description_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -129,15 +126,14 @@
                             <div class="col-md-4">
                                 <label for="description_font_family" class="form-label">Description Text Font Family</label>
                                 <select class="form-control select2" name="description_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value ="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->description_font_family) && $record->description_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
                                 </select>
                             </div>
+                        </div> 
 
-                             </div> 
-                            
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>
                             <a href="{{ route('mission_vision') }}" class="btn btn-danger">Cancel</a>

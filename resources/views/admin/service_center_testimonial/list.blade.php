@@ -37,7 +37,6 @@
                                     <th>Description Text Size</th>
                                     <th>Description Text Color</th>
                                     <th>Image</th>
-                                    <th>Service Center</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -69,7 +68,6 @@
                 {data: 'description_text_size', name: 'description_text_size'},
                 {data: 'description_text_color', name: 'description_text_color'},
                 {data: 'image', name: 'image'},
-                {data: 'service_center_id', name: 'service_center_id'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

@@ -18,7 +18,7 @@ class ServiceCenterController extends Controller
     public function serviceCenterList()
     {
         $has_permission = hasPermission('Service Center');
-       
+
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
