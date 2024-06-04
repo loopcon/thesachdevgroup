@@ -28,6 +28,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Service Center</th>
                                     <th>Name</th>
                                     <th>Name Font Size</th>
                                     <th>Name Font Family</th>
@@ -59,6 +60,7 @@
             ajax: "{{ route('service-center-testimonial-datatable') }}",
             columns: [
                 {data: 'id', name: 'id', orderable: false, searchable: false},
+                {data: 'service_center_id', name: 'service_center_id'},
                 {data: 'name', name: 'name'},
                 {data: 'name_font_size', name: 'name_font_size'},
                 {data: 'name_font_family', name: 'name_font_family'},
