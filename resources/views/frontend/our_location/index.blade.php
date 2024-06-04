@@ -249,7 +249,7 @@
                                     </div>
                                 </div>
                             </div>		    
-                            
+
                             <div class="tab-pane active" id="tab_default_1">
                                 <div class="location-tab-parent">
                                     <section class="header">
@@ -445,9 +445,7 @@
         </div>
     </div>
 </section>
-
 @endsection
-
 @section('javascript')
 <script>
     $(document).ready(function() {

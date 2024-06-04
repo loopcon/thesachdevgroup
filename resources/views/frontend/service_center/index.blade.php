@@ -17,6 +17,7 @@
     </div>
 </section>
 
+<!-- services section -->
 <section id="introduction-location">
     <div class="container">
         <div class="location-text">
@@ -39,6 +40,7 @@
         </div>
     </div>
 </section>
+<!-- service section end -->
 
 <section id="working-time">
     <div class="container">
