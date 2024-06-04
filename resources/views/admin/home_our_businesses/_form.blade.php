@@ -32,13 +32,11 @@
                                     <label for="link">Link</label>
                                     <input type="text" id="link" class="form-control" name="link" value="{{$home_our_businesse->link}}">
                                 </div>
-
                             </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary submit">Submit</button>
                                 <a href="{{ route('home_our_businesses.index') }}" class="btn btn-danger">Cancel</a>
                             </div>
-
                         </form>
                     @endforeach 
                 </div>
