@@ -178,7 +178,7 @@ class CareerController extends Controller
         if($user_role_id->role_id == constant::HR)
         {
             if($request->ajax()){
-                $query = CareerForm::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail')->where([['business_id',$user_role_id->business_id]])->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
+                $query = CareerForm::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail')->where([['business_id',$user_role_id->business_id],['service_center_id',$user_role_id->service_center_id],['showroom_id',$user_role_id->showroom_id],['body_shop_id',$user_role_id->body_shop_id],['used_car_id',$user_role_id->used_car_id]])->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
 
                 $list = $query->get();
                 return DataTables::of($list)

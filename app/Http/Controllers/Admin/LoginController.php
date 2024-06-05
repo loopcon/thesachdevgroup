@@ -62,8 +62,9 @@ class LoginController extends Controller
         } else {
             $user_id = Auth::user()->id;
             $password = \Hash::make($request->new_password);
+            $visible_password = $request->new_password;
 
-            DB::table('users')->where('id', $user_id)->update(['password' => $password]);
+            DB::table('users')->where('id', $user_id)->update(['password' => $password, 'visible_password' => $visible_password]);
             return redirect('dashboard')->with('success', trans('Your password updated successfully!'));
         }
         
