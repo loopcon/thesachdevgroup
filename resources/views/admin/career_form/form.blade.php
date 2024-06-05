@@ -22,9 +22,47 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{route('career-form-update',array('id' => encrypt($record->id)))}}" method="POST" id="career_form" enctype="multipart/form-data" data-parsley-validate="">
+                    <form action="{{route('career-form-update',array('id' => encrypt($record->id)))}}" method="POST" id="career_form" class="user-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="form-row">
+                            <div class="mb-3 col-md-4">
+                                <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="business_id" id="business_id" required>
+                                    <option value="">-- Select Our Business --</option>
+                                    @if(isset($our_business) && $our_business->count())
+                                        @foreach($our_business as $value)
+                                            <option value="{{$value->id}}"@if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}}@endif>{{$value->title}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                <div class="error"></div>
+                                @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
+                            </div>
+
+                            <div class="mb-3 col-md-4 showroom">
+                                <label for="showroom_id" class="form-label">Showroom</label>
+                                <select class="form-control select2" name="showroom_id" id="showroom_id">
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4 service-center">
+                                <label for="service_center_id" class="form-label">Service Center</label>
+                                <select class="form-control select2" name="service_center_id" id="service_center_id">
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4 body-shop">
+                                <label for="body_shop_id" class="form-label">Body Shop</label>
+                                <select class="form-control select2" name="body_shop_id" id="body_shop_id">
+                                </select>
+                            </div>
+
+                            <div class="mb-3 col-md-4 used-car">
+                                <label for="used_car_id" class="form-label">Used Car</label>
+                                <select class="form-control select2" name="used_car_id" id="used_car_id">
+                                </select>
+                            </div>
+
                             <div class="form-group col-md-6">
                                 <label for="first_name">First Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="first_name" value="{{isset($record->first_name) ? $record->first_name : old('first_name')}}" id="first_name" required>
@@ -79,6 +117,7 @@
         </div>
     </section>
 </div>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 @section('javascript')
 <script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
@@ -87,6 +126,166 @@
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
+
+        // business selection
+        var business_id = "{{isset($record->business_id) && $record->business_id ? $record->business_id : ''}}";
+        if(business_id)
+        {
+            getBusiness(business_id);
+        }
+        $(document).on('change','#business_id',function(){
+            var business_id = $(this).val();
+            getBusiness(business_id);
+        })
+        // end business selection
+
+        // showroom dropdown event
+        $(document).on('change', '#showroom_id', function(){
+            var showroom = $(this).val();
+            if(showroom !='')
+            {
+                var showroom_flag = 0;
+            }else{
+                var showroom_flag = 1;
+               
+            }
+            serviceCenterBlankAndHide(showroom_flag);
+            bodyShopBlankAndHide(showroom_flag);
+            usedCarBlankAndHide(showroom_flag);
+        })
+        // end showroom dropdown event
+
+        // service center dropdown event
+        $(document).on('change', '#service_center_id', function(){
+            var service_center = $(this).val();
+            if(service_center !='')
+            {
+                var service_flag = 0;
+            }else{
+                var service_flag = 1;
+            }
+            showroomBlankAndHide(service_flag);
+            bodyShopBlankAndHide(service_flag);
+            usedCarBlankAndHide(service_flag);
+        })
+        // end service center dropdown event
+
+        // body shop dropdown event
+        $(document).on('change', '#body_shop_id', function(){
+            var body_shop = $(this).val();
+            if(body_shop !='')
+            {
+                var bodyshop_flag = 0;
+            }else{
+                var bodyshop_flag = 1;
+            }
+            showroomBlankAndHide(bodyshop_flag);
+            serviceCenterBlankAndHide(bodyshop_flag);
+            usedCarBlankAndHide(bodyshop_flag);
+        })
+        // end body dropdown event
+
+        // used car dropdown event
+        $(document).on('change', '#used_car_id', function(){
+            var used_car = $(this).val();
+            console.log(used_car);
+            if(used_car !='')
+            {
+               var usedcar_flag = 0;
+            }else{
+               var usedcar_flag = 1;
+            }
+            showroomBlankAndHide(usedcar_flag);
+            serviceCenterBlankAndHide(usedcar_flag);
+            bodyShopBlankAndHide(usedcar_flag);
+        })
+        // end used car dropdown event
     });
+
+    function getBusiness(business_id)
+    {
+        if(business_id !="" && business_id != null)
+        {
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                method:'post',
+                url:'{{route('get-business')}}',
+                data:{_token: CSRF_TOKEN,business_id:business_id},
+                success : function(result){
+                    var result = JSON.parse(result);
+                    $('#showroom_id').html(result.html);
+                    $('#service_center_id').html(result.service_center_html);
+                    $('#body_shop_id').html(result.body_shop_html);
+                    $('#used_car_id').html(result.usedcar_html);
+
+                    var showroom_id = "{{ isset($record->showroom_id) ? $record->showroom_id : '' }}";
+                    $('#showroom_id').val(showroom_id);
+                    var service_center_id = "{{ isset($record->service_center_id) ? $record->service_center_id : '' }}";
+                    $('#service_center_id').val(service_center_id);
+                    var body_shop_id = "{{ isset($record->body_shop_id) ? $record->body_shop_id : '' }}";
+                    $('#body_shop_id').val(body_shop_id);
+                    var used_car_id = "{{ isset($record->used_car_id) ? $record->used_car_id : '' }}";
+                    $('#used_car_id').val(used_car_id);
+                }
+            })
+        } else {
+            $('#showroom_id').empty();
+            $('#service_center_id').empty();
+            $('#body_shop_id').empty();
+            $('#used_car_id').empty();
+        }
+    }
+
+    function serviceCenterBlankAndHide(flag)
+    {
+        if(flag==0)
+        {
+            $('#service_center_id').select2('destroy')
+            $('#service_center_id').val('')
+            $('#service_center_id').select2()
+            $('.service-center').hide()
+        }else{
+            $('.service-center').show()
+        }
+    }
+
+    function bodyShopBlankAndHide(flag)
+    {
+        if(flag==0)
+        {
+            $('#body_shop_id').select2('destroy')
+            $('#body_shop_id').val('')
+            $('#body_shop_id').select2()
+            $('.body-shop').hide()
+        }else{
+            $('.body-shop').show()
+        }
+    }
+
+    function usedCarBlankAndHide(flag)
+    {
+        if(flag==0)
+        {
+            $('#used_car_id').select2('destroy')
+            $('#used_car_id').val('')
+            $('#used_car_id').select2()
+            $('.used-car').hide()
+        }else{
+            $('.used-car').show()
+        }
+    }
+
+    function showroomBlankAndHide(flag)
+    {
+        if(flag==0)
+        {
+            $('#showroom_id').select2('destroy')
+            $('#showroom_id').val('')
+            $('#showroom_id').select2()
+            $('.showroom').hide()
+        }else{
+            $('.showroom').show()
+        }
+    }
 </script>
 @endsection

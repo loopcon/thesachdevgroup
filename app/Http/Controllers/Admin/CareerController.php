@@ -289,7 +289,7 @@ class CareerController extends Controller
                 $return_data = array();
                 $return_data['site_title'] = trans('Career Form Edit');
                 $return_data['record'] = CareerForm::find($id);
-                
+                $return_data['our_business'] = OurBusiness::select('id','title')->get();
                 return view('admin.career_form.form',array_merge($return_data));
             }
         }else {
@@ -318,6 +318,12 @@ class CareerController extends Controller
                 $career_form->email = $request->email;
                 $career_form->contact_no = $request->contact_no;
                 $career_form->post_apply_for = $request->post_apply_for;
+                $career_form->business_id = $request->business_id;
+                $career_form->showroom_id = $request->showroom_id;
+                $career_form->service_center_id = $request->service_center_id;
+                $career_form->body_shop_id = $request->body_shop_id;
+                $career_form->used_car_id = $request->used_car_id;
+
                 if($request->hasFile('resume'))
                 {
                     $oldimage = $career_form->resume;
