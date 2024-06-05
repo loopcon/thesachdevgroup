@@ -18,7 +18,6 @@
                 </div>
             </div>
             <div class="card">
-
                 <div class="card-body">
                     <form action="{{ route('mission_vision_image_insert') }}" method="POST" class="mission_vision_title_form" enctype="multipart/form-data">
                         @csrf
@@ -34,7 +33,7 @@
                             </div>
                         </div>  
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="submit" class="btn btn-primary submit">Update</button>
                         </div>
                     </form>
                 </div>
