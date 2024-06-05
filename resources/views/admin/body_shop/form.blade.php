@@ -37,9 +37,7 @@
 
                             <div class="mb-3 col-md-4">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
-                                
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->image) ? $record->image : old('old_image')}}">
-                                
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/body_shop_image/'.$record->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
@@ -65,7 +63,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="name_font_size" class="form-label">Name Text Font Size</label>
                                 <select class="form-control select2" name="name_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->name_font_size) && $record->name_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -76,7 +74,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="name_font_family" class="form-label">Name Text Font Family</label>
                                 <select class="form-control select2" name="name_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->name_font_family) && $record->name_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -119,7 +117,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="address_font_size" class="form-label">Address Font Size</label>
                                 <select class="form-control select2" name="address_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->address_font_size) && $record->address_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -130,7 +128,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="address_font_family" class="form-label">Address Font Family</label>
                                 <select class="form-control select2" name="address_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->address_font_family) && $record->address_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -153,7 +151,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="email_font_size" class="form-label">Email Font Size</label>
                                 <select class="form-control select2" name="email_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->email_font_size) && $record->email_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -164,7 +162,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="email_font_family" class="form-label">Email Font Family</label>
                                 <select class="form-control select2" name="email_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->email_font_family) && $record->email_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach

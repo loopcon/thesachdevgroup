@@ -19,17 +19,13 @@
                 <div class="card-body">
                     <form action="{{ route('our_location_insert') }}" method="POST" class="our_location_form" enctype="multipart/form-data">
                         @csrf
-                        
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
-                               
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->image) ? $record->image : old('old_image')}}">
-                                
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/our_location/'.$record->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
-
                                 <input type="file" id="image" class="form-control image" name="image">
                                 <small class="image_type">(Height:352px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
@@ -48,7 +44,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="title_font_size" class="form-label">Title Text Font Size</label>
                                 <select class="form-control select2" name="title_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->title_font_size) && $record->title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -59,7 +55,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="title_font_family" class="form-label">Title Text Font Family</label>
                                 <select class="form-control select2" name="title_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->title_font_family) && $record->title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach

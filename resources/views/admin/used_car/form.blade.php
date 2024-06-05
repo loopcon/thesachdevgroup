@@ -63,7 +63,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="name_font_size" class="form-label">Name Text Font Size</label>
                                 <select class="form-control select2" name="name_font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(isset($record->name_font_size) && $record->name_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -74,7 +74,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="name_font_family" class="form-label">Name Text Font Family</label>
                                 <select class="form-control select2" name="name_font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(isset($record->name_font_family) && $record->name_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
