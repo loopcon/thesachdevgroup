@@ -38,6 +38,7 @@ class CareerDetailController extends Controller
          $career_form->showroom_id = $request->showroom_id;
          $career_form->service_center_id = $request->service_center_id;
          $career_form->body_shop_id = $request->body_shop_id;
+         $career_form->used_car_id = $request->used_car_id;
 
          if($request->hasFile('resume')) {
             $resume = fileUpload($request, 'resume', 'uploads/career/resume');

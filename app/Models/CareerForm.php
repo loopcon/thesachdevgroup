@@ -10,7 +10,7 @@ class CareerForm extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'career_form';
-    protected $fields = ['business_id','showroom_id','service_center_id','body_shop_id','first_name','last_name','email','contact_no','post_apply_for','resume'];
+    protected $fields = ['business_id','showroom_id','service_center_id','body_shop_id','used_car_id','first_name','last_name','email','contact_no','post_apply_for','resume'];
 
     public function businessDetail()
     {
@@ -30,5 +30,10 @@ class CareerForm extends Model
     public function bodyShopDetail()
     {
         return $this->belongsTo(Body_shop::class,'body_shop_id');
+    }
+
+    public function usedCarDetail()
+    {
+        return $this->belongsTo(Used_car::class,'used_car_id');
     }
 }

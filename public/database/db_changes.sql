@@ -774,3 +774,6 @@ ALTER TABLE `email_templates`
 
 -- Disha : 04-06-2024 5:31 PM
 ALTER TABLE `after_sales_service` CHANGE `title_color` `title_color` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
+
+-- Disha : 05-06-2024 01:01 PM
+ALTER TABLE `career_form` ADD `used_car_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `used_cars`' AFTER `body_shop_id`;

@@ -1081,11 +1081,15 @@
                                         @if($record->body_shop_id)
                                             {{isset($record->bodyShopDetail->name) && $record->bodyShopDetail->name ? $record->bodyShopDetail->name : ''}}
                                         @endif
+                                        @if($record->used_car_id)
+                                            {{isset($record->usedCarDetail->name) && $record->usedCarDetail->name ? $record->usedCarDetail->name : ''}}
+                                        @endif
                                     </span>
                                 <textarea name="business_id" style="display:none;" class="business">{{$record->business_id}}</textarea>
                                 <textarea name="showroom_id" style="display:none;" class="showroom">{{$record->showroom_id}}</textarea>
                                 <textarea name="service_center_id" style="display:none;" class="service_center">{{$record->service_center_id}}</textarea>
                                 <textarea name="body_shop_id" style="display:none;" class="body_shop">{{$record->body_shop_id}}</textarea>
+                                <textarea name="used_car_id" style="display:none;" class="used_car">{{$record->used_car_id}}</textarea>
 
                                 <div class="explain-subtitle experience" style="display:none;">{{$record->experience}}</div>
                                 <div class="explain-subtitle work-level" style="display:none;">{{$record->work_level}}</div>
@@ -1135,6 +1139,9 @@
                                                     @if($vacancy->body_shop_id)
                                                         {{isset($vacancy->bodyShopDetail->name) && $vacancy->bodyShopDetail->name ? $vacancy->bodyShopDetail->name : ''}}
                                                     @endif
+                                                    @if($vacancy->used_car_id)
+                                                        {{isset($vacancy->usedCarDetail->name) && $vacancy->usedCarDetail->name ? $vacancy->usedCarDetail->name : ''}}
+                                                    @endif
                                                 </span>
                                             <div class="explain-subtitle experience" style="display:none;">{{$vacancy->experience}}</div>
                                             <div class="explain-subtitle work-level" style="display:none;">{{$vacancy->work_level}}</div>
@@ -1150,12 +1157,16 @@
                                                 @if($vacancy->body_shop_id)
                                                     {{isset($vacancy->bodyShopDetail->name) && $vacancy->bodyShopDetail->name ? $vacancy->bodyShopDetail->name : ''}}
                                                 @endif
+                                                @if($vacancy->used_car_id)
+                                                    {{isset($vacancy->usedCarDetail->name) && $vacancy->usedCarDetail->name ? $vacancy->usedCarDetail->name : ''}}
+                                                @endif
                                             </div>
                                         </div>
                                         <textarea name="business_id" style="display:none;" class="business">{{$vacancy->business_id}}</textarea>
                                         <textarea name="showroom_id" style="display:none;" class="showroom">{{$vacancy->showroom_id}}</textarea>
                                         <textarea name="service_center_id" style="display:none;" class="service_center">{{$vacancy->service_center_id}}</textarea>
                                         <textarea name="body_shop_id" style="display:none;" class="body_shop">{{$vacancy->body_shop_id}}</textarea>
+                                        <textarea name="used_car_id" style="display:none;" class="used_car">{{$vacancy->used_car_id}}</textarea>
 
                                         <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
                                             <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" />
@@ -1225,6 +1236,7 @@
                                             <textarea name="showroom_id" style="display:none;" class="showroom" id="showroom_id"></textarea>
                                             <textarea name="service_center_id" style="display:none;" class="service_center" id="service_center_id"></textarea>
                                             <textarea name="body_shop_id" style="display:none;" class="body_shop" id="body_shop_id"></textarea>
+                                            <textarea name="used_car_id" style="display:none;" class="used_car" id="used_car_id"></textarea>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
@@ -1297,6 +1309,7 @@
             var showroom_id = $("#showroom_id").val();
             var service_center_id = $("#service_center_id").val();
             var body_shop_id = $("#body_shop_id").val();
+            var used_car_id = $("#used_car_id").val();
             var resume = $('#resume').prop('files')[0];   
 
             formData.append('first_name', first_name);
@@ -1308,6 +1321,7 @@
             formData.append('showroom_id', showroom_id);
             formData.append('service_center_id', service_center_id);
             formData.append('body_shop_id', body_shop_id);
+            formData.append('used_car_id', used_car_id);
             formData.append('resume', resume);
             
             //   validation
@@ -1413,6 +1427,7 @@
     const jobDetailShowroom = document.querySelector(".job-explain-content .showroom");
     const jobDetailServiceCenter = document.querySelector(".job-explain-content .service_center");
     const jobDetailBodyShop = document.querySelector(".job-explain-content .body_shop");
+    const jobDetailUsedCar = document.querySelector(".job-explain-content .used_car");
 
     const jobBg = document.querySelector(".job-bg");
     jobCards.forEach((jobCard) => {
@@ -1439,6 +1454,7 @@
                 const showroom = jobCard.querySelector(".showroom");
                 const serviceCenter = jobCard.querySelector(".service_center");
                 const bodyshop = jobCard.querySelector(".body_shop");
+                const usedcar = jobCard.querySelector(".used_car");
 
                 jobDetailTitle.textContent = title.textContent;
                 jobDetailCompany.textContent = company.textContent;
@@ -1451,6 +1467,7 @@
                 jobDetailShowroom.textContent = showroom.textContent;
                 jobDetailServiceCenter.textContent = serviceCenter.textContent;
                 jobDetailBodyShop.textContent = bodyshop.textContent;
+                jobDetailUsedCar.textContent = usedcar.textContent;
 
                 jobLogos.innerHTML = logo.outerHTML;
                 wrapper.classList.add("detail-page");

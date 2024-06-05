@@ -174,11 +174,11 @@ class CareerController extends Controller
 
     public function careerFormDataTable(Request $request)
     {
-        $user_role_id = User::select('id','role_id','business_id','showroom_id','service_center_id','body_shop_id')->where([['id',Auth::user()->id],['role_id',Auth::user()->role_id]])->first();
+        $user_role_id = User::select('id','role_id','business_id','showroom_id','service_center_id','body_shop_id','used_car_id')->where([['id',Auth::user()->id],['role_id',Auth::user()->role_id]])->first();
         if($user_role_id->role_id == constant::HR)
         {
             if($request->ajax()){
-                $query = CareerForm::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail')->where([['business_id',$user_role_id->business_id],['service_center_id',$user_role_id->service_center_id],['showroom_id',$user_role_id->showroom_id],['body_shop_id',$user_role_id->body_shop_id],['used_car_id',$user_role_id->used_car_id]])->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
+                $query = CareerForm::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail','usedCarDetail')->where([['business_id',$user_role_id->business_id],['service_center_id',$user_role_id->service_center_id],['showroom_id',$user_role_id->showroom_id],['body_shop_id',$user_role_id->body_shop_id],['used_car_id',$user_role_id->used_car_id]])->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'used_car_id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
 
                 $list = $query->get();
                 return DataTables::of($list)
@@ -197,6 +197,10 @@ class CareerController extends Controller
                 ->addColumn('body_shop_id', function($list){
                     $body_shop_id = isset($list->bodyShopDetail->name) && $list->bodyShopDetail->name ? $list->bodyShopDetail->name : NULL;
                     return $body_shop_id;
+                })
+                ->addColumn('used_car_id', function($list){
+                    $used_car_id = isset($list->usedCarDetail->name) && $list->usedCarDetail->name ? $list->usedCarDetail->name : NULL;
+                    return $used_car_id;
                 })
                 ->addColumn('action', function ($list) {
                     $html = "";
@@ -223,7 +227,7 @@ class CareerController extends Controller
         }
 
         if($request->ajax()){
-            $query = CareerForm::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail')->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
+            $query = CareerForm::with('businessDetail','showroomDetail','serviceCenterDetail','bodyShopDetail','usedCarDetail')->select('id', 'business_id', 'showroom_id', 'service_center_id', 'body_shop_id', 'used_car_id', 'first_name', 'last_name', 'contact_no', 'post_apply_for', 'resume', 'email')->orderBy('id', 'DESC');
 
             $list = $query->get();
             return DataTables::of($list)
@@ -242,6 +246,10 @@ class CareerController extends Controller
                 ->addColumn('body_shop_id', function($list){
                     $body_shop_id = isset($list->bodyShopDetail->name) && $list->bodyShopDetail->name ? $list->bodyShopDetail->name : NULL;
                     return $body_shop_id;
+                })
+                ->addColumn('used_car_id', function($list){
+                    $used_car_id = isset($list->usedCarDetail->name) && $list->usedCarDetail->name ? $list->usedCarDetail->name : NULL;
+                    return $used_car_id;
                 })
                 ->addColumn('action', function ($list) {
                     $html = "";

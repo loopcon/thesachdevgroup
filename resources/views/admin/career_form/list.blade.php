@@ -32,6 +32,7 @@
                                     <th>Showroom</th>
                                     <th>Service Center</th>
                                     <th>Body Shop</th>
+                                    <th>Used Car</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Contact No</th>
@@ -62,6 +63,7 @@
             {data: 'showroom_id', name: 'showroom_id'},
             {data: 'service_center_id', name: 'service_center_id'},
             {data: 'body_shop_id', name: 'body_shop_id'},
+            {data: 'used_car_id', name: 'used_car_id'},
             {data: 'first_name', name: 'first_name'},
             {data: 'last_name', name: 'last_name'},
             {data: 'contact_no', name: 'contact_no'},
