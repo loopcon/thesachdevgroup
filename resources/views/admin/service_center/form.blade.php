@@ -539,13 +539,13 @@
                             </div>
                             <div class="col-md-3 mt-2">
                                 <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required="" value="{{isset($record->rating) ? $record->rating : old('rating')}}" name="rating" id="rating">
+                                <input type="text" class="form-control" required="" maxlength="5" value="{{isset($record->rating) ? $record->rating : old('rating')}}" name="rating" id="rating">
                                 @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
                             </div>
 
                             <div class="col-md-3 mt-2">
                                 <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required="" maxlength="5" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}" name="number_of_rating" id="number_of_rating">
+                                <input type="text" class="form-control" required="" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}" name="number_of_rating" id="number_of_rating">
                                 @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                             </div>
 
@@ -634,9 +634,6 @@
         $(".service-center-form").validate({
             rules: {
                 'rating': {
-                    number: true,
-                },
-                'number_of_rating': {
                     number: true,
                 },
             },

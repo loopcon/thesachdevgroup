@@ -21,7 +21,7 @@ class locationDetailController extends Controller
         $return_data['showroom_first'] = Showroom::first();
         $return_data['service_center_first'] = ServiceCenter::first();
         $return_data['body_shops_first'] = Body_shop::first();
-        $return_data['our_business'] = OurBusiness::select('id','title','map_link')->get();
+        $return_data['our_business'] = OurBusiness::select('id','title')->get();
         $return_data['service_center'] = ServiceCenter::select('id','name','slug','business_id','name_color','name_font_size','name_font_family','image','address_font_color','address_font_size','address_font_family','contact_number','email','map_link')->get();
         $return_data['body_shops'] = Body_shop::select('id','business_id','image','name','name_color','name_font_size','name_font_family','address','address_font_size','address_font_family','address_font_color','email','email_font_size','email_font_family','email_font_color','contact_number','contact_font_size','contact_font_family','contact_font_color','map_link')->get();
         return view('frontend.our_location.index',array_merge($return_data));

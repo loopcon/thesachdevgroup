@@ -777,3 +777,7 @@ ALTER TABLE `after_sales_service` CHANGE `title_color` `title_color` VARCHAR(255
 
 -- Disha : 05-06-2024 01:01 PM
 ALTER TABLE `career_form` ADD `used_car_id` INT(11) NULL DEFAULT NULL COMMENT '`id` of `used_cars`' AFTER `body_shop_id`;
+
+-- Disha : 06-06-2024 04:34 PM
+ALTER TABLE `service_center` CHANGE `number_of_rating` `number_of_rating` VARCHAR(255) NULL DEFAULT NULL;
+
