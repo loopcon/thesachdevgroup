@@ -16,12 +16,11 @@
                 <div class="card-body">
                     <form action="{{ route('header_menu_insert') }}" method="POST" class="header_menu_form" enctype="multipart/form-data">
                         @csrf
-
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="menu_name" class="form-label">Select Menu<span class="text-danger">*</span></label>
                                 <select class="form-control select2 menu_name" name="menu_name">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     {{-- <option value="our_businesses" @if(old('menu_name') == 'our_businesses'){{'selected'}}@endif>Our Businesses</option>
                                     <option value="our_services" @if(old('menu_name') == 'our_services'){{'selected'}}@endif>Our Services</option>
                                     <option value="careers" @if(old('menu_name') == 'careers'){{'selected'}}@endif>Careers</option>
@@ -55,7 +54,7 @@
                                 @php($fontsize = fontSize())
                                 <label for="font_size" class="form-label">Name Text Font Size</label>
                                 <select class="form-control select2" name="font_size">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px" @if(old('font_size') == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
                                     @endfor
@@ -66,7 +65,7 @@
                                 @php($fontfamily = fontFamily())
                                 <label for="font_family" class="form-label">Name Text Font Family</label>
                                 <select class="form-control select2" name="font_family">
-                                    <option selected="selected" disabled="disabled">Select</option>
+                                    <option value="">Select</option>
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}" @if(old('font_family') == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
@@ -79,7 +78,6 @@
                                 <div class="error">@if ($errors->has('link')) <label id="link-error" class="error">{{ $errors->first('link') }}</label>@endif</div>
                                 {{-- <div class="error"></div> --}}
                             </div>
-                            
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit" onclick="this.disabled='disabled';this.form.submit();">Submit</button>
