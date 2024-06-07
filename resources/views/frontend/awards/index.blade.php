@@ -43,7 +43,7 @@
     </div>
 </section>
 <div class="container">
-    <h2>{{isset($banner->award_title) && $banner->award_title ? strtoupper($banner->award_title) : ''}}</h2>
+    <h2 style="color:{{$banner->award_title_font_color}}; font-size: {{$banner->award_title_font_size}}; font-family: {{$banner->award_title_font_family}};">{{isset($banner->award_title) && $banner->award_title ? strtoupper($banner->award_title) : ''}}</h2>
     <div id="myBtnContainer">
         <button class="btn active" onclick="filterSelection('all')"> Show all</button>
         @foreach($awards_data as $award)
