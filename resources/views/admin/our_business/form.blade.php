@@ -31,7 +31,7 @@
                             </div>
 
                             <div class="col-md-4 mt-3">
-                                <label for="banner_image" class="form-label">Banner Image</label><span class="text-danger">*</span>
+                                <label for="banner_image" class="form-label">Banner Image</label>
                                 @if(isset($record->banner_image) && $record->banner_image)
                                     <img src="{{url('public/uploads/our_business/'.$record->banner_image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
                                 @endif  

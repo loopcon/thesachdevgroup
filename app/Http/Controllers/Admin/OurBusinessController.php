@@ -63,7 +63,7 @@ class OurBusinessController extends Controller
                 $request->validate([
                     'page_link' => 'required',
                     'title' => 'required|unique:our_business',
-                    'banner_image' => 'required|image|mimes:jpeg,png,jpg,webp',
+                    'banner_image' => 'image|mimes:jpeg,png,jpg,webp',
                     'why_choose_image' => 'image|mimes:jpeg,png,jpg,webp',
                 ]);
                 $our_business = new OurBusiness();

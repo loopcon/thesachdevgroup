@@ -103,8 +103,8 @@
 </section>
 
 <!-- facility slider -->
-@if(isset($facility) && $facility->count())
 <section id="facility">
+@if(isset($facility) && $facility->count())
     <div class="container">
         <div class="text-facility">
             <h3 style="color:{{$service_center->facility_title_color}}; font-size:{{$service_center->facility_title_font_size}}; font-family:{{$service_center->facility_title_font_family}};">{{isset($service_center->facility_title) && $service_center->facility_title ? strtoupper($service_center->facility_title) : ''}}</h3>
@@ -133,12 +133,12 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
+    @endif
 </section>
-@endif
 <!-- facility slider end  -->
 
 <!-- customer gallery slider -->
-@if(isset($facility) && $facility->count())
+@if(isset($customer_gallery) && $customer_gallery->count())
 <section id="facility">
     <div class="container">
         <div class="text-facility">
@@ -147,19 +147,23 @@
         <div class="slide-container swiper">
             <div class="slide-content">
                 <div class="card-wrapper swiper-wrapper">
-                @if(isset($facility) && $facility)
-                    @foreach($facility as $customer_image)
-                        <div class="card swiper-slide">
-                            <a href="#">
-                                <div class="image-content-facitity">
-                                    <div class="card-image">
-                                        <img src="{{url('public/uploads/service_center_customer_gallery_image/'.$customer_image->customer_gallery_image)}}" alt="" class="card-img">
+                    @forelse($customer_gallery as $customer_image)
+                        @if(isset($customer_image->customer_gallery_image) && $customer_image->customer_gallery_image)
+                            <div class="card swiper-slide">
+                                <a href="#">
+                                    <div class="image-content-facitity">
+                                        <div class="card-image">
+                                            <img src="{{url('public/uploads/service_center_customer_gallery_image/'.$customer_image->customer_gallery_image)}}" alt="" class="card-img">
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                @endif
+                                </a>
+                            </div>
+                        @endif
+                    @empty
+                        <style>
+                            #facility { display: none; }
+                        </style>
+                    @endforelse
                 </div>
             </div>
 
@@ -237,8 +241,8 @@
 <!-- end form  -->
 
 <!-- testimonials -->
-@if(isset($testimonials) && $testimonials->count())
 <section id="testimonial">
+@if(isset($testimonials) && $testimonials->count())
     <div class="container">
         <div class="location-testimonial">
             <h2 style="color:{{$service_center->testimonial_title_font_color}}; font-size:{{$service_center->testimonial_title_font_size}}; font-family:{{$service_center->testimonial_title_font_family}};">{{isset($service_center->testimonial_title) && $service_center->testimonial_title ? $service_center->testimonial_title : ''}}</h2>

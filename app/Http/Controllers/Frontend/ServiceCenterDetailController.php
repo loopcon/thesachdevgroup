@@ -22,7 +22,9 @@ class ServiceCenterDetailController extends Controller
 
         $service_id = isset($service_center->service_id) && $service_center->service_id ? json_decode($service_center->service_id) : '';
         $return_data['services'] = Service::whereIn('id',$service_id)->get();
-        $return_data['facility'] = ServiceCenterFacilityCustomerGallery::where('service_center_id',$service_center->id)->get();
+        $return_data['facility'] = ServiceCenterFacilityCustomerGallery::select('facility_image')->where('service_center_id',$service_center->id)->get();
+        $return_data['customer_gallery'] = ServiceCenterFacilityCustomerGallery::select('customer_gallery_image')->where('service_center_id',$service_center->id)->get();
+
         $return_data['testimonials'] = ServiceCenterTestimonial::where('service_center_id',$service_center->id)->get();
         $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();
 
