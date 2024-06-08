@@ -29,7 +29,7 @@
                     @foreach($cars as $car)
                         <div class="car-image">
                             <a href="{{$car->link}}">
-                                <img src="{{url('public/car/'.$car->image)}}" alt="" width="90px">
+                                <img src="{{url('public/car/'.$car->image)}}" alt="">
                                 <p style="color:{{$car->name_color}}; font-size:{{$car->name_font_size}}; font-family:{{$car->name_font_family}};">{{$car->name}}</p>
                             </a>
                         </div>

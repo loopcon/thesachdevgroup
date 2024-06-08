@@ -80,7 +80,7 @@
                     </div>
                     <div class="location-text-one">
                         <h4 style="color:{{$service_center->contact_title_color}}; font-size:{{$service_center->contact_title_font_size}}; font-family:{{$service_center->contact_title_font_family}};">{{isset($service_center->contact_title) && $service_center->contact_title ? strtoupper($service_center->contact_title) : ''}}</h4>
-                        <p style="color:{{$service_center->contact_font_color}}; font-size:{{$service_center->contact_font_size}}; font-family:{{$service_center->contact_font_family}};"><a href="tel:+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}">+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}</a></p>
+                        <p style="color:{{$service_center->contact_font_color}}; font-size:{{$service_center->contact_font_size}}; font-family:{{$service_center->contact_font_family}};"><a href="tel:+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}">@if(isset($service_center->contact_number) && $service_center->contact_number) +91 {{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}} @endif</a></p>
                     </div>
                 </div>
             </div>
