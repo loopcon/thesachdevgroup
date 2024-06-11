@@ -285,7 +285,7 @@
                                                                                     </div>
                                                                                     <div class="col-sm-8">
                                                                                         <div class="job-title" style="color:{{$showroom->name_color}}; font-size:{{$showroom->name_font_size}}; font-family:{{$showroom->name_font_family}};">
-                                                                                            @if($showroom->name) {{$showroom->name}} (SALES) @endif
+                                                                                            @if($showroom->name) {{$showroom->name}} (SHOWROOM) @endif
                                                                                         </div>
                                                                                         <div class="company-name" style="color:{{$showroom->address_color}}; font-size:{{$showroom->address_font_size}}; font-family:{{$showroom->address_font_family}};">
                                                                                             {{$showroom->address}}
@@ -314,7 +314,7 @@
                                                                                     <div class="col-sm-4">
                                                                                         <div class="company-logo-img">
                                                                                             @if(isset($service->image) && $service->image)
-                                                                                                <img src="{{url('public/service_center/'.$service->image)}}"> 
+                                                                                                <img src="{{url('public/uploads/service_center/'.$service->image)}}"> 
                                                                                             @endif
                                                                                         </div>
                                                                                     </div>
