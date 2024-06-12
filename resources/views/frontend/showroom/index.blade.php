@@ -78,7 +78,7 @@
                     </div>
                     <div class="location-text-one">
                         <h4 style="color:{{$showroom->contact_title_color}}; font-size:{{$showroom->contact_title_font_size}}; font-family:{{$showroom->contact_title_font_family}};">{{isset($showroom->contact_title) && $showroom->contact_title ? strtoupper($showroom->contact_title) : ''}}</h4>
-                        <p style="color:{{$showroom->contact_number_color}}; font-size:{{$showroom->contact_number_font_size}}; font-family:{{$showroom->contact_number_font_family}};"><a href="tel:+{{isset($showroom->contact_number) && $showroom->contact_number ? $showroom->contact_number: ''}}" style="color:{{$showroom->contact_number_color}}">+{{isset($showroom->contact_number) && $showroom->contact_number ? $showroom->contact_number: ''}}</a></p>
+                        <p style="color:{{$showroom->contact_number_color}}; font-size:{{$showroom->contact_number_font_size}}; font-family:{{$showroom->contact_number_font_family}};"><a href="tel:+{{isset($showroom->contact_number) && $showroom->contact_number ? $showroom->contact_number: ''}}" style="color:{{$showroom->contact_number_color}}">@if(isset($showroom->contact_number) && $showroom->contact_number) +91 {{isset($showroom->contact_number) && $showroom->contact_number ? $showroom->contact_number: ''}} @endif</a></p>
                     </div>
                 </div>
             </div>

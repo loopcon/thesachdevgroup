@@ -20,7 +20,10 @@ class ShowroomDetailController extends Controller
         $return_data['showroom'] = $showroom;
 
         $car_id = isset($showroom->car_id) && $showroom->car_id ? json_decode($showroom->car_id) : '';
-        $return_data['cars'] = Car::whereIn('id',$car_id)->select('name','image','name_color','name_font_size','name_font_family','link')->get();
+        if($car_id)
+        {
+            $return_data['cars'] = Car::whereIn('id',$car_id)->select('name','image','name_color','name_font_size','name_font_family','link')->get();
+        }
         $return_data['facility'] = Showroom_facility_customer_gallery::where('showroom_id',$showroom->id)->get();
         $return_data['testimonials'] = ShowroomTestimonial::where('showroom_id',$showroom->id)->get();
         $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();

@@ -261,9 +261,9 @@
     $(document).ready(function () {
         $(".edit_form").validate({
             rules: {
-                'driven': {
-                    number: true,
-                },
+                // 'driven': {
+                //     number: true,
+                // },
                 'year': {
                     number: true,
                 },

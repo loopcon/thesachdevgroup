@@ -72,7 +72,7 @@
                                         <div class='stars'><div id='pid-{{$showroom->id}}' class='percent' style='width:{{$rating}}%;'></div></div>
                                     </div>
                                     <div class="star-parent">
-                                        <img src="{{asset('front_img/google.webp')}}" alt="" width="6%">
+                                        <img src="{{url('public/front_img/google.webp')}}" alt="" width="6%">
                                         <p>{{$showroom->rating}}</p>
                                         <p>({{$showroom->number_of_rating}} reviews)</p>
                                     </div>
@@ -118,7 +118,7 @@
                                         <!-- <img src="public/front_img/star.webp" alt=""> -->
                                     </div>
                                     <div class="star-parent">
-                                        <img src="{{asset('front_img/google.webp')}}" alt="" width="6%">
+                                        <img src="{{url('public/front_img/google.webp')}}" alt="" width="6%">
                                         <p>{{$service_center->rating}}</p>
                                         <p>({{$service_center->number_of_rating}} reviews)</p>
                                     </div>
@@ -163,7 +163,7 @@
                                         <div class='stars'><div id='pid-{{$body_shop->id}}' class='percent' style='width:{{$rating}}%;'></div></div>
                                     </div>
                                     <div class="star-parent">
-                                        <img src="{{asset('front_img/google.webp')}}" alt="" width="6%">
+                                        <img src="{{url('public/front_img/google.webp')}}" alt="" width="6%">
                                         <p>{{$body_shop->rating}}</p>
                                         <p>({{$body_shop->number_of_rating}} reviews)</p>
                                     </div>
@@ -211,7 +211,7 @@
                                         </div>
                                     </div>
                                     <div class="star-parent">
-                                        <img src="{{asset('front_img/google.webp')}}" alt="" width="6%">
+                                        <img src="{{url('public/front_img/google.webp')}}" alt="" width="6%">
                                         <p>{{$used_car->rating}}</p>
                                         <p>({{$used_car->number_of_rating}} reviews)</p>
                                     </div>
