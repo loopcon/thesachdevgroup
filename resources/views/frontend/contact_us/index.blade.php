@@ -432,7 +432,7 @@
                     @if(isset($setting) && isset($setting->mobile_number))
                         <div style="display: flex; align-items:center; justify-content: center;"> 📱 
                             <a href="tel:+4733378901" style="margin-left:5px; color:{{$setting->mobile_number_color}}; font-size:{{$setting->mobile_number_font_size}}; font-family:{{$setting->mobile_number_font_family}};">
-                                {{$setting->mobile_number}}
+                                @if($setting->mobile_number) +91{{$setting->mobile_number}} @endif
                             </a>
                         </div>
                     @endif
@@ -455,7 +455,7 @@
                     <ul style="background-color: #FAFAFA;"> 
                         @foreach ($header_social_media_icons as $header_social_media_icon)
                             <a href="{{$header_social_media_icon->link}}" style="background-color: #000;">
-                                <img src="{{url('public/header_menu_social_media_icon/'.$header_social_media_icon->icon)}}" target="_blank" style="margin-right: 10px;">
+                                <img src="{{url('public/header_menu_social_media_icon/'.$header_social_media_icon->icon)}}" target="_blank" style="margin-right: 10px;width:7%;">
                             </a>
                         @endforeach
                     </ul>
