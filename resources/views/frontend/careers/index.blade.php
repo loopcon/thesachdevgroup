@@ -1071,20 +1071,20 @@
                                 </div>
                                 <div class="job-card-title">{{$record->name}}</div>
                                 <div class="company-name" style="display:none;">{{isset($record->businessDetail->title) && $record->businessDetail->title ? $record->businessDetail->title : ''}}</div>
-                                    <span class="comp-location" style="display:none;"> 
-                                        @if($record->showroom_id)
-                                            {{isset($record->showroomDetail->name) && $record->showroomDetail->name ? $record->showroomDetail->name : ''}}
-                                        @endif
-                                        @if($record->service_center_id)
-                                            {{isset($record->serviceCenterDetail->name) && $record->serviceCenterDetail->name ? $record->serviceCenterDetail->name : ''}}
-                                        @endif
-                                        @if($record->body_shop_id)
-                                            {{isset($record->bodyShopDetail->name) && $record->bodyShopDetail->name ? $record->bodyShopDetail->name : ''}}
-                                        @endif
-                                        @if($record->used_car_id)
-                                            {{isset($record->usedCarDetail->name) && $record->usedCarDetail->name ? $record->usedCarDetail->name : ''}}
-                                        @endif
-                                    </span>
+                                <span class="comp-location" style="display:none;"> 
+                                    @if($record->showroom_id)
+                                        {{isset($record->showroomDetail->name) && $record->showroomDetail->name ? $record->showroomDetail->name : ''}}
+                                    @endif
+                                    @if($record->service_center_id)
+                                        {{isset($record->serviceCenterDetail->name) && $record->serviceCenterDetail->name ? $record->serviceCenterDetail->name : ''}}
+                                    @endif
+                                    @if($record->body_shop_id)
+                                        {{isset($record->bodyShopDetail->name) && $record->bodyShopDetail->name ? $record->bodyShopDetail->name : ''}}
+                                    @endif
+                                    @if($record->used_car_id)
+                                        {{isset($record->usedCarDetail->name) && $record->usedCarDetail->name ? $record->usedCarDetail->name : ''}}
+                                    @endif
+                                </span>
                                 <textarea name="business_id" style="display:none;" class="business">{{$record->business_id}}</textarea>
                                 <textarea name="showroom_id" style="display:none;" class="showroom">{{$record->showroom_id}}</textarea>
                                 <textarea name="service_center_id" style="display:none;" class="service_center">{{$record->service_center_id}}</textarea>
@@ -1129,20 +1129,20 @@
                                         <div class="overview-detail">
                                             <div class="job-card-title">{{$vacancy->name}}</div>                                            
                                             <div class="company-name" style="display:none;">{{isset($vacancy->businessDetail->title) && $vacancy->businessDetail->title ? $vacancy->businessDetail->title : ''}}</div>
-                                                <span class="comp-location" style="display:none;"> 
-                                                    @if($vacancy->showroom_id)
-                                                        {{isset($vacancy->showroomDetail->name) && $vacancy->showroomDetail->name ? $vacancy->showroomDetail->name : ''}}
-                                                    @endif
-                                                    @if($vacancy->service_center_id)
-                                                        {{isset($vacancy->serviceCenterDetail->name) && $vacancy->serviceCenterDetail->name ? $vacancy->serviceCenterDetail->name : ''}}
-                                                    @endif
-                                                    @if($vacancy->body_shop_id)
-                                                        {{isset($vacancy->bodyShopDetail->name) && $vacancy->bodyShopDetail->name ? $vacancy->bodyShopDetail->name : ''}}
-                                                    @endif
-                                                    @if($vacancy->used_car_id)
-                                                        {{isset($vacancy->usedCarDetail->name) && $vacancy->usedCarDetail->name ? $vacancy->usedCarDetail->name : ''}}
-                                                    @endif
-                                                </span>
+                                            <span class="comp-location" style="display:none;"> 
+                                                @if($vacancy->showroom_id)
+                                                    {{isset($vacancy->showroomDetail->name) && $vacancy->showroomDetail->name ? $vacancy->showroomDetail->name : ''}}
+                                                @endif
+                                                @if($vacancy->service_center_id)
+                                                    {{isset($vacancy->serviceCenterDetail->name) && $vacancy->serviceCenterDetail->name ? $vacancy->serviceCenterDetail->name : ''}}
+                                                @endif
+                                                @if($vacancy->body_shop_id)
+                                                    {{isset($vacancy->bodyShopDetail->name) && $vacancy->bodyShopDetail->name ? $vacancy->bodyShopDetail->name : ''}}
+                                                @endif
+                                                @if($vacancy->used_car_id)
+                                                    {{isset($vacancy->usedCarDetail->name) && $vacancy->usedCarDetail->name ? $vacancy->usedCarDetail->name : ''}}
+                                                @endif
+                                            </span>
                                             <div class="explain-subtitle experience" style="display:none;">{{$vacancy->experience}}</div>
                                             <div class="explain-subtitle work-level" style="display:none;">{{$vacancy->work_level}}</div>
                                             <div class="explain-subtitle employee-type" style="display:none;">{{$vacancy->employee_type}}</div>
@@ -1185,8 +1185,7 @@
 
                     <div class="job-explain">
                         <img class="job-bg">
-                        <div class="job-logos">
-                        </div>
+                        <div class="job-logos"></div>
                         <div class="job-explain-content">
                             <div class="job-title-wrapper">
                                 <div class="job-card-title">UI /UX Designer</div>
@@ -1324,7 +1323,7 @@
             formData.append('used_car_id', used_car_id);
             formData.append('resume', resume);
             
-            //   validation
+            // validation
             if(first_name == '')
             {
                 $("#first-name-error").text('First name is required.');
