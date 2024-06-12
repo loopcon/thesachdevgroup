@@ -88,11 +88,10 @@ Route::get('admin', [LoginController::class, 'login'])->name('admin');
 Route::post('customlogin', [LoginController::class, 'customLogin'])->name('login.custom'); 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-
 Route::get('dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
-    
+
     // change password
     Route::get('change-password', [LoginController::class, 'showchangePasswordForm'])->name('change-password');
     Route::post('change-password', [LoginController::class, 'changePassword'])->name('change-password');
@@ -100,7 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
     //user role permission   
     Route::get('role-permission/{role_id?}', [RolePermissionController::class, 'index'])->name('role-permission');
     Route::post('role-permission', [RolePermissionController::class, 'store'])->name('role-permission');
-    
+
     //home slider
     Route::get('homeslider', [HomeSettingController::class, 'homeslider'])->name('homeslider');
     Route::post('homeslider_insert', [HomeSettingController::class, 'homeslider_insert'])->name('homeslider_insert');
@@ -120,7 +119,6 @@ Route::group(['middleware' => 'auth'], function () {
     //home our businesses title
     Route::post('home_our_businesses_title_insert', [HomeSettingController::class, 'home_our_businesses_title_insert'])->name('home_our_businesses_title_insert');
 
-
     //Testimonials
     Route::get('testimonials', [TestimonialController::class, 'testimonials'])->name('testimonials');
     Route::post('testimonials_insert', [TestimonialController::class, 'testimonials_insert'])->name('testimonials_insert');
@@ -131,7 +129,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     //testimonials title 
     Route::post('testimonials_title_insert', [TestimonialController::class, 'testimonials_title_insert'])->name('testimonials_title_insert');
-
 
     //Home Detail
     Route::get('home_detail', [HomeSettingController::class, 'home_detail'])->name('home_detail');
@@ -175,27 +172,26 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('header_menu_edit/{header_menu_edit}', [HeaderMenuController::class, 'header_menu_edit'])->name('header_menu.edit');
     Route::post('header_menu_update,{header_menu_update}', [HeaderMenuController::class, 'header_menu_update'])->name('header_menu_update');
     Route::get('header_menu_destroy/{id}', [HeaderMenuController::class, 'header_menu_destroy'])->name('header_menu_destroy');
-    
 
-     //Showroom testimonial
-     Route::get('showroom-testimonial', [ShowroomTestimonialController::class, 'showroomTestimonialList'])->name('showroom-testimonial');
-     Route::get('showroom-testimonial-create', [ShowroomTestimonialController::class, 'showroomTestimonialCreate'])->name('showroom-testimonial-create');
-     Route::post('showroom-testimonial-store', [ShowroomTestimonialController::class, 'showroomTestimonialStore'])->name('showroom-testimonial-store');
-     Route::get('showroom-testimonial-edit/{id}', [ShowroomTestimonialController::class, 'showroomTestimonialEdit'])->name('showroom-testimonial-edit');
-     Route::post('showroom-testimonial-update/{id}', [ShowroomTestimonialController::class, 'showroomTestimonialUpdate'])->name('showroom-testimonial-update');
-     Route::get('showroom-testimonial-delete/{id}', [ShowroomTestimonialController::class, 'showroomTestimonialDestroy'])->name('showroom-testimonial-delete');
-     Route::get('showroom-testimonial-datatable', [ShowroomTestimonialController::class, 'showroomTestimonialDatatable'])->name('showroom-testimonial-datatable');
+    //Showroom testimonial
+    Route::get('showroom-testimonial', [ShowroomTestimonialController::class, 'showroomTestimonialList'])->name('showroom-testimonial');
+    Route::get('showroom-testimonial-create', [ShowroomTestimonialController::class, 'showroomTestimonialCreate'])->name('showroom-testimonial-create');
+    Route::post('showroom-testimonial-store', [ShowroomTestimonialController::class, 'showroomTestimonialStore'])->name('showroom-testimonial-store');
+    Route::get('showroom-testimonial-edit/{id}', [ShowroomTestimonialController::class, 'showroomTestimonialEdit'])->name('showroom-testimonial-edit');
+    Route::post('showroom-testimonial-update/{id}', [ShowroomTestimonialController::class, 'showroomTestimonialUpdate'])->name('showroom-testimonial-update');
+    Route::get('showroom-testimonial-delete/{id}', [ShowroomTestimonialController::class, 'showroomTestimonialDestroy'])->name('showroom-testimonial-delete');
+    Route::get('showroom-testimonial-datatable', [ShowroomTestimonialController::class, 'showroomTestimonialDatatable'])->name('showroom-testimonial-datatable');
 
-     //Showroom testimonial
-     Route::get('showroom-model', [ShowroomModelController::class, 'showroomModelList'])->name('showroom-model');
-     Route::get('showroom-model-create', [ShowroomModelController::class, 'showroomModelCreate'])->name('showroom-model-create');
-     Route::post('showroom-model-store', [ShowroomModelController::class, 'showroomModelStore'])->name('showroom-model-store');
-     Route::get('showroom-model-edit/{id}', [ShowroomModelController::class, 'showroomModelEdit'])->name('showroom-model-edit');
-     Route::post('showroom-model-update/{id}', [ShowroomModelController::class, 'showroomModelUpdate'])->name('showroom-model-update');
-     Route::get('showroom-model-delete/{id}', [ShowroomModelController::class, 'showroomModelDestroy'])->name('showroom-model-delete');
-     Route::get('showroom-model-datatable', [ShowroomModelController::class, 'showroomModelDatatable'])->name('showroom-model-datatable');
+    //Showroom testimonial
+    Route::get('showroom-model', [ShowroomModelController::class, 'showroomModelList'])->name('showroom-model');
+    Route::get('showroom-model-create', [ShowroomModelController::class, 'showroomModelCreate'])->name('showroom-model-create');
+    Route::post('showroom-model-store', [ShowroomModelController::class, 'showroomModelStore'])->name('showroom-model-store');
+    Route::get('showroom-model-edit/{id}', [ShowroomModelController::class, 'showroomModelEdit'])->name('showroom-model-edit');
+    Route::post('showroom-model-update/{id}', [ShowroomModelController::class, 'showroomModelUpdate'])->name('showroom-model-update');
+    Route::get('showroom-model-delete/{id}', [ShowroomModelController::class, 'showroomModelDestroy'])->name('showroom-model-delete');
+    Route::get('showroom-model-datatable', [ShowroomModelController::class, 'showroomModelDatatable'])->name('showroom-model-datatable');
 
-     //footer menu
+    //footer menu
     Route::get('footer_menu', [FooterMenuController::class, 'footer_menu'])->name('footer_menu');
     Route::get('footerMenuCreate', [FooterMenuController::class, 'footerMenuCreate'])->name('footerMenuCreate');
     Route::post('footer_menu_insert', [FooterMenuController::class, 'footer_menu_insert'])->name('footer_menu_insert');
@@ -291,7 +287,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('faq-title-update', [FaqController::class, 'faqTitleUpdate'])->name('faq-title-update');
 
-
     //showroom_facility_customer_gallery
     Route::get('showroom_facility_customer_gallery', [ShowroomFacilityCustomerGalleryController::class, 'showroom_facility_customer_gallery'])->name('showroom_facility_customer_gallery');
     Route::post('showroom_facility_customer_gallery_insert', [ShowroomFacilityCustomerGalleryController::class, 'showroom_facility_customer_gallery_insert'])->name('showroom_facility_customer_gallery_insert');
@@ -358,7 +353,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('career-form-datatable', [CareerController::class, 'careerFormDataTable'])->name('career-form-datatable');
     Route::get('career-form-delete/{id}', [CareerController::class, 'careerFormDestroy'])->name('career-form-delete');
     Route::get('career-form-export', [CareerController::class, 'export'])->name('career-form-export');
-
 
     //body shop
     Route::get('body_shop', [BodyShopController::class, 'body_shop'])->name('body_shop');
@@ -440,7 +434,6 @@ Route::group(['middleware' => 'auth'], function () {
     // email template
     Route::get('email-template', [EmailTemplatesController::class, 'emailTemplate'])->name('email-template');
     Route::post('email-template-update', [EmailTemplatesController::class, 'emailTemplateUpdate'])->name('email-template-update');
-
 });
 
 //Frontend
