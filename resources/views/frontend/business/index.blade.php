@@ -271,6 +271,7 @@
     </div>
 </section>
 @endif
+<!-- insurance end -->
 
 <!-- why choose us  -->
 <section id="insurence-page">

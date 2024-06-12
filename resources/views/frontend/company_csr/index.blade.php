@@ -15,7 +15,6 @@
             <p style="color:{{$csr->description_font_color}}; font-size:{{$csr->description_font_size}}; font-family:{{$csr->description_font_family}};">{{isset($csr->description) && $csr->description ? $csr->description : ''}}</p>
         </div>
     </div>
-
 </section>
 
 <section id="csr-data">
