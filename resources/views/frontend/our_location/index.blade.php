@@ -390,7 +390,7 @@
                                                         @endforeach
 
                                                         @foreach($service_center as $record)
-                                                            <div class="tab-pane fade rounded bg-white service-map service-map-{{$record->id}}" id="{{$record->id}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                                            <div class="tab-pane fade rounded bg-white busines-{{$record->business_id}} service-map service-map-{{$record->id}} show" id="{{$record->id}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                                                 <iframe src="{{$record->map_link}}" width="100%" height="625" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                                             </div>
                                                         @endforeach
@@ -479,7 +479,7 @@
         $('.showroom-map-'+showroom_id).addClass('active');
     }
 
-    function changeSeviceCenter(service_id)
+    function changeSeviceCenter(service_id,business_id)
     {
         $('#v-pills-tabContent .showroom-map').removeClass('active');
         $('#v-pills-tabContent .bodyshop-map').removeClass('active');
@@ -487,6 +487,7 @@
 
         $('#v-pills-tabContent .service-map').removeClass('active');
         $('.service-map-'+service_id).addClass('active');
+        $('.busines-'+business_id).first().addClass('active');
     }
 
     function changeBodyShop(body_shop_id)
