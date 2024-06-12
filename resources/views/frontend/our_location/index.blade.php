@@ -259,7 +259,7 @@
                                                     <div class="section-b">
                                                         <h1 style="text-align: -webkit-center; color:{{$our_location->title_color}}; font-size:{{$our_location->title_font_size}}; font-family:{{$our_location->title_font_family}};">{{$our_location->title}}</h1>    
                                                         <ul class="btns-group" role="tablist">
-                                                            @foreach($our_business as $business)
+                                                            @foreach($businesses as $business)
                                                                 <li>
                                                                     <button class="btns btns--ghost">
                                                                         <a class="nav-link" href="#tab-{{ $business->id }}" onclick="changeBusiness('{{ $business->id }}')" aria-controls="#tab-{{ $business->id }}" role="tab" data-toggle="tab">{{ $business->title }}</a>
