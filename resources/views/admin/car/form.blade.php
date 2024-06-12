@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Car Module Create</h1>
+            <h1>Car Model Create</h1>
           </div>
         </div>
       </div>
@@ -255,9 +255,9 @@
     $(document).ready(function () {
         $(".car_form").validate({
             rules: {
-                'driven': {
-                    number: true,
-                },
+                // 'driven': {
+                //     number: true,
+                // },
                 'year': {
                     number: true,
                 },

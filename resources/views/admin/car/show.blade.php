@@ -93,7 +93,7 @@
         var href = $(this).data('href');
         return new swal({
             title: "",
-            text: "{{__('Are you sure? Delete this Car Module!')}}",
+            text: "{{__('Are you sure? Delete this Car Model!')}}",
             showCancelButton: true,
             confirmButtonText: "{{__('Yes, delete it!')}}",
             icon: "warning"

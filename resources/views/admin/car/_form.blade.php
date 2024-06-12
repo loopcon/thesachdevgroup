@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h1>Car Module Edit</h1>
+            <h1>Car Model Edit</h1>
           </div>
         </div>
       </div>
