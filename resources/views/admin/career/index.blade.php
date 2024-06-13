@@ -25,13 +25,24 @@
                     <form action="{{ route('career-update') }}" method="POST" class="service-center-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
+                                <label for="banner_image" class="form-label">Banner Image<span class="text-danger">*</span></label>
+                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->banner_image) ? $record->banner_image : old('banner_image')}}">
+                                @if(isset($record->banner_image) && $record->banner_image)
+                                    <img src="{{url('public/uploads/career/'.$record->banner_image)}}" width="100">
+                                @endif  
+                                <input type="file" id="banner_image" class="form-control" name="banner_image" required="" value="">
+                                @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
+                                <small class="image_type">(Hight:478px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
                                 <label for="offer_main_title" class="form-label">Offer Main Title<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="offer_main_title" required="" name="offer_main_title" value="{{isset($record->offer_main_title) ? $record->offer_main_title : old('offer_main_title')}}">
                                 @if ($errors->has('offer_main_title')) <div class="text-danger">{{ $errors->first('offer_main_title') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="offer_main_title_color" class="form-label">Offer Main Title Color</label>
                                 <input type="text" id="offer_main_title_color" class="form-control colorpicker" name="offer_main_title_color" value="{{isset($record->offer_main_title_color) ? $record->offer_main_title_color : old('offer_main_title_color')}}">
                             </div>
@@ -47,7 +58,7 @@
                             </div>
 
                             @php($fontfamily = fontFamily())
-                            <div class="col-md-4 mt-2">
+                            <div class="col-md-4">
                                 <label for="offer_main_title_font_family" class="form-label">Offer Main Title Font Family</label>
                                 <select class="form-control select2" name="offer_main_title_font_family">
                                     <option value="">Select</option>
@@ -57,18 +68,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4 mt-2">
-                                <label for="banner_image" class="form-label">Banner Image<span class="text-danger">*</span></label>
-                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->banner_image) ? $record->banner_image : old('banner_image')}}">
-                                @if(isset($record->banner_image) && $record->banner_image)
-                                    <img src="{{url('public/uploads/career/'.$record->banner_image)}}" width="100">
-                                @endif  
-                                <input type="file" id="banner_image" class="form-control" name="banner_image" required="" value="">
-                                @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
-                                <small class="image_type">(Hight:478px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
-                            <div class="col-md-4 mt-2">
+                            <div class="col-md-4">
                                 <label for="offer_first_icon" class="form-label">Offer First Icon</label>
                                 @if(isset($record->offer_first_icon) && $record->offer_first_icon)
                                     <img src="{{url('public/uploads/career_icon1/'.$record->offer_first_icon)}}" width="100">
@@ -287,38 +287,6 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="vacancy_title" class="form-label">Vacancy Title</label>
-                                <input type="text" class="form-control" id="vacancy_title" name="vacancy_title" value="{{isset($record->vacancy_title) ? $record->vacancy_title : old('vacancy_title')}}">
-                                @if ($errors->has('vacancy_title')) <div class="text-danger">{{ $errors->first('vacancy_title') }}</div>@endif
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="vacancy_title_color" class="form-label">Vacancy Title Font Color</label>
-                                <input type="text" id="vacancy_title_color" class="form-control colorpicker" name="vacancy_title_color" value="{{isset($record->vacancy_title_color) ? $record->vacancy_title_color : old('vacancy_title_color')}}">
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="vacancy_title_font_size" class="form-label">Vacancy Title Font Size</label>
-                                <select class="form-control select2" name="vacancy_title_font_size">
-                                    <option value="">Select</option>
-                                    @for($i=24; $i<=50; $i+=2)
-                                        <option value="{{$i}}px" @if(isset($record->vacancy_title_font_size) && $record->vacancy_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
-                                    @endfor
-                                </select>
-                            </div>
-
-                            @php($fontfamily = fontFamily())
-                            <div class="col-md-4 mt-2">
-                                <label for="vacancy_title_font_family" class="form-label">Vacancy Title Font Family</label>
-                                <select class="form-control select2" name="vacancy_title_font_family">
-                                    <option value="">Select</option>
-                                    @foreach($fontfamily as $family)
-                                        <option value="{{$family['key']}}" @if(isset($record->vacancy_title_font_family) && $record->vacancy_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-md-4">
                                 <label for="vacancy_sub_title" class="form-label">Vacancy Sub Title</label>
                                 <input type="text" class="form-control" id="vacancy_sub_title" name="vacancy_sub_title" value="{{isset($record->vacancy_sub_title) ? $record->vacancy_sub_title : old('vacancy_sub_title')}}">
                                 @if ($errors->has('vacancy_sub_title')) <div class="text-danger">{{ $errors->first('vacancy_sub_title') }}</div>@endif
@@ -349,8 +317,39 @@
                                     @endforeach
                                 </select>
                             </div>
-                        </div>
 
+                            <div class="col-md-4">
+                                <label for="vacancy_title" class="form-label">Vacancy Title</label>
+                                <input type="text" class="form-control" id="vacancy_title" name="vacancy_title" value="{{isset($record->vacancy_title) ? $record->vacancy_title : old('vacancy_title')}}">
+                                @if ($errors->has('vacancy_title')) <div class="text-danger">{{ $errors->first('vacancy_title') }}</div>@endif
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="vacancy_title_color" class="form-label">Vacancy Title Font Color</label>
+                                <input type="text" id="vacancy_title_color" class="form-control colorpicker" name="vacancy_title_color" value="{{isset($record->vacancy_title_color) ? $record->vacancy_title_color : old('vacancy_title_color')}}">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="vacancy_title_font_size" class="form-label">Vacancy Title Font Size</label>
+                                <select class="form-control select2" name="vacancy_title_font_size">
+                                    <option value="">Select</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->vacancy_title_font_size) && $record->vacancy_title_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            @php($fontfamily = fontFamily())
+                            <div class="col-md-4 mt-2 mb-2">
+                                <label for="vacancy_title_font_family" class="form-label">Vacancy Title Font Family</label>
+                                <select class="form-control select2" name="vacancy_title_font_family">
+                                    <option value="">Select</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->vacancy_title_font_family) && $record->vacancy_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Update</button>
                         </div>

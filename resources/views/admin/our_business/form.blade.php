@@ -136,7 +136,7 @@
                             </div>
 
                             <div class="mt-3 col-12">
-                                <h5>Showroom Title</h5>
+                                <h5>Showroom Title :</h5>
                                 <hr>
                             </div>
 
@@ -172,7 +172,7 @@
                             </div>
                             
                             <div class="mt-3 col-12">
-                                <h5>Service Center Title</h5>
+                                <h5>Service Center Title :</h5>
                                 <hr>
                             </div>
                             <div class="col-md-3">
@@ -207,7 +207,7 @@
                             </div>
 
                             <div class="mt-3 col-12">
-                                <h5>Body Shop Title</h5>
+                                <h5>Body Shop Title :</h5>
                                 <hr>
                             </div>
                             <div class="col-md-3">
@@ -242,7 +242,7 @@
                             </div>
 
                             <div class="mt-3 col-12">
-                                <h5>Used Car Title</h5>
+                                <h5>Used Car Title :</h5>
                                 <hr>
                             </div>
                             <div class="col-md-3">
@@ -277,7 +277,7 @@
                             </div>
 
                             <div class="mt-3 col-12">
-                                <h5>Insurance Title</h5>
+                                <h5>Insurance Title :</h5>
                                 <hr>
                             </div>
                             <div class="col-md-3">
@@ -312,7 +312,7 @@
                             </div>
 
                             <div class="col-12">
-                                <h5>Why Choose Section</h5>
+                                <h5>Why Choose Section :</h5>
                                 <hr>
                             </div>
 

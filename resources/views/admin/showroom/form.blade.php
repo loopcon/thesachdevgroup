@@ -29,6 +29,13 @@
                                 <div id="errorbusinessdiv"></div>
                             </div>
 
+                            <div class="mb-3 col-md-4">
+                                <label for="image" class="form-label">Image</label>
+                                <input type="file" id="image" class="form-control" name="image">
+                                <div id="error"></div>
+                                <small class="image_type">(Height:281px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Showroom Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name">
@@ -94,13 +101,6 @@
                                 </select>
                             </div>
 
-                            <div class="mb-3 col-md-4">
-                                <label for="image" class="form-label">Image</label>
-                                <input type="file" id="image" class="form-control" name="image">
-                                <div id="error"></div>
-                                <small class="image_type">(Height:281px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
                             <div class="col-md-4">
                                 <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
                                 <select name="brand_id" id="brand_id" class="form-control select2">
@@ -156,6 +156,13 @@
                             </div>
 
                             <div class="mb-3 col-md-4">
+                                <label for="address_icon" class="form-label">Address Icon</label>
+                                <input type="file" id="address_icon" class="form-control" name="address_icon">
+                                <div id="error"></div>
+                                <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="mb-3 col-md-4">
                                 <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="address"></textarea>
                                 @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
@@ -189,13 +196,6 @@
                                 </select>
                             </div>
 
-                            <div class="mb-3 col-md-4">
-                                <label for="address_icon" class="form-label">Address Icon</label>
-                                <input type="file" id="address_icon" class="form-control" name="address_icon">
-                                <div id="error"></div>
-                                <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
                             <div class="col-md-4 mt-2 mb-2">
                                 <label for="working_hour_title" class="form-label">Working Hours Title</label>
                                 <input type="working_hour_title" class="form-control" name="working_hour_title" id="working_hour_title">
@@ -225,6 +225,14 @@
                             <div class="col-md-4 mt-2">
                                 <label for="working_hour_title_color" class="form-label">Working Hours Title Font Color</label>
                                 <input type="text" class="form-control colorpicker" name="working_hour_title_color" id="working_hour_title_color">
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="working_hours_icon" class="form-label">Working Hours Icon</label>
+                                <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon">
+                                @if ($errors->has('working_hours_icon')) <div class="text-danger">{{ $errors->first('working_hours_icon') }}</div>@endif
+                                <div id="error"></div>
+                                <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">
@@ -259,14 +267,6 @@
                                 </select>
                             </div>
 
-                            <div class="mb-3 col-md-4">
-                                <label for="working_hours_icon" class="form-label">Working Hours Icon</label>
-                                <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon">
-                                @if ($errors->has('working_hours_icon')) <div class="text-danger">{{ $errors->first('working_hours_icon') }}</div>@endif
-                                <div id="error"></div>
-                                <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
                             <div class="col-md-4 mt-2 mb-2">
                                 <label for="contact_title" class="form-label">Contact Number Title</label>
                                 <input type="contact_title" class="form-control" name="contact_title" id="contact_title">
@@ -296,6 +296,14 @@
                             <div class="col-md-4 mt-2">
                                 <label for="contact_title_color" class="form-label">Contact Number Title Font Color</label>
                                 <input type="text" class="form-control colorpicker" name="contact_title_color" id="contact_title_color">
+                            </div>
+
+                            <div class="mb-3 col-md-4">
+                                <label for="contact_number_icon" class="form-label">Contact Number Icon</label>
+                                <input type="file" id="contact_number_icon" class="form-control" name="contact_number_icon">
+                                @if ($errors->has('contact_number_icon')) <div class="text-danger">{{ $errors->first('contact_number_icon') }}</div>@endif
+                                <div id="error"></div>
+                                <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">
@@ -330,14 +338,6 @@
                                 </select>
                             </div>
 
-                            <div class="mb-3 col-md-4">
-                                <label for="contact_number_icon" class="form-label">Contact Number Icon</label>
-                                <input type="file" id="contact_number_icon" class="form-control" name="contact_number_icon">
-                                @if ($errors->has('contact_number_icon')) <div class="text-danger">{{ $errors->first('contact_number_icon') }}</div>@endif
-                                <div id="error"></div>
-                                <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
                             <div class="col-md-4 mt-2">
                                 <label for="email_title" class="form-label">Email Title</label>
                                 <input type="text" class="form-control" name="email_title" id="email_title">
@@ -367,6 +367,14 @@
                             <div class="col-md-4 mt-2">
                                 <label for="email_title_color" class="form-label">Email Title Font Color</label>
                                 <input type="text" class="form-control colorpicker" name="email_title_color" id="email_title_color">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="email_icon" class="form-label">Email Icon</label>
+                                <input type="file" id="email_icon" class="form-control" name="email_icon">
+                                @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
+                                <div id="error"></div>
+                                <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -401,31 +409,8 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="email_icon" class="form-label">Email Icon</label>
-                                <input type="file" id="email_icon" class="form-control" name="email_icon">
-                                @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
-                                <div id="error"></div>
-                                <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
-
-                            <div class="col-md-4 mt-2">
-                                <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="rating" id="rating">
-                                @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
-                                <div id="error"></div>
-                            </div>
-
-                            <div class="col-md-4 mt-2">
-                                <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating">
-                                @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
-                                <div id="error"></div>
-                            </div>
-
                             <div class="col-12">
-                                <h5>Facility Title</h5>
+                                <h5>Facility Title :</h5>
                                 <hr>
                             </div>
 
@@ -461,7 +446,7 @@
                             </div>
 
                             <div class="col-12">
-                                <h5>Customer Gallery Title</h5>
+                                <h5>Customer Gallery Title :</h5>
                                 <hr>
                             </div>
 
@@ -505,7 +490,7 @@
                             </div>
 
                             <div class="col-12">
-                                <h5>Testimonial Title</h5>
+                                <h5>Testimonial Title :</h5>
                                 <hr>
                             </div>
 
@@ -541,7 +526,7 @@
                             </div>
 
                             <div class="col-12">
-                                <h5> Slider Section </h5>
+                                <h5> Slider Section :</h5>
                                 <hr>
                             </div>
 
@@ -583,6 +568,20 @@
                                         <option value="{{$family['key']}}">{{$family['value']}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="rating" id="rating">
+                                @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
+                                <div id="error"></div>
+                            </div>
+
+                            <div class="col-md-4 mb-2">
+                                <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating">
+                                @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
+                                <div id="error"></div>
                             </div>
 
                             <div class="col-md-4 mb-2">

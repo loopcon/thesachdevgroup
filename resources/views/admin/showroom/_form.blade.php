@@ -32,6 +32,15 @@
                                     @if ($errors->has('our_business_id')) <div class="text-danger">{{ $errors->first('our_business_id') }}</div>@endif
                                 </div>
 
+                                <div class="mb-3 col-md-4">
+                                    <label for="image" class="form-label">Image</label>
+                                    @if(isset($showroom->image) && isset($showroom->image))
+                                        <img src="{{url('public/showrooms_image/'.$showroom->image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="image" class="form-control" name="image">
+                                    <small class="image_type">(Height:281px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                </div>
+
                                 <div class="col-md-4">
                                     <label for="name" class="form-label">Showroom Name<span class="text-danger">*</span></label>
                                     <input type="text" id="name" class="form-control" name="name" value="{{$showroom->name}}">
@@ -66,13 +75,36 @@
                                     </select>
                                 </div>
 
+                                <div class="col-md-12 mt-2 mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea class="ckeditor form-control" name="description">{{$showroom->description}}</textarea>
+                                    <div class="error"></div>
+                                </div>
+
                                 <div class="mb-3 col-md-4">
-                                    <label for="image" class="form-label">Image</label>
-                                    @if(isset($showroom->image) && isset($showroom->image))
-                                        <img src="{{url('public/showrooms_image/'.$showroom->image)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
-                                    @endif
-                                    <input type="file" id="image" class="form-control" name="image">
-                                    <small class="image_type">(Height:281px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                    <label for="description_color" class="form-label">Description Text Color</label>
+                                    <input type="text" class="form-control colorpicker" name="description_color" id="description_color" value="{{$showroom->description_color}}">
+                                    <div class="error"></div>
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <label for="description_font_size">Description Text Font Size</label>
+                                    <select class="form-control select2" name="description_font_size">
+                                        <option value="">Select</option>
+                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
+                                            <option value="{{$i}}px" {{$showroom->description_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
+                                        @endfor
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4 mt-2" >
+                                    <label for="description_font_family">Description Text Font Family</label>
+                                    <select class="form-control select2" name="description_font_family">
+                                        <option value="">Select</option>
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$showroom->description_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="col-md-4">
@@ -133,6 +165,16 @@
                                     <input type="text" class="form-control colorpicker" value="{{isset($showroom->address_title_color) ? $showroom->address_title_color : old('address_title_color')}}" name="address_title_color" id="address_title_color">
                                 </div>
 
+                                <div class="col-md-4">
+                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label>
+                                    @if(isset($showroom->address_icon) && isset($showroom->address_icon))
+                                        <img src="{{url('public/showrooms_address_icon/'.$showroom->address_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="address_icon" class="form-control" name="address_icon">
+                                    <div id="error"></div>
+                                    <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                                </div>
+
                                 <div class="mb-3 col-md-4">
                                     <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="address">{{$showroom->address}}</textarea>
@@ -167,16 +209,6 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label for="address_icon" class="form-label">Address Icon<span class="text-danger">*</span></label>
-                                    @if(isset($showroom->address_icon) && isset($showroom->address_icon))
-                                        <img src="{{url('public/showrooms_address_icon/'.$showroom->address_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
-                                    @endif
-                                    <input type="file" id="address_icon" class="form-control" name="address_icon">
-                                    <div id="error"></div>
-                                    <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                                </div>
-
                                 <div class="col-md-4 mt-2 mb-2">
                                     <label for="working_hour_title" class="form-label">Working Hours Title</label>
                                     <input type="working_hour_title" class="form-control" value="{{isset($showroom->working_hour_title) ? $showroom->working_hour_title : old('working_hour_title')}}" name="working_hour_title" id="working_hour_title">
@@ -206,6 +238,17 @@
                                 <div class="col-md-4 mt-2">
                                     <label for="working_hour_title_color" class="form-label">Working Hours Title Font Color</label>
                                     <input type="text" class="form-control colorpicker" value="{{isset($showroom->working_hour_title_color) ? $showroom->working_hour_title_color : old('working_hour_title_color')}}" name="working_hour_title_color" id="working_hour_title_color">
+                                </div>
+
+                                <div class="mb-3 col-md-4">
+                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label>
+                                    @if(isset($showroom->working_hours_icon) && isset($showroom->working_hours_icon))
+                                        <img src="{{url('public/showrooms_working_hours_icon/'.$showroom->working_hours_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon">
+                                    @if ($errors->has('working_hours_icon')) <div class="text-danger">{{ $errors->first('working_hours_icon') }}</div>@endif
+                                    <div id="error"></div>
+                                    <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="col-md-4">
@@ -240,17 +283,6 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-md-4">
-                                    <label for="working_hours_icon" class="form-label">Working Hours Icon<span class="text-danger">*</span></label>
-                                    @if(isset($showroom->working_hours_icon) && isset($showroom->working_hours_icon))
-                                        <img src="{{url('public/showrooms_working_hours_icon/'.$showroom->working_hours_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
-                                    @endif
-                                    <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon">
-                                    @if ($errors->has('working_hours_icon')) <div class="text-danger">{{ $errors->first('working_hours_icon') }}</div>@endif
-                                    <div id="error"></div>
-                                    <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                                </div>
-
                                 <div class="col-md-4 mt-2 mb-2">
                                     <label for="contact_title" class="form-label">Contact Number Title</label>
                                     <input type="contact_title" class="form-control" value="{{isset($showroom->contact_title) ? $showroom->contact_title : old('contact_title')}}" name="contact_title" id="contact_title">
@@ -280,6 +312,16 @@
                                 <div class="col-md-4 mt-2">
                                     <label for="contact_title_color" class="form-label">Contact Number Title Font Color</label>
                                     <input type="text" class="form-control colorpicker" value="{{isset($showroom->contact_title_color) ? $showroom->contact_title_color : old('contact_title_color')}}" name="contact_title_color" id="contact_title_color">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label>
+                                    @if(isset($showroom->contact_number_icon) && isset($showroom->contact_number_icon))
+                                        <img src="{{url('public/showrooms_contact_number_icon/'.$showroom->contact_number_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="contact_number_icon" class="form-control" name="contact_number_icon">
+                                    <div id="error"></div>
+                                    <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="mb-3 col-md-4">
@@ -314,16 +356,6 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label for="contact_number_icon" class="form-label">Contact Number Icon<span class="text-danger">*</span></label>
-                                    @if(isset($showroom->contact_number_icon) && isset($showroom->contact_number_icon))
-                                        <img src="{{url('public/showrooms_contact_number_icon/'.$showroom->contact_number_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
-                                    @endif
-                                    <input type="file" id="contact_number_icon" class="form-control" name="contact_number_icon">
-                                    <div id="error"></div>
-                                    <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                                </div>
-
                                 <div class="col-md-4 mt-2">
                                     <label for="email_title" class="form-label">Email Title</label>
                                     <input type="text" class="form-control" value="{{isset($showroom->email_title) ? $showroom->email_title : old('email_title')}}" name="email_title" id="email_title">
@@ -353,6 +385,17 @@
                                 <div class="col-md-4 mt-2">
                                     <label for="email_title_color" class="form-label">Email Title Font Color</label>
                                     <input type="text" class="form-control colorpicker" value="{{isset($showroom->email_title_color) ? $showroom->email_title_color : old('email_title_color')}}" name="email_title_color" id="email_title_color">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="email_icon" class="form-label">Email Icon<span class="text-danger">*</span></label>
+                                    @if(isset($showroom->email_icon) && isset($showroom->email_icon))
+                                        <img src="{{url('public/showrooms_email_icon/'.$showroom->email_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
+                                    @endif
+                                    <input type="file" id="email_icon" class="form-control" name="email_icon">
+                                    @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
+                                    <div id="error"></div>
+                                    <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
                                 <div class="mb-3 col-md-4">
@@ -387,65 +430,8 @@
                                     </select>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <label for="email_icon" class="form-label">Email Icon<span class="text-danger">*</span></label>
-                                    @if(isset($showroom->email_icon) && isset($showroom->email_icon))
-                                        <img src="{{url('public/showrooms_email_icon/'.$showroom->email_icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
-                                    @endif
-                                    <input type="file" id="email_icon" class="form-control" name="email_icon">
-                                    @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
-                                    <div id="error"></div>
-                                    <small class="image_type">(Height:41px,Width:41px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                                </div>
-
-                                <div class="col-md-4 mt-2">
-                                    <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="rating" id="rating" value="{{$showroom->rating}}">
-                                    @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
-                                    <div id="error"></div>
-                                </div>
-    
-                                <div class="col-md-4 mt-2">
-                                    <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating" value="{{$showroom->number_of_rating}}">
-                                    @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
-                                    <div id="error"></div>
-                                </div>
-
-                                <div class="col-md-12 mt-2 mb-3">
-                                    <label for="description" class="form-label">Description</label>
-                                    <textarea class="ckeditor form-control" name="description">{{$showroom->description}}</textarea>
-                                    <div class="error"></div>
-                                </div>
-
-                                <div class="mb-3 col-md-4">
-                                    <label for="description_color" class="form-label">Description Text Color</label>
-                                    <input type="text" class="form-control colorpicker" name="description_color" id="description_color" value="{{$showroom->description_color}}">
-                                    <div class="error"></div>
-                                </div>
-
-                                <div class="col-md-4 mt-2">
-                                    <label for="description_font_size">Description Text Font Size</label>
-                                    <select class="form-control select2" name="description_font_size">
-                                        <option value="">Select</option>
-                                        @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
-                                            <option value="{{$i}}px" {{$showroom->description_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
-                                        @endfor
-                                    </select>
-                                </div>
-
-                                <div class="col-md-4 mt-2" >
-                                    <label for="description_font_family">Description Text Font Family</label>
-                                    <select class="form-control select2" name="description_font_family">
-                                        <option value="">Select</option>
-                                        @foreach($fontfamily as $family)
-                                            <option value="{{$family['key']}}" {{$showroom->description_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
                                 <div class="col-12">
-                                    <h5>Facility Title</h5>
+                                    <h5>Facility Title :</h5>
                                     <hr>
                                 </div>
 
@@ -481,7 +467,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <h5>Customer Gallery Title</h5>
+                                    <h5>Customer Gallery Title :</h5>
                                     <hr>
                                 </div>
 
@@ -528,7 +514,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <h5>Testimonial Title</h5>
+                                    <h5>Testimonial Title :</h5>
                                     <hr>
                                 </div>
 
@@ -564,7 +550,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <h5> Slider Section </h5>
+                                    <h5> Slider Section :</h5>
                                     <hr>
                                 </div>
 
@@ -608,6 +594,20 @@
                                             <option value="{{$family['key']}}" {{$showroom->slider_showroom_name_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                         @endforeach
                                     </select>
+                                </div>
+
+                                <div class="col-md-4 mt-2">
+                                    <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="rating" id="rating" value="{{$showroom->rating}}">
+                                    @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
+                                    <div id="error"></div>
+                                </div>
+    
+                                <div class="col-md-4 mb-2">
+                                    <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating" value="{{$showroom->number_of_rating}}">
+                                    @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
+                                    <div id="error"></div>
                                 </div>
 
                                 <div class="col-md-4 mb-2">

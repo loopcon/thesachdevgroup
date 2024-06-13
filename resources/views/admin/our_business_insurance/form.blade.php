@@ -35,11 +35,6 @@
                                 @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4 page_url">
-                                <label for="url" class="form-label">Url</label>
-                                <input type="url" id="url" class="form-control" name="url" value="{{isset($record->url) ? $record->url : old('url')}}">
-                            </div>
-
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
@@ -73,7 +68,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-4 mt-2 mb-3">
+                            <div class="col-md-4">
                                 <label for="icon" class="form-label">Icon</label><span class="text-danger">*</span>
                                 @if(isset($record->icon) && $record->icon)
                                     <img src="{{url('public/uploads/our_business_insurance/'.$record->icon)}}" width="100" style="margin-bottom:10px; margin-left:10px;">
@@ -82,6 +77,11 @@
                                 @if ($errors->has('icon')) <div class="text-danger">{{ $errors->first('icon') }}</div>@endif
                                 <div class="error"></div>
                                 <small class="image_type">(Hight:77px,Width:77px;Image Type : jpg,jpeg,png,webp)</small>
+                            </div>
+
+                            <div class="col-md-4 mb-2 page_url">
+                                <label for="url" class="form-label">Url</label>
+                                <input type="url" id="url" class="form-control" name="url" value="{{isset($record->url) ? $record->url : old('url')}}">
                             </div>
                         </div>
                         <div class="box-footer">

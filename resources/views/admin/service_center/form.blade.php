@@ -34,15 +34,15 @@
                                 @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4 adm-select-car-drop adm-brand-errorbox">
-                                <label for="service_id" class="form-label">Service<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="service_id[]" id="service_id" required="" multiple>
-                                    <option value="" disabled>-- Select Service --</option>
-                                    @foreach($services as $value)
-                                    <option value="{{$value->id}}"@if(isset($record->service_id) && in_array($value->id, json_decode($record->service_id)) == $value->id){{'selected'}}@endif>{{$value->name}}</option>
-                                    @endforeach
-                                </select>
-                                @if ($errors->has('service_id')) <div class="text-danger">{{ $errors->first('service_id') }}</div>@endif
+                            <div class="col-md-4 mt-2">
+                                <label for="image" class="form-label">Banner Image</label>
+                                @if(isset($record->image) && $record->image)
+                                    <img src="{{url('public/uploads/service_center/'.$record->image)}}" width="100">
+                                @endif  
+                                <input type="file" id="image" class="form-control" name="image" value="">
+                                @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
+                                <div class="error"></div>
+                                <small class="image_type">(Hight:281px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">
@@ -79,17 +79,6 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="image" class="form-label">Banner Image</label>
-                                @if(isset($record->image) && $record->image)
-                                    <img src="{{url('public/uploads/service_center/'.$record->image)}}" width="100">
-                                @endif  
-                                <input type="file" id="image" class="form-control" name="image" value="">
-                                @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
-                                <div class="error"></div>
-                                <small class="image_type">(Hight:281px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
-                            <div class="col-md-4 mt-2">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control" name="description" id="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
                             </div>
@@ -117,6 +106,17 @@
                             <div class="col-md-4 mt-2">
                                 <label for="description_font_color" class="form-label">Description Font Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->description_font_color) ? $record->description_font_color : old('description_font_color')}}" name="description_font_color" id="description_font_color">
+                            </div>
+
+                            <div class="col-md-4 adm-select-car-drop adm-brand-errorbox">
+                                <label for="service_id" class="form-label">Service<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="service_id[]" id="service_id" required="" multiple>
+                                    <option value="" disabled>-- Select Service --</option>
+                                    @foreach($services as $value)
+                                    <option value="{{$value->id}}"@if(isset($record->service_id) && in_array($value->id, json_decode($record->service_id)) == $value->id){{'selected'}}@endif>{{$value->name}}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('service_id')) <div class="text-danger">{{ $errors->first('service_id') }}</div>@endif
                             </div>
 
                             <div class="col-md-4 mt-2 mb-2">
@@ -148,12 +148,6 @@
                             <div class="col-md-4 mt-2">
                                 <label for="address_title_color" class="form-label">Address Title Font Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->address_title_color) ? $record->address_title_color : old('address_title_color')}}" name="address_title_color" id="address_title_color">
-                            </div>
-
-                            <div class="col-md-4 mt-2">
-                                <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="address" required="" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
-                                @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                             </div> 
 
                             <div class="col-md-4 mt-2">
@@ -165,6 +159,12 @@
                                 @if ($errors->has('address_icon')) <div class="text-danger">{{ $errors->first('address_icon') }}</div>@endif
                                 <div class="error"></div>
                                 <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
+                                <textarea class="form-control" name="address" required="" id="address">{{isset($record->address) ? $record->address : old('address')}}</textarea>
+                                @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -224,11 +224,6 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="working_hours" class="form-label">Working Hours</label>
-                                <input type="text" class="form-control" value="{{isset($record->working_hours) ? $record->working_hours : old('working_hours')}}" name="working_hours" id="working_hours">
-                            </div>
-
-                            <div class="col-md-4 mt-2">
                                 <label for="working_hours_icon" class="form-label">Working Hours Icon</label>
                                 @if(isset($record->working_hours_icon) && $record->working_hours_icon)
                                     <img src="{{url('public/uploads/working_hours_icon/'.$record->working_hours_icon)}}" width="100">
@@ -236,6 +231,11 @@
                                 <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon" value="">
                                 <div class="error"></div>
                                 <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hours" class="form-label">Working Hours</label>
+                                <input type="text" class="form-control" value="{{isset($record->working_hours) ? $record->working_hours : old('working_hours')}}" name="working_hours" id="working_hours">
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -295,12 +295,6 @@
                             </div>
 
                             <div class="col-md-4 mt-2">
-                                <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required="" maxlength="10" minlength="10" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
-                                @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
-                            </div>
-
-                            <div class="col-md-4 mt-2">
                                 <label for="contact_icon" class="form-label">Contact Number Icon</label>
                                 @if(isset($record->contact_icon) && $record->contact_icon)
                                     <img src="{{url('public/uploads/contact_icon/'.$record->contact_icon)}}" width="100">
@@ -309,6 +303,12 @@
                                 @if ($errors->has('contact_icon')) <div class="text-danger">{{ $errors->first('contact_icon') }}</div>@endif
                                 <div class="error"></div>
                                 <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" required="" maxlength="10" minlength="10" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
+                                @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
                             </div>
 
                             <div class="col-md-4 mt-2">
@@ -367,6 +367,16 @@
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->email_title_color) ? $record->email_title_color : old('email_title_color')}}" name="email_title_color" id="email_title_color">
                             </div>
 
+                            <div class="col-md-4 mb-3 mt-2">
+                                <label for="email_icon" class="form-label">Email Icon</label>
+                                @if(isset($record->email_icon) && $record->email_icon)
+                                    <img src="{{url('public/uploads/email_icon/'.$record->email_icon)}}" width="100">
+                                @endif  
+                                <input type="file" id="email_icon" class="form-control" name="email_icon" value="">
+                                @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
+                                <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
                             <div class="col-md-4 mt-2">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" value="{{isset($record->email) ? $record->email : old('email')}}" name="email" id="email">
@@ -398,18 +408,8 @@
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->email_font_color) ? $record->email_font_color : old('email_font_color')}}" name="email_font_color" id="email_font_color">
                             </div>
 
-                            <div class="col-md-4 mb-3 mt-2">
-                                <label for="email_icon" class="form-label">Email Icon</label>
-                                @if(isset($record->email_icon) && $record->email_icon)
-                                    <img src="{{url('public/uploads/email_icon/'.$record->email_icon)}}" width="100">
-                                @endif  
-                                <input type="file" id="email_icon" class="form-control" name="email_icon" value="">
-                                @if ($errors->has('email_icon')) <div class="text-danger">{{ $errors->first('email_icon') }}</div>@endif
-                                <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
                             <div class="col-12">
-                                <h5>Facility Title</h5>
+                                <h5>Facility Title :</h5>
                                 <hr>
                             </div>
 
@@ -445,7 +445,7 @@
                             </div>
 
                             <div class="col-12">
-                                <h5>Customer Gallery Title</h5>
+                                <h5>Customer Gallery Title :</h5>
                                 <hr>
                             </div>
 
@@ -492,7 +492,7 @@
                             </div>
 
                             <div class="col-12">
-                                <h5>Testimonial Title</h5>
+                                <h5>Testimonial Title :</h5>
                                 <hr>
                             </div>
 
@@ -528,11 +528,11 @@
                             </div>
 
                             <div class="col-12">
-                                <h5> Slider Section </h5>
+                                <h5> Slider Section :</h5>
                                 <hr>
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-3 mt-2">
                                 <label for="slider_service_center_name" class="form-label">Slider Service Center Name</label>
                                 <input type="text" class="form-control" id="slider_service_center_name" name="slider_service_center_name" value="{{isset($record->slider_service_center_name) ? $record->slider_service_center_name : old('slider_service_center_name')}}">
                                 @if ($errors->has('slider_service_center_name')) <div class="text-danger">{{ $errors->first('slider_service_center_name') }}</div>@endif
@@ -554,7 +554,7 @@
                                 <input type="text" id="slider_service_center_name_color" class="form-control colorpicker" name="slider_service_center_name_color" value="{{isset($record->slider_service_center_name_color) ? $record->slider_service_center_name_color : old('slider_service_center_name_color')}}">
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mt-2">
                                 <label for="slider_service_center_name_size" class="form-label">Slider Service Center Name Font Size</label>
                                 <select class="form-control select2" name="slider_service_center_name_size">
                                     <option value="">Select</option>

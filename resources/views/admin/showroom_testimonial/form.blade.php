@@ -35,13 +35,6 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required="">
-                                @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
-                                <div class="errordiv"></div>
-                            </div>
-
-                            <div class="col-md-4">
                                 <label for="image" class="form-label">Image</label>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/showroom_testimonial/'.$record->image)}}" width="100" style="margin-bottom:10px;margin-left:5px;">
@@ -50,6 +43,13 @@
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <div class="error"></div>
                                 <small class="image_type">(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
+                                <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required="">
+                                @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
+                                <div class="errordiv"></div>
                             </div>
 
                             <div class="col-md-4">

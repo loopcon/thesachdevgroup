@@ -24,19 +24,30 @@
                     <form action="{{ route('award-banner-update') }}" method="POST" class="award-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-5 mb-3">
+                                <label for="banner_image" class="form-label">Award Banner Image<span class="text-danger">*</span></label>
+                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->banner_image) ? $record->banner_image : ''}}">
+                                @if(isset($record->banner_image) && $record->banner_image)
+                                    <img src="{{url('public/uploads/award_banner/'.$record->banner_image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
+                                @endif  
+                                <input type="file" id="banner_image" class="form-control" name="banner_image" value="">
+                                @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
+                                <small class="image_type">(Hight:478px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
                                 <label for="award_title" class="form-label">Award Title<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="award_title" name="award_title" value="{{isset($record->award_title) ? $record->award_title : old('award_title')}}">
                                 @if ($errors->has('award_title')) <div class="text-danger">{{ $errors->first('award_title') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-2">
                                 <label for="award_title_font_color" class="form-label">Award Title Font Color</label>
                                 <input type="text" id="name_font_color" class="form-control colorpicker" name="award_title_font_color" value="{{isset($record->award_title_font_color) ? $record->award_title_font_color : old('award_title_font_color')}}">
                             </div>
 
-                            <div class="col-md-4 mt-2">
+                            <div class="col-md-4">
                                 <label for="award_title_font_size" class="form-label">Award Title Font Size</label>
                                 <select class="form-control select2" name="award_title_font_size">
                                     <option value="">-- Select --</option>
@@ -47,7 +58,7 @@
                             </div>
 
                             @php($fontfamily = fontFamily())
-                            <div class="col-md-4 mt-2">
+                            <div class="col-md-4">
                                 <label for="award_title_font_family" class="form-label">Award Title Font Family</label>
                                 <select class="form-control select2" name="award_title_font_family">
                                     <option value="">-- Select --</option>
@@ -55,17 +66,6 @@
                                         <option value="{{$family['key']}}" @if(isset($record->award_title_font_family) && $record->award_title_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
                                 </select>
-                            </div>
-
-                            <div class="col-md-5 mb-3 mt-2">
-                                <label for="banner_image" class="form-label">Award Banner Image<span class="text-danger">*</span></label>
-                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->banner_image) ? $record->banner_image : ''}}">
-                                @if(isset($record->banner_image) && $record->banner_image)
-                                    <img src="{{url('public/uploads/award_banner/'.$record->banner_image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
-                                @endif  
-                                <input type="file" id="banner_image" class="form-control" name="banner_image" value="">
-                                @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
-                                <small class="image_type">(Hight:478px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
                         </div>
 
