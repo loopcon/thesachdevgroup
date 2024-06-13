@@ -28,11 +28,11 @@
                             <thead>
                                 <tr>
                                     <th style="width:40px;">Id</th>
+                                    <th>Icon</th>
                                     <th>Name</th>
                                     <th>Name Color</th>
                                     <th>Name Font Size</th>
                                     <th>Name Font Family</th>
-                                    <th>Icon</th>
                                     <th>Url</th>
                                     <!-- <th>Service Center</th> -->
                                     <th>Action</th>
@@ -57,11 +57,11 @@
             ajax: "{{ route('service-datatable') }}",
             columns: [
                 {data: 'id', name: 'id', orderable: false, searchable: false},
+                {data: 'icon', name: 'icon'},
                 {data: 'name', name: 'name'},
                 {data: 'name_font_color', name: 'name_font_color'},
                 {data: 'name_font_size', name: 'name_font_size'},
                 {data: 'name_font_family', name: 'name_font_family'},
-                {data: 'icon', name: 'icon'},
                 {data: 'url', name: 'url'},
                 // {data: 'service_center_id', name: 'service_center_id'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},

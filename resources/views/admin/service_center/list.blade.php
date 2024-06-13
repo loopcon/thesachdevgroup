@@ -29,35 +29,35 @@
                                 <tr>
                                     <th style="width:40px;">Id</th>
                                     <th>Our Business</th>
-                                    <th>Service</th>
                                     <th>Name</th>
-                                    <th>Name Color</th>
+                                    <th>Image</th>
+                                    <th>Service</th>
+                                    <!-- <th>Name Color</th>
                                     <th>Name Font Size</th>
                                     <th>Name Font Family</th>
-                                    <th>Image</th>
                                     <th>Description Font Size</th>
                                     <th>Description Font Family</th>
-                                    <th>Description Font Color</th>
+                                    <th>Description Font Color</th> -->
                                     <th>Address</th>
                                     <th>Address Icon</th>
-                                    <th>Address Font Size</th>
+                                    <!-- <th>Address Font Size</th>
                                     <th>Address Font Family</th>
-                                    <th>Address Font Color</th>
+                                    <th>Address Font Color</th> -->
                                     <th>Working Hours</th>
                                     <th>Working Hours Icon</th>
-                                    <th>Working Hours Font Size</th>
+                                    <!-- <th>Working Hours Font Size</th>
                                     <th>Working Hours Font Family</th>
-                                    <th>Working Hours Font Color</th>
+                                    <th>Working Hours Font Color</th> -->
                                     <th>Contact Number</th>
                                     <th>Contact Icon</th>
-                                    <th>Contact Font Size</th>
+                                    <!-- <th>Contact Font Size</th>
                                     <th>Contact Font Family</th>
-                                    <th>Contact Font Color</th>
+                                    <th>Contact Font Color</th> -->
                                     <th>Email</th>
                                     <th>Email Icon</th>
-                                    <th>Email Font Size</th>
+                                    <!-- <th>Email Font Size</th>
                                     <th>Email Font Family</th>
-                                    <th>Email Font Color</th>
+                                    <th>Email Font Color</th> -->
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -81,35 +81,35 @@
             columns: [
                 {data: 'id', name: 'id',orderable: false, searchable: false},
                 {data: 'business_id', name: 'business_id'},
-                {data: 'service_id', name: 'service_id'},
                 {data: 'name', name: 'name'},
-                {data: 'name_color', name: 'name_color'},
-                {data: 'name_font_size', name: 'name_font_size'},
-                {data: 'name_font_family', name: 'name_font_family'},
                 {data: 'image', name: 'image'},
-                {data: 'description_font_size', name: 'description_font_size'},
-                {data: 'description_font_family', name: 'description_font_family'},
-                {data: 'description_font_color', name: 'description_font_color'},
+                {data: 'service_id', name: 'service_id'},
+                // {data: 'name_color', name: 'name_color'},
+                // {data: 'name_font_size', name: 'name_font_size'},
+                // {data: 'name_font_family', name: 'name_font_family'},
+                // {data: 'description_font_size', name: 'description_font_size'},
+                // {data: 'description_font_family', name: 'description_font_family'},
+                // {data: 'description_font_color', name: 'description_font_color'},
                 {data: 'address', name: 'address'},
                 {data: 'address_icon', name: 'address_icon'},
-                {data: 'address_font_size', name: 'address_font_size'},
-                {data: 'address_font_family', name: 'address_font_family'},
-                {data: 'address_font_color', name: 'address_font_color'},
+                // {data: 'address_font_size', name: 'address_font_size'},
+                // {data: 'address_font_family', name: 'address_font_family'},
+                // {data: 'address_font_color', name: 'address_font_color'},
                 {data: 'working_hours', name: 'working_hours'},
                 {data: 'working_hours_icon', name: 'working_hours_icon'},
-                {data: 'working_hours_font_size', name: 'working_hours_font_size'},
-                {data: 'working_hours_font_family', name: 'working_hours_font_family'},
-                {data: 'working_hours_font_color', name: 'working_hours_font_color'},
+                // {data: 'working_hours_font_size', name: 'working_hours_font_size'},
+                // {data: 'working_hours_font_family', name: 'working_hours_font_family'},
+                // {data: 'working_hours_font_color', name: 'working_hours_font_color'},
                 {data: 'contact_number', name: 'contact_number'},
                 {data: 'contact_icon', name: 'contact_icon'},
-                {data: 'contact_font_size', name: 'contact_font_size'},
-                {data: 'contact_font_family', name: 'contact_font_family'},
-                {data: 'contact_font_color', name: 'contact_font_color'},
+                // {data: 'contact_font_size', name: 'contact_font_size'},
+                // {data: 'contact_font_family', name: 'contact_font_family'},
+                // {data: 'contact_font_color', name: 'contact_font_color'},
                 {data: 'email', name: 'email'},
                 {data: 'email_icon', name: 'email_icon'},
-                {data: 'email_font_size', name: 'email_font_size'},
-                {data: 'email_font_family', name: 'email_font_family'},
-                {data: 'email_font_color', name: 'email_font_color'},
+                // {data: 'email_font_size', name: 'email_font_size'},
+                // {data: 'email_font_family', name: 'email_font_family'},
+                // {data: 'email_font_color', name: 'email_font_color'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

@@ -29,10 +29,10 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Car</th>
-                                    <th>Service</th>
                                     <th>Title</th>
                                     <th>Banner Image</th>
+                                    <th>Car</th>
+                                    <th>Service</th>
                                     <th>Url</th>
                                     <th>Action</th>
                                 </tr>
@@ -55,10 +55,10 @@
             ajax: "{{ route('our-business-datatable') }}",
             columns: [
                 {data: 'id', name: 'id', orderable: false, searchable: false},
-                {data: 'car_id', name: 'car_id'},
-                {data: 'service_id', name: 'service_id'},
                 {data: 'title', name: 'title'},
                 {data: 'banner_image', name: 'banner_image'},
+                {data: 'car_id', name: 'car_id'},
+                {data: 'service_id', name: 'service_id'},
                 {data: 'url', name: 'url'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
