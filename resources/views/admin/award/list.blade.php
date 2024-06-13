@@ -113,28 +113,28 @@
                 $('#form_modal').modal('show');
                 $('#business_id').select2({width:'100%'});
 
-            $(".award-form").validate({
-                rules: {
-                    'business_id': {
-                        required: true,
+                $(".award-form").validate({
+                    rules: {
+                        'business_id': {
+                            required: true,
+                        },
+                        'image': {
+                            extension: "jpg,jpeg,png,webp",
+                        },
                     },
-                    'image': {
-                        extension: "jpg,jpeg,png,webp",
+                    messages: {
+                        'business_id': {
+                            required: "Our Business is required",
+                        },
+                        'image': {
+                            extension: "Image must be jpg,jpeg,png or webp",
+                        },
                     },
-                },
-                messages: {
-                    'business_id': {
-                        required: "Our Business is required",
-                    },
-                    'image': {
-                        extension: "Image must be jpg,jpeg,png or webp",
-                    },
-                },
-                submitHandler: function(form) {
-                    $(form).find('.submit').prop("disabled", true);
-                    form.submit();
-                }
-            });
+                    submitHandler: function(form) {
+                        $(form).find('.submit').prop("disabled", true);
+                        form.submit();
+                    }
+                });
             }
         });
     }

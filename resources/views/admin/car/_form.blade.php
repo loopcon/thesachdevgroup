@@ -229,7 +229,7 @@
                                         @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                             <option value="{{$i}}px" {{$car->body_style_font_size == $i.'px' ? 'selected' : ''}}>{{$i}}px</option>
                                         @endfor
-                                </select>
+                                    </select>
                                 </div>
 
                                 <div class="mb-3 col-md-4">
@@ -240,7 +240,7 @@
                                         @foreach($fontfamily as $family)
                                             <option value="{{$family['key']}}" {{$car->body_style_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                         @endforeach
-                                </select>
+                                    </select>
                                 </div>
                             </div>
                             <div class="box-footer">
