@@ -29,7 +29,7 @@
                                 <label for="banner_image" class="form-label">Banner Image<span class="text-danger">*</span></label>
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->banner_image) ? $record->banner_image : old('banner_image')}}">
                                 @if(isset($record->banner_image) && $record->banner_image)
-                                    <img src="{{url('public/uploads/career/'.$record->banner_image)}}" width="100">
+                                    <img src="{{url('public/uploads/career/'.$record->banner_image)}}" width="50">
                                 @endif  
                                 <input type="file" id="banner_image" class="form-control" name="banner_image" required="" value="">
                                 @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
@@ -71,7 +71,7 @@
                             <div class="col-md-4">
                                 <label for="offer_first_icon" class="form-label">Offer First Icon</label>
                                 @if(isset($record->offer_first_icon) && $record->offer_first_icon)
-                                    <img src="{{url('public/uploads/career_icon1/'.$record->offer_first_icon)}}" width="100">
+                                    <img src="{{url('public/uploads/career_icon1/'.$record->offer_first_icon)}}" width="50">
                                 @endif  
                                 <input type="file" id="offer_first_icon" class="form-control" name="offer_first_icon" value="">
                                 @if ($errors->has('offer_first_icon')) <div class="text-danger">{{ $errors->first('offer_first_icon') }}</div>@endif
@@ -144,7 +144,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="offer_second_icon" class="form-label">Offer Second Icon</label>
                                 @if(isset($record->offer_second_icon) && $record->offer_second_icon)
-                                    <img src="{{url('public/uploads/career_icon2/'.$record->offer_second_icon)}}" width="100">
+                                    <img src="{{url('public/uploads/career_icon2/'.$record->offer_second_icon)}}" width="50">
                                 @endif  
                                 <input type="file" id="offer_second_icon" class="form-control" name="offer_second_icon" value="">
                                 @if ($errors->has('offer_second_icon')) <div class="text-danger">{{ $errors->first('offer_second_icon') }}</div>@endif
@@ -217,7 +217,7 @@
                             <div class="col-md-4 mt-2">
                                 <label for="offer_third_icon" class="form-label">Offer Third Icon</label>
                                 @if(isset($record->offer_third_icon) && $record->offer_third_icon)
-                                    <img src="{{url('public/uploads/career_icon3/'.$record->offer_third_icon)}}" width="100">
+                                    <img src="{{url('public/uploads/career_icon3/'.$record->offer_third_icon)}}" width="50">
                                 @endif  
                                 <input type="file" id="offer_third_icon" class="form-control" name="offer_third_icon" value="">
                                 @if ($errors->has('offer_third_icon')) <div class="text-danger">{{ $errors->first('offer_third_icon') }}</div>@endif

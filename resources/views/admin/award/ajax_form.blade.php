@@ -25,7 +25,7 @@
             <div class="col-12 mt-3">
                 <label for="image" class="form-label">Image</label>
                 @if(isset($record->image) && $record->image)
-                    <img src="{{url('public/uploads/award/'.$record->image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
+                    <img src="{{url('public/uploads/award/'.$record->image)}}" width="50" style="margin-bottom:10px; margin-left:5px;">
                 @endif  
                 <input type="file" id="image" class="form-control" name="image" value="">
                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
