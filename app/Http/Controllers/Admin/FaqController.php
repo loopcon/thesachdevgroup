@@ -21,7 +21,7 @@ class FaqController extends Controller
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
                 $return_data = array();
-                $return_data['site_title'] = trans('FAQ');
+                $return_data['site_title'] = trans('Faqs');
                 $faq_title = FaqTitle::first();
                 $return_data['record'] = $faq_title;
                 return view("admin.faq.list",array_merge($return_data));

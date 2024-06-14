@@ -508,7 +508,7 @@ class HomeSettingController extends Controller
                 $home_our_businesses_title->background_color = $request->background_color;
                 $home_our_businesses_title->save();
                 
-            return redirect()->route('home_our_businesses.index')->with('success','Home Our Businesses insert successfully.');
+            return redirect()->route('home_our_businesses.index')->with('success','Home Our Businesses Title update successfully.');
 
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

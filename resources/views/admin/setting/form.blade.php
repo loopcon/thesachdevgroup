@@ -26,7 +26,7 @@
                                 <label for="logo">Logo<span class="text-danger">*</span></label>
                                   <input type="hidden" name="old_logo" id="old_logo" value="{{$setting->logo}}">
                                   @if(isset($setting->logo) && isset($setting->logo))
-                                    <img src="{{url('public/logo/'.$setting->logo)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
+                                    <img src="{{url('public/logo/'.$setting->logo)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">
                                   @endif
                                 <input type="file" id="logo" class="form-control" name="logo">
                                 <div class="error"></div>
@@ -168,7 +168,7 @@
                                 <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
                                 <input type="hidden" name="old_email_icon" id="old_email_icon" value="{{$setting->email_icon}}">
                                 @if(isset($setting->email_icon) && isset($setting->email_icon))
-                                  <img src="{{url('public/email_icon/'.$setting->email_icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">  
+                                  <img src="{{url('public/email_icon/'.$setting->email_icon)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">  
                                 @endif
                                 <input type="file" id="email_icon" class="form-control" name="email_icon">
                                 <div class="error"></div>
@@ -179,7 +179,7 @@
                                 <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
                                 <input type="hidden" name="old_call_icon" id="old_call_icon" value="{{$setting->call_icon}}">
                                 @if(isset($setting->call_icon) && isset($setting->call_icon))
-                                  <img src="{{url('public/call_icon/'.$setting->call_icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">  
+                                  <img src="{{url('public/call_icon/'.$setting->call_icon)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">  
                                 @endif
                                 <input type="file" id="call_icon" class="form-control" name="call_icon">
                                 <div class="error"></div>
@@ -190,7 +190,7 @@
                                 <label for="address_icon">Address Icon<span class="text-danger">*</span></label>
                                 <input type="hidden" name="old_address_icon" id="old_address_icon" value="{{$setting->address_icon}}">
                                 @if(isset($setting->address_icon) && isset($setting->address_icon))
-                                  <img src="{{url('public/address_icon/'.$setting->address_icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
+                                  <img src="{{url('public/address_icon/'.$setting->address_icon)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif
                                 <input type="file" id="address_icon" class="form-control" name="address_icon">
                                 <div class="error"></div>

@@ -249,7 +249,7 @@ class TestimonialController extends Controller
                 $testimonials_title->testimonials_title_font_family = $request->testimonials_title_font_family;
                 $testimonials_title->save();
                 
-                return redirect()->route('testimonials.index')->with('success','Testimonials insert successfully.');
+                return redirect()->route('testimonials.index')->with('success','Testimonials Title update successfully.');
 
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));

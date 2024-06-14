@@ -283,7 +283,7 @@ class MissionVisionController extends Controller
                     $mission_vision_image->image = $fileName;
                 }
                 $mission_vision_image->save();
-            return redirect()->route('mission_vision')->with('success','Mission Vision insert successfully.');
+            return redirect()->route('mission_vision')->with('success','Mission Vision Image update successfully.');
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
