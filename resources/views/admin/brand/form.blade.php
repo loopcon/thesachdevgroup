@@ -41,7 +41,7 @@
                                     @for($i=$fontsize['start']; $i<=$fontsize['end']; $i+=$fontsize['range'])
                                         <option value="{{$i}}px">{{$i}}px</option>
                                     @endfor
-                               </select>
+                                </select>
                             </div>
 
                             <div class="col-md-4">
@@ -52,7 +52,7 @@
                                     @foreach($fontfamily as $family)
                                         <option value="{{$family['key']}}">{{$family['value']}}</option>
                                     @endforeach
-                               </select>
+                                </select>
                             </div>
 
                             <div class="col-md-4">
