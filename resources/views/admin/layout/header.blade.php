@@ -39,7 +39,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+  <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light adm-navigation">
     <!-- Left navbar links -->
@@ -47,13 +47,11 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto adm-navbar-ulheight">
       <!-- Navbar Search -->
-
       <li class="nav-item dropdown adm-header-dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
           {{-- <i class="far fa-user"></i> --}}
@@ -68,7 +66,6 @@
           <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer">Logout</a>
         </div>
       </li>
-    
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -81,7 +78,6 @@
       @if(isset($setting_detail) && isset($setting_detail->logo))
         <img src="{{ url('public/logo/'.$setting_detail->logo) }}" alt="tsgautomotive" class="logo-image">
       @endif
-
       <!-- <span class="brand-text font-weight-light">TSG</span> -->
     </a>
 
@@ -97,7 +93,6 @@
   <!-- Content Wrapper. Contains page content -->
   @yield('content')
   <!-- /.content-wrapper -->
-
   <!-- /.content-wrapper -->
   <footer class="main-footer">
   <div class="container-fluid">

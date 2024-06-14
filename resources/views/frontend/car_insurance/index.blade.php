@@ -54,7 +54,7 @@
 
                 <div class="row">
                     <div class="col-md-6 col-sm-12 margin-bookservice">
-                        <input type="tel" class="form-control num_only" maxlength="10" name="phone" placeholder="Phone" required>
+                        <input type="tel" class="form-control num_only" maxlength="10" pattern="[0-9]{10}" name="phone" placeholder="Phone" required>
                     </div>
                     <div class="col-md-6 col-sm-12 margin-bookservice">
                         <select id="inputState" class="form-control" name="brand_id">
