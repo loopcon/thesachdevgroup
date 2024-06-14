@@ -26,7 +26,7 @@
                                 <label for="image">Image<span class="text-danger">*</span></label>
                                 <input type="hidden" name="old_image" id="old_image" value="{{$home_detail->image}}">
                                 @if(isset($home_detail->image) && isset($home_detail->image))
-                                  <img src="{{url('public/home_detail/'.$home_detail->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
+                                  <img src="{{url('public/home_detail/'.$home_detail->image)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif
                                 <input type="file" id="image" class="form-control image" name="image">
                                 <div class="error"></div>
