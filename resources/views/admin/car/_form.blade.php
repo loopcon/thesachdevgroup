@@ -141,9 +141,9 @@
                                     <label for="driven_font_family" class="form-label">Driven Font Family</label>
                                     <select class="form-control select2" name="driven_font_family">
                                         <option value="">Select</option>
-                                            @foreach($fontfamily as $family)
-                                                <option value="{{$family['key']}}" {{$car->driven_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
-                                            @endforeach
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$car->driven_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -173,9 +173,9 @@
                                     <label for="fuel_type_font_family" class="form-label">Fuel Type Font Family</label>
                                     <select class="form-control select2" name="fuel_type_font_family">
                                         <option value="">Select</option>
-                                            @foreach($fontfamily as $family)
-                                                <option value="{{$family['key']}}" {{$car->fuel_type_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
-                                            @endforeach
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$car->fuel_type_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -205,9 +205,9 @@
                                     <label for="year_font_family" class="form-label">Year Font Family</label>
                                     <select class="form-control select2" name="year_font_family">
                                         <option value="">Select</option>
-                                            @foreach($fontfamily as $family)
-                                                <option value="{{$family['key']}}" {{$car->year_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
-                                            @endforeach
+                                        @foreach($fontfamily as $family)
+                                            <option value="{{$family['key']}}" {{$car->year_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
