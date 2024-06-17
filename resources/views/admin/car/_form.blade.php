@@ -18,13 +18,13 @@
             <div class="card">
                 <div class="card-body">
                     @foreach($cars as $car)
-                        <form method="post" action="{{ route('car_update', $car->id) }}" class="edit_form" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('car_update', $car->id) }}" class="car_form" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $car->id }}" class="id" name="id">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-4 adm-brand-errorbox">
                                     <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
-                                    <select name="brand_id" id="brand_id" class="form-control select2">
+                                    <select name="brand_id" id="brand_id" class="form-control select2" required>
                                         <option value="">Select</option>
                                         @foreach($brands as $brand)
                                             <option value="{{$brand->id}}" {{$car->brand_id == $brand->id  ? 'selected' : ''}}>
@@ -33,7 +33,18 @@
                                         @endforeach
                                     </select>
                                 </div>
-    
+
+                                <div class="col-md-4 adm-brand-errorbox">
+                                    <label for="car_type" class="form-label">Car Type<span class="text-danger">*</span></label>
+                                    <select class="form-control select2" name="car_type" id="car_type">
+                                        <option value="">-- Select Car Type--</option>
+                                        <option value="1" {{$car->car_type == Constant::USED_CAR  ? 'selected' : ''}}>Used Car</option>
+                                        <option value="2" {{$car->car_type == Constant::NEW_CAR  ? 'selected' : ''}}>New Car</option>
+                                        <option value="3" {{$car->car_type == Constant::OTHER  ? 'selected' : ''}}>Other</option>
+                                    </select>
+                                    @if ($errors->has('car_type')) <div class="text-danger">{{ $errors->first('car_type') }}</div>@endif
+                                </div>
+
                                 <div class="col-md-4">
                                     <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                     <input type="hidden" name="old_image" id="old_image" value="{{isset($car->image) ? $car->image : ''}}">
@@ -259,13 +270,16 @@
 <script type="text/javascript" src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
-        $(".edit_form").validate({
+        $(".car_form").validate({
             rules: {
                 // 'driven': {
                 //     number: true,
                 // },
                 'year': {
                     number: true,
+                },
+                'car_type': {
+                    required: true,
                 },
             },
         });

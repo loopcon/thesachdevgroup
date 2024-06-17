@@ -36,7 +36,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/js/bootstrap-colorpicker.min.js"></script>
  
 {{-- ckeditor --}}
-<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/4.8.0/full-all/ckeditor.js"></script>
+
+<!-- <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> -->
 
 <script>
   $(document).on("keypress", ".num_only", function (e) {

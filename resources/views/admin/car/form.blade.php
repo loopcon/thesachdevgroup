@@ -33,6 +33,17 @@
                                 <div id="errordiv"></div>
                             </div>
 
+                            <div class="col-md-4 adm-brand-errorbox">
+                                <label for="car_type" class="form-label">Car Type<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="car_type" id="car_type">
+                                    <option value="">-- Select Car Type--</option>
+                                    <option value="1">Used Car</option>
+                                    <option value="2">New Car</option>
+                                    <option value="3">Other</option>
+                                </select>
+                                @if ($errors->has('car_type')) <div class="text-danger">{{ $errors->first('car_type') }}</div>@endif
+                            </div>
+
                             <div class="col-md-4">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                 <input type="file" id="image" class="form-control" name="image" required>
@@ -260,6 +271,9 @@
                 // },
                 'year': {
                     number: true,
+                },
+                'car_type': {
+                    required: true,
                 },
             },
         });

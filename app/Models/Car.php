@@ -38,6 +38,7 @@ class Car extends Model
         'body_style_color',
         'body_style_font_size',
         'body_style_font_family',
+        'car_type',
     ];
 
     public function brand(){

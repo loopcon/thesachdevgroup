@@ -785,3 +785,6 @@ ALTER TABLE `service_center` CHANGE `number_of_rating` `number_of_rating` VARCHA
 UPDATE `modules` SET `module` = 'Car Insurance Query Form', `deleted_at` = NULL, `created_at` = NULL, `updated_at` = NULL WHERE `modules`.`id` = 40;
 UPDATE `modules` SET `module` = 'After Sales Service Query Form', `deleted_at` = NULL, `created_at` = NULL, `updated_at` = NULL WHERE `modules`.`id` = 39;
 
+-- Disha : 17-06-2024 05:04 PM
+ALTER TABLE `cars` ADD `car_type` INT NULL DEFAULT NULL COMMENT '1=Used Car;2=New Car;3=other;' AFTER `brand_id`;
+

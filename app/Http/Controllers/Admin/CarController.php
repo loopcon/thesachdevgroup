@@ -16,7 +16,8 @@ use File;
 class CarController extends Controller
 {
     //car
-    public function car(Request $request){
+    public function car(Request $request)
+    {
         $has_permission = hasPermission('Car');
         if(isset($has_permission) && $has_permission)
         {
@@ -32,15 +33,15 @@ class CarController extends Controller
         }
     }
 
-    
-    public function car_insert(Request $request){
+    public function car_insert(Request $request)
+    {
         $has_permission = hasPermission('Car');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
             {
                 $car = new Car();
-                $fields = array('driven','driven_color','driven_font_size','driven_font_family','fuel_type','fuel_type_color','fuel_type_font_size','fuel_type_font_family','year','year_color','year_font_size','year_font_family','body_style','body_style_color','body_style_font_size','body_style_font_family');
+                $fields = array('driven','driven_color','driven_font_size','driven_font_family','fuel_type','fuel_type_color','fuel_type_font_size','fuel_type_font_family','year','year_color','year_font_size','year_font_family','body_style','body_style_color','body_style_font_size','body_style_font_family','car_type');
                 foreach($fields as $field)
                 {
                     $car->$field = isset($request->$field) && $request->$field != '' ? $request->$field : NULL;
@@ -155,9 +156,8 @@ class CarController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
-
                 $car = Car::find($id);
-                $fields = array('driven','driven_color','driven_font_size','driven_font_family','fuel_type','fuel_type_color','fuel_type_font_size','fuel_type_font_family','year','year_color','year_font_size','year_font_family','body_style','body_style_color','body_style_font_size','body_style_font_family');
+                $fields = array('driven','driven_color','driven_font_size','driven_font_family','fuel_type','fuel_type_color','fuel_type_font_size','fuel_type_font_family','year','year_color','year_font_size','year_font_family','body_style','body_style_color','body_style_font_size','body_style_font_family','car_type');
                 foreach($fields as $field)
                 {
                     $car->$field = isset($request->$field) && $request->$field != '' ? $request->$field : NULL;
