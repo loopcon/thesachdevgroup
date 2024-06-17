@@ -30,6 +30,13 @@
                                 @if ($errors->has('page_link')) <div class="text-danger">{{ $errors->first('page_link') }}</div>@endif
                             </div>
 
+                            <div class="col-md-4 page_url">
+                                <label for="url" class="form-label">Url</label>
+                                <input type="url" id="url" class="form-control" name="url" value="{{isset($record->url) ? $record->url : old('url')}}">
+                            </div>
+                        </div>
+
+                        <div class="row detail-page">
                             <div class="col-md-4 mt-3">
                                 <label for="banner_image" class="form-label">Banner Image</label>
                                 @if(isset($record->banner_image) && $record->banner_image)
@@ -39,11 +46,6 @@
                                 @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
                                 <div class="error"></div>
                                 <small class="image_type">(Hight:281,Width:1349; Image Type : jpg,jpeg,png,webp)</small>
-                            </div>
-
-                            <div class="col-md-4 page_url">
-                                <label for="url" class="form-label">Url</label>
-                                <input type="url" id="url" class="form-control" name="url" value="{{isset($record->url) ? $record->url : old('url')}}">
                             </div>
 
                             <div class="col-md-4 adm-brand-errorbox">
@@ -421,14 +423,19 @@
         if(page == '0')
         {
             $('.page_url').show();
+            $('.detail-page').hide();
         }
         $(document).on('change','#page_link',function(){
             var page_link_url = $(this).val();
+            console.log(page_link_url)
+
             if(page_link_url == 0)
             {
                 $('.page_url').show();
+                $('.detail-page').hide();
             }else{
                 $('.page_url').hide();
+                $('.detail-page').show();
             }
         });
         $(".our-business-form").validate({
