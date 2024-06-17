@@ -99,13 +99,13 @@ class CarInsuranceController extends Controller
 
     public function bookedInsurance()
     {
-        $has_permission = hasPermission('Booked Insurance');
+        $has_permission = hasPermission('Car Insurance Query Form');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
                 $return_data = array();
-                $return_data['site_title'] = trans('Booked Insurance');
+                $return_data['site_title'] = trans('Car Insurance Query Form');
 
                 return view("admin.booked_insurance.list",array_merge($return_data));
             }else {
@@ -130,7 +130,7 @@ class CarInsuranceController extends Controller
                 ->addColumn('action', function ($list) {
                     $html = "";
                     $id = encrypt($list->id);
-                    $has_permission = hasPermission('Booked Insurance');
+                    $has_permission = hasPermission('Car Insurance Query Form');
                     if(isset($has_permission) && $has_permission)
                     {
                         if($has_permission->full_permission == 1)
@@ -152,14 +152,14 @@ class CarInsuranceController extends Controller
 
     public function bookedInsuranceEdit($id)
     {
-        $has_permission = hasPermission('Booked Insurance');
+        $has_permission = hasPermission('Car Insurance Query Form');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
             {
                 $id = decrypt($id);
                 $return_data = array();
-                $return_data['site_title'] = trans('Booked Insurance Edit');
+                $return_data['site_title'] = trans('Car Insurance Query Form Edit');
                 $return_data['brands'] = Brand::select('id','name')->get();
                 $return_data['record'] = BookInsurance::find($id);
 
@@ -174,7 +174,7 @@ class CarInsuranceController extends Controller
 
     public function bookedInsuranceUpdate(Request $request,$id)
     {
-        $has_permission = hasPermission('Booked Insurance');
+        $has_permission = hasPermission('Car Insurance Query Form');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -195,7 +195,7 @@ class CarInsuranceController extends Controller
                 $booked_insurance->save();
                 if($booked_insurance)
                 {
-                    return redirect()->route('booked-insurance')->with('success','Booked Insurance update successfully.');
+                    return redirect()->route('booked-insurance')->with('success','Car Insurance Query Form update successfully.');
                 }else{
                     return redirect()->back()->with('error','Something went wrong,please try again letter!');
                 }
@@ -210,7 +210,7 @@ class CarInsuranceController extends Controller
 
     public function bookedInsuranceDestroy($id)
     {
-        $has_permission = hasPermission('Booked Insurance');
+        $has_permission = hasPermission('Car Insurance Query Form');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->full_permission == 1)
@@ -220,7 +220,7 @@ class CarInsuranceController extends Controller
 
                 if($booked_insurance)
                 {
-                    return redirect('booked-insurance')->with('success',trans('Booked Insurance deleted successfully.'));
+                    return redirect('booked-insurance')->with('success',trans('Car Insurance Query Form deleted successfully.'));
                 }else{
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }

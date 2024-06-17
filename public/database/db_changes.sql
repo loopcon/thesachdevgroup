@@ -781,3 +781,7 @@ ALTER TABLE `career_form` ADD `used_car_id` INT(11) NULL DEFAULT NULL COMMENT '`
 -- Disha : 06-06-2024 04:34 PM
 ALTER TABLE `service_center` CHANGE `number_of_rating` `number_of_rating` VARCHAR(255) NULL DEFAULT NULL;
 
+-- Disha : 17-06-2024 04:33 PM
+UPDATE `modules` SET `module` = 'Car Insurance Query Form', `deleted_at` = NULL, `created_at` = NULL, `updated_at` = NULL WHERE `modules`.`id` = 40;
+UPDATE `modules` SET `module` = 'After Sales Service Query Form', `deleted_at` = NULL, `created_at` = NULL, `updated_at` = NULL WHERE `modules`.`id` = 39;
+
