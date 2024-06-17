@@ -6,51 +6,6 @@
             </a>
         </li>
 
-        @if(hasPermission('Showroom') || hasPermission('Showroom Testimonial') || hasPermission('Showroom Model'))
-            <li class="nav-item has-treeview {{ (request()->is('showroom_list*') || request()->is('showroom-testimonial*')) ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link {{ (request()->is('showroom_list*') || request()->is('showroom-testimonial*')) ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-building"></i>
-                    <p>Showrooms<i class="right fas fa-angle-left"></i></p>
-                </a>
-                <ul class="nav nav-treeview">
-
-                    @php($has_showroom_permission = hasPermission('Showroom'))
-                    @php($has_facility_customer_gallery_permission = hasPermission('Showroom Facility Customer Gallery'))
-                    @if($has_showroom_permission && ($has_showroom_permission->read_permission == 1 || $has_showroom_permission->full_permission == 1) || 
-                        $has_facility_customer_gallery_permission && ($has_facility_customer_gallery_permission->read_permission == 1 || $has_facility_customer_gallery_permission->full_permission == 1))
-                        <li class="nav-item">
-                            <a href="{{url('showroom_list')}}" class="nav-link {{ request()->is('showroom_list') ? ' active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i><p>Showroom</p>
-                            </a>
-                        </li>
-                    @endif
-
-                    @php($has_permission = hasPermission('Showroom Testimonial'))
-                    @if(isset($has_permission) && $has_permission)
-                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                        <li class="nav-item">
-                            <a href="{{route('showroom-testimonial')}}" class="nav-link {{ request()->is('showroom-testimonial') ? ' active' : '' }}">
-                                <i class="far fa-circle nav-icon"></i><p>Showroom Testimonial</p>
-                            </a>
-                        </li>
-                        @endif
-                    @endif
-
-                <?php /* @php($has_permission = hasPermission('Showroom Model'))
-                    @if(isset($has_permission) && $has_permission)
-                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                        <li class="nav-item">
-                            <a href="{{route('showroom-model')}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Showroom Model</p>
-                            </a>
-                        </li>
-                        @endif
-                    @endif */ ?>
-                </ul>
-            </li>
-        @endif
-
         @if(hasPermission('Business') || hasPermission('Business Insurance'))
             <li class="nav-item {{ (request()->is('our-business*') || request()->is('our-business-insurance*')) ? 'menu-open' : '' }}">
                 <a href="#" class="nav-link {{ (request()->is('our-business*') || request()->is('our-business-insurance*')) ? 'active' : '' }}">
@@ -120,6 +75,116 @@
                             </li>
                         @endif
                     @endif
+                </ul>
+            </li>
+        @endif
+
+        @if(hasPermission('Vacancies') || hasPermission('Career'))
+            <li class="nav-item has-treeview {{ (request()->is('career') || request()->is('vacancies*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('career') || request()->is('vacancies*')) ? 'active' : '' }}">
+                <i class="nav-icon fa fa-graduation-cap"></i>
+                    <p>Careers<i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @php($has_permission = hasPermission('Career'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item">
+                                <a href="{{route('career')}}" class="nav-link {{ request()->is('career') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Career</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
+                    @php($has_permission = hasPermission('Vacancies'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                            <li class="nav-item">
+                                <a href="{{route('vacancies')}}" class="nav-link {{ request()->is('vacancies*') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Vacancies</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+                </ul>
+            </li>
+        @endif
+
+        @php($has_permission = hasPermission('Awards'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                <li class="nav-item"> 
+                    <a href="{{url('awards')}}" class="nav-link {{ request()->is('awards*') ? 'active' : '' }}">
+                        <i class="fa fa-award nav-icon"></i><p>Awards</p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
+        @php($has_permission = hasPermission('Our Locations'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                <li class="nav-item"> 
+                    <a href="{{url('our_location')}}" class="nav-link {{request()->is('our_location*') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-location-arrow"></i><p>Our Locations</p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
+        @php($has_permission = hasPermission('Contact Us'))
+        @if(isset($has_permission) && $has_permission)
+            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                <li class="nav-item"> 
+                    <a href="{{url('contact_us')}}" class="nav-link {{request()->is('contact_us*') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-phone"></i> <p>Contact Us</p>
+                    </a>
+                </li>
+            @endif
+        @endif
+
+        @if(hasPermission('Showroom') || hasPermission('Showroom Testimonial') || hasPermission('Showroom Model'))
+            <li class="nav-item has-treeview {{ (request()->is('showroom_list*') || request()->is('showroom-testimonial*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('showroom_list*') || request()->is('showroom-testimonial*')) ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-building"></i>
+                    <p>Showrooms<i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+
+                    @php($has_showroom_permission = hasPermission('Showroom'))
+                    @php($has_facility_customer_gallery_permission = hasPermission('Showroom Facility Customer Gallery'))
+                    @if($has_showroom_permission && ($has_showroom_permission->read_permission == 1 || $has_showroom_permission->full_permission == 1) || 
+                        $has_facility_customer_gallery_permission && ($has_facility_customer_gallery_permission->read_permission == 1 || $has_facility_customer_gallery_permission->full_permission == 1))
+                        <li class="nav-item">
+                            <a href="{{url('showroom_list')}}" class="nav-link {{ request()->is('showroom_list') ? ' active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i><p>Showroom</p>
+                            </a>
+                        </li>
+                    @endif
+
+                    @php($has_permission = hasPermission('Showroom Testimonial'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                        <li class="nav-item">
+                            <a href="{{route('showroom-testimonial')}}" class="nav-link {{ request()->is('showroom-testimonial') ? ' active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i><p>Showroom Testimonial</p>
+                            </a>
+                        </li>
+                        @endif
+                    @endif
+
+                <?php /* @php($has_permission = hasPermission('Showroom Model'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+                        <li class="nav-item">
+                            <a href="{{route('showroom-model')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Showroom Model</p>
+                            </a>
+                        </li>
+                        @endif
+                    @endif */ ?>
                 </ul>
             </li>
         @endif
@@ -201,17 +266,6 @@
             </li>
         @endif
 
-        @php($has_permission = hasPermission('Awards'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                <li class="nav-item"> 
-                    <a href="{{url('awards')}}" class="nav-link {{ request()->is('awards*') ? 'active' : '' }}">
-                        <i class="fa fa-award nav-icon"></i><p>Awards</p>
-                    </a>
-                </li>
-            @endif
-        @endif
-
         @php($has_permission = hasPermission('Company CSR'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -229,17 +283,6 @@
                 <li class="nav-item"> 
                     <a href="{{url('body_shop')}}" class="nav-link {{request()->is('body_shop*') ? 'active' : '' }}">
                         <i class="nav-icon fa fa-window-restore"></i><p>Body Shops</p>
-                    </a>
-                </li>
-            @endif
-        @endif
-
-        @php($has_permission = hasPermission('Our Locations'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
-                <li class="nav-item"> 
-                    <a href="{{url('our_location')}}" class="nav-link {{request()->is('our_location*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-location-arrow"></i><p>Our Locations</p>
                     </a>
                 </li>
             @endif
@@ -272,38 +315,6 @@
             </li>
         @endif
 
-        @if(hasPermission('Vacancies') || hasPermission('Career'))
-            <li class="nav-item has-treeview {{ (request()->is('career') || request()->is('vacancies*')) ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link {{ (request()->is('career') || request()->is('vacancies*')) ? 'active' : '' }}">
-                <i class="nav-icon fa fa-graduation-cap"></i>
-                    <p>Careers<i class="right fas fa-angle-left"></i></p>
-                </a>
-                <ul class="nav nav-treeview">
-                    @php($has_permission = hasPermission('Career'))
-                    @if(isset($has_permission) && $has_permission)
-                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                            <li class="nav-item">
-                                <a href="{{route('career')}}" class="nav-link {{ request()->is('career') ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i><p>Career</p>
-                                </a>
-                            </li>
-                        @endif
-                    @endif
-
-                    @php($has_permission = hasPermission('Vacancies'))
-                    @if(isset($has_permission) && $has_permission)
-                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
-                            <li class="nav-item">
-                                <a href="{{route('vacancies')}}" class="nav-link {{ request()->is('vacancies*') ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i><p>Vacancies</p>
-                                </a>
-                            </li>
-                        @endif
-                    @endif
-                </ul>
-            </li>
-        @endif
-
         @php($has_permission = hasPermission('Pages'))
         @if(isset($has_permission) && $has_permission)
             @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
@@ -321,17 +332,6 @@
                 <li class="nav-item"> 
                     <a href="{{url('faq')}}" class="nav-link {{ request()->is('faq*') ? 'active' : '' }}">
                         <i class="fa fa-question-circle nav-icon"></i><p>Faqs</p>
-                    </a>
-                </li>
-            @endif
-        @endif
-
-        @php($has_permission = hasPermission('Contact Us'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
-                <li class="nav-item"> 
-                    <a href="{{url('contact_us')}}" class="nav-link {{request()->is('contact_us*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-phone"></i> <p>Contact Us</p>
                     </a>
                 </li>
             @endif

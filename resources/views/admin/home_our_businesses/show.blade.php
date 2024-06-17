@@ -11,13 +11,16 @@
                     <div class="col-12">
                         @include('admin.alerts')
                     </div>
-                <div class="col-sm-6">
-                    <h1 class="m-0">Home Our Businesses</h1>
-                </div>
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Home Our Businesses</h1>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="card">
+            <div class="col-sm-6">
+                <h5 class="m-0">Home Our Business Section Title :</h5>
+            </div>
             <div class="card-body">
                 <form action="{{ route('home_our_businesses_title_insert') }}" method="POST" class="our_businesses_title_form" enctype="multipart/form-data">
                     @csrf
@@ -64,7 +67,9 @@
                     </div>
                 </form>
             </div>
-
+            <div class="col-sm-6">
+                <h5 class="m-0">Home Our Business Section Slider Icon :</h5>
+            </div>
             <div class="col-sm-12  text-end">
                 <a href="{{ route('home_our_businesses') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
             </div>
