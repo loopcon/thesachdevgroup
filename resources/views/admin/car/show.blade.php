@@ -31,6 +31,7 @@
                                 <th>Brand</th>
                                 <th>Image</th>
                                 <th>Name</th>
+                                <th>Car Type</th>
 
                                 <th>Name Color</th>
                                 <th>Name Font Size</th>
@@ -71,6 +72,7 @@
                 {data: 'brand', name: 'brand'},
                 {data: 'image', name: 'image'},
                 {data: 'name', name: 'name'},
+                {data: 'car_type', name: 'car_type'},
 
                 {data: 'name_color', name: 'name_color'},
                 {data: 'name_font_size', name: 'name_font_size'},

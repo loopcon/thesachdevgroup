@@ -11,7 +11,7 @@ use App\Models\Showroom;
 use App\Models\OurBusiness;
 use DataTables;
 use File;
-
+use Constant;
 
 class CarController extends Controller
 {
@@ -114,7 +114,15 @@ class CarController extends Controller
                         $brand_name = isset($car->brand->name) && $car->brand->name ? $car->brand->name: NULL;
                         return $brand_name;
                     })
-            ->rawColumns(['action','image','brand'])
+                    ->editColumn('car_type', function($car){
+                        $html = $car->car_type == Constant::USED_CAR ? 'Used Car' : '';
+                        $html .= $car->car_type == Constant::NEW_CAR ? 'New Car': '';
+                        $html .= $car->car_type == Constant::OTHER ? 'Other': '';
+                        return $html;
+                        // $car_type = isset($car->car_type) && $car->car_type == Constant:: ? $car->brand->name: NULL;
+                        // return $car_type;
+                    })
+            ->rawColumns(['action','image','brand','car_type'])
             ->make(true);
         }
         

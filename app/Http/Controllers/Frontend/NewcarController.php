@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Car;
 use App\Models\NewCar;
+use App\Constant;
 
 class NewCarController extends Controller
 {
@@ -15,7 +16,7 @@ class NewCarController extends Controller
         $return_data = array();
         $return_data['new_car'] = NewCar::first();
         $return_data['brands'] = Brand::get();
-        $return_data['models'] = Car::get();
+        $return_data['models'] = Car::where('car_type',Constant::NEW_CAR)->get();
         // $brand_id = json_decode($return_data['new_car']['brand_id']);
         // $car_id = json_decode($return_data['new_car']['car_id']);
         // $return_data['brands'] = Brand::whereIn('id',$brand_id)->get();
