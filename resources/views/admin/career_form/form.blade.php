@@ -25,44 +25,6 @@
                     <form action="{{route('career-form-update',array('id' => encrypt($record->id)))}}" method="POST" id="career_form" class="user-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="form-row">
-                            <div class="mb-3 col-md-4">
-                                <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="business_id" id="business_id" required>
-                                    <option value="">-- Select Our Business --</option>
-                                    @if(isset($our_business) && $our_business->count())
-                                        @foreach($our_business as $value)
-                                            <option value="{{$value->id}}"@if(isset($record->business_id) && $record->business_id == $value->id){{'selected'}}@endif>{{$value->title}}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                                <div class="error"></div>
-                                @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
-                            </div>
-
-                            <div class="mb-3 col-md-4 showroom">
-                                <label for="showroom_id" class="form-label">Showroom</label>
-                                <select class="form-control select2" name="showroom_id" id="showroom_id">
-                                </select>
-                            </div>
-
-                            <div class="mb-3 col-md-4 service-center">
-                                <label for="service_center_id" class="form-label">Service Center</label>
-                                <select class="form-control select2" name="service_center_id" id="service_center_id">
-                                </select>
-                            </div>
-
-                            <div class="mb-3 col-md-4 body-shop">
-                                <label for="body_shop_id" class="form-label">Body Shop</label>
-                                <select class="form-control select2" name="body_shop_id" id="body_shop_id">
-                                </select>
-                            </div>
-
-                            <div class="mb-3 col-md-4 used-car">
-                                <label for="used_car_id" class="form-label">Used Car</label>
-                                <select class="form-control select2" name="used_car_id" id="used_car_id">
-                                </select>
-                            </div>
-
                             <div class="form-group col-md-6">
                                 <label for="first_name">First Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="first_name" value="{{isset($record->first_name) ? $record->first_name : old('first_name')}}" id="first_name" required>
@@ -99,13 +61,10 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="resume">Upload your Resume</label>
+                                <label for="resume">Download your Resume</label>
                                 @if(isset($record->resume) && $record->resume)
-                                <i class="fas fa-file-alt" style="font-size:36px;"></i>
+                                <a href="" download><i class="fas fa-file-alt" style="font-size:36px;"></i><a>
                                 @endif  
-                                <input type="file" class="form-control" name="resume" accept="file/pdf, file/docx" id="resume">
-                                <small class="image_type">(File Type : pdf,docx,jpg,jpeg,png,webp)</small>
-                                @if ($errors->has('resume')) <div class="text-danger">{{ $errors->first('resume') }}</div>@endif
                             </div>
                         </div>
 

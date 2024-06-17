@@ -1090,6 +1090,8 @@
                                 <textarea name="service_center_id" style="display:none;" class="service_center">{{$record->service_center_id}}</textarea>
                                 <textarea name="body_shop_id" style="display:none;" class="body_shop">{{$record->body_shop_id}}</textarea>
                                 <textarea name="used_car_id" style="display:none;" class="used_car">{{$record->used_car_id}}</textarea>
+                                <!-- <input type="hidden" class="form-control apply-for" value="" name="post_apply_for"> -->
+                                <textarea style="display:none;" class="form-control apply-for" value="" name="post_apply_for">{{$record->name}}</textarea>
 
                                 <div class="explain-subtitle experience" style="display:none;">{{$record->experience}}</div>
                                 <div class="explain-subtitle work-level" style="display:none;">{{$record->work_level}}</div>
@@ -1167,6 +1169,7 @@
                                         <textarea name="service_center_id" style="display:none;" class="service_center">{{$vacancy->service_center_id}}</textarea>
                                         <textarea name="body_shop_id" style="display:none;" class="body_shop">{{$vacancy->body_shop_id}}</textarea>
                                         <textarea name="used_car_id" style="display:none;" class="used_car">{{$vacancy->used_car_id}}</textarea>
+                                        <textarea style="display:none;" class="form-control apply-for" value="" name="post_apply_for">{{$vacancy->name}}</textarea>
 
                                         <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
                                             <path d="M20.8 4.6a5.5 5.5 0 00-7.7 0l-1.1 1-1-1a5.5 5.5 0 00-7.8 7.8l1 1 7.8 7.8 7.8-7.7 1-1.1a5.5 5.5 0 000-7.8z" />
@@ -1267,7 +1270,8 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="post_apply_for">Post Applying For</label>
-                                                    <input type="text" class="form-control" name="post_apply_for" id="post_apply_for">
+                                                    <textarea class="form-control apply-for" value="" name="post_apply_for" id="post_apply_for"></textarea>
+                                                    <!-- <input type="text" value="" class="form-control apply-for" name="post_apply_for" id="post_apply_for"> -->
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="resume">Upload your Resume</label>
@@ -1427,6 +1431,7 @@
     const jobDetailServiceCenter = document.querySelector(".job-explain-content .service_center");
     const jobDetailBodyShop = document.querySelector(".job-explain-content .body_shop");
     const jobDetailUsedCar = document.querySelector(".job-explain-content .used_car");
+    const jobDetailApply = document.querySelector(".job-explain-content .apply-for");
 
     const jobBg = document.querySelector(".job-bg");
     jobCards.forEach((jobCard) => {
@@ -1454,6 +1459,7 @@
                 const serviceCenter = jobCard.querySelector(".service_center");
                 const bodyshop = jobCard.querySelector(".body_shop");
                 const usedcar = jobCard.querySelector(".used_car");
+                const applyFor = jobCard.querySelector(".apply-for");
 
                 jobDetailTitle.textContent = title.textContent;
                 jobDetailCompany.textContent = company.textContent;
@@ -1467,6 +1473,8 @@
                 jobDetailServiceCenter.textContent = serviceCenter.textContent;
                 jobDetailBodyShop.textContent = bodyshop.textContent;
                 jobDetailUsedCar.textContent = usedcar.textContent;
+                jobDetailApply.textContent = applyFor.textContent;
+
 
                 jobLogos.innerHTML = logo.outerHTML;
                 wrapper.classList.add("detail-page");
