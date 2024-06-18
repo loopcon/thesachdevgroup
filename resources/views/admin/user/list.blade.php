@@ -119,7 +119,6 @@
         var userTable = $('.table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('user-datatable') }}",
             columns: [
                 {data: 'id', name: 'id',orderable: false, searchable: false},
                 {data: 'business_id', name: 'business_id'},
