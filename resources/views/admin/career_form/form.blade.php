@@ -61,8 +61,8 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="resume">Download your Resume</label>
                                 @if(isset($record->resume) && $record->resume)
+                                <label for="resume">Download your Resume</label>
                                 <a href="" download><i class="fas fa-file-alt" style="font-size:36px;"></i><a>
                                 @endif  
                             </div>

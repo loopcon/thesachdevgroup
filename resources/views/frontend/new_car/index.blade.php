@@ -25,7 +25,22 @@
     </div>
 </section>
 
+@if(isset($models) && $models->count())
 @foreach($brands as $data)
+
+@php
+    $modelsExist = false;
+@endphp
+@foreach($models as $model)
+    @if($model->brand_id == $data->id)
+        @php
+            $modelsExist = true;
+            break;
+        @endphp
+    @endif
+@endforeach
+
+@if($modelsExist)
 <section class="pt-5" id="{{$data->id}}">
     <div class="container">
         <div class="row">
@@ -64,5 +79,7 @@
         </div>
     </div>
 </section>
+@endif
 @endforeach
+@endif
 @endsection
