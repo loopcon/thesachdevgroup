@@ -92,7 +92,7 @@ class ShowroomTestimonialController extends Controller
             return DataTables::of($list)
                 ->addColumn('image', function($list){
                     $imageSrc = $list->image ? asset('uploads/showroom_testimonial/'.$list->image) : '';
-                    return '<img src="' . $imageSrc . '" alt="" width="100">';
+                    return '<img src="' . $imageSrc . '" alt="" width="50">';
                 })
                 ->addColumn('showroom', function($list){
                     $showroom = isset($list->showroomDetail->name) && $list->showroomDetail->name ? $list->showroomDetail->name : NULL;

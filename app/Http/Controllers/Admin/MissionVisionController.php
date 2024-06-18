@@ -127,7 +127,7 @@ class MissionVisionController extends Controller
             ->editColumn('icon', function($mission_vision){
                 if(isset($mission_vision->icon) && isset($mission_vision->icon)){
                     $url= asset('mission_vision/'.$mission_vision->icon);
-                    $image = '<img src="'.$url.'" border="0" width="100">';
+                    $image = '<img src="'.$url.'" border="0" width="50">';
                     return $image;
                 }
             })

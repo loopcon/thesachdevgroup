@@ -102,7 +102,7 @@ class TestimonialController extends Controller
 
                     if(isset($testimonials->image) && isset($testimonials->image)){
                         $url= asset('testimonials/'.$testimonials->image);
-                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        $image = '<img src="'.$url.'" border="0" width="50">';
                         return $image;
                     }
                 })

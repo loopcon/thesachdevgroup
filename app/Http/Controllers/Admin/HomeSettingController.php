@@ -99,7 +99,7 @@ class HomeSettingController extends Controller
 
                     if(isset($home_slider->image) && isset($home_slider->image)){
                         $url= asset('home_slider/'.$home_slider->image);
-                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        $image = '<img src="'.$url.'" border="0" width="50">';
                         return $image;
                     }
                   })
@@ -517,7 +517,4 @@ class HomeSettingController extends Controller
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
-
-   
-
 }

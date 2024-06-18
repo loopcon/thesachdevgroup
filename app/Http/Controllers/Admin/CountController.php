@@ -114,7 +114,7 @@ class CountController extends Controller
 
                 if(isset($count->icon) && isset($count->icon)){
                     $url= asset('count_icon/'.$count->icon);
-                    $image = '<img src="'.$url.'" border="0" width="100">';
+                    $image = '<img src="'.$url.'" border="0" width=50">';
                     return $image;
                 }
             })
