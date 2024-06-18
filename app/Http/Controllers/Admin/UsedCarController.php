@@ -129,7 +129,7 @@ class UsedCarController extends Controller
 
                 if(isset($used_car->image) && isset($used_car->image)){
                     $url= asset('used_car_image/'.$used_car->image);
-                    $image = '<img src="'.$url.'" border="0" width="100">';
+                    $image = '<img src="'.$url.'" border="0" width="50">';
                     return $image;
                 }
             })

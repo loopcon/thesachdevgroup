@@ -98,11 +98,11 @@ class VacancyController extends Controller
             return DataTables::of($list)
                 ->addColumn('image', function($list){
                     $imageSrc = $list->image ? asset('uploads/vacancy/'.$list->image) : '';
-                    return '<img src="' . $imageSrc . '" alt="" width="100">';
+                    return '<img src="' . $imageSrc . '" alt="" width="50">';
                 })
                 ->addColumn('icon', function($list){
                     $icon = $list->icon ? asset('uploads/vacancy_icon/'.$list->icon) : '';
-                    return '<img src="' . $icon . '" alt="" width="100">';
+                    return '<img src="' . $icon . '" alt="" width="50">';
                 })
                 ->addColumn('business_id', function($list){
                     $business_id = isset($list->businessDetail->title) && $list->businessDetail->title ? $list->businessDetail->title : NULL;

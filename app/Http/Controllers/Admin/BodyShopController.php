@@ -125,7 +125,7 @@ class BodyShopController extends Controller
 
                 if(isset($body_shop->image) && isset($body_shop->image)){
                     $url= asset('body_shop_image/'.$body_shop->image);
-                    $image = '<img src="'.$url.'" border="0" width="100">';
+                    $image = '<img src="'.$url.'" border="0" width="50">';
                     return $image;
                 }
             })
