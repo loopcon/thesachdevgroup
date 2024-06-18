@@ -63,7 +63,7 @@
                             <div class="form-group col-md-6">
                                 @if(isset($record->resume) && $record->resume)
                                 <label for="resume">Download your Resume</label>
-                                <a href="" download><i class="fas fa-file-alt" style="font-size:36px;"></i><a>
+                                <a href="{{url('public/uploads/career/resume/'.$record->resume)}}" download><i class="fas fa-file-alt" style="font-size:36px;"></i><a>
                                 @endif  
                             </div>
                         </div>
