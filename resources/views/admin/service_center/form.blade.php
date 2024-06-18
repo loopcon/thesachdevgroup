@@ -307,7 +307,7 @@
 
                             <div class="col-md-4 mt-2">
                                 <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" required="" maxlength="10" minlength="10" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
+                                <input type="text" class="form-control num_only" required="" maxlength="10" minlength="10" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
                                 @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
                             </div>
 
