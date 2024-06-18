@@ -150,19 +150,19 @@ class ServiceCenterController extends Controller
                 })
                 ->addColumn('address_icon', function($list){
                     $address_icon = $list->address_icon ? asset('uploads/address_icon/'.$list->address_icon) : '';
-                    return '<img src="' . $address_icon . '" alt="" width="100">';
+                    return '<img src="' . $address_icon . '" alt="" width="50">';
                 })
                 ->addColumn('working_hours_icon', function($list){
                     $working_hours_icon = $list->working_hours_icon ? asset('uploads/working_hours_icon/'.$list->working_hours_icon) : '';
-                    return '<img src="' . $working_hours_icon . '" alt="" width="100">';
+                    return '<img src="' . $working_hours_icon . '" alt="" width="50">';
                 })
                 ->addColumn('contact_icon', function($list){
                     $contact_icon = $list->contact_icon ? asset('uploads/contact_icon/'.$list->contact_icon) : '';
-                    return '<img src="' . $contact_icon . '" alt="" width="100">';
+                    return '<img src="' . $contact_icon . '" alt="" width="50">';
                 })
                 ->addColumn('email_icon', function($list){
                     $email_icon = $list->email_icon ? asset('uploads/email_icon/'.$list->email_icon) : '';
-                    return '<img src="' . $email_icon . '" alt="" width="100">';
+                    return '<img src="' . $email_icon . '" alt="" width="50">';
                 })
                 ->addColumn('service_id', function($list){
                     $service_id = json_decode($list->service_id); 

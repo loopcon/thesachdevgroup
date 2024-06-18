@@ -288,7 +288,9 @@ class CareerController extends Controller
                 $id = decrypt($id);
                 $return_data = array();
                 $return_data['site_title'] = trans('Career Form Edit');
-                $return_data['record'] = CareerForm::find($id);
+                $record = CareerForm::find($id);
+                $return_data['record'] = $record;
+                $return_data['hr'] = User::select('name')->where([['business_id',$record->business_id],['service_center_id',$record->service_center_id],['showroom_id',$record->showroom_id],['body_shop_id',$record->body_shop_id],['used_car_id',$record->used_car_id]])->first();
                 $return_data['our_business'] = OurBusiness::select('id','title')->get();
                 return view('admin.career_form.form',array_merge($return_data));
             }

@@ -78,7 +78,7 @@
                             <div class="col-md-4 mb-3 mt-2">
                                 <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
                                 @if(isset($record->icon) && $record->icon)
-                                    <img src="{{url('public/uploads/service/'.$record->icon)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
+                                    <img src="{{url('public/uploads/service/'.$record->icon)}}" width="50" style="margin-bottom:10px; margin-left:5px;">
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon" value="">
                                 @if ($errors->has('icon')) <div class="text-danger">{{ $errors->first('icon') }}</div>@endif

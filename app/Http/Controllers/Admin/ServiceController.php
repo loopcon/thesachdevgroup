@@ -94,7 +94,7 @@ class ServiceController extends Controller
             return DataTables::of($list)
                 ->addColumn('icon', function($list){
                     $icon = $list->icon ? asset('uploads/service/'.$list->icon) : '';
-                    return '<img src="' . $icon . '" alt="" width="100">';
+                    return '<img src="' . $icon . '" alt="" width="50">';
                 })
 
                 ->addColumn('action', function ($list) {

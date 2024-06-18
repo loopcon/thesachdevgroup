@@ -92,7 +92,7 @@ class ServiceCenterTestimonialController extends Controller
             return DataTables::of($list)
                 ->addColumn('image', function($list){
                     $image = $list->image ? asset('uploads/service_center_testimonial/'.$list->image) : '';
-                    return '<img src="' . $image . '" alt="" width="100">';
+                    return '<img src="' . $image . '" alt="" width="50">';
                 })
                 ->addColumn('service_center_id', function($list){
                     $service_center_id = isset($list->serviceCenterDetail->name) && $list->serviceCenterDetail->name ? $list->serviceCenterDetail->name : NULL;
