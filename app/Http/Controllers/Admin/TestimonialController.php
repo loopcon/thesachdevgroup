@@ -242,13 +242,13 @@ class TestimonialController extends Controller
                 } else {
                     $testimonials_title = new Testimonials_title();
                 }
-            
+
                 $testimonials_title->testimonials_title = $request->testimonials_title;
                 $testimonials_title->testimonials_title_color = $request->testimonials_title_color;
                 $testimonials_title->testimonials_title_font_size = $request->testimonials_title_font_size;
                 $testimonials_title->testimonials_title_font_family = $request->testimonials_title_font_family;
                 $testimonials_title->save();
-                
+
                 return redirect()->route('testimonials.index')->with('success','Testimonials Title update successfully.');
 
             }else {
