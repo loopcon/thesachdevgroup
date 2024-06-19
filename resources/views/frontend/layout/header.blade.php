@@ -63,7 +63,7 @@
                         @endif
 
                         @foreach ($header_social_media_icons as $header_social_media_icon)
-                            <a href="{{$header_social_media_icon->link}}">
+                            <a href="{{$header_social_media_icon->link}}" target="_blank">
                                 <img src="{{url('public/header_menu_social_media_icon/'.$header_social_media_icon->icon)}}" style="height:30px; width:30px">
                             </a>
                         @endforeach
