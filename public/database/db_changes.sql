@@ -788,3 +788,8 @@ UPDATE `modules` SET `module` = 'After Sales Service Query Form', `deleted_at` =
 -- Disha : 17-06-2024 05:04 PM
 ALTER TABLE `cars` ADD `car_type` INT NULL DEFAULT NULL COMMENT '1=Used Car;2=New Car;3=other;' AFTER `brand_id`;
 
+-- Parth : 24-07-2024 06:16 PM
+ALTER TABLE `pay_us_logs` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);
+
+-- Parth : 30-07-2024 12:16 PM
+ALTER TABLE `near_location` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);

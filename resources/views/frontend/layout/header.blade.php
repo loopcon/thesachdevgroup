@@ -57,7 +57,7 @@
                 <div class="col-md-6 col-sm-5">
                     <div class="social-icon">
                         @if(isset($setting) && isset($setting->payment_button_text))
-                            <a href="_payment.php" class="payment-button" style="color:{{$setting->payment_button_text_color}}; font-size: @if($setting->payment_button_font_size) {{$setting->payment_button_font_size}} @else 16px; @endif; font-family:{{$setting->payment_button_font_family}}; background-color:{{$setting->payment_button_color}};">
+                            <a href="{{route('payment.form')}}" class="payment-button" style="color:{{$setting->payment_button_text_color}}; font-size: @if($setting->payment_button_font_size) {{$setting->payment_button_font_size}} @else 16px; @endif; font-family:{{$setting->payment_button_font_family}}; background-color:{{$setting->payment_button_color}};">
                                 {{$setting->payment_button_text}}
                             </a>
                         @endif
@@ -92,7 +92,7 @@
                 <div class="col-xs-5">
                     <div class="pay-button">
                         @if(isset($setting) && isset($setting->payment_button_text))
-                        <a href="_payment.php" class="payment-button" style="color:{{$setting->payment_button_text_color}}; font-size: @if($setting->payment_button_font_size) {{$setting->payment_button_font_size}} @else 16px; @endif; font-family:{{$setting->payment_button_font_family}}; background-color:{{$setting->payment_button_color}};">
+                        <a href="{{route('payment.form')}}" class="payment-button" style="color:{{$setting->payment_button_text_color}}; font-size: @if($setting->payment_button_font_size) {{$setting->payment_button_font_size}} @else 16px; @endif; font-family:{{$setting->payment_button_font_family}}; background-color:{{$setting->payment_button_color}};">
                             {{$setting->payment_button_text}}
                         </a>
                         @endif

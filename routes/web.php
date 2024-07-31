@@ -54,6 +54,7 @@ use App\Http\Controllers\Frontend\AfterSalesServicedDetailController;
 use  App\Http\Controllers\Frontend\UsedCarDetailController;
 use  App\Http\Controllers\Frontend\CarInsuranceDetailController;
 use  App\Http\Controllers\Frontend\CompanyCsrDetailController;
+use App\Http\Controllers\Frontend\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -442,6 +443,20 @@ Route::get('/', function () {
 });
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+
+// Payment
+Route::group(['controller'=>PaymentController::class, 'prefix'=>'payment', 'as'=>'payment.'], function(){
+    Route::get('/', 'form')->name('form');
+    Route::post('add', 'getDataByService')->name('get-data-by-service');
+    Route::post('receipt', 'showReceipt')->name('receipt');
+    Route::post('submit', 'paymentSubmit')->name('submit');
+    Route::post('successhh', 'successhh')->name('successhh');
+    Route::post('successgt', 'successgt')->name('successgt');
+    Route::post('successhf', 'successhf')->name('successgt');
+    Route::post('cancel', function () {
+        return view('frontend.payment.cancel');
+    })->name('cancel');
+});
 
 //contactus_detail
 Route::get('contactus/contact', [ContactUsDetailController::class, 'contactusDetail'])->name('contactus_detail');
