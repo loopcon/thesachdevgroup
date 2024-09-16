@@ -100,7 +100,7 @@
             // scrollX: true,
             ajax: "{{ route('footer_menu.index') }}",
             columns: [
-                {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'menu_name', name: 'menu_name'},
                 {data: 'name', name: 'name'},
                 {data: 'color', name: 'color'},

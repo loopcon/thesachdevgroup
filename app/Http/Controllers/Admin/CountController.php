@@ -113,7 +113,7 @@ class CountController extends Controller
             ->editColumn('icon', function($count){
 
                 if(isset($count->icon) && isset($count->icon)){
-                    $url= asset('count_icon/'.$count->icon);
+                    $url= url('public/count_icon/'.$count->icon);
                     $image = '<img src="'.$url.'" border="0" width=50">';
                     return $image;
                 }

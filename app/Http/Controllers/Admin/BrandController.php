@@ -87,7 +87,7 @@ class BrandController extends Controller
                     ->editColumn('image', function($brand){
 
                         if(isset($brand->image) && isset($brand->image)){
-                            $url= asset('brand/'.$brand->image);
+                            $url= url('public/brand/'.$brand->image);
                             $image = '<img src="'.$url.'" border="0" width="100">';
                             return $image;
                         }

@@ -16,7 +16,7 @@
                     <?php foreach($brands as $brand) { ?>
                         <label class="events__tab -active">
                             <input type="radio" name="eventTab" data-tabcontent="tab-<?php echo $brand->id ?>" checked>
-                            <?php echo $brand->name; ?>
+                            <?php echo $brand->title; ?>
                         </label>
                     <?php } ?>
                 </nav>
@@ -26,7 +26,7 @@
                     <?php foreach($brands as $key => $brand) { ?>
                         <label class="events__tab -active">
                             <input type="radio" name="eventTab" data-tabcontent="tab-<?php echo $brand->id ?>" <?php if($key == 0){ echo 'checked'; } ?>>
-                            <?php echo $brand->name; ?>
+                            <?php echo $brand->title; ?>
                         </label>
                     <?php } ?>
                 </nav>
@@ -36,7 +36,7 @@
                         <div class="events__row">
                             <form action="{{route('payment.receipt')}}" method="post">
                                 @csrf
-                                <input type="hidden" name="paymentTo" value="<?php echo $brand->name; ?>">
+                                <input type="hidden" name="paymentTo" value="<?php echo $brand->title; ?>">
                                 <div class="title">Select Services</div>
                                 <div class="user__detail">
                                     <div class="user__details">
@@ -46,9 +46,52 @@
                                             // $stmt2->execute([$brand->id]);
                                             // $find=$stmt2->fetchAll();
                                         ?>
-                                        <?php foreach($brand->payment_towards()->where('status', 0)->orderBy('id')->get() as $fval) { ?>
-                                            <label><input class="details" type="radio" name="PaymentTowards" value="<?php echo $fval->name.'-'.$fval->id; ?>"><?php echo $fval->name; ?></label>
-                                        <?php } ?>
+                                        <?php // foreach($brand->payment_towards()->where('status', 0)->orderBy('id')->get() as $fval) { ?>
+                                            {{-- <label><input class="details" type="radio" name="PaymentTowards" value="<?php // echo $fval->name.'-'.$fval->id; ?>"><?php // echo $fval->name; ?></label> --}}
+                                        <?php // } ?>
+
+                                        @if (isset($brand->showrooms) && $brand->showrooms->count())
+                                            <label>
+                                                <input class="details" type="radio" name="PaymentTowards" value="showroom-{{$brand->id}}">{{ $brand->showroom_title ?? "Showroom" }}
+                                            </label>
+                                        @endif
+
+                                        @if (isset($brand->serviceCenters))
+                                            <label>
+                                                <input class="details" type="radio" name="PaymentTowards" value="service_center-{{$brand->id}}">{{ $brand->service_center_title ?? "Service Center" }}
+                                            </label>
+                                        @endif
+
+                                        @if (isset($brand->bodyShops) && $brand->bodyShops->count())
+                                            <label>
+                                                <input class="details" type="radio" name="PaymentTowards" value="body_shop-{{$brand->id}}">{{ $brand->body_shop_title }}
+                                            </label>
+                                        @endif
+
+                                        @if (isset($brand->usedCars) && $brand->usedCars->count())
+                                            <label>
+                                                <input class="details" type="radio" name="PaymentTowards" value="used_car-{{$brand->id}}">{{ $brand->used_car_title }}
+                                            </label>
+                                        @endif
+
+                                        @if (isset($brand->businessInsurance) && $brand->businessInsurance->count())
+                                            <label>
+                                                <input class="details" type="radio" name="PaymentTowards" value="insurance-{{$brand->id}}">{{ $brand->insurance_title }}
+                                            </label>
+                                        @endif
+                                        
+                                        @if ($brand->id == 1 ||  $brand->id == 2 || $brand->id == 3)
+                                            <label>
+                                                <input class="details" type="radio" name="PaymentTowards" value="Other Specify-{{$brand->id}}">Other Specify
+                                            </label>
+                                        @endif
+
+                                        @if ($brand->id == 4 ||  $brand->id == 5 || $brand->id == 7)
+                                            <label>
+                                                <input class="details" type="radio" name="PaymentTowards" value="Other-{{$brand->id}}">Other
+                                            </label>
+                                        @endif
+                                        
                                     </div>
                                     <div id="pay_loc_<?php echo $brand->id ?>"></div>
                                 </div>

@@ -1,6 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/sweetalert2/sweetalert2.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('public/plugins/sweetalert2/sweetalert2.css')}}">
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -46,7 +46,7 @@
 </div>
 @endsection
 @section('javascript')
-<script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
+<script src="{{url('public/plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
         var table = $('.table').DataTable({

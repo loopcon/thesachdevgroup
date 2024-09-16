@@ -34,6 +34,18 @@
                                 <label for="url" class="form-label">Url</label>
                                 <input type="url" id="url" class="form-control" name="url" value="{{isset($record->url) ? $record->url : old('url')}}">
                             </div>
+                            
+                            <div class="col-md-4 adm-brand-errorbox">
+                                <label for="title" class="form-label">Business Title<span class="text-danger">*</span></label>
+                                <select class="form-control select2" name="title" id="title">
+                                    <option value="">-- Select --</option>
+                                    @foreach($our_business as $value)
+                                        <option value="{{$value->name}}"@if(isset($record->title) && $record->title == $value->name){{'selected'}}@endif>{{$value->name}}</option>
+                                    @endforeach
+                                </select>
+                                <div id="error"></div>
+                                @if ($errors->has('title')) <div class="text-danger">{{ $errors->first('title') }}</div>@endif
+                            </div>
                         </div>
 
                         <div class="row detail-page">
@@ -46,18 +58,6 @@
                                 @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
                                 <div class="error"></div>
                                 <small class="image_type">(Hight:281,Width:1349; Image Type : jpg,jpeg,png,webp)</small>
-                            </div>
-
-                            <div class="col-md-4 adm-brand-errorbox">
-                                <label for="title" class="form-label">Business Title<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="title" id="title">
-                                    <option value="">-- Select --</option>
-                                    @foreach($our_business as $value)
-                                        <option value="{{$value->name}}"@if(isset($record->title) && $record->title == $value->name){{'selected'}}@endif>{{$value->name}}</option>
-                                    @endforeach
-                                </select>
-                                <div id="error"></div>
-                                @if ($errors->has('title')) <div class="text-danger">{{ $errors->first('title') }}</div>@endif
                             </div>
 
                             <div class="col-md-4">

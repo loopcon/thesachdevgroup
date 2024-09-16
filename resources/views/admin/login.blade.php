@@ -7,11 +7,11 @@
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome -->
-<link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
+<link rel="stylesheet" href="{{url('public/plugins/fontawesome-free/css/all.min.css')}}">
 <!-- icheck bootstrap -->
-<link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{url('public/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 <!-- Theme style -->
-<link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+<link rel="stylesheet" href="{{url('public/dist/css/adminlte.min.css')}}">
     <style>
         .error{
             color: red;
@@ -31,7 +31,7 @@
         @php($setting_detail = getSettingDetail())
             <!-- <a href=""><b>Admin</b>LTE</a> -->
             @if(isset($setting_detail) && isset($setting_detail->logo))
-                <img src="{{asset('logo/'.$setting_detail->logo)}}" class="img-fluid" width="60" height="60" />
+                <img src="{{url('public/logo/'.$setting_detail->logo)}}" class="img-fluid" width="60" height="60" />
             @endif
         </div>
             <form method="POST" action="{{ route('login.custom') }}" class="login_form">
@@ -72,9 +72,9 @@
     </div>
 </body>
     <!-- jQuery -->
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{url('public/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
-<script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url('public/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
 <!--  validation -->
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.js"></script>
@@ -83,7 +83,7 @@
 
 
 <!-- AdminLTE App -->
-<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+<script src="{{url('public/dist/js/adminlte.min.js')}}"></script>
     <script>
         $(document).ready(function () {
             $(".login_form").validate({

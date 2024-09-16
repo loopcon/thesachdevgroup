@@ -107,7 +107,7 @@
     
             ajax: "{{ route('home_our_businesses.index') }}",
             columns: [
-                {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'image', name: 'image'},
                 {data: 'link', name: 'link'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},

@@ -94,7 +94,7 @@
 
                             <div class="col-md-4">
                                 <label for="password">Password<span class="text-danger">*</span></label>
-                                <input type="text" id="password" name="password" value="{{isset($record->visible_password) ? $record->visible_password : ''}}" required="" class="form-control">
+                                <input type="password" id="password" name="password" value="{{isset($record->visible_password) ? $record->visible_password : ''}}" required="" class="form-control">
                                 @if ($errors->has('password')) <div class="text-danger">{{ $errors->first('password') }}</div>@endif
                                 <small>(Password must contain at least one special character,capital)</small>
                                 @if ($errors->has('password')) <div class="text-danger">{{ $errors->first('password') }}</div>@endif
@@ -103,7 +103,7 @@
 
                             <div class="col-md-4 mb-3">
                                 <label for="password">Confirm Password<span class="text-danger">*</span></label>
-                                <input type="text" name="cpassword" class="form-control" required data-parsley-equalto="#password" value="{{isset($record->visible_password) ? $record->visible_password : ''}}">
+                                <input type="password" name="cpassword" class="form-control cpassword" required data-parsley-equalto="#password" value="{{isset($record->visible_password) ? $record->visible_password : ''}}">
                                 @if ($errors->has('cpassword')) <div class="text-danger">{{ $errors->first('cpassword') }}</div>@endif
                             </div>
                         </div>
@@ -137,65 +137,65 @@
         // end business selection
 
         // showroom dropdown event
-        $(document).on('change', '#showroom_id', function(){
-            var showroom = $(this).val();
-            if(showroom !='')
-            {
-                var showroom_flag = 0;
-            }else{
-                var showroom_flag = 1;
+        // $(document).on('change', '#showroom_id', function(){
+        //     var showroom = $(this).val();
+        //     if(showroom !='')
+        //     {
+        //         var showroom_flag = 0;
+        //     }else{
+        //         var showroom_flag = 1;
                
-            }
-            serviceCenterBlankAndHide(showroom_flag);
-            bodyShopBlankAndHide(showroom_flag);
-            usedCarBlankAndHide(showroom_flag);
-        })
+        //     }
+        //     serviceCenterBlankAndHide(showroom_flag);
+        //     bodyShopBlankAndHide(showroom_flag);
+        //     usedCarBlankAndHide(showroom_flag);
+        // })
         // end showroom dropdown event
 
         // service center dropdown event
-        $(document).on('change', '#service_center_id', function(){
-            var service_center = $(this).val();
-            if(service_center !='')
-            {
-                var service_flag = 0;
-            }else{
-                var service_flag = 1;
-            }
-            showroomBlankAndHide(service_flag);
-            bodyShopBlankAndHide(service_flag);
-            usedCarBlankAndHide(service_flag);
-        })
+        // $(document).on('change', '#service_center_id', function(){
+        //     var service_center = $(this).val();
+        //     if(service_center !='')
+        //     {
+        //         var service_flag = 0;
+        //     }else{
+        //         var service_flag = 1;
+        //     }
+        //     showroomBlankAndHide(service_flag);
+        //     bodyShopBlankAndHide(service_flag);
+        //     usedCarBlankAndHide(service_flag);
+        // })
         // end service center dropdown event
 
         // body shop dropdown event
-        $(document).on('change', '#body_shop_id', function(){
-            var body_shop = $(this).val();
-            if(body_shop !='')
-            {
-                var bodyshop_flag = 0;
-            }else{
-                var bodyshop_flag = 1;
-            }
-            showroomBlankAndHide(bodyshop_flag);
-            serviceCenterBlankAndHide(bodyshop_flag);
-            usedCarBlankAndHide(bodyshop_flag);
-        })
+        // $(document).on('change', '#body_shop_id', function(){
+        //     var body_shop = $(this).val();
+        //     if(body_shop !='')
+        //     {
+        //         var bodyshop_flag = 0;
+        //     }else{
+        //         var bodyshop_flag = 1;
+        //     }
+        //     showroomBlankAndHide(bodyshop_flag);
+        //     serviceCenterBlankAndHide(bodyshop_flag);
+        //     usedCarBlankAndHide(bodyshop_flag);
+        // })
         // end body dropdown event
 
         // used car dropdown event
-        $(document).on('change', '#used_car_id', function(){
-            var used_car = $(this).val();
-            console.log(used_car);
-            if(used_car !='')
-            {
-               var usedcar_flag = 0;
-            }else{
-               var usedcar_flag = 1;
-            }
-            showroomBlankAndHide(usedcar_flag);
-            serviceCenterBlankAndHide(usedcar_flag);
-            bodyShopBlankAndHide(usedcar_flag);
-        })
+        // $(document).on('change', '#used_car_id', function(){
+        //     var used_car = $(this).val();
+        //     console.log(used_car);
+        //     if(used_car !='')
+        //     {
+        //       var usedcar_flag = 0;
+        //     }else{
+        //       var usedcar_flag = 1;
+        //     }
+        //     showroomBlankAndHide(usedcar_flag);
+        //     serviceCenterBlankAndHide(usedcar_flag);
+        //     bodyShopBlankAndHide(usedcar_flag);
+        // })
         // end used car dropdown event
 
         // form validation
@@ -236,6 +236,19 @@
     });
     // end form validation
 
+
+    $('#password').hover(function () {
+        $('#password').attr('type', 'text');
+    }, function () {
+       $('#password').attr('type', 'password'); 
+    });
+    
+    $('.cpassword').hover(function () {
+        $('.cpassword').attr('type', 'text');
+    }, function () {
+       $('.cpassword').attr('type', 'password'); 
+    });
+
     function getBusiness(business_id)
     {
         if(business_id !="" && business_id != null)
@@ -270,56 +283,56 @@
         }
     }
 
-    function serviceCenterBlankAndHide(flag)
-    {
-        if(flag==0)
-        {
-            $('#service_center_id').select2('destroy')
-            $('#service_center_id').val('')
-            $('#service_center_id').select2()
-            $('.service-center').hide()
-        }else{
-            $('.service-center').show()
-        }
-    }
+    // function serviceCenterBlankAndHide(flag)
+    // {
+    //     if(flag==0)
+    //     {
+    //         $('#service_center_id').select2('destroy')
+    //         $('#service_center_id').val('')
+    //         $('#service_center_id').select2()
+    //         $('.service-center').hide()
+    //     }else{
+    //         $('.service-center').show()
+    //     }
+    // }
 
-    function bodyShopBlankAndHide(flag)
-    {
-        if(flag==0)
-        {
-            $('#body_shop_id').select2('destroy')
-            $('#body_shop_id').val('')
-            $('#body_shop_id').select2()
-            $('.body-shop').hide()
-        }else{
-            $('.body-shop').show()
-        }
-    }
+    // function bodyShopBlankAndHide(flag)
+    // {
+    //     if(flag==0)
+    //     {
+    //         $('#body_shop_id').select2('destroy')
+    //         $('#body_shop_id').val('')
+    //         $('#body_shop_id').select2()
+    //         $('.body-shop').hide()
+    //     }else{
+    //         $('.body-shop').show()
+    //     }
+    // }
 
-    function usedCarBlankAndHide(flag)
-    {
-        if(flag==0)
-        {
-            $('#used_car_id').select2('destroy')
-            $('#used_car_id').val('')
-            $('#used_car_id').select2()
-            $('.used-car').hide()
-        }else{
-            $('.used-car').show()
-        }
-    }
+    // function usedCarBlankAndHide(flag)
+    // {
+    //     if(flag==0)
+    //     {
+    //         $('#used_car_id').select2('destroy')
+    //         $('#used_car_id').val('')
+    //         $('#used_car_id').select2()
+    //         $('.used-car').hide()
+    //     }else{
+    //         $('.used-car').show()
+    //     }
+    // }
 
-    function showroomBlankAndHide(flag)
-    {
-        if(flag==0)
-        {
-            $('#showroom_id').select2('destroy')
-            $('#showroom_id').val('')
-            $('#showroom_id').select2()
-            $('.showroom').hide()
-        }else{
-            $('.showroom').show()
-        }
-    }
+    // function showroomBlankAndHide(flag)
+    // {
+    //     if(flag==0)
+    //     {
+    //         $('#showroom_id').select2('destroy')
+    //         $('#showroom_id').val('')
+    //         $('#showroom_id').select2()
+    //         $('.showroom').hide()
+    //     }else{
+    //         $('.showroom').show()
+    //     }
+    // }
 </script>
 @endsection

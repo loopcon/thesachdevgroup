@@ -24,6 +24,9 @@
   {{-- colorpicker --}}
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.5.3/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
+    <!--ckeditor-->
+    <!--<link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.1.0/ckeditor5.css">-->
+
   @php($setting_detail = getSettingDetail())
 
     @if(isset($setting_detail) && isset($setting_detail->logo))

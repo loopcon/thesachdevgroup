@@ -68,7 +68,7 @@
             // scrollX: true,
             ajax: "{{ route('count.index') }}",
             columns: [
-                {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'icon', name: 'icon'},
                 {data: 'amount', name: 'amount'},
                

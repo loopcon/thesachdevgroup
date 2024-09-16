@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ServiceCenterFacilityCustomerGalleryController;
 use App\Http\Controllers\Admin\ServiceCenterTestimonialController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PaymentController AS AdminPaymentController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\AwardsController;
@@ -73,7 +74,7 @@ use App\Http\Controllers\Frontend\PaymentController;
 
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
-    // return what you want
+    return 'cleared cache successfully!';
  });
  Route::get('/clear-optimize', function() {
     $exitCode = Artisan::call('optimize:clear');
@@ -267,6 +268,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('service-center-testimonial-delete/{id}', [ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDestroy'])->name('service-center-testimonial-delete');
     Route::get('service-center-testimonial-datatable', [ServiceCenterTestimonialController::class, 'serviceCenterTestimonialDatatable'])->name('service-center-testimonial-datatable');
 
+    // payment
+    Route::get('payment-list', [AdminPaymentController::class, 'paymentList'])->name('payment-list');
+    Route::post('payment-datatable', [AdminPaymentController::class, 'paymentDatatable'])->name('payment-datatable');
+    Route::get('get-service-data', [AdminPaymentController::class, 'getServiceData'])->name('get-service-data');
+    Route::get('get-location-data', [AdminPaymentController::class, 'getLocationData'])->name('get-location-data');
+    Route::get('payment-export', [AdminPaymentController::class, 'export'])->name('payment-export');
+
     //users
     Route::get('user', [UserController::class, 'userList'])->name('user');
     Route::get('user-create', [UserController::class, 'userCreate'])->name('user-create');
@@ -452,7 +460,7 @@ Route::group(['controller'=>PaymentController::class, 'prefix'=>'payment', 'as'=
     Route::post('submit', 'paymentSubmit')->name('submit');
     Route::post('successhh', 'successhh')->name('successhh');
     Route::post('successgt', 'successgt')->name('successgt');
-    Route::post('successhf', 'successhf')->name('successgt');
+    Route::post('successhf', 'successhf')->name('successhf');
     Route::post('cancel', function () {
         return view('frontend.payment.cancel');
     })->name('cancel');

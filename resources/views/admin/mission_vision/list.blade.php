@@ -91,7 +91,7 @@
             // scrollX: true,
             ajax: "{{ route('mission_vision.index') }}",
             columns: [
-                {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'icon', name: 'icon'},
                 {data: 'icon_name', name: 'icon_name'},
                

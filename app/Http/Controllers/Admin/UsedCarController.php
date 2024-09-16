@@ -128,7 +128,7 @@ class UsedCarController extends Controller
             ->editColumn('image', function($used_car){
 
                 if(isset($used_car->image) && isset($used_car->image)){
-                    $url= asset('used_car_image/'.$used_car->image);
+                    $url= url('public/used_car_image/'.$used_car->image);
                     $image = '<img src="'.$url.'" border="0" width="50">';
                     return $image;
                 }

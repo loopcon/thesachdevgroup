@@ -1,6 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/sweetalert2/sweetalert2.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url('public/plugins/sweetalert2/sweetalert2.css')}}">
 @endsection
 @section('content')
     <div class="content-wrapper">
@@ -44,7 +44,7 @@
     </div>
     @endsection
     @section('javascript')
-    <script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
+    <script src="{{url('public/plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
     $(function () {
         
@@ -54,7 +54,7 @@
             scrollX: true,
             ajax: "{{ route('header_menu_social_media_icon.index') }}",
             columns: [
-                {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'icon', name: 'icon'},
                 {data: 'link', name: 'link'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},

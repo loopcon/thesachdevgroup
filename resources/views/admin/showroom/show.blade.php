@@ -262,7 +262,7 @@
                 },
                 },
                 columns: [
-                    {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                    {data: 'id', name: 'id', orderable: false, searchable: false},
                     {data: 'our_business_id', name: 'our_business_id'},
 
                     {data: 'name', name: 'name'},

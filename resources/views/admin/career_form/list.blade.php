@@ -1,6 +1,20 @@
 @extends('admin.layout.header')
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/sweetalert2/sweetalert2.css')}}">
+<style>
+    .dt-buttons{
+        float:right;
+    }
+    .search{
+        margin-left: 514px;
+    }
+    .export-btn{
+        margin-bottom: 14px;
+    }
+    /*.paginate{*/
+    /*    margin-top: 15px;*/
+    /*}*/
+</style>
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -18,12 +32,22 @@
             </div>
         </div>
         <div class="card">
-            <div class="col-sm-12  text-end">
+            <?php /**<div class="col-sm-12  text-end">
                 <a href="{{ route('career-form-export') }}" class="btn btn-success float-right adm-table-addbtn">Export</a>
-            </div>
+            </div>**/ ?>
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
+                        <div class="row mb-4">
+                            <div class="form-group col-md-4">
+                                <label for="from_date">From Date</label>
+                                <input type="date" class="form-control" name="from_date" value="" id="from_date">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="to_date">To Date</label>
+                                <input type="date" class="form-control" name="to_date" value="" id="to_date">
+                            </div>
+                        </div>
                         <table class="table table-bordered table-striped adm-table-no-wrap adm-action-sticky">
                             <thead>
                                 <tr>
@@ -38,6 +62,7 @@
                                     <th>Contact No</th>
                                     <th>Email</th>
                                     <th>Post Applying For</th>
+                                    <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -54,6 +79,23 @@
 <script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
     var table = $('.table').DataTable({
+        // dom: 'Blfrtip',
+        dom: "<'row'<'col-sm-6'><'col-sm-6 export-btn'B><'col-sm-3'l><'col-sm-3 search'f>>" +
+         "<'row'<'col-sm-12'tr>>" +
+         "<'row'<'col-sm-7'i><'col-sm-5 paginate'p>>",
+         buttons: [
+            {
+                extend: 'excel',
+                text: 'Export',
+                title:'career form',
+                rows: '"visible',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11], // 11 field export
+                },
+                // className: 'btn-success mb-3'
+            }
+        ],
+
         processing: true,
         serverSide: true,
         // scrollX: true,
@@ -69,15 +111,26 @@
             {data: 'contact_no', name: 'contact_no'},
             {data: 'email', name: 'email'},
             {data: 'post_apply_for', name: 'post_apply_for'},
+            {data: 'created_at', name: 'created_at'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
         ajax : {
             url : "{{ route('career-form-datatable') }}",
             type : "POST",
             data : function(d) {
-                d._token = "{{ csrf_token() }}"
+                d._token = "{{ csrf_token() }}",
+                d.from_date = $('#from_date').val(),
+                d.to_date = $('#to_date').val()
             }
         }
+    });
+        
+    $(document).on('change','#from_date',function(){
+        table.ajax.reload();
+    });
+        
+    $(document).on('change','#to_date',function(){
+        table.ajax.reload();
     });
 
     $(document).on('click', '.delete', function() {
@@ -103,8 +156,8 @@
         $('.dataTables_filter').parent().css('padding', '0px');
         $('.dataTables_info').parent().css('padding-left', '0px');
         $('.paging_simple_numbers').parent().css('padding-right', '0px');
-        $('.adm-table-responsive').parent().css('margin', '0px');
-        $('.adm-table-responsive').parent().siblings().css('margin', '0px');
+         $('.adm-table-responsive').parent().css('margin', '0px');
+         $('.adm-table-responsive').parent().siblings().css('margin', '0px');
     });
 </script>
 @endsection

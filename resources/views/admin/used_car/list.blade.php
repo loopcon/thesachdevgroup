@@ -60,7 +60,7 @@
             // scrollX: true,
             ajax: "{{ route('used_car.index') }}",
             columns: [
-                {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'image', name: 'image'},
                 {data: 'name', name: 'name'},
                

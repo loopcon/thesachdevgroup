@@ -101,7 +101,7 @@ class TestimonialController extends Controller
                 ->editColumn('image', function($testimonials){
 
                     if(isset($testimonials->image) && isset($testimonials->image)){
-                        $url= asset('testimonials/'.$testimonials->image);
+                        $url= url('public/testimonials/'.$testimonials->image);
                         $image = '<img src="'.$url.'" border="0" width="50">';
                         return $image;
                     }

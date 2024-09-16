@@ -21,4 +21,29 @@ class OurBusiness extends Model
     {
         return $this->hasMany(Service::class,'id');
     }
+
+    public function showrooms()
+    {
+        return $this->hasMany(Showroom::class, 'our_business_id', 'id');
+    }
+
+    public function bodyShops()
+    {
+        return $this->hasMany(Body_shop::class, 'business_id', 'id');
+    }
+
+    public function usedCars()
+    {
+        return $this->hasMany(Used_car::class, 'business_id', 'id');
+    }
+
+    public function serviceCenters()
+    {
+        return $this->hasMany(ServiceCenter::class, 'business_id', 'id');
+    }
+
+    public function businessInsurance()
+    {
+        return $this->hasMany(OurBusinessInsurance::class, 'business_id', 'id');
+    }
 }

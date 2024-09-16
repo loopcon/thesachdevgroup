@@ -176,7 +176,7 @@
             </div>
             <div class="col-lg-4 p-0">
                <div class="copyright-text">
-                  <p>TSG (THE SACHDEV GROUP) © 2024</p>
+                  <p>TSG (THE SACHDEV GROUP) Atul © 2024</p>
                </div>
             </div>
          </div>

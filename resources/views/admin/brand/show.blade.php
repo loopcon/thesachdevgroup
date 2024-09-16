@@ -55,7 +55,7 @@
             serverSide: true,
             ajax: "{{ route('brand.index') }}",
             columns: [
-                {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'image', name: 'image'},
                 {data: 'name', name: 'name'},
                 {data: 'color', name: 'color'},

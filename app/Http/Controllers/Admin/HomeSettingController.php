@@ -98,7 +98,7 @@ class HomeSettingController extends Controller
                   ->editColumn('image', function($home_slider){
 
                     if(isset($home_slider->image) && isset($home_slider->image)){
-                        $url= asset('home_slider/'.$home_slider->image);
+                        $url= url('public/home_slider/'.$home_slider->image);
                         $image = '<img src="'.$url.'" border="0" width="50">';
                         return $image;
                     }
@@ -288,7 +288,7 @@ class HomeSettingController extends Controller
                   ->editColumn('image', function($home_our_businesses){
 
                     if(isset($home_our_businesses->image) && isset($home_our_businesses->image)){
-                        $url= asset('home_our_businesses/'.$home_our_businesses->image);
+                        $url= url('public/home_our_businesses/'.$home_our_businesses->image);
                         $image = '<img src="'.$url.'" border="0" width="100">';
                         return $image;
                     }

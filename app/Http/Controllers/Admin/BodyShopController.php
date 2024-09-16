@@ -124,7 +124,7 @@ class BodyShopController extends Controller
             ->editColumn('image', function($body_shop){
 
                 if(isset($body_shop->image) && isset($body_shop->image)){
-                    $url= asset('body_shop_image/'.$body_shop->image);
+                    $url= url('public/body_shop_image/'.$body_shop->image);
                     $image = '<img src="'.$url.'" border="0" width="50">';
                     return $image;
                 }

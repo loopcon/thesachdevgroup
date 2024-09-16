@@ -54,7 +54,8 @@
             serverSide: true,
             ajax: "{{ route('showroom_facility_customer_gallery.index') }}",
             columns: [
-                {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                // {data: 'DT_RowIndex', name: '', orderable: false, searchable: false},
+                {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'showroom', name: 'showroom'},
                 {data: 'facility_image', name: 'facility_image'},
                 {data: 'customer_gallery_image', name: 'customer_gallery_image'},

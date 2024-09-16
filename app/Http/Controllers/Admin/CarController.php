@@ -105,7 +105,7 @@ class CarController extends Controller
                     ->editColumn('image', function($car){
   
                         if(isset($car->image) && isset($car->image)){
-                            $url= asset('car/'.$car->image);
+                            $url= url('public/car/'.$car->image);
                             $image = '<img src="'.$url.'" border="0" width="100">';
                             return $image;
                         }

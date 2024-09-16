@@ -1280,7 +1280,7 @@
                                                     <span class="text-danger" id="resume-error"></span>
                                                 </div>
                                             </div>
-                                            <button type="submit" id="submit" class="btn btn-primary">Sign in</button>
+                                            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                                         </form>  
                                     </div>
                                 </div>  
