@@ -109,7 +109,7 @@ class ShowroomFacilityCustomerGalleryController extends Controller
             ->editColumn('facility_image', function($showroom_facility_customer_gallery){
 
                 if(isset($showroom_facility_customer_gallery->facility_image) && isset($showroom_facility_customer_gallery->facility_image)){
-                    $url= asset('showroom_facility_image/'.$showroom_facility_customer_gallery->facility_image);
+                    $url= url('public/showroom_facility_image/'.$showroom_facility_customer_gallery->facility_image);
                     $image = '<img src="'.$url.'" border="0" width="100">';
                     return $image;
                 }
@@ -118,7 +118,7 @@ class ShowroomFacilityCustomerGalleryController extends Controller
             ->editColumn('customer_gallery_image', function($showroom_facility_customer_gallery){
 
                 if(isset($showroom_facility_customer_gallery->customer_gallery_image) && isset($showroom_facility_customer_gallery->customer_gallery_image)){
-                    $url= asset('showroom_customer_gallery_image/'.$showroom_facility_customer_gallery->customer_gallery_image);
+                    $url= url('public/showroom_customer_gallery_image/'.$showroom_facility_customer_gallery->customer_gallery_image);
                     $image = '<img src="'.$url.'" border="0" width="100">';
                     return $image;
                 }

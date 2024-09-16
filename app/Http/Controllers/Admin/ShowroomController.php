@@ -61,7 +61,7 @@ class ShowroomController extends Controller
 
                 ]);
                 $showroom = new Showroom();
-                $feilds = array('our_business_id','slider_showroom_name','slider_showroom_name_color','slider_showroom_name_font_size','slider_showroom_name_font_family','name','name_color','name_font_size','name_font_family','brand_id','address','working_hours','contact_number','email','address_color','address_font_size','address_font_family','working_hours_color','working_hours_font_size','working_hours_font_family','working_hours_icon','contact_number_color','contact_number_font_size','contact_number_font_family','email_color','email_font_size','email_font_family','rating','number_of_rating','description','description_color','description_font_size','description_font_family','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size','email_title_font_family','map_link');
+                $feilds = array('our_business_id','slider_showroom_name','slider_showroom_name_color','slider_showroom_name_font_size','slider_showroom_name_font_family','name','name_color','name_font_size','name_font_family','brand_id','address','working_hours','contact_number','email','address_color','address_font_size','address_font_family','working_hours_color','working_hours_font_size','working_hours_font_family','working_hours_icon','contact_number_color','contact_number_font_size','contact_number_font_family','email_color','email_font_size','email_font_family','rating','number_of_rating','description','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size','email_title_font_family','map_link');
                 foreach($feilds as $field)
                 {
                     $showroom->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
@@ -192,8 +192,8 @@ class ShowroomController extends Controller
                 ->editColumn('slider_image', function($showroom){
 
                     if(isset($showroom->slider_image) && isset($showroom->slider_image)){
-                        $url= asset('showrooms_slider_image/'.$showroom->slider_image);
-                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        $url= url('public/showrooms_slider_image/'.$showroom->slider_image);
+                        $image = '<img src="'.$url.'" border="0" width="70">';
                         return $image;
                     }
                 })
@@ -201,8 +201,8 @@ class ShowroomController extends Controller
                 ->editColumn('image', function($showroom){
 
                     if(isset($showroom->image) && isset($showroom->image)){
-                        $url= asset('showrooms_image/'.$showroom->image);
-                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        $url= url('public/showrooms_image/'.$showroom->image);
+                        $image = '<img src="'.$url.'" border="0" width="70">';
                         return $image;
                     }
                 })
@@ -225,8 +225,8 @@ class ShowroomController extends Controller
                 ->editColumn('address_icon', function($showroom){
 
                     if(isset($showroom->address_icon) && isset($showroom->address_icon)){
-                        $url= asset('showrooms_address_icon/'.$showroom->address_icon);
-                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        $url= url('public/showrooms_address_icon/'.$showroom->address_icon);
+                        $image = '<img src="'.$url.'" border="0" width="70">';
                         return $image;
                     }
                 })
@@ -234,8 +234,8 @@ class ShowroomController extends Controller
                 ->editColumn('working_hours_icon', function($showroom){
 
                     if(isset($showroom->working_hours_icon) && isset($showroom->working_hours_icon)){
-                        $url= asset('showrooms_working_hours_icon/'.$showroom->working_hours_icon);
-                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        $url= url('public/showrooms_working_hours_icon/'.$showroom->working_hours_icon);
+                        $image = '<img src="'.$url.'" border="0" width="70">';
                         return $image;
                     }
                 })
@@ -243,8 +243,8 @@ class ShowroomController extends Controller
                 ->editColumn('contact_number_icon', function($showroom){
 
                     if(isset($showroom->contact_number_icon) && isset($showroom->contact_number_icon)){
-                        $url= asset('showrooms_contact_number_icon/'.$showroom->contact_number_icon);
-                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        $url= url('public/showrooms_contact_number_icon/'.$showroom->contact_number_icon);
+                        $image = '<img src="'.$url.'" border="0" width="70">';
                         return $image;
                     }
                 })
@@ -252,8 +252,8 @@ class ShowroomController extends Controller
                 ->editColumn('email_icon', function($showroom){
 
                     if(isset($showroom->email_icon) && isset($showroom->email_icon)){
-                        $url= asset('showrooms_email_icon/'.$showroom->email_icon);
-                        $image = '<img src="'.$url.'" border="0" width="100">';
+                        $url= url('public/showrooms_email_icon/'.$showroom->email_icon);
+                        $image = '<img src="'.$url.'" border="0" width="70">';
                         return $image;
                     }
                 })
@@ -310,7 +310,7 @@ class ShowroomController extends Controller
 
                 ]);
                 $showroom = Showroom::find($id);
-                $feilds = array('our_business_id','slider_showroom_name','slider_showroom_name_color','slider_showroom_name_font_size','slider_showroom_name_font_family','name','name_color','name_font_size','name_font_family','brand_id','address','working_hours','contact_number','email','address_color','address_font_size','address_font_family','working_hours_color','working_hours_font_size','working_hours_font_family','working_hours_icon','contact_number_color','contact_number_font_size','contact_number_font_family','email_color','email_font_size','email_font_family','rating','number_of_rating','description','description_color','description_font_size','description_font_family','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size','email_title_font_family','map_link');
+                $feilds = array('our_business_id','slider_showroom_name','slider_showroom_name_color','slider_showroom_name_font_size','slider_showroom_name_font_family','name','name_color','name_font_size','name_font_family','brand_id','address','working_hours','contact_number','email','address_color','address_font_size','address_font_family','working_hours_color','working_hours_font_size','working_hours_font_family','working_hours_icon','contact_number_color','contact_number_font_size','contact_number_font_family','email_color','email_font_size','email_font_family','rating','number_of_rating','description','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size','email_title_font_family','map_link');
                 foreach($feilds as $field)
                 {
                     $showroom->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
