@@ -21,7 +21,7 @@
     <div class="container">
         <div class="location-text">
             <h1 style="color:{{$showroom->name_color}}; font-size:{{$showroom->name_font_size}}; font-family:{{$showroom->name_font_family}};">{{isset($showroom->name) && $showroom->name ? $showroom->name : ''}}</h1>
-            <p style="color:{{$showroom->description_font_color}}; font-size:{{$showroom->description_font_size}}; font-family:{{$showroom->description_font_family}};">{!! isset($showroom->description) && $showroom->description ? $showroom->description : '' !!}</p>
+            <p>{!! isset($showroom->description) && $showroom->description ? $showroom->description : '' !!}</p>
         </div>
         <div class="top-car-image">
             <div class="top-car-parent">

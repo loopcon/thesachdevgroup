@@ -286,7 +286,7 @@
             <div class="col-md-6">
                 <div class="heading-title-advantage">
                     <h2 style="color:{{$business->why_choose_title_color}}; font-size:{{$business->why_choose_title_font_size}}; font-family:{{$business->why_choose_title_font_family}};">{{isset($business->why_choose_title) && $business->why_choose_title ? $business->why_choose_title : ''}}</h2>
-                    <div style="color:{{$business->why_choose_description_color}}; font-size:{{$business->why_choose_description_font_size}}; font-family:{{$business->why_choose_description_font_family}};">
+                    <div>
                         {!! isset($business->why_choose_description) && $business->why_choose_description ? $business->why_choose_description : '' !!}
                     </div>
                     <!-- <ul>

@@ -24,7 +24,7 @@
                 <div class="col-md-5">
                     <div class="csr-left-text">
                         <h3 style="color:{{$csr->left_title_color}}; font-size:{{$csr->left_title_font_size}}; font-family:{{$csr->left_title_font_family}};">{{isset($csr->left_title) && $csr->left_title ? $csr->left_title : ''}}</h3>
-                        <div style="color:{{$csr->left_description_font_color}}; font-size:{{$csr->left_description_font_size}}; font-family:{{$csr->left_description_font_family}};">{!! isset($csr->left_description) && $csr->left_description ? $csr->left_description : '' !!}</div>
+                        <div>{!! isset($csr->left_description) && $csr->left_description ? $csr->left_description : '' !!}</div>
                     </div>
                 </div>
                 <div class="col-md-7">

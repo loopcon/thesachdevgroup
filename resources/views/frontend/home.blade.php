@@ -93,7 +93,7 @@
                                 @endif
                                 <div class="tab-pane fade {{$show_active}}" id="{{$mission_vision->slug}}" role="tabpanel" aria-labelledby="{{$mission_vision->slug}}-tab">
                                     <h2 style="color:{{$mission_vision->title_color}}; font-size:{{$mission_vision->title_font_size}}; font-family:{{$mission_vision->title_font_family}};">{{$mission_vision->title}}</h2>
-                                    <p style="color:{{$mission_vision->description_color}}; font-size:{{$mission_vision->description_font_size}}; font-family:{{$mission_vision->description_font_family}};">{!! $mission_vision->description !!}</p>
+                                    <p>{!! $mission_vision->description !!}</p>
                                 </div>
                             @endforeach
                         </div>
@@ -153,9 +153,7 @@
             @foreach ($home_details as $home_detail)
               <h3 style="color:{{$home_detail->title_color}}; font-size:{{$home_detail->title_font_size}}; font-family:{{$home_detail->title_font_family}};">{{$home_detail->title}}</h3>    
               <h2 style="color:{{$home_detail->sub_title_color}}; font-size:{{$home_detail->sub_title_font_size}}; font-family:{{$home_detail->sub_title_font_family}};">{{$home_detail->sub_title}}</h2>
-              <div style="color:{{$home_detail->description_color}}; font-size:{{$home_detail->description_font_size}}; font-family:{{$home_detail->description_font_family}};">
-                {!! $home_detail->description !!}
-              </div>
+              <div>{!! $home_detail->description !!}</div>
             @endforeach
           </div>
         </div>
@@ -176,9 +174,7 @@
               <div class="item">
                 <div class="shadow-effect">
                   <img src="{{url('public/testimonials/'.$testimonial->image)}}" alt=""> 
-                  <div style="color:{{$testimonial->description_color}}; font-size:{{$testimonial->description_font_size}}; font-family:{{$testimonial->description_font_family}};">
-                    {!! $testimonial->description !!}
-                  </div>
+                  <div>{!! $testimonial->description !!}</div>
                 </div>
                 <div class="testimonial-name" style="color:{{$testimonial->name_color}}; font-size:{{$testimonial->name_font_size}}; font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}}">
                   {{$testimonial->name}}
