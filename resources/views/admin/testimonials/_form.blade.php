@@ -72,11 +72,11 @@
 
                                 <div class="col-md-12 mt-2 mb-3">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea class="ckeditor form-control" name="description">{{$testimonial->description}}</textarea>
+                                    <textarea class="form-control" name="description" id="description">{{$testimonial->description}}</textarea>
                                     <div class="error"></div>
                                 </div>
 
-                                <div class="mb-3 col-md-4">
+                                <?php /**<div class="mb-3 col-md-4">
                                     <label for="description_color" class="form-label">Description Text Color</label>
                                     <input type="text" class="form-control colorpicker" name="description_color" id="description_color" value="{{$testimonial->description_color}}">
                                     <div class="error"></div>
@@ -100,7 +100,7 @@
                                             <option value="{{$family['key']}}" {{$testimonial->description_font_family == $family['key'] ? 'selected' : ''}}>{{$family['value']}}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div>**/ ?>
                             </div>
 
                             <div class="box-footer">
@@ -116,8 +116,14 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
+
+         CKEDITOR.replace('description', {
+            height:300,
+        });
+
         $(".edit_form").validate({
             ignore: [],
             rules: {
@@ -142,11 +148,6 @@
         });
 
         $('.colorpicker').colorpicker();
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-       $('.ckeditor').ckeditor();
     });
 </script>
 @endsection

@@ -141,13 +141,13 @@
                                 <small class="image_type">(Hight:352px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
-                            <div class="col-md-12 mt-2">
+                            <div class="col-md-12 mt-2 mb-2">
                                 <label for="left_description" class="form-label">Left Description</label>
                                 <textarea class="form-control ckeditor" id="left_description" name="left_description">{{isset($record->left_description) ? $record->left_description : old('left_description')}}</textarea>
                                 @if ($errors->has('left_description')) <div class="text-danger">{{ $errors->first('left_description') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4 mt-2">
+                            <?php /**<div class="col-md-4 mt-2">
                                 <label for="left_description_font_color" class="form-label">Left Description Font Color</label>
                                 <input type="text" id="left_description_font_color" class="form-control colorpicker" name="left_description_font_color" value="{{isset($record->left_description_font_color) ? $record->left_description_font_color : old('left_description_font_color')}}">
                             </div>
@@ -171,7 +171,7 @@
                                         <option value="{{$family['key']}}" @if(isset($record->left_description_font_family) && $record->left_description_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div>**/ ?>
                         </div>
 
                         <div class="box-footer">
@@ -186,9 +186,14 @@
 @endsection
 @section('javascript')
 <script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
+<script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
+
+        CKEDITOR.replace('left_description', {
+            height:300,
+        });
 
         $(".service-center-form").validate({
             rules: {

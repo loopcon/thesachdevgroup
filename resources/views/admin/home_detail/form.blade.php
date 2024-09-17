@@ -110,11 +110,11 @@
 
                           <div class="mb-3">
                             <label for="description">Description</label>
-                            <textarea class="ckeditor form-control" name="description">{{$home_detail->description}}</textarea>
+                            <textarea class="form-control" name="description">{{$home_detail->description}}</textarea>
                               <div class="error"></div>
                           </div>
 
-                          <div class="form-row">
+                          <?php /**<div class="form-row">
                             <div class="col-md-4 mb-3">
                                 <label for="description_color">Description Text Color</label>
                                 <input type="text" class="form-control colorpicker" name="description_color" id="description_color" value="{{ $home_detail->description_color}}">
@@ -142,7 +142,7 @@
                               </select>
                                 <div class="error"></div>
                             </div>
-                          </div>
+                          </div>**/ ?>
                           @endforeach
                       @else
 
@@ -228,11 +228,11 @@
 
                       <div class="mb-3">
                         <label for="description">Description</label>
-                        <textarea class="ckeditor form-control" name="description"></textarea>
+                        <textarea class="form-control" name="description"></textarea>
                         <div class="error"></div>
                       </div>
 
-                      <div class="form-row">
+                      <?php /**<div class="form-row">
                         <div class="col-md-4 mb-3">
                           <label for="description_color" class="form-label">Description Text Color</label>
                           <input type="text" class="form-control colorpicker" name="description_color" id="description_color">
@@ -257,7 +257,7 @@
                                 @endforeach
                           </select>
                         </div>
-                      </div>
+                      </div>**/ ?>
                       @endif
 
                       <div class="form-row">
@@ -273,8 +273,14 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
+
+         CKEDITOR.replace('description', {
+            height:300,
+        });
+
         $(".home_detail_form").validate({
             ignore: [],
             rules: {
@@ -314,12 +320,6 @@
         }
 
         $('.colorpicker').colorpicker();
-    });
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-       $('.ckeditor').ckeditor();
     });
 </script>
 @endsection

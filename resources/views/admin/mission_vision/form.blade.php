@@ -104,11 +104,11 @@
 
                             <div class="col-md-12 mt-2 mb-3">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="ckeditor form-control" name="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
+                                <textarea class="form-control" name="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
                                 <div class="error"></div>
                             </div>
 
-                            <div class="mb-3 col-md-4">
+                            <?php /**<div class="mb-3 col-md-4">
                                 <label for="description_color" class="form-label">Description Text Color</label>
                                 <input type="text" class="form-control colorpicker" name="description_color" id="description_color" value="{{isset($record->description_color) ? $record->description_color : old('description_color')}}">
                             </div>
@@ -131,7 +131,7 @@
                                         <option value="{{$family['key']}}" @if(isset($record->description_font_family) && $record->description_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div>**/ ?>
                         </div> 
 
                         <div class="box-footer">
@@ -148,8 +148,13 @@
 @section('javascript')
 <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
+<script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
  $(document).ready(function () {
+        CKEDITOR.replace('description', {
+            height:300,
+        });
+
         $(".mission_vision_form").validate({
             rules: {
                 'icon': {

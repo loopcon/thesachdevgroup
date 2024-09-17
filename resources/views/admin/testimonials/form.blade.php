@@ -70,7 +70,7 @@
                                 <div class="error"></div>
                             </div>
 
-                            <div class="mb-3 col-md-4">
+                            <?php /**<div class="mb-3 col-md-4">
                                 <label for="description_color" class="form-label">Description Text Color</label>
                                 <input type="text" class="form-control colorpicker" name="description_color" id="description_color">
                             </div>
@@ -93,7 +93,7 @@
                                         <option value="{{$family['key']}}">{{$family['value']}}</option>
                                     @endforeach
                                </select>
-                            </div>
+                            </div>**/ ?>
                         </div>
 
                         <div class="box-footer">
@@ -108,8 +108,14 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
+
+         CKEDITOR.replace('description', {
+            height:300,
+        });
+
         $(".testimonials_form").validate({
             ignore: [],
             rules: {
@@ -142,9 +148,9 @@
         $('.colorpicker').colorpicker();
     });
 </script>
-<script type="text/javascript">
-    $(document).ready(function() {
-       $('.ckeditor').ckeditor();
-    });
-</script>
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function() {-->
+<!--       $('.ckeditor').ckeditor();-->
+<!--    });-->
+<!--</script>-->
 @endsection

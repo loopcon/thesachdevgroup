@@ -541,10 +541,4 @@
         $('.colorpicker').colorpicker();
     });
 </script>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-       $('.ckeditor').ckeditor();
-    });
-</script>
 @endsection

@@ -29,7 +29,7 @@
 
                             <div class="col-md-12 mt-2 mb-3">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="ckeditor form-control" name="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
+                                <textarea class="form-control" name="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
                                 <div class="error"></div>
                             </div>
                         </div>
@@ -45,9 +45,14 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
+
+        CKEDITOR.replace('description', {
+            height:300,
+        });
 
         $(".page-form").validate({
             rules: {

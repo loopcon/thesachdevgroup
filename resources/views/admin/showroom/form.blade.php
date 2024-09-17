@@ -72,11 +72,11 @@
 
                             <div class="col-md-12 mt-2 mb-3">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="ckeditor form-control" name="description"></textarea>
+                                <textarea class="form-control" name="description"></textarea>
                                 <div class="error"></div>
                             </div>
 
-                            <div class="mb-3 col-md-4">
+                            <?php /**<div class="mb-3 col-md-4">
                                 <label for="description_color" class="form-label">Description Text Color</label>
                                 <input type="text" class="form-control colorpicker" name="description_color" id="description_color">
                             </div>
@@ -99,7 +99,7 @@
                                         <option value="{{$family['key']}}">{{$family['value']}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div>**/ ?>
 
                             <div class="col-md-4">
                                 <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
@@ -601,9 +601,13 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
-    $(document).ready(function () 
-    {
+    $(document).ready(function () {
+        CKEDITOR.replace('description', {
+            height:300,
+        });
+
         $('#brand_id').change(function () {
             var brand_id = $(this).val();
             if (brand_id) {

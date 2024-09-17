@@ -37,16 +37,16 @@
  
 {{-- ckeditor --}}
 <!--<script src="https://cdn.ckeditor.com/4.8.0/full-all/ckeditor.js"></script>-->
-<script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+<!-- <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script> -->
 <!--<script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>-->
 
 <!-- <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> -->
 
 <script>
-    ClassicEditor
-    .create( document.querySelector( '.ckeditor' ) , {
+    // ClassicEditor
+    // .create( document.querySelector( '.ckeditor' ) , {
         
-    } );
+    // } );
     
   $(document).on("keypress", ".num_only", function (e) {
       var keyCode = e.which ? e.which : e.keyCode;

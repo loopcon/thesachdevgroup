@@ -362,7 +362,7 @@
 
                             <div class="col-md-12 mb-2">
                                 <label for="why_choose_description" class="form-label">Why Choose Description</label>
-                                <textarea class="form-control ckeditor" name="why_choose_description" id="why_choose_description">{{isset($record->why_choose_description) ? $record->why_choose_description : old('why_choose_description')}}</textarea>
+                                <textarea class="form-control" name="why_choose_description" id="why_choose_description">{{isset($record->why_choose_description) ? $record->why_choose_description : old('why_choose_description')}}</textarea>
                             </div>
 
                             <div class="col-md-4 mb-2 mt-2">
@@ -403,20 +403,14 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
-        // CKEDITOR.replace('why_choose_description', {
-        //     height:500,
-        //     removePlugins : 'resize',
-        //     filebrowserBrowseUrl : '<?php echo url("public/plugins/kcfinder/browse.php?opener=ckeditor&type=files") ?>',
-        //     filebrowserImageBrowseUrl : '<?php echo url("public/plugins/kcfinder/browse.php?opener=ckeditor&type=images") ?>',
-        //     filebrowserFlashBrowseUrl : '<?php echo url("public/plugins/kcfinder/browse.php?opener=ckeditor&type=flash") ?>',
-        //     filebrowserUploadUrl : '<?php echo url("public/plugins/kcfinder/upload.php?opener=ckeditor&type=files") ?>',
-        //     filebrowserImageUploadUrl : '<?php echo url("public/plugins/kcfinder/upload.php?opener=ckeditor&type=images") ?>',
-        //     filebrowserFlashUploadUrl : '<?php echo url("public/plugins/kcfinder/upload.php?opener=ckeditor&type=flash") ?>',
-        // });
+        CKEDITOR.replace('why_choose_description', {
+            height:300,
+        });
 
         $('.page_url').hide();
         var page = $('#page_link').val();
