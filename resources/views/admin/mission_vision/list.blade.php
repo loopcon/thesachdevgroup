@@ -64,9 +64,9 @@
 
                                         <th>Description</th>
                                         
-                                        <th>Description Color</th>
-                                        <th>Description Font Size</th>
-                                        <th>Description Font Family</th>
+                                        <!--<th>Description Color</th>-->
+                                        <!--<th>Description Font Size</th>-->
+                                        <!--<th>Description Font Family</th>-->
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -106,9 +106,9 @@
                 {data: 'title_font_family', name: 'title_font_family'},
                 
                 {data: 'description', name: 'description'},
-                {data: 'description_color', name: 'description_color'},
-                {data: 'description_font_size', name: 'description_font_size'},
-                {data: 'description_font_family', name: 'description_font_family'},
+                // {data: 'description_color', name: 'description_color'},
+                // {data: 'description_font_size', name: 'description_font_size'},
+                // {data: 'description_font_family', name: 'description_font_family'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

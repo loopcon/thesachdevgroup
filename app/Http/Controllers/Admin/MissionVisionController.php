@@ -88,9 +88,9 @@ class MissionVisionController extends Controller
 
                 $mission_vision->description = $request->description;
 
-                $mission_vision->description_color = $request->description_color;
-                $mission_vision->description_font_size = $request->description_font_size;
-                $mission_vision->description_font_family = $request->description_font_family;
+                // $mission_vision->description_color = $request->description_color;
+                // $mission_vision->description_font_size = $request->description_font_size;
+                // $mission_vision->description_font_family = $request->description_font_family;
                 $mission_vision->save();
 
                 return redirect()->route('mission_vision')->with('success','Mission Vision insert successfully.');
@@ -204,9 +204,9 @@ class MissionVisionController extends Controller
 
                 $mission_vision->description = $request->description;
 
-                $mission_vision->description_color = $request->description_color;
-                $mission_vision->description_font_size = $request->description_font_size;
-                $mission_vision->description_font_family = $request->description_font_family;
+                // $mission_vision->description_color = $request->description_color;
+                // $mission_vision->description_font_size = $request->description_font_size;
+                // $mission_vision->description_font_family = $request->description_font_family;
                 $mission_vision->save();
 
                 return redirect()->route('mission_vision')->with('success','Mission Vision update successfully.');

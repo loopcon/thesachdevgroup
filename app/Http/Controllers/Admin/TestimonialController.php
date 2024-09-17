@@ -59,9 +59,9 @@ class TestimonialController extends Controller
                 $testimonials->name_font_family = $request->name_font_family;
 
                 $testimonials->description = $request->description;
-                $testimonials->description_color = $request->description_color;
-                $testimonials->description_font_size = $request->description_font_size;
-                $testimonials->description_font_family = $request->description_font_family;
+                // $testimonials->description_color = $request->description_color;
+                // $testimonials->description_font_size = $request->description_font_size;
+                // $testimonials->description_font_family = $request->description_font_family;
                 $testimonials->save();
 
                 return redirect()->route('testimonials.index')->with('success','Testimonials insert successfully.');
@@ -183,9 +183,9 @@ class TestimonialController extends Controller
                 $testimonials->name_font_size = $request->name_font_size;
                 $testimonials->name_font_family = $request->name_font_family;
                 $testimonials->description = $request->description;
-                $testimonials->description_color = $request->description_color;
-                $testimonials->description_font_size = $request->description_font_size;
-                $testimonials->description_font_family = $request->description_font_family;
+                // $testimonials->description_color = $request->description_color;
+                // $testimonials->description_font_size = $request->description_font_size;
+                // $testimonials->description_font_family = $request->description_font_family;
                 $testimonials->save();
 
                 return redirect()->route('testimonials.index')->with('success','Testimonials update successfully.');
