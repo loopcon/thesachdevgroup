@@ -27,7 +27,7 @@
                                 <textarea class="ckeditor form-control" name="description">{{$record->description ?? null}}</textarea>
                             </div>
 
-                            <div class="mb-3 col-md-4">
+                            <?php /**<div class="mb-3 col-md-4">
                                 <label for="description_color" class="form-label">Description Text Color</label>
                                 <input type="text" class="form-control colorpicker" name="description_color" id="description_color" value="{{$record->description_color ?? null}}">
                             </div>
@@ -52,7 +52,7 @@
                                         <option value="{{$family['key']}}" @if(isset($record->description_font_family) && $record->description_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
                                </select>
-                            </div>
+                            </div>**/ ?>
                         </div>  
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Update</button>
@@ -91,6 +91,7 @@
     @endsection
     @section('javascript')
     <script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
+    <script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
     <script type="text/javascript">
     $(function () {
         
@@ -140,6 +141,10 @@ $(document).ready(function(){
     $('.adm-table-responsive').parent().css('margin', '0px');
     $('.adm-table-responsive').parent().siblings().css('margin', '0px');
     $('.colorpicker').colorpicker();
+    
+    CKEDITOR.replace('description', {
+        height:300,
+    });
 }); 
 
 </script>

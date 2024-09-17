@@ -208,9 +208,9 @@ class FooterMenuController extends Controller
                 }
 
                 $footer_menu_description->description = $request->description;
-                $footer_menu_description->description_color = $request->description_color;
-                $footer_menu_description->description_font_size = $request->description_font_size;
-                $footer_menu_description->description_font_family = $request->description_font_family;
+                // $footer_menu_description->description_color = $request->description_color;
+                // $footer_menu_description->description_font_size = $request->description_font_size;
+                // $footer_menu_description->description_font_family = $request->description_font_family;
                 $footer_menu_description->save();
 
                 return redirect()->route('footer_menu')->with('success','Footer Menu insert successfully.');
