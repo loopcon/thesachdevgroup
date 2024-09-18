@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="card">
-                <<?php /**div class="col-sm-12  text-end">
+                <?php /**<div class="col-sm-12  text-end">
                     <a href="{{ route('payment-export') }}" class="btn btn-success float-right adm-table-addbtn">Export</a>
                 </div>**/ ?>
                 {{-- <div class="col-md-12 text-end">
