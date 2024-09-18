@@ -365,7 +365,7 @@
                                 <textarea class="form-control" name="why_choose_description" id="why_choose_description">{{isset($record->why_choose_description) ? $record->why_choose_description : old('why_choose_description')}}</textarea>
                             </div>
 
-                            <div class="col-md-4 mb-2 mt-2">
+                            <?php /**<div class="col-md-4 mb-2 mt-2">
                                 <label for="why_choose_description_color" class="form-label">Why Choose Description Color</label>
                                 <input type="text" class="form-control colorpicker" value="{{isset($record->why_choose_description_color) ? $record->why_choose_description_color : old('why_choose_description_color')}}" name="why_choose_description_color" id="why_choose_description_color">
                             </div>
@@ -389,7 +389,7 @@
                                         <option value="{{$family['key']}}" @if(isset($record->why_choose_description_font_family) && $record->why_choose_description_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div>**/ ?>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>

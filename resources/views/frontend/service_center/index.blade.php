@@ -80,7 +80,7 @@
                     </div>
                     <div class="location-text-one">
                         <h4 style="color:{{$service_center->contact_title_color}}; font-size:{{$service_center->contact_title_font_size}}; font-family:{{$service_center->contact_title_font_family}};">{{isset($service_center->contact_title) && $service_center->contact_title ? strtoupper($service_center->contact_title) : ''}}</h4>
-                        <p style="color:{{$service_center->contact_font_color}}; font-size:{{$service_center->contact_font_size}}; font-family:{{$service_center->contact_font_family}};"><a href="tel:+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}">@if(isset($service_center->contact_number) && $service_center->contact_number) +91 {{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}} @endif</a></p>
+                        <p><a href="tel:+{{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}}" style="color:{{$service_center->contact_font_color}}; font-size:{{$service_center->contact_font_size}}; font-family:{{$service_center->contact_font_family}};">@if(isset($service_center->contact_number) && $service_center->contact_number) +91 {{isset($service_center->contact_number) && $service_center->contact_number ? $service_center->contact_number: ''}} @endif</a></p>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="location-text-one">
                         <h4 style="color:{{$service_center->email_title_color}}; font-size:{{$service_center->email_title_font_size}}; font-family:{{$service_center->email_title_font_family}};">{{isset($service_center->email_title) && $service_center->email_title ? strtoupper($service_center->email_title) : ''}}</h4>
-                        <p style="color:{{$service_center->email_font_color}}; font-size:{{$service_center->email_font_size}}; font-family:{{$service_center->email_font_family}};"><a href="mailto: {{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}">{{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}</a></p>
+                        <p><a href="mailto: {{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}" style="color:{{$service_center->email_font_color}}; font-size:{{$service_center->email_font_size}}; font-family:{{$service_center->email_font_family}};">{{isset($service_center->email) && $service_center->email ? $service_center->email : ''}}</a></p>
                     </div>
                 </div>
             </div>

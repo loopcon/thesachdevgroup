@@ -293,8 +293,8 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="skills-container">
-                                                                                    <p class="mobile-font-color">Mobile Number: <a href="tel:+91 {{$showroom->contact_number}}">@if(isset($showroom->contact_number)) +91 {{$showroom->contact_number}} @endif</a></p>
-                                                                                    <p class="mobile-font-color">E-mail: <a href="mailto:{{$showroom->email}}">{{$showroom->email}}</a></p>
+                                                                                    <p class="mobile-font-color">Mobile Number: <a href="tel:+91 {{$showroom->contact_number}}" style="color:{{$showroom->contact_number_color}}; font-size:{{$showroom->contact_number_font_size}}; font-family:{{$showroom->contact_number_font_family}};">@if(isset($showroom->contact_number)) +91 {{$showroom->contact_number}} @endif</a></p>
+                                                                                    <p class="mobile-font-color">E-mail: <a href="mailto:{{$showroom->email}}" style="color:{{$showroom->email_color}}; font-size:{{$showroom->email_font_size}}; font-family:{{$showroom->email_font_family}};">{{$showroom->email}}</a></p>
                                                                                 </div>
                                                                                 <a class="nav-link mb-0 p-0 left-location active location-anchore" data-toggle="pill" href="#shalimar-sales" onclick="changeShowroom('{{ $showroom->id }}')" role="tab" aria-controls="v-pills-home" aria-selected="true">
                                                                                     <div class="btn-container">
@@ -328,8 +328,8 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="skills-container">
-                                                                                    <p class="mobile-font-color">Mobile Number: <a href="tel:+91 {{$service->contact_number}}">@if(isset($service->contact_number)) +91 {{$service->contact_number}} @endif</a></p>
-                                                                                    <p class="mobile-font-color">E-mail: <a href="mailto:{{$service->email}}">{{$service->email}}</a></p>
+                                                                                    <p class="mobile-font-color">Mobile Number: <a href="tel:+91 {{$service->contact_number}}" style="color:{{$service->contact_font_color}}; font-size:{{$service->contact_font_size}}; font-family:{{$service->contact_font_family}};">@if(isset($service->contact_number)) +91 {{$service->contact_number}} @endif</a></p>
+                                                                                    <p class="mobile-font-color">E-mail: <a href="mailto:{{$service->email}}" style="color:{{$service->email_font_color}}; font-size:{{$service->email_font_size}}; font-family:{{$service->email_font_family}};">{{$service->email}}</a></p>
                                                                                 </div>
                                                                                 <a class="nav-link mb-0 p-0 left-location active location-anchore" data-toggle="pill" href="#shalimar-sales" onclick="changeSeviceCenter('{{ $service->id }}')" role="tab" aria-controls="v-pills-home" aria-selected="true">
                                                                                     <div class="btn-container">
@@ -363,8 +363,8 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="skills-container">
-                                                                                    <p class="mobile-font-color">Mobile Number: <a href="tel:+91 {{$body_shop->contact_number}}">@if(isset($body_shop->contact_number)) +91 {{$body_shop->contact_number}} @endif</a></p>
-                                                                                    <p class="mobile-font-color">E-mail: <a href="mailto:{{$body_shop->email}}">{{$body_shop->email}}</a></p>
+                                                                                    <p class="mobile-font-color">Mobile Number: <a href="tel:+91 {{$body_shop->contact_number}}" style="color:{{$body_shop->contact_font_color}}; font-size:{{$body_shop->contact_font_size}}; font-family:{{$body_shop->contact_font_family}};">@if(isset($body_shop->contact_number)) +91 {{$body_shop->contact_number}} @endif</a></p>
+                                                                                    <p class="mobile-font-color">E-mail: <a href="mailto:{{$body_shop->email}}" style="color:{{$body_shop->email_font_color}}; font-size:{{$body_shop->email_font_size}}; font-family:{{$body_shop->email_font_family}};">{{$body_shop->email}}</a></p>
                                                                                 </div>
                                                                                 <a class="nav-link mb-0 p-0 left-location active location-anchore" data-toggle="pill" href="#shalimar-sales" onclick="changeBodyShop('{{ $body_shop->id }}')" role="tab" aria-controls="v-pills-home" aria-selected="true">
                                                                                     <div class="btn-container">
