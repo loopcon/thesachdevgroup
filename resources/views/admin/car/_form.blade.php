@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     @foreach($cars as $car)
-                        <form method="post" action="{{ route('car_update', $car->id) }}" class="car_form" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('car_update', $car->id) }}" class="car_form" enctype="multipart/form-data" data-parsley-validate="">
                             @csrf
                             <input type="hidden" value="{{ $car->id }}" class="id" name="id">
                             <div class="row">
@@ -270,19 +270,19 @@
 <script type="text/javascript" src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
-        $(".car_form").validate({
-            rules: {
-                // 'driven': {
-                //     number: true,
-                // },
-                'year': {
-                    number: true,
-                },
-                'car_type': {
-                    required: true,
-                },
-            },
-        });
+        // $(".car_form").validate({
+        //     rules: {
+        //         // 'driven': {
+        //         //     number: true,
+        //         // },
+        //         'year': {
+        //             number: true,
+        //         },
+        //         'car_type': {
+        //             required: true,
+        //         },
+        //     },
+        // });
         $('.colorpicker').colorpicker();
 
         // image validation

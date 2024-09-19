@@ -1,5 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
@@ -18,7 +19,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('count_update', array('id' => encrypt($record->id))) }} @else{{ route('count_insert') }} @endif" method="POST" class="count_form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('count_update', array('id' => encrypt($record->id))) }} @else{{ route('count_insert') }} @endif" method="POST" class="count_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
@@ -27,14 +28,14 @@
                                 @if(isset($record->icon) && $record->icon)
                                     <img src="{{url('public/count_icon/'.$record->icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
-                                <input type="file" id="icon" class="form-control" name="icon">
+                                <input type="file" id="icon" class="form-control" name="icon" required>
                                 <div class="error"></div>
                                 <small class="image_type">(Height:50px,Width:50px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="amount" class="form-label">Amount<span class="text-danger">*</span></label>
-                                <input type="number" id="amount" class="form-control" name="amount" value="{{isset($record->amount) ? $record->amount : old('amount')}}">
+                                <input type="number" id="amount" class="form-control" name="amount" value="{{isset($record->amount) ? $record->amount : old('amount')}}" required>
                                 <div class="error"></div>
                             </div> 
 
@@ -118,37 +119,38 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 <script>
  $(document).ready(function () {
-        $(".count_form").validate({
-            rules: {
-                'icon': {
-                    required: checkIconImage,
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'amount': {
-                    required: true,
-                },
-            },
-            messages: {
-                'icon': {
-                    required: "The icon field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'amount': {
-                    required: "The amount field is required.",
-                },
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".count_form").validate({
+        //     rules: {
+        //         'icon': {
+        //             required: checkIconImage,
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'amount': {
+        //             required: true,
+        //         },
+        //     },
+        //     messages: {
+        //         'icon': {
+        //             required: "The icon field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //         'amount': {
+        //             required: "The amount field is required.",
+        //         },
+        //     },
+        //     errorPlacement: function(error, element) {
+        //         error.appendTo(element.parent().find('.error'));
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
         function checkIconImage() {
             var old_image = $('#old_image').val();

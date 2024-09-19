@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('car-insurance-update') }}" method="POST" class="service-center-form" enctype="multipart/form-data">
+                    <form action="{{ route('car-insurance-update') }}" method="POST" class="service-center-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="col-md-4 mt-2">
@@ -157,14 +157,14 @@
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
-        $(".service-center-form").validate({
-            rules: {
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".service-center-form").validate({
+        //     rules: {
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
         $('.colorpicker').colorpicker();
 

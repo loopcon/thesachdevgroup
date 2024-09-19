@@ -60,7 +60,7 @@
 @endsection
 @section('javascript')
 <script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
-<script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
+<script src="{{url('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
  CKEDITOR.replace('ckeditor', {
             height:300,
         });

@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('car_insert') }}" method="POST" class="car_form" enctype="multipart/form-data">
+                    <form action="{{ route('car_insert') }}" method="POST" class="car_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
@@ -264,19 +264,19 @@
 <script type="text/javascript" src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
-        $(".car_form").validate({
-            rules: {
-                // 'driven': {
-                //     number: true,
-                // },
-                'year': {
-                    number: true,
-                },
-                'car_type': {
-                    required: true,
-                },
-            },
-        });
+        // $(".car_form").validate({
+        //     rules: {
+        //         // 'driven': {
+        //         //     number: true,
+        //         // },
+        //         'year': {
+        //             number: true,
+        //         },
+        //         'car_type': {
+        //             required: true,
+        //         },
+        //     },
+        // });
         $('.colorpicker').colorpicker();
     });
 </script>
