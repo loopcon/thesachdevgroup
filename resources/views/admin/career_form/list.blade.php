@@ -91,13 +91,16 @@
                 rows: '"visible',
                 exportOptions: {
                     columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11], // 11 field export
+                    modifier: {
+                            page: 'all' // Export all rows, not just the visible ones
+                        }
                 },
                 // className: 'btn-success mb-3'
             }
         ],
 
         processing: true,
-        serverSide: true,
+        // serverSide: true,
         // scrollX: true,
         columns: [
             {data: 'id', name: 'id',orderable: false, searchable: false},

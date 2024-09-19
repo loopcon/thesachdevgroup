@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link class="js-stylesheet" href="{{ asset('plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -14,12 +17,12 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('brand_insert') }}" method="POST" class="brand_form" enctype="multipart/form-data">
+                    <form action="{{ route('brand_insert') }}" method="POST" class="brand_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
-                                <input type="file" id="image" class="form-control" name="image">
+                                <input type="file" id="image" class="form-control" name="image" required>
                                 <small class="image_type">(Height:145px,Width:145px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
@@ -73,40 +76,41 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ asset('plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
-        $(".brand_form").validate({
-            rules: {
-                'image': {
-                    required: true,
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'name': {
-                    required: true,
-                },
-                'link': {
-                    required: true,
-                    url: "url",
-                },
-            },
-            messages: {
-                'image': {
-                    required: "The image field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'name': {
-                    required: "The name field is required.",
-                },
-                'link': {
-                    required: "The link field is required.",
-                    url: "Please enter a valid link.",
-                },
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".brand_form").validate({
+        //     rules: {
+        //         'image': {
+        //             required: true,
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'name': {
+        //             required: true,
+        //         },
+        //         'link': {
+        //             required: true,
+        //             url: "url",
+        //         },
+        //     },
+        //     messages: {
+        //         'image': {
+        //             required: "The image field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //         'name': {
+        //             required: "The name field is required.",
+        //         },
+        //         'link': {
+        //             required: "The link field is required.",
+        //             url: "Please enter a valid link.",
+        //         },
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
     $('.colorpicker').colorpicker();
     });

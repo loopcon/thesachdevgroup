@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link class="js-stylesheet" href="{{ asset('plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -14,12 +17,12 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('showroom_insert') }}" method="POST" class="showroom_form" enctype="multipart/form-data">
+                    <form action="{{ route('showroom_insert') }}" method="POST" class="showroom_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="our_business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
-                                <select class="form-control our_business_id select2" name="our_business_id" id="our_business_id">
+                                <select class="form-control our_business_id select2" name="our_business_id" id="our_business_id" required>
                                     <option selected="selected" disabled="disabled" value="">Select</option>
                                     @foreach($our_business as $our_busines)
                                         <option value="{{$our_busines->id}}">{{$our_busines->title}}</option>
@@ -38,7 +41,7 @@
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Showroom Name<span class="text-danger">*</span></label>
-                                <input type="text" id="name" class="form-control" name="name">
+                                <input type="text" id="name" class="form-control" name="name" required>
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div id="error"></div>
                             </div>
@@ -72,7 +75,7 @@
 
                             <div class="col-md-12 mt-2 mb-3">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" name="description"></textarea>
+                                <textarea class="ckeditor form-control" name="description"></textarea>
                                 <div class="error"></div>
                             </div>
 
@@ -103,7 +106,7 @@
 
                             <div class="col-md-4">
                                 <label for="brand_id" class="form-label">Select Brand<span class="text-danger">*</span></label>
-                                <select name="brand_id" id="brand_id" class="form-control select2">
+                                <select name="brand_id" id="brand_id" class="form-control select2" required>
                                     <option value="">Select</option>
                                     @foreach($brands as $brand)
                                         <option value="{{$brand->id}}">
@@ -117,7 +120,7 @@
 
                             <div class="col-md-4 adm-select-car-drop">
                                 <label for="car_id" class="form-label">Select Car<span class="text-danger">*</span></label>
-                                <select name="car_id[]" id="car_id" class="form-control select2" multiple>
+                                <select name="car_id[]" id="car_id" class="form-control select2" required multiple>
                                     <option disabled>Select</option>
                                 </select>
                                 @if ($errors->has('car_id')) <div class="text-danger">{{ $errors->first('car_id') }}</div>@endif
@@ -164,7 +167,7 @@
 
                             <div class="mb-3 col-md-4">
                                 <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="address"></textarea>
+                                <textarea class="form-control" name="address" required></textarea>
                                 @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -237,7 +240,7 @@
 
                             <div class="col-md-4">
                                 <label for="working_hours" class="form-label">Working Hours<span class="text-danger">*</span></label>
-                                <input type="text" id="working_hours" class="form-control" name="working_hours">
+                                <input type="text" id="working_hours" class="form-control" name="working_hours" required>
                                 @if ($errors->has('working_hours')) <div class="text-danger">{{ $errors->first('working_hours') }}</div>@endif
                                 <div id="error"></div>
                             </div>
@@ -308,7 +311,7 @@
 
                             <div class="col-md-4">
                                 <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
-                                <input type="number" id="contact_number" class="form-control" name="contact_number">
+                                <input type="number" id="contact_number" class="form-control" name="contact_number" required>
                                 @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -379,7 +382,7 @@
 
                             <div class="mb-3 col-md-4">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
-                                <input type="email" id="email" class="form-control" name="email">
+                                <input type="email" id="email" class="form-control" name="email" required>
                                 @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -572,14 +575,14 @@
 
                             <div class="col-md-4 mt-2">
                                 <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="rating" id="rating">
+                                <input type="text" class="form-control" name="rating" id="rating" required>
                                 @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
                                 <div id="error"></div>
                             </div>
 
                             <div class="col-md-4 mb-2">
                                 <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating">
+                                <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating" required>
                                 @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                                 <div id="error"></div>
                             </div>
@@ -601,6 +604,7 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ asset('plugins/parsley/parsley.js') }}"></script>
 <script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
@@ -628,138 +632,88 @@
             }
         });
 
-        $(".showroom_form").validate({
-            rules: {
-                'our_business_id': {
-                    required: true,
-                },
-                'slider_image': {
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'image': {
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'name': {
-                    required: true,
-                },
-                'brand_id': {
-                    required: true,
-                },
-                'car_id[]': { 
-                    required: true,
-                },
-                'address': {
-                    required: true,
-                },
-                'working_hours': {
-                    required: true,
-                },
-                'contact_number': {
-                    required: true,
-                    maxlength:"10",
-                    minlength:"10",
-                },
-                'email': {
-                    required: true,
-                },
-                'address_icon': {
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'working_hours_icon': {
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'contact_number_icon': {
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'email_icon': {
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'rating': {
-                    required: true,
-                    number: true,
-                    max: 5
-                },
-                'number_of_rating': {
-                    required: true,
-                    number: true,
-                },
-            },
-            // messages: {
-            //     'our_business_id': {
-            //         required: "The our business field is required.",
-            //     },
-            //     'slider_image': {
-            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
-            //     },
-            //     'image': {
-            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
-            //     },
-            //     'name': {
-            //         required: "The showroom name field is required.",
-            //     },
-            //     'brand_id': {
-            //         required: "The brand field is required.",
-            //     },
-            //     'car_id[]': { 
-            //         required: "The car field is required.",
-            //     },
-            //     'address': {
-            //         required: "The address field is required.",
-            //     },
-            //     'working_hours': {
-            //         required: "The working hours field is required.",
-            //     },
-            //     'contact_number': {
-            //         required: "The contact number field is required.",
-            //     },
-            //     'email': {
-            //         required: "The email field is required.",
-            //     },
-            //     'address_icon': {
-            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
-            //     },
-            //     'working_hours_icon': {
-            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
-            //     },
-            //     'contact_number_icon': {
-            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
-            //     },
-            //     'email_icon': {
-            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
-            //     },
-            //     'rating': {
-            //         required: "The rating field is required.",
-            //         max: "The rating must not be greater than 5."
-            //     },
-            //     'number_of_rating': {
-            //         required: "The number of rating field is required.",
-            //     },
-            // },
-            errorPlacement: function(error, element) {
-                if(element.attr("name") == "our_business_id"){
-                    error.appendTo('#errorbusinessdiv');
-                    return;
-                }
-                if(element.attr("name") == "brand_id"){
-                    error.appendTo('#errordiv');
-                    return;
-                }
-                if(element.attr("name") == "car_id[]"){
-                    error.appendTo('#errorcardiv');
-                    return;
-                }
-                if(element.attr("name") == "name"){
-                        error.appendTo('#error');
-                        return;
-                }else {
-                    error.insertAfter(element);
-                }
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".showroom_form").validate({
+        //     rules: {
+        //         'our_business_id': {
+        //             required: true,
+        //         },
+        //         'slider_image': {
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'image': {
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'name': {
+        //             required: true,
+        //         },
+        //         'brand_id': {
+        //             required: true,
+        //         },
+        //         'car_id[]': { 
+        //             required: true,
+        //         },
+        //         'address': {
+        //             required: true,
+        //         },
+        //         'working_hours': {
+        //             required: true,
+        //         },
+        //         'contact_number': {
+        //             required: true,
+        //             maxlength:"10",
+        //             minlength:"10",
+        //         },
+        //         'email': {
+        //             required: true,
+        //         },
+        //         'address_icon': {
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'working_hours_icon': {
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'contact_number_icon': {
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'email_icon': {
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'rating': {
+        //             required: true,
+        //             number: true,
+        //             max: 5
+        //         },
+        //         'number_of_rating': {
+        //             required: true,
+        //             number: true,
+        //         },
+        //     },
+          
+        //     errorPlacement: function(error, element) {
+        //         if(element.attr("name") == "our_business_id"){
+        //             error.appendTo('#errorbusinessdiv');
+        //             return;
+        //         }
+        //         if(element.attr("name") == "brand_id"){
+        //             error.appendTo('#errordiv');
+        //             return;
+        //         }
+        //         if(element.attr("name") == "car_id[]"){
+        //             error.appendTo('#errorcardiv');
+        //             return;
+        //         }
+        //         if(element.attr("name") == "name"){
+        //                 error.appendTo('#error');
+        //                 return;
+        //         }else {
+        //             error.insertAfter(element);
+        //         }
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
         $('.colorpicker').colorpicker();
     });

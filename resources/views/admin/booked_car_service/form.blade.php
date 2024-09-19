@@ -1,8 +1,8 @@
 @extends('admin.layout.header')
 @section('css')
-    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
-    <link class="js-stylesheet" href="{{ url('public/plugins/select2/css/select2.css') }}" rel="stylesheet">
-    <link class="js-stylesheet" href="{{ url('public/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link class="js-stylesheet" href="{{ asset('plugins/parsley/parsley.css') }}" rel="stylesheet">
+    <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
+    <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -71,9 +71,9 @@
 </div>
 @endsection
 @section('javascript')
-<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
-<script src="{{ url('public/plugins/select2/js/select2.js') }}"></script>
-<script src="{{ url('public/plugins/select2/js/select2.min.js') }}"></script>
+<script src="{{ asset('plugins/parsley/parsley.js') }}"></script>
+<script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
+<script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
