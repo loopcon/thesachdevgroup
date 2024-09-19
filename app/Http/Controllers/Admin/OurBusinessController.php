@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\OurBusiness;
 use App\Models\Header_menu;
+use App\Models\Footer_menu;
 use App\Models\Car;
 use App\Models\Service;
 use DataTables;
@@ -43,6 +44,7 @@ class OurBusinessController extends Controller
                 $return_data = array();
                 $return_data['site_title'] = trans('Our Business Create');
                 $return_data['our_business'] = Header_menu::select('id','name','menu_name')->where('menu_name','=','Our Businesses')->get();
+                $return_data['our_businesses'] = Footer_menu::select('id','name','menu_name')->where('menu_name','=','Our Businesses')->get();
                 $return_data['cars'] = Car::select('id','name')->get();
                 $return_data['services'] = Service::select('id','name')->get();
 

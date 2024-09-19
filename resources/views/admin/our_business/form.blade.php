@@ -39,12 +39,37 @@
                                 <label for="title" class="form-label">Business Title<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="title" id="title">
                                     <option value="">-- Select --</option>
-                                    @foreach($our_business as $value)
-                                        <option value="{{$value->name}}"@if(isset($record->title) && $record->title == $value->name){{'selected'}}@endif>{{$value->name}}</option>
+                                    @php
+                                        // Create a set to track added names
+                                        $addedNames = [];
+                                    @endphp
+
+                                    @foreach($our_business as $data)
+                                        @if (!in_array($data->name, $addedNames))
+                                            <option value="{{ $data->name }}" @if(isset($record->title) && $record->title == $data->name) selected @endif>
+                                                {{ $data->name }}
+                                            </option>
+                                            @php
+                                                $addedNames[] = $data->name; // Add to set
+                                            @endphp
+                                        @endif
+                                    @endforeach
+
+                                    @foreach($our_businesses as $value)
+                                        @if (!in_array($value->name, $addedNames))
+                                            <option value="{{ $value->name }}" @if(isset($record->title) && $record->title == $value->name) selected @endif>
+                                                {{ $value->name }}
+                                            </option>
+                                            @php
+                                                $addedNames[] = $value->name; // Add to set
+                                            @endphp
+                                        @endif
                                     @endforeach
                                 </select>
                                 <div id="error"></div>
-                                @if ($errors->has('title')) <div class="text-danger">{{ $errors->first('title') }}</div>@endif
+                                @if ($errors->has('title')) 
+                                    <div class="text-danger">{{ $errors->first('title') }}</div>
+                                @endif
                             </div>
                         </div>
 
