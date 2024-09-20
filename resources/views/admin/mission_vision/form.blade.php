@@ -1,5 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
@@ -24,7 +25,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('mission_vision_update', array('id' => encrypt($record->id))) }} @else{{ route('mission_vision_insert') }} @endif" method="POST" class="mission_vision_form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('mission_vision_update', array('id' => encrypt($record->id))) }} @else{{ route('mission_vision_insert') }} @endif" method="POST" class="mission_vision_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
@@ -33,14 +34,14 @@
                                 @if(isset($record->icon) && $record->icon)
                                     <img src="{{url('public/mission_vision/'.$record->icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
-                                <input type="file" id="icon" class="form-control" name="icon">
+                                <input type="file" id="icon" class="form-control" name="icon" required>
                                 <div class="error"></div>
                                 <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="icon_name" class="form-label">Icon Name<span class="text-danger">*</span></label>
-                                <input type="text" id="icon_name" class="form-control" name="icon_name" value="{{isset($record->icon_name) ? $record->icon_name : old('icon_name')}}">
+                                <input type="text" id="icon_name" class="form-control" name="icon_name" value="{{isset($record->icon_name) ? $record->icon_name : old('icon_name')}}" required>
                                 <div class="error"></div>
                             </div>
 
@@ -146,6 +147,7 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 <script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
@@ -155,46 +157,53 @@
             height:300,
         });
 
-        $(".mission_vision_form").validate({
-            rules: {
-                'icon': {
-                    required: checkIconImage,
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'icon_name': {
-                    required: true,
-                },
-            },
-            messages: {
-                'icon': {
-                    required: "The icon field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'icon_name': {
-                    required: "The icon name field is required.",
-                },
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".mission_vision_form").validate({
+        //     rules: {
+        //         'icon': {
+        //             required: checkIconImage,
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'icon_name': {
+        //             required: true,
+        //         },
+        //     },
+        //     messages: {
+        //         'icon': {
+        //             required: "The icon field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //         'icon_name': {
+        //             required: "The icon name field is required.",
+        //         },
+        //     },
+        //     errorPlacement: function(error, element) {
+        //         error.appendTo(element.parent().find('.error'));
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
-        function checkIconImage() {
-            var old_image = $('#old_image').val();
-            var icon = $('#icon').val();
+        // function checkIconImage() {
+        //     var old_image = $('#old_image').val();
+        //     var icon = $('#icon').val();
 
-            if(old_image != '' || icon != ''){
-                return false;
-            }
-            return true;
+        //     if(old_image != '' || icon != ''){
+        //         return false;
+        //     }
+        //     return true;
+        // }
+
+        var old_image = $('#old_image').val();
+        var icon = $('#icon').val();
+        if(old_image != '' || icon != ''){
+            document.getElementById("icon").required = false;
+        }else{
+            document.getElementById("icon").required = true;
         }
 
-    $('.colorpicker').colorpicker();
-
+        $('.colorpicker').colorpicker();
     });
 </script>
 @endsection

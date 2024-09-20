@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -17,7 +20,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('our_location_insert') }}" method="POST" class="our_location_form" enctype="multipart/form-data">
+                    <form action="{{ route('our_location_insert') }}" method="POST" class="our_location_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
@@ -26,13 +29,13 @@
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/our_location/'.$record->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
-                                <input type="file" id="image" class="form-control image" name="image">
+                                <input type="file" id="image" class="form-control image" name="image" required>
                                 <small class="image_type">(Height:352px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="title">Title<span class="text-danger">*</span></label>
-                                <input type="text" id="title" class="form-control" name="title" value="{{isset($record->title) ? $record->title : old('title')}}">
+                                <input type="text" id="title" class="form-control" name="title" value="{{isset($record->title) ? $record->title : old('title')}}" required>
                             </div>
 
                             <div class="col-md-4">
@@ -73,43 +76,51 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
-        $(".our_location_form").validate({
-            rules: {
-                'image': {
-                    required: checkImage,
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'title': {
-                    required: true,
-                },
-            },
-            messages: {
-                'image': {
-                    required: "The image field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'title': {
-                    required: "The title field is required.",
-                },
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".our_location_form").validate({
+        //     rules: {
+        //         'image': {
+        //             required: checkImage,
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'title': {
+        //             required: true,
+        //         },
+        //     },
+        //     messages: {
+        //         'image': {
+        //             required: "The image field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //         'title': {
+        //             required: "The title field is required.",
+        //         },
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
-        function checkImage() {
-            var old_image = $('#old_image').val();
-            var image = $('#image').val();
+        // function checkImage() {
+        //     var old_image = $('#old_image').val();
+        //     var image = $('#image').val();
 
-            if(old_image != '' || image != ''){
-                return false;
-            }
-            return true;
+        //     if(old_image != '' || image != ''){
+        //         return false;
+        //     }
+        //     return true;
+        // }
+
+        var old_image = $('#old_image').val();
+        var image = $('#image').val();
+        if(old_image != '' || image != ''){
+            document.getElementById("image").required = false;
+        }else{
+            document.getElementById("image").required = true;
         }
-
         $('.colorpicker').colorpicker();
     });
 </script>

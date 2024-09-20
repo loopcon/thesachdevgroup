@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -17,12 +20,12 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('our-business-update', array('id' => encrypt($record->id))) }} @else{{ route('our-business-store') }} @endif" method="POST" class="our-business-form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('our-business-update', array('id' => encrypt($record->id))) }} @else{{ route('our-business-store') }} @endif" method="POST" class="our-business-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
                                 <label for="page_link" class="form-label">page Link or Url<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="page_link" id="page_link">
+                                <select class="form-control select2" name="page_link" id="page_link" required>
                                     <option value="">-- Select --</option>
                                     <option value="1" @if(isset($record->page_link) && $record->page_link == 1){{'selected'}} @endif>Our Page Link</option>
                                     <option value="0" @if(isset($record->page_link) && $record->page_link == 0){{'selected'}} @endif>Other Website Url</option>
@@ -37,7 +40,7 @@
                             
                             <div class="col-md-4 adm-brand-errorbox">
                                 <label for="title" class="form-label">Business Title<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="title" id="title">
+                                <select class="form-control select2" name="title" id="title" required>
                                     <option value="">-- Select --</option>
                                     @php
                                         // Create a set to track added names
@@ -55,7 +58,7 @@
                                         @endif
                                     @endforeach
 
-                                    @foreach($our_businesses as $value)
+                                    @foreach($our_business as $value)
                                         @if (!in_array($value->name, $addedNames))
                                             <option value="{{ $value->name }}" @if(isset($record->title) && $record->title == $value->name) selected @endif>
                                                 {{ $value->name }}
@@ -428,6 +431,7 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
@@ -457,40 +461,40 @@
                 $('.detail-page').show();
             }
         });
-        $(".our-business-form").validate({
-            rules: {
-                'page_link': {
-                    required: true,
-                },
-                'title': {
-                    required: true,
-                },
-                'banner_image': {
-                    extension: "jpg,jpeg,png,webp",
-                },
-                url: {
-                    url: "url",
-                },
-            },
-            messages: {
-                'page_link': {
-                    required: "Page Link or Url is required",
-                },
-                'title': {
-                    required: "Title is required",
-                },
-                'banner_image': {
-                    extension: "Banner Image must be jpg,jpeg,png or webp",
-                },
-                'url': {
-                    url: "Enter valid url",
-                },
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".our-business-form").validate({
+        //     rules: {
+        //         'page_link': {
+        //             required: true,
+        //         },
+        //         'title': {
+        //             required: true,
+        //         },
+        //         'banner_image': {
+        //             extension: "jpg,jpeg,png,webp",
+        //         },
+        //         url: {
+        //             url: "url",
+        //         },
+        //     },
+        //     messages: {
+        //         'page_link': {
+        //             required: "Page Link or Url is required",
+        //         },
+        //         'title': {
+        //             required: "Title is required",
+        //         },
+        //         'banner_image': {
+        //             extension: "Banner Image must be jpg,jpeg,png or webp",
+        //         },
+        //         'url': {
+        //             url: "Enter valid url",
+        //         },
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
         $('.colorpicker').colorpicker();
 
