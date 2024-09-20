@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -17,7 +20,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('home_detail_insert') }}" method="POST" class="home_detail_form" enctype="multipart/form-data">
+                    <form action="{{ route('home_detail_insert') }}" method="POST" class="home_detail_form" enctype="multipart/form-data" data-parsley-validate="">
                       @csrf
                       @if(isset($home_details) && count($home_details) > 0)
                           @foreach($home_details as $home_detail)
@@ -28,14 +31,14 @@
                                 @if(isset($home_detail->image) && isset($home_detail->image))
                                   <img src="{{url('public/home_detail/'.$home_detail->image)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif
-                                <input type="file" id="image" class="form-control image" name="image">
+                                <input type="file" id="image" class="form-control image" name="image" required>
                                 <div class="error"></div>
                                 <small class="image_type">(Height:479px,Width:540px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4 mb-3">
                               <label for="title">Title<span class="text-danger">*</span></label>
-                              <input type="text" id="title" class="form-control" name="title" value="{{ $home_detail->title}}">
+                              <input type="text" id="title" class="form-control" name="title" value="{{ $home_detail->title}}" required>
                               <div class="error"></div>
                             </div>
 
@@ -73,7 +76,7 @@
 
                             <div class="col-md-4 mb-3">
                               <label for="sub_title">Sub Title<span class="text-danger">*</span></label>
-                              <input type="text" id="sub_title" class="form-control" name="sub_title" value="{{ $home_detail->sub_title}}">
+                              <input type="text" id="sub_title" class="form-control" name="sub_title" value="{{ $home_detail->sub_title}}" required>
                                 <div class="error"></div>
                             </div>
                           </div>
@@ -149,14 +152,14 @@
                       <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="image">Image<span class="text-danger">*</span></label>
-                            <input type="file" id="image" class="form-control image" name="image">
+                            <input type="file" id="image" class="form-control image" name="image" required>
                             <div class="error"></div>
                             <small class="image_type">(Height:479px,Width:540px; Image Type : jpg,jpeg,png,svg,webp)</small>
                         </div>
 
                         <div class="col-md-4 mb-3">
                           <label for="title">Title<span class="text-danger">*</span></label>
-                          <input type="text" id="title" class="form-control" name="title">
+                          <input type="text" id="title" class="form-control" name="title" required>
                           <div class="error"></div>
                         </div>
 
@@ -194,7 +197,7 @@
 
                         <div class="col-md-4 mb-3">
                           <label for="sub_title">Sub Title<span class="text-danger">*</span></label>
-                          <input type="text" id="sub_title" class="form-control" name="sub_title">
+                          <input type="text" id="sub_title" class="form-control" name="sub_title" required>
                             <div class="error"></div>
                         </div>
                       </div>
@@ -273,6 +276,7 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
@@ -281,45 +285,53 @@
             height:300,
         });
 
-        $(".home_detail_form").validate({
-            ignore: [],
-            rules: {
-                'image': {
-                    required: checkImage,
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'title': {
-                    required: true,
-                },
-                'sub_title': {
-                    required: true,
-                },
-            },
-            messages: {
-                'image': {
-                    required: "The image field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'title': {
-                    required: "The title field is required.",
-                },
-                'sub_title': {
-                    required: "The sub title field is required.",
-                },
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
-            },
-        });
-
-        function checkImage() {
-          var old_image = $('#old_image').val();
-          if(old_image){
-            return false;
-          }
-        }
+        // $(".home_detail_form").validate({
+        //     ignore: [],
+        //     rules: {
+        //         'image': {
+        //             required: checkImage,
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'title': {
+        //             required: true,
+        //         },
+        //         'sub_title': {
+        //             required: true,
+        //         },
+        //     },
+        //     messages: {
+        //         'image': {
+        //             required: "The image field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //         'title': {
+        //             required: "The title field is required.",
+        //         },
+        //         'sub_title': {
+        //             required: "The sub title field is required.",
+        //         },
+        //     },
+        //     errorPlacement: function(error, element) {
+        //         error.appendTo(element.parent().find('.error'));
+        //     },
+        // });
+        // function checkImage() {
+        //   var old_image = $('#old_image').val();
+        //   if(old_image){
+        //     return false;
+        //   }
+        // }
 
         $('.colorpicker').colorpicker();
+
+        // image validation
+        var old_image = $('#old_image').val();
+        var image = $('#image').val();
+        if(old_image != '' || image != ''){
+            document.getElementById("image").required = false;
+        }else{
+            document.getElementById("image").required = true;
+        }
     });
 </script>
 @endsection

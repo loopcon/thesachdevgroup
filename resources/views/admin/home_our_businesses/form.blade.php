@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -14,7 +17,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('home_our_businesses_insert') }}" method="POST" class="our_businesses_form" enctype="multipart/form-data">
+                    <form action="{{ route('home_our_businesses_insert') }}" method="POST" class="our_businesses_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-6">
@@ -41,32 +44,33 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
-        $(".our_businesses_form").validate({
-            rules: {
-                'image': {
-                    required: true,
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'link': {
-                    url: "url",
-                },
-            },
-            messages: {
-                'image': {
-                    required: "The image field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'link': {
-                    url: "Please enter a valid link.",
-                },
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".our_businesses_form").validate({
+        //     rules: {
+        //         'image': {
+        //             required: true,
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'link': {
+        //             url: "url",
+        //         },
+        //     },
+        //     messages: {
+        //         'image': {
+        //             required: "The image field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //         'link': {
+        //             url: "Please enter a valid link.",
+        //         },
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
         $('.colorpicker').colorpicker();
     });
 </script>

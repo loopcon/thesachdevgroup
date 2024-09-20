@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -15,16 +18,17 @@
             <div class="card">
                 <div class="card-body">
                     @foreach($homesliders as $homeslider)
-                        <form method="post" action="{{ route('homeslider_update', $homeslider->id) }}" class="edit_form" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('homeslider_update', $homeslider->id) }}" class="edit_form" enctype="multipart/form-data" data-parsley-validate="">
                             @csrf
                             <input type="hidden" value="{{ $homeslider->id }}" class="id" name="id">
                             <div class="row">
                                 <div class="mb-3 col-md-4">
                                     <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
+                                    <input type="hidden" name="old_image" id="old_image" value="{{isset($homeslider->image) ? $homeslider->image : old('image')}}">
                                     @if(isset($homeslider->image) && isset($homeslider->image))
                                         <img src="{{url('public/home_slider/'.$homeslider->image)}}" width="100" style="margin-bottom:10px; margin-left:5px;"> 
                                     @endif
-                                    <input type="file" id="image" class="form-control" name="image">
+                                    <input type="file" id="image" class="form-control" name="image" required>
                                     <small class="image_type">(Height:478px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
     
@@ -113,23 +117,31 @@
         </div>
     </section>
   </div>
-  @endsection
-  @section('javascript')
+@endsection
+@section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
-        $(".edit_form").validate({
-            rules: {
-                image: {
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-            },
-            messages: {
-                image: {
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-            },
-        });
+        // $(".edit_form").validate({
+        //     rules: {
+        //         image: {
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //     },
+        //     messages: {
+        //         image: {
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //     },
+        // });
 
+        var old_image = $('#old_image').val();
+        var image = $('#image').val();
+        if(old_image != '' || image != ''){
+            document.getElementById("image").required = false;
+        }else{
+            document.getElementById("image").required = true;
+        }
         $('.colorpicker').colorpicker();
     });
 </script>

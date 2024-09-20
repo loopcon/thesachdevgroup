@@ -1,5 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ asset('plugins/parsley/parsley.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
@@ -18,12 +19,12 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('footer_menu_update', array('id' => encrypt($record->id))) }} @else{{ route('footer_menu_insert') }} @endif" method="POST" class="footer_menu_form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('footer_menu_update', array('id' => encrypt($record->id))) }} @else{{ route('footer_menu_insert') }} @endif" method="POST" class="footer_menu_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="menu_name" class="form-label">Select Menu<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="menu_name">
+                                <select class="form-control select2" name="menu_name" required>
                                     <option selected="selected" disabled="disabled">Select</option>
                                     <option value="Our Services" {{(old('menu_name') == 'Our Services' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'Our Services' ? 'selected' : ''))}}>Our Services</option>
                                     <option value="Our Businesses" {{(old('menu_name') == 'Our Businesses' ? 'selected' : (old('menu_name') == '' && isset($record->menu_name) && $record->menu_name == 'Our Businesses' ? 'selected' : ''))}}>Our Businesses</option>
@@ -34,7 +35,7 @@
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" id="name" class="form-control" name="name" value="{{ old('name') ?  old('name') : (isset($record->name) ? $record->name :  '')}}">
+                                <input type="text" id="name" class="form-control" name="name" value="{{ old('name') ?  old('name') : (isset($record->name) ? $record->name :  '')}}" required>
                                 <div class="error">@if ($errors->has('name')) <label id="name-error" class="error">{{ $errors->first('name') }}</label>@endif</div>
                             </div>
 
@@ -85,7 +86,7 @@
                         </div> 
 
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary submit" onclick="this.disabled='disabled';this.form.submit();">Submit</button>
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
                             <a href="{{ route('footer_menu') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
@@ -96,6 +97,7 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 <script>

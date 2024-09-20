@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -17,12 +20,12 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('faq-update', array('id' => encrypt($record->id))) }} @else{{ route('faq-store') }} @endif" method="POST" class="faq-form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('faq-update', array('id' => encrypt($record->id))) }} @else{{ route('faq-store') }} @endif" method="POST" class="faq-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+                                <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required>
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -45,6 +48,7 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
@@ -54,22 +58,22 @@
             height:300,
         });
 
-        $(".faq-form").validate({
-            rules: {
-                'name': {
-                    required: true,
-                },
-            },
-            messages: {
-                'name': {
-                    required: "Name is required",
-                },
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".faq-form").validate({
+        //     rules: {
+        //         'name': {
+        //             required: true,
+        //         },
+        //     },
+        //     messages: {
+        //         'name': {
+        //             required: "Name is required",
+        //         },
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
         $('.colorpicker').colorpicker();
     });

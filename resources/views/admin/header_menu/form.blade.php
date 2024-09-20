@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -14,12 +17,12 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('header_menu_insert') }}" method="POST" class="header_menu_form" enctype="multipart/form-data">
+                    <form action="{{ route('header_menu_insert') }}" method="POST" class="header_menu_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="menu_name" class="form-label">Select Menu<span class="text-danger">*</span></label>
-                                <select class="form-control select2 menu_name" name="menu_name">
+                                <select class="form-control select2 menu_name" name="menu_name" required>
                                     <option value="">Select</option>
                                     {{-- <option value="our_businesses" @if(old('menu_name') == 'our_businesses'){{'selected'}}@endif>Our Businesses</option>
                                     <option value="our_services" @if(old('menu_name') == 'our_services'){{'selected'}}@endif>Our Services</option>
@@ -40,7 +43,7 @@
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" id="name" class="form-control name" name="name" value="{{old('name')}}">
+                                <input type="text" id="name" class="form-control name" name="name" value="{{old('name')}}" required>
                                 {{-- <div class="error"></div> --}}
                                 <div class="error">@if ($errors->has('name')) <label id="name-error" class="error">{{ $errors->first('name') }}</label>@endif</div>
                             </div>
@@ -80,7 +83,7 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary submit" onclick="this.disabled='disabled';this.form.submit();">Submit</button>
+                            <button type="submit" class="btn btn-primary submit">Submit</button>
                             <a href="{{ route('header_menu.index') }}" class="btn btn-danger">Cancel</a>
                         </div>
                     </form>
@@ -89,8 +92,9 @@
         </div>
     </section>
   </div>
-  @endsection
-  @section('javascript')
+@endsection
+@section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
   <script>
     $(document).ready(function () {
 
@@ -129,13 +133,7 @@
         //         form.submit();
         //     }
         // });
-      
-        
-
     $('.colorpicker').colorpicker();
-
     });
-
-    
 </script>
 @endsection
