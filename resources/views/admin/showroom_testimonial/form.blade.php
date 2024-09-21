@@ -1,5 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
     <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
@@ -127,6 +128,7 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 <script src="{{ url('public/plugins/select2/js/select2.js') }}"></script>
@@ -134,70 +136,70 @@
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
-        $(".showroom_form").validate({
-            // rules: {
-            //     'name': {
-            //         required: true,
-            //     },
-            //     // 'car_id[]': { 
-            //     //     required: true,
-            //     // },
-            //     // 'address': {
-            //     //     required: true,
-            //     // },
-            //     // 'working_hours': {
-            //     //     required: true,
-            //     // },
-            //     // 'contact_number': {
-            //     //     required: true,
-            //     //     maxlength:"10",
-            //     //     minlength:"10",
-            //     // },
-            //     // 'email': {
-            //     //     required: true,
-            //     // },
-            // },
-            // messages: {
-            //     'name': {
-            //         required: "This field is required.",
-            //     },
-            //     // 'car_id[]': { 
-            //     //     required: "Car is required",
-            //     // },
-            //     // 'address': {
-            //     //     required: "Address is required",
-            //     // },
-            //     // 'working_hours': {
-            //     //     required: "Working hours is required",
-            //     // },
-            //     // 'contact_number': {
-            //     //     required: "Contact number is required",
-            //     // },
-            //     // 'email': {
-            //     //     required: "Email is required",
-            //     // },
-            // },
-            // errorPlacement: function(error, element) {
-            //     if(element.attr("name") == "brand_id"){
-            //         error.appendTo('#errordiv');
-            //         return;
-            //     }
-            //     if(element.attr("name") == "car_id[]"){
-            //         error.appendTo('#errorcardiv');
-            //         return;
-            //     }
-            //     if(element.attr("name") == "name"){
-            //             error.appendTo('#error');
-            //             return;
-            //     }else {
-            //         error.insertAfter(element);
-            //     }
-            // },
-            // submitHandler: function(form) {
-            //     $(form).find('.submit').prop("disabled", true);
-            //     form.submit();
-            // }
-        });
+        // $(".showroom_form").validate({
+        //     // rules: {
+        //     //     'name': {
+        //     //         required: true,
+        //     //     },
+        //     //     // 'car_id[]': { 
+        //     //     //     required: true,
+        //     //     // },
+        //     //     // 'address': {
+        //     //     //     required: true,
+        //     //     // },
+        //     //     // 'working_hours': {
+        //     //     //     required: true,
+        //     //     // },
+        //     //     // 'contact_number': {
+        //     //     //     required: true,
+        //     //     //     maxlength:"10",
+        //     //     //     minlength:"10",
+        //     //     // },
+        //     //     // 'email': {
+        //     //     //     required: true,
+        //     //     // },
+        //     // },
+        //     // messages: {
+        //     //     'name': {
+        //     //         required: "This field is required.",
+        //     //     },
+        //     //     // 'car_id[]': { 
+        //     //     //     required: "Car is required",
+        //     //     // },
+        //     //     // 'address': {
+        //     //     //     required: "Address is required",
+        //     //     // },
+        //     //     // 'working_hours': {
+        //     //     //     required: "Working hours is required",
+        //     //     // },
+        //     //     // 'contact_number': {
+        //     //     //     required: "Contact number is required",
+        //     //     // },
+        //     //     // 'email': {
+        //     //     //     required: "Email is required",
+        //     //     // },
+        //     // },
+        //     // errorPlacement: function(error, element) {
+        //     //     if(element.attr("name") == "brand_id"){
+        //     //         error.appendTo('#errordiv');
+        //     //         return;
+        //     //     }
+        //     //     if(element.attr("name") == "car_id[]"){
+        //     //         error.appendTo('#errorcardiv');
+        //     //         return;
+        //     //     }
+        //     //     if(element.attr("name") == "name"){
+        //     //             error.appendTo('#error');
+        //     //             return;
+        //     //     }else {
+        //     //         error.insertAfter(element);
+        //     //     }
+        //     // },
+        //     // submitHandler: function(form) {
+        //     //     $(form).find('.submit').prop("disabled", true);
+        //     //     form.submit();
+        //     // }
+        // });
 
         $('.colorpicker').colorpicker();
     });

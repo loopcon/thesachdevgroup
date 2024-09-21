@@ -1,5 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ url('public/plugins/select2/css/select2.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ url('public/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
@@ -21,7 +22,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('service-update', array('id' => encrypt($record->id))) }} @else{{ route('service-store') }} @endif" method="POST" class="service-form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('service-update', array('id' => encrypt($record->id))) }} @else{{ route('service-store') }} @endif" method="POST" class="service-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <?php /**<div class="col-md-4 adm-brand-errorbox">
@@ -37,7 +38,7 @@
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+                                <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required>
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -70,17 +71,18 @@
 
                             <div class="col-md-4 mt-2">
                                 <label for="url" class="form-label">Url<span class="text-danger">*</span></label>
-                                <input type="urls" class="form-control" id="url" name="url" value="{{isset($record->url) ? $record->url : old('url')}}">
+                                <input type="urls" class="form-control" id="url" name="url" value="{{isset($record->url) ? $record->url : old('url')}}" required>
                                 @if ($errors->has('url')) <div class="text-danger">{{ $errors->first('url') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
                             <div class="col-md-4 mb-3 mt-2">
                                 <label for="icon" class="form-label">Icon<span class="text-danger">*</span></label>
+                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->icon) ? $record->icon : old('icon')}}">
                                 @if(isset($record->icon) && $record->icon)
                                     <img src="{{url('public/uploads/service/'.$record->icon)}}" width="50" style="margin-bottom:10px; margin-left:5px;">
                                 @endif  
-                                <input type="file" id="icon" class="form-control" name="icon" value="">
+                                <input type="file" id="icon" class="form-control" name="icon" value="" required>
                                 @if ($errors->has('icon')) <div class="text-danger">{{ $errors->first('icon') }}</div>@endif
                                 <small class="image_type">(Hight:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
@@ -98,48 +100,57 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{ url('public/plugins/select2/js/select2.js') }}"></script>
 <script src="{{ url('public/plugins/select2/js/select2.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
-        $(".service-form").validate({
-            rules: {
-                'name': {
-                    required: true,
-                },
-                'service_center_id': {
-                    required: true,
-                },
-                'icon': {
-                    extension: "jpg,jpeg,png,webp",
-                },
-                'url': {
-                    required: true,
-                    url: "url",
-                },
-            },
-            messages: {
-                'name': {
-                    required: "Name is required",
-                },
-                'service_center_id': {
-                    required: "Service Center is required",
-                },
-                'icon': {
-                    extension: "Image must be jpg,jpeg,png or webp",
-                },
-                'url': {
-                    required: "Url is required",
-                    url: "Enter valid url",
-                },
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".service-form").validate({
+        //     rules: {
+        //         'name': {
+        //             required: true,
+        //         },
+        //         'service_center_id': {
+        //             required: true,
+        //         },
+        //         'icon': {
+        //             extension: "jpg,jpeg,png,webp",
+        //         },
+        //         'url': {
+        //             required: true,
+        //             url: "url",
+        //         },
+        //     },
+        //     messages: {
+        //         'name': {
+        //             required: "Name is required",
+        //         },
+        //         'service_center_id': {
+        //             required: "Service Center is required",
+        //         },
+        //         'icon': {
+        //             extension: "Image must be jpg,jpeg,png or webp",
+        //         },
+        //         'url': {
+        //             required: "Url is required",
+        //             url: "Enter valid url",
+        //         },
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
+
+        var old_image = $('#old_image').val();
+        var icon = $('#icon').val();
+        if(old_image != '' || icon != ''){
+            document.getElementById("icon").required = false;
+        }else{
+            document.getElementById("icon").required = true;
+        }
 
         $('.colorpicker').colorpicker();
     });

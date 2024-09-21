@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('service-center-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-store') }} @endif" method="POST" class="service-center-form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('service-center-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-store') }} @endif" method="POST" class="service-center-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
@@ -631,17 +631,17 @@
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
-        $(".service-center-form").validate({
-            rules: {
-                'rating': {
-                    number: true,
-                },
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".service-center-form").validate({
+        //     rules: {
+        //         'rating': {
+        //             number: true,
+        //         },
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
         $('.colorpicker').colorpicker();
     });

@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -14,7 +17,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('testimonials_insert') }}" method="POST" class="testimonials_form" enctype="multipart/form-data">
+                    <form action="{{ route('testimonials_insert') }}" method="POST" class="testimonials_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
@@ -27,7 +30,7 @@
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" id="name" class="form-control" name="name">
+                                <input type="text" id="name" class="form-control" name="name" required>
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -108,6 +111,7 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
     $(document).ready(function () {
@@ -116,34 +120,34 @@
             height:300,
         });
 
-        $(".testimonials_form").validate({
-            ignore: [],
-            rules: {
-                'name': {
-                    required: true,
-                },
-                'image': {
-                    required: true,
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-            },
-            messages: {
-                'name': {
-                    required: "The name field is required.",
-                },
-                'image': {
-                    required: "The image field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".testimonials_form").validate({
+        //     ignore: [],
+        //     rules: {
+        //         'name': {
+        //             required: true,
+        //         },
+        //         'image': {
+        //             required: true,
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //     },
+        //     messages: {
+        //         'name': {
+        //             required: "The name field is required.",
+        //         },
+        //         'image': {
+        //             required: "The image field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //     },
+        //     errorPlacement: function(error, element) {
+        //         error.appendTo(element.parent().find('.error'));
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
         $('.colorpicker').colorpicker();
     });

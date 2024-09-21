@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -17,7 +20,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('setting_insert') }}" method="POST" class="setting_form" enctype="multipart/form-data">
+                    <form action="{{ route('setting_insert') }}" method="POST" class="setting_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         @if(isset($settings) && count($settings) > 0)
                             @foreach($settings as $setting)
@@ -28,14 +31,14 @@
                                   @if(isset($setting->logo) && isset($setting->logo))
                                     <img src="{{url('public/logo/'.$setting->logo)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">
                                   @endif
-                                <input type="file" id="logo" class="form-control" name="logo">
+                                <input type="file" id="logo" class="form-control" name="logo" required>
                                 <div class="error"></div>
                                 <small class="image_type">(Height:85px,Width:85px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
     
                               <div class="col-md-4">
                                 <label for="email">Email<span class="text-danger">*</span></label>
-                                <input type="email" id="email" class="form-control" name="email" value="{{$setting->email}}">
+                                <input type="email" id="email" class="form-control" name="email" value="{{$setting->email}}" required>
                                 @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif 
                                 <div class="error"></div>
                               </div>
@@ -69,7 +72,7 @@
     
                               <div class="mb-3 col-md-4">
                                 <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
-                                <input type="number" id="mobile_number" class="form-control" name="mobile_number" value="{{$setting->mobile_number}}">
+                                <input type="number" id="mobile_number" class="form-control" name="mobile_number" value="{{$setting->mobile_number}}" required>
                                 @if ($errors->has('mobile_number')) <div class="text-danger">{{ $errors->first('mobile_number') }}</div>@endif
                                 <div class="error"></div>
                               </div>
@@ -102,7 +105,7 @@
     
                               <div class="mb-3 col-md-4">
                                 <label for="time">Time<span class="text-danger">*</span></label>
-                                <input type="text" id="time" class="form-control" name="time" value="{{$setting->time}}">
+                                <input type="text" id="time" class="form-control" name="time" value="{{$setting->time}}" required>
                                 @if ($errors->has('time')) <div class="text-danger">{{ $errors->first('time') }}</div>@endif
                                 <div class="error"></div>
                               </div>
@@ -134,7 +137,7 @@
     
                               <div class="mb-3 col-md-4">
                                 <label for="address">Address<span class="text-danger">*</span></label>
-                                <textarea class="form-control" name="address">{{$setting->address}}</textarea>
+                                <textarea class="form-control" name="address" required>{{$setting->address}}</textarea>
                                 @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                                 <div class="error"></div>
                               </div>
@@ -170,7 +173,7 @@
                                 @if(isset($setting->email_icon) && isset($setting->email_icon))
                                   <img src="{{url('public/email_icon/'.$setting->email_icon)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">  
                                 @endif
-                                <input type="file" id="email_icon" class="form-control" name="email_icon">
+                                <input type="file" id="email_icon" class="form-control" name="email_icon" required>
                                 <div class="error"></div>
                                 <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
@@ -181,7 +184,7 @@
                                 @if(isset($setting->call_icon) && isset($setting->call_icon))
                                   <img src="{{url('public/call_icon/'.$setting->call_icon)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">  
                                 @endif
-                                <input type="file" id="call_icon" class="form-control" name="call_icon">
+                                <input type="file" id="call_icon" class="form-control" name="call_icon" required>
                                 <div class="error"></div>
                                 <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
@@ -192,7 +195,7 @@
                                 @if(isset($setting->address_icon) && isset($setting->address_icon))
                                   <img src="{{url('public/address_icon/'.$setting->address_icon)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif
-                                <input type="file" id="address_icon" class="form-control" name="address_icon">
+                                <input type="file" id="address_icon" class="form-control" name="address_icon" required>
                                 <div class="error"></div>
                                 <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
@@ -237,14 +240,14 @@
                         <div class="row">
                           <div class="mb-3 col-md-4">
                             <label for="logo">Logo<span class="text-danger">*</span></label>
-                            <input type="file" id="logo" class="form-control" name="logo">
+                            <input type="file" id="logo" class="form-control" name="logo" required>
                             <div class="error"></div>
                             <small class="image_type">(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 
                           <div class="col-md-4">
                             <label for="email">Email<span class="text-danger">*</span></label>
-                            <input type="email" id="email" class="form-control" name="email">
+                            <input type="email" id="email" class="form-control" name="email" required>
                             @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
                             <div class="error"></div>
                           </div>
@@ -278,7 +281,7 @@
 
                           <div class="mb-3 col-md-4">
                             <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
-                            <input type="number" id="mobile_number" class="form-control" name="mobile_number">
+                            <input type="number" id="mobile_number" class="form-control" name="mobile_number" required>
                             @if ($errors->has('mobile_number')) <div class="text-danger">{{ $errors->first('mobile_number') }}</div>@endif
                             <div class="error"></div>
                           </div>
@@ -310,7 +313,7 @@
 
                           <div class="mb-3 col-md-4">
                             <label for="time">Time<span class="text-danger">*</span></label>
-                            <input type="text" id="time" class="form-control" name="time">
+                            <input type="text" id="time" class="form-control" name="time" required>
                             @if ($errors->has('time')) <div class="text-danger">{{ $errors->first('time') }}</div>@endif
                             <div class="error"></div>
                           </div>
@@ -342,7 +345,7 @@
 
                           <div class="mb-3 col-md-4">
                             <label for="address">Address<span class="text-danger">*</span></label>
-                            <textarea class="form-control" name="address"></textarea>
+                            <textarea class="form-control" name="address" required></textarea>
                             @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
                             <div class="error"></div>
                           </div>
@@ -374,21 +377,21 @@
 
                           <div class="col-md-4">
                             <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
-                            <input type="file" id="email_icon" class="form-control" name="email_icon">
+                            <input type="file" id="email_icon" class="form-control" name="email_icon" required>
                             <div class="error"></div>
                             <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 
                           <div class="mb-3 col-md-4">
                             <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
-                            <input type="file" id="call_icon" class="form-control" name="call_icon">
+                            <input type="file" id="call_icon" class="form-control" name="call_icon" required>
                             <div class="error"></div>
                             <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 
                           <div class="col-md-4">
                             <label for="address_icon">Address Icon<span class="text-danger">*</span></label>
-                            <input type="file" id="address_icon" class="form-control" name="address_icon">
+                            <input type="file" id="address_icon" class="form-control" name="address_icon" required>
                             <div class="error"></div>
                             <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
@@ -439,103 +442,140 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
-        $(".setting_form").validate({
-            ignore: [],
-            rules: {
-                'logo': {
-                    required: checkLogo,
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'email': {
-                    required: true,
-                },
-                'mobile_number': {
-                    required: true,
-                    maxlength:"10",
-                    minlength:"10",
-                },
-                'time': {
-                    required: true,
-                },
-                'address': {
-                    required: true,
-                },
-                'email_icon': {
-                  required: checkEmailIcon, 
-                  extension: "jpg,jpeg,png,webp,svg",
-                },
-                'call_icon': {
-                  required: checkCallIcon, 
-                  extension: "jpg,jpeg,png,webp,svg",
-                },
-                'address_icon': {
-                  required: checkAddressIcon, 
-                  extension: "jpg,jpeg,png,webp,svg",
-                },
-            },
-            messages: {
-                'logo': {
-                    required: "The logo field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'email': {
-                    required: "The email field is required.",
-                },
-                'mobile_number': {
-                    required: "The mobile number field is required.",
-                },
-                'time': {
-                    required: "The time field is required.",
-                },
-                'address': {
-                    required: "The address field is required.",
-                },
-                'email_icon': {
-                    required: "The email icon field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'call_icon': {
-                    required: "The call icon field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'address_icon': {
-                    required: "The address icon field is required.",
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
-            },
-        });
+        // $(".setting_form").validate({
+        //     ignore: [],
+        //     rules: {
+        //         'logo': {
+        //             required: checkLogo,
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'email': {
+        //             required: true,
+        //         },
+        //         'mobile_number': {
+        //             required: true,
+        //             maxlength:"10",
+        //             minlength:"10",
+        //         },
+        //         'time': {
+        //             required: true,
+        //         },
+        //         'address': {
+        //             required: true,
+        //         },
+        //         'email_icon': {
+        //           required: checkEmailIcon, 
+        //           extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'call_icon': {
+        //           required: checkCallIcon, 
+        //           extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'address_icon': {
+        //           required: checkAddressIcon, 
+        //           extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //     },
+        //     messages: {
+        //         'logo': {
+        //             required: "The logo field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //         'email': {
+        //             required: "The email field is required.",
+        //         },
+        //         'mobile_number': {
+        //             required: "The mobile number field is required.",
+        //         },
+        //         'time': {
+        //             required: "The time field is required.",
+        //         },
+        //         'address': {
+        //             required: "The address field is required.",
+        //         },
+        //         'email_icon': {
+        //             required: "The email icon field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //         'call_icon': {
+        //             required: "The call icon field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //         'address_icon': {
+        //             required: "The address icon field is required.",
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //     },
+        //     errorPlacement: function(error, element) {
+        //         error.appendTo(element.parent().find('.error'));
+        //     },
+        // });
 
-        function checkLogo() {
-          var old_logo = $('#old_logo').val();
-          if(old_logo){
-            return false;
-          }
-        }
+        // function checkLogo() {
+        //   var old_logo = $('#old_logo').val();
+        //   if(old_logo){
+        //     return false;
+        //   }
+        // }
         
-        function checkEmailIcon() {
-          var old_email_icon = $('#old_email_icon').val();
-          if(old_email_icon){
-            return false;
-          }
+        // function checkEmailIcon() {
+        //   var old_email_icon = $('#old_email_icon').val();
+        //   if(old_email_icon){
+        //     return false;
+        //   }
+        // }
+
+        // function checkCallIcon() {
+        //   var old_call_icon = $('#old_call_icon').val();
+        //   if(old_call_icon){
+        //     return false;
+        //   }
+        // }
+
+        // function checkAddressIcon() {
+        //   var old_address_icon = $('#old_address_icon').val();
+        //   if(old_address_icon){
+        //     return false;
+        //   }
+        // }
+
+        // logo
+        var old_logo = $('#old_logo').val();
+        var logo = $('#logo').val();
+        if(old_logo != '' || logo != ''){
+            document.getElementById("logo").required = false;
+        }else{
+            document.getElementById("logo").required = true;
         }
 
-        function checkCallIcon() {
-          var old_call_icon = $('#old_call_icon').val();
-          if(old_call_icon){
-            return false;
-          }
+        // email icon
+        var old_email_icon = $('#old_email_icon').val();
+        var emai_icon = $('#emai_icon').val();
+        if(old_email_icon != '' || emai_icon != ''){
+            document.getElementById("emai_icon").required = false;
+        }else{
+            document.getElementById("emai_icon").required = true;
         }
 
-        function checkAddressIcon() {
-          var old_address_icon = $('#old_address_icon').val();
-          if(old_address_icon){
-            return false;
-          }
+        // call icon
+        var old_call_icon = $('#old_call_icon').val();
+        var call_icon = $('#call_icon').val();
+        if(old_call_icon != '' || call_icon != ''){
+            document.getElementById("call_icon").required = false;
+        }else{
+            document.getElementById("call_icon").required = true;
+        }
+
+        // address icon
+        var old_address_icon = $('#old_address_icon').val();
+        var address_icon = $('#address_icon').val();
+        if(old_address_icon != '' || address_icon != ''){
+            document.getElementById("address_icon").required = false;
+        }else{
+            document.getElementById("address_icon").required = true;
         }
 
         $('.colorpicker').colorpicker();

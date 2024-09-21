@@ -1,5 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
@@ -18,12 +19,12 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('used_car_update', array('id' => encrypt($record->id))) }} @else{{ route('used_car_insert') }} @endif" method="POST" class="used_car_form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('used_car_update', array('id' => encrypt($record->id))) }} @else{{ route('used_car_insert') }} @endif" method="POST" class="used_car_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="business_id" class="form-label">Our Business<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="business_id" id="business_id">
+                                <select class="form-control select2" name="business_id" id="business_id" required>
                                     <option value="">-- Select Our Business --</option>
                                     @if(isset($our_business) && $our_business->count())
                                         @foreach($our_business as $value)
@@ -41,7 +42,7 @@
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/used_car_image/'.$record->image)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
-                                <input type="file" id="image" class="form-control" name="image">
+                                <input type="file" id="image" class="form-control" name="image" required>
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <div class="error"></div>
                                 <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
@@ -49,7 +50,7 @@
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+                                <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required>
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -89,14 +90,14 @@
 
                             <div class="mb-3 col-md-4">
                                 <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="rating" id="rating" value="{{isset($record->rating) ? $record->rating : old('rating')}}">
+                                <input type="text" class="form-control" name="rating" id="rating" value="{{isset($record->rating) ? $record->rating : old('rating')}}" required>
                                 @if ($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating') }}</div>@endif
                                 <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}">
+                                <input type="text" class="form-control" maxlength="5" name="number_of_rating" id="number_of_rating" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}" required>
                                 @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -114,76 +115,84 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 <script>
- $(document).ready(function () {
-        $(".used_car_form").validate({
-            rules: {
-                'business_id': {
-                    required: true,
-                },
-                'image': {
-                    required: checkImage,
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'name': {
-                    required: true,
-                },
-                'link': {
-                    url: "url",
-                },
-                'rating': {
-                    required: true,
-                    number: true,
-                    max: 5
-                },
-                'number_of_rating': {
-                    required: true,
-                    number: true,
-                },
-            },
-            // messages: {
-            //     'image': {
-            //         required: "The image field is required.",
-            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+    $(document).ready(function () {
+            // $(".used_car_form").validate({
+            //     rules: {
+            //         'business_id': {
+            //             required: true,
+            //         },
+            //         'image': {
+            //             required: checkImage,
+            //             extension: "jpg,jpeg,png,webp,svg",
+            //         },
+            //         'name': {
+            //             required: true,
+            //         },
+            //         'link': {
+            //             url: "url",
+            //         },
+            //         'rating': {
+            //             required: true,
+            //             number: true,
+            //             max: 5
+            //         },
+            //         'number_of_rating': {
+            //             required: true,
+            //             number: true,
+            //         },
             //     },
-            //     'name': {
-            //         required: "The name field is required.",
+            //     // messages: {
+            //     //     'image': {
+            //     //         required: "The image field is required.",
+            //     //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+            //     //     },
+            //     //     'name': {
+            //     //         required: "The name field is required.",
+            //     //     },
+            //     //     'link': {
+            //     //         url: "Please enter a valid link.",
+            //     //     },
+            //     //     'rating': {
+            //     //         required: "The rating field is required.",
+            //     //         max: "The rating must not be greater than 5."
+            //     //     },
+            //     //     'number_of_rating': {
+            //     //         required: "The number of rating field is required.",
+            //     //     },
+            //     // },
+            //     errorPlacement: function(error, element) {
+            //         error.appendTo(element.parent().find('.error'));
             //     },
-            //     'link': {
-            //         url: "Please enter a valid link.",
-            //     },
-            //     'rating': {
-            //         required: "The rating field is required.",
-            //         max: "The rating must not be greater than 5."
-            //     },
-            //     'number_of_rating': {
-            //         required: "The number of rating field is required.",
-            //     },
-            // },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+            //     submitHandler: function(form) {
+            //         $(form).find('.submit').prop("disabled", true);
+            //         form.submit();
+            //     }
+            // });
 
-        // image validation
-        function checkImage() {
+            // image validation
+            // function checkImage() {
+            //     var old_image = $('#old_image').val();
+            //     var image = $('#image').val();
+
+            //     if(old_image != '' || image != ''){
+            //         return false;
+            //     }
+            //     return true;
+            // }
+
             var old_image = $('#old_image').val();
             var image = $('#image').val();
-
             if(old_image != '' || image != ''){
-                return false;
+                document.getElementById("image").required = false;
+            }else{
+                document.getElementById("image").required = true;
             }
-            return true;
-        }
 
-    $('.colorpicker').colorpicker();
-
+        $('.colorpicker').colorpicker();
     });
 </script>
 @endsection

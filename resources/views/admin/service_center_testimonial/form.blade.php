@@ -1,5 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
@@ -21,12 +22,12 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('service-center-testimonial-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-testimonial-store') }} @endif" method="POST" class="service-center-testimonial-form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('service-center-testimonial-update', array('id' => encrypt($record->id))) }} @else{{ route('service-center-testimonial-store') }} @endif" method="POST" class="service-center-testimonial-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
                                 <label for="service_center_id" class="form-label">Service Center<span class="text-danger">*</span></label>
-                                <select class="form-control select2" name="service_center_id" id="service_center_id">
+                                <select class="form-control select2" name="service_center_id" id="service_center_id" required>
                                     <option value="">-- Select Service Center --</option>
                                     @foreach($service_center as $value)
                                         <option value="{{$value->id}}"@if(isset($record->service_center_id) && $record->service_center_id == $value->id){{'selected'}}@endif>{{$value->name}}</option>
@@ -37,7 +38,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
+                                <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required>
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -119,7 +120,7 @@
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/uploads/service_center_testimonial/'.$record->image)}}" width="50">
                                 @endif  
-                                <input type="file" id="image" class="form-control" name="image" value="">
+                                <input type="file" id="image" class="form-control" name="image" value="" required>
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
                                 <small class="image_type">(Hight:90px,Width:90px; Image Type : jpg,jpeg,png,webp)</small>
                             </div>
@@ -136,42 +137,43 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('.select2').select2({ width: '100%' });
 
-        $(".service-center-testimonial-form").validate({
-            rules: {
-                'name': {
-                    required: true,
-                },
-                'service_center_id': {
-                    required: true,
-                },
-                'image': {
-                    required: checkImage,
-                    extension: "jpg,jpeg,png,webp",
-                },
-            },
-            messages: {
-                'name': {
-                    required: "Name is required",
-                },
-                'service_center_id': {
-                    required: "Service Center is required",
-                },
-                'image': {
-                    required: "Image field is required",
-                    extension: "Image must be jpg,jpeg,png or webp",
-                },
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".service-center-testimonial-form").validate({
+        //     rules: {
+        //         'name': {
+        //             required: true,
+        //         },
+        //         'service_center_id': {
+        //             required: true,
+        //         },
+        //         'image': {
+        //             required: checkImage,
+        //             extension: "jpg,jpeg,png,webp",
+        //         },
+        //     },
+        //     messages: {
+        //         'name': {
+        //             required: "Name is required",
+        //         },
+        //         'service_center_id': {
+        //             required: "Service Center is required",
+        //         },
+        //         'image': {
+        //             required: "Image field is required",
+        //             extension: "Image must be jpg,jpeg,png or webp",
+        //         },
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
         $('.colorpicker').colorpicker();
 
@@ -184,6 +186,14 @@
                 return false;
             }
             return true;
+        }
+
+        var old_image = $('#old_image').val();
+        var image = $('#image').val();
+        if(old_image != '' || image != ''){
+            document.getElementById("image").required = false;
+        }else{
+            document.getElementById("image").required = true;
         }
     });
 </script>
