@@ -1,4 +1,7 @@
 @extends('admin.layout.header')
+@section('css')
+    <link class="js-stylesheet" href="{{ asset('plugins/parsley/parsley.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="content-wrapper">
     <section class="content-header">
@@ -15,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     @foreach($brands as $brand)
-                        <form method="post" action="{{ route('brand_update', $brand->id) }}" class="edit_form" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('brand_update', $brand->id) }}" class="edit_form" enctype="multipart/form-data" data-parsley-validate="">
                             @csrf
                             <input type="hidden" value="{{ $brand->id }}" class="id" name="id">
                             <div class="row">
@@ -24,14 +27,14 @@
                                     @if(isset($brand->image) && isset($brand->image))
                                         <img src="{{url('public/brand/'.$brand->image)}}" width="100" style="margin-bottom: 10px;">
                                     @endif
-                                    <input type="file" id="image" class="form-control" name="image">
+                                    <input type="file" id="image" class="form-control" name="image" required>
                                     <div class="error"></div>
                                     <small class="image_type">(Height:145px,Width:145px;Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
     
                                 <div class="col-md-4">
                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                                    <input  type="text" class="form-control" name="name" value="{{$brand->name}}">
+                                    <input  type="text" class="form-control" name="name" value="{{$brand->name}}" required>
                                     <div class="error"></div>
                                 </div>
     
@@ -82,37 +85,47 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ asset('plugins/parsley/parsley.js') }}"></script>
 <script>
     $(document).ready(function () {
-        $(".edit_form").validate({
-            rules: {
-                'image': {
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'name': {
-                    required: true,
-                },
-                'link': {
-                    required: true,
-                    url: "url",
-                },
-            },
-            messages: {
-                'image': {
-                    extension: "Image must be jpg,jpeg,png,svg or webp.",
-                },
-                'name': {
-                    required: "The name field is required.",
-                },
-                'link': {
-                    required: "The link field is required.",
-                    url: "Please enter a valid link.",
-                },
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
-            },
-        });
+        // $(".edit_form").validate({
+        //     rules: {
+        //         'image': {
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'name': {
+        //             required: true,
+        //         },
+        //         'link': {
+        //             required: true,
+        //             url: "url",
+        //         },
+        //     },
+        //     messages: {
+        //         'image': {
+        //             extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //         },
+        //         'name': {
+        //             required: "The name field is required.",
+        //         },
+        //         'link': {
+        //             required: "The link field is required.",
+        //             url: "Please enter a valid link.",
+        //         },
+        //     },
+        //     errorPlacement: function(error, element) {
+        //         error.appendTo(element.parent().find('.error'));
+        //     },
+        // });
+
+        var old_image = $('#old_image').val();
+        var image = $('#image').val();
+        if(old_image != '' || image != ''){
+            document.getElementById("image").required = false;
+        }else{
+            document.getElementById("image").required = true;
+        }
+
         $('.colorpicker').colorpicker();
 
     });

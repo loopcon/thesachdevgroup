@@ -137,6 +137,14 @@
         //     }
         // });
 
+        var old_image = $('#old_image').val();
+        var icon = $('#icon').val();
+        if(old_image != '' || icon != ''){
+            document.getElementById("icon").required = false;
+        }else{
+            document.getElementById("icon").required = true;
+        }
+
         $('.colorpicker').colorpicker();
     });
 </script>

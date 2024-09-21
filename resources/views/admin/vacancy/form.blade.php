@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('vacancy-update', array('id' => encrypt($record->id))) }} @else{{ route('vacancy-store') }} @endif" method="POST" class="service-center-form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('vacancy-update', array('id' => encrypt($record->id))) }} @else{{ route('vacancy-store') }} @endif" method="POST" class="service-center-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="col-md-4 adm-brand-errorbox">
@@ -262,14 +262,14 @@
         })
         // end used car dropdown event
 
-        $(".service-center-form").validate({
-            rules: {
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".service-center-form").validate({
+        //     rules: {
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
         $('.colorpicker').colorpicker();
     });

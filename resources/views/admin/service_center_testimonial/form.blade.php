@@ -178,15 +178,15 @@
         $('.colorpicker').colorpicker();
 
          // image validation
-        function checkImage() {
-            var old_image = $('#old_image').val();
-            var image = $('#image').val();
+        // function checkImage() {
+        //     var old_image = $('#old_image').val();
+        //     var image = $('#image').val();
 
-            if(old_image != '' || image != ''){
-                return false;
-            }
-            return true;
-        }
+        //     if(old_image != '' || image != ''){
+        //         return false;
+        //     }
+        //     return true;
+        // }
 
         var old_image = $('#old_image').val();
         var image = $('#image').val();

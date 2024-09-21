@@ -553,11 +553,11 @@
 
         // email icon
         var old_email_icon = $('#old_email_icon').val();
-        var emai_icon = $('#emai_icon').val();
-        if(old_email_icon != '' || emai_icon != ''){
-            document.getElementById("emai_icon").required = false;
+        var email_icon = $('#email_icon').val();
+        if(old_email_icon != '' || email_icon != ''){
+            document.getElementById("email_icon").required = false;
         }else{
-            document.getElementById("emai_icon").required = true;
+            document.getElementById("email_icon").required = true;
         }
 
         // call icon

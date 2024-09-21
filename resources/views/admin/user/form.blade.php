@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record)) {{ route('user-update',array('id' => encrypt($record->id))) }} @else{{ route('user-store') }} @endif" method="POST" class="user-form" enctype="multipart/form-data">
+                    <form action="@if(isset($record)) {{ route('user-update',array('id' => encrypt($record->id))) }} @else{{ route('user-store') }} @endif" method="POST" class="user-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
@@ -87,7 +87,7 @@
 
                             <div class="col-md-4">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
-                                <input type="text" id="email" class="form-control" name="email" value="{{isset($record->email) ? $record->email : ''}}">
+                                <input type="text" id="email" class="form-control" name="email" value="{{isset($record->email) ? $record->email : ''}}" required>
                                 @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
                                 <div class="error"></div>
                             </div>
@@ -199,39 +199,39 @@
         // end used car dropdown event
 
         // form validation
-        $(".user-form").validate({
-            rules: {
-                'name': {
-                    required: true,
-                },
-                'email': {
-                    required: true,
-                },
-                'password': {
-                    required: true,
-                    minlength:"6",
-                },
-            },
-            // messages: {
-            //     'name': {
-            //         required: "The name field is required.",
-            //     },
-            //     'email': {
-            //         required: "The email field is required.",
-            //     },
-            //     'password': {
-            //         required: "The password field is required.",
-            //         minlength:"Your password must contain at least 1 lowercase, 1 special character, 1 number and password length should be minimum 8 character long.",
-            //     }
-            // },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".user-form").validate({
+        //     rules: {
+        //         'name': {
+        //             required: true,
+        //         },
+        //         'email': {
+        //             required: true,
+        //         },
+        //         'password': {
+        //             required: true,
+        //             minlength:"6",
+        //         },
+        //     },
+        //     // messages: {
+        //     //     'name': {
+        //     //         required: "The name field is required.",
+        //     //     },
+        //     //     'email': {
+        //     //         required: "The email field is required.",
+        //     //     },
+        //     //     'password': {
+        //     //         required: "The password field is required.",
+        //     //         minlength:"Your password must contain at least 1 lowercase, 1 special character, 1 number and password length should be minimum 8 character long.",
+        //     //     }
+        //     // },
+        //     errorPlacement: function(error, element) {
+        //         error.appendTo(element.parent().find('.error'));
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
         $('.colorpicker').colorpicker();
     });
     // end form validation

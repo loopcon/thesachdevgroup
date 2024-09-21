@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
-                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->image) ? $record->image : old('old_image')}}">
+                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->image) ? $record->image : old('old_image')}}" required>
                                 @if(isset($record->image) && $record->image)
                                     <img src="{{url('public/contact_us/'.$record->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
@@ -36,7 +36,7 @@
 
                             <div class="col-md-4">
                                 <label for="title">Title<span class="text-danger">*</span></label>
-                                <input type="text" id="title" class="form-control" name="title" value="{{isset($record->title) ? $record->title : old('title')}}">
+                                <input type="text" id="title" class="form-control" name="title" value="{{isset($record->title) ? $record->title : old('title')}}" required>
                                 @if($errors->has('title')) <div class="text-danger">{{ $errors->first('title')}}</div> @endif
                             </div>
 
@@ -209,14 +209,22 @@
         // });
 
         // image validation
-        function checkImage() {
-            var old_image = $('#old_image').val();
-            var image = $('#image').val();
+        // function checkImage() {
+        //     var old_image = $('#old_image').val();
+        //     var image = $('#image').val();
 
-            if(old_image != '' || image != ''){
-                return false;
-            }
-            return true;
+        //     if(old_image != '' || image != ''){
+        //         return false;
+        //     }
+        //     return true;
+        // }
+
+        var old_image = $('#old_image').val();
+        var image = $('#image').val();
+        if(old_image != '' || image != ''){
+            document.getElementById("image").required = false;
+        }else{
+            document.getElementById("image").required = true;
         }
 
         $('.colorpicker').colorpicker();
