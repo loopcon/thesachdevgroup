@@ -29,7 +29,6 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Page</th>
-                                    <th>Description</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -52,7 +51,6 @@
             columns: [
                 {data: 'id', name: 'id',orderable: false, searchable: false},
                 {data: 'name', name: 'name'},
-                {data: 'description', name: 'description'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

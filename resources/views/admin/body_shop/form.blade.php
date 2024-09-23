@@ -1,5 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
+    <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
     <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
@@ -18,7 +19,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('body_shop_update', array('id' => encrypt($record->id))) }} @else{{ route('body_shop_insert') }} @endif" method="POST" class="body_shop_form" enctype="multipart/form-data">
+                    <form action="@if(isset($record->id)) {{ route('body_shop_update', array('id' => encrypt($record->id))) }} @else{{ route('body_shop_insert') }} @endif" method="POST" class="body_shop_form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
@@ -219,80 +220,89 @@
 </div>
 @endsection
 @section('javascript')
+<script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 <script>
  $(document).ready(function () {
-        $(".body_shop_form").validate({
-            rules: {
-                'business_id': {
-                    required: true,
-                },
-                'image': {
-                    required: checkImage,
-                    extension: "jpg,jpeg,png,webp,svg",
-                },
-                'address': {
-                    required: true,
-                },
-                'name': {
-                    required: true,
-                },
-                'link': {
-                    url: "url",
-                },
-                'rating': {
-                    required: true,
-                    number: true,
-                    max: 5
-                },
-                'email': {
-                    required: true,
-                },
-                'number_of_rating': {
-                    required: true,
-                    number: true,
-                },
-            },
-            // messages: {
-            //     'business_id': {
-            //         required: "The Business field is required.",
-            //     },
-            //     'image': {
-            //         required: "The image field is required.",
-            //         extension: "Image must be jpg,jpeg,png,svg or webp.",
-            //     },
-            //     'name': {
-            //         required: "The name field is required.",
-            //     },
-            //     'link': {
-            //         url: "Please enter a valid link.",
-            //     },
-            //     'rating': {
-            //         required: "The rating field is required.",
-            //         max: "The rating must not be greater than 5."
-            //     },
-            //     'number_of_rating': {
-            //         required: "The number of rating field is required.",
-            //     },
-            // },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().find('.error'));
-            },
-            submitHandler: function(form) {
-                $(form).find('.submit').prop("disabled", true);
-                form.submit();
-            }
-        });
+        // $(".body_shop_form").validate({
+        //     rules: {
+        //         'business_id': {
+        //             required: true,
+        //         },
+        //         'image': {
+        //             required: checkImage,
+        //             extension: "jpg,jpeg,png,webp,svg",
+        //         },
+        //         'address': {
+        //             required: true,
+        //         },
+        //         'name': {
+        //             required: true,
+        //         },
+        //         'link': {
+        //             url: "url",
+        //         },
+        //         'rating': {
+        //             required: true,
+        //             number: true,
+        //             max: 5
+        //         },
+        //         'email': {
+        //             required: true,
+        //         },
+        //         'number_of_rating': {
+        //             required: true,
+        //             number: true,
+        //         },
+        //     },
+        //     // messages: {
+        //     //     'business_id': {
+        //     //         required: "The Business field is required.",
+        //     //     },
+        //     //     'image': {
+        //     //         required: "The image field is required.",
+        //     //         extension: "Image must be jpg,jpeg,png,svg or webp.",
+        //     //     },
+        //     //     'name': {
+        //     //         required: "The name field is required.",
+        //     //     },
+        //     //     'link': {
+        //     //         url: "Please enter a valid link.",
+        //     //     },
+        //     //     'rating': {
+        //     //         required: "The rating field is required.",
+        //     //         max: "The rating must not be greater than 5."
+        //     //     },
+        //     //     'number_of_rating': {
+        //     //         required: "The number of rating field is required.",
+        //     //     },
+        //     // },
+        //     errorPlacement: function(error, element) {
+        //         error.appendTo(element.parent().find('.error'));
+        //     },
+        //     submitHandler: function(form) {
+        //         $(form).find('.submit').prop("disabled", true);
+        //         form.submit();
+        //     }
+        // });
 
-        function checkImage() {
-            var old_image = $('#old_image').val();
-            var image = $('#image').val();
+        // function checkImage() {
+        //     var old_image = $('#old_image').val();
+        //     var image = $('#image').val();
 
-            if(old_image != '' || image != ''){
-                return false;
-            }
-            return true;
+        //     if(old_image != '' || image != ''){
+        //         return false;
+        //     }
+        //     return true;
+        // }
+
+        var old_image = $('#old_image').val();
+        var image = $('#image').val();
+        if(old_image != '' || image != ''){
+            document.getElementById("image").required = false;
+        }else{
+            document.getElementById("image").required = true;
         }
 
         $('.colorpicker').colorpicker();

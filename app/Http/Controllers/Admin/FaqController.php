@@ -57,7 +57,7 @@ class FaqController extends Controller
             $list = $query->get();
             return DataTables::of($list)
                 ->addColumn('description', function($list){
-                    $description = isset($list->description) && $list->description ? strip_tags(Str::limit($list->description,50,'...')) : NULL;
+                    $description = isset($list->description) && $list->description ? strip_tags($list->description) : NULL;
                     return $description;
                 })
                 ->addColumn('action', function ($list) {

@@ -71,7 +71,7 @@
             <div class="card-body">
                 <section class="content">
                     <div class="container-fluid">
-                        <table class="table table-bordered table-striped table adm-table-no-wrap adm-action-sticky">
+                        <table class="table table-bordered table-striped table adm-action-sticky">
                             <thead>
                                 <tr>
                                     <th>Id</th>

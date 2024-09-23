@@ -152,14 +152,22 @@
         //     }
         // });
 
-        function checkIconImage() {
-            var old_image = $('#old_image').val();
-            var icon = $('#icon').val();
+        // function checkIconImage() {
+        //     var old_image = $('#old_image').val();
+        //     var icon = $('#icon').val();
 
-            if(old_image != '' || icon != ''){
-                return false;
-            }
-            return true;
+        //     if(old_image != '' || icon != ''){
+        //         return false;
+        //     }
+        //     return true;
+        // }
+
+        var old_image = $('#old_image').val();
+        var icon = $('#icon').val();
+        if(old_image != '' || icon != ''){
+            document.getElementById("icon").required = false;
+        }else{
+            document.getElementById("icon").required = true;
         }
 
         $('.colorpicker').colorpicker();
