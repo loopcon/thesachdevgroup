@@ -591,6 +591,22 @@
                                 <label for="map_link">Map Link</label>
                                 <input type="text" id="map_link" class="form-control" name="map_link">
                             </div>
+
+                            <div class="col-md-4 mb-3">
+								<label for="meta_title">Meta Title</label>
+								<input type="text" class="form-control" name="meta_title">
+							</div>
+
+							<div class="col-md-4">
+								<label for="meta_keyword">Meta Keyword</label>
+								<textarea class="form-control" name="meta_keyword"></textarea>
+							</div>
+
+							<div class="col-md-4 mb-3">
+								<label for="meta_description">Meta Description</label>
+								<textarea class="form-control" name="meta_description"></textarea>
+								<div class="error"></div>
+							</div>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Submit</button>

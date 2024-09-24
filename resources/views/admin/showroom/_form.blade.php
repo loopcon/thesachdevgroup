@@ -617,6 +617,22 @@
                                     <label for="map_link">Map Link</label>
                                     <input type="text" id="map_link" class="form-control" name="map_link" value="{{$showroom->map_link }}">
                                 </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="meta_title">Meta Title</label>
+                                    <input type="text" class="form-control" name="meta_title" value="{{isset($showroom->meta_title) ? $showroom->meta_title : old('meta_title')}}">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="meta_keyword">Meta Keyword</label>
+                                    <textarea class="form-control" name="meta_keyword">{{isset($showroom->meta_keyword) ? $showroom->meta_keyword : old('mera_keyword')}}</textarea>
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="meta_description">Meta Description</label>
+                                    <textarea class="form-control" name="meta_description">{{isset($showroom->meta_description) ? $showroom->meta_description : old('meta_description')}}</textarea>
+                                    <div class="error"></div>
+                                </div>
                             </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary submit">Submit</button>
