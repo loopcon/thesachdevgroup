@@ -31,7 +31,7 @@
                                 @if(isset($home_detail->image) && isset($home_detail->image))
                                   <img src="{{url('public/home_detail/'.$home_detail->image)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif
-                                <input type="file" id="image" class="form-control image" name="image" required>
+                                <input type="file" id="image" class="form-control" name="image" required>
                                 <div class="error"></div>
                                 <small class="image_type">(Height:479px,Width:540px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
@@ -111,12 +111,33 @@
                             </div>
                           </div>
 
-                          <div class="mb-3">
-                            <label for="description">Description</label>
-                            <textarea class="form-control" name="description">{{$home_detail->description}}</textarea>
-                              <div class="error"></div>
-                          </div>
+							<div class="mb-3">
+								<label for="description">Description</label>
+								<textarea class="form-control" name="description">{{$home_detail->description}}</textarea>
+							</div>
 
+						  	<div class="form-row">
+								<div class="col-md-4 mb-3">
+									<label for="meta_title">Meta Title</label>
+									<input type="text" class="form-control" name="meta_title" value="{{$home_detail->meta_title}}">
+								</div>
+
+								<div class="col-md-4">
+									<label for="google_tag_manager">Google Tag Manager</label>
+									<input type="text" class="form-control" name="google_tag_manager" value="{{$home_detail->google_tag_manager}}">
+								</div>
+
+								<div class="col-md-4">
+									<label for="meta_keyword">Meta Keyword</label>
+									<textarea class="form-control" name="meta_keyword">{{$home_detail->meta_keyword}}</textarea>
+								</div>
+
+								<div class="col-md-4 mb-3">
+									<label for="meta_description">Meta Description</label>
+									<textarea class="form-control" name="meta_description">{{$home_detail->meta_description}}</textarea>
+									<div class="error"></div>
+								</div>
+							</div>
                           <?php /**<div class="form-row">
                             <div class="col-md-4 mb-3">
                                 <label for="description_color">Description Text Color</label>
@@ -234,6 +255,29 @@
                         <textarea class="form-control" name="description"></textarea>
                         <div class="error"></div>
                       </div>
+
+					  	<div class="form-row">
+							<div class="col-md-4 mb-3">
+								<label for="meta_title">Meta Title</label>
+								<input type="text" class="form-control" name="meta_title">
+							</div>
+
+							<div class="col-md-4 mb-3">
+								<label for="google_tag_manager">Google Tag Manager</label>
+								<input type="text" class="form-control" name="google_tag_manager">
+							</div>
+
+							<div class="col-md-4">
+								<label for="meta_keyword">Meta Keyword</label>
+								<textarea class="form-control" name="meta_keyword"></textarea>
+							</div>
+
+							<div class="col-md-4 mb-3">
+								<label for="meta_description">Meta Description</label>
+								<textarea class="form-control" name="meta_description"></textarea>
+								<div class="error"></div>
+							</div>
+						</div>
 
                       <?php /**<div class="form-row">
                         <div class="col-md-4 mb-3">

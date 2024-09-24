@@ -472,6 +472,11 @@ class HomeSettingController extends Controller
                 $home_detail->description_font_size = $request->description_font_size;
                 $home_detail->description_font_family = $request->description_font_family;
 
+                $home_detail->meta_title = $request->meta_title;
+                $home_detail->google_tag_manager = $request->google_tag_manager;
+                $home_detail->meta_keyword = $request->meta_keyword;
+                $home_detail->meta_description = $request->meta_description;
+
                 $home_detail->save();
             
                 return redirect()->route('home_detail')->with('success','Home Detail update successfully.');
