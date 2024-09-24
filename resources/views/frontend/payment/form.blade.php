@@ -52,43 +52,43 @@
 
                                         @if (isset($brand->showrooms) && $brand->showrooms->count())
                                             <label>
-                                                <input class="details" type="radio" name="PaymentTowards" value="showroom-{{$brand->id}}">{{ $brand->showroom_title ?? "Showroom" }}
+                                                <input class="details" type="radio" name="PaymentTowards" value="showroom-{{$brand->id}}" required>{{ $brand->showroom_title ?? "Showroom" }}
                                             </label>
                                         @endif
 
                                         @if (isset($brand->serviceCenters))
                                             <label>
-                                                <input class="details" type="radio" name="PaymentTowards" value="service_center-{{$brand->id}}">{{ $brand->service_center_title ?? "Service Center" }}
+                                                <input class="details" type="radio" name="PaymentTowards" value="service_center-{{$brand->id}}" required>{{ $brand->service_center_title ?? "Service Center" }}
                                             </label>
                                         @endif
 
                                         @if (isset($brand->bodyShops) && $brand->bodyShops->count())
                                             <label>
-                                                <input class="details" type="radio" name="PaymentTowards" value="body_shop-{{$brand->id}}">{{ $brand->body_shop_title }}
+                                                <input class="details" type="radio" name="PaymentTowards" value="body_shop-{{$brand->id}}" required>{{ $brand->body_shop_title }}
                                             </label>
                                         @endif
 
                                         @if (isset($brand->usedCars) && $brand->usedCars->count())
                                             <label>
-                                                <input class="details" type="radio" name="PaymentTowards" value="used_car-{{$brand->id}}">{{ $brand->used_car_title }}
+                                                <input class="details" type="radio" name="PaymentTowards" value="used_car-{{$brand->id}}" required>{{ $brand->used_car_title }}
                                             </label>
                                         @endif
 
                                         @if (isset($brand->businessInsurance) && $brand->businessInsurance->count())
                                             <label>
-                                                <input class="details" type="radio" name="PaymentTowards" value="insurance-{{$brand->id}}">{{ $brand->insurance_title }}
+                                                <input class="details" type="radio" name="PaymentTowards" value="insurance-{{$brand->id}}" required>{{ $brand->insurance_title }}
                                             </label>
                                         @endif
                                         
                                         @if ($brand->id == 1 ||  $brand->id == 2 || $brand->id == 3)
                                             <label>
-                                                <input class="details" type="radio" name="PaymentTowards" value="Other Specify-{{$brand->id}}">Other Specify
+                                                <input class="details" type="radio" name="PaymentTowards" value="Other Specify-{{$brand->id}}" required>Other Specify
                                             </label>
                                         @endif
 
                                         @if ($brand->id == 4 ||  $brand->id == 5 || $brand->id == 7)
                                             <label>
-                                                <input class="details" type="radio" name="PaymentTowards" value="Other-{{$brand->id}}">Other
+                                                <input class="details" type="radio" name="PaymentTowards" value="Other-{{$brand->id}}" required>Other
                                             </label>
                                         @endif
                                         

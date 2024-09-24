@@ -20,7 +20,7 @@
         <div class="card">
             <div class="col-sm-12  text-end">
                 <a href="javascript:void(0)" class="btn btn-primary mt-2 mr-4 float-right  ajax-form" data-toggle="modal" data-target="#modal-default">Add</a>
-                <a href="{{route('award-banner-create')}}" class="btn btn-info mt-2 mr-2 float-right">Banner</a>
+                <a href="{{route('award-banner-create')}}" class="btn btn-info mt-2 mr-2 float-right">Award Banner</a>
             </div>
             <div class="card-body">
                 <section class="content">

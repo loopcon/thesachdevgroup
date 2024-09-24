@@ -28,7 +28,7 @@
                                 <label for="banner_image" class="form-label">Award Banner Image<span class="text-danger">*</span></label>
                                 <input type="hidden" name="old_image" id="old_image" value="{{isset($record->banner_image) ? $record->banner_image : ''}}">
                                 @if(isset($record->banner_image) && $record->banner_image)
-                                    <img src="{{url('public/uploads/award_banner/'.$record->banner_image)}}" width="100" style="margin-bottom:10px; margin-left:5px;">
+                                    <img src="{{url('public/uploads/award_banner/'.$record->banner_image)}}" width="200" style="margin-bottom:10px; margin-left:5px;">
                                 @endif  
                                 <input type="file" id="banner_image" class="form-control" name="banner_image" value="">
                                 @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
@@ -67,6 +67,21 @@
                                     @endforeach
                                 </select>
                             </div>
+
+                            <div class="col-md-4 mb-3">
+								<label for="meta_title">Meta Title</label>
+								<input type="text" class="form-control" name="meta_title" value="{{isset($record->meta_title) ? $record->meta_title : old('meta_title')}}">
+							</div>
+
+							<div class="col-md-4">
+								<label for="meta_keyword">Meta Keyword</label>
+								<textarea class="form-control" name="meta_keyword">{{isset($record->meta_keyword) ? $record->meta_keyword : old('mera_keyword')}}</textarea>
+							</div>
+
+							<div class="col-md-4 mb-3">
+								<label for="meta_description">Meta Description</label>
+								<textarea class="form-control" name="meta_description">{{isset($record->meta_description) ? $record->meta_description : old('meta_description')}}</textarea>
+							</div>
                         </div>
 
                         <div class="box-footer">

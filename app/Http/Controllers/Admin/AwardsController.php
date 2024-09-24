@@ -232,6 +232,9 @@ class AwardsController extends Controller
                 $banner->award_title_font_size = $request->award_title_font_size;
                 $banner->award_title_font_color = $request->award_title_font_color;
                 $banner->award_title_font_family = $request->award_title_font_family;
+                $banner->meta_title = $request->meta_title;
+                $banner->meta_keyword = $request->meta_keyword;
+                $banner->meta_description = $request->meta_description;
                 
                 if($request->hasFile('banner_image')) {
                     $oldimg = $banner->banner_image;

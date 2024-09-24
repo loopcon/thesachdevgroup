@@ -94,6 +94,9 @@ class ContactUsController extends Controller
                 $contact_us->form_sub_title_color = $request->form_sub_title_color;
                 $contact_us->form_sub_title_font_size = $request->form_sub_title_font_size;
                 $contact_us->form_sub_title_font_family = $request->form_sub_title_font_family;
+                $contact_us->meta_title = $request->meta_title;
+                $contact_us->meta_keyword = $request->meta_keyword;
+                $contact_us->meta_description = $request->meta_description;
 
                 $contact_us->map_link = $request->map_link;
 

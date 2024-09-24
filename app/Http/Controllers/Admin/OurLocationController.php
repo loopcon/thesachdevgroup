@@ -81,6 +81,9 @@ class OurLocationController extends Controller
                 $our_location->title_color = $request->title_color;
                 $our_location->title_font_size = $request->title_font_size;
                 $our_location->title_font_family = $request->title_font_family;
+                $our_location->meta_title = $request->meta_title;
+                $our_location->meta_keyword = $request->meta_keyword;
+                $our_location->meta_description = $request->meta_description;
 
                 $our_location->save();
             
