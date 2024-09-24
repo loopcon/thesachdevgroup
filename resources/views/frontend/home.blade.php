@@ -143,18 +143,16 @@
       <div class="row">
         <div class="col-md-6">
             <div class="about-left-image">
-                @foreach ($home_details as $home_detail)
+              @if(isset($home_detail->image) && $home_detail->image)
                   <img src="{{url('public/home_detail/'.$home_detail->image)}}" alt="" width="100%"> 
-                @endforeach
-            </div>
+              @endif
+              </div>
         </div>
         <div class="col-md-6">
           <div class="about-right-content">
-            @foreach ($home_details as $home_detail)
               <h3 style="color:{{$home_detail->title_color}}; font-size:{{$home_detail->title_font_size}}; font-family:{{$home_detail->title_font_family}};">{{$home_detail->title}}</h3>    
               <h2 style="color:{{$home_detail->sub_title_color}}; font-size:{{$home_detail->sub_title_font_size}}; font-family:{{$home_detail->sub_title_font_family}};">{{$home_detail->sub_title}}</h2>
               <div>{!! $home_detail->description !!}</div>
-            @endforeach
           </div>
         </div>
       </div>

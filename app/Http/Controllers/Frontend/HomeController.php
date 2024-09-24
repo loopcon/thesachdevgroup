@@ -43,7 +43,7 @@ class HomeController extends Controller
         $home_our_businessess = Home_our_businesses::get();
         $home_our_businesses_title = Home_our_businesses_title::first();
       
-        $home_details = Home_detail::get();
+        $home_detail = Home_detail::first();
         
         $mission_visions = Mission_vision::get();
         $mission_visions_imgae = Mission_vision_image::first();
@@ -53,12 +53,13 @@ class HomeController extends Controller
         $testimonials = Testimonial::get();
 
         $testimonials_title = Testimonials_title::first();
+        $meta_keyword =  isset($home_detail->meta_keyword) && $home_detail->meta_keyword ? $home_detail->meta_keyword : NULL;
 
         return view('frontend.home',compact('header_social_media_icons','header_menu_our_businesses',
             'header_menu_our_services','header_menu_careers','header_menu_awards_recognitions','header_menu_contacts',
             'footer_menus','footer_menu_our_services','footer_menu_our_businesses','footer_menu_useful_links',
-            'footer_menu_description','home_sliders','home_our_businessess','home_our_businesses_title','home_details',
-            'mission_visions','mission_visions_imgae','counts','testimonials','testimonials_title'
+            'footer_menu_description','home_sliders','home_our_businessess','home_our_businesses_title','home_detail',
+            'mission_visions','mission_visions_imgae','counts','testimonials','testimonials_title','meta_keyword'
         ));
 
     }

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="keywords" content="">
+    @if(isset($meta_keyword) && $meta_keyword)
+    <meta name="keywords" content="{{$meta_keyword}}">
+    @endif
     <meta name="google_tag_manager" content="">
     <title>TSGAUTOMOTIVE</title>
     <link rel="icon" type="image/x-icon" href="assets/image/favicon (2).png">
