@@ -793,3 +793,23 @@ ALTER TABLE `pay_us_logs` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, add 
 
 -- Parth : 30-07-2024 12:16 PM
 ALTER TABLE `near_location` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT, add PRIMARY KEY (`id`);
+
+-- Disha : 23-09-2024 06:11 PM
+ALTER TABLE `our_business` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `map_link`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NOT NULL AFTER `meta_keyword`;
+ALTER TABLE `new_car` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `car_id`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+ALTER TABLE `used_cars` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `number_of_rating`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+ALTER TABLE `after_sales_service` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `description_font_family`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+ALTER TABLE `car_insurance` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `insurance_form_title_font_family`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+
+-- Disha : 24-09-2024 10:19 AM
+ALTER TABLE `career` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `vacancy_sub_title_font_family`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+ALTER TABLE `award_banner` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `award_title_font_family`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+ALTER TABLE `our_locations` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `longitude`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+ALTER TABLE `contact_uses` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `map_link`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+ALTER TABLE `company_csr` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `image`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+
+-- Disha : 24-09-2024 10:45 AM
+ALTER TABLE `faq` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `description`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+ALTER TABLE `pages` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `description`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+ALTER TABLE `home_details` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `description_font_family`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+ALTER TABLE `home_details` ADD `google_tag_manager` VARCHAR(255) NULL DEFAULT NULL AFTER `meta_description`;

@@ -1069,7 +1069,7 @@
                                     <img src="{{url('public/uploads/vacancy_icon/'.$record->icon)}}" width="46px" style="background-color:{{$record->icon_background_color}};">
                                     <div class="menu-dot"></div>
                                 </div>
-                                <div class="job-card-title">{{$record->name}}</div>
+                                <div class="job-card-title" style="color:{{$record->name_font_color}}; font-size:{{$record->name_font_size}}; font-family:{{$record->name_font_family}};">{{$record->name}}</div>
                                 <div class="company-name" style="display:none;">{{isset($record->businessDetail->title) && $record->businessDetail->title ? $record->businessDetail->title : ''}}</div>
                                 <span class="comp-location" style="display:none;"> 
                                     @if($record->showroom_id)
@@ -1098,7 +1098,7 @@
                                 <div class="explain-subtitle employee-type" style="display:none;">{{$record->employee_type}}</div>
                                 <div class="explain-subtitle offer-salary" style="display:none;">{{$record->offer_salary}}</div>
 
-                                <div class="job-card-subtitle">{{$record->description}}</div>
+                                <div class="job-card-subtitle" style="color:{{$record->description_font_color}}; font-size:{{$record->description_font_size}}; font-family:{{$record->description_font_family}};">{{$record->description}}</div>
                                 <div class="job-detail-buttons">
                                     <button class="search-buttons detail-button">Full Time</button>
                                     <button class="search-buttons detail-button">Min. 1 Year</button>

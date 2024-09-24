@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <title>TSGAUTOMOTIVE</title>
     <link rel="icon" type="image/x-icon" href="assets/image/favicon (2).png">
     <link rel="stylesheet" href="{{url('public/frontend/css/new-style.css')}}">

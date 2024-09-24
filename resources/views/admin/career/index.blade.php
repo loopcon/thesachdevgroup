@@ -237,7 +237,7 @@
 
                             <div class="col-md-4">
                                 <label for="offer_third_title_font_size	" class="form-label">Offer Third Title Font Size</label>
-                                <select class="form-control select2" name="offer_third_title_font_size	">
+                                <select class="form-control select2" name="offer_third_title_font_size">
                                     <option value="">Select</option>
                                     @for($i=24; $i<=50; $i+=2)
                                         <option value="{{$i}}px" @if(isset($record->offer_third_title_font_size	) && $record->offer_third_title_font_size	 == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
