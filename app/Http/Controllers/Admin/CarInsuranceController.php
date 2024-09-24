@@ -48,7 +48,7 @@ class CarInsuranceController extends Controller
                 {
                     $id = $car_insurance->id;
                     $car_insurance = CarInsurance::find($id);
-                    $fields = array('title','title_color','title_font_size','title_font_family','insurance_form_title','insurance_form_title_color','insurance_form_title_font_size','insurance_form_title_font_family','description','description_font_color','description_font_size','description_font_family');
+                    $fields = array('title','title_color','title_font_size','title_font_family','insurance_form_title','insurance_form_title_color','insurance_form_title_font_size','insurance_form_title_font_family','description','description_font_color','description_font_size','description_font_family', 'meta_title', 'meta_keyword', 'meta_description');
                     foreach($fields as $field)
                     {
                         $car_insurance->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
@@ -71,7 +71,7 @@ class CarInsuranceController extends Controller
                         'banner_image' => 'image|mimes:jpeg,png,jpg,webp,svg',
                     ]);
                     $car_insurance = new CarInsurance();
-                    $fields = array('title','title_color','title_font_size','title_font_family','insurance_form_title','insurance_form_title_color','insurance_form_title_font_size','insurance_form_title_font_family','description','description_font_color','description_font_size','description_font_family');
+                    $fields = array('title','title_color','title_font_size','title_font_family','insurance_form_title','insurance_form_title_color','insurance_form_title_font_size','insurance_form_title_font_family','description','description_font_color','description_font_size','description_font_family', 'meta_title', 'meta_keyword', 'meta_description');
                     foreach($fields as $field)
                     {
                         $car_insurance->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;

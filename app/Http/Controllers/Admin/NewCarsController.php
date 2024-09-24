@@ -48,7 +48,7 @@ class NewCarsController extends Controller
                 {
                     $id = $new_car->id;
                     $new_car = NewCar::find($id);
-                    $fields = array('title','title_color','title_font_size','title_font_family');
+                    $fields = array('title','title_color','title_font_size','title_font_family', 'meta_title', 'meta_keyword', 'meta_description');
                     foreach($fields as $field)
                     {
                         $new_car->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
@@ -82,7 +82,7 @@ class NewCarsController extends Controller
                         'title' => 'required',
                     ]);
                     $new_car = new NewCar();
-                    $fields = array('title','title_color','title_font_size','title_font_family');
+                    $fields = array('title','title_color','title_font_size','title_font_family', 'meta_title', 'meta_keyword', 'meta_description');
                     foreach($fields as $field)
                     {
                         $new_car->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;

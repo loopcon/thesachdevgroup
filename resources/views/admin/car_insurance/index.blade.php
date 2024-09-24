@@ -140,6 +140,21 @@
                                     @endforeach
                                 </select>
                             </div>
+
+                            <div class="col-md-4 mb-3">
+								<label for="meta_title">Meta Title</label>
+								<input type="text" class="form-control" name="meta_title" value="{{isset($record->meta_title) ? $record->meta_title : old('meta_title')}}">
+							</div>
+
+							<div class="col-md-4">
+								<label for="meta_keyword">Meta Keyword</label>
+								<textarea class="form-control" name="meta_keyword">{{isset($record->meta_keyword) ? $record->meta_keyword : old('mera_keyword')}}</textarea>
+							</div>
+
+							<div class="col-md-4 mb-3">
+								<label for="meta_description">Meta Description</label>
+								<textarea class="form-control" name="meta_description">{{isset($record->meta_description) ? $record->meta_description : old('meta_description')}}</textarea>
+							</div>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary submit">Update</button>

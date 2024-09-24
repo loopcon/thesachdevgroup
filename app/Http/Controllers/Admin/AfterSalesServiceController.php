@@ -49,7 +49,7 @@ class AfterSalesServiceController extends Controller
                 {
                     $id = $after_sales_service->id;
                     $after_sales_service = AfterSalesService::find($id);
-                    $fields = array('title','title_color','title_font_size','title_font_family','book_service_form_title','book_service_form_title_color','book_service_form_title_font_size','book_service_form_title_font_family','description','description_font_color','description_font_size','description_font_family');
+                    $fields = array('title','title_color','title_font_size','title_font_family','book_service_form_title','book_service_form_title_color','book_service_form_title_font_size','book_service_form_title_font_family','description','description_font_color','description_font_size','description_font_family', 'meta_title', 'meta_keyword', 'meta_description');
                     foreach($fields as $field)
                     {
                         $after_sales_service->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
@@ -69,7 +69,7 @@ class AfterSalesServiceController extends Controller
                 }else{
 
                     $after_sales_service = new AfterSalesService();
-                    $fields = array('title','title_color','title_font_size','title_font_family','book_service_form_title','book_service_form_title_color','book_service_form_title_font_size','book_service_form_title_font_family','description','description_font_color','description_font_size','description_font_family');
+                    $fields = array('title','title_color','title_font_size','title_font_family','book_service_form_title','book_service_form_title_color','book_service_form_title_font_size','book_service_form_title_font_family','description','description_font_color','description_font_size','description_font_family', 'meta_title', 'meta_keyword', 'meta_description');
                     foreach($fields as $field)
                     {
                         $after_sales_service->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;

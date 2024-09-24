@@ -432,7 +432,6 @@
 							<div class="col-md-4 mb-3">
 								<label for="meta_description">Meta Description</label>
 								<textarea class="form-control" name="meta_description">{{isset($record->meta_description) ? $record->meta_description : old('meta_description')}}</textarea>
-								<div class="error"></div>
 							</div>
                         </div>
                         <div class="box-footer">
