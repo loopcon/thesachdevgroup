@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    @if(isset($meta_keyword) && $meta_keyword)
+@if(isset($meta_description) && $meta_description)
+    <meta name="description" content="{{$meta_description}}">
+@endif
+@if(isset($meta_keyword) && $meta_keyword)
     <meta name="keywords" content="{{$meta_keyword}}">
-    @endif
-    <meta name="google_tag_manager" content="">
-    <title>TSGAUTOMOTIVE</title>
+@endif
+@if(isset($google_tag_manager) && $google_tag_manager)
+    <meta name="google_tag_manager" content="{{$google_tag_manager}}">
+@endif
+@if(isset($meta_title) && $meta_title)
+    <title>{{'THE SACHDEV GROUP'.' | '.$meta_title}}</title>
+@endif
     <link rel="icon" type="image/x-icon" href="assets/image/favicon (2).png">
     <link rel="stylesheet" href="{{url('public/frontend/css/new-style.css')}}">
     <link rel="stylesheet" href="{{url('public/frontend/css/responsive-style.css')}}">

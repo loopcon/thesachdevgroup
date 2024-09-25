@@ -122,7 +122,7 @@ class PaymentController extends Controller
                 });
             }
 
-            $list = $query->limit(50)->orderBy('id', 'DESC')->get();
+            $list = $query->orderBy('id', 'DESC')->get();
 
             return DataTables::of($list)
                 ->addColumn('payment_to', function ($list) {

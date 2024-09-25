@@ -53,13 +53,16 @@ class HomeController extends Controller
         $testimonials = Testimonial::get();
 
         $testimonials_title = Testimonials_title::first();
+        $meta_title =  isset($home_detail->meta_title) && $home_detail->meta_title ? $home_detail->meta_title : NULL;
         $meta_keyword =  isset($home_detail->meta_keyword) && $home_detail->meta_keyword ? $home_detail->meta_keyword : NULL;
+        $meta_description =  isset($home_detail->meta_description) && $home_detail->meta_description ? $home_detail->meta_description : NULL;
+        $google_tag_manager =  isset($home_detail->google_tag_manager) && $home_detail->google_tag_manager ? $home_detail->google_tag_manager : NULL;
 
         return view('frontend.home',compact('header_social_media_icons','header_menu_our_businesses',
             'header_menu_our_services','header_menu_careers','header_menu_awards_recognitions','header_menu_contacts',
             'footer_menus','footer_menu_our_services','footer_menu_our_businesses','footer_menu_useful_links',
             'footer_menu_description','home_sliders','home_our_businessess','home_our_businesses_title','home_detail',
-            'mission_visions','mission_visions_imgae','counts','testimonials','testimonials_title','meta_keyword'
+            'mission_visions','mission_visions_imgae','counts','testimonials','testimonials_title','meta_keyword','meta_title','meta_description','google_tag_manager'
         ));
 
     }
