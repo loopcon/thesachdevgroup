@@ -59,6 +59,9 @@ class PageController extends Controller
                 $page->name = $request->name ? $request->name : NULL;
                 $page->slug = $request->name ? slugify($request->name) : NULL;
                 $page->description = $request->description ? $request->description : NULL;
+                $page->meta_title = $request->meta_title ? $request->meta_title : NULL;
+                $page->meta_keyword = $request->meta_keyword ? $request->meta_keyword : NULL;
+                $page->meta_description = $request->meta_description ? $request->meta_description : NULL;
 
                 $page->save();
 
@@ -142,6 +145,9 @@ class PageController extends Controller
                 $page->name = $request->name ? $request->name : NULL;
                 $page->slug = $request->name ? slugify($request->name) : NULL;
                 $page->description = $request->description ? $request->description : NULL;
+                $page->meta_title = $request->meta_title ? $request->meta_title : NULL;
+                $page->meta_keyword = $request->meta_keyword ? $request->meta_keyword : NULL;
+                $page->meta_description = $request->meta_description ? $request->meta_description : NULL;
 
                 $page->save();
 

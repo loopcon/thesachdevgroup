@@ -44,7 +44,7 @@ class CompanyCsrController extends Controller
                 {
                     $id = $company_csr->id;
                     $company_csr = CompanyCsr::find($id);
-                    $fields = array('title','title_color','title_font_size','title_font_family','description','description_font_color','description_font_size','description_font_family','left_title','left_title_color','left_title_font_size','left_title_font_family','left_description');
+                    $fields = array('title','title_color','title_font_size','title_font_family','description','description_font_color','description_font_size','description_font_family','left_title','left_title_color','left_title_font_size','left_title_font_family','left_description', 'meta_title', 'meta_keyword', 'meta_description');
                     foreach($fields as $field)
                     {
                         $company_csr->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
@@ -74,7 +74,7 @@ class CompanyCsrController extends Controller
                 }else{
 
                     $company_csr = new CompanyCsr();
-                    $fields = array('title','title_color','title_font_size','title_font_family','description','description_font_color','description_font_size','description_font_family','left_title','left_title_color','left_title_font_size','left_title_font_family','left_description');
+                    $fields = array('title','title_color','title_font_size','title_font_family','description','description_font_color','description_font_size','description_font_family','left_title','left_title_color','left_title_font_size','left_title_font_family','left_description', 'meta_title', 'meta_keyword', 'meta_description');
                     foreach($fields as $field)
                     {
                         $company_csr->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;

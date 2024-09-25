@@ -97,6 +97,10 @@ class FaqController extends Controller
                 $faq->name = $request->name ? $request->name : NULL;
                 $faq->slug = $request->name ? slugify($request->name) : NULL;
                 $faq->description = $request->description ? $request->description : NULL;
+                $faq->meta_title = $request->meta_title ? $request->meta_title : NULL;
+                $faq->meta_keyword = $request->meta_keyword ? $request->meta_keyword : NULL;
+                $faq->meta_description = $request->meta_description ? $request->meta_description : NULL;
+                
 
                 $faq->save();
 
@@ -146,6 +150,9 @@ class FaqController extends Controller
                 $faq->name = $request->name ? $request->name : NULL;
                 $faq->slug = $request->name ? slugify($request->name) : NULL;
                 $faq->description = $request->description ? $request->description : NULL;
+                $faq->meta_title = $request->meta_title ? $request->meta_title : NULL;
+                $faq->meta_keyword = $request->meta_keyword ? $request->meta_keyword : NULL;
+                $faq->meta_description = $request->meta_description ? $request->meta_description : NULL;
 
                 $faq->save();
 
