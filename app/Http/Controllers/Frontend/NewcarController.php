@@ -14,9 +14,13 @@ class NewCarController extends Controller
     public function carList()
     {
         $return_data = array();
-        $return_data['new_car'] = NewCar::first();
+        $newCar = NewCar::first();
+        $return_data['new_car'] = $newCar; 
         $return_data['brands'] = Brand::get();
         $return_data['models'] = Car::where('car_type',Constant::NEW_CAR)->get();
+        $return_data['meta_title'] = isset($newCar->meta_title) && $newCar->meta_title ? $newCar->meta_title : NULL;
+        $return_data['meta_description'] = isset($newCar->meta_description) && $newCar->meta_description ? $newCar->meta_description : NULL;
+        $return_data['meta_keyword'] = isset($newCar->meta_keyword) && $newCar->meta_keyword ? $newCar->meta_keyword : NULL;
         // $brand_id = json_decode($return_data['new_car']['brand_id']);
         // $car_id = json_decode($return_data['new_car']['car_id']);
         // $return_data['brands'] = Brand::whereIn('id',$brand_id)->get();

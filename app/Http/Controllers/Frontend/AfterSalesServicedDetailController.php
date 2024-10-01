@@ -13,10 +13,13 @@ class AfterSalesServicedDetailController extends Controller
     public function bookService()
     {
         $return_data = array();
-        $return_data['after_sales_service'] = AfterSalesService::first();
+        $return_data['after_sales_service'] = $afterSalesService = AfterSalesService::first();
         $brand_id = json_decode($return_data['after_sales_service']['brand_id']);
         $return_data['brands'] = Brand::select('id','name','image','link')->whereIn('id',$brand_id)->get();
-        
+        $return_data['meta_title'] = isset($afterSalesService->meta_title) && $afterSalesService->meta_title ? $afterSalesService->meta_title : NULL;
+        $return_data['meta_description'] = isset($afterSalesService->meta_description) && $afterSalesService->meta_description ? $afterSalesService->meta_description : NULL;
+        $return_data['meta_keyword'] = isset($afterSalesService->meta_keyword) && $afterSalesService->meta_keyword ? $afterSalesService->meta_keyword : NULL;
+
         return view('frontend.after_sales_service.index',array_merge($return_data));
     }
 

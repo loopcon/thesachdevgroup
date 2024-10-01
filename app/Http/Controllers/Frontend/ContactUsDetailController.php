@@ -14,8 +14,12 @@ class ContactUsDetailController extends Controller
     public function contactusDetail()
     {
         $return_data = array();     
-        $return_data['contact_us'] = Contact_us::first();
+        $return_data['contact_us'] = $contactUs = Contact_us::first();
         $return_data['header_social_media_icons'] = Header_menu_social_media_icon::get();
+        $return_data['meta_title'] = isset($contactUs->meta_title) && $contactUs->meta_title ? $contactUs->meta_title : NULL;
+        $return_data['meta_description'] = isset($contactUs->meta_description) && $contactUs->meta_description ? $contactUs->meta_description : NULL;
+        $return_data['meta_keyword'] = isset($contactUs->meta_keyword) && $contactUs->meta_keyword ? $contactUs->meta_keyword : NULL;
+
         return view('frontend.contact_us.index',array_merge($return_data));
     }
 

@@ -818,3 +818,6 @@ ALTER TABLE `home_details` ADD `google_tag_manager` VARCHAR(255) NULL DEFAULT NU
 ALTER TABLE `showrooms` ADD `meta_title` text NULL DEFAULT NULL AFTER `map_link`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
 ALTER TABLE `service_center` ADD `meta_title` text NULL DEFAULT NULL AFTER `map_link`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
 ALTER TABLE `pay_us` ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `emailid`, ADD `updated_at` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `created_at`;
+
+-- Parth : 26-09-2024
+ALTER TABLE `faq_title` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `title_font_family`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;

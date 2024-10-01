@@ -13,9 +13,12 @@ class CarInsuranceDetailController extends Controller
     public function carInsurance()
     {
         $return_data = array();
-        $return_data['car_insurance'] = CarInsurance::first();
+        $return_data['car_insurance'] = $carInsurance = CarInsurance::first();
         $brand_id = json_decode($return_data['car_insurance']['brand_id']);
         $return_data['brands'] = Brand::select('id','name','image','link')->whereIn('id',$brand_id)->get();
+        $return_data['meta_title'] = isset($carInsurance->meta_title) && $carInsurance->meta_title ? $carInsurance->meta_title : NULL;
+        $return_data['meta_description'] = isset($carInsurance->meta_description) && $carInsurance->meta_description ? $carInsurance->meta_description : NULL;
+        $return_data['meta_keyword'] = isset($carInsurance->meta_keyword) && $carInsurance->meta_keyword ? $carInsurance->meta_keyword : NULL;
 
         return view('frontend.car_insurance.index',array_merge($return_data));
     }
