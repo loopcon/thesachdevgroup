@@ -28,9 +28,9 @@ class ServiceCenterDetailController extends Controller
         $return_data['testimonials'] = ServiceCenterTestimonial::where('service_center_id',$service_center->id)->get();
         $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();
 
-        $return_data['meta_keyword'] = isset($showroom->meta_keyword) && $showroom->meta_keyword ? $showroom->meta_keyword : NULL;
-        $return_data['meta_title'] = isset($showroom->meta_title) && $showroom->meta_title ? $showroom->meta_title : NULL;
-        $return_data['meta_description'] = isset($showroom->meta_description) && $showroom->meta_description ? $showroom->meta_description : NULL;
+        $return_data['meta_keyword'] = isset($service_center->meta_keyword) && $service_center->meta_keyword ? $service_center->meta_keyword : NULL;
+        $return_data['meta_title'] = isset($service_center->meta_title) && $service_center->meta_title ? $service_center->meta_title : NULL;
+        $return_data['meta_description'] = isset($service_center->meta_description) && $service_center->meta_description ? $service_center->meta_description : NULL;
 
         return view('frontend.service_center.index',array_merge($return_data));
     }

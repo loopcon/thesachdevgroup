@@ -66,22 +66,6 @@
                                 <small class="image_type">(Hight:358px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
-                            <div class="col-12">
-                                <h5>Used Car Banner</h5>
-                                <hr>
-                            </div>
-
-                            <div class="col-md-4 mb-2">
-                                <label for="used_car_banner_image" class="form-label">Used Car Banner Image<span class="text-danger">*</span></label>
-                                <input type="hidden" name="old_image" id="old_image" value="{{isset($record->used_car_banner_image) ? $record->used_car_banner_image : old('used_car_banner_image')}}">
-                                @if(isset($record->used_car_banner_image) && $record->used_car_banner_image)
-                                    <img src="{{url('public/uploads/usedCar/'.$record->used_car_banner_image)}}" width="100">
-                                @endif  
-                                <input type="file" id="used_car_banner_image" class="form-control" name="used_car_banner_image" required="" value="">
-                                @if ($errors->has('used_car_banner_image')) <div class="text-danger">{{ $errors->first('used_car_banner_image') }}</div>@endif
-                                <small class="image_type">(Hight:358px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
-                            </div>
-
                             <?php /**<div class="col-md-4 adm-select-car-drop">
                                 <label for="brand_id" class="form-label">Brand<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="brand_id[]" id="brand_id"  required multiple>

@@ -821,3 +821,28 @@ ALTER TABLE `pay_us` ADD `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTA
 
 -- Parth : 26-09-2024
 ALTER TABLE `faq_title` ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `title_font_family`, ADD `meta_keyword` TEXT NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` TEXT NULL DEFAULT NULL AFTER `meta_keyword`;
+
+-- Disha : 10-01-2024 04:23 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Used Cars', NULL, NULL, NULL);
+
+-- Disha : 10-01-2024 05:46 PM
+-- Table structure for table `our_service_used_cars`
+--
+CREATE TABLE `our_service_used_cars` (
+  `id` int(11) NOT NULL,
+  `banner_image` varchar(255) DEFAULT NULL,
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_keyword` text DEFAULT NULL,
+  `meta_description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `our_service_used_cars` (`id`, `banner_image`, `meta_title`, `meta_keyword`, `meta_description`, `created_at`, `updated_at`) VALUES
+(1, '741727784256.jpg', 'mkk', 'fyuyu', 'kjkjk', '2024-10-01 06:34:16', '2024-10-01 06:39:19');
+
+ALTER TABLE `our_service_used_cars`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `our_service_used_cars`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

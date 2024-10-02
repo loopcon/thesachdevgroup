@@ -2,8 +2,8 @@
 @section('content')
 <section id="contact-us">
     <div class="contact-banner">
-        @if(isset($used_car_banner->used_car_banner_image) && $used_car_banner->used_car_banner_image)
-            <img src="{{url('public/uploads/usedCar/'.$used_car_banner->used_car_banner_image)}}" alt="">
+        @if(isset($usedCar->banner_image) && $usedCar->banner_image)
+            <img src="{{url('public/uploads/usedCar/'.$usedCar->banner_image)}}" alt="">
         @endif
     </div>
 </section>

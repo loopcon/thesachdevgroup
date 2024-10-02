@@ -82,9 +82,9 @@
             </li>
         @endif
 
-        @if(hasPermission('New Cars') || hasPermission('After Sales Service') || hasPermission('Car Insurance'))
-            <li class="nav-item {{ (request()->is('new-cars*') || request()->is('after-sales-service*') || request()->is('car-insurance*')) ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link {{ (request()->is('new-cars*') || request()->is('after-sales-service*') || request()->is('car-insurance*')) ? 'active' : '' }}">
+        @if(hasPermission('New Cars') || hasPermission('Used Cars') || hasPermission('After Sales Service') || hasPermission('Car Insurance'))
+            <li class="nav-item {{ (request()->is('new-cars*') || request()->is('used-cars*') || request()->is('after-sales-service*') || request()->is('car-insurance*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('new-cars*') || request()->is('used-cars*') || request()->is('after-sales-service*') || request()->is('car-insurance*')) ? 'active' : '' }}">
                     <i class="fa fa-wrench nav-icon" aria-hidden="true"></i><p>Our Services<i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
@@ -94,6 +94,17 @@
                             <li class="nav-item"> 
                                 <a href="{{url('new-cars')}}" class="nav-link {{ (request()->is('new-cars*')) ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i><p>New Cars</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
+                    @php($has_business_permission = hasPermission('Used Cars'))
+                    @if(isset($has_business_permission) && $has_business_permission)
+                        @if($has_business_permission->read_permission == 1 || $has_business_permission->full_permission == 1)
+                            <li class="nav-item"> 
+                                <a href="{{url('used-cars')}}" class="nav-link {{ (request()->is('used-cars*')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Used Cars</p>
                                 </a>
                             </li>
                         @endif

@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\AfterSalesServiceController;
 use App\Http\Controllers\Admin\CarInsuranceController;
 use App\Http\Controllers\Admin\CompanyCsrController;
 use App\Http\Controllers\Admin\EmailTemplatesController;
+use App\Http\Controllers\Admin\OurServiceUsedCarsController;
 
 // frontend controller
 use App\Http\Controllers\Frontend\HomeController;
@@ -56,6 +57,7 @@ use  App\Http\Controllers\Frontend\UsedCarDetailController;
 use  App\Http\Controllers\Frontend\CarInsuranceDetailController;
 use  App\Http\Controllers\Frontend\CompanyCsrDetailController;
 use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\Frontend\OurServiceUsedCarCOntroller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -393,6 +395,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('new-cars', [NewCarsController::class, 'newCars'])->name('new-cars');
     Route::post('new-cars-update', [NewCarsController::class, 'newCarsUpdate'])->name('new-cars-update');
 
+    // Our Service Used cars
+    Route::get('used-cars', [OurServiceUsedCarsController::class, 'usedCars'])->name('used-cars');
+    Route::post('used-cars-update', [OurServiceUsedCarsController::class, 'usedCarsUpdate'])->name('used-cars-update');
+
     // after sales service
     Route::get('after-sales-service', [AfterSalesServiceController::class, 'afterSalesService'])->name('after-sales-service');
     Route::post('after-sales-service-update', [AfterSalesServiceController::class, 'afterSalesServiceUpdate'])->name('after-sales-service-update');
@@ -521,7 +527,7 @@ Route::post('book-car-service', [AfterSalesServicedDetailController::class, 'boo
 // used car
 Route::get('our-service/used-car', [UsedCarDetailController::class, 'usedCar']);
 
-// used car
+// car insurance
 Route::get('our-service/book-insurance', [CarInsuranceDetailController::class, 'carInsurance']);
 Route::post('book-insurance-store', [CarInsuranceDetailController::class, 'bookInsurance'])->name('book-insurance-store');
 
