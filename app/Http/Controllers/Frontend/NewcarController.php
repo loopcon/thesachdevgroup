@@ -15,7 +15,7 @@ class NewCarController extends Controller
     {
         $return_data = array();
         $newCar = NewCar::first();
-        $return_data['new_car'] = $newCar; 
+        $return_data['new_car'] = $newCar;
         $return_data['brands'] = Brand::get();
         $return_data['models'] = Car::where('car_type',Constant::NEW_CAR)->get();
         $return_data['meta_title'] = isset($newCar->meta_title) && $newCar->meta_title ? $newCar->meta_title : NULL;
