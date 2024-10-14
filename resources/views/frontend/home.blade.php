@@ -32,7 +32,7 @@
         <p></p>
       </div>
     </div>
-    @if($home_our_businessess->count() > 7)
+    @if($home_our_businessess->count() > 4)
       <div class="brands-logo-parent owl-carousel owl-theme" id="our_businesses_carousel">
         @foreach($home_our_businessess as $home_our_businesses)
           <div class="brand-one">
@@ -143,16 +143,18 @@
       <div class="row">
         <div class="col-md-6">
             <div class="about-left-image">
-              @if(isset($home_detail->image) && $home_detail->image)
+                @foreach ($home_details as $home_detail)
                   <img src="{{url('public/home_detail/'.$home_detail->image)}}" alt="" width="100%"> 
-              @endif
-              </div>
+                @endforeach
+            </div>
         </div>
         <div class="col-md-6">
           <div class="about-right-content">
+            @foreach ($home_details as $home_detail)
               <h3 style="color:{{$home_detail->title_color}}; font-size:{{$home_detail->title_font_size}}; font-family:{{$home_detail->title_font_family}};">{{$home_detail->title}}</h3>    
               <h2 style="color:{{$home_detail->sub_title_color}}; font-size:{{$home_detail->sub_title_font_size}}; font-family:{{$home_detail->sub_title_font_family}};">{{$home_detail->sub_title}}</h2>
               <div>{!! $home_detail->description !!}</div>
+            @endforeach
           </div>
         </div>
       </div>
@@ -170,13 +172,15 @@
           <div id="customers-testimonials" class="owl-carousel">
             @foreach ($testimonials as $testimonial)
               <div class="item">
-                <div class="shadow-effect">
-                  <img src="{{url('public/testimonials/'.$testimonial->image)}}" alt=""> 
-                  <div>{!! $testimonial->description !!}</div>
-                </div>
-                <div class="testimonial-name" style="color:{{$testimonial->name_color}}; font-size:{{$testimonial->name_font_size}}; font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}}">
-                  {{$testimonial->name}}
-                </div>
+                  <div class="shadow-effect">
+                    <img src="{{url('public/testimonials/'.$testimonial->image)}}" alt=""> 
+                    <div class="expanded" data-full-description="{!! $testimonial->description !!}">
+                      {!! substr(strip_tags($testimonial->description), 0, 110) !!}{{ strlen(strip_tags($testimonial->description)) > 110 ? '...' : '' }}
+                    </div>
+                  </div>
+                  <div class="testimonial-name" style="color:{{$testimonial->name_color}}; font-size:{{$testimonial->name_font_size}}; font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}}">
+                    {{$testimonial->name}}
+                  </div>
               </div>
             @endforeach
           </div>
@@ -211,15 +215,15 @@
     loop: true,
     dots: false,
     nav: false,
-    items: 7,
+    // items: 7,
     autoplay:true,
     autoplayTimeout:2000,
     responsiveClass: true,
     responsive: {
       0:{
-        items: 2
+        items: 3 // Display 3 items on mobile screens
       },
-      480:{
+      576:{
         items: 3
       },
       769:{
@@ -277,6 +281,14 @@
       $('.number{{$counter}}').jQuerySimpleCounter({end: {{$count->amount}}, duration: 3000});
     @endforeach
   });
+
+  // for toggle description
+  $(document).ready(function() {
+    $('.expanded').on('click', function() {
+      var fullDescription = $(this).data('full-description');
+      $(this).html(fullDescription);
+    });
+  });
  
   /* AUTHOR LINK */
   $('.about-me-img').hover(function(){
@@ -292,7 +304,7 @@
       loop: true,
       center: true,
       items: 3,
-      autoplayTimeout:2000,
+      autoplayTimeout:1800,
       margin: 0,
       autoplay: true,
       dots:true,
@@ -303,7 +315,7 @@
             items: 1 
         },
         768: {
-            items: 2
+            items: 3
         },
         1170: {
             items: 3

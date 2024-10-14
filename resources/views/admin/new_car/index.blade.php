@@ -66,7 +66,7 @@
                                 <small class="image_type">(Hight:358px,Width:1349px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
-                            <?php /**<div class="col-md-4 adm-select-car-drop">
+                            <div class="col-md-4 adm-select-car-drop">
                                 <label for="brand_id" class="form-label">Brand<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="brand_id[]" id="brand_id"  required multiple>
                                     <option value="" disabled>-- Select Brand --</option>
@@ -77,7 +77,7 @@
                                 @if ($errors->has('brand_id')) <div class="text-danger">{{ $errors->first('brand_id') }}</div>@endif
                             </div>
 
-                            <div class="col-md-4 mb-2 adm-select-car-drop">
+                            <?php /**<div class="col-md-4 mb-2 adm-select-car-drop">
                                 <label for="car_id" class="form-label">Car Model<span class="text-danger">*</span></label>
                                 <select class="form-control select2" name="car_id[]" id="car_id" required multiple>
                                     <option value="" disabled>-- Select Car Model --</option>

@@ -53,7 +53,7 @@ class NewCarsController extends Controller
                     {
                         $new_car->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
                     }
-                    // $new_car->brand_id = json_encode($request->brand_id);
+                    $new_car->brand_id = json_encode($request->brand_id);
                     // $new_car->car_id = json_encode($request->car_id);
                     if($request->hasFile('banner_image')) {
                         $oldimage = $new_car->banner_image;
@@ -88,7 +88,7 @@ class NewCarsController extends Controller
                         $new_car->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
                     }
                     $new_car->brand_id = json_encode($request->brand_id);
-                    $new_car->car_id = json_encode($request->car_id);
+                    // $new_car->car_id = json_encode($request->car_id);
                     if($request->hasFile('banner_image')) {
                         $banner_image = fileUpload($request, 'banner_image', 'uploads/new_car');
                         $new_car->banner_image = $banner_image;
