@@ -38,20 +38,67 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Product</th>
+                                <th>Location Title</th>
+                                <th>Service</th>
                                 <th>#</th>
                                 <th class="text-center">Price</th>
                                 <th class="text-center">Total</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                $locationName = '';
+                                $locationTitle = '';
+                                if ($payUsLog->payment_towards == "showroom") {
+                                    $location = $payUsLog->showrooms->find($payUsLog->loc_id);
+                                    if (isset($location)) {
+                                        $businessDetail = $location->businessDetail;
+                                        $locationTitle = isset($businessDetail) ? $location->showroom_title : '';
+                                    }
+
+                                    $locationName = isset($location) ? $location->name : '';
+                                } elseif ($payUsLog->payment_towards == "service_center") {
+                                    $location = $payUsLog->serviceCenters->find($payUsLog->loc_id);
+                                    if (isset($location)) {
+                                        $businessDetail = $location->businessDetail;
+                                        $locationTitle = isset($businessDetail) ? $businessDetail->service_center_title : '';
+                                    }
+                                    $locationName = isset($location) ? $location->name : '';
+                                } elseif ($payUsLog->payment_towards == "body_shop") {
+                                    $location = $payUsLog->bodyShops->find($payUsLog->loc_id);
+                                    if (isset($location)) {
+                                        $businessDetail = $location->businessDetail;
+                                        $locationTitle = isset($businessDetail) ? $businessDetail->body_shop_title : '';
+                                    }
+                                    $locationName = isset($location) ? $location->name : '';
+                                } elseif ($payUsLog->payment_towards == "used_car") {
+                                    $location = $payUsLog->usedCars->find($payUsLog->loc_id);
+                                    if (isset($location)) {
+                                        $businessDetail = $location->businessDetail;
+                                        $locationTitle = isset($businessDetail) ? $businessDetail->used_car_title : '';
+                                    }
+                                    $locationName = isset($location) ? $location->name : '';
+                                } elseif ($payUsLog->payment_towards == "insurance") {
+                                    $location = $payUsLog->businessInsurance->find($payUsLog->loc_id);
+                                    if (isset($location)) {
+                                        $businessDetail = $location->businessDetail;
+                                        $locationTitle = isset($businessDetail) ? $businessDetail->insurance_title : '';
+                                    }
+                                    $locationName = isset($location) ? $location->name : '';
+                                } else {
+                                    $locationName = isset($payUsLog->nearLocation) ? $payUsLog->nearLocation->nikname : '';
+                                }
+                            @endphp
+
                             <tr>
-                                <td class="col-md-9"><em><?php echo $payUsLog->payment_towards; ?></em></h4></td>
+                                <td class="col-md-9"><em>{{ ($locationTitle != "") ? $locationTitle : ''; }}</em></h4></td>
+                                <td class="col-md-9"><em>{{ ($locationName != "") ? $locationName : $payUsLog->payment_towards; }}</em></h4></td>
                                 <td class="col-md-1" style="text-align: center"> 1 </td>
                                 <td class="col-md-1 text-center"><?php echo $amount; ?></td>
                                 <td class="col-md-1 text-center"><?php echo $amount; ?></td>
                             </tr>
                             <tr>
+                                <td>   </td>
                                 <td>   </td>
                                 <td>   </td>
                                 <td class="text-right">
@@ -66,6 +113,7 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>   </td>
                                 <td>   </td>
                                 <td>   </td>
                                 <td class="text-right"><h4><strong>Total: </strong></h4></td>

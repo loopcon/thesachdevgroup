@@ -16,7 +16,7 @@ use Auth;
 use Constant;
 use Excel;
 use Carbon\Carbon;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PaymentController extends Controller
 {
@@ -31,7 +31,8 @@ class PaymentController extends Controller
         {
             // $vehicle_brand = VehicleBrand::select('id', 'name')->where('userid', Auth::user()->id)->first();
             // $return_data['services'] = PaymentToward::select('name')->where('vehicle_brand', $vehicle_brand->id)->groupBy('name')->get();
-            $businesses  = OurBusiness::select('id','title')->get();
+
+            /* $businesses  = OurBusiness::select('id','title')->get();
             foreach ($businesses as $key => $value) {
                 $services = [];
                 $service_id = json_decode($value->service_id);
@@ -39,7 +40,13 @@ class PaymentController extends Controller
                     $services = Service::whereIn('id', $service_id)->get();
                 }
                 $return_data['services'] = $services;
-            }
+                dd($return_data);
+            } */
+
+            $vehicle_brand = OurBusiness::select('id', 'title')->find(Auth::user()->business_id);
+            $services = PaymentToward::select('name')->where('vehicle_brand', $vehicle_brand->id)->groupBy('name')->get();
+            $return_data['services'] = $services;
+            // dd($return_data);
         }
 
         // $return_data['services'] = PaymentToward::select('name')->groupBy('name')->get();
@@ -122,7 +129,7 @@ class PaymentController extends Controller
                 });
             }
 
-            $list = $query->orderBy('id', 'DESC')->get();
+            $list = $query->orderBy('id', 'DESC')->limit(50)->get();
 
             return DataTables::of($list)
                 ->addColumn('payment_to', function ($list) {
@@ -169,9 +176,8 @@ class PaymentController extends Controller
                 ->addColumn('near_location', function ($list) {
                     return $list->near_location;
                 })
-                
                  ->addColumn('transaction_time', function($list){
-                    $transaction_time = date('m/d/Y', strtotime($list->transaction_time));
+                    $transaction_time = date('d-m-Y H:i:s', strtotime($list->transaction_time));
                     return $transaction_time;
                 })
                 ->make(true);
