@@ -63,10 +63,48 @@ class PaymentController extends Controller
     {
         $business = $request->input('business_id');
         // $vehicle_brand = VehicleBrand::select('id', 'name')->where('name', $business)->first();
-        $vehicle_brand = OurBusiness::select('id', 'title')->where('title', $business)->first();
-        $services = PaymentToward::select('name')->where('vehicle_brand', $vehicle_brand->id)->groupBy('name')->get();
+        $vehicle_brand = OurBusiness::where('title', $business)->first();
+        // $services = PaymentToward::select('name')->where('vehicle_brand', $vehicle_brand->id)->groupBy('name')->get();
         // $locations = NearLocation::select('id', 'nikname')->where('vehicle_brand', $vehicle_brand->id)->groupBy('nikname')->get();
+        // dd($vehicle_brand->id);
+        
+        $services = [
+            (object) [
+                'column_name' => 'showroom_title',
+                'value' => $vehicle_brand->showroom_title,
+            ],
+            (object) [
+                'column_name' => 'service_center_title',
+                'value' => $vehicle_brand->service_center_title,
+            ],
+            (object) [
+                'column_name' => 'body_shop_title',
+                'value' => $vehicle_brand->body_shop_title,
+            ],
+            (object) [
+                'column_name' => 'used_car_title',
+                'value' => $vehicle_brand->used_car_title,
+            ],
+            (object) [
+                'column_name' => 'insurance_title',
+                'value' => $vehicle_brand->insurance_title,
+            ],
+        ];
+        if ($vehicle_brand->id == 1 ||  $vehicle_brand->id == 2 || $vehicle_brand->id == 3) {
+            $services[] = (object) [
+                'column_name' => 'other_specify',
+                'value' => 'Other Specify'
+            ];
+        }
 
+        if ($vehicle_brand->id == 4 ||  $vehicle_brand->id == 5 || $vehicle_brand->id == 7) {
+            $services[] = (object) [
+                'column_name' => 'other',
+                'value' => 'Other'
+            ];
+        }
+
+        // dd($services);
         return [
             'services' => $services
             // 'locations' => $locations,
@@ -77,13 +115,37 @@ class PaymentController extends Controller
     {
         $business = $request->input('business_id');
         $service = $request->input('service');
-        $vehicle_brand = VehicleBrand::select('id', 'name')->where('name', $business)->first();
-        $services = PaymentToward::select('type')->where('name', $service)->first();
-        
-        $vehicle_brand = VehicleBrand::select('id', 'name')->where('name', $business)->first();
-        $services = PaymentToward::select('type')->where('name', $service)->first();
-        // dd($request->all(), $vehicle_brand, $services);
-        $locations = NearLocation::select('id', 'nikname')->where('vehicle_brand', $vehicle_brand->id)->where('type', $services->type)->groupBy('nikname')->get();
+        // $vehicle_brand = VehicleBrand::select('id', 'name')->where('name', $business)->first();
+        // $services = PaymentToward::select('type')->where('name', $service)->first();
+        $vehicle_brand = OurBusiness::where('title', $business)->first();
+        // $vehicle_brand = VehicleBrand::select('id', 'name')->where('name', $business)->first();
+        // $services = PaymentToward::select('type')->where('name', $service)->first();
+        // dd($request->all(), $vehicle_brand, $services);.
+        // dd('type=>', $services->type, 'vehicle_brand =>', $vehicle_brand->id);
+        // $locations = NearLocation::select('id', 'nikname')->where('vehicle_brand', $vehicle_brand->id)->where('type', $services->type)->groupBy('nikname')->get();
+
+        if ($request->service == "showroom_title") {
+            // $service = "showroom";
+            $locations = $vehicle_brand->showrooms()->select('id', 'name as nikname')->get();
+        } elseif ($request->service == "service_center_title") {
+            // $service = "service_center";
+            $locations = $vehicle_brand->serviceCenters()->select('id', 'name as nikname')->get();
+        } elseif ($request->service == "body_shop_title") {
+            // $service = "body_shop";
+            $locations = $vehicle_brand->bodyShops()->select('id', 'name as nikname')->get();
+        } elseif ($request->service == "used_car_title") {
+            // $service = "used_car";
+            $locations = $vehicle_brand->usedCars()->select('id', 'name as nikname')->get();
+        } elseif ($request->service == "insurance_title") {
+            // $service = "insurance";
+            $locations = $vehicle_brand->businessInsurance()->select('id', 'name as nikname')->get();
+        } elseif ($request->service == "other_specify") {
+            // $service = "Other Specify";
+            $locations = $vehicle_brand->nearLocation()->select('id', 'nikname')->get();
+        } else {
+            // $service = "Other";
+            $locations = $vehicle_brand->nearLocation()->select('id', 'nikname')->get();
+        }
 
         return [
             // 'services' => $services
@@ -110,7 +172,24 @@ class PaymentController extends Controller
 
             if($request->has('service') && !empty($request->service))
             {
-                $query->where('payment_towards', $request->service);
+                if ($request->service == "showroom_title") {
+                    $service = "showroom";
+                } elseif ($request->service == "service_center_title") {
+                    $service = "service_center";
+                } elseif ($request->service == "body_shop_title") {
+                    $service = "body_shop";
+                } elseif ($request->service == "used_car_title") {
+                    $service = "used_car";
+                } elseif ($request->service == "insurance_title") {
+                    $service = "insurance";
+                } elseif ($request->service == "other_specify") {
+                    $service = "Other Specify";
+                } else {
+                    $service = "Other";
+                }
+                // dd($service);
+                // $service = "body_shop";
+                $query->where('payment_towards', $service);
             }
 
             if ($request->from_date && $request->to_date)
