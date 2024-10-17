@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PayUsLog;
 use App\Models\PayUs;
+use App\Models\Showroom;
+use App\Models\ServiceCenter;
 use App\Models\VehicleBrand;
 use App\Models\PaymentToward;
 use App\Models\NearLocation;
@@ -208,7 +210,7 @@ class PaymentController extends Controller
                 });
             }
 
-            $list = $query->orderBy('id', 'DESC')->limit(50)->get();
+            $list = $query->orderBy('id', 'DESC')->get();
 
             return DataTables::of($list)
                 ->addColumn('payment_to', function ($list) {
@@ -218,6 +220,10 @@ class PaymentController extends Controller
                     return $list->paid_amount;
                 })
                 ->addColumn('payment_towards', function ($list) {
+                    if ($list->payment_towards == "insurance") {
+                        $locs = $list->businessInsurance->find($list->loc_id);
+                        return isset($locs) ? $locs->name : '';
+                    }
                     return $list->payment_towards;
                 })
                 ->addColumn('loc_id', function ($list) {
@@ -234,8 +240,51 @@ class PaymentController extends Controller
                         $locs = $list->usedCars->find($list->loc_id);
                         return isset($locs) ? $locs->name : '';
                     } elseif ($list->payment_towards == "insurance") {
-                        $locs = $list->businessInsurance->find($list->loc_id);
-                        return isset($locs) ? $locs->name : '';
+                        if ($list->payment_to == "Harpreet Ford") {
+                            $location = Showroom::where('our_business_id', 3)->where('name', 'LIKE', '%Moti%')->first();
+
+                            if (!isset($location)) {
+                                $location = ServiceCenter::where('business_id', 3)->where('name', 'LIKE', '%Moti%')->first();
+
+                                if (!isset($location)) {
+                                    $location = ServiceCenter::find(19);
+                                }
+                            }
+                        } elseif ($list->payment_to == "Auto Car Repair (myTVS)") {
+                            $location = Showroom::where('our_business_id', 4)->where('name', 'LIKE', '%Moti%')->first();
+
+                            if (!isset($location)) {
+                                $location = ServiceCenter::where('business_id', 4)->where('name', 'LIKE', '%Moti%')->first();
+
+                                if (!isset($location)) {
+                                    $location = ServiceCenter::find(8);
+                                }
+                            }
+                        } elseif ($list->payment_to == "Galaxy Toyota") {
+                            $location = Showroom::where('our_business_id', 1)->where('name', 'LIKE', '%Moti%')->first();
+
+                            if (!isset($location)) {
+                                $location = ServiceCenter::where('business_id', 1)->where('name', 'LIKE', '%Moti%')->first();
+
+                                if (!isset($location)) {
+                                    $location = ServiceCenter::find(4);
+                                }
+                            }
+                        } elseif ($list->payment_to == "Hans Hyundai") {   
+                            $location = Showroom::where('our_business_id', 2)->where('name', 'LIKE', '%Moti%')->first();
+
+                            if (!isset($location)) {
+                                $location = ServiceCenter::where('business_id', 2)->where('name', 'LIKE', '%Moti%')->first();
+
+                                if (!isset($location)) {
+                                    $location = ServiceCenter::find(11);
+                                }
+                            }                             
+                        }
+                        return isset($location) ? $location->name : "";
+                        
+                        // $locs = $list->businessInsurance->find($list->loc_id);
+                        // return isset($locs) ? $locs->name : '';
                     } else {
                         return isset($list->nearLocation) ? $list->nearLocation->nikname : '';
                     }                    

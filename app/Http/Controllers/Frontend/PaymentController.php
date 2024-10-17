@@ -40,6 +40,7 @@ class PaymentController extends Controller
         $nearLocation = [];
 
         if ($towrd[0] != "Other Specify" && $towrd[0] != "Other" && $towrd[0] != "Sales") {
+            $dropdownLabel = "Select Location";
             if ($towrd[0] == "showroom") {
                 if(isset($ourBusiness->showrooms) && count($ourBusiness->showrooms) > 0) {
                     $nearLocation = $ourBusiness->showrooms;
@@ -60,13 +61,14 @@ class PaymentController extends Controller
                 if(isset($ourBusiness->businessInsurance) && count($ourBusiness->businessInsurance) > 0) {
                     $nearLocation = $ourBusiness->businessInsurance;
                 }
+                $dropdownLabel = "Type Of Insurance Service";
             }
 
             $html = '<div class="form-group" id="payment_location">
-            <label class="col-xs-3 control-label">Location <span class="text-danger">*</span></label>
+            <label class="col-xs-3 control-label">'.$dropdownLabel.'  <span class="text-danger">*</span></label>
                 <div  class="col-xs-9">
                     <select class="form-control" required name="near_location" >
-                        <option  value="">Select Location</option>';
+                        <option  value="">Select '.$dropdownLabel.'</option>';
                         foreach ($nearLocation as $fn) {
                             $html .= '<option value="'.$fn->id.'">'.$fn->name.'</option>';
                         }
