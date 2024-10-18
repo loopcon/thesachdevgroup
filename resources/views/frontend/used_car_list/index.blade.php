@@ -100,6 +100,7 @@
     </div>
 </section>
 
+<!-- facility slider -->
 @if(isset($facility) && !empty($facility))
 <section id="facility">
     <div class="container">
@@ -116,7 +117,7 @@
                                     <div class="image-content-facitity">
                                         <!-- <span class="overlay"></span> -->
                                         <div class="card-image">
-                                            <img src="{{url('public/used_car_facility_image/'.$facility_image->facility_image)}}" alt="" class="card-img">
+                                            <img src="{{url('public/uploads/used_car_facility_image/'.$facility_image->facility_image)}}" alt="" class="card-img">
                                         </div>
                                     </div>
                                 </a>
@@ -132,8 +133,9 @@
     </div>
 </section>
 @endif
-<!-- slider end  -->
+<!-- facility slider end  -->
 
+<!-- customer gallery slider -->
 <section id="facility">
     <div class="container">
         <div class="text-facility">
@@ -142,13 +144,13 @@
         <div class="slide-container swiper">
             <div class="slide-content">
                 <div class="card-wrapper swiper-wrapper">
-                @if(isset($facility) && $facility)
-                    @foreach($facility as $customer_image)
+                @if(isset($customer_gallery) && $customer_gallery)
+                    @foreach($customer_gallery as $customer_image)
                         <div class="card swiper-slide">
                             <a href="#">
                                 <div class="image-content-facitity">
                                     <div class="card-image">
-                                        <img src="{{url('public/used_car_customer_gallery_image/'.$customer_image->customer_gallery_image)}}" alt="" class="card-img">
+                                        <img src="{{url('public/uploads/used_car_customer_gallery_image/'.$customer_image->customer_gallery_image)}}" alt="" class="card-img">
                                     </div>
                                 </div>
                             </a>

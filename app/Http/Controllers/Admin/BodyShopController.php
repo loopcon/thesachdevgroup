@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Body_shop;
 use App\Models\OurBusiness;
+use App\Models\Car;
 use DataTables;
 use File;
 
@@ -41,6 +42,7 @@ class BodyShopController extends Controller
                 $return_data = array();
                 $return_data['site_title'] = trans('Body Shop Create');
                 $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
+                $return_data['cars'] = Car::select('id','name')->get();
                 return view("admin.body_shop.form",array_merge($return_data));
             }else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -60,11 +62,13 @@ class BodyShopController extends Controller
             {
   
                 $body_shop = new Body_shop();
-                $fields = array('address','address_font_size','address_font_family','address_font_color','email','email_font_size','email_font_family','email_font_color','contact_number','contact_font_size','contact_font_family','contact_font_color','map_link');
+                $fields = array('name','business_id','name_color','name_font_size','name_font_family','link','rating','number_of_rating','address','address_font_size','address_font_family','address_font_color','email','email_font_size','email_font_family','email_font_color','contact_number','contact_font_size','contact_font_family','contact_font_color','map_link','description','description_font_size','description_font_family','description_font_color','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size','email_title_font_family','meta_title','meta_keyword','meta_description');
                 foreach($fields as $field)
                 {
                     $body_shop->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
                 }
+                $body_shop->slug = $request->name ? slugify($request->name) : NULL;
+                $body_shop->car_model_id = isset($request->car_model_id) && $request->car_model_id ? json_encode($request->car_model_id) : NULL;
 
                 if($file = $request->hasFile('image')) {
                     $file = $request->file('image') ;
@@ -77,16 +81,31 @@ class BodyShopController extends Controller
                     $body_shop->image = $fileName;
                 }
 
-                $body_shop->name = $request->name;
+                if($request->hasFile('address_icon')) {
+                    $address_icon = fileUpload($request, 'address_icon', 'uploads/body_shop_address_icon');
+                    $body_shop->address_icon = $address_icon;
+                }
 
-                $body_shop->slug = $request->name ? slugify($request->name) : NULL;
-                $body_shop->business_id = $request->business_id;
-                $body_shop->name_color = $request->name_color;
-                $body_shop->name_font_size	 = $request->name_font_size;
-                $body_shop->name_font_family	 = $request->name_font_family;
-                $body_shop->link = $request->link;
-                $body_shop->rating = $request->rating;
-                $body_shop->number_of_rating = $request->number_of_rating;
+                if($request->hasFile('working_hours_icon')) {
+                    $working_hours_icon = fileUpload($request, 'working_hours_icon', 'uploads/body_shop_working_hours_icon');
+                    $body_shop->working_hours_icon = $working_hours_icon;
+                }
+
+                if($request->hasFile('contact_icon')) {
+                    $contact_icon = fileUpload($request, 'contact_icon', 'uploads/body_shop_contact_icon');
+                    $body_shop->contact_icon = $contact_icon;
+                }
+
+                if($request->hasFile('email_icon')) {
+                    $email_icon = fileUpload($request, 'email_icon', 'uploads/body_shop_email_icon');
+                    $body_shop->email_icon = $email_icon;
+                }
+
+                if($request->hasFile('lets_connect_image')) {
+                    $lets_connect_image = fileUpload($request, 'lets_connect_image', 'uploads/body_shop/lets_connect_image');
+                    $body_shop->lets_connect_image = $lets_connect_image;
+                }
+
                 $body_shop->save();
         
                 return redirect()->route('body_shop')->with('success','Body Shop insert successfully.');
@@ -97,7 +116,6 @@ class BodyShopController extends Controller
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
         }
     }
-
 
     public function body_shop_index(Request $request)
     {
@@ -150,6 +168,8 @@ class BodyShopController extends Controller
                 $body_shop = Body_shop::find($id);
                 $return_data['record'] = $body_shop;
                 $return_data['our_business'] = OurBusiness::select('id', 'title')->get();
+                $return_data['cars'] = Car::select('id','name')->get();
+
                 return view("admin.body_shop.form",array_merge($return_data));
             } else {
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
@@ -169,11 +189,13 @@ class BodyShopController extends Controller
             {
 
                 $body_shop = Body_shop::find(decrypt($id));
-                $fields = array('address','address_font_size','address_font_family','address_font_color','email','email_font_size','email_font_family','email_font_color','contact_number','contact_font_size','contact_font_family','contact_font_color','map_link');
+                $fields = array('name','business_id','name_color','name_font_size','name_font_family','link','rating','number_of_rating','address','address_font_size','address_font_family','address_font_color','email','email_font_size','email_font_family','email_font_color','contact_number','contact_font_size','contact_font_family','contact_font_color','map_link','description','description_font_size','description_font_family','description_font_color','facility_title','facility_title_color','facility_title_font_size','facility_title_font_family','customer_gallery_title','customer_gallery_title_color','customer_gallery_title_font_size','customer_gallery_title_font_family','testimonial_title','testimonial_title_color','testimonial_title_font_size','testimonial_title_font_family','address_title','address_title_color','address_title_font_size','address_title_font_family','working_hour_title','working_hour_title_color','working_hour_title_font_size','working_hour_title_font_family','contact_title','contact_title_color','contact_title_font_size','contact_title_font_family','email_title','email_title_color','email_title_font_size','email_title_font_family','meta_title','meta_keyword','meta_description');
                 foreach($fields as $field)
                 {
                     $body_shop->$field = isset($request->$field) && $request->$field !='' ? $request->$field : NULL;
                 }
+                $body_shop->slug = $request->name ? slugify($request->name) : NULL;
+                $body_shop->car_model_id = isset($request->car_model_id) && $request->car_model_id ? json_encode($request->car_model_id) : NULL;
 
                 if($request->hasFile('image'))
                 {
@@ -189,17 +211,56 @@ class BodyShopController extends Controller
                     $body_shop->image = $filename;
                 }
 
-                $body_shop->name = $request->name;
+                if($request->hasFile('address_icon')) {
+                    $oldimage = $body_shop->address_icon;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/body_shop_address_icon/'.$oldimage);
+                    }
+                    $address_icon = fileUpload($request, 'address_icon', 'uploads/body_shop_address_icon');
+                    $body_shop->address_icon = $address_icon;
+                }
 
-                $body_shop->slug = $request->name ? slugify($request->name) : NULL;
+                if($request->hasFile('working_hours_icon')) {
+                    $oldimage = $body_shop->working_hours_icon;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/body_shop_working_hours_icon/'.$oldimage);
+                    }
+                    $working_hours_icon = fileUpload($request, 'working_hours_icon', 'uploads/body_shop_working_hours_icon');
+                    $body_shop->working_hours_icon = $working_hours_icon;
+                }
 
-                $body_shop->business_id = $request->business_id;
-                $body_shop->name_color = $request->name_color;
-                $body_shop->name_font_size	 = $request->name_font_size;
-                $body_shop->name_font_family	 = $request->name_font_family;
-                $body_shop->link = $request->link;
-                $body_shop->rating = $request->rating;
-                $body_shop->number_of_rating = $request->number_of_rating;
+                if($request->hasFile('contact_icon')) {
+                    $oldimage = $body_shop->contact_icon;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/body_shop_contact_icon/'.$oldimage);
+                    }
+                    $contact_icon = fileUpload($request, 'contact_icon', 'uploads/body_shop_contact_icon');
+                    $body_shop->contact_icon = $contact_icon;
+                }
+
+                if($request->hasFile('email_icon')) {
+                    $oldimage = $body_shop->email_icon;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/body_shop_email_icon/'.$oldimage);
+                    }
+                    $email_icon = fileUpload($request, 'email_icon', 'uploads/body_shop_email_icon');
+                    $body_shop->email_icon = $email_icon;
+                }
+
+                if($request->hasFile('lets_connect_image')) {
+                    $oldimage = $body_shop->lets_connect_image;
+                    if($oldimage)
+                    {
+                        removeFile('uploads/body_shop/lets_connect_image/'.$oldimage);
+                    }
+                    $lets_connect_image = fileUpload($request, 'lets_connect_image', 'uploads/body_shop/lets_connect_image');
+                    $body_shop->lets_connect_image = $lets_connect_image;
+                }
+
                 $body_shop->save();
                 
 
@@ -222,15 +283,61 @@ class BodyShopController extends Controller
         {
             if($has_permission->full_permission == 1)
             {
-                $body_shop_image = Body_shop::find($id);
+                $body_shop = Body_shop::find($id);
 
-                if($body_shop_image->image != NULL)
+                if($body_shop->image != NULL)
                 {
-                    $image = public_path("body_shop_image/{$body_shop_image->image}");
+                    $image = public_path("body_shop_image/{$body_shop->image}");
                     if (File::exists($image)) {
                         unlink($image);
                     }
                 }
+
+                if($body_shop->address_icon != NULL)
+                {
+                    $address_icon = $body_shop->address_icon;
+                    if($address_icon)
+                    {
+                        removeFile('uploads/body_shop_address_icon/'.$address_icon);
+                    }
+                }
+
+                if($body_shop->working_hours_icon != NULL)
+                {
+                    $working_hours_icon = $body_shop->working_hours_icon;
+                    if($working_hours_icon)
+                    {
+                        removeFile('uploads/body_shop_working_hours_icon/'.$working_hours_icon);
+                    }
+                }
+
+                if($body_shop->contact_icon != NULL)
+                {
+                    $contact_icon = $body_shop->contact_icon;
+                    if($contact_icon)
+                    {
+                        removeFile('uploads/body_shop_contact_icon/'.$contact_icon);
+                    }
+                }
+
+                if($body_shop->email_icon != NULL)
+                {
+                    $email_icon = $body_shop->email_icon;
+                    if($email_icon)
+                    {
+                        removeFile('uploads/body_shop_email_icon/'.$email_icon);
+                    }
+                }
+
+                if($body_shop->lets_connect_image != NULL)
+                {
+                    $lets_connect_image = $body_shop->lets_connect_image;
+                    if($lets_connect_image)
+                    {
+                        removeFile('uploads/body_shop/lets_connect_image/'.$lets_connect_image);
+                    }
+                }
+
                 $body_shop_image = Body_shop::where('id',$id)->delete();
                 if($body_shop_image)
                 {
