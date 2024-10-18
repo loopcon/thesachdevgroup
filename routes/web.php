@@ -40,6 +40,7 @@ use App\Http\Controllers\Admin\CarInsuranceController;
 use App\Http\Controllers\Admin\CompanyCsrController;
 use App\Http\Controllers\Admin\EmailTemplatesController;
 use App\Http\Controllers\Admin\OurServiceUsedCarsController;
+use App\Http\Controllers\Admin\UsedCarTestimonialContoller;
 
 // frontend controller
 use App\Http\Controllers\Frontend\HomeController;
@@ -384,6 +385,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('used_car_update,{id}', [AdminUsedCarController::class, 'used_car_update'])->name('used_car_update');
     Route::get('used_car_destroy/{id}', [AdminUsedCarController::class, 'used_car_destroy'])->name('used_car_destroy');
 
+    //used car testimonial
+    Route::get('used-car-testimonial', [UsedCarTestimonialContoller::class, 'usedCarTestimonialList'])->name('used-car-testimonial');
+    Route::get('used-car-testimonial-create', [UsedCarTestimonialContoller::class, 'usedCarTestimonialCreate'])->name('used-car-testimonial-create');
+    Route::post('used-car-testimonial-store', [UsedCarTestimonialContoller::class, 'usedCarTestimonialStore'])->name('used-car-testimonial-store');
+    Route::get('used-car-testimonial-edit/{id}', [UsedCarTestimonialContoller::class, 'usedCarTestimonialEdit'])->name('used-car-testimonial-edit');
+    Route::post('used-car-testimonial-update/{id}', [UsedCarTestimonialContoller::class, 'usedCarTestimonialUpdate'])->name('used-car-testimonial-update');
+    Route::get('used-car-testimonial-delete/{id}', [UsedCarTestimonialContoller::class, 'usedCarTestimonialDestroy'])->name('used-car-testimonial-delete');
+    Route::get('used-car-testimonial-datatable', [UsedCarTestimonialContoller::class, 'usedCarTestimonialDatatable'])->name('used-car-testimonial-datatable');
+
     //contact_us
     Route::get('contact_us', [ContactUsController::class, 'contact_us'])->name('contact_us');
     Route::post('contact_us_insert', [ContactUsController::class, 'contact_us_insert'])->name('contact_us_insert');
@@ -472,6 +482,16 @@ Route::group(['controller'=>PaymentController::class, 'prefix'=>'payment', 'as'=
         return view('frontend.payment.cancel');
     })->name('cancel');
 });
+Route::get('acr-noida-payment', [PaymentController::class, 'acrnoidaFrom'])->name('form');
+Route::get('acr-gurugram-payment', [PaymentController::class, 'acrgurugramFrom'])->name('form');
+Route::get('acr-motinagar-payment', [PaymentController::class, 'acrmotinagarFrom'])->name('form');
+Route::get('gt-okhla-payment', [PaymentController::class, 'okhlaFrom'])->name('form');
+Route::get('gt-azadpur-payment', [PaymentController::class, 'azadpurFrom'])->name('form');
+Route::get('gt-motinagar-payment', [PaymentController::class, 'gtmotinagarForm'])->name('form');
+Route::get('hh-motinagar-payment', [PaymentController::class, 'motinagarForm'])->name('form');
+Route::get('hh-badli-payment', [PaymentController::class, 'badliForm'])->name('form');
+Route::get('hh-zakhira-payment', [PaymentController::class, 'zakhiraForm'])->name('form');
+Route::get('hh-naraina-payment', [PaymentController::class, 'narainaForm'])->name('form');
 
 //contactus_detail
 Route::get('contactus/contact', [ContactUsDetailController::class, 'contactusDetail'])->name('contactus_detail');
@@ -512,7 +532,7 @@ Route::post('service-center-contact-query-store', [ServiceCenterDetailController
 Route::get('showroom/{slug}', [ShowroomDetailController::class, 'showroom']);
 Route::post('showroom-contact-query-store', [ShowroomDetailController::class, 'showroomContactQueryStore'])->name('showroom-contact-query-store');
 
-// used car
+// used car list
 Route::get('used-car/{slug}', [UsedCarController::class, 'usedCar']);
 
 // careers

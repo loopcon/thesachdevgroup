@@ -206,7 +206,7 @@
                                     <div class="rating">
                                         @php($rating = $used_car->rating * 20)
                                         <div class='stars'>
-                                            <div id='pid-{{$body_shop->id}}' class='percent' style='width:{{$rating}}%;'>
+                                            <div id='pid-{{$used_car->id}}' class='percent' style='width:{{$rating}}%;'>
                                             </div>
                                         </div>
                                     </div>

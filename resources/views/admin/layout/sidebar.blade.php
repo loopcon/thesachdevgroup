@@ -256,15 +256,35 @@
             @endif
         @endif
 
-        @php($has_permission = hasPermission('Used Car'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
-                <li class="nav-item"> 
-                    <a href="{{url('used_car')}}" class="nav-link {{request()->is('used_car*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-ellipsis-h"></i><p>Used Car</p>
-                    </a>
-                </li>
-            @endif
+        @if(hasPermission('Used Car') || hasPermission('Used Car Testimonial'))
+            <li class="nav-item {{ (request()->is('used_car*') || request()->is('used-car-testimonial*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('used_car*') || request()->is('used-car-testimonial*')) ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-ellipsis-h"></i><p>Used Cars<i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @php($has_used_car_permission = hasPermission('Used Car'))
+                    @if(isset($has_used_car_permission) && $has_used_car_permission)
+                        @if($has_used_car_permission->read_permission == 1 || $has_used_car_permission->full_permission == 1)
+                            <li class="nav-item"> 
+                                <a href="{{url('used_car')}}" class="nav-link {{ (request()->is('used_car*') && !request()->is('used-car-testimonial*')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Used Car</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
+                    @php($has_used_car_testimonial_permission = hasPermission('Used Car Testimonial'))
+                    @if(isset($has_used_car_testimonial_permission) && $has_used_car_testimonial_permission)
+                        @if($has_used_car_testimonial_permission->read_permission == 1 || $has_used_car_testimonial_permission->full_permission == 1)
+                            <li class="nav-item"> 
+                                <a href="{{url('used-car-testimonial')}}" class="nav-link {{ (request()->is('used-car-testimonial*')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Used Car Testimonial</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+                </ul>
+            </li>
         @endif
 
         @if(isset(Auth::user()->role_id) && Auth::user()->role_id == 1)

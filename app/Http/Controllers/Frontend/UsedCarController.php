@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Used_car;
+use App\Models\UsedCarTestimonial;
 
 class UsedCarController extends Controller
 {
@@ -21,10 +22,12 @@ class UsedCarController extends Controller
             $return_data['cars'] = Car::whereIn('id',$car_model_id)->select('name','name_color','name_font_size','name_font_family','image')->get();
         }
 
+        $return_data['testimonials'] = UsedCarTestimonial::where('used_car_id',$used_car->id)->get();
+
         $return_data['meta_keyword'] = isset($used_car->meta_keyword) && $used_car->meta_keyword ? $used_car->meta_keyword : NULL;
         $return_data['meta_title'] = isset($used_car->meta_title) && $used_car->meta_title ? $used_car->meta_title : NULL;
         $return_data['meta_description'] = isset($used_car->meta_description) && $used_car->meta_description ? $used_car->meta_description : NULL;
 
-        return view('frontend.used_car_detail.index',array_merge($return_data));
+        return view('frontend.used_car_list.index',array_merge($return_data));
     }
 }

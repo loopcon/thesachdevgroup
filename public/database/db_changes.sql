@@ -860,3 +860,38 @@ ALTER TABLE `used_cars` CHANGE `decription_font_family` `description_font_family
 
 -- Disha : 17-10-2024 06:00 PM
 ALTER TABLE `used_cars` ADD `address_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `address`;
+
+-- Disha : 18-10-2024 10:22 AM
+ALTER TABLE `used_cars` CHANGE `customer_gallery_title` `customer_gallery_title` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+
+-- Disha : 18-10-2024 10:50 AM
+--
+-- Table structure for table `used_car_testimonial`
+--
+
+CREATE TABLE `used_car_testimonial` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `used_car_id` int(11) DEFAULT NULL COMMENT '`id` of `used_cars`',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_font_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_font_family` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_font_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description_text_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description_text_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description_font_family` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `used_car_testimonial`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `used_car_testimonial`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+-- Disha : 18-10-2024 11:18 AM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Used Car Testimonial', NULL, NULL, NULL);

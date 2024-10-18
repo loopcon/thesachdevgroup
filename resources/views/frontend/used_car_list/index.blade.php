@@ -12,7 +12,7 @@
 <section id="location-banner">
     <div class="location-banner-image">
         @if(isset($used_car->image) && $used_car->image)
-            <img src="{{url('public/used_car_image/'.$used_car->image)}}" alt="">
+            <img src="{{url('public/used_car_image/'.$used_car->image)}}" width="1349px" height="281px" alt="">
         @endif
     </div>
 </section>
@@ -229,11 +229,11 @@
 </section>
 
 <!-- testimonials -->
-<?php /**@if(isset($testimonials) && !empty($testimonials))
+@if(isset($testimonials) && !empty($testimonials))
 <section id="testimonial">
     <div class="container">
         <div class="location-testimonial">
-            <h2 style="color:{{$showroom->testimonial_title_color}}; font-size:{{$showroom->testimonial_title_font_size}}; font-family:{{$showroom->testimonial_title_font_family}};">{{isset($showroom->testimonial_title) && $showroom->testimonial_title ? $showroom->testimonial_title : ''}}</h2>
+            <h2 style="color:{{$used_car->testimonial_title_color}}; font-size:{{$used_car->testimonial_title_font_size}}; font-family:{{$used_car->testimonial_title_font_family}};">{{isset($used_car->testimonial_title) && $used_car->testimonial_title ? $used_car->testimonial_title : ''}}</h2>
         </div>
         <div class="reviews">
             <section class="testimonials">
@@ -245,7 +245,7 @@
                                     <!--TESTIMONIAL 1 -->
                                     <div class="item">
                                         <div class="shadow-effect">
-                                            <img class="img-circle" src="{{url('public/uploads/showroom_testimonial/'.$testimonial->image)}}" alt="">
+                                            <img class="img-circle" src="{{url('public/uploads/used_car_testimonial/'.$testimonial->image)}}" alt="">
                                             <p maxlength="20" style="color:{{$testimonial->description_text_color}}; font-size:{{$testimonial->description_text_size}}; font-family:{{$testimonial->description_font_family}};">{{$testimonial->description}}</p>
                                         </div>
                                         <div class="testimonial-name" style="color:{{$testimonial->name_text_color}}; font-size:{{$testimonial->name_text_size}}; font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}};">{{$testimonial->name}}</div>
@@ -260,7 +260,7 @@
         </div>
     </div>
 </section>
-@endif**/ ?>
+@endif
 <!-- end testimonials -->
 
 @endsection
