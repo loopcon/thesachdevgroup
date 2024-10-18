@@ -41,6 +41,7 @@ use App\Http\Controllers\Admin\CompanyCsrController;
 use App\Http\Controllers\Admin\EmailTemplatesController;
 use App\Http\Controllers\Admin\OurServiceUsedCarsController;
 use App\Http\Controllers\Admin\UsedCarTestimonialContoller;
+use App\Http\Controllers\Admin\UsedCarFacilityCustomerGalleryController;
 
 // frontend controller
 use App\Http\Controllers\Frontend\HomeController;
@@ -393,6 +394,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('used-car-testimonial-update/{id}', [UsedCarTestimonialContoller::class, 'usedCarTestimonialUpdate'])->name('used-car-testimonial-update');
     Route::get('used-car-testimonial-delete/{id}', [UsedCarTestimonialContoller::class, 'usedCarTestimonialDestroy'])->name('used-car-testimonial-delete');
     Route::get('used-car-testimonial-datatable', [UsedCarTestimonialContoller::class, 'usedCarTestimonialDatatable'])->name('used-car-testimonial-datatable');
+
+    //used car facility and customer gallery
+    Route::get('used-car-facility-customer-gallery', [UsedCarFacilityCustomerGalleryController::class, 'usedCarFacilityCustomerGalleryList'])->name('used-car-facility-customer-gallery');
+    Route::post('used-car-facility-customer-gallery-create', [UsedCarFacilityCustomerGalleryController::class, 'ajaxaUsedCarFacilityCustomerGalleryHtml'])->name('used-car-facility-customer-gallery-html');
+    Route::post('used-car-facility-customer-gallery-store', [UsedCarFacilityCustomerGalleryController::class, 'usedCarFacilityCustomerGalleryStore'])->name('used-car-facility-customer-gallery-store');
+    Route::get('used-car-facility-customer-gallery-edit/{id}', [UsedCarFacilityCustomerGalleryController::class, 'usedCarFacilityCustomerGalleryEdit'])->name('used-car-facility-customer-gallery-edit');
+    Route::post('used-car-facility-customer-gallery-update/{id}', [UsedCarFacilityCustomerGalleryController::class, 'usedCarFacilityCustomerGalleryUpdate'])->name('used-car-facility-customer-gallery-update');
+    Route::get('used-car-facility-customer-gallery-delete/{id}', [UsedCarFacilityCustomerGalleryController::class, 'usedCarFacilityCustomerGalleryDestroy'])->name('used-car-facility-customer-gallery-delete');
+    Route::get('used-car-facility-customer-gallery-datatable', [UsedCarFacilityCustomerGalleryController::class, 'usedCarFacilityCustomerGalleryDatatable'])->name('used-car-facility-customer-gallery-datatable');
 
     //contact_us
     Route::get('contact_us', [ContactUsController::class, 'contact_us'])->name('contact_us');

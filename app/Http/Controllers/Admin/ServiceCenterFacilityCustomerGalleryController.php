@@ -192,26 +192,26 @@ class ServiceCenterFacilityCustomerGalleryController extends Controller
             if($has_permission->full_permission == 1)
             {
                 $id = decrypt($id);
-                $service = ServiceCenterFacilityCustomerGallery::find($id);
-                if($service->facility_image != NULL)
+                $service_center_fc_image = ServiceCenterFacilityCustomerGallery::find($id);
+                if($service_center_fc_image->facility_image != NULL)
                 {
-                    $facility_image = $service->facility_image;
+                    $facility_image = $service_center_fc_image->facility_image;
                     if($facility_image)
                     {
                         removeFile('uploads/service_center_facility_image/'.$facility_image);
                     }
                 }
 
-                if($service->customer_gallery_image != NULL)
+                if($service_center_fc_image->customer_gallery_image != NULL)
                 {
-                    $customer_gallery_image = $service->customer_gallery_image;
+                    $customer_gallery_image = $service_center_fc_image->customer_gallery_image;
                     if($customer_gallery_image)
                     {
                         removeFile('uploads/service_center_customer_gallery_image/'.$customer_gallery_image);
                     }
                 }
-                $service = ServiceCenterFacilityCustomerGallery::where('id',$id)->delete();
-                if($service)
+                $service_center_fc_image = ServiceCenterFacilityCustomerGallery::where('id',$id)->delete();
+                if($service_center_fc_image)
                 {
                     return redirect()->route('service-center-facility-customergallery')->with('success', 'Service Center Facility Customer Gallery deleted successfully.');
                 } else {

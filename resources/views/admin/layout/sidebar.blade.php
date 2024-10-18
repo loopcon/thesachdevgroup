@@ -256,9 +256,9 @@
             @endif
         @endif
 
-        @if(hasPermission('Used Car') || hasPermission('Used Car Testimonial'))
-            <li class="nav-item {{ (request()->is('used_car*') || request()->is('used-car-testimonial*')) ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link {{ (request()->is('used_car*') || request()->is('used-car-testimonial*')) ? 'active' : '' }}">
+        @if(hasPermission('Used Car') || hasPermission('Used Car Testimonial') || hasPermission('Used Car Facility Customer Gallery'))
+            <li class="nav-item {{ (request()->is('used_car*') || request()->is('used-car-testimonial*') || request()->is('used-car-facility-customer-gallery*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('used_car*') || request()->is('used-car-testimonial*') || request()->is('used-car-facility-customer-gallery*')) ? 'active' : '' }}">
                     <i class="nav-icon fas fa-ellipsis-h"></i><p>Used Cars<i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
@@ -279,6 +279,17 @@
                             <li class="nav-item"> 
                                 <a href="{{url('used-car-testimonial')}}" class="nav-link {{ (request()->is('used-car-testimonial*')) ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i><p>Used Car Testimonial</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
+                    @php($has_used_car_facility_customer_gallery_permission = hasPermission('Used Car Facility Customer Gallery'))
+                    @if(isset($has_used_car_facility_customer_gallery_permission) && $has_used_car_facility_customer_gallery_permission)
+                        @if($has_used_car_facility_customer_gallery_permission->read_permission == 1 || $has_used_car_facility_customer_gallery_permission->full_permission == 1)
+                            <li class="nav-item"> 
+                                <a href="{{url('used-car-facility-customer-gallery')}}" class="nav-link {{ (request()->is('used-car-facility-customer-gallery*')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Used Car Facility Customer Gallery</p>
                                 </a>
                             </li>
                         @endif

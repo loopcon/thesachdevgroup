@@ -895,3 +895,26 @@ ALTER TABLE `used_car_testimonial`
 
 -- Disha : 18-10-2024 11:18 AM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Used Car Testimonial', NULL, NULL, NULL);
+
+-- Disha : 18-10-2024 12:54 PM
+-- Table structure for table `used_car_facilities_and_customer_gallery`
+--
+
+CREATE TABLE `used_car_facilities_and_customer_gallery` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `used_car_id` int(11) DEFAULT NULL COMMENT '`id` of `used_car`',
+  `facility_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_gallery_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `used_car_facilities_and_customer_gallery`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `used_car_facilities_and_customer_gallery`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+-- Disha : 18-10-2024 03:12 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Used Car Facility Customer Gallery', NULL, NULL, NULL);
