@@ -31,7 +31,7 @@ use App\Http\Controllers\Admin\OurBusinessInsuranceController;
 use App\Http\Controllers\Admin\VacancyController;
 use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\BodyShopController;
-use App\Http\Controllers\Admin\UsedCarController;
+use App\Http\Controllers\Admin\UsedCarController AS AdminUsedCarController;
 use App\Http\Controllers\Admin\ContactUsController;
 use App\Http\Controllers\Admin\OurLocationController;
 use App\Http\Controllers\Admin\NewCarsController;
@@ -58,6 +58,7 @@ use  App\Http\Controllers\Frontend\CarInsuranceDetailController;
 use  App\Http\Controllers\Frontend\CompanyCsrDetailController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\OurServiceUsedCarCOntroller;
+use  App\Http\Controllers\Frontend\UsedCarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -375,13 +376,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('body_shop_destroy/{id}', [BodyShopController::class, 'body_shop_destroy'])->name('body_shop_destroy');
 
     //used car
-    Route::get('used_car', [UsedCarController::class, 'used_car'])->name('used_car');
-    Route::get('usedCarCreate', [UsedCarController::class, 'usedCarCreate'])->name('usedCarCreate');
-    Route::post('used_car_insert', [UsedCarController::class, 'used_car_insert'])->name('used_car_insert');
-    Route::get('used_car_index', [UsedCarController::class, 'used_car_index'])->name('used_car.index');
-    Route::get('used_car_edit/{used_car_edit}', [UsedCarController::class, 'used_car_edit'])->name('used_car.edit');
-    Route::post('used_car_update,{id}', [UsedCarController::class, 'used_car_update'])->name('used_car_update');
-    Route::get('used_car_destroy/{id}', [UsedCarController::class, 'used_car_destroy'])->name('used_car_destroy');
+    Route::get('used_car', [AdminUsedCarController::class, 'used_car'])->name('used_car');
+    Route::get('usedCarCreate', [AdminUsedCarController::class, 'usedCarCreate'])->name('usedCarCreate');
+    Route::post('used_car_insert', [AdminUsedCarController::class, 'used_car_insert'])->name('used_car_insert');
+    Route::get('used_car_index', [AdminUsedCarController::class, 'used_car_index'])->name('used_car.index');
+    Route::get('used_car_edit/{used_car_edit}', [AdminUsedCarController::class, 'used_car_edit'])->name('used_car.edit');
+    Route::post('used_car_update,{id}', [AdminUsedCarController::class, 'used_car_update'])->name('used_car_update');
+    Route::get('used_car_destroy/{id}', [AdminUsedCarController::class, 'used_car_destroy'])->name('used_car_destroy');
 
     //contact_us
     Route::get('contact_us', [ContactUsController::class, 'contact_us'])->name('contact_us');
@@ -510,6 +511,9 @@ Route::post('service-center-contact-query-store', [ServiceCenterDetailController
 // showroom
 Route::get('showroom/{slug}', [ShowroomDetailController::class, 'showroom']);
 Route::post('showroom-contact-query-store', [ShowroomDetailController::class, 'showroomContactQueryStore'])->name('showroom-contact-query-store');
+
+// used car
+Route::get('used-car/{slug}', [UsedCarController::class, 'usedCar']);
 
 // careers
 Route::get('careers/job', [CareerDetailController::class, 'job'])->name('job');

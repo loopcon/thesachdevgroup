@@ -194,7 +194,7 @@
                 <div class="card-wrapper swiper-wrapper">
                     @foreach($used_cars as $used_car)
                         <div class="card swiper-slide">
-                            <a href="{{$used_car->link}}">
+                            <a href="{{url('used-car/'.$used_car->slug)}}">
                                 <div class="image-content">
                                     <div class="card-image">
                                         <img src="{{url('public/used_car_image/'.$used_car->image)}}" alt="" class="card-img">

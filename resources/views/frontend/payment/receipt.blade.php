@@ -16,7 +16,7 @@
                             <br>
                              <?php echo $payUsLog->near_location; ?>
                             <br>
-                                <abbr title="Phone">P:</abbr> <?php echo $locs->ac_phone; ?>
+                                <abbr title="Phone">P:</abbr> <?php echo $locs->contact_number; ?>
                         </address>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 text-right">
