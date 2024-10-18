@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\Used_car;
 use App\Models\UsedCarTestimonial;
+use App\Models\UsedCarFacilityCustomerGallery;
+use App\Models\Header_menu;
 
 class UsedCarController extends Controller
 {
@@ -23,6 +25,9 @@ class UsedCarController extends Controller
         }
 
         $return_data['testimonials'] = UsedCarTestimonial::where('used_car_id',$used_car->id)->get();
+        $return_data['facility'] = UsedCarFacilityCustomerGallery::select('facility_image')->where('used_car_id',$used_car->id)->get();
+        $return_data['customer_gallery'] = UsedCarFacilityCustomerGallery::select('customer_gallery_image')->where('used_car_id',$used_car->id)->get();
+        $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();
 
         $return_data['meta_keyword'] = isset($used_car->meta_keyword) && $used_car->meta_keyword ? $used_car->meta_keyword : NULL;
         $return_data['meta_title'] = isset($used_car->meta_title) && $used_car->meta_title ? $used_car->meta_title : NULL;

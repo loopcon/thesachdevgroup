@@ -100,11 +100,11 @@
     </div>
 </section>
 
-<?php /**@if(isset($facility) && !empty($facility))
+@if(isset($facility) && !empty($facility))
 <section id="facility">
     <div class="container">
         <div class="text-facility">
-            <h3 style="color:{{$showroom->facility_title_color}}; font-size:{{$showroom->facility_title_font_size}}; font-family:{{$showroom->facility_title_font_family}};">{{isset($showroom->facility_title) && $showroom->facility_title ? strtoupper($showroom->facility_title) : ''}}</h3>
+            <h3 style="color:{{$used_car->facility_title_color}}; font-size:{{$used_car->facility_title_font_size}}; font-family:{{$used_car->facility_title_font_family}};">{{isset($used_car->facility_title) && $used_car->facility_title ? strtoupper($used_car->facility_title) : ''}}</h3>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -116,7 +116,7 @@
                                     <div class="image-content-facitity">
                                         <!-- <span class="overlay"></span> -->
                                         <div class="card-image">
-                                            <img src="{{url('public/showroom_facility_image/'.$facility_image->facility_image)}}" alt="" class="card-img">
+                                            <img src="{{url('public/used_car_facility_image/'.$facility_image->facility_image)}}" alt="" class="card-img">
                                         </div>
                                     </div>
                                 </a>
@@ -137,7 +137,7 @@
 <section id="facility">
     <div class="container">
         <div class="text-facility">
-            <h3 style="color:{{$showroom->customer_gallery_title_color}}; font-size:{{$showroom->customer_gallery_title_font_size}}; font-family:{{$showroom->customer_gallery_title_font_family}};">{{isset($showroom->customer_gallery_title) && $showroom->customer_gallery_title ? strtoupper($showroom->customer_gallery_title) : ''}}</h3>
+            <h3 style="color:{{$used_car->customer_gallery_title_color}}; font-size:{{$used_car->customer_gallery_title_font_size}}; font-family:{{$used_car->customer_gallery_title_font_family}};">{{isset($used_car->customer_gallery_title) && $used_car->customer_gallery_title ? strtoupper($used_car->customer_gallery_title) : ''}}</h3>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -148,7 +148,7 @@
                             <a href="#">
                                 <div class="image-content-facitity">
                                     <div class="card-image">
-                                        <img src="{{url('public/showroom_customer_gallery_image/'.$customer_image->customer_gallery_image)}}" alt="" class="card-img">
+                                        <img src="{{url('public/used_car_customer_gallery_image/'.$customer_image->customer_gallery_image)}}" alt="" class="card-img">
                                     </div>
                                 </div>
                             </a>
@@ -163,7 +163,7 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
-</section>**/ ?>
+</section>
 
 <!-- form  -->
 <section id="location-wiseform">
@@ -191,9 +191,9 @@
                                 <div class="col-md-6 col-sm-12 margin-bookservice">
                                     <select id="inputState" class="form-control" name="our_service">
                                         <option value="" selected>Choose Service</option>
-                                        <?php /**@foreach($our_services as $service)
+                                        @foreach($our_services as $service)
                                             <option value="{{$service->id}}">{{$service->name}}</option>
-                                        @endforeach**/ ?>
+                                        @endforeach
                                         <!-- <option>New Car</option>
                                         <option>Used Car</option>
                                         <option>Service</option>
