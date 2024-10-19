@@ -30,7 +30,7 @@
                                     <th>Id</th>
                                     <th>Facility Image</th>
                                     <th>Customer Gallery Image</th>
-                                    <th>Body Shop</th>
+                                    <th>Used Car</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

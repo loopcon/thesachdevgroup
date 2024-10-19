@@ -206,7 +206,7 @@ class BodyShopTestimonialController extends Controller
                 $body_shop_testimonial = BodyShopTestimonial::where('id',$id)->delete();
                 if($body_shop_testimonial)
                 {
-                    return redirect()->route('body-shop-testimonial')->with('success', 'Used Car Testimonial deleted successfully.');
+                    return redirect()->route('body-shop-testimonial')->with('success', 'Body Shop Testimonial deleted successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }
