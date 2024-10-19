@@ -101,11 +101,11 @@
 </section>
 
 <!-- facility slider -->
-<?php /**@if(isset($facility) && !empty($facility))
+@if(isset($facility) && !empty($facility))
 <section id="facility">
     <div class="container">
         <div class="text-facility">
-            <h3 style="color:{{$used_car->facility_title_color}}; font-size:{{$used_car->facility_title_font_size}}; font-family:{{$used_car->facility_title_font_family}};">{{isset($used_car->facility_title) && $used_car->facility_title ? strtoupper($used_car->facility_title) : ''}}</h3>
+            <h3 style="color:{{$body_shop->facility_title_color}}; font-size:{{$body_shop->facility_title_font_size}}; font-family:{{$body_shop->facility_title_font_family}};">{{isset($body_shop->facility_title) && $body_shop->facility_title ? strtoupper($body_shop->facility_title) : ''}}</h3>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -117,7 +117,7 @@
                                     <div class="image-content-facitity">
                                         <!-- <span class="overlay"></span> -->
                                         <div class="card-image">
-                                            <img src="{{url('public/uploads/used_car_facility_image/'.$facility_image->facility_image)}}" alt="" class="card-img">
+                                            <img src="{{url('public/uploads/body_shop_facility_image/'.$facility_image->facility_image)}}" alt="" class="card-img">
                                         </div>
                                     </div>
                                 </a>
@@ -139,7 +139,7 @@
 <section id="facility">
     <div class="container">
         <div class="text-facility">
-            <h3 style="color:{{$used_car->customer_gallery_title_color}}; font-size:{{$used_car->customer_gallery_title_font_size}}; font-family:{{$used_car->customer_gallery_title_font_family}};">{{isset($used_car->customer_gallery_title) && $used_car->customer_gallery_title ? strtoupper($used_car->customer_gallery_title) : ''}}</h3>
+            <h3 style="color:{{$body_shop->customer_gallery_title_color}}; font-size:{{$body_shop->customer_gallery_title_font_size}}; font-family:{{$body_shop->customer_gallery_title_font_family}};">{{isset($body_shop->customer_gallery_title) && $body_shop->customer_gallery_title ? strtoupper($body_shop->customer_gallery_title) : ''}}</h3>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -150,7 +150,7 @@
                             <a href="#">
                                 <div class="image-content-facitity">
                                     <div class="card-image">
-                                        <img src="{{url('public/uploads/used_car_customer_gallery_image/'.$customer_image->customer_gallery_image)}}" alt="" class="card-img">
+                                        <img src="{{url('public/uploads/body_shop_customer_gallery_image/'.$customer_image->customer_gallery_image)}}" alt="" class="card-img">
                                     </div>
                                 </div>
                             </a>
@@ -165,7 +165,7 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
-</section>**/ ?>
+</section>
 
 <!-- form  -->
 <section id="location-wiseform">

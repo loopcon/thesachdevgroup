@@ -8,6 +8,7 @@ use App\Models\Body_shop;
 use App\Models\BodyShopTestimonial;
 use App\Models\Car;
 use App\Models\Header_menu;
+use App\Models\BodyShopFacilityCustomerGallery;
 
 class BodyShopDetailController extends Controller
 {
@@ -24,8 +25,8 @@ class BodyShopDetailController extends Controller
         }
 
         $return_data['testimonials'] = BodyShopTestimonial::where('body_shop_id',$body_shop->id)->get();
-        // $return_data['facility'] = UsedCarFacilityCustomerGallery::select('facility_image')->where('used_car_id',$used_car->id)->get();
-        // $return_data['customer_gallery'] = UsedCarFacilityCustomerGallery::select('customer_gallery_image')->where('used_car_id',$used_car->id)->get();
+        $return_data['facility'] = BodyShopFacilityCustomerGallery::select('facility_image')->where('body_shop_id',$body_shop->id)->get();
+        $return_data['customer_gallery'] = BodyShopFacilityCustomerGallery::select('customer_gallery_image')->where('body_shop_id',$body_shop->id)->get();
         $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();
 
         $return_data['meta_keyword'] = isset($body_shop->meta_keyword) && $body_shop->meta_keyword ? $body_shop->meta_keyword : NULL;
