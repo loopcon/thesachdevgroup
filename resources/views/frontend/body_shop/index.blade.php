@@ -21,7 +21,7 @@
     <div class="container">
         <div class="location-text">
             <h1 style="color:{{$body_shop->name_color}}; font-size:{{$body_shop->name_font_size}}; font-family:{{$body_shop->name_font_family}};">{{isset($body_shop->name) && $body_shop->name ? $body_shop->name : ''}}</h1>
-            <p>{!! isset($body_shop->description) && $body_shop->description ? $body_shop->description : '' !!}</p>
+            <p style="color:{{$body_shop->description_font_color}}; font-size:{{$body_shop->description_font_size}}; font-family:{{$body_shop->description_font_family}};">{!! isset($body_shop->description) && $body_shop->description ? $body_shop->description : '' !!}</p>
         </div>
         <div class="top-car-image">
             <div class="top-car-parent">

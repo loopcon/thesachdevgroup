@@ -199,6 +199,36 @@
                                </select>
                             </div>
 
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hours" class="form-label">Working Hours</label>
+                                <input type="text" class="form-control" value="{{isset($record->working_hours) ? $record->working_hours : old('working_hours')}}" name="working_hours" id="working_hours">
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hours_font_size" class="form-label">Working Hours Font Size</label>
+                                <select class="form-control select2" name="working_hours_font_size">
+                                    <option value="">-- Select --</option>
+                                    @for($i=24; $i<=50; $i+=2)
+                                        <option value="{{$i}}px" @if(isset($record->working_hours_font_size) && $record->working_hours_font_size == $i.'px'){{'selected'}}@endif>{{$i}}px</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hours_font_family" class="form-label">Working Hours Font Family</label>
+                                <select class="form-control select2" name="working_hours_font_family">
+                                    <option value="">-- Select --</option>
+                                    @foreach($fontfamily as $family)
+                                        <option value="{{$family['key']}}" @if(isset($record->working_hours_font_family) && $record->working_hours_font_family == $family['key']){{'selected'}}@endif>{{$family['value']}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 mt-2">
+                                <label for="working_hours_font_color" class="form-label">Working Hours Font Color</label>
+                                <input type="text" class="form-control colorpicker" value="{{isset($record->working_hours_font_color) ? $record->working_hours_font_color : old('working_hours_font_color')}}" name="working_hours_font_color" id="working_hours_font_color">
+                            </div>
+
                             <div class="col-md-4 mt-2 mb-2">
                                 <label for="working_hour_title" class="form-label">Working Hours Title</label>
                                 <input type="working_hour_title" class="form-control" value="{{isset($record->working_hour_title) ? $record->working_hour_title : old('working_hour_title')}}" name="working_hour_title" id="working_hour_title">
