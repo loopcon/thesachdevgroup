@@ -42,7 +42,8 @@ use App\Http\Controllers\Admin\EmailTemplatesController;
 use App\Http\Controllers\Admin\OurServiceUsedCarsController;
 use App\Http\Controllers\Admin\UsedCarTestimonialContoller;
 use App\Http\Controllers\Admin\UsedCarFacilityCustomerGalleryController;
-
+use App\Http\Controllers\Admin\BodyShopTestimonialController;
+use App\Http\Controllers\Admin\BodyShopFacilityCustomerGalleryController;
 // frontend controller
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BusinessController;
@@ -61,6 +62,7 @@ use  App\Http\Controllers\Frontend\CompanyCsrDetailController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\OurServiceUsedCarCOntroller;
 use  App\Http\Controllers\Frontend\UsedCarController;
+use  App\Http\Controllers\Frontend\BodyShopDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -377,6 +379,24 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('body_shop_update,{id}', [BodyShopController::class, 'body_shop_update'])->name('body_shop_update');
     Route::get('body_shop_destroy/{id}', [BodyShopController::class, 'body_shop_destroy'])->name('body_shop_destroy');
 
+    // body shop testimonial
+    Route::get('body-shop-testimonial', [BodyShopTestimonialController::class, 'bodyShopTestimonialList'])->name('body-shop-testimonial');
+    Route::get('body-shop-testimonial-create', [BodyShopTestimonialController::class, 'bodyShopTestimonialCreate'])->name('body-shop-testimonial-create');
+    Route::post('body-shop-testimonial-store', [BodyShopTestimonialController::class, 'bodyShopTestimonialStore'])->name('body-shop-testimonial-store');
+    Route::get('body-shop-testimonial-edit/{id}', [BodyShopTestimonialController::class, 'bodyShopTestimonialEdit'])->name('body-shop-testimonial-edit');
+    Route::post('body-shop-testimonial-update/{id}', [BodyShopTestimonialController::class, 'bodyShopTestimonialUpdate'])->name('body-shop-testimonial-update');
+    Route::get('body-shop-testimonial-delete/{id}', [BodyShopTestimonialController::class, 'bodyShopTestimonialDestroy'])->name('body-shop-testimonial-delete');
+    Route::get('body-shop-testimonial-datatable', [BodyShopTestimonialController::class, 'bodyShopTestimonialDatatable'])->name('body-shop-testimonial-datatable');
+
+    //body shop facility and customer gallery
+    Route::get('body-shop-facility-customer-gallery', [BodyShopFacilityCustomerGalleryController::class, 'bodyShopFacilityCustomerGalleryList'])->name('body-shop-facility-customer-gallery');
+    Route::post('body-shop-facility-customer-gallery-create', [BodyShopFacilityCustomerGalleryController::class, 'ajaxabodyShopFacilityCustomerGalleryHtml'])->name('body-shop-facility-customer-gallery-html');
+    Route::post('body-shop-facility-customer-gallery-store', [BodyShopFacilityCustomerGalleryController::class, 'bodyShopFacilityCustomerGalleryStore'])->name('body-shop-facility-customer-gallery-store');
+    Route::get('body-shop-facility-customer-gallery-edit/{id}', [BodyShopFacilityCustomerGalleryController::class, 'bodyShopFacilityCustomerGalleryEdit'])->name('body-shop-facility-customer-gallery-edit');
+    Route::post('body-shop-facility-customer-gallery-update/{id}', [BodyShopFacilityCustomerGalleryController::class, 'bodyShopFacilityCustomerGalleryUpdate'])->name('body-shop-facility-customer-gallery-update');
+    Route::get('body-shop-facility-customer-gallery-delete/{id}', [BodyShopFacilityCustomerGalleryController::class, 'bodyShopFacilityCustomerGalleryDestroy'])->name('body-shop-facility-customer-gallery-delete');
+    Route::get('body-shop-facility-customer-gallery-datatable', [BodyShopFacilityCustomerGalleryController::class, 'bodyShopFacilityCustomerGalleryDatatable'])->name('body-shop-facility-customer-gallery-datatable');
+
     //used car
     Route::get('used_car', [AdminUsedCarController::class, 'used_car'])->name('used_car');
     Route::get('usedCarCreate', [AdminUsedCarController::class, 'usedCarCreate'])->name('usedCarCreate');
@@ -544,6 +564,9 @@ Route::post('showroom-contact-query-store', [ShowroomDetailController::class, 's
 
 // used car list
 Route::get('used-car/{slug}', [UsedCarController::class, 'usedCar']);
+
+// body shop
+Route::get('body-shop/{slug}', [BodyShopDetailController::class, 'bodyShop']);
 
 // careers
 Route::get('careers/job', [CareerDetailController::class, 'job'])->name('job');

@@ -213,7 +213,7 @@ class UsedCarFacilityCustomerGalleryController extends Controller
                 $used_car_fc_image = UsedCarFacilityCustomerGallery::where('id',$id)->delete();
                 if($used_car_fc_image)
                 {
-                    return redirect()->route('service-center-facility-customer-gallery')->with('success', 'Used Car Facility Customer Gallery deleted successfully.');
+                    return redirect()->route('used-car-facility-customer-gallery')->with('success', 'Used Car Facility Customer Gallery deleted successfully.');
                 } else {
                     return redirect()->back()->with('error', trans('Something went wrong, please try again later!'));
                 }

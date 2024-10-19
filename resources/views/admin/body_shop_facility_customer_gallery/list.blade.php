@@ -59,12 +59,12 @@
             processing: true,
             serverSide: true,
             // scrollX: true,
-            ajax: "{{ route('used-car-facility-customer-gallery-datatable') }}",
+            ajax: "{{ route('body-shop-facility-customer-gallery-datatable') }}",
             columns: [
                 {data: 'id', name: 'id', orderable: false, searchable: false},
                 {data: 'facility_image', name: 'facility_image'},
                 {data: 'customer_gallery_image', name: 'customer_gallery_image'},
-                {data: 'used_car_id', name: 'used_car_id'},
+                {data: 'body_shop_id', name: 'body_shop_id'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -74,7 +74,7 @@
         var href = $(this).data('href');
         return new swal({
             title: "",
-            text: "{{__('Are you sure? Delete this Used Car Facility and Customer Gallery!')}}",
+            text: "{{__('Are you sure? Delete this Body Shop Facility and Customer Gallery!')}}",
             showCancelButton: true,
             confirmButtonText: "{{__('Yes, delete it!')}}",
             icon: "warning"
@@ -97,18 +97,18 @@
     function ajaxForm(id = ''){
         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
-            url : '{{ route('used-car-facility-customer-gallery-html') }}',
+            url : '{{ route('body-shop-facility-customer-gallery-html') }}',
             method : 'post',
             data : {_token: CSRF_TOKEN, id:id},
             success : function(result){
                 var result = $.parseJSON(result);
                 $('#form-detail').html(result.html);
                 $('#form_modal').modal('show');
-                $('#used_car_id').select2({width:'100%'});
+                $('#body_shop_id').select2({width:'100%'});
 
                 $('#form-detail form').validate({
                     rules: {
-                        used_car_id: {
+                        body_shop_id: {
                             required: true
                         },
                         facility_image: {
@@ -119,8 +119,8 @@
                         }
                     },
                     messages: {
-                        used_car_id: {
-                            required: "Please select a used car"
+                        body_shop_id: {
+                            required: "Please select a Body Shop"
                         },
                         facility_image: {
                             extension: "Please upload a valid image file (jpg, jpeg, png, webp)"

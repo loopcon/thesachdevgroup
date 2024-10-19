@@ -19,7 +19,7 @@
         </div>
         <div class="card">
             <div class="col-sm-12  text-end">
-                <a href="javascript:void(0)" class="btn btn-primary float-right ajax-form adm-table-addbtn">Add</a>
+                <a href="{{ route('body-shop-testimonial-create') }}" class="btn btn-primary float-right adm-table-addbtn">Add</a>
             </div>
             <div class="card-body">
                 <section class="content">
@@ -28,9 +28,15 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Facility Image</th>
-                                    <th>Customer Gallery Image</th>
                                     <th>Body Shop</th>
+                                    <th>Name</th>
+                                    <th>Name Font Size</th>
+                                    <th>Name Font Family</th>
+                                    <th>Name Font Color</th>
+                                    <th>Name Background Color</th>
+                                    <th>Description Text Size</th>
+                                    <th>Description Text Color</th>
+                                    <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -41,17 +47,8 @@
         </div>
     </div>
 </div>
-<meta name="csrf-token" content="{{ csrf_token() }}" />
-<div class="modal fade" id="form_modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" id="form-detail">
-
-        </div>
-    </div>
-</div>
 @endsection
 @section('javascript')
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
@@ -59,12 +56,18 @@
             processing: true,
             serverSide: true,
             // scrollX: true,
-            ajax: "{{ route('used-car-facility-customer-gallery-datatable') }}",
+            ajax: "{{ route('body-shop-testimonial-datatable') }}",
             columns: [
                 {data: 'id', name: 'id', orderable: false, searchable: false},
-                {data: 'facility_image', name: 'facility_image'},
-                {data: 'customer_gallery_image', name: 'customer_gallery_image'},
-                {data: 'used_car_id', name: 'used_car_id'},
+                {data: 'body_shop_id', name: 'body_shop_id'},
+                {data: 'name', name: 'name'},
+                {data: 'name_font_size', name: 'name_font_size'},
+                {data: 'name_font_family', name: 'name_font_family'},
+                {data: 'name_font_color', name: 'name_font_color'},
+                {data: 'name_background_color', name: 'name_background_color'},
+                {data: 'description_text_size', name: 'description_text_size'},
+                {data: 'description_text_color', name: 'description_text_color'},
+                {data: 'image', name: 'image'},
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
@@ -74,7 +77,7 @@
         var href = $(this).data('href');
         return new swal({
             title: "",
-            text: "{{__('Are you sure? Delete this Used Car Facility and Customer Gallery!')}}",
+            text: "{{__('Are you sure? Delete this Body Shop Testimonial!')}}",
             showCancelButton: true,
             confirmButtonText: "{{__('Yes, delete it!')}}",
             icon: "warning"
@@ -84,59 +87,6 @@
             }
         });
     });
-
-    $(document).ready(function(){
-        $('.dataTables_scrollBody').addClass('adm-table-responsive');
-    });
-
-    $(document).on('click', '.ajax-form', function(){
-        var id = $(this).data('id');
-        ajaxForm(id);
-    });
-
-    function ajaxForm(id = ''){
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        $.ajax({
-            url : '{{ route('used-car-facility-customer-gallery-html') }}',
-            method : 'post',
-            data : {_token: CSRF_TOKEN, id:id},
-            success : function(result){
-                var result = $.parseJSON(result);
-                $('#form-detail').html(result.html);
-                $('#form_modal').modal('show');
-                $('#used_car_id').select2({width:'100%'});
-
-                $('#form-detail form').validate({
-                    rules: {
-                        used_car_id: {
-                            required: true
-                        },
-                        facility_image: {
-                            extension: "jpg|jpeg|png|webp"
-                        },
-                        customer_gallery_image: {
-                            extension: "jpg|jpeg|png|webp"
-                        }
-                    },
-                    messages: {
-                        used_car_id: {
-                            required: "Please select a used car"
-                        },
-                        facility_image: {
-                            extension: "Please upload a valid image file (jpg, jpeg, png, webp)"
-                        },
-                        customer_gallery_image: {
-                            extension: "Please upload a valid image file (jpg, jpeg, png, webp)"
-                        }
-                    },
-                    submitHandler: function(form) {
-                        $(form).find('.submit').prop("disabled", true);
-                        form.submit();
-                    }
-                });
-            }
-        });
-    }
 
     $(document).ready(function(){
         $('.adm-action-sticky').parent().css('max-width', '100%');

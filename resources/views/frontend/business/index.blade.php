@@ -149,7 +149,7 @@
                 <div class="card-wrapper swiper-wrapper">
                     @foreach($body_shops as $body_shop)
                         <div class="card swiper-slide">
-                            <a href="{{$body_shop->link}}">
+                            <a href="{{url('body-shop/'.$body_shop->slug)}}">
                                 <div class="image-content">
                                     <!-- <span class="overlay"></span> -->
                                     <div class="card-image">

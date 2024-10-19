@@ -927,3 +927,52 @@ ALTER TABLE `body_shops` ADD `description` TEXT NULL DEFAULT NULL AFTER `map_lin
 ALTER TABLE `body_shops` ADD `address_icon` VARCHAR(255) NULL DEFAULT NULL AFTER `description_font_color`, ADD `working_hours_icon` VARCHAR(255) NULL DEFAULT NULL AFTER `address_icon`, ADD `contact_icon` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hours_icon`, ADD `email_icon` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_icon`, ADD `facility_title` VARCHAR(255) NULL DEFAULT NULL AFTER `email_icon`, ADD `facility_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `facility_title`, ADD `facility_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `facility_title_color`, ADD `facility_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `facility_title_font_size`, ADD `customer_gallery_title` VARCHAR(255) NULL DEFAULT NULL AFTER `facility_title_font_family`, ADD `customer_gallery_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `customer_gallery_title`, ADD `customer_gallery_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `customer_gallery_title_color`, ADD `customer_gallery_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `customer_gallery_title_font_size`, ADD `testimonial_title` VARCHAR(255) NULL DEFAULT NULL AFTER `customer_gallery_title_font_family`, ADD `testimonial_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `testimonial_title`, ADD `testimonial_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `testimonial_title_color`, ADD `testimonial_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `testimonial_title_font_size`, ADD `lets_connect_image` VARCHAR(255) NULL DEFAULT NULL AFTER `testimonial_title_font_family`, ADD `address_title` VARCHAR(255) NULL DEFAULT NULL AFTER `lets_connect_image`, ADD `address_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `address_title`, ADD `address_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `address_title_color`, ADD `address_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `address_title_font_size`, ADD `working_hour_title` VARCHAR(255) NULL DEFAULT NULL AFTER `address_title_font_family`, ADD `working_hour_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hour_title`, ADD `working_hour_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hour_title_color`, ADD `working_hour_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hour_title_font_size`, ADD `contact_title` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hour_title_font_family`, ADD `contact_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_title`, ADD `contact_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_title_color`, ADD `contact_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_title_font_size`, ADD `email_title` VARCHAR(255) NULL DEFAULT NULL AFTER `contact_title_font_family`, ADD `email_title_color` VARCHAR(255) NULL DEFAULT NULL AFTER `email_title`, ADD `email_title_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `email_title_color`, ADD `email_title_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `email_title_font_size`, ADD `meta_title` VARCHAR(255) NULL DEFAULT NULL AFTER `email_title_font_family`, ADD `meta_keyword` VARCHAR(255) NULL DEFAULT NULL AFTER `meta_title`, ADD `meta_description` VARCHAR(255) NULL DEFAULT NULL AFTER `meta_keyword`;
 ALTER TABLE `body_shops` CHANGE `car_model_id` `car_model_id` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '\'id\' of \'cars\'';
 ALTER TABLE `body_shops` CHANGE `meta_keyword` `meta_keyword` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL, CHANGE `meta_description` `meta_description` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL;
+
+-- Disha : 18-10-2024 06:43 PM
+CREATE TABLE `body_shop_testimonial` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `body_shop_id` int(11) DEFAULT NULL COMMENT '`id` of `used_cars`',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_font_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_font_family` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_font_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name_background_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description_text_size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description_text_color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description_font_family` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `body_shop_testimonial`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `body_shop_testimonial`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+-- Disha : 19-10-2024 10:33 AM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Body Shop Testimonial', NULL, NULL, NULL);
+ALTER TABLE `body_shops` ADD `working_hours` VARCHAR(255) NULL DEFAULT NULL AFTER `address_font_color`, ADD `working_hours_font_size` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hours`, ADD `working_hours_font_family` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hours_font_size`, ADD `working_hours_font_color` VARCHAR(255) NULL DEFAULT NULL AFTER `working_hours_font_family`;
+
+-- Disha : 19-10-2024 11:40 AM
+CREATE TABLE `body_shop_facilities_and_customer_gallery` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `body_shop_id` int(11) DEFAULT NULL COMMENT '`id` of `body_shop`',
+  `facility_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_gallery_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `body_shop_facilities_and_customer_gallery`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `body_shop_facilities_and_customer_gallery`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+-- Disha : 19-10-2024 12:22 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Body Shop Facility Customer Gallery', NULL, NULL, NULL);

@@ -234,15 +234,46 @@
             @endif
         @endif
 
-        @php($has_permission = hasPermission('Body Shops'))
-        @if(isset($has_permission) && $has_permission)
-            @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
-                <li class="nav-item"> 
-                    <a href="{{url('body_shop')}}" class="nav-link {{request()->is('body_shop*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-window-restore"></i><p>Body Shops</p>
-                    </a>
-                </li>
-            @endif
+        @if(hasPermission('Body Shops') || hasPermission('Body Shop Testimonial') || hasPermission('Body Shop Facility Customer Gallery'))
+            <li class="nav-item {{ (request()->is('body_shop*') || request()->is('body-shop-testimonial*') || request()->is('body-shop-facility-customer-gallery*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('body_shop*') || request()->is('body-shop-testimonial*') || request()->is('body-shop-facility-customer-gallery*')) ? 'active' : '' }}">
+                    <i class="nav-icon fa fa-window-restore"></i><p>Body Shops<i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @php($has_body_shop_permission = hasPermission('Body Shops'))
+                    @if(isset($has_body_shop_permission) && $has_body_shop_permission)
+                        @if($has_body_shop_permission->read_permission == 1 || $has_body_shop_permission->full_permission == 1)
+                            <li class="nav-item"> 
+                                <a href="{{url('body_shop')}}" class="nav-link {{ (request()->is('body_shop*') && !request()->is('body-shop-testimonial*')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Body Shops</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
+                    @php($has_body_shop_testimonial_permission = hasPermission('Body Shop Testimonial'))
+                    @if(isset($has_body_shop_testimonial_permission) && $has_body_shop_testimonial_permission)
+                        @if($has_body_shop_testimonial_permission->read_permission == 1 || $has_body_shop_testimonial_permission->full_permission == 1)
+                            <li class="nav-item"> 
+                                <a href="{{url('body-shop-testimonial')}}" class="nav-link {{ (request()->is('body-shop-testimonial*')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Body Shop Testimonial</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
+                    @php($has_body_shop_facility_customer_gallery_permission = hasPermission('Body Shop Facility Customer Gallery'))
+                    @if(isset($has_body_shop_facility_customer_gallery_permission) && $has_body_shop_facility_customer_gallery_permission)
+                        @if($has_body_shop_facility_customer_gallery_permission->read_permission == 1 || $has_body_shop_facility_customer_gallery_permission->full_permission == 1)
+                            <li class="nav-item"> 
+                                <a href="{{url('body-shop-facility-customer-gallery')}}" class="nav-link {{ (request()->is('body-shop-facility-customer-gallery*')) ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Body Shop Facility Customer Gallery</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+                </ul>
+            </li>
         @endif
 
         @php($has_permission = hasPermission('Our Locations'))
