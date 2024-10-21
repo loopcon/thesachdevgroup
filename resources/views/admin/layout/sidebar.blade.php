@@ -420,9 +420,9 @@
             @endif
         @endif
 
-        @if(hasPermission('After Sales Service Query Form') || hasPermission('Car Insurance Query Form') || hasPermission('Career Form') || hasPermission('Showroom Contact Query') || hasPermission('Service Center Contact Query') || hasPermission('Quick Contact Us Query') || hasPermission('Used Car Contact Query'))
-            <li class="nav-item has-treeview {{ (request()->is('booked-car-service') || request()->is('booked-insurance*') || request()->is('career-form*') || request()->is('showroom-contact-query*') || request()->is('service-center-contact-query*') || request()->is('contact-us-query*') || request()->is('used-car-contact-query*')) ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link {{ (request()->is('booked-car-service') || request()->is('booked-insurance*') || request()->is('career-form*') || request()->is('showroom-contact-query*') || request()->is('service-center-contact-query*') || request()->is('contact-us-query*') || request()->is('used-car-contact-query*')) ? 'active' : '' }}">
+        @if(hasPermission('After Sales Service Query Form') || hasPermission('Car Insurance Query Form') || hasPermission('Career Form') || hasPermission('Showroom Contact Query') || hasPermission('Service Center Contact Query') || hasPermission('Quick Contact Us Query') || hasPermission('Used Car Contact Query') || hasPermission('Body Shop Contact Query'))
+            <li class="nav-item has-treeview {{ (request()->is('booked-car-service') || request()->is('booked-insurance*') || request()->is('career-form*') || request()->is('showroom-contact-query*') || request()->is('service-center-contact-query*') || request()->is('contact-us-query*') || request()->is('used-car-contact-query*') || request()->is('body-shop-contact-query*')) ? 'menu-open' : '' }}">
+                <a href="#" class="nav-link {{ (request()->is('booked-car-service') || request()->is('booked-insurance*') || request()->is('career-form*') || request()->is('showroom-contact-query*') || request()->is('service-center-contact-query*') || request()->is('contact-us-query*') || request()->is('used-car-contact-query*') || request()->is('body-shop-contact-query*')) ? 'active' : '' }}">
                 <i class="nav-icon fa fa-comment-dots"></i>
                     <p>Query<i class="right fas fa-angle-left"></i></p>
                 </a>
@@ -499,6 +499,17 @@
                             <li class="nav-item"> 
                                 <a href="{{route('used-car-contact-query')}}" class="nav-link {{request()->is('used-car-contact-query*') ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i><p>Used Car Contact Query</p>
+                                </a>
+                            </li>
+                        @endif
+                    @endif
+
+                    @php($has_permission = hasPermission('Body Shop Contact Query'))
+                    @if(isset($has_permission) && $has_permission)
+                        @if($has_permission->read_permission == 1 || $has_permission->full_permission == 1) 
+                            <li class="nav-item"> 
+                                <a href="{{route('body-shop-contact-query')}}" class="nav-link {{request()->is('body-shop-contact-query*') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i><p>Body Shop Contact Query</p>
                                 </a>
                             </li>
                         @endif

@@ -379,6 +379,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('body_shop_update,{id}', [BodyShopController::class, 'body_shop_update'])->name('body_shop_update');
     Route::get('body_shop_destroy/{id}', [BodyShopController::class, 'body_shop_destroy'])->name('body_shop_destroy');
 
+    // body shop contact form
+    Route::get('body-shop-contact-query', [BodyShopController::class, 'bodyShopContactQueryList'])->name('body-shop-contact-query');
+    Route::get('body-shop-contact-query-edit/{id}', [BodyShopController::class, 'bodyShopContactQueryEdit'])->name('body-shop-contact-query-edit');
+    Route::post('body-shop-contact-query-update/{id}', [BodyShopController::class, 'bodyShopContactQueryUpdate'])->name('body-shop-contact-query-update');
+    Route::post('body-shop-contact-query-datatable', [BodyShopController::class, 'bodyShopContactQueryDatatable'])->name('body-shop-contact-query-datatable');
+    Route::get('body-shop-contact-query-delete/{id}', [BodyShopController::class, 'bodyShopContactQueryDestroy'])->name('body-shop-contact-query-delete');
+
     // body shop testimonial
     Route::get('body-shop-testimonial', [BodyShopTestimonialController::class, 'bodyShopTestimonialList'])->name('body-shop-testimonial');
     Route::get('body-shop-testimonial-create', [BodyShopTestimonialController::class, 'bodyShopTestimonialCreate'])->name('body-shop-testimonial-create');
@@ -406,7 +413,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('used_car_update,{id}', [AdminUsedCarController::class, 'used_car_update'])->name('used_car_update');
     Route::get('used_car_destroy/{id}', [AdminUsedCarController::class, 'used_car_destroy'])->name('used_car_destroy');
 
-    
     // used car form
     Route::get('used-car-contact-query', [AdminUsedCarController::class, 'usedCarContactQueryList'])->name('used-car-contact-query');
     Route::get('used-car-contact-query-edit/{id}', [AdminUsedCarController::class, 'usedCarContactQueryEdit'])->name('used-car-contact-query-edit');

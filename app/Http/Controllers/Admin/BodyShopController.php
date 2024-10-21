@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Body_shop;
 use App\Models\OurBusiness;
 use App\Models\Car;
+use App\Models\BodyShopContactQuery;
+use App\Models\Header_menu;
 use DataTables;
 use File;
 
@@ -352,4 +354,130 @@ class BodyShopController extends Controller
 
     }
 
+    public function bodyShopContactQueryList(Request $request)
+    {
+        $has_permission = hasPermission('Body Shop Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $return_data = array();
+                $return_data['site_title'] = trans('Body Shop Contact Query');
+                return view("admin.body_shop_contact_query.list",array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+
+    }
+
+    public function bodyShopContactQueryDatatable(Request $request)
+    {
+        if($request->ajax()){
+            $query = BodyShopContactQuery::with('ourService')->select('id', 'first_name','phone','email','our_service')->orderBy('id', 'DESC');
+
+            $list = $query->get();
+            return DataTables::of($list)
+                ->addColumn('our_service', function($list){
+                    $our_service = isset($list->ourService->name) && $list->ourService->name ? $list->ourService->name : NULL;
+                    return $our_service;
+                })
+                ->addColumn('action', function ($list) {
+                    $html = "";
+                    $id = encrypt($list->id);
+                    $has_permission = hasPermission('Body Shop Contact Query');
+                    if(isset($has_permission) && $has_permission)
+                    {
+                        if($has_permission->full_permission == 1)
+                        {
+                            $html .= "<span class='text-nowrap'>";
+                            $html .= "<a href='".url('body-shop-contact-query-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                            $html .= "<a href='javascript:void(0);' data-href='".route('body-shop-contact-query-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                            $html .= "</span>";
+                        }
+                    }
+                    return $html;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        } else {
+            return redirect()->back()->with('error','something went wrong');
+        }
+    }
+
+    public function bodyShopContactQueryEdit($id)
+    {
+        $has_permission = hasPermission('Body Shop Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $return_data = array();
+                $return_data['site_title'] = trans('Body Shop Contact Query Edit');
+                $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();
+                $return_data['record'] = BodyShopContactQuery::find($id);
+
+                return view('admin.body_shop_contact_query.form',array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+    }
+
+    public function bodyShopContactQueryUpdate(Request $request,$id)
+    {
+        $has_permission = hasPermission('Body Shop Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $request->validate([
+                    'first_name' => 'required',
+                    'email' => 'required',
+                    'phone' => 'required|numeric',
+                ]);
+
+                $body_shop_contact_query = BodyShopContactQuery::find($id);
+                $body_shop_contact_query->first_name = $request->first_name;
+                $body_shop_contact_query->email = $request->email;
+                $body_shop_contact_query->phone = $request->phone;
+                $body_shop_contact_query->our_service = $request->our_service;
+                $body_shop_contact_query->description = $request->description;
+                $body_shop_contact_query->save();
+
+                if($body_shop_contact_query)
+                {
+                    return redirect()->route('body-shop-contact-query')->with('success','Body Shop Contact Query update successfully.');
+                }else{
+                    return redirect()->back()->with('error','Something went wrong, please try again later!');
+                }
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+    }
+
+    public function bodyShopContactQueryDestroy($id)
+    {
+        $has_permission = hasPermission('Service Center Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $body_shop_contact_query = BodyShopContactQuery::where('id',$id)->delete();
+
+                if($body_shop_contact_query)
+                {
+                    return redirect()->back()->with('success','Body Shop Contact Query deleted successfully.');
+                }else{
+                    return redirect()->back()->with('error','Something went wrong, please try again later!');
+                }
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+    }
 }
