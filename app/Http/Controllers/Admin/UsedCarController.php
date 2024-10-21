@@ -9,6 +9,8 @@ use App\Models\Used_car;
 use App\Models\OurBusiness;
 use App\Models\Brand;
 use App\Models\Car;
+use App\Models\Header_menu;
+use App\Models\UsedCarContactQuery;
 use DataTables;
 use File;
 
@@ -331,6 +333,130 @@ class UsedCarController extends Controller
             }
         }else {
             return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+        }
+    }
+
+    public function usedCarContactQueryList()
+    {
+        $has_permission = hasPermission('Used Car Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $return_data = array();
+                $return_data['site_title'] = trans('Used Car Contact Query');
+                return view('admin.used_car_contact_query.list',array_merge($return_data));
+            }
+        }
+    }
+
+    public function usedCarContactQueryDatatable(Request $request)
+    {
+        if($request->ajax()){
+            $query = UsedCarContactQuery::with('ourService')->select('id', 'first_name','phone','email','our_service')->orderBy('id', 'DESC');
+
+            $list = $query->get();
+            return DataTables::of($list)
+                ->addColumn('our_service', function($list){
+                    $our_service = isset($list->ourService->name) && $list->ourService->name ? $list->ourService->name : NULL;
+                    return $our_service;
+                })
+                ->addColumn('action', function ($list) {
+                    $html = "";
+                    $id = encrypt($list->id);
+                    $has_permission = hasPermission('Used Car Contact Query');
+                    if(isset($has_permission) && $has_permission)
+                    {
+                        if($has_permission->full_permission == 1)
+                        {
+                            $html .= "<span class='text-nowrap'>";
+                            $html .= "<a href='".url('used-car-contact-query-edit', array($id))."' rel='tooltip' title='".trans('Edit')."' class='btn btn-info btn-sm'><i class='fas fa-pencil-alt'></i></a>&nbsp";
+                            $html .= "<a href='javascript:void(0);' data-href='".route('used-car-contact-query-delete',array($id))."' rel='tooltip' title='".trans('Delete')."' class='btn btn-danger btn-sm delete'><i class='fa fa-trash-alt'></i></a>&nbsp";
+                            $html .= "</span>";
+                        }
+                    }
+                    return $html;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        } else {
+            return redirect()->back()->with('error','something went wrong');
+        }
+    }
+
+    public function usedCarContactQueryEdit($id)
+    {
+        $has_permission = hasPermission('Used Car Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $return_data = array();
+                $return_data['site_title'] = trans('Used Car Contact Query Edit');
+                $return_data['our_services'] = Header_menu::where('menu_name','Our Services')->get();
+                $return_data['record'] = UsedCarContactQuery::find($id);
+
+                return view('admin.used_car_contact_query.form',array_merge($return_data));
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+    }
+
+    public function usedCarContactQueryUpdate(Request $request,$id)
+    {
+        $has_permission = hasPermission('Used Car Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $request->validate([
+                    'first_name' => 'required',
+                    'email' => 'required',
+                    'phone' => 'required|numeric',
+                ]);
+
+                $used_car_contact_query = UsedCarContactQuery::find($id);
+                $used_car_contact_query->first_name = $request->first_name;
+                $used_car_contact_query->email = $request->email;
+                $used_car_contact_query->phone = $request->phone;
+                $used_car_contact_query->our_service = $request->our_service;
+                $used_car_contact_query->description = $request->description;
+                $used_car_contact_query->save();
+
+                if($used_car_contact_query)
+                {
+                    return redirect()->route('used-car-contact-query')->with('success','Used Car Contact Query update successfully.');
+                }else{
+                    return redirect()->back()->with('error','Something went wrong, please try again later!');
+                }
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
+        }
+    }
+
+    public function usedCarContactQueryDestroy($id)
+    {
+        $has_permission = hasPermission('Used Car Contact Query');
+        if(isset($has_permission) && $has_permission)
+        {
+            if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
+            {
+                $id = decrypt($id);
+                $used_car_contact_query = UsedCarContactQuery::where('id',$id)->delete();
+
+                if($used_car_contact_query)
+                {
+                    return redirect()->back()->with('success','Used Car Contact Query deleted successfully.');
+                }else{
+                    return redirect()->back()->with('error','Something went wrong, please try again later!');
+                }
+            }else {
+                return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
+            }
         }
     }
 }

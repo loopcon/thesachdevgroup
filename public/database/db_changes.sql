@@ -976,3 +976,44 @@ ALTER TABLE `body_shop_facilities_and_customer_gallery`
 
 -- Disha : 19-10-2024 12:22 PM
 INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Body Shop Facility Customer Gallery', NULL, NULL, NULL);
+
+-- Disha : 21-10-2024 09:45 AM
+CREATE TABLE `used_car_contact_query` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `our_service` varchar(255) DEFAULT NULL COMMENT '`our_service` of `header_menus`',
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `used_car_contact_query`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `used_car_contact_query`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 21-10-2024 10:36 AM
+CREATE TABLE `body_shop_contact_query` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `our_service` varchar(255) DEFAULT NULL COMMENT '`our_service` of `header_menus`',
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `body_shop_contact_query`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `body_shop_contact_query`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+-- Disha : 21-10-2024 12:40 PM
+INSERT INTO `modules` (`id`, `module`, `deleted_at`, `created_at`, `updated_at`) VALUES (NULL, 'Used Car Contact Query', NULL, NULL, NULL);

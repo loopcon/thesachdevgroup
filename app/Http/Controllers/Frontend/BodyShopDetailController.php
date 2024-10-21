@@ -8,6 +8,7 @@ use App\Models\Body_shop;
 use App\Models\BodyShopTestimonial;
 use App\Models\Car;
 use App\Models\Header_menu;
+use App\Models\BodyShopContactQuery;
 use App\Models\BodyShopFacilityCustomerGallery;
 
 class BodyShopDetailController extends Controller
@@ -34,5 +35,29 @@ class BodyShopDetailController extends Controller
         $return_data['meta_description'] = isset($body_shop->meta_description) && $body_shop->meta_description ? $body_shop->meta_description : NULL;
 
         return view('frontend.body_shop.index',array_merge($return_data));
+    }
+
+    public function bodyShopContactQueryStore(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $contact_query = new BodyShopContactQuery();
+        $contact_query->first_name = $request->first_name;
+        $contact_query->email = $request->email;
+        $contact_query->phone = $request->phone;
+        $contact_query->our_service = $request->our_service;
+        $contact_query->description = $request->description;
+        $contact_query->save();
+
+        if($contact_query)
+        {
+            return redirect()->back()->with('message','Your query submit successfully!');
+        }else{
+            return redirect()->back()->with('message','Your query not submited!please try again');
+        }
     }
 }

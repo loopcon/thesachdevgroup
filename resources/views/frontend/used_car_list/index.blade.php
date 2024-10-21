@@ -176,7 +176,7 @@
                     <h3>Let’s connect!</h3>
                     <p>We’d love to hear from you. Drop a message or give us a call. You can use the form below to get in touch with us.</p>
                     <div class="form-contact-us">
-                        <form action="{{route('showroom-contact-query-store')}}" method="post" enctype="maltipart/form-data" data-parsley-validate="">
+                        <form action="{{route('used-car-contact-query-store')}}" method="post" enctype="maltipart/form-data" data-parsley-validate="">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 col-sm-12 margin-bookservice">

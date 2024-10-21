@@ -9,6 +9,7 @@ use App\Models\Used_car;
 use App\Models\UsedCarTestimonial;
 use App\Models\UsedCarFacilityCustomerGallery;
 use App\Models\Header_menu;
+use App\Models\UsedCarContactQuery;
 
 class UsedCarController extends Controller
 {
@@ -34,5 +35,29 @@ class UsedCarController extends Controller
         $return_data['meta_description'] = isset($used_car->meta_description) && $used_car->meta_description ? $used_car->meta_description : NULL;
 
         return view('frontend.used_car_list.index',array_merge($return_data));
+    }
+
+    public function usedCarContactQueryStore(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $contact_query = new UsedCarContactQuery();
+        $contact_query->first_name = $request->first_name;
+        $contact_query->email = $request->email;
+        $contact_query->phone = $request->phone;
+        $contact_query->our_service = $request->our_service;
+        $contact_query->description = $request->description;
+        $contact_query->save();
+
+        if($contact_query)
+        {
+            return redirect()->back()->with('message','Your query submit successfully!');
+        }else{
+            return redirect()->back()->with('message','Your query not submited!please try again');
+        }
     }
 }

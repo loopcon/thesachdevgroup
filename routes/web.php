@@ -406,6 +406,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('used_car_update,{id}', [AdminUsedCarController::class, 'used_car_update'])->name('used_car_update');
     Route::get('used_car_destroy/{id}', [AdminUsedCarController::class, 'used_car_destroy'])->name('used_car_destroy');
 
+    
+    // used car form
+    Route::get('used-car-contact-query', [AdminUsedCarController::class, 'usedCarContactQueryList'])->name('used-car-contact-query');
+    Route::get('used-car-contact-query-edit/{id}', [AdminUsedCarController::class, 'usedCarContactQueryEdit'])->name('used-car-contact-query-edit');
+    Route::post('used-car-contact-query-update/{id}', [AdminUsedCarController::class, 'usedCarContactQueryUpdate'])->name('used-car-contact-query-update');
+    Route::post('used-car-contact-query-datatable', [AdminUsedCarController::class, 'usedCarContactQueryDatatable'])->name('used-car-contact-query-datatable');
+    Route::get('used-car-contact-query-delete/{id}', [AdminUsedCarController::class, 'usedCarContactQueryDestroy'])->name('used-car-contact-query-delete');
+
     //used car testimonial
     Route::get('used-car-testimonial', [UsedCarTestimonialContoller::class, 'usedCarTestimonialList'])->name('used-car-testimonial');
     Route::get('used-car-testimonial-create', [UsedCarTestimonialContoller::class, 'usedCarTestimonialCreate'])->name('used-car-testimonial-create');
@@ -564,9 +572,11 @@ Route::post('showroom-contact-query-store', [ShowroomDetailController::class, 's
 
 // used car list
 Route::get('used-car/{slug}', [UsedCarController::class, 'usedCar']);
+Route::post('used-car-contact-query-store', [UsedCarController::class, 'usedCarContactQueryStore'])->name('used-car-contact-query-store');
 
 // body shop
 Route::get('body-shop/{slug}', [BodyShopDetailController::class, 'bodyShop']);
+Route::post('body-shop-contact-query-store', [BodyShopDetailController::class, 'bodyShopContactQueryStore'])->name('body-shop-contact-query-store');
 
 // careers
 Route::get('careers/job', [CareerDetailController::class, 'job'])->name('job');
