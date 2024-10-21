@@ -1,8 +1,6 @@
 @extends('admin.layout.header')
 @section('css')
     <link type="text/css" class="js-stylesheet" href="{{ url('public/plugins/parsley/parsley.css') }}" rel="stylesheet">
-    <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
-    <link class="js-stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -19,7 +17,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <form action="@if(isset($record->id)) {{ route('body_shop_update', array('id' => encrypt($record->id))) }} @else{{ route('body_shop_insert') }} @endif" method="POST" class="body_shop_form" enctype="multipart/form-data" data-parsley-validate="">
+                    <form action="@if(isset($record->id)) {{ route('body_shop_update', array('id' => encrypt($record->id))) }} @else{{ route('body_shop_insert') }} @endif" method="POST" class="service-center-form" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="row">
                             <div class="mb-3 col-md-4">
@@ -593,8 +591,6 @@
 @endsection
 @section('javascript')
 <script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
-<script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
-<script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
 <script>
  $(document).ready(function () {
         // $(".body_shop_form").validate({
