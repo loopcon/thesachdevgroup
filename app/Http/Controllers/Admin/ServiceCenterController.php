@@ -558,6 +558,5 @@ class ServiceCenterController extends Controller
                 return redirect('dashboard')->with('error', trans('You have not permission to access this page!'));
             }
         }
-
     }
 }

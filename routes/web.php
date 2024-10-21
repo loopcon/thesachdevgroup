@@ -413,7 +413,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('used_car_update,{id}', [AdminUsedCarController::class, 'used_car_update'])->name('used_car_update');
     Route::get('used_car_destroy/{id}', [AdminUsedCarController::class, 'used_car_destroy'])->name('used_car_destroy');
 
-    // used car form
+    // used car contact form
     Route::get('used-car-contact-query', [AdminUsedCarController::class, 'usedCarContactQueryList'])->name('used-car-contact-query');
     Route::get('used-car-contact-query-edit/{id}', [AdminUsedCarController::class, 'usedCarContactQueryEdit'])->name('used-car-contact-query-edit');
     Route::post('used-car-contact-query-update/{id}', [AdminUsedCarController::class, 'usedCarContactQueryUpdate'])->name('used-car-contact-query-update');
