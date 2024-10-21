@@ -22,4 +22,9 @@ class Used_car extends Model
         'rating',
         'number_of_rating',
     ];
+
+    public function businessDetail()
+    {
+        return $this->belongsTo(OurBusiness::class, 'business_id');
+    }
 }

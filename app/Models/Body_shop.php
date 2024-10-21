@@ -35,4 +35,9 @@ class Body_shop extends Model
         'contact_font_color',
         'map_link',
     ];
+
+    public function businessDetail()
+    {
+        return $this->belongsTo(OurBusiness::class, 'business_id');
+    }
 }

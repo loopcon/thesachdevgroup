@@ -38,8 +38,8 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Location Title</th>
                                 <th>Service</th>
+                                <th>Location Title</th>
                                 <th>#</th>
                                 <th class="text-center">Price</th>
                                 <th class="text-center">Total</th>
@@ -53,7 +53,7 @@
                                     $location = $payUsLog->showrooms->find($payUsLog->loc_id);
                                     if (isset($location)) {
                                         $businessDetail = $location->businessDetail;
-                                        $locationTitle = isset($businessDetail) ? $location->showroom_title : '';
+                                        $locationTitle = isset($businessDetail) ? $businessDetail->showroom_title : '';
                                     }
 
                                     $locationName = isset($location) ? $location->name : '';
