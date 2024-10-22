@@ -80,7 +80,7 @@
                                </select>
                             </div>
 
-                            <div class="col-md-4 mt-2">
+                            <div class="col-md-12 mt-2">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control" name="description" id="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
                             </div>
@@ -591,8 +591,12 @@
 @endsection
 @section('javascript')
 <script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
+<script src="{{asset('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
 <script>
  $(document).ready(function () {
+        CKEDITOR.replace('description', {
+            height:300,
+        });
         // $(".body_shop_form").validate({
         //     rules: {
         //         'business_id': {
