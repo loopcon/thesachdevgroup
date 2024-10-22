@@ -100,6 +100,7 @@
     </div>
 </section>
 
+<!-- facility slider -->
 @if(isset($facility) && !empty($facility))
 <section id="facility">
     <div class="container">
@@ -132,8 +133,9 @@
     </div>
 </section>
 @endif
-<!-- slider end  -->
+<!-- facility slider end  -->
 
+<!-- customer gallery slider -->
 <section id="facility">
     <div class="container">
         <div class="text-facility">

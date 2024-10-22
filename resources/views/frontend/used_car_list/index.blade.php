@@ -166,6 +166,7 @@
         </div>
     </div>
 </section>
+<!-- customer gallery slider end -->
 
 <!-- form  -->
 <section id="location-wiseform">
@@ -229,6 +230,7 @@
         </div>
     </div>
 </section>
+<!-- form end -->
 
 <!-- testimonials -->
 @if(isset($testimonials) && !empty($testimonials))

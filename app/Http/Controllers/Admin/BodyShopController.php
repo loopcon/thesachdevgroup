@@ -461,7 +461,7 @@ class BodyShopController extends Controller
 
     public function bodyShopContactQueryDestroy($id)
     {
-        $has_permission = hasPermission('Service Center Contact Query');
+        $has_permission = hasPermission('BOdy Shop Contact Query');
         if(isset($has_permission) && $has_permission)
         {
             if($has_permission->read_permission == 1 || $has_permission->full_permission == 1)
