@@ -22,7 +22,7 @@ class UsedCarController extends Controller
         $car_model_id = isset($used_car->car_model_id) && $used_car->car_model_id ? json_decode($used_car->car_model_id) : '';
         if($car_model_id)
         {
-            $return_data['cars'] = Car::whereIn('id',$car_model_id)->select('name','name_color','name_font_size','name_font_family','image')->get();
+            $return_data['cars'] = Car::whereIn('id',$car_model_id)->select('name','name_color','name_font_size','name_font_family','image','link')->get();
         }
 
         $return_data['testimonials'] = UsedCarTestimonial::where('used_car_id',$used_car->id)->get();

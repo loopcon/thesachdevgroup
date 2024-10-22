@@ -22,7 +22,7 @@ class BodyShopDetailController extends Controller
         $car_model_id = isset($body_shop->car_model_id) && $body_shop->car_model_id ? json_decode($body_shop->car_model_id) : '';
         if($car_model_id)
         {
-            $return_data['cars'] = Car::whereIn('id',$car_model_id)->select('name','name_color','name_font_size','name_font_family','image')->get();
+            $return_data['cars'] = Car::whereIn('id',$car_model_id)->select('name','name_color','name_font_size','name_font_family','image','link')->get();
         }
 
         $return_data['testimonials'] = BodyShopTestimonial::where('body_shop_id',$body_shop->id)->get();
