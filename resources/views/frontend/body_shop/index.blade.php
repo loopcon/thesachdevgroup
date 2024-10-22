@@ -52,7 +52,7 @@
                     </div>
                     <div class="location-text-one">
                         <h4 style="color:{{$body_shop->address_title_color}}; font-size:{{$body_shop->address_title_font_size}}; font-family:{{$body_shop->address_title_font_family}};">{{isset($body_shop->address_title) && $body_shop->address_title ? strtoupper($body_shop->address_title) : ''}}</h4>
-                        <p style="color:{{$body_shop->address_color}}; font-size:{{$body_shop->address_font_size}}; font-family:{{$body_shop->address_font_family}};">{{isset($body_shop->address) && $body_shop->address ? $body_shop->address : ''}}</p>
+                        <p style="color:{{$body_shop->address_font_color}}; font-size:{{$body_shop->address_font_size}}; font-family:{{$body_shop->address_font_family}};">{{isset($body_shop->address) && $body_shop->address ? $body_shop->address : ''}}</p>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="location-text-one">
                         <h4 style="color:{{$body_shop->contact_title_color}}; font-size:{{$body_shop->contact_title_font_size}}; font-family:{{$body_shop->contact_title_font_family}};">{{isset($body_shop->contact_title) && $body_shop->contact_title ? strtoupper($body_shop->contact_title) : ''}}</h4>
-                        <p style="color:{{$body_shop->contact_font_color}}; font-size:{{$body_shop->contact_number_font_size}}; font-family:{{$body_shop->contact_number_font_family}};"><a href="tel:+{{isset($body_shop->contact_number) && $body_shop->contact_number ? $body_shop->contact_number: ''}}" style="color:{{$body_shop->contact_number_color}}">@if(isset($body_shop->contact_number) && $body_shop->contact_number) +91 {{isset($body_shop->contact_number) && $body_shop->contact_number ? $body_shop->contact_number: ''}} @endif</a></p>
+                        <p style="color:{{$body_shop->contact_font_color}}; font-size:{{$body_shop->contact_font_size}}; font-family:{{$body_shop->contact_font_family}};"><a href="tel:+{{isset($body_shop->contact_number) && $body_shop->contact_number ? $body_shop->contact_number: ''}}" style="color:{{$body_shop->contact_number_color}}">@if(isset($body_shop->contact_number) && $body_shop->contact_number) +91 {{isset($body_shop->contact_number) && $body_shop->contact_number ? $body_shop->contact_number: ''}} @endif</a></p>
                     </div>
                 </div>
             </div>
