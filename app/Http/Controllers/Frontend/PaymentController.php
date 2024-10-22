@@ -31,6 +31,166 @@ class PaymentController extends Controller
         return view('frontend.payment.form', compact('brands'));
     }
 
+    // Replica for hyundai-payment
+    public function acrgurugramFrom() {
+        $brands = OurBusiness::get();
+
+        foreach ($brands as $key => $value) {
+            $services = [];
+            $service_id = json_decode($value->service_id);
+            if ($service_id) {
+                $services = Service::whereIn('id', $service_id)->get();
+            }
+
+            $value->services = $services;
+        }
+        return view('frontend.acr-gurugram-payment.form', compact('brands')); // Points to a different view
+    }
+
+    // Replica for hyundai-payment
+    public function acrnoidaFrom() {
+        $brands = OurBusiness::get();
+
+        foreach ($brands as $key => $value) {
+            $services = [];
+            $service_id = json_decode($value->service_id);
+            if ($service_id) {
+                $services = Service::whereIn('id', $service_id)->get();
+            }
+
+            $value->services = $services;
+        }
+        return view('frontend.acr-noida-payment.form', compact('brands')); // Points to a different view
+    }
+
+    // Replica for hyundai-payment
+    public function acrmotinagarFrom() {
+        $brands = OurBusiness::get();
+
+        foreach ($brands as $key => $value) {
+            $services = [];
+            $service_id = json_decode($value->service_id);
+            if ($service_id) {
+                $services = Service::whereIn('id', $service_id)->get();
+            }
+
+            $value->services = $services;
+        }
+        return view('frontend.acr-motinagar-payment.form', compact('brands')); // Points to a different view
+    }
+
+    // Replica for hyundai-payment
+    public function gtmotinagarForm() {
+        $brands = OurBusiness::get();
+
+        foreach ($brands as $key => $value) {
+            $services = [];
+            $service_id = json_decode($value->service_id);
+            if ($service_id) {
+                $services = Service::whereIn('id', $service_id)->get();
+            }
+
+            $value->services = $services;
+        }
+        return view('frontend.gt-motinagar-payment.form', compact('brands')); // Points to a different view
+    }
+
+    // Replica for hyundai-payment
+    public function azadpurFrom() {
+        $brands = OurBusiness::get();
+
+        foreach ($brands as $key => $value) {
+            $services = [];
+            $service_id = json_decode($value->service_id);
+            if ($service_id) {
+                $services = Service::whereIn('id', $service_id)->get();
+            }
+
+            $value->services = $services;
+        }
+        return view('frontend.gt-azadpur-payment.form', compact('brands')); // Points to a different view
+    }
+
+    // Replica for hyundai-payment
+    public function okhlaFrom() {
+        $brands = OurBusiness::get();
+
+        foreach ($brands as $key => $value) {
+            $services = [];
+            $service_id = json_decode($value->service_id);
+            if ($service_id) {
+                $services = Service::whereIn('id', $service_id)->get();
+            }
+
+            $value->services = $services;
+        }
+        return view('frontend.gt-okhla-payment.form', compact('brands')); // Points to a different view
+    }
+
+    // Replica for hyundai-payment
+    public function motinagarForm() {
+        $brands = OurBusiness::get();
+
+        foreach ($brands as $key => $value) {
+            $services = [];
+            $service_id = json_decode($value->service_id);
+            if ($service_id) {
+                $services = Service::whereIn('id', $service_id)->get();
+            }
+
+            $value->services = $services;
+        }
+        return view('frontend.hh-motinagar-payment.form', compact('brands')); // Points to a different view
+    }
+
+    // Replica for hyundai-payment
+    public function badliForm() {
+        $brands = OurBusiness::get();
+
+        foreach ($brands as $key => $value) {
+            $services = [];
+            $service_id = json_decode($value->service_id);
+            if ($service_id) {
+                $services = Service::whereIn('id', $service_id)->get();
+            }
+
+            $value->services = $services;
+        }
+        return view('frontend.hh-badli-payment.form', compact('brands')); // Points to a different view
+    }
+
+    // Replica for hyundai-payment
+    public function zakhiraForm() {
+        $brands = OurBusiness::get();
+
+        foreach ($brands as $key => $value) {
+            $services = [];
+            $service_id = json_decode($value->service_id);
+            if ($service_id) {
+                $services = Service::whereIn('id', $service_id)->get();
+            }
+
+            $value->services = $services;
+        }
+        return view('frontend.hh-zakhira-payment.form', compact('brands')); // Points to a different view
+    }
+
+    // Replica for hyundai-payment
+    public function narainaForm() {
+        $brands = OurBusiness::get();
+
+        foreach ($brands as $key => $value) {
+            $services = [];
+            $service_id = json_decode($value->service_id);
+            if ($service_id) {
+                $services = Service::whereIn('id', $service_id)->get();
+            }
+
+            $value->services = $services;
+        }
+        return view('frontend.hh-naraina-payment.form', compact('brands')); // Points to a different view
+    }
+
     public function getDataByService(Request $request) {
         $towrd=explode('-',$_POST['get_option']);
 
