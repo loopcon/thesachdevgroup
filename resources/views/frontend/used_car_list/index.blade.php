@@ -52,7 +52,7 @@
                     </div>
                     <div class="location-text-one">
                         <h4 style="color:{{$used_car->address_title_color}}; font-size:{{$used_car->address_title_font_size}}; font-family:{{$used_car->address_title_font_family}};">{{isset($used_car->address_title) && $used_car->address_title ? strtoupper($used_car->address_title) : ''}}</h4>
-                        <p style="color:{{$used_car->address_color}}; font-size:{{$used_car->address_font_size}}; font-family:{{$used_car->address_font_family}};">{{isset($used_car->address) && $used_car->address ? $used_car->address : ''}}</p>
+                        <p style="color:{{$used_car->address_font_color}}; font-size:{{$used_car->address_font_size}}; font-family:{{$used_car->address_font_family}};">{{isset($used_car->address) && $used_car->address ? $used_car->address : ''}}</p>
                     </div>
                 </div>
             </div>
@@ -72,13 +72,13 @@
             <div class="col-md-6 bg-light">
                 <div class="location-parent">
                     <div class="location-image-one">
-                        @if(isset($used_car->contact_number_icon) && $used_car->contact_number_icon)
+                        @if(isset($used_car->contact_icon) && $used_car->contact_icon)
                             <img src="{{url('public/uploads/used_car/contactIcon/'.$used_car->contact_icon)}}" alt="" width="55%">
                         @endif
                     </div>
                     <div class="location-text-one">
                         <h4 style="color:{{$used_car->contact_title_color}}; font-size:{{$used_car->contact_title_font_size}}; font-family:{{$used_car->contact_title_font_family}};">{{isset($used_car->contact_title) && $used_car->contact_title ? strtoupper($used_car->contact_title) : ''}}</h4>
-                        <p style="color:{{$used_car->contact_font_color}}; font-size:{{$used_car->contact_number_font_size}}; font-family:{{$used_car->contact_number_font_family}};"><a href="tel:+{{isset($used_car->contact_number) && $used_car->contact_number ? $used_car->contact_number: ''}}" style="color:{{$used_car->contact_number_color}}">@if(isset($used_car->contact_number) && $used_car->contact_number) +91 {{isset($used_car->contact_number) && $used_car->contact_number ? $used_car->contact_number: ''}} @endif</a></p>
+                        <p style="font-size:{{$used_car->contact_font_size}}; font-family:{{$used_car->contact_font_family}};"><a href="tel:+{{isset($used_car->contact_number) && $used_car->contact_number ? $used_car->contact_number: ''}}" style="color:{{$used_car->contact_font_color}}">@if(isset($used_car->contact_number) && $used_car->contact_number) +91 {{isset($used_car->contact_number) && $used_car->contact_number ? $used_car->contact_number: ''}} @endif</a></p>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="location-text-one">
                         <h4 style="color:{{$used_car->email_title_color}}; font-size:{{$used_car->email_title_font_size}}; font-family:{{$used_car->email_title_font_family}};">{{isset($used_car->email_title) && $used_car->email_title ? strtoupper($used_car->email_title) : ''}}</h4>
-                        <p style="color:{{$used_car->email_font_color}}; font-size:{{$used_car->email_font_size}}; font-family:{{$used_car->email_font_family}};"><a href="mailto: {{isset($used_car->email) && $used_car->email ? $used_car->email : ''}}" style="color:{{$used_car->email_color}};">{{isset($used_car->email) && $used_car->email ? $used_car->email : ''}}</a></p>
+                        <p style="font-size:{{$used_car->email_font_size}}; font-family:{{$used_car->email_font_family}};"><a href="mailto: {{isset($used_car->email) && $used_car->email ? $used_car->email : ''}}" style="color:{{$used_car->email_font_color}};">{{isset($used_car->email) && $used_car->email ? $used_car->email : ''}}</a></p>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
 <section id="facility">
     <div class="container">
         <div class="text-facility">
-            <h3 style="color:{{$used_car->facility_title_color}}; font-size:{{$used_car->facility_title_font_size}}; font-family:{{$used_car->facility_title_font_family}};">{{isset($used_car->facility_title) && $used_car->facility_title ? strtoupper($used_car->facility_title) : ''}}</h3>
+            <h3 style="color:{{$used_car->facility_title_font_color}}; font-size:{{$used_car->facility_title_font_size}}; font-family:{{$used_car->facility_title_font_family}};">{{isset($used_car->facility_title) && $used_car->facility_title ? strtoupper($used_car->facility_title) : ''}}</h3>
         </div>
         <div class="slide-container swiper">
             <div class="slide-content">
@@ -250,7 +250,7 @@
                                             <img class="img-circle" src="{{url('public/uploads/used_car_testimonial/'.$testimonial->image)}}" alt="">
                                             <p maxlength="20" style="color:{{$testimonial->description_text_color}}; font-size:{{$testimonial->description_text_size}}; font-family:{{$testimonial->description_font_family}};">{{$testimonial->description}}</p>
                                         </div>
-                                        <div class="testimonial-name" style="color:{{$testimonial->name_text_color}}; font-size:{{$testimonial->name_text_size}}; font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}};">{{$testimonial->name}}</div>
+                                        <div class="testimonial-name" style="color:{{$testimonial->name_font_color}}; font-size:{{$testimonial->name_font_size}}; font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}};">{{$testimonial->name}}</div>
                                     </div>
                                     <!--END OF TESTIMONIAL 1 -->
                                 @endforeach

@@ -21,6 +21,7 @@ class Used_car extends Model
         'link',
         'rating',
         'number_of_rating',
+        'address_font_size',
     ];
 
     public function businessDetail()

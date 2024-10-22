@@ -72,7 +72,7 @@
             <div class="col-md-6 bg-light">
                 <div class="location-parent">
                     <div class="location-image-one">
-                        @if(isset($body_shop->contact_number_icon) && $body_shop->contact_number_icon)
+                        @if(isset($body_shop->contact_icon) && $body_shop->contact_icon)
                             <img src="{{url('public/uploads/body_shop_contact_icon/'.$body_shop->contact_icon)}}" alt="" width="55%">
                         @endif
                     </div>
@@ -250,7 +250,7 @@
                                             <img class="img-circle" src="{{url('public/uploads/body_shop_testimonial/'.$testimonial->image)}}" alt="">
                                             <p maxlength="20" style="color:{{$testimonial->description_text_color}}; font-size:{{$testimonial->description_text_size}}; font-family:{{$testimonial->description_font_family}};">{{$testimonial->description}}</p>
                                         </div>
-                                        <div class="testimonial-name" style="color:{{$testimonial->name_text_color}}; font-size:{{$testimonial->name_text_size}}; font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}};">{{$testimonial->name}}</div>
+                                        <div class="testimonial-name" style="color:{{$testimonial->name_font_color}}; font-size:{{$testimonial->name_font_size}}; font-family:{{$testimonial->name_font_family}}; background-color:{{$testimonial->name_background_color}};">{{$testimonial->name}}</div>
                                     </div>
                                     <!--END OF TESTIMONIAL 1 -->
                                 @endforeach
