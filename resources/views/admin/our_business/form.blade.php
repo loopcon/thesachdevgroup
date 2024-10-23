@@ -84,7 +84,6 @@
                                 @endif  
                                 <input type="file" id="banner_image" class="form-control" name="banner_image" value="">
                                 @if ($errors->has('banner_image')) <div class="text-danger">{{ $errors->first('banner_image') }}</div>@endif
-                                <div class="error"></div>
                                 <small class="image_type">(Hight:281,Width:1349; Image Type : jpg,jpeg,png,webp)</small>
                             </div>
 

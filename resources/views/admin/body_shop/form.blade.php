@@ -30,7 +30,6 @@
                                         @endforeach
                                     @endif
                                 </select>
-                                <div class="error"></div>
                                 @if($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id')}}</div> @endif
                             </div>
 
@@ -42,7 +41,6 @@
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image">
                                 @if($errors->has('image')) <div class="text-danger">{{ $errors->first('image')}}</div> @endif
-                                <div class="error"></div>
                                 <small class="image_type">(Height:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
@@ -50,7 +48,6 @@
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required>
                                 @if($errors->has('name')) <div class="text-danger">{{ $errors->first('name')}}</div> @endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -159,7 +156,6 @@
                                 @endif  
                                 <input type="file" id="address_icon" class="form-control" name="address_icon" value="">
                                 @if ($errors->has('address_icon')) <div class="text-danger">{{ $errors->first('address_icon') }}</div>@endif
-                                <div class="error"></div>
                                 <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
@@ -264,7 +260,6 @@
                                     <img src="{{url('public/uploads/body_shop_working_hours_icon/'.$record->working_hours_icon)}}" width="50">
                                 @endif  
                                 <input type="file" id="working_hours_icon" class="form-control" name="working_hours_icon" value="">
-                                <div class="error"></div>
                                 <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
@@ -306,7 +301,6 @@
                                 @endif  
                                 <input type="file" id="contact_icon" class="form-control" name="contact_icon" value="">
                                 @if ($errors->has('contact_icon')) <div class="text-danger">{{ $errors->first('contact_icon') }}</div>@endif
-                                <div class="error"></div>
                                 <small class="image_type">(Hight:40px,Width:40px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
@@ -354,7 +348,6 @@
                             <div class="col-md-4">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" name="email" value="{{isset($record->email) ? $record->email : old('email')}}" id="email" required>
-                                <div class="error"></div>
                                 @if($errors->has('email')) <div class="text-danger">{{ $errors->first('email')}}</div> @endif
                             </div>
 
@@ -388,7 +381,6 @@
                             <div class="col-md-4 mt-2">
                                 <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" required="" maxlength="10" minlength="10" value="{{isset($record->contact_number) ? $record->contact_number : old('contact_number')}}" name="contact_number" id="contact_number">
-                                <div class="error"></div>
                                 @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
                             </div>
 
@@ -420,20 +412,17 @@
                             <div class="col-md-4">
                                 <label for="link" class="form-label">Link</label>
                                 <input type="text" id="link" class="form-control" name="link" value="{{isset($record->link) ? $record->link : old('link')}}">
-                                <div class="error"></div>
                             </div>
 
                             <div class="mb-3 col-md-4">
                                 <label for="rating" class="form-label">Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="rating" id="rating" value="{{isset($record->rating) ? $record->rating : old('rating')}}">
                                 @if($errors->has('rating')) <div class="text-danger">{{ $errors->first('rating')}}</div> @endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4 mt-2">
                                 <label for="number_of_rating" class="form-label">Number of Rating<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" required="" maxlength="5" value="{{isset($record->number_of_rating) ? $record->number_of_rating : old('number_of_rating')}}" name="number_of_rating" id="number_of_rating">
-                                <div class="error"></div>
                                 @if ($errors->has('number_of_rating')) <div class="text-danger">{{ $errors->first('number_of_rating') }}</div>@endif
                             </div>
 
@@ -516,7 +505,6 @@
                                 @endif  
                                 <input type="file" id="lets_connect_image" class="form-control" name="lets_connect_image" value="">
                                 @if ($errors->has('lets_connect_image')) <div class="text-danger">{{ $errors->first('lets_connect_image') }}</div>@endif
-                                <div class="error"></div>
                                 <small class="image_type">(Hight:444px,Width:351px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
@@ -574,7 +562,6 @@
                             <div class="col-md-4 mb-3">
                                 <label for="meta_description">Meta Description</label>
                                 <textarea class="form-control" name="meta_description">{{isset($record->meta_description) ? $record->meta_description : old('meta_description')}}</textarea>
-                                <div class="error"></div>
                             </div>
                         </div> 
 

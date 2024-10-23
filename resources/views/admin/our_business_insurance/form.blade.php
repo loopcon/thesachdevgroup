@@ -40,7 +40,6 @@
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required>
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -77,7 +76,6 @@
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon" value="" required>
                                 @if ($errors->has('icon')) <div class="text-danger">{{ $errors->first('icon') }}</div>@endif
-                                <div class="error"></div>
                                 <small class="image_type">(Hight:77px,Width:77px;Image Type : jpg,jpeg,png,webp)</small>
                             </div>
 

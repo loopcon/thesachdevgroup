@@ -39,7 +39,7 @@
                                             <div class="card-body">
                                                 <div class="mb-3">
                                                     <h2 class="col-form-label">{{$value->value}}</h2>
-                                                    <textarea class="ckeditor form-control" name="{{$value->label}}" id="{{$value->label}}" required="" style="height: 1000px">{{$value->template}}</textarea>
+                                                    <textarea class="form-control ckeditor" name="{{$value->label}}" id="{{$value->label}}" required="" style="height: 1000px">{{$value->template}}</textarea>
                                                     <input type="hidden" name="id" value="{{$value->label}}">
                                                 </div>
                                             </div>
@@ -61,7 +61,11 @@
 @section('javascript')
 <script src="{{ url('public/plugins/parsley/parsley.js') }}"></script>
 <script src="{{url('public/plugins/ckeditor/ckeditor.js')}}"  type="text/javascript"></script>
- CKEDITOR.replace('ckeditor', {
-            height:300,
-        });
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('.ckeditor', {
+                    height:300,
+            });
+    });
+</script>
 @endsection

@@ -28,7 +28,6 @@
                             <div class="form-group col-md-6">
                                 <label for="first_name">First Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="first_name" value="{{isset($record->first_name) ? $record->first_name : old('first_name')}}" id="first_name" required>
-                                <span class="text-danger" id="first-name-error"></span>
                                 @if ($errors->has('first_name')) <div class="text-danger">{{ $errors->first('first_name') }}</div>@endif
                             </div>
 
