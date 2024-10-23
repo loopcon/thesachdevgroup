@@ -81,7 +81,6 @@
                                 <div class="col-md-12 mt-2 mb-3">
                                     <label for="description" class="form-label">Description</label>
                                     <textarea class="ckeditor form-control" name="description">{{$showroom->description}}</textarea>
-                                    <div class="error"></div>
                                 </div>
 
                                 <?php /**<div class="mb-3 col-md-4">
@@ -182,7 +181,6 @@
                                     <label for="address" class="form-label">Address<span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="address" requied>{{$showroom->address}}</textarea>
                                     @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
-                                    <div class="error"></div>
                                 </div>
 
                                 <div class="col-md-4">
@@ -331,7 +329,6 @@
                                     <label for="contact_number" class="form-label">Contact Number<span class="text-danger">*</span></label>
                                     <input type="number" id="contact_number" class="form-control" name="contact_number" value="{{$showroom->contact_number}}" required>
                                     @if ($errors->has('contact_number')) <div class="text-danger">{{ $errors->first('contact_number') }}</div>@endif
-                                    <div class="error"></div>
                                 </div>
 
                                 <div class="mb-3 col-md-4">
@@ -405,7 +402,6 @@
                                     <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                     <input type="email" id="email" class="form-control" name="email" value="{{$showroom->email}}" required>
                                     @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
-                                    <div class="error"></div>
                                 </div>
 
                                 <div class="col-md-4">
@@ -512,7 +508,6 @@
                                     @endif  
                                     <input type="file" id="lets_connect_image" class="form-control" name="lets_connect_image" value="">
                                     @if ($errors->has('lets_connect_image')) <div class="text-danger">{{ $errors->first('lets_connect_image') }}</div>@endif
-                                    <div class="error"></div>
                                     <small class="image_type">(Hight:444,Width:351; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
 
@@ -631,7 +626,6 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="meta_description">Meta Description</label>
                                     <textarea class="form-control" name="meta_description">{{isset($showroom->meta_description) ? $showroom->meta_description : old('meta_description')}}</textarea>
-                                    <div class="error"></div>
                                 </div>
                             </div>
                             <div class="box-footer">

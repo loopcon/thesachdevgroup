@@ -37,14 +37,12 @@
                                     <option value="Contact Us" @if(old('menu_name') == 'Contact Us'){{'selected'}}@endif>Contact Us</option>
 
                                 </select>
-                                {{-- <div class="error"></div> --}}
                                 <div class="error">@if ($errors->has('menu_name')) <label id="menu_name-error" class="error">{{ $errors->first('menu_name') }}</label>@endif</div>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control name" name="name" value="{{old('name')}}" required>
-                                {{-- <div class="error"></div> --}}
                                 <div class="error">@if ($errors->has('name')) <label id="name-error" class="error">{{ $errors->first('name') }}</label>@endif</div>
                             </div>
 
@@ -79,7 +77,6 @@
                                 <label for="link" class="form-label">Link</label>
                                 <input type="text" id="link" class="form-control link" name="link" value="{{old('link')}}">
                                 <div class="error">@if ($errors->has('link')) <label id="link-error" class="error">{{ $errors->first('link') }}</label>@endif</div>
-                                {{-- <div class="error"></div> --}}
                             </div>
                         </div>
                         <div class="box-footer">

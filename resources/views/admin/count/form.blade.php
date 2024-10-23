@@ -29,20 +29,17 @@
                                     <img src="{{url('public/count_icon/'.$record->icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon" required>
-                                <div class="error"></div>
                                 <small class="image_type">(Height:50px,Width:50px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="amount" class="form-label">Amount<span class="text-danger">*</span></label>
                                 <input type="number" id="amount" class="form-control" name="amount" value="{{isset($record->amount) ? $record->amount : old('amount')}}" required>
-                                <div class="error"></div>
                             </div> 
 
                             <div class="col-md-4">
                                 <label for="amount_color" class="form-label">Amount Text Color</label>
                                 <input type="text" id="amount_color" class="form-control colorpicker" name="amount_color" value="{{isset($record->amount_color) ? $record->amount_color : old('amount_color')}}">
-                                <div class="error"></div>
                             </div> 
 
                             <div class="mb-3 col-md-4">
@@ -70,13 +67,11 @@
                             <div class="col-md-4">
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : old('name')}}">
-                                <div class="error"></div>
                             </div> 
 
                             <div class="mb-3 col-md-4">
                                 <label for="name_color" class="form-label">Name Text Color</label>
                                 <input type="text" id="name_color" class="form-control colorpicker" name="name_color" value="{{isset($record->name_color) ? $record->name_color : old('name_color')}}">
-                                <div class="error"></div>
                             </div> 
 
                             <div class="col-md-4">
@@ -102,7 +97,6 @@
                             <div class="mb-3 col-md-4">
                                 <label for="background_color" class="form-label">Background Color</label>
                                 <input type="text" id="background_color" class="form-control colorpicker" name="background_color" value="{{isset($record->background_color) ? $record->background_color : old('background_color')}}">
-                                <div class="error"></div>
                             </div> 
 
                         </div> 

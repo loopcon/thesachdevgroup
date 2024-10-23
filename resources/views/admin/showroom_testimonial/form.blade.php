@@ -42,7 +42,6 @@
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image" value="{{isset($record->image) ? $record->image : ''}}">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
-                                <div class="error"></div>
                                 <small class="image_type">(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
@@ -88,7 +87,6 @@
                             <div class="mb-3 col-md-4 mt-2">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control" name="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4 mt-2">

@@ -46,7 +46,6 @@
                                         <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                         <input type="text" id="name" class="form-control name" name="name" value="{{old('name', $header_menu->name)}}" required>
                                         <div class="error">@if ($errors->has('name')) <label id="name-error" class="error">{{ $errors->first('name') }}</label>@endif</div>
-                                        {{-- <div class="error"></div> --}}
                                     </div>
 
                                     <div class="col-md-4">

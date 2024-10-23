@@ -75,7 +75,6 @@
                                 @endif  
                                 <input type="file" id="offer_first_icon" class="form-control" name="offer_first_icon" value="">
                                 @if ($errors->has('offer_first_icon')) <div class="text-danger">{{ $errors->first('offer_first_icon') }}</div>@endif
-                                <div class="error"></div>
                                 <small class="image_type">(Hight:64px,Width:64px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 

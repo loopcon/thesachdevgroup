@@ -47,7 +47,6 @@
                             <div class="col-md-4">
                                 <label for="image" class="form-label">Image<span class="text-danger">*</span></label>
                                 <input type="file" id="image" class="form-control" name="image" required>
-                                <div class="error"></div>
                                 <small class="image_type">(Height:219px,Width:348px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
@@ -87,7 +86,6 @@
                             <div class="mb-3 col-md-4">
                                 <label for="price" class="form-label">Price<span class="text-danger">*</span></label>
                                 <input type="text" id="price" class="form-control" name="price" required>
-                                <div class="error"></div>
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -118,7 +116,6 @@
                             <div class="col-md-4">
                                 <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
                                 <input type="text" id="link" class="form-control" name="link" required>
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">

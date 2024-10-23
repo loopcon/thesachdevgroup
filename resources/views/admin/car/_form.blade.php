@@ -52,14 +52,12 @@
                                         <img src="{{url('public/car/'.$car->image)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                     @endif
                                     <input type="file" id="image" class="form-control" name="image" requird>
-                                    <div class="error"></div>
                                     <small class="image_type">(Height:219px,Width:348px; Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
     
                                 <div class="col-md-4">
                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                     <input  type="text" class="form-control" name="name" value="{{$car->name}}" required>
-                                    <div class="error"></div>
                                 </div>
 
                                 <div class="col-md-4">
@@ -92,7 +90,6 @@
                                 <div class="mb-3 col-md-4">
                                     <label for="price" class="form-label">Price<span class="text-danger">*</span></label>
                                     <input  type="text" class="form-control" name="price" value="{{$car->price}}" required>
-                                    <div class="error"></div>
                                 </div>
 
                                 <div class="mb-3 col-md-4">
@@ -123,7 +120,6 @@
                                 <div class="col-md-4">
                                     <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
                                     <input  type="text" class="form-control" name="link" value="{{$car->link}}" required>
-                                    <div class="error"></div>
                                 </div>
 
                                 <div class="col-md-4">

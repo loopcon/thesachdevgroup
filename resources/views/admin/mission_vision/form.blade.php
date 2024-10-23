@@ -35,14 +35,12 @@
                                     <img src="{{url('public/mission_vision/'.$record->icon)}}" width="100" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon" required>
-                                <div class="error"></div>
                                 <small class="image_type">(Height:45px,Width:45px; Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="icon_name" class="form-label">Icon Name<span class="text-danger">*</span></label>
                                 <input type="text" id="icon_name" class="form-control" name="icon_name" value="{{isset($record->icon_name) ? $record->icon_name : old('icon_name')}}" required>
-                                <div class="error"></div>
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -75,7 +73,6 @@
                             <div class="col-md-4">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" id="title" class="form-control" name="title" value="{{isset($record->title) ? $record->title : old('title')}}">
-                                <div class="error"></div>
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -106,7 +103,6 @@
                             <div class="col-md-12 mt-2 mb-3">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control" name="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
-                                <div class="error"></div>
                             </div>
 
                             <?php /**<div class="mb-3 col-md-4">

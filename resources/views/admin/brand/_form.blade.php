@@ -28,14 +28,12 @@
                                         <img src="{{url('public/brand/'.$brand->image)}}" width="100" style="margin-bottom: 10px;">
                                     @endif
                                     <input type="file" id="image" class="form-control" name="image" required>
-                                    <div class="error"></div>
                                     <small class="image_type">(Height:145px,Width:145px;Image Type : jpg,jpeg,png,svg,webp)</small>
                                 </div>
     
                                 <div class="col-md-4">
                                     <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                     <input  type="text" class="form-control" name="name" value="{{$brand->name}}" required>
-                                    <div class="error"></div>
                                 </div>
     
                                 <div class="col-md-4">
@@ -68,7 +66,6 @@
                                 <div class="col-md-4">
                                     <label for="link" class="form-label">Link<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" value="{{$brand->link}}" name="link">
-                                    <div class="error"></div>
                                 </div>
 
                                 <div class="box-footer">
