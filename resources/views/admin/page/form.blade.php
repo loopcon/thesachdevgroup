@@ -27,13 +27,11 @@
                                 <label for="name" class="form-label">Page Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required>
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-12 mt-2 mb-3">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control" name="description">{{isset($record->description) ? $record->description : old('description')}}</textarea>
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">

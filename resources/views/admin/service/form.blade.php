@@ -40,7 +40,6 @@
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{isset($record->name) ? $record->name : old('name')}}" required>
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -73,7 +72,6 @@
                                 <label for="url" class="form-label">Url<span class="text-danger">*</span></label>
                                 <input type="urls" class="form-control" id="url" name="url" value="{{isset($record->url) ? $record->url : old('url')}}" required>
                                 @if ($errors->has('url')) <div class="text-danger">{{ $errors->first('url') }}</div>@endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4 mb-3 mt-2">

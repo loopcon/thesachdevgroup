@@ -99,7 +99,6 @@
                                 @endif  
                                 <input type="file" id="image" class="form-control" name="image" value="">
                                 @if ($errors->has('image')) <div class="text-danger">{{ $errors->first('image') }}</div>@endif
-                                <div class="error"></div>
                                 <small class="image_type">(Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 
@@ -110,7 +109,6 @@
                                 @endif  
                                 <input type="file" id="icon" class="form-control" name="icon" value="">
                                 @if ($errors->has('icon')) <div class="text-danger">{{ $errors->first('icon') }}</div>@endif
-                                <div class="error"></div>
                                 <small class="image_type">(Image Type : jpg,jpeg,png,svg,webp)</small>
                             </div>
 

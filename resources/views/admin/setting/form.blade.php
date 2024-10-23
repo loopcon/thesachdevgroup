@@ -32,7 +32,6 @@
                                     <img src="{{url('public/logo/'.$setting->logo)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">
                                   @endif
                                 <input type="file" id="logo" class="form-control" name="logo" required>
-                                <div class="error"></div>
                                 <small class="image_type">(Height:85px,Width:85px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
     
@@ -40,7 +39,6 @@
                                 <label for="email">Email<span class="text-danger">*</span></label>
                                 <input type="email" id="email" class="form-control" name="email" value="{{$setting->email}}" required>
                                 @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif 
-                                <div class="error"></div>
                               </div>
     
                               <div class="col-md-4">
@@ -74,7 +72,6 @@
                                 <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
                                 <input type="number" id="mobile_number" class="form-control" name="mobile_number" value="{{$setting->mobile_number}}" required>
                                 @if ($errors->has('mobile_number')) <div class="text-danger">{{ $errors->first('mobile_number') }}</div>@endif
-                                <div class="error"></div>
                               </div>
     
                               <div class="mb-3 col-md-4">
@@ -107,7 +104,6 @@
                                 <label for="time">Time<span class="text-danger">*</span></label>
                                 <input type="text" id="time" class="form-control" name="time" value="{{$setting->time}}" required>
                                 @if ($errors->has('time')) <div class="text-danger">{{ $errors->first('time') }}</div>@endif
-                                <div class="error"></div>
                               </div>
     
                               <div class="col-md-4">
@@ -139,7 +135,6 @@
                                 <label for="address">Address<span class="text-danger">*</span></label>
                                 <textarea class="form-control" name="address" required>{{$setting->address}}</textarea>
                                 @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
-                                <div class="error"></div>
                               </div>
     
                               <div class="col-md-4">
@@ -174,8 +169,7 @@
                                   <img src="{{url('public/email_icon/'.$setting->email_icon)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">  
                                 @endif
                                 <input type="file" id="email_icon" class="form-control" name="email_icon" required>
-                                <div class="error"></div>
-                                <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
+\                                <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
     
                               <div class="mb-3 col-md-4">
@@ -185,7 +179,6 @@
                                   <img src="{{url('public/call_icon/'.$setting->call_icon)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">  
                                 @endif
                                 <input type="file" id="call_icon" class="form-control" name="call_icon" required>
-                                <div class="error"></div>
                                 <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
     
@@ -196,7 +189,6 @@
                                   <img src="{{url('public/address_icon/'.$setting->address_icon)}}" width="50" style="margin-bottom: 10px; margin-left: 5px;">
                                 @endif
                                 <input type="file" id="address_icon" class="form-control" name="address_icon" required>
-                                <div class="error"></div>
                                 <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                               </div>
 
@@ -241,7 +233,6 @@
                           <div class="mb-3 col-md-4">
                             <label for="logo">Logo<span class="text-danger">*</span></label>
                             <input type="file" id="logo" class="form-control" name="logo" required>
-                            <div class="error"></div>
                             <small class="image_type">(Height:90px,Width:90px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 
@@ -249,7 +240,6 @@
                             <label for="email">Email<span class="text-danger">*</span></label>
                             <input type="email" id="email" class="form-control" name="email" required>
                             @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
-                            <div class="error"></div>
                           </div>
 
                           <div class="col-md-4">
@@ -283,7 +273,6 @@
                             <label for="mobile_number">Mobile Number<span class="text-danger">*</span></label>
                             <input type="number" id="mobile_number" class="form-control" name="mobile_number" required>
                             @if ($errors->has('mobile_number')) <div class="text-danger">{{ $errors->first('mobile_number') }}</div>@endif
-                            <div class="error"></div>
                           </div>
 
                           <div class="mb-3 col-md-4">
@@ -315,7 +304,6 @@
                             <label for="time">Time<span class="text-danger">*</span></label>
                             <input type="text" id="time" class="form-control" name="time" required>
                             @if ($errors->has('time')) <div class="text-danger">{{ $errors->first('time') }}</div>@endif
-                            <div class="error"></div>
                           </div>
 
                           <div class="col-md-4">
@@ -347,7 +335,6 @@
                             <label for="address">Address<span class="text-danger">*</span></label>
                             <textarea class="form-control" name="address" required></textarea>
                             @if ($errors->has('address')) <div class="text-danger">{{ $errors->first('address') }}</div>@endif
-                            <div class="error"></div>
                           </div>
 
                           <div class="col-md-4">
@@ -378,21 +365,18 @@
                           <div class="col-md-4">
                             <label for="email_icon">Email Icon<span class="text-danger">*</span></label>
                             <input type="file" id="email_icon" class="form-control" name="email_icon" required>
-                            <div class="error"></div>
                             <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 
                           <div class="mb-3 col-md-4">
                             <label for="call_icon">Call Icon<span class="text-danger">*</span></label>
                             <input type="file" id="call_icon" class="form-control" name="call_icon" required>
-                            <div class="error"></div>
                             <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 
                           <div class="col-md-4">
                             <label for="address_icon">Address Icon<span class="text-danger">*</span></label>
                             <input type="file" id="address_icon" class="form-control" name="address_icon" required>
-                            <div class="error"></div>
                             <small class="image_type">(Height:30px,Width:30px; Image Type : jpg,jpeg,png,svg,webp)</small>
                           </div>
 

@@ -24,7 +24,6 @@
                 @endif  
                 <input type="file" id="facility_image" class="form-control" name="facility_image" value="">
                 @if ($errors->has('facility_image')) <div class="text-danger">{{ $errors->first('facility_image') }}</div>@endif
-                <div class="error"></div>
                 <small class="image_type">(Hight:243px,Width:325px; Image Type : jpg,jpeg,png,svg,webp)</small>
             </div>
 
@@ -35,7 +34,6 @@
                 @endif  
                 <input type="file" id="customer_gallery_image" class="form-control" name="customer_gallery_image" value="">
                 @if ($errors->has('customer_gallery_image')) <div class="text-danger">{{ $errors->first('customer_gallery_image') }}</div>@endif
-                <div class="error"></div>
                 <small class="image_type">(Hight:325,Width:243; Image Type : jpg,jpeg,png,svg,webp)</small>
             </div>
         </div>

@@ -37,7 +37,6 @@
                                     @endif
                                 </select>
                                 @if ($errors->has('role_id')) <div class="text-danger">{{ $errors->first('role_id') }}</div>@endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="mb-3 col-md-4">
@@ -50,7 +49,6 @@
                                         @endforeach
                                     @endif
                                 </select>
-                                <div class="error"></div>
                                 @if ($errors->has('business_id')) <div class="text-danger">{{ $errors->first('business_id') }}</div>@endif
                             </div>
 
@@ -82,14 +80,12 @@
                                 <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" id="name" class="form-control" name="name" value="{{isset($record->name) ? $record->name : ''}}" required>
                                 @if ($errors->has('name')) <div class="text-danger">{{ $errors->first('name') }}</div>@endif
-                                <div class="error"></div>
                             </div>  
 
                             <div class="col-md-4">
                                 <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
                                 <input type="text" id="email" class="form-control" name="email" value="{{isset($record->email) ? $record->email : ''}}" required>
                                 @if ($errors->has('email')) <div class="text-danger">{{ $errors->first('email') }}</div>@endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -98,7 +94,6 @@
                                 @if ($errors->has('password')) <div class="text-danger">{{ $errors->first('password') }}</div>@endif
                                 <small>(Password must contain at least one special character,capital)</small>
                                 @if ($errors->has('password')) <div class="text-danger">{{ $errors->first('password') }}</div>@endif
-                                <div class="error"></div>
                             </div>
 
                             <div class="col-md-4 mb-3">
